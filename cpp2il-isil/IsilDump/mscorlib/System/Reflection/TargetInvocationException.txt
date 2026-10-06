@@ -1,0 +1,98 @@
+Type: System.Reflection.TargetInvocationException
+
+Method: System.Void .ctor(System.Exception inner)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1CB89h],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 0000000180E4D97Ch
+	lea rcx,[181E32A58h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1CB89h],1
+	mov rdx,[181E32A58h]
+	xor r9d,r9d
+	mov r8,rdi
+	mov rcx,rbx
+	call 0000000180E895C0h
+	mov dword ptr [rbx+60h],80131604h
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1CB89], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E32A58]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F1CB89], 1
+	012 Move rdx, "Exception has been thrown by the target of an invocation."
+	013 Move r9, 0
+	014 Move r8, rdi
+	015 Move rcx, rbx
+	016 Call ApplicationException..ctor, rcx, rdx, r8
+	017 Move [rbx+96], 0x80131604
+	018 Move rbx, stack:0x30
+	019 ShiftStack 32
+	020 Move rdi, stack:0x0
+	021 ShiftStack 8
+	022 Return 
+
+Method: System.Void .ctor(System.String message, System.Exception inner)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	xor r9d,r9d
+	mov rbx,rcx
+	call 0000000180E895C0h
+	mov dword ptr [rbx+60h],80131604h
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move r9, 0
+	005 Move rbx, rcx
+	006 Call ApplicationException..ctor, rcx, rdx, r8
+	007 Move [rbx+96], 0x80131604
+	008 ShiftStack 32
+	009 Move rbx, stack:0x0
+	010 ShiftStack 8
+	011 Return 
+
+Method: System.Void .ctor(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+
+Disassembly:
+	sub rsp,38h
+	movups xmm0,[r8]
+	xor r9d,r9d
+	lea r8,[rsp+20h]
+	movaps [rsp+20h],xmm0
+	call 0000000180E896B0h
+	add rsp,38h
+	ret
+
+ISIL:
+	001 ShiftStack -56
+	002 Move xmm0, [r8]
+	003 Move r9, 0
+	004 LoadAddress r8, stack:0x20
+	005 Move stack:0x20, xmm0
+	006 Call ApplicationException..ctor, rcx, rdx, r8
+	007 ShiftStack 56
+	008 Return 
+

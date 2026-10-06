@@ -1,0 +1,56 @@
+Type: UnityEngine.Purchasing.Utilities.UnityUtilContainer
+
+Method: UnityEngine.Purchasing.Extension.UnityUtil Instance()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F20B12h],0
+	jne short 00000001815CB2A0h
+	lea rcx,[181E05EB8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20B12h],1
+	mov rcx,[181E05EB8h]
+	mov rax,[rcx+0B8h]
+	cmp qword ptr [rax],0
+	jne short 00000001815CB2F0h
+	xor ecx,ecx
+	call 00000001815CB3C0h
+	mov rcx,[181E05EB8h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rax
+	mov rdx,rax
+	mov rcx,[181E05EB8h]
+	mov rcx,[rcx+0B8h]
+	call 00000001801E1E30h
+	mov rax,[181E05EB8h]
+	mov rax,[rax+0B8h]
+	mov rax,[rax]
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F20B12], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E05EB8]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F20B12], 1
+	007 Move rcx, typeof(UnityEngine.Purchasing.Utilities.UnityUtilContainer)
+	008 Move rax, [rcx+184]
+	009 Compare [rax], 0
+	010 JumpIfNotEqual {22}
+	011 Move rcx, 0
+	012 Call UnityUtilDependencyInjector.CreateUnityUtils, rcx
+	013 Move rcx, typeof(UnityEngine.Purchasing.Utilities.UnityUtilContainer)
+	014 Move rdx, [rcx+184]
+	015 Move [rdx], rax
+	016 Move rdx, rax
+	017 Move rcx, typeof(UnityEngine.Purchasing.Utilities.UnityUtilContainer)
+	018 Move rcx, [rcx+184]
+	019 Call 0x1801E1E30, rcx, rdx, r8, r9
+	020 Move rax, typeof(UnityEngine.Purchasing.Utilities.UnityUtilContainer)
+	021 Move rax, [rax+184]
+	022 Move rax, [rax]
+	023 ShiftStack 40
+	024 Return rax
+

@@ -1,0 +1,58 @@
+Type: Unity.Collections.LowLevel.Unsafe.BurstLike+SharedStatic
+
+Method: System.Void* GetOrCreateSharedStaticInternal(System.Int64 getHashCode64, System.Int64 getSubHashCode64, System.UInt32 sizeOf, System.UInt32 alignment)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,30h
+	mov edi,r8d
+	mov [rsp+20h],rcx
+	mov [rsp+28h],rdx
+	mov rax,[181F211C0h]
+	test r9d,r9d
+	mov ebx,4
+	cmovne ebx,r9d
+	test rax,rax
+	jne short 000000018161AD92h
+	lea rcx,[1819281C0h]
+	call 00000001801E2D00h
+	mov [181F211C0h],rax
+	mov r8d,ebx
+	lea rcx,[rsp+20h]
+	mov edx,edi
+	call rax
+	mov rbx,[rsp+40h]
+	add rsp,30h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -48
+	005 Move rdi, r8
+	006 Move stack:0x20, rcx
+	007 Move stack:0x28, rdx
+	008 Move rax, [0x181F211C0]
+	009 Compare r9, 0
+	010 Move rbx, 4
+	011 JumpIfEqual {13}
+	012 Move rbx, r9
+	013 Nop 
+	014 Compare rax, 0
+	015 JumpIfNotEqual {19}
+	016 LoadAddress rcx, [0x1819281C0]
+	017 Call 0x1801E2D00, rcx, rdx, r8, r9
+	018 Move [0x181F211C0], rax
+	019 Move r8, rbx
+	020 LoadAddress rcx, stack:0x20
+	021 Move rdx, rdi
+	022 Call rax
+	023 Move rbx, stack:0x40
+	024 ShiftStack 48
+	025 Move rdi, stack:0x0
+	026 ShiftStack 8
+	027 Return rax
+

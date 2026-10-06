@@ -1,0 +1,87 @@
+Type: System.Reflection.LocalVariableInfo
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+
+Method: System.String ToString()
+
+Disassembly:
+	mov [rsp+10h],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1CBC6h],0
+	mov rbx,rcx
+	jne short 0000000180E63611h
+	lea rcx,[181E04718h]
+	call 00000001801E2A80h
+	lea rcx,[181E0C4F8h]
+	call 00000001801E2A80h
+	lea rcx,[181E0C568h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1CBC6h],1
+	mov rdi,[rbx+10h]
+	movzx eax,word ptr [rbx+1Ah]
+	cmp byte ptr [rbx+18h],0
+	lea rdx,[rsp+30h]
+	mov rcx,[181E04718h]
+	mov [rsp+30h],ax
+	jne short 0000000180E6363Eh
+	call 0000000180154460h
+	mov rcx,[181E0C4F8h]
+	jmp short 0000000180E6364Ah
+	call 0000000180154460h
+	mov rcx,[181E0C568h]
+	xor r9d,r9d
+	mov r8,rax
+	mov rdx,rdi
+	call 0000000180D7ECB0h
+	mov rbx,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1CBC6], 0
+	006 Move rbx, rcx
+	007 JumpIfNotEqual {15}
+	008 LoadAddress rcx, [0x181E04718]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x181E0C4F8]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x181E0C568]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 Move [0x181F1CBC6], 1
+	015 Move rdi, [rbx+16]
+	016 Move rax, [rbx+26]
+	017 Compare [rbx+24], 0
+	018 LoadAddress rdx, stack:0x30
+	019 Move rcx, typeof(System.UInt16)
+	020 Move stack:0x30, rax
+	021 JumpIfNotEqual {25}
+	022 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	023 Move rcx, "{0} ({1})"
+	024 Goto {27}
+	025 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	026 Move rcx, "{0} ({1}) (pinned)"
+	027 Move r9, 0
+	028 Move r8, rax
+	029 Move rdx, rdi
+	030 Call String.Format, rcx, rdx, r8, r9
+	031 Move rbx, stack:0x38
+	032 ShiftStack 32
+	033 Move rdi, stack:0x0
+	034 ShiftStack 8
+	035 Return rax
+

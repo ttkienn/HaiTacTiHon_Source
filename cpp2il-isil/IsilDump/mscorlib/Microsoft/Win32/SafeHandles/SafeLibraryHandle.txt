@@ -1,0 +1,30 @@
+Type: Microsoft.Win32.SafeHandles.SafeLibraryHandle
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor r9d,r9d
+	mov r8b,1
+	xor edx,edx
+	jmp near ptr 0000000180E4A5F0h
+
+ISIL:
+	001 Move r9, 0
+	002 Move r8, 1
+	003 Move rdx, 0
+	004 Call SafeHandle..ctor, rcx, rdx, r8
+	005 Return 
+
+Method: System.Boolean ReleaseHandle()
+
+Disassembly:
+	mov rcx,[rcx+10h]
+	xor edx,edx
+	jmp near ptr 0000000180D5A450h
+
+ISIL:
+	001 Move rcx, [rcx+16]
+	002 Move rdx, 0
+	003 Call Kernel32.FreeLibrary, rcx, rdx
+	004 Return rax
+

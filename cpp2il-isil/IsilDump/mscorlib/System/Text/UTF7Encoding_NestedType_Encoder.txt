@@ -1,0 +1,59 @@
+Type: System.Text.UTF7Encoding+Encoder
+
+Method: System.Void .ctor(System.Text.UTF7Encoding encoding)
+
+Disassembly:
+	xor r8d,r8d
+	jmp near ptr 0000000180FAC210h
+
+ISIL:
+	001 Move r8, 0
+	002 Call EncoderNLS..ctor, rcx, rdx
+	003 Return 
+
+Method: System.Void Reset()
+
+Disassembly:
+	cmp qword ptr [rcx+18h],0
+	mov dword ptr [rcx+3Ch],0FFFFFFFFh
+	mov dword ptr [rcx+38h],0
+	je short 0000000180D87ABDh
+	mov rcx,[rcx+18h]
+	mov rdx,[rcx]
+	mov rax,[rdx+1C8h]
+	mov rdx,[rdx+1D0h]
+	jmp rax
+	ret
+
+ISIL:
+	001 Compare [rcx+24], 0
+	002 Move [rcx+60], 0xFFFFFFFF
+	003 Move [rcx+56], 0
+	004 JumpIfEqual {10}
+	005 Move rcx, [rcx+24]
+	006 Move rdx, [rcx]
+	007 Move rax, [rdx+456]
+	008 Move rdx, [rdx+464]
+	009 CallNoReturn rax
+	010 Return 
+
+Method: System.Boolean get_HasState()
+
+Disassembly:
+	cmp dword ptr [rcx+38h],0
+	je short 0000000180D87AD9h
+	mov al,1
+	ret
+	cmp dword ptr [rcx+3Ch],0FFFFFFFFh
+	setne al
+	ret
+
+ISIL:
+	001 Compare [rcx+56], 0
+	002 JumpIfEqual {5}
+	003 Move rax, 1
+	004 Return rax
+	005 Compare [rcx+60], 18446744073709551615
+	006 NotImplemented "setne al"
+	007 Return rax
+

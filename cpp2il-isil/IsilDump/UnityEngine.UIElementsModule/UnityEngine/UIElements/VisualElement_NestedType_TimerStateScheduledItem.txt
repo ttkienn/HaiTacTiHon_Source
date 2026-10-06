@@ -1,0 +1,91 @@
+Type: UnityEngine.UIElements.VisualElement+TimerStateScheduledItem
+
+Method: System.Void .ctor(UnityEngine.UIElements.VisualElement handler, System.Action`1<UnityEngine.UIElements.TimerState> updateEvent)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F23D86h],0
+	mov rbx,r8
+	mov rdi,rdx
+	mov rsi,rcx
+	jne short 000000018181DE54h
+	lea rcx,[181E29990h]
+	call 00000001801E2A80h
+	mov byte ptr [181F23D86h],1
+	mov r9,[181E29990h]
+	mov r8,rbx
+	mov rdx,rdi
+	mov rcx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180CB8610h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x181F23D86], 0
+	007 Move rbx, r8
+	008 Move rdi, rdx
+	009 Move rsi, rcx
+	010 JumpIfNotEqual {14}
+	011 LoadAddress rcx, [0x181E29990]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x181F23D86], 1
+	014 Move r9, [0x181E29990]
+	015 Move r8, rbx
+	016 Move rdx, rdi
+	017 Move rcx, rsi
+	018 Move rbx, stack:0x30
+	019 Move rsi, stack:0x38
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Call 0x180CB8610, rcx, rdx, r8
+	024 Return 
+
+Method: System.Void PerformTimerUpdate(UnityEngine.UIElements.TimerState state)
+
+Disassembly:
+	sub rsp,38h
+	cmp byte ptr [rcx+40h],0
+	je short 000000018181DE0Eh
+	mov rcx,[rcx+50h]
+	test rcx,rcx
+	je short 000000018181DE13h
+	movups xmm0,[rdx]
+	mov rax,[rcx+18h]
+	lea rdx,[rsp+20h]
+	mov r8,[rcx+28h]
+	mov rcx,[rcx+40h]
+	movaps [rsp+20h],xmm0
+	call rax
+	add rsp,38h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Compare [rcx+64], 0
+	003 JumpIfEqual {14}
+	004 Move rcx, [rcx+80]
+	005 Compare rcx, 0
+	006 JumpIfEqual {16}
+	007 Move xmm0, [rdx]
+	008 Move rax, [rcx+24]
+	009 LoadAddress rdx, stack:0x20
+	010 Move r8, [rcx+40]
+	011 Move rcx, [rcx+64]
+	012 Move stack:0x20, xmm0
+	013 Call rax
+	014 ShiftStack 56
+	015 Return 
+	016 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

@@ -1,0 +1,68 @@
+Type: System.Data.DataRowChangeEventArgs
+
+Method: System.Void .ctor(System.Data.DataRow row, System.Data.DataRowAction action)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1EA5Dh],0
+	mov esi,r8d
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 00000001811AFBB4h
+	lea rcx,[181E11D90h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1EA5Dh],1
+	mov rcx,[181E11D90h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001811AFBC9h
+	call 0000000180153C50h
+	xor edx,edx
+	mov rcx,rbx
+	call 000000018024B5B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	mov [rbx+18h],esi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x181F1EA5D], 0
+	007 Move rsi, r8
+	008 Move rdi, rdx
+	009 Move rbx, rcx
+	010 JumpIfNotEqual {14}
+	011 LoadAddress rcx, [0x181E11D90]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x181F1EA5D], 1
+	014 Move rcx, typeof(System.EventArgs)
+	015 Compare [rcx+224], 0
+	016 JumpIfNotEqual {18}
+	017 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	018 Move rdx, 0
+	019 Move rcx, rbx
+	020 Call 0x18024B5B0, rcx, rdx, r8
+	021 LoadAddress rcx, [rbx+16]
+	022 Move [rbx+16], rdi
+	023 Move rdx, rdi
+	024 Call 0x1801E1E30, rcx, rdx, r8, r9
+	025 Move [rbx+24], rsi
+	026 Move rbx, stack:0x30
+	027 Move rsi, stack:0x38
+	028 ShiftStack 32
+	029 Move rdi, stack:0x0
+	030 ShiftStack 8
+	031 Return 
+

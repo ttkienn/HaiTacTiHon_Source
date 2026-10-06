@@ -1,0 +1,34 @@
+Type: UnityEngine.UIElements.UIR.MeshBuilder+AllocMeshData
+
+Method: UnityEngine.UIElements.MeshWriteData Allocate(System.UInt32 vertexCount, System.UInt32 indexCount)
+
+Disassembly:
+	sub rsp,38h
+	mov r9,rcx
+	mov rcx,[rcx]
+	test rcx,rcx
+	je short 000000018172BAF8h
+	mov r10,[rcx+18h]
+	mov rax,[rcx+28h]
+	mov rcx,[rcx+40h]
+	mov [rsp+20h],rax
+	call r10
+	add rsp,38h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move r9, rcx
+	003 Move rcx, [rcx]
+	004 Compare rcx, 0
+	005 JumpIfEqual {13}
+	006 Move r10, [rcx+24]
+	007 Move rax, [rcx+40]
+	008 Move rcx, [rcx+64]
+	009 Move stack:0x20, rax
+	010 Call r10
+	011 ShiftStack 56
+	012 Return rax
+	013 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

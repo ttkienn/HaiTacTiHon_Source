@@ -1,0 +1,186 @@
+Type: System.Xml.XPath.XPathDocument
+
+Method: System.Xml.XmlNameTable get_NameTable()
+
+Disassembly:
+	mov rax,[rcx+20h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+32]
+	002 Return rax
+
+Method: System.Boolean get_HasLineInfo()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+28h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+40]
+	002 Return rax
+
+Method: System.Int32 GetXmlNamespaceNode(out MS.Internal.Xml.Cache.XPathNode[] pageXmlNmsp)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rax,rdx
+	mov rbx,rcx
+	mov rdx,[rcx+10h]
+	mov rcx,rax
+	mov [rax],rdx
+	call 00000001801E1E30h
+	mov eax,[rbx+18h]
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rax, rdx
+	005 Move rbx, rcx
+	006 Move rdx, [rcx+16]
+	007 Move rcx, rax
+	008 Move [rax], rdx
+	009 Call 0x1801E1E30, rcx, rdx, r8, r9
+	010 Move rax, [rbx+24]
+	011 ShiftStack 32
+	012 Move rbx, stack:0x0
+	013 ShiftStack 8
+	014 Return rax
+
+Method: System.Int32 LookupNamespaces(MS.Internal.Xml.Cache.XPathNode[] pageElem, System.Int32 idxElem, out MS.Internal.Xml.Cache.XPathNode[] pageNmsp)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,50h
+	cmp byte ptr [181F1F8BAh],0
+	mov rbx,r9
+	mov esi,r8d
+	mov rbp,rdx
+	mov rdi,rcx
+	jne short 00000001813E4928h
+	lea rcx,[181E0FDF8h]
+	call 00000001801E2A80h
+	lea rcx,[181E0FE68h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1F8BAh],1
+	xorps xmm0,xmm0
+	lea rcx,[rsp+20h]
+	xor r9d,r9d
+	mov r8d,esi
+	mov rdx,rbp
+	movups [rsp+20h],xmm0
+	call 00000001809C1B20h
+	cmp qword ptr [rdi+30h],0
+	je short 00000001813E49B9h
+	movaps xmm0,[rsp+20h]
+	lea rdx,[rsp+30h]
+	mov r8,[181E0FDF8h]
+	mov rcx,[rdi+30h]
+	movdqa [rsp+30h],xmm0
+	call 000000018088C460h
+	test al,al
+	je short 00000001813E49B9h
+	mov rdx,[rdi+30h]
+	test rdx,rdx
+	je short 00000001813E49E1h
+	movaps xmm0,[rsp+20h]
+	lea r8,[rsp+30h]
+	mov r9,[181E0FE68h]
+	lea rcx,[rsp+40h]
+	movdqa [rsp+30h],xmm0
+	call 00000001808A2260h
+	movaps xmm0,[rsp+40h]
+	mov rcx,rbx
+	movq rdx,xmm0
+	movdqa [rsp+20h],xmm0
+	mov [rbx],rdx
+	call 00000001801E1E30h
+	mov eax,[rsp+28h]
+	jmp short 00000001813E49CCh
+	xor edx,edx
+	mov qword ptr [rbx],0
+	mov rcx,rbx
+	call 00000001801E1E30h
+	xor eax,eax
+	mov rbx,[rsp+60h]
+	mov rbp,[rsp+68h]
+	mov rsi,[rsp+70h]
+	add rsp,50h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -80
+	007 Compare [0x181F1F8BA], 0
+	008 Move rbx, r9
+	009 Move rsi, r8
+	010 Move rbp, rdx
+	011 Move rdi, rcx
+	012 JumpIfNotEqual {18}
+	013 LoadAddress rcx, [0x181E0FDF8]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x181E0FE68]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 Move [0x181F1F8BA], 1
+	018 Move xmm0, 0
+	019 LoadAddress rcx, stack:0x20
+	020 Move r9, 0
+	021 Move r8, rsi
+	022 Move rdx, rbp
+	023 Move stack:0x20, xmm0
+	024 Call 0x1809C1B20, rcx, rdx, r8
+	025 Compare [rdi+48], 0
+	026 JumpIfEqual {52}
+	027 Move xmm0, stack:0x20
+	028 LoadAddress rdx, stack:0x30
+	029 Move r8, [0x181E0FDF8]
+	030 Move rcx, [rdi+48]
+	031 Move stack:0x30, xmm0
+	032 Call Dictionary`2<XPathNodeRef, XPathNodeRef>.ContainsKey, rcx, rdx
+	033 Compare rax, 0
+	034 JumpIfEqual {52}
+	035 Move rdx, [rdi+48]
+	036 Compare rdx, 0
+	037 JumpIfEqual {64}
+	038 Move xmm0, stack:0x20
+	039 LoadAddress r8, stack:0x30
+	040 Move r9, [0x181E0FE68]
+	041 LoadAddress rcx, stack:0x40
+	042 Move stack:0x30, xmm0
+	043 Call Dictionary`2<XPathNodeRef, XPathNodeRef>.get_Item, rcx, rdx
+	044 Move xmm0, stack:0x40
+	045 Move rcx, rbx
+	046 Move rdx, xmm0
+	047 Move stack:0x20, xmm0
+	048 Move [rbx], rdx
+	049 Call 0x1801E1E30, rcx, rdx, r8, r9
+	050 Move rax, stack:0x28
+	051 Goto {57}
+	052 Move rdx, 0
+	053 Move [rbx], 0
+	054 Move rcx, rbx
+	055 Call 0x1801E1E30, rcx, rdx, r8, r9
+	056 Move rax, 0
+	057 Move rbx, stack:0x60
+	058 Move rbp, stack:0x68
+	059 Move rsi, stack:0x70
+	060 ShiftStack 80
+	061 Move rdi, stack:0x0
+	062 ShiftStack 8
+	063 Return rax
+	064 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

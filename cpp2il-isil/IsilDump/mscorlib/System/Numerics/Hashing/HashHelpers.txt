@@ -1,0 +1,94 @@
+Type: System.Numerics.Hashing.HashHelpers
+
+Method: System.Int32 Combine(System.Int32 h1, System.Int32 h2)
+
+Disassembly:
+	mov eax,ecx
+	mov r8d,ecx
+	shr eax,1Bh
+	shl r8d,5
+	or eax,r8d
+	add eax,ecx
+	xor eax,edx
+	ret
+
+ISIL:
+	001 Move rax, rcx
+	002 Move r8, rcx
+	003 ShiftRight rax, 27
+	004 ShiftLeft r8, 5
+	005 Or rax, rax, r8
+	006 Add rax, rax, rcx
+	007 Xor rax, rax, rdx
+	008 Return rax
+
+Method: System.Void .cctor()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [181F1CC1Dh],0
+	jne short 0000000180E6356Eh
+	lea rcx,[181E17C40h]
+	call 00000001801E2A80h
+	lea rcx,[181E375C8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1CC1Dh],1
+	mov rcx,[181E375C8h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180F3D790h
+	test rbx,rbx
+	je short 0000000180E635C4h
+	mov r9,[rbx]
+	mov edx,80000000h
+	mov r8d,7FFFFFFFh
+	mov rcx,rbx
+	mov r10,[r9+198h]
+	mov r9,[r9+1A0h]
+	call r10
+	mov rcx,[181E17C40h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],eax
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x181F1CC1D], 0
+	005 JumpIfNotEqual {11}
+	006 LoadAddress rcx, [0x181E17C40]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 LoadAddress rcx, [0x181E375C8]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x181F1CC1D], 1
+	011 Move rcx, typeof(System.Random)
+	012 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	013 Move rdx, 0
+	014 Move rcx, rax
+	015 Move rbx, rax
+	016 Call Random..ctor, rcx, rdx
+	017 Compare rbx, 0
+	018 JumpIfEqual {33}
+	019 Move r9, [rbx]
+	020 Move rdx, 0x80000000
+	021 Move r8, 0x7FFFFFFF
+	022 Move rcx, rbx
+	023 Move r10, [r9+408]
+	024 Move r9, [r9+416]
+	025 Call r10
+	026 Move rcx, typeof(System.Numerics.Hashing.HashHelpers)
+	027 Move rdx, [rcx+184]
+	028 Move [rdx], rax
+	029 ShiftStack 32
+	030 Move rbx, stack:0x0
+	031 ShiftStack 8
+	032 Return 
+	033 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

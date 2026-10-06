@@ -1,0 +1,84 @@
+Type: UnityEngine.Purchasing.Exceptions.GoogleFetchProductException
+
+Method: UnityEngine.Purchasing.Models.GoogleFetchProductsFailureReason get_FailureReason()
+
+Disassembly:
+	mov eax,[rcx+98h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+152]
+	002 Return rax
+
+Method: UnityEngine.Purchasing.Models.GoogleBillingResponseCode get_ResponseCode()
+
+Disassembly:
+	mov eax,[rcx+9Ch]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+156]
+	002 Return rax
+
+Method: System.Void .ctor(UnityEngine.Purchasing.Models.GoogleFetchProductsFailureReason failureReason, UnityEngine.Purchasing.Models.GoogleBillingResponseCode responseCode, UnityEngine.Purchasing.ProductFetchFailureDescription failureDescription)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rdi,r9
+	mov esi,r8d
+	mov ebp,edx
+	mov rbx,rcx
+	test r9,r9
+	je short 00000001815BD487h
+	mov rdx,[r9+18h]
+	xor r8d,r8d
+	call 0000000181576020h
+	lea rcx,[rbx+90h]
+	mov [rbx+90h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	mov [rbx+98h],ebp
+	mov rbp,[rsp+38h]
+	mov [rbx+9Ch],esi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rdi, r9
+	008 Move rsi, r8
+	009 Move rbp, rdx
+	010 Move rbx, rcx
+	011 Compare r9, 0
+	012 JumpIfEqual {29}
+	013 Move rdx, [r9+24]
+	014 Move r8, 0
+	015 Call 0x181576020, rcx, rdx
+	016 LoadAddress rcx, [rbx+144]
+	017 Move [rbx+144], rdi
+	018 Move rdx, rdi
+	019 Call 0x1801E1E30, rcx, rdx, r8, r9
+	020 Move [rbx+152], rbp
+	021 Move rbp, stack:0x38
+	022 Move [rbx+156], rsi
+	023 Move rbx, stack:0x30
+	024 Move rsi, stack:0x40
+	025 ShiftStack 32
+	026 Move rdi, stack:0x0
+	027 ShiftStack 8
+	028 Return 
+	029 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

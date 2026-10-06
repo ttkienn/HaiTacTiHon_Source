@@ -1,0 +1,106 @@
+Type: System.Runtime.Remoting.Channels.CrossAppDomainData
+
+Method: System.Void .ctor(System.Int32 domainId)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1C90Ah],0
+	mov edi,edx
+	mov rbx,rcx
+	jne short 0000000180DE3697h
+	lea rcx,[181E23D70h]
+	call 00000001801E2A80h
+	lea rcx,[181DF40B8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C90Ah],1
+	xor edx,edx
+	mov rcx,rbx
+	call 000000018024B730h
+	mov rcx,[181E23D70h]
+	lea rdx,[rsp+38h]
+	mov dword ptr [rsp+38h],0
+	call 0000000180154460h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rax
+	mov rdx,rax
+	call 00000001801E1E30h
+	mov [rbx+18h],edi
+	mov rcx,[181DF40B8h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180DE36E2h
+	call 0000000180153C50h
+	xor ecx,ecx
+	call 0000000180DEC900h
+	lea rcx,[rbx+20h]
+	mov [rbx+20h],rax
+	mov rdx,rax
+	call 00000001801E1E30h
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1C90A], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {14}
+	009 LoadAddress rcx, [0x181E23D70]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x181DF40B8]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x181F1C90A], 1
+	014 Move rdx, 0
+	015 Move rcx, rbx
+	016 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	017 Move rcx, typeof(System.Int32)
+	018 LoadAddress rdx, stack:0x38
+	019 Move stack:0x38, 0
+	020 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	021 LoadAddress rcx, [rbx+16]
+	022 Move [rbx+16], rax
+	023 Move rdx, rax
+	024 Call 0x1801E1E30, rcx, rdx, r8, r9
+	025 Move [rbx+24], rdi
+	026 Move rcx, typeof(System.Runtime.Remoting.RemotingConfiguration)
+	027 Compare [rcx+224], 0
+	028 JumpIfNotEqual {30}
+	029 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	030 Move rcx, 0
+	031 Call RemotingConfiguration.get_ProcessId, rcx
+	032 LoadAddress rcx, [rbx+32]
+	033 Move [rbx+32], rax
+	034 Move rdx, rax
+	035 Call 0x1801E1E30, rcx, rdx, r8, r9
+	036 Move rbx, stack:0x30
+	037 ShiftStack 32
+	038 Move rdi, stack:0x0
+	039 ShiftStack 8
+	040 Return 
+
+Method: System.Int32 get_DomainID()
+
+Disassembly:
+	mov eax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.String get_ProcessID()
+
+Disassembly:
+	mov rax,[rcx+20h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+32]
+	002 Return rax
+

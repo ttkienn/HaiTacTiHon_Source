@@ -1,0 +1,440 @@
+Type: System.Runtime.Remoting.Identity
+
+Method: System.Void .ctor(System.String objectUri)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 000000018024B730h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType)
+
+Disassembly:
+	
+
+ISIL:
+No ISIL was generated
+Method: System.Runtime.Remoting.Messaging.IMessageSink get_ChannelSink()
+
+Disassembly:
+	mov rax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Void set_ChannelSink(System.Runtime.Remoting.Messaging.IMessageSink value)
+
+Disassembly:
+	mov [rcx+18h],rdx
+	add rcx,18h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move [rcx+24], rdx
+	002 Add rcx, rcx, 24
+	003 Call 0x1801E1E30, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Runtime.Remoting.Messaging.IMessageSink get_EnvoySink()
+
+Disassembly:
+	mov rax,[rcx+20h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+32]
+	002 Return rax
+
+Method: System.String get_ObjectUri()
+
+Disassembly:
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Void set_ObjectUri(System.String value)
+
+Disassembly:
+	mov [rcx+10h],rdx
+	add rcx,10h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Add rcx, rcx, 16
+	003 Call 0x1801E1E30, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Boolean get_IsConnected()
+
+Disassembly:
+	cmp qword ptr [rcx+10h],0
+	seta al
+	ret
+
+ISIL:
+	001 Compare [rcx+16], 0
+	002 NotImplemented "seta al"
+	003 Return rax
+
+Method: System.Boolean get_Disposed()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+40h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+64]
+	002 Return rax
+
+Method: System.Void set_Disposed(System.Boolean value)
+
+Disassembly:
+	mov [rcx+40h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+64], rdx
+	002 Return 
+
+Method: System.Runtime.Remoting.Contexts.DynamicPropertyCollection get_ClientDynamicProperties()
+
+Disassembly:
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1C827h],0
+	mov rdi,rcx
+	jne short 0000000180DE5575h
+	lea rcx,[181E103C8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C827h],1
+	cmp qword ptr [rdi+28h],0
+	jne near ptr 0000000180DE5602h
+	mov rcx,[181E103C8h]
+	mov [rsp+30h],rbx
+	mov [rsp+38h],rsi
+	call 0000000180197840h
+	cmp byte ptr [181F1C8FAh],0
+	mov rsi,rax
+	jne short 0000000180DE55B5h
+	lea rcx,[181DFEE80h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C8FAh],1
+	mov rcx,[181DFEE80h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180EBA3A0h
+	lea rcx,[rsi+10h]
+	mov [rsi+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	xor edx,edx
+	mov rcx,rsi
+	call 000000018024B730h
+	lea rcx,[rdi+28h]
+	mov [rdi+28h],rsi
+	mov rdx,rsi
+	call 00000001801E1E30h
+	mov rsi,[rsp+38h]
+	mov rbx,[rsp+30h]
+	mov rax,[rdi+28h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rdi
+	003 ShiftStack -32
+	004 Compare [0x181F1C827], 0
+	005 Move rdi, rcx
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x181E103C8]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x181F1C827], 1
+	010 Compare [rdi+40], 0
+	011 JumpIfNotEqual {41}
+	012 Move rcx, typeof(System.Runtime.Remoting.Contexts.DynamicPropertyCollection)
+	013 Move stack:0x30, rbx
+	014 Move stack:0x38, rsi
+	015 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	016 Compare [0x181F1C8FA], 0
+	017 Move rsi, rax
+	018 JumpIfNotEqual {22}
+	019 LoadAddress rcx, [0x181DFEE80]
+	020 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	021 Move [0x181F1C8FA], 1
+	022 Move rcx, typeof(System.Collections.ArrayList)
+	023 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	024 Move rdx, 0
+	025 Move rcx, rax
+	026 Move rbx, rax
+	027 Call ArrayList..ctor, rcx, rdx
+	028 LoadAddress rcx, [rsi+16]
+	029 Move [rsi+16], rbx
+	030 Move rdx, rbx
+	031 Call 0x1801E1E30, rcx, rdx, r8, r9
+	032 Move rdx, 0
+	033 Move rcx, rsi
+	034 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	035 LoadAddress rcx, [rdi+40]
+	036 Move [rdi+40], rsi
+	037 Move rdx, rsi
+	038 Call 0x1801E1E30, rcx, rdx, r8, r9
+	039 Move rsi, stack:0x38
+	040 Move rbx, stack:0x30
+	041 Move rax, [rdi+40]
+	042 ShiftStack 32
+	043 Move rdi, stack:0x0
+	044 ShiftStack 8
+	045 Return rax
+
+Method: System.Boolean get_HasServerDynamicSinks()
+
+Disassembly:
+	sub rsp,28h
+	cmp qword ptr [rcx+30h],0
+	jne short 0000000180DE5622h
+	xor al,al
+	add rsp,28h
+	ret
+	mov rax,[rcx+30h]
+	mov rcx,[rax+10h]
+	test rcx,rcx
+	je short 0000000180DE564Ch
+	mov rdx,[rcx]
+	mov rax,[rdx+298h]
+	mov rdx,[rdx+2A0h]
+	call rax
+	test eax,eax
+	setg al
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [rcx+48], 0
+	003 JumpIfNotEqual {7}
+	004 Move rax, 0
+	005 ShiftStack 40
+	006 Return rax
+	007 Move rax, [rcx+48]
+	008 Move rcx, [rax+16]
+	009 Compare rcx, 0
+	010 JumpIfEqual {19}
+	011 Move rdx, [rcx]
+	012 Move rax, [rdx+664]
+	013 Move rdx, [rdx+672]
+	014 Call rax
+	015 Compare rax, 0
+	016 NotImplemented "setg al"
+	017 ShiftStack 40
+	018 Return rax
+	019 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void NotifyClientDynamicSinks(System.Boolean start, System.Runtime.Remoting.Messaging.IMessage req_msg, System.Boolean client_site, System.Boolean async)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,30h
+	cmp qword ptr [rcx+28h],0
+	movzx edi,r9b
+	mov rsi,r8
+	movzx ebp,dl
+	mov rbx,rcx
+	je short 0000000180DE5487h
+	mov rax,[rcx+28h]
+	mov rcx,[rax+10h]
+	test rcx,rcx
+	je short 0000000180DE549Ch
+	mov rdx,[rcx]
+	mov rax,[rdx+298h]
+	mov rdx,[rdx+2A0h]
+	call rax
+	test eax,eax
+	jle short 0000000180DE5487h
+	mov rcx,[rbx+28h]
+	test rcx,rcx
+	je short 0000000180DE549Ch
+	movzx eax,byte ptr [rsp+60h]
+	movzx r9d,dil
+	mov qword ptr [rsp+28h],0
+	mov r8,rsi
+	movzx edx,bpl
+	mov [rsp+20h],al
+	call 0000000180DE4B00h
+	mov rbx,[rsp+40h]
+	mov rbp,[rsp+48h]
+	mov rsi,[rsp+50h]
+	add rsp,30h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -48
+	007 Compare [rcx+40], 0
+	008 Move rdi, r9
+	009 Move rsi, r8
+	010 Move rbp, rdx
+	011 Move rbx, rcx
+	012 JumpIfEqual {33}
+	013 Move rax, [rcx+40]
+	014 Move rcx, [rax+16]
+	015 Compare rcx, 0
+	016 JumpIfEqual {40}
+	017 Move rdx, [rcx]
+	018 Move rax, [rdx+664]
+	019 Move rdx, [rdx+672]
+	020 Call rax
+	021 Compare rax, 0
+	022 JumpIfLessOrEqual {33}
+	023 Move rcx, [rbx+40]
+	024 Compare rcx, 0
+	025 JumpIfEqual {40}
+	026 Move rax, stack:0x60
+	027 Move r9, rdi
+	028 Move stack:0x28, 0
+	029 Move r8, rsi
+	030 Move rdx, rbp
+	031 Move stack:0x20, rax
+	032 Call DynamicPropertyCollection.NotifyMessage, rcx, rdx, r8, r9, stack:0x0
+	033 Move rbx, stack:0x40
+	034 Move rbp, stack:0x48
+	035 Move rsi, stack:0x50
+	036 ShiftStack 48
+	037 Move rdi, stack:0x0
+	038 ShiftStack 8
+	039 Return 
+	040 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void NotifyServerDynamicSinks(System.Boolean start, System.Runtime.Remoting.Messaging.IMessage req_msg, System.Boolean client_site, System.Boolean async)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,30h
+	cmp qword ptr [rcx+30h],0
+	movzx edi,r9b
+	mov rsi,r8
+	movzx ebp,dl
+	mov rbx,rcx
+	je short 0000000180DE5527h
+	mov rax,[rcx+30h]
+	mov rcx,[rax+10h]
+	test rcx,rcx
+	je short 0000000180DE553Ch
+	mov rdx,[rcx]
+	mov rax,[rdx+298h]
+	mov rdx,[rdx+2A0h]
+	call rax
+	test eax,eax
+	jle short 0000000180DE5527h
+	mov rcx,[rbx+30h]
+	test rcx,rcx
+	je short 0000000180DE553Ch
+	movzx eax,byte ptr [rsp+60h]
+	movzx r9d,dil
+	mov qword ptr [rsp+28h],0
+	mov r8,rsi
+	movzx edx,bpl
+	mov [rsp+20h],al
+	call 0000000180DE4B00h
+	mov rbx,[rsp+40h]
+	mov rbp,[rsp+48h]
+	mov rsi,[rsp+50h]
+	add rsp,30h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -48
+	007 Compare [rcx+48], 0
+	008 Move rdi, r9
+	009 Move rsi, r8
+	010 Move rbp, rdx
+	011 Move rbx, rcx
+	012 JumpIfEqual {33}
+	013 Move rax, [rcx+48]
+	014 Move rcx, [rax+16]
+	015 Compare rcx, 0
+	016 JumpIfEqual {40}
+	017 Move rdx, [rcx]
+	018 Move rax, [rdx+664]
+	019 Move rdx, [rdx+672]
+	020 Call rax
+	021 Compare rax, 0
+	022 JumpIfLessOrEqual {33}
+	023 Move rcx, [rbx+48]
+	024 Compare rcx, 0
+	025 JumpIfEqual {40}
+	026 Move rax, stack:0x60
+	027 Move r9, rdi
+	028 Move stack:0x28, 0
+	029 Move r8, rsi
+	030 Move rdx, rbp
+	031 Move stack:0x20, rax
+	032 Call DynamicPropertyCollection.NotifyMessage, rcx, rdx, r8, r9, stack:0x0
+	033 Move rbx, stack:0x40
+	034 Move rbp, stack:0x48
+	035 Move rsi, stack:0x50
+	036 ShiftStack 48
+	037 Move rdi, stack:0x0
+	038 ShiftStack 8
+	039 Return 
+	040 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

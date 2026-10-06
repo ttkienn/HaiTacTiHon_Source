@@ -1,0 +1,275 @@
+Type: MarqueeText
+
+Method: System.Void .ctor(System.Int32 maxW)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov edi,edx
+	mov dword ptr [rcx+18h],2
+	xor edx,edx
+	mov rbx,rcx
+	call 000000018024B730h
+	mov [rbx+14h],edi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move [rcx+24], 2
+	007 Move rdx, 0
+	008 Move rbx, rcx
+	009 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	010 Move [rbx+20], rdi
+	011 Move rbx, stack:0x30
+	012 ShiftStack 32
+	013 Move rdi, stack:0x0
+	014 ShiftStack 8
+	015 Return 
+
+Method: System.Void setdata(System.String str, mFont font)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rsi,rdx
+	mov [rcx+38h],r8
+	mov rbx,rcx
+	mov rdx,r8
+	add rcx,38h
+	mov rdi,r8
+	call 00000001801E1E30h
+	lea rcx,[rbx+28h]
+	mov [rbx+28h],rsi
+	mov rdx,rsi
+	call 00000001801E1E30h
+	test rdi,rdi
+	je short 00000001803C29E9h
+	xor r8d,r8d
+	mov rdx,rsi
+	mov rcx,rdi
+	call 00000001802581F0h
+	xor ecx,ecx
+	mov [rbx+1Ch],rcx
+	mov [rbx+40h],cl
+	cmp eax,[rbx+14h]
+	jg short 00000001803C29CCh
+	mov [rbx+30h],cl
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+	sub eax,[rbx+14h]
+	mov rsi,[rsp+38h]
+	add eax,14h
+	mov [rbx+10h],eax
+	mov byte ptr [rbx+30h],1
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rsi, rdx
+	007 Move [rcx+56], r8
+	008 Move rbx, rcx
+	009 Move rdx, r8
+	010 Add rcx, rcx, 56
+	011 Move rdi, r8
+	012 Call 0x1801E1E30, rcx, rdx, r8, r9
+	013 LoadAddress rcx, [rbx+40]
+	014 Move [rbx+40], rsi
+	015 Move rdx, rsi
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Compare rdi, 0
+	018 JumpIfEqual {45}
+	019 Move r8, 0
+	020 Move rdx, rsi
+	021 Move rcx, rdi
+	022 Call mFont.getWidth, rcx, rdx
+	023 Move rcx, 0
+	024 Move [rbx+28], rcx
+	025 Move [rbx+64], rcx
+	026 Compare rax, [rbx+20]
+	027 JumpIfGreater {35}
+	028 Move [rbx+48], rcx
+	029 Move rbx, stack:0x30
+	030 Move rsi, stack:0x38
+	031 ShiftStack 32
+	032 Move rdi, stack:0x0
+	033 ShiftStack 8
+	034 Return 
+	035 Subtract rax, rax, [rbx+20]
+	036 Move rsi, stack:0x38
+	037 Add rax, rax, 20
+	038 Move [rbx+16], rax
+	039 Move [rbx+48], 1
+	040 Move rbx, stack:0x30
+	041 ShiftStack 32
+	042 Move rdi, stack:0x0
+	043 ShiftStack 8
+	044 Return 
+	045 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void paint(mGraphics g, System.Int32 x, System.Int32 y, System.Int32 align)
+
+Disassembly:
+	sub rsp,48h
+	mov r10,[rcx+38h]
+	test r10,r10
+	je short 00000001803C294Bh
+	sub r8d,[rcx+1Ch]
+	mov eax,[rsp+70h]
+	mov qword ptr [rsp+30h],0
+	mov [rsp+28h],eax
+	mov [rsp+20h],r9d
+	mov r9d,r8d
+	mov r8,[rcx+28h]
+	mov rcx,r10
+	call 0000000180257D40h
+	add rsp,48h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -72
+	002 Move r10, [rcx+56]
+	003 Compare r10, 0
+	004 JumpIfEqual {16}
+	005 Subtract r8, r8, [rcx+28]
+	006 Move rax, stack:0x70
+	007 Move stack:0x30, 0
+	008 Move stack:0x28, rax
+	009 Move stack:0x20, r9
+	010 Move r9, r8
+	011 Move r8, [rcx+40]
+	012 Move rcx, r10
+	013 Call mFont.drawString, rcx, rdx, r8, r9, stack:0x0, stack:0x8
+	014 ShiftStack 72
+	015 Return 
+	016 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void update()
+
+Disassembly:
+	cmp byte ptr [rcx+30h],0
+	je short 00000001803C2A64h
+	mov eax,[rcx+20h]
+	inc eax
+	mov [rcx+20h],eax
+	cmp eax,0Ah
+	jle short 00000001803C2A5Ch
+	mov eax,[rcx+1Ch]
+	add eax,[rcx+18h]
+	mov [rcx+1Ch],eax
+	mov eax,[rcx+10h]
+	cmp [rcx+1Ch],eax
+	jl short 00000001803C2A6Ah
+	xor eax,eax
+	mov [rcx+1Ch],rax
+	ret
+
+ISIL:
+	001 Compare [rcx+48], 0
+	002 JumpIfEqual {14}
+	003 Move rax, [rcx+32]
+	004 Add rax, rax, 1
+	005 Move [rcx+32], rax
+	006 Compare rax, 10
+	007 JumpIfLessOrEqual {11}
+	008 Move rax, [rcx+28]
+	009 Add rax, rax, [rcx+24]
+	010 Move [rcx+28], rax
+	011 Move rax, [rcx+16]
+	012 Compare [rcx+28], rax
+	013 JumpIfLess {16}
+	014 Move rax, 0
+	015 Move [rcx+28], rax
+	016 Return 
+
+Method: System.Void update2()
+
+Disassembly:
+	cmp byte ptr [rcx+30h],0
+	jne short 00000001803C29FDh
+	xor eax,eax
+	mov [rcx+1Ch],rax
+	ret
+	mov eax,[rcx+20h]
+	inc eax
+	mov [rcx+20h],eax
+	cmp eax,0Ah
+	jle short 00000001803C2A1Fh
+	cmp byte ptr [rcx+40h],0
+	mov eax,[rcx+1Ch]
+	mov edx,[rcx+18h]
+	je short 00000001803C2A1Ah
+	sub eax,edx
+	jmp short 00000001803C2A1Ch
+	add eax,edx
+	mov [rcx+1Ch],eax
+	mov eax,[rcx+10h]
+	cmp [rcx+1Ch],eax
+	jg short 00000001803C2A2Dh
+	cmp dword ptr [rcx+1Ch],0FFFFFFF6h
+	jge short 00000001803C2A37h
+	cmp byte ptr [rcx+40h],0
+	sete al
+	mov [rcx+40h],al
+	ret
+
+ISIL:
+	001 Compare [rcx+48], 0
+	002 JumpIfNotEqual {6}
+	003 Move rax, 0
+	004 Move [rcx+28], rax
+	005 Return 
+	006 Move rax, [rcx+32]
+	007 Add rax, rax, 1
+	008 Move [rcx+32], rax
+	009 Compare rax, 10
+	010 JumpIfLessOrEqual {19}
+	011 Compare [rcx+64], 0
+	012 Move rax, [rcx+28]
+	013 Move rdx, [rcx+24]
+	014 JumpIfEqual {17}
+	015 Subtract rax, rax, rdx
+	016 Goto {18}
+	017 Add rax, rax, rdx
+	018 Move [rcx+28], rax
+	019 Move rax, [rcx+16]
+	020 Compare [rcx+28], rax
+	021 JumpIfGreater {24}
+	022 Compare [rcx+28], 18446744073709551606
+	023 JumpIfGreaterOrEqual {27}
+	024 Compare [rcx+64], 0
+	025 NotImplemented "sete al"
+	026 Move [rcx+64], rax
+	027 Return 
+
+Method: System.Int32 getxPlus()
+
+Disassembly:
+	mov eax,[rcx+1Ch]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+28]
+	002 Return rax
+

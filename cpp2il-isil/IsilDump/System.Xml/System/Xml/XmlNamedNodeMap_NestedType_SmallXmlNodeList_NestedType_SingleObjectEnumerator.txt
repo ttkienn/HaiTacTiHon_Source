@@ -1,0 +1,121 @@
+Type: System.Xml.XmlNamedNodeMap+SmallXmlNodeList+SingleObjectEnumerator
+
+Method: System.Void .ctor(System.Object value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov dword ptr [rcx+18h],0FFFFFFFFh
+	xor edx,edx
+	mov rbx,rcx
+	call 000000018024B730h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move [rcx+24], 0xFFFFFFFF
+	007 Move rdx, 0
+	008 Move rbx, rcx
+	009 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	010 LoadAddress rcx, [rbx+16]
+	011 Move [rbx+16], rdi
+	012 Move rdx, rdi
+	013 Move rbx, stack:0x30
+	014 ShiftStack 32
+	015 Move rdi, stack:0x0
+	016 ShiftStack 8
+	017 Call 0x1801E1E30, rcx, rdx, r8, r9
+	018 Return 
+
+Method: System.Object get_Current()
+
+Disassembly:
+	sub rsp,28h
+	cmp dword ptr [rcx+18h],0
+	jne short 00000001813CDCD3h
+	mov rax,[rcx+10h]
+	add rsp,28h
+	ret
+	lea rcx,[181E249E8h]
+	mov [rsp+20h],rbx
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180F20CD0h
+	lea rcx,[181E1F078h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+	mov rbx,[rsp+20h]
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [rcx+24], 0
+	003 JumpIfNotEqual {7}
+	004 Move rax, [rcx+16]
+	005 ShiftStack 40
+	006 Return rax
+	007 LoadAddress rcx, [0x181E249E8]
+	008 Move stack:0x20, rbx
+	009 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	010 Move rcx, rax
+	011 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	012 Move rdx, 0
+	013 Move rcx, rax
+	014 Move rbx, rax
+	015 Call InvalidOperationException..ctor, rcx, rdx
+	016 LoadAddress rcx, [0x181E1F078]
+	017 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	018 Move rdx, rax
+	019 Move rcx, rbx
+	020 Call 0x1801E2C60, rcx, rdx, r8, r9
+	021 Move rbx, stack:0x20
+
+Method: System.Boolean MoveNext()
+
+Disassembly:
+	cmp dword ptr [rcx+18h],0
+	jl short 00000001813CDC70h
+	mov dword ptr [rcx+18h],1
+	xor al,al
+	ret
+	mov dword ptr [rcx+18h],0
+	mov al,1
+	ret
+
+ISIL:
+	001 Compare [rcx+24], 0
+	002 JumpIfLess {6}
+	003 Move [rcx+24], 1
+	004 Move rax, 0
+	005 Return rax
+	006 Move [rcx+24], 0
+	007 Move rax, 1
+	008 Return rax
+
+Method: System.Void Reset()
+
+Disassembly:
+	mov dword ptr [rcx+18h],0FFFFFFFFh
+	ret
+
+ISIL:
+	001 Move [rcx+24], 0xFFFFFFFF
+	002 Return 
+

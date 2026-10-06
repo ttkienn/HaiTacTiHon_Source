@@ -1,0 +1,48 @@
+Type: System.Globalization.UmAlQuraCalendar+DateMapping
+
+Method: System.Void .ctor(System.Int32 MonthsLengthFlags, System.Int32 GYear, System.Int32 GMonth, System.Int32 GDay)
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	mov [rcx],edx
+	mov rbx,rcx
+	xor ecx,ecx
+	mov eax,r9d
+	mov r9d,[rsp+60h]
+	mov r10d,r8d
+	mov [rsp+40h],rcx
+	mov r8d,eax
+	mov [rsp+20h],rcx
+	mov edx,r10d
+	lea rcx,[rsp+40h]
+	call 0000000180F16840h
+	mov rax,[rsp+40h]
+	mov [rbx+8],rax
+	add rsp,30h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move [rcx], rdx
+	005 Move rbx, rcx
+	006 Move rcx, 0
+	007 Move rax, r9
+	008 Move r9, stack:0x60
+	009 Move r10, r8
+	010 Move stack:0x40, rcx
+	011 Move r8, rax
+	012 Move stack:0x20, rcx
+	013 Move rdx, r10
+	014 LoadAddress rcx, stack:0x40
+	015 Call DateTime..ctor, rcx, rdx, r8, r9
+	016 Move rax, stack:0x40
+	017 Move [rbx+8], rax
+	018 ShiftStack 48
+	019 Move rbx, stack:0x0
+	020 ShiftStack 8
+	021 Return 
+

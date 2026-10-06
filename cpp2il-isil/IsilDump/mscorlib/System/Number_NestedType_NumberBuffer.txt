@@ -1,0 +1,38 @@
+Type: System.Number+NumberBuffer
+
+Method: System.Boolean get_sign()
+
+Disassembly:
+	cmp dword ptr [rcx+8],0
+	seta al
+	ret
+
+ISIL:
+	001 Compare [rcx+8], 0
+	002 NotImplemented "seta al"
+	003 Return rax
+
+Method: System.Void set_sign(System.Boolean value)
+
+Disassembly:
+	xchg ax,ax
+	movzx eax,dl
+	mov [rcx+8],eax
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, rdx
+	003 Move [rcx+8], rax
+	004 Return 
+
+Method: System.Char* get_digits()
+
+Disassembly:
+	lea rax,[rcx+0Ch]
+	ret
+
+ISIL:
+	001 LoadAddress rax, [rcx+12]
+	002 Return rax
+

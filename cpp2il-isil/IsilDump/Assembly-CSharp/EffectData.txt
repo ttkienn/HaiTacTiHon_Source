@@ -1,0 +1,139 @@
+Type: EffectData
+
+Method: System.Void .ctor(System.SByte[] data, System.SByte[] dataImg)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov qword ptr [rcx+18h],0FFFFFFFFFFFFFFFFh
+	xor edx,edx
+	mov rsi,r8
+	mov rdi,rcx
+	call 000000018024B730h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	test rsi,rsi
+	je short 0000000180622C6Ch
+	mov r8d,[rsi+18h]
+	xor r9d,r9d
+	xor edx,edx
+	mov rcx,rsi
+	call 0000000180477790h
+	lea rcx,[rdi+20h]
+	mov [rdi+20h],rax
+	mov rdx,rax
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move [rcx+24], 18446744073709551615
+	008 Move rdx, 0
+	009 Move rsi, r8
+	010 Move rdi, rcx
+	011 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	012 LoadAddress rcx, [rdi+16]
+	013 Move [rdi+16], rbx
+	014 Move rdx, rbx
+	015 Call 0x1801E1E30, rcx, rdx, r8, r9
+	016 Compare rsi, 0
+	017 JumpIfEqual {33}
+	018 Move r8, [rsi+24]
+	019 Move r9, 0
+	020 Move rdx, 0
+	021 Move rcx, rsi
+	022 Call mImage.createImage, rcx, rdx, r8, r9
+	023 LoadAddress rcx, [rdi+32]
+	024 Move [rdi+32], rax
+	025 Move rdx, rax
+	026 Move rbx, stack:0x30
+	027 Move rsi, stack:0x38
+	028 ShiftStack 32
+	029 Move rdi, stack:0x0
+	030 ShiftStack 8
+	031 Call 0x1801E1E30, rcx, rdx, r8, r9
+	032 Return 
+	033 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void setData(System.SByte[] data, System.SByte[] dataImg)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rbx,rcx
+	mov [rcx+10h],rdx
+	add rcx,10h
+	mov rdi,r8
+	call 00000001801E1E30h
+	test rdi,rdi
+	je short 0000000180622CCDh
+	mov r8d,[rdi+18h]
+	xor r9d,r9d
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000180477790h
+	lea rcx,[rbx+20h]
+	mov [rbx+20h],rax
+	mov rdx,rax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rcx
+	006 Move [rcx+16], rdx
+	007 Add rcx, rcx, 16
+	008 Move rdi, r8
+	009 Call 0x1801E1E30, rcx, rdx, r8, r9
+	010 Compare rdi, 0
+	011 JumpIfEqual {26}
+	012 Move r8, [rdi+24]
+	013 Move r9, 0
+	014 Move rdx, 0
+	015 Move rcx, rdi
+	016 Call mImage.createImage, rcx, rdx, r8, r9
+	017 LoadAddress rcx, [rbx+32]
+	018 Move [rbx+32], rax
+	019 Move rdx, rax
+	020 Move rbx, stack:0x30
+	021 ShiftStack 32
+	022 Move rdi, stack:0x0
+	023 ShiftStack 8
+	024 Call 0x1801E1E30, rcx, rdx, r8, r9
+	025 Return 
+	026 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	mov qword ptr [rcx+18h],0FFFFFFFFFFFFFFFFh
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Move [rcx+24], 18446744073709551615
+	003 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	004 Return 
+

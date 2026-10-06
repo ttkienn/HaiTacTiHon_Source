@@ -1,0 +1,93 @@
+Type: Newtonsoft.Json.Serialization.SerializationBinderAdapter
+
+Method: System.Void .ctor(System.Runtime.Serialization.SerializationBinder serializationBinder)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 000000018024B730h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.Type BindToType(System.String assemblyName, System.String typeName)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 0000000181067705h
+	mov r9,[rcx]
+	mov rax,[r9+188h]
+	mov r9,[r9+190h]
+	add rsp,28h
+	jmp rax
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+16]
+	003 Compare rcx, 0
+	004 JumpIfEqual {10}
+	005 Move r9, [rcx]
+	006 Move rax, [r9+392]
+	007 Move r9, [r9+400]
+	008 ShiftStack 40
+	009 CallNoReturn rax
+	010 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void BindToName(System.Type serializedType, out System.String assemblyName, out System.String typeName)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 00000001810676DAh
+	mov rax,[rcx]
+	mov r10,[rax+178h]
+	mov rax,[rax+180h]
+	mov [rsp+60h],rax
+	add rsp,38h
+	jmp r10
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+16]
+	003 Compare rcx, 0
+	004 JumpIfEqual {11}
+	005 Move rax, [rcx]
+	006 Move r10, [rax+376]
+	007 Move rax, [rax+384]
+	008 Move stack:0x60, rax
+	009 ShiftStack 56
+	010 CallNoReturn r10
+	011 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

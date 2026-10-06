@@ -1,0 +1,95 @@
+Type: System.Net.NetworkInformation.Win32NetworkInterfaceFactoryPal
+
+Method: System.Net.NetworkInformation.NetworkInterfaceFactory Create()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [181F1FCCAh],0
+	jne short 00000001814917CEh
+	lea rcx,[181E07F38h]
+	call 00000001801E2A80h
+	lea rcx,[181E09C50h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1FCCAh],1
+	mov rcx,[181E07F38h]
+	call 0000000180197840h
+	xor r9d,r9d
+	mov edx,5
+	mov r8d,1
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180F4F1E0h
+	xor ecx,ecx
+	call 0000000180F77C90h
+	test rax,rax
+	je short 000000018149183Ch
+	mov rcx,[rax+10h]
+	xor r8d,r8d
+	mov rdx,rbx
+	call 0000000180F4F800h
+	test al,al
+	jne short 000000018149181Ah
+	xor eax,eax
+	add rsp,20h
+	pop rbx
+	ret
+	mov rcx,[181E09C50h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 000000018024B730h
+	mov rax,rbx
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x181F1FCCA], 0
+	005 JumpIfNotEqual {11}
+	006 LoadAddress rcx, [0x181E07F38]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 LoadAddress rcx, [0x181E09C50]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x181F1FCCA], 1
+	011 Move rcx, typeof(System.Version)
+	012 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	013 Move r9, 0
+	014 Move rdx, 5
+	015 Move r8, 1
+	016 Move rcx, rax
+	017 Move rbx, rax
+	018 Call Version..ctor, rcx, rdx, r8
+	019 Move rcx, 0
+	020 Call Environment.get_OSVersion, rcx
+	021 Compare rax, 0
+	022 JumpIfEqual {45}
+	023 Move rcx, [rax+16]
+	024 Move r8, 0
+	025 Move rdx, rbx
+	026 Call Version.op_GreaterThanOrEqual, rcx, rdx, r8
+	027 Compare rax, 0
+	028 JumpIfNotEqual {34}
+	029 Move rax, 0
+	030 ShiftStack 32
+	031 Move rbx, stack:0x0
+	032 ShiftStack 8
+	033 Return rax
+	034 Move rcx, typeof(System.Net.NetworkInformation.Win32NetworkInterfaceAPI)
+	035 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	036 Move rdx, 0
+	037 Move rcx, rax
+	038 Move rbx, rax
+	039 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	040 Move rax, rbx
+	041 ShiftStack 32
+	042 Move rbx, stack:0x0
+	043 ShiftStack 8
+	044 Return rax
+	045 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

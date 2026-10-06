@@ -1,0 +1,120 @@
+Type: UnityEngine.Purchasing.StoreWrapper
+
+Method: System.String get_name()
+
+Disassembly:
+	mov rax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: UnityEngine.Purchasing.Extension.Store get_instance()
+
+Disassembly:
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: UnityEngine.Purchasing.ConnectionState GetStoreConnectionState()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,[rcx+10h]
+	test rbx,rbx
+	je short 00000001815858C7h
+	cmp byte ptr [181F206B8h],0
+	jne short 00000001815858ABh
+	lea rcx,[181E20908h]
+	call 00000001801E2A80h
+	mov byte ptr [181F206B8h],1
+	mov r8,[rbx+50h]
+	test r8,r8
+	je short 00000001815858C7h
+	mov rdx,[181E20908h]
+	xor ecx,ecx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 0000000180003100h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, [rcx+16]
+	005 Compare rbx, 0
+	006 JumpIfEqual {22}
+	007 Compare [0x181F206B8], 0
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E20908]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F206B8], 1
+	012 Move r8, [rbx+80]
+	013 Compare r8, 0
+	014 JumpIfEqual {22}
+	015 Move rdx, typeof(UnityEngine.Purchasing.IStoreConnectionStateService)
+	016 Move rcx, 0
+	017 ShiftStack 32
+	018 Move rbx, stack:0x0
+	019 ShiftStack 8
+	020 Call 0x180003100, rcx, rdx, r8, r9
+	021 Return rax
+	022 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void .ctor(System.String name, Purchasing.Extension.InternalStore instance)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rsi,r8
+	xor edx,edx
+	mov rdi,rcx
+	call 000000018024B730h
+	lea rcx,[rdi+18h]
+	mov [rdi+18h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rsi
+	mov rdx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	011 LoadAddress rcx, [rdi+24]
+	012 Move [rdi+24], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 LoadAddress rcx, [rdi+16]
+	016 Move [rdi+16], rsi
+	017 Move rdx, rsi
+	018 Move rbx, stack:0x30
+	019 Move rsi, stack:0x38
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Call 0x1801E1E30, rcx, rdx, r8, r9
+	024 Return 
+

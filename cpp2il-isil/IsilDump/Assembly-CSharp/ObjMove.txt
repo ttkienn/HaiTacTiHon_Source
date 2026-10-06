@@ -1,0 +1,54 @@
+Type: ObjMove
+
+Method: System.Void .ctor(System.SByte cat, System.Int16 id, System.Int16 x, System.Int16 y)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	movzx ebx,dl
+	movzx ebp,r9w
+	xor edx,edx
+	movzx edi,r8w
+	mov rsi,rcx
+	call 000000018024B730h
+	movzx eax,word ptr [rsp+50h]
+	mov [rsi+10h],bl
+	mov rbx,[rsp+30h]
+	mov [rsi+14h],bp
+	mov rbp,[rsp+38h]
+	mov [rsi+16h],ax
+	mov [rsi+12h],di
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbx, rdx
+	008 Move rbp, r9
+	009 Move rdx, 0
+	010 Move rdi, r8
+	011 Move rsi, rcx
+	012 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	013 Move rax, stack:0x50
+	014 Move [rsi+16], rbx
+	015 Move rbx, stack:0x30
+	016 Move [rsi+20], rbp
+	017 Move rbp, stack:0x38
+	018 Move [rsi+22], rax
+	019 Move [rsi+18], rdi
+	020 Move rsi, stack:0x40
+	021 ShiftStack 32
+	022 Move rdi, stack:0x0
+	023 ShiftStack 8
+	024 Return 
+

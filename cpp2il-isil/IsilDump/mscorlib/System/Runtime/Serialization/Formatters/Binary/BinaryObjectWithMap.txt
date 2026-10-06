@@ -1,0 +1,469 @@
+Type: System.Runtime.Serialization.Formatters.Binary.BinaryObjectWithMap
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+
+Method: System.Void .ctor(System.Runtime.Serialization.Formatters.Binary.BinaryHeaderEnum binaryHeaderEnum)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov edi,edx
+	mov rbx,rcx
+	xor edx,edx
+	call 000000018024B730h
+	mov [rbx+10h],edi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	009 Move [rbx+16], rdi
+	010 Move rbx, stack:0x30
+	011 ShiftStack 32
+	012 Move rdi, stack:0x0
+	013 ShiftStack 8
+	014 Return 
+
+Method: System.Void Set(System.Int32 objectId, System.String name, System.Int32 numMembers, System.String[] memberNames, System.Int32 assemId)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov [rcx+14h],edx
+	mov rdi,rcx
+	mov [rcx+18h],r8
+	mov rdx,r8
+	add rcx,18h
+	mov ebx,r9d
+	call 00000001801E1E30h
+	mov rdx,[rsp+50h]
+	lea rcx,[rdi+28h]
+	mov [rdi+28h],rdx
+	mov [rdi+20h],ebx
+	call 00000001801E1E30h
+	mov eax,[rsp+58h]
+	mov [rdi+30h],eax
+	xor ecx,ecx
+	test eax,eax
+	setg cl
+	add ecx,2
+	mov [rdi+10h],ecx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move [rcx+20], rdx
+	006 Move rdi, rcx
+	007 Move [rcx+24], r8
+	008 Move rdx, r8
+	009 Add rcx, rcx, 24
+	010 Move rbx, r9
+	011 Call 0x1801E1E30, rcx, rdx, r8, r9
+	012 Move rdx, stack:0x50
+	013 LoadAddress rcx, [rdi+40]
+	014 Move [rdi+40], rdx
+	015 Move [rdi+32], rbx
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Move rax, stack:0x58
+	018 Move [rdi+48], rax
+	019 Move rcx, 0
+	020 Compare rax, 0
+	021 NotImplemented "setg cl"
+	022 Add rcx, rcx, 2
+	023 Move [rdi+16], rcx
+	024 Move rbx, stack:0x30
+	025 ShiftStack 32
+	026 Move rdi, stack:0x0
+	027 ShiftStack 8
+	028 Return 
+
+Method: System.Void Write(System.Runtime.Serialization.Formatters.Binary.__BinaryWriter sout)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	test rdx,rdx
+	je near ptr 0000000180E1AE62h
+	mov rcx,[rdx+30h]
+	test rcx,rcx
+	je near ptr 0000000180E1AE62h
+	mov r8,[rcx]
+	movzx edx,byte ptr [rbx+10h]
+	mov rax,[r8+1C8h]
+	mov r8,[r8+1D0h]
+	call rax
+	mov rcx,[rdi+30h]
+	test rcx,rcx
+	je near ptr 0000000180E1AE62h
+	mov r8,[rcx]
+	mov edx,[rbx+14h]
+	mov rax,[r8+258h]
+	mov r8,[r8+260h]
+	call rax
+	mov rcx,[rdi+30h]
+	test rcx,rcx
+	je near ptr 0000000180E1AE62h
+	mov r8,[rcx]
+	mov rdx,[rbx+18h]
+	mov rax,[r8+2A8h]
+	mov r8,[r8+2B0h]
+	call rax
+	mov rcx,[rdi+30h]
+	test rcx,rcx
+	je near ptr 0000000180E1AE62h
+	mov r8,[rcx]
+	mov edx,[rbx+20h]
+	mov rax,[r8+258h]
+	mov r8,[r8+260h]
+	call rax
+	xor esi,esi
+	cmp [rbx+20h],esi
+	jle short 0000000180E1AE2Dh
+	mov r9,[rbx+28h]
+	test r9,r9
+	je short 0000000180E1AE62h
+	cmp esi,[r9+18h]
+	jae short 0000000180E1AE68h
+	mov rcx,[rdi+30h]
+	test rcx,rcx
+	je short 0000000180E1AE62h
+	mov r8,[rcx]
+	movsxd rdx,esi
+	mov rax,[r8+2A8h]
+	mov r8,[r8+2B0h]
+	mov rdx,[r9+rdx*8+20h]
+	call rax
+	inc esi
+	cmp esi,[rbx+20h]
+	jl short 0000000180E1ADF3h
+	cmp dword ptr [rbx+30h],0
+	jle short 0000000180E1AE52h
+	mov rcx,[rdi+30h]
+	test rcx,rcx
+	je short 0000000180E1AE62h
+	mov r8,[rcx]
+	mov edx,[rbx+30h]
+	mov rax,[r8+258h]
+	mov r8,[r8+260h]
+	call rax
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 Compare rdx, 0
+	009 JumpIfEqual {78}
+	010 Move rcx, [rdx+48]
+	011 Compare rcx, 0
+	012 JumpIfEqual {78}
+	013 Move r8, [rcx]
+	014 Move rdx, [rbx+16]
+	015 Move rax, [r8+456]
+	016 Move r8, [r8+464]
+	017 Call rax
+	018 Move rcx, [rdi+48]
+	019 Compare rcx, 0
+	020 JumpIfEqual {78}
+	021 Move r8, [rcx]
+	022 Move rdx, [rbx+20]
+	023 Move rax, [r8+600]
+	024 Move r8, [r8+608]
+	025 Call rax
+	026 Move rcx, [rdi+48]
+	027 Compare rcx, 0
+	028 JumpIfEqual {78}
+	029 Move r8, [rcx]
+	030 Move rdx, [rbx+24]
+	031 Move rax, [r8+680]
+	032 Move r8, [r8+688]
+	033 Call rax
+	034 Move rcx, [rdi+48]
+	035 Compare rcx, 0
+	036 JumpIfEqual {78}
+	037 Move r8, [rcx]
+	038 Move rdx, [rbx+32]
+	039 Move rax, [r8+600]
+	040 Move r8, [r8+608]
+	041 Call rax
+	042 Move rsi, 0
+	043 Compare [rbx+32], rsi
+	044 JumpIfLessOrEqual {62}
+	045 Move r9, [rbx+40]
+	046 Compare r9, 0
+	047 JumpIfEqual {78}
+	048 Compare rsi, [r9+24]
+	049 JumpIfGreaterOrEqual {80}
+	050 Move rcx, [rdi+48]
+	051 Compare rcx, 0
+	052 JumpIfEqual {78}
+	053 Move r8, [rcx]
+	054 Move rdx, rsi
+	055 Move rax, [r8+680]
+	056 Move r8, [r8+688]
+	057 Move rdx, [r9+32+rdx*8]
+	058 Call rax
+	059 Add rsi, rsi, 1
+	060 Compare rsi, [rbx+32]
+	061 JumpIfLess {45}
+	062 Compare [rbx+48], 0
+	063 JumpIfLessOrEqual {72}
+	064 Move rcx, [rdi+48]
+	065 Compare rcx, 0
+	066 JumpIfEqual {78}
+	067 Move r8, [rcx]
+	068 Move rdx, [rbx+48]
+	069 Move rax, [r8+600]
+	070 Move r8, [r8+608]
+	071 Call rax
+	072 Move rbx, stack:0x30
+	073 Move rsi, stack:0x38
+	074 ShiftStack 32
+	075 Move rdi, stack:0x0
+	076 ShiftStack 8
+	077 Return 
+	078 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	079 Interrupt 
+	080 Call 0x1801E2C90, rcx, rdx, r8, r9
+
+Method: System.Void Read(System.Runtime.Serialization.Formatters.Binary.__BinaryParser input)
+
+Disassembly:
+	mov [rsp+18h],rbp
+	push rsi
+	sub rsp,20h
+	cmp byte ptr [181F1CA39h],0
+	mov rbp,rdx
+	mov rsi,rcx
+	jne short 0000000180E1AB9Ch
+	lea rcx,[181DFA1B0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1CA39h],1
+	mov [rsp+30h],rbx
+	mov [rsp+38h],rdi
+	test rbp,rbp
+	je near ptr 0000000180E1ACD3h
+	mov rcx,[rbp+68h]
+	test rcx,rcx
+	je near ptr 0000000180E1ACD3h
+	mov rdx,[rcx]
+	mov rax,[rdx+228h]
+	mov rdx,[rdx+230h]
+	call rax
+	mov [rsi+14h],eax
+	mov rcx,[rbp+68h]
+	test rcx,rcx
+	je near ptr 0000000180E1ACD3h
+	mov rdx,[rcx]
+	mov rax,[rdx+298h]
+	mov rdx,[rdx+2A0h]
+	call rax
+	lea rcx,[rsi+18h]
+	mov [rsi+18h],rax
+	mov rdx,rax
+	call 00000001801E1E30h
+	mov rcx,[rbp+68h]
+	test rcx,rcx
+	je near ptr 0000000180E1ACD3h
+	mov rdx,[rcx]
+	mov rax,[rdx+228h]
+	mov rdx,[rdx+230h]
+	call rax
+	mov [rsi+20h],eax
+	mov edx,eax
+	mov rcx,[181DFA1B0h]
+	call 00000001801E1EB0h
+	lea rcx,[rsi+28h]
+	mov [rsi+28h],rax
+	mov rdx,rax
+	call 00000001801E1E30h
+	xor ebx,ebx
+	cmp [rsi+20h],ebx
+	jle short 0000000180E1AC99h
+	nop word ptr [rax+rax]
+	mov rcx,[rbp+68h]
+	mov rdi,[rsi+28h]
+	test rcx,rcx
+	je short 0000000180E1ACD3h
+	mov rdx,[rcx]
+	mov rax,[rdx+298h]
+	mov rdx,[rdx+2A0h]
+	call rax
+	test rdi,rdi
+	je short 0000000180E1ACD3h
+	movsxd rcx,ebx
+	cmp ebx,[rdi+18h]
+	jae short 0000000180E1ACD9h
+	mov [rdi+rcx*8+20h],rax
+	mov rdx,rax
+	add rcx,4
+	lea rcx,[rdi+rcx*8]
+	call 00000001801E1E30h
+	inc ebx
+	cmp ebx,[rsi+20h]
+	jl short 0000000180E1AC50h
+	cmp dword ptr [rsi+10h],3
+	jne short 0000000180E1ACBEh
+	mov rcx,[rbp+68h]
+	test rcx,rcx
+	je short 0000000180E1ACD3h
+	mov rdx,[rcx]
+	mov rax,[rdx+228h]
+	mov rdx,[rdx+230h]
+	call rax
+	mov [rsi+30h],eax
+	mov rdi,[rsp+38h]
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+40h]
+	add rsp,20h
+	pop rsi
+	ret
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 Move stack:0x18, rbp
+	002 ShiftStack -8
+	003 Move stack:0x0, rsi
+	004 ShiftStack -32
+	005 Compare [0x181F1CA39], 0
+	006 Move rbp, rdx
+	007 Move rsi, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181DFA1B0]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F1CA39], 1
+	012 Move stack:0x30, rbx
+	013 Move stack:0x38, rdi
+	014 Compare rbp, 0
+	015 JumpIfEqual {92}
+	016 Move rcx, [rbp+104]
+	017 Compare rcx, 0
+	018 JumpIfEqual {92}
+	019 Move rdx, [rcx]
+	020 Move rax, [rdx+552]
+	021 Move rdx, [rdx+560]
+	022 Call rax
+	023 Move [rsi+20], rax
+	024 Move rcx, [rbp+104]
+	025 Compare rcx, 0
+	026 JumpIfEqual {92}
+	027 Move rdx, [rcx]
+	028 Move rax, [rdx+664]
+	029 Move rdx, [rdx+672]
+	030 Call rax
+	031 LoadAddress rcx, [rsi+24]
+	032 Move [rsi+24], rax
+	033 Move rdx, rax
+	034 Call 0x1801E1E30, rcx, rdx, r8, r9
+	035 Move rcx, [rbp+104]
+	036 Compare rcx, 0
+	037 JumpIfEqual {92}
+	038 Move rdx, [rcx]
+	039 Move rax, [rdx+552]
+	040 Move rdx, [rdx+560]
+	041 Call rax
+	042 Move [rsi+32], rax
+	043 Move rdx, rax
+	044 Move rcx, typeof(System.String[1])
+	045 Call "SzArrayNew", rcx, rdx, r8, r9
+	046 LoadAddress rcx, [rsi+40]
+	047 Move [rsi+40], rax
+	048 Move rdx, rax
+	049 Call 0x1801E1E30, rcx, rdx, r8, r9
+	050 Move rbx, 0
+	051 Compare [rsi+32], rbx
+	052 JumpIfLessOrEqual {75}
+	053 Nop 
+	054 Move rcx, [rbp+104]
+	055 Move rdi, [rsi+40]
+	056 Compare rcx, 0
+	057 JumpIfEqual {92}
+	058 Move rdx, [rcx]
+	059 Move rax, [rdx+664]
+	060 Move rdx, [rdx+672]
+	061 Call rax
+	062 Compare rdi, 0
+	063 JumpIfEqual {92}
+	064 Move rcx, rbx
+	065 Compare rbx, [rdi+24]
+	066 JumpIfGreaterOrEqual {94}
+	067 Move [rdi+32+rcx*8], rax
+	068 Move rdx, rax
+	069 Add rcx, rcx, 4
+	070 LoadAddress rcx, [rdi+rcx*8]
+	071 Call 0x1801E1E30, rcx, rdx, r8, r9
+	072 Add rbx, rbx, 1
+	073 Compare rbx, [rsi+32]
+	074 JumpIfLess {54}
+	075 Compare [rsi+16], 3
+	076 JumpIfNotEqual {85}
+	077 Move rcx, [rbp+104]
+	078 Compare rcx, 0
+	079 JumpIfEqual {92}
+	080 Move rdx, [rcx]
+	081 Move rax, [rdx+552]
+	082 Move rdx, [rdx+560]
+	083 Call rax
+	084 Move [rsi+48], rax
+	085 Move rdi, stack:0x38
+	086 Move rbx, stack:0x30
+	087 Move rbp, stack:0x40
+	088 ShiftStack 32
+	089 Move rsi, stack:0x0
+	090 ShiftStack 8
+	091 Return 
+	092 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	093 Interrupt 
+	094 Call 0x1801E2C90, rcx, rdx, r8, r9
+
+Method: System.Void Dump()
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+

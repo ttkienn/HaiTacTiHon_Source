@@ -1,0 +1,108 @@
+Type: System.Buffers.Utilities
+
+Method: System.Int32 SelectBucketIndex(System.Int32 bufferSize)
+
+Disassembly:
+	lea edx,[rcx-1]
+	mov eax,edx
+	shr eax,4
+	xor r8d,r8d
+	mov ecx,10h
+	cmp eax,0FFFFh
+	cmovbe ecx,r8d
+	shr edx,14h
+	cmp eax,0FFFFh
+	cmovbe edx,eax
+	cmp edx,0FFh
+	jbe short 0000000180BA2C82h
+	shr edx,8
+	add ecx,8
+	lea eax,[rcx+4]
+	cmp edx,0Fh
+	cmovbe eax,ecx
+	mov ecx,edx
+	shr ecx,4
+	cmp edx,0Fh
+	cmovbe ecx,edx
+	cmp ecx,3
+	lea r8d,[rax+2]
+	mov edx,ecx
+	cmovbe r8d,eax
+	shr edx,2
+	cmp ecx,3
+	cmovbe edx,ecx
+	mov eax,edx
+	lea ecx,[r8+1]
+	shr eax,1
+	cmp edx,1
+	cmovbe eax,edx
+	cmovbe ecx,r8d
+	add eax,ecx
+	ret
+
+ISIL:
+	001 LoadAddress rdx, [rcx-1]
+	002 Move rax, rdx
+	003 ShiftRight rax, 4
+	004 Move r8, 0
+	005 Move rcx, 16
+	006 Compare rax, 0xFFFF
+	007 JumpIfGreater {9}
+	008 Move rcx, r8
+	009 Nop 
+	010 ShiftRight rdx, 20
+	011 Compare rax, 0xFFFF
+	012 JumpIfGreater {14}
+	013 Move rdx, rax
+	014 Nop 
+	015 Compare rdx, 255
+	016 JumpIfLessOrEqual {19}
+	017 ShiftRight rdx, 8
+	018 Add rcx, rcx, 8
+	019 LoadAddress rax, [rcx+4]
+	020 Compare rdx, 15
+	021 JumpIfGreater {23}
+	022 Move rax, rcx
+	023 Nop 
+	024 Move rcx, rdx
+	025 ShiftRight rcx, 4
+	026 Compare rdx, 15
+	027 JumpIfGreater {29}
+	028 Move rcx, rdx
+	029 Nop 
+	030 Compare rcx, 3
+	031 LoadAddress r8, [rax+2]
+	032 Move rdx, rcx
+	033 JumpIfGreater {35}
+	034 Move r8, rax
+	035 Nop 
+	036 ShiftRight rdx, 2
+	037 Compare rcx, 3
+	038 JumpIfGreater {40}
+	039 Move rdx, rcx
+	040 Nop 
+	041 Move rax, rdx
+	042 LoadAddress rcx, [r8+1]
+	043 ShiftRight rax, 1
+	044 Compare rdx, 1
+	045 JumpIfGreater {47}
+	046 Move rax, rdx
+	047 Nop 
+	048 JumpIfGreater {50}
+	049 Move rcx, r8
+	050 Nop 
+	051 Add rax, rax, rcx
+	052 Return rax
+
+Method: System.Int32 GetMaxSizeForBucket(System.Int32 binIndex)
+
+Disassembly:
+	mov eax,10h
+	shl eax,cl
+	ret
+
+ISIL:
+	001 Move rax, 16
+	002 ShiftLeft rax, rcx
+	003 Return rax
+

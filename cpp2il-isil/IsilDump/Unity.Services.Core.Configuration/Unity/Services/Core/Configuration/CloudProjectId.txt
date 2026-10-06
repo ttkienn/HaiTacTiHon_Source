@@ -1,0 +1,46 @@
+Type: Unity.Services.Core.Configuration.CloudProjectId
+
+Method: System.String GetCloudProjectId()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F20C18h],0
+	jne short 00000001815DF120h
+	lea rcx,[181DFE970h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20C18h],1
+	mov rcx,[181DFE970h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001815DF135h
+	call 0000000180153C50h
+	xor ecx,ecx
+	add rsp,28h
+	jmp near ptr 0000000181604590h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F20C18], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181DFE970]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F20C18], 1
+	007 Move rcx, typeof(UnityEngine.Application)
+	008 Compare [rcx+224], 0
+	009 JumpIfNotEqual {11}
+	010 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	011 Move rcx, 0
+	012 ShiftStack 40
+	013 Call Application.get_cloudProjectId, rcx
+	014 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+

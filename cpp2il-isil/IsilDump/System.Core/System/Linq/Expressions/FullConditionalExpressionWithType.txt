@@ -1,0 +1,57 @@
+Type: System.Linq.Expressions.FullConditionalExpressionWithType
+
+Method: System.Void .ctor(System.Linq.Expressions.Expression test, System.Linq.Expressions.Expression ifTrue, System.Linq.Expressions.Expression ifFalse, System.Type type)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rbx,r9
+	mov rdi,rcx
+	xor r9d,r9d
+	call 00000001810E2EA0h
+	lea rcx,[rdi+20h]
+	mov [rdi+20h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	mov rdx,[rsp+50h]
+	lea rcx,[rdi+28h]
+	mov [rdi+28h],rdx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, r9
+	006 Move rdi, rcx
+	007 Move r9, 0
+	008 Call ConditionalExpression..ctor, rcx, rdx, r8
+	009 LoadAddress rcx, [rdi+32]
+	010 Move [rdi+32], rbx
+	011 Move rdx, rbx
+	012 Call 0x1801E1E30, rcx, rdx, r8, r9
+	013 Move rdx, stack:0x50
+	014 LoadAddress rcx, [rdi+40]
+	015 Move [rdi+40], rdx
+	016 Move rbx, stack:0x30
+	017 ShiftStack 32
+	018 Move rdi, stack:0x0
+	019 ShiftStack 8
+	020 Call 0x1801E1E30, rcx, rdx, r8, r9
+	021 Return 
+
+Method: System.Type get_Type()
+
+Disassembly:
+	mov rax,[rcx+28h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+40]
+	002 Return rax
+

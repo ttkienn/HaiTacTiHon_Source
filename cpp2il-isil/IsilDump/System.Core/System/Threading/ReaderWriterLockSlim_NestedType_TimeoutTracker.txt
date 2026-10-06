@@ -1,0 +1,219 @@
+Type: System.Threading.ReaderWriterLockSlim+TimeoutTracker
+
+Method: System.Void .ctor(System.Int32 millisecondsTimeout)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	cmp edx,0FFFFFFFFh
+	jl short 00000001811437A5h
+	lea eax,[rdx+1]
+	mov [rcx],edx
+	cmp eax,1
+	ja short 0000000181143795h
+	mov dword ptr [rcx+4],0
+	add rsp,20h
+	pop rbx
+	ret
+	xor ecx,ecx
+	call 0000000180F78230h
+	mov [rbx+4],eax
+	add rsp,20h
+	pop rbx
+	ret
+	lea rcx,[181DFEC28h]
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	lea rcx,[181E2A020h]
+	mov rbx,rax
+	call 00000001801E2AA0h
+	mov rdx,rax
+	xor r8d,r8d
+	mov rcx,rbx
+	call 0000000180E89EB0h
+	lea rcx,[181E14B18h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Compare rdx, 18446744073709551615
+	006 JumpIfLess {23}
+	007 LoadAddress rax, [rdx+1]
+	008 Move [rcx], rdx
+	009 Compare rax, 1
+	010 JumpIfGreater {16}
+	011 Move [rcx+4], 0
+	012 ShiftStack 32
+	013 Move rbx, stack:0x0
+	014 ShiftStack 8
+	015 Return 
+	016 Move rcx, 0
+	017 Call Environment.get_TickCount, rcx
+	018 Move [rbx+4], rax
+	019 ShiftStack 32
+	020 Move rbx, stack:0x0
+	021 ShiftStack 8
+	022 Return 
+	023 LoadAddress rcx, [0x181DFEC28]
+	024 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	025 Move rcx, rax
+	026 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	027 LoadAddress rcx, [0x181E2A020]
+	028 Move rbx, rax
+	029 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	030 Move rdx, rax
+	031 Move r8, 0
+	032 Move rcx, rbx
+	033 Call ArgumentOutOfRangeException..ctor, rcx, rdx
+	034 LoadAddress rcx, [0x181E14B18]
+	035 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	036 Move rdx, rax
+	037 Move rcx, rbx
+	038 Call 0x1801E2C60, rcx, rdx, r8, r9
+
+Method: System.Int32 get_RemainingMilliseconds()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp dword ptr [rcx],0FFFFFFFFh
+	mov rbx,rcx
+	je short 0000000181143877h
+	cmp dword ptr [rcx],0
+	je short 0000000181143877h
+	xor ecx,ecx
+	call 0000000180F78230h
+	mov ecx,eax
+	sub ecx,[rbx+4]
+	js short 000000018114386Fh
+	cmp ecx,[rbx]
+	jge short 000000018114386Fh
+	mov eax,[rbx]
+	sub eax,ecx
+	add rsp,20h
+	pop rbx
+	ret
+	xor eax,eax
+	add rsp,20h
+	pop rbx
+	ret
+	mov eax,[rcx]
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [rcx], 18446744073709551615
+	005 Move rbx, rcx
+	006 JumpIfEqual {27}
+	007 Compare [rcx], 0
+	008 JumpIfEqual {27}
+	009 Move rcx, 0
+	010 Call Environment.get_TickCount, rcx
+	011 Move rcx, rax
+	012 Subtract rcx, rcx, [rbx+4]
+	013 JumpIfSign {22}
+	014 Compare rcx, [rbx]
+	015 JumpIfGreaterOrEqual {22}
+	016 Move rax, [rbx]
+	017 Subtract rax, rax, rcx
+	018 ShiftStack 32
+	019 Move rbx, stack:0x0
+	020 ShiftStack 8
+	021 Return rax
+	022 Move rax, 0
+	023 ShiftStack 32
+	024 Move rbx, stack:0x0
+	025 ShiftStack 8
+	026 Return rax
+	027 Move rax, [rcx]
+	028 ShiftStack 32
+	029 Move rbx, stack:0x0
+	030 ShiftStack 8
+	031 Return rax
+
+Method: System.Boolean get_IsExpired()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp dword ptr [rcx],0FFFFFFFFh
+	mov rbx,rcx
+	je short 000000018114382Fh
+	cmp dword ptr [rcx],0
+	je short 000000018114382Fh
+	xor ecx,ecx
+	call 0000000180F78230h
+	sub eax,[rbx+4]
+	js short 0000000181143822h
+	cmp eax,[rbx]
+	jge short 0000000181143822h
+	mov ecx,[rbx]
+	sub ecx,eax
+	test ecx,ecx
+	sete al
+	add rsp,20h
+	pop rbx
+	ret
+	xor ecx,ecx
+	test ecx,ecx
+	sete al
+	add rsp,20h
+	pop rbx
+	ret
+	mov ecx,[rcx]
+	test ecx,ecx
+	sete al
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [rcx], 18446744073709551615
+	005 Move rbx, rcx
+	006 JumpIfEqual {30}
+	007 Compare [rcx], 0
+	008 JumpIfEqual {30}
+	009 Move rcx, 0
+	010 Call Environment.get_TickCount, rcx
+	011 Subtract rax, rax, [rbx+4]
+	012 JumpIfSign {23}
+	013 Compare rax, [rbx]
+	014 JumpIfGreaterOrEqual {23}
+	015 Move rcx, [rbx]
+	016 Subtract rcx, rcx, rax
+	017 Compare rcx, 0
+	018 NotImplemented "sete al"
+	019 ShiftStack 32
+	020 Move rbx, stack:0x0
+	021 ShiftStack 8
+	022 Return rax
+	023 Move rcx, 0
+	024 Compare rcx, 0
+	025 NotImplemented "sete al"
+	026 ShiftStack 32
+	027 Move rbx, stack:0x0
+	028 ShiftStack 8
+	029 Return rax
+	030 Move rcx, [rcx]
+	031 Compare rcx, 0
+	032 NotImplemented "sete al"
+	033 ShiftStack 32
+	034 Move rbx, stack:0x0
+	035 ShiftStack 8
+	036 Return rax
+

@@ -1,0 +1,124 @@
+Type: UnityEngine.TextCore.LowLevel.MarkToMarkAdjustmentRecord
+
+Method: System.UInt32 get_baseMarkGlyphID()
+
+Disassembly:
+	xchg ax,ax
+	mov eax,[rcx]
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, [rcx]
+	003 Return rax
+
+Method: UnityEngine.TextCore.LowLevel.GlyphAnchorPoint get_baseMarkGlyphAnchorPoint()
+
+Disassembly:
+	movss xmm1,dword ptr [rcx+8]
+	movss xmm0,dword ptr [rcx+4]
+	unpcklps xmm0,xmm1
+	movq rax,xmm0
+	ret
+
+ISIL:
+	001 Move xmm1, [rcx+8]
+	002 Move xmm0, [rcx+4]
+	003 Move XMM_TEMP.S[0], xmm0.S[0]
+	004 Move XMM_TEMP.S[1], xmm1.S[0]
+	005 Move XMM_TEMP.S[2], xmm0.S[1]
+	006 Move XMM_TEMP.S[3], xmm1.S[1]
+	007 Move xmm0, XMM_TEMP
+	008 Move rax, xmm0
+	009 Return rax
+
+Method: System.UInt32 get_combiningMarkGlyphID()
+
+Disassembly:
+	xchg ax,ax
+	mov eax,[rcx+0Ch]
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, [rcx+12]
+	003 Return rax
+
+Method: UnityEngine.TextCore.LowLevel.MarkPositionAdjustment get_combiningMarkPositionAdjustment()
+
+Disassembly:
+	movss xmm1,dword ptr [rcx+14h]
+	movss xmm0,dword ptr [rcx+10h]
+	unpcklps xmm0,xmm1
+	movq rax,xmm0
+	ret
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	sub rsp,38h
+	mov rdx,[rcx]
+	lea rcx,[rsp+20h]
+	mov r8,[181E05D58h]
+	call 0000000180A92CB0h
+	mov rcx,[181E33818h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 000000018166CD6Dh
+	call 0000000180153C50h
+	movaps xmm0,[rsp+20h]
+	lea rcx,[rsp+20h]
+	xor edx,edx
+	movdqa [rsp+20h],xmm0
+	call 0000000181670520h
+	add rsp,38h
+	ret
+
+ISIL:
+	001 Move xmm1, [rcx+20]
+	002 Move xmm0, [rcx+16]
+	003 Move XMM_TEMP.S[0], xmm0.S[0]
+	004 Move XMM_TEMP.S[1], xmm1.S[0]
+	005 Move XMM_TEMP.S[2], xmm0.S[1]
+	006 Move XMM_TEMP.S[3], xmm1.S[1]
+	007 Move xmm0, XMM_TEMP
+	008 Move rax, xmm0
+	009 Return rax
+	010 Interrupt 
+	011 Interrupt 
+	012 Interrupt 
+	013 Interrupt 
+	014 Interrupt 
+	015 Interrupt 
+	016 Interrupt 
+	017 Interrupt 
+	018 Interrupt 
+	019 Interrupt 
+	020 Interrupt 
+	021 Interrupt 
+	022 Interrupt 
+	023 ShiftStack -56
+	024 Move rdx, [rcx]
+	025 LoadAddress rcx, stack:0x20
+	026 Move r8, [0x181E05D58]
+	027 Call 0x180A92CB0, rcx, rdx
+	028 Move rcx, typeof(UnityEngine.Physics)
+	029 Compare [rcx+224], 0
+	030 JumpIfNotEqual {32}
+	031 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	032 Move xmm0, stack:0x20
+	033 LoadAddress rcx, stack:0x20
+	034 Move rdx, 0
+	035 Move stack:0x20, xmm0
+	036 Call Physics.ReportContacts, rcx, rdx
+	037 ShiftStack 56
+	038 Return rax
+

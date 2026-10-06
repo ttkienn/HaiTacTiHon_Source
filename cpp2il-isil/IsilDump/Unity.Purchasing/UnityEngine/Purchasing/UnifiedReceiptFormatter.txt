@@ -1,0 +1,95 @@
+Type: UnityEngine.Purchasing.UnifiedReceiptFormatter
+
+Method: System.String FormatUnifiedReceipt(System.String platformReceipt, System.String transactionId, System.String storeName)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F20B11h],0
+	mov rdi,r8
+	mov rsi,rdx
+	mov rbp,rcx
+	jne short 00000001815C3ED9h
+	lea rcx,[181E05430h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20B11h],1
+	mov rcx,[181E05430h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 000000018024B730h
+	test rbx,rbx
+	je short 00000001815C3F45h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	lea rcx,[rbx+20h]
+	mov [rbx+20h],rsi
+	mov rdx,rsi
+	call 00000001801E1E30h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rbp
+	mov rdx,rbp
+	call 00000001801E1E30h
+	xor edx,edx
+	mov rcx,rbx
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018166A900h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [0x181F20B11], 0
+	008 Move rdi, r8
+	009 Move rsi, rdx
+	010 Move rbp, rcx
+	011 JumpIfNotEqual {15}
+	012 LoadAddress rcx, [0x181E05430]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 Move [0x181F20B11], 1
+	015 Move rcx, typeof(UnityEngine.Purchasing.UnifiedReceipt)
+	016 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	017 Move rdx, 0
+	018 Move rcx, rax
+	019 Move rbx, rax
+	020 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	021 Compare rbx, 0
+	022 JumpIfEqual {45}
+	023 LoadAddress rcx, [rbx+24]
+	024 Move [rbx+24], rdi
+	025 Move rdx, rdi
+	026 Call 0x1801E1E30, rcx, rdx, r8, r9
+	027 LoadAddress rcx, [rbx+32]
+	028 Move [rbx+32], rsi
+	029 Move rdx, rsi
+	030 Call 0x1801E1E30, rcx, rdx, r8, r9
+	031 LoadAddress rcx, [rbx+16]
+	032 Move [rbx+16], rbp
+	033 Move rdx, rbp
+	034 Call 0x1801E1E30, rcx, rdx, r8, r9
+	035 Move rdx, 0
+	036 Move rcx, rbx
+	037 Move rbx, stack:0x30
+	038 Move rbp, stack:0x38
+	039 Move rsi, stack:0x40
+	040 ShiftStack 32
+	041 Move rdi, stack:0x0
+	042 ShiftStack 8
+	043 Call JsonUtility.ToJson, rcx, rdx
+	044 Return rax
+	045 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

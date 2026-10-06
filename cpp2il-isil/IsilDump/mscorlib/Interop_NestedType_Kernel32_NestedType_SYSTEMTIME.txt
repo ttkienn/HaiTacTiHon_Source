@@ -1,0 +1,62 @@
+Type: Interop+Kernel32+SYSTEMTIME
+
+Method: System.Boolean Equals(in Interop+Kernel32+SYSTEMTIME other)
+
+Disassembly:
+	movzx eax,word ptr [rdx]
+	cmp [rcx],ax
+	jne short 0000000180D61A10h
+	movzx eax,word ptr [rdx+2]
+	cmp [rcx+2],ax
+	jne short 0000000180D61A10h
+	movzx eax,word ptr [rdx+4]
+	cmp [rcx+4],ax
+	jne short 0000000180D61A10h
+	movzx eax,word ptr [rdx+6]
+	cmp [rcx+6],ax
+	jne short 0000000180D61A10h
+	movzx eax,word ptr [rdx+8]
+	cmp [rcx+8],ax
+	jne short 0000000180D61A10h
+	movzx eax,word ptr [rdx+0Ah]
+	cmp [rcx+0Ah],ax
+	jne short 0000000180D61A10h
+	movzx eax,word ptr [rdx+0Ch]
+	cmp [rcx+0Ch],ax
+	jne short 0000000180D61A10h
+	movzx eax,word ptr [rdx+0Eh]
+	cmp [rcx+0Eh],ax
+	sete al
+	ret
+	xor al,al
+	ret
+
+ISIL:
+	001 Move rax, [rdx]
+	002 Compare [rcx], rax
+	003 JumpIfNotEqual {26}
+	004 Move rax, [rdx+2]
+	005 Compare [rcx+2], rax
+	006 JumpIfNotEqual {26}
+	007 Move rax, [rdx+4]
+	008 Compare [rcx+4], rax
+	009 JumpIfNotEqual {26}
+	010 Move rax, [rdx+6]
+	011 Compare [rcx+6], rax
+	012 JumpIfNotEqual {26}
+	013 Move rax, [rdx+8]
+	014 Compare [rcx+8], rax
+	015 JumpIfNotEqual {26}
+	016 Move rax, [rdx+10]
+	017 Compare [rcx+10], rax
+	018 JumpIfNotEqual {26}
+	019 Move rax, [rdx+12]
+	020 Compare [rcx+12], rax
+	021 JumpIfNotEqual {26}
+	022 Move rax, [rdx+14]
+	023 Compare [rcx+14], rax
+	024 NotImplemented "sete al"
+	025 Return rax
+	026 Move rax, 0
+	027 Return rax
+

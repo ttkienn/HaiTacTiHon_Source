@@ -1,0 +1,150 @@
+Type: System.Collections.Generic.LinkedListNode`1
+
+Method: System.Void .ctor(System.Collections.Generic.LinkedList`1<T> list, T value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rdi,r8
+	xor edx,edx
+	mov rsi,rcx
+	call 000000018024B730h
+	lea rcx,[rsi+10h]
+	mov [rsi+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	movups xmm0,[rdi]
+	lea rcx,[rsi+28h]
+	xor edx,edx
+	movups [rsi+28h],xmm0
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rdi, r8
+	008 Move rdx, 0
+	009 Move rsi, rcx
+	010 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	011 LoadAddress rcx, [rsi+16]
+	012 Move [rsi+16], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 Move xmm0, [rdi]
+	016 LoadAddress rcx, [rsi+40]
+	017 Move rdx, 0
+	018 Move [rsi+40], xmm0
+	019 Move rbx, stack:0x30
+	020 Move rsi, stack:0x38
+	021 ShiftStack 32
+	022 Move rdi, stack:0x0
+	023 ShiftStack 8
+	024 Call 0x1801E1E30, rcx, rdx, r8, r9
+	025 Return 
+
+Method: System.Collections.Generic.LinkedListNode`1<T> get_Next()
+
+Disassembly:
+	sub rsp,28h
+	cmp qword ptr [rcx+18h],0
+	je short 00000001809C9D97h
+	mov rax,[rcx+10h]
+	test rax,rax
+	je short 00000001809C9D9Eh
+	mov rax,[rax+10h]
+	cmp [rcx+18h],rax
+	je short 00000001809C9D97h
+	mov rax,[rcx+18h]
+	add rsp,28h
+	ret
+	xor eax,eax
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [rcx+24], 0
+	003 JumpIfEqual {13}
+	004 Move rax, [rcx+16]
+	005 Compare rax, 0
+	006 JumpIfEqual {16}
+	007 Move rax, [rax+16]
+	008 Compare [rcx+24], rax
+	009 JumpIfEqual {13}
+	010 Move rax, [rcx+24]
+	011 ShiftStack 40
+	012 Return rax
+	013 Move rax, 0
+	014 ShiftStack 40
+	015 Return rax
+	016 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: T get_Value()
+
+Disassembly:
+	movups xmm0,[rdx+28h]
+	mov rax,rcx
+	movups [rcx],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx+40]
+	002 Move rax, rcx
+	003 Move [rcx], xmm0
+	004 Return rax
+
+Method: System.Void Invalidate()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	mov qword ptr [rcx+10h],0
+	add rcx,10h
+	xor edx,edx
+	call 00000001801E1E30h
+	lea rcx,[rbx+18h]
+	mov qword ptr [rbx+18h],0
+	xor edx,edx
+	call 00000001801E1E30h
+	lea rcx,[rbx+20h]
+	mov qword ptr [rbx+20h],0
+	xor edx,edx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move [rcx+16], 0
+	006 Add rcx, rcx, 16
+	007 Move rdx, 0
+	008 Call 0x1801E1E30, rcx, rdx, r8, r9
+	009 LoadAddress rcx, [rbx+24]
+	010 Move [rbx+24], 0
+	011 Move rdx, 0
+	012 Call 0x1801E1E30, rcx, rdx, r8, r9
+	013 LoadAddress rcx, [rbx+32]
+	014 Move [rbx+32], 0
+	015 Move rdx, 0
+	016 ShiftStack 32
+	017 Move rbx, stack:0x0
+	018 ShiftStack 8
+	019 Call 0x1801E1E30, rcx, rdx, r8, r9
+	020 Return 
+

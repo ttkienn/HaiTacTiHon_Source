@@ -1,0 +1,22 @@
+Type: System.Net.TcpValidationHelpers
+
+Method: System.Boolean ValidatePortNumber(System.Int32 port)
+
+Disassembly:
+	test ecx,ecx
+	jns short 0000000181528BC7h
+	xor al,al
+	ret
+	cmp ecx,0FFFFh
+	setle al
+	ret
+
+ISIL:
+	001 Compare rcx, 0
+	002 JumpIfNotSign {5}
+	003 Move rax, 0
+	004 Return rax
+	005 Compare rcx, 0xFFFF
+	006 NotImplemented "setle al"
+	007 Return rax
+

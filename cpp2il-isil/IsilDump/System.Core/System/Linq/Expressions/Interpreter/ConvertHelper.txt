@@ -1,0 +1,105 @@
+Type: System.Linq.Expressions.Interpreter.ConvertHelper
+
+Method: System.Int32 ToInt32NoNull(System.Object val)
+
+Disassembly:
+	push rbp
+	sub rsp,20h
+	lea rbp,[rsp+20h]
+	cmp byte ptr [181F1E300h],0
+	mov [rbp+18h],rbx
+	mov rbx,rcx
+	mov [rbp+20h],rdi
+	jne short 00000001810E32FAh
+	lea rcx,[181E08930h]
+	call 00000001801E2A80h
+	lea rcx,[181E09BC0h]
+	call 00000001801E2A80h
+	lea rcx,[181E34CA0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E300h],1
+	mov eax,[rsp]
+	sub rsp,10h
+	lea rdi,[rsp+20h]
+	mov eax,[rdi]
+	test rbx,rbx
+	jne short 00000001810E3342h
+	mov rdx,[181E34CA0h]
+	mov r8,rdi
+	xor ecx,ecx
+	call 00000001801E1F20h
+	mov rax,[rdi]
+	lea rcx,[rbp+10h]
+	mov rdx,[181E09BC0h]
+	mov [rbp+10h],rax
+	call 0000000180AA80A0h
+	mov rbx,[rbp+18h]
+	mov rdi,[rbp+20h]
+	mov rsp,rbp
+	pop rbp
+	ret
+	mov rcx,[181E08930h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001810E3357h
+	call 0000000180153C50h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000180E94E60h
+	mov rbx,[rbp+18h]
+	mov rdi,[rbp+20h]
+	mov rsp,rbp
+	pop rbp
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbp
+	003 ShiftStack -32
+	004 LoadAddress rbp, stack:0x20
+	005 Compare [0x181F1E300], 0
+	006 Move [rbp+24], rbx
+	007 Move rbx, rcx
+	008 Move [rbp+32], rdi
+	009 JumpIfNotEqual {17}
+	010 LoadAddress rcx, [0x181E08930]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x181E09BC0]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 LoadAddress rcx, [0x181E34CA0]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 Move [0x181F1E300], 1
+	017 Move rax, stack:0x0
+	018 ShiftStack -16
+	019 LoadAddress rdi, stack:0x20
+	020 Move rax, [rdi]
+	021 Compare rbx, 0
+	022 JumpIfNotEqual {38}
+	023 Move rdx, typeof(System.Nullable`1<Int32>)
+	024 Move r8, rdi
+	025 Move rcx, 0
+	026 Call 0x1801E1F20, rcx, rdx, r8, r9
+	027 Move rax, [rdi]
+	028 LoadAddress rcx, [rbp+16]
+	029 Move rdx, [0x181E09BC0]
+	030 Move [rbp+16], rax
+	031 Call 0x180AA80A0, rcx, rdx
+	032 Move rbx, [rbp+24]
+	033 Move rdi, [rbp+32]
+	034 Move rsp, rbp
+	035 Move rbp, stack:0x0
+	036 ShiftStack 8
+	037 Return rax
+	038 Move rcx, typeof(System.Convert)
+	039 Compare [rcx+224], 0
+	040 JumpIfNotEqual {42}
+	041 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	042 Move rdx, 0
+	043 Move rcx, rbx
+	044 Call Convert.ToInt32, rcx, rdx
+	045 Move rbx, [rbp+24]
+	046 Move rdi, [rbp+32]
+	047 Move rsp, rbp
+	048 Move rbp, stack:0x0
+	049 ShiftStack 8
+	050 Return rax
+

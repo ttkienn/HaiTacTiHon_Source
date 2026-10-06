@@ -1,0 +1,225 @@
+Type: Assets.src.JavaCode.Map.MapLayer
+
+Method: System.Void .ctor(mImage image, System.Double scrollSpeedFactor, System.Int32 width, System.Int32 height, System.Int32 screenHeight, System.Boolean isFarBackground)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,30h
+	mov rbx,rdx
+	movaps [rsp+20h],xmm6
+	xor edx,edx
+	mov edi,r9d
+	movaps xmm6,xmm2
+	mov rsi,rcx
+	call 000000018024B730h
+	lea rcx,[rsi+10h]
+	mov [rsi+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	mov eax,[rsp+60h]
+	mov rbx,[rsp+40h]
+	mov [rsi+24h],eax
+	mov eax,[rsp+68h]
+	mov [rsi+28h],eax
+	movzx eax,byte ptr [rsp+70h]
+	movsd qword ptr [rsi+18h],xmm6
+	movaps xmm6,[rsp+20h]
+	mov [rsi+2Ch],al
+	mov [rsi+20h],edi
+	mov rsi,[rsp+48h]
+	add rsp,30h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -48
+	006 Move rbx, rdx
+	007 Move stack:0x20, xmm6
+	008 Move rdx, 0
+	009 Move rdi, r9
+	010 Move xmm6, xmm2
+	011 Move rsi, rcx
+	012 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	013 LoadAddress rcx, [rsi+16]
+	014 Move [rsi+16], rbx
+	015 Move rdx, rbx
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Move rax, stack:0x60
+	018 Move rbx, stack:0x40
+	019 Move [rsi+36], rax
+	020 Move rax, stack:0x68
+	021 Move [rsi+40], rax
+	022 Move rax, stack:0x70
+	023 Move [rsi+24], xmm6
+	024 Move xmm6, stack:0x20
+	025 Move [rsi+44], rax
+	026 Move [rsi+32], rdi
+	027 Move rsi, stack:0x48
+	028 ShiftStack 48
+	029 Move rdi, stack:0x0
+	030 ShiftStack 8
+	031 Return 
+
+Method: System.Void draw(mGraphics g, System.Int32 cameraOffsetX, System.Int32 screenWidth)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	push r14
+	push r15
+	sub rsp,40h
+	movsd xmm2,qword ptr [rcx+18h]
+	xor r15d,r15d
+	movsd xmm0,qword ptr [1818BCC70h]
+	mov rsi,rdx
+	comisd xmm0,xmm2
+	mov rdi,rcx
+	mov ecx,[rcx+20h]
+	mov ebp,r9d
+	movd xmm1,r8d
+	cvtdq2pd xmm1,xmm1
+	mulsd xmm1,xmm2
+	cvttsd2si eax,xmm1
+	cdq
+	jbe short 00000001805E7701h
+	mov r14d,r15d
+	jmp short 00000001805E7709h
+	mov r14d,[rdi+28h]
+	sub r14d,[rdi+24h]
+	idiv ecx
+	mov ebx,edx
+	neg ebx
+	cmp ebx,ebp
+	jge short 00000001805E773Fh
+	test rsi,rsi
+	je near ptr 00000001805E779Ch
+	mov rdx,[rdi+10h]
+	mov r9d,r14d
+	mov [rsp+28h],r15
+	mov r8d,ebx
+	mov rcx,rsi
+	mov [rsp+20h],r15d
+	call 000000018025CDD0h
+	add ebx,[rdi+20h]
+	cmp ebx,ebp
+	jl short 00000001805E7713h
+	cmp [rdi+2Ch],r15b
+	je short 00000001805E7783h
+	test rsi,rsi
+	je short 00000001805E779Ch
+	movdqa xmm0,[1818BCD80h]
+	lea rdx,[rsp+30h]
+	xor r8d,r8d
+	movaps [rsp+30h],xmm0
+	mov rcx,rsi
+	call 000000018025FB60h
+	mov eax,[rdi+28h]
+	mov r9d,ebp
+	xor r8d,r8d
+	mov [rsp+28h],r15
+	xor edx,edx
+	mov [rsp+20h],eax
+	mov rcx,rsi
+	call 000000018025F060h
+	mov rbx,[rsp+60h]
+	mov rbp,[rsp+68h]
+	mov rsi,[rsp+70h]
+	add rsp,40h
+	pop r15
+	pop r14
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -8
+	007 Move stack:0x0, r14
+	008 ShiftStack -8
+	009 Move stack:0x0, r15
+	010 ShiftStack -64
+	011 Move xmm2, [rcx+24]
+	012 Move r15, 0
+	013 Move xmm0, [0x1818BCC70]
+	014 Move rsi, rdx
+	015 NotImplemented "comisd xmm0,xmm2"
+	016 Move rdi, rcx
+	017 Move rcx, [rcx+32]
+	018 Move rbp, r9
+	019 Move xmm1, r8
+	020 NotImplemented "cvtdq2pd xmm1,xmm1"
+	021 NotImplemented "mulsd xmm1,xmm2"
+	022 Move rax, xmm1
+	023 Move TEMP, rax
+	024 ShiftRight TEMP, 31
+	025 Compare TEMP, 1
+	026 JumpIfNotEqual {29}
+	027 Move rdx, 0xFFFFFFFF
+	028 Goto {30}
+	029 Move rdx, 0
+	030 Nop 
+	031 JumpIfLessOrEqual {34}
+	032 Move r14, r15
+	033 Goto {36}
+	034 Move r14, [rdi+40]
+	035 Subtract r14, r14, [rdi+36]
+	036 NotImplemented "idiv ecx"
+	037 Move rbx, rdx
+	038 Neg rbx
+	039 Compare rbx, rbp
+	040 JumpIfGreaterOrEqual {53}
+	041 Compare rsi, 0
+	042 JumpIfEqual {82}
+	043 Move rdx, [rdi+16]
+	044 Move r9, r14
+	045 Move stack:0x28, r15
+	046 Move r8, rbx
+	047 Move rcx, rsi
+	048 Move stack:0x20, r15
+	049 Call mGraphics.drawImage, rcx, rdx, r8, r9, stack:0x0
+	050 Add rbx, rbx, [rdi+32]
+	051 Compare rbx, rbp
+	052 JumpIfLess {41}
+	053 Compare [rdi+44], r15
+	054 JumpIfEqual {71}
+	055 Compare rsi, 0
+	056 JumpIfEqual {82}
+	057 Move xmm0, [0x1818BCD80]
+	058 LoadAddress rdx, stack:0x30
+	059 Move r8, 0
+	060 Move stack:0x30, xmm0
+	061 Move rcx, rsi
+	062 Call mGraphics.setColor, rcx, rdx
+	063 Move rax, [rdi+40]
+	064 Move r9, rbp
+	065 Move r8, 0
+	066 Move stack:0x28, r15
+	067 Move rdx, 0
+	068 Move stack:0x20, rax
+	069 Move rcx, rsi
+	070 Call mGraphics.fillRect, rcx, rdx, r8, r9, stack:0x0
+	071 Move rbx, stack:0x60
+	072 Move rbp, stack:0x68
+	073 Move rsi, stack:0x70
+	074 ShiftStack 64
+	075 Move r15, stack:0x0
+	076 ShiftStack 8
+	077 Move r14, stack:0x0
+	078 ShiftStack 8
+	079 Move rdi, stack:0x0
+	080 ShiftStack 8
+	081 Return 
+	082 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

@@ -1,0 +1,56 @@
+Type: Mono.Security.Interface.MonoTlsProviderFactory
+
+Method: Mono.Security.Interface.MonoTlsProvider GetProvider()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1C328h],0
+	jne short 0000000180D4EAF0h
+	lea rcx,[181E2DDD8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C328h],1
+	xor ecx,ecx
+	call 0000000181159450h
+	mov r8,[181E2DDD8h]
+	test rax,rax
+	jne short 0000000180D4EB08h
+	add rsp,28h
+	ret
+	mov r9,[rax]
+	movzx ecx,byte ptr [r8+130h]
+	cmp [r9+130h],cl
+	jb short 0000000180D4EB2Dh
+	movzx edx,cl
+	mov rcx,[r9+0C8h]
+	cmp [rcx+rdx*8-8],r8
+	je short 0000000180D4EB03h
+	mov rdx,r8
+	mov rcx,rax
+	call 00000001801E1E70h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1C328], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E2DDD8]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F1C328], 1
+	007 Move rcx, 0
+	008 Call NoReflectionHelper.GetProvider, rcx
+	009 Move r8, typeof(Mono.Security.Interface.MonoTlsProvider)
+	010 Compare rax, 0
+	011 JumpIfNotEqual {14}
+	012 ShiftStack 40
+	013 Return rax
+	014 Move r9, [rax]
+	015 Move rcx, [r8+304]
+	016 Compare [r9+304], rcx
+	017 JumpIfLess {22}
+	018 Move rdx, rcx
+	019 Move rcx, [r9+200]
+	020 Compare [rcx+0xFFFFFFF8+rdx*8], r8
+	021 JumpIfEqual {12}
+	022 Move rdx, r8
+	023 Move rcx, rax
+	024 Call 0x1801E1E70, rcx, rdx, r8, r9
+

@@ -1,0 +1,62 @@
+Type: System.Runtime.CompilerServices.ConfiguredTaskAwaitable
+
+Method: System.Void .ctor(System.Threading.Tasks.Task task, System.Boolean continueOnCapturedContext)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,30h
+	mov rdi,rcx
+	mov qword ptr [rsp+28h],0
+	lea rcx,[rsp+20h]
+	mov [rsp+20h],rdx
+	movzx ebx,r8b
+	call 00000001801E1E30h
+	mov [rsp+28h],bl
+	xor edx,edx
+	movups xmm0,[rsp+20h]
+	mov rcx,rdi
+	movups [rdi],xmm0
+	call 00000001801E1E30h
+	mov rbx,[rsp+40h]
+	add rsp,30h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -48
+	005 Move rdi, rcx
+	006 Move stack:0x28, 0
+	007 LoadAddress rcx, stack:0x20
+	008 Move stack:0x20, rdx
+	009 Move rbx, r8
+	010 Call 0x1801E1E30, rcx, rdx, r8, r9
+	011 Move stack:0x28, rbx
+	012 Move rdx, 0
+	013 Move xmm0, stack:0x20
+	014 Move rcx, rdi
+	015 Move [rdi], xmm0
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Move rbx, stack:0x40
+	018 ShiftStack 48
+	019 Move rdi, stack:0x0
+	020 ShiftStack 8
+	021 Return 
+
+Method: System.Runtime.CompilerServices.ConfiguredTaskAwaitable+ConfiguredTaskAwaiter GetAwaiter()
+
+Disassembly:
+	movups xmm0,[rdx]
+	mov rax,rcx
+	movups [rcx],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move rax, rcx
+	003 Move [rcx], xmm0
+	004 Return rax
+

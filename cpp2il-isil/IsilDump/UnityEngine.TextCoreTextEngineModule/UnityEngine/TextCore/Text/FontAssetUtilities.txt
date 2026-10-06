@@ -1,0 +1,1506 @@
+Type: UnityEngine.TextCore.Text.FontAssetUtilities
+
+Method: UnityEngine.TextCore.Text.Character GetCharacterFromFontAsset(System.UInt32 unicode, UnityEngine.TextCore.Text.FontAsset sourceFontAsset, System.Boolean includeFallbacks, UnityEngine.TextCore.Text.FontStyles fontStyle, UnityEngine.TextCore.Text.TextFontWeight fontWeight, out System.Boolean isAlternativeTypeface)
+
+Disassembly:
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	mov [rsp+20h],rdi
+	push r14
+	sub rsp,40h
+	cmp byte ptr [181F22C44h],0
+	mov esi,r9d
+	movzx edi,r8b
+	mov rbp,rdx
+	mov r14d,ecx
+	jne short 000000018167E502h
+	lea rcx,[181E146A8h]
+	call 00000001801E2A80h
+	lea rcx,[181E21508h]
+	call 00000001801E2A80h
+	lea rcx,[181E21378h]
+	call 00000001801E2A80h
+	lea rcx,[181E284A8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F22C44h],1
+	test dil,dil
+	je short 000000018167E57Bh
+	mov rcx,[181E146A8h]
+	mov rax,[rcx+0B8h]
+	cmp qword ptr [rax],0
+	je short 000000018167E52Ch
+	mov rdx,[181E21508h]
+	mov rcx,[rax]
+	call 0000000180983310h
+	jmp short 000000018167E57Bh
+	mov rcx,[181E284A8h]
+	mov [rsp+50h],rbx
+	call 0000000180197840h
+	mov rdx,[181E21378h]
+	mov rcx,rax
+	mov rbx,rax
+	call 000000018098F150h
+	mov rcx,[181E146A8h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rbx
+	mov rdx,rbx
+	mov rcx,[181E146A8h]
+	mov rcx,[rcx+0B8h]
+	call 00000001801E1E30h
+	mov rbx,[rsp+50h]
+	mov r9d,esi
+	mov qword ptr [rsp+80h],0
+	movzx r8d,dil
+	mov rdx,rbp
+	mov ecx,r14d
+	mov rbp,[rsp+58h]
+	mov rsi,[rsp+60h]
+	mov rdi,[rsp+68h]
+	add rsp,40h
+	pop r14
+	jmp near ptr 000000018167DFC0h
+
+ISIL:
+	001 Move stack:0x10, rbp
+	002 Move stack:0x18, rsi
+	003 Move stack:0x20, rdi
+	004 ShiftStack -8
+	005 Move stack:0x0, r14
+	006 ShiftStack -64
+	007 Compare [0x181F22C44], 0
+	008 Move rsi, r9
+	009 Move rdi, r8
+	010 Move rbp, rdx
+	011 Move r14, rcx
+	012 JumpIfNotEqual {22}
+	013 LoadAddress rcx, [0x181E146A8]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x181E21508]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 LoadAddress rcx, [0x181E21378]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 LoadAddress rcx, [0x181E284A8]
+	020 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	021 Move [0x181F22C44], 1
+	022 Compare rdi, 0
+	023 JumpIfEqual {47}
+	024 Move rcx, typeof(UnityEngine.TextCore.Text.FontAssetUtilities)
+	025 Move rax, [rcx+184]
+	026 Compare [rax], 0
+	027 JumpIfEqual {32}
+	028 Move rdx, [0x181E21508]
+	029 Move rcx, [rax]
+	030 Call 0x180983310, rcx, rdx
+	031 Goto {47}
+	032 Move rcx, typeof(System.Collections.Generic.HashSet`1<Int32>)
+	033 Move stack:0x50, rbx
+	034 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	035 Move rdx, [0x181E21378]
+	036 Move rcx, rax
+	037 Move rbx, rax
+	038 Call 0x18098F150, rcx, rdx
+	039 Move rcx, typeof(UnityEngine.TextCore.Text.FontAssetUtilities)
+	040 Move rdx, [rcx+184]
+	041 Move [rdx], rbx
+	042 Move rdx, rbx
+	043 Move rcx, typeof(UnityEngine.TextCore.Text.FontAssetUtilities)
+	044 Move rcx, [rcx+184]
+	045 Call 0x1801E1E30, rcx, rdx, r8, r9
+	046 Move rbx, stack:0x50
+	047 Move r9, rsi
+	048 Move stack:0x80, 0
+	049 Move r8, rdi
+	050 Move rdx, rbp
+	051 Move rcx, r14
+	052 Move rbp, stack:0x58
+	053 Move rsi, stack:0x60
+	054 Move rdi, stack:0x68
+	055 ShiftStack 64
+	056 Move r14, stack:0x0
+	057 ShiftStack 8
+	058 Call FontAssetUtilities.GetCharacterFromFontAsset_Internal, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10
+	059 Return rax
+
+Method: UnityEngine.TextCore.Text.Character GetCharacterFromFontAsset_Internal(System.UInt32 unicode, UnityEngine.TextCore.Text.FontAsset sourceFontAsset, System.Boolean includeFallbacks, UnityEngine.TextCore.Text.FontStyles fontStyle, UnityEngine.TextCore.Text.TextFontWeight fontWeight, out System.Boolean isAlternativeTypeface)
+
+Disassembly:
+	mov [rsp+18h],rbp
+	push rdi
+	push r12
+	push r13
+	push r14
+	push r15
+	sub rsp,50h
+	cmp byte ptr [181F22C45h],0
+	mov r13d,r9d
+	mov ebp,[rsp+0A0h]
+	mov rdi,rdx
+	movzx r14d,r8b
+	mov r15d,ecx
+	jne short 000000018167E04Ah
+	lea rcx,[181E0EBA0h]
+	call 00000001801E2A80h
+	lea rcx,[181E0EC10h]
+	call 00000001801E2A80h
+	lea rcx,[181E146A8h]
+	call 00000001801E2A80h
+	lea rcx,[181E214A0h]
+	call 00000001801E2A80h
+	lea rcx,[181E30210h]
+	call 00000001801E2A80h
+	lea rcx,[181E30270h]
+	call 00000001801E2A80h
+	lea rcx,[181E31550h]
+	call 00000001801E2A80h
+	mov byte ptr [181F22C45h],1
+	mov r12,[rsp+0A8h]
+	mov edx,r13d
+	shr edx,1
+	mov [rsp+80h],rbx
+	mov [rsp+88h],rsi
+	mov byte ptr [r12],0
+	mov qword ptr [rsp+40h],0
+	and dl,1
+	jne near ptr 000000018167E294h
+	cmp ebp,190h
+	jne near ptr 000000018167E294h
+	test rdi,rdi
+	je near ptr 000000018167E48Fh
+	cmp qword ptr [rdi+130h],0
+	jne short 000000018167E0A7h
+	xor edx,edx
+	mov rcx,rdi
+	call 00000001816827D0h
+	mov rcx,[rdi+130h]
+	test rcx,rcx
+	je near ptr 000000018167E48Fh
+	mov r9,[181E0EC10h]
+	lea r8,[rsp+40h]
+	mov edx,r15d
+	call 000000018089C9F0h
+	test al,al
+	je short 000000018167E13Eh
+	mov rax,[rsp+40h]
+	test rax,rax
+	je near ptr 000000018167E48Fh
+	mov rcx,[181E31550h]
+	mov rbx,[rax+18h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 000000018167E0F6h
+	call 0000000180153C50h
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000181629620h
+	test al,al
+	jne near ptr 000000018167E485h
+	cmp qword ptr [rdi+130h],0
+	jne short 000000018167E11Fh
+	xor edx,edx
+	mov rcx,rdi
+	call 00000001816827D0h
+	mov rcx,[rdi+130h]
+	test rcx,rcx
+	je near ptr 000000018167E48Fh
+	mov r8,[181E0EBA0h]
+	mov edx,r15d
+	call 0000000180893AA0h
+	cmp dword ptr [rdi+0A8h],1
+	je short 000000018167E150h
+	cmp dword ptr [rdi+0A8h],2
+	jne short 000000018167E174h
+	xor r9d,r9d
+	mov qword ptr [rsp+20h],0
+	lea r8,[rsp+40h]
+	mov edx,r15d
+	mov rcx,rdi
+	call 00000001816837B0h
+	test al,al
+	jne near ptr 000000018167E485h
+	xor ecx,ecx
+	cmp [rsp+40h],rcx
+	cmove ecx,r14d
+	test ecx,ecx
+	je near ptr 000000018167E26Ch
+	cmp qword ptr [rdi+178h],0
+	jbe near ptr 000000018167E26Ch
+	mov r14,[rdi+178h]
+	mov esi,[r14+18h]
+	test esi,esi
+	je near ptr 000000018167E26Ch
+	xor edi,edi
+	test esi,esi
+	jle near ptr 000000018167E26Ch
+	mov r8,[181E30270h]
+	mov edx,edi
+	mov rcx,r14
+	call 00000001809F6E90h
+	mov rcx,[181E31550h]
+	mov rbx,rax
+	cmp dword ptr [rcx+0E0h],0
+	jne short 000000018167E1DBh
+	call 0000000180153C50h
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000181629480h
+	test al,al
+	jne short 000000018167E262h
+	test rbx,rbx
+	je near ptr 000000018167E48Fh
+	cmp dword ptr [rbx+20h],0
+	jne short 000000018167E208h
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001816290A0h
+	mov [rbx+20h],eax
+	mov rax,[181E146A8h]
+	mov rcx,[rax+0B8h]
+	mov rcx,[rcx]
+	test rcx,rcx
+	je near ptr 000000018167E48Fh
+	mov r8,[181E214A0h]
+	mov edx,[rbx+20h]
+	call 0000000180981A00h
+	test al,al
+	je short 000000018167E262h
+	mov qword ptr [rsp+30h],0
+	mov r9d,r13d
+	mov [rsp+28h],r12
+	mov r8b,1
+	mov rdx,rbx
+	mov [rsp+20h],ebp
+	mov ecx,r15d
+	call 000000018167DFC0h
+	mov [rsp+40h],rax
+	test rax,rax
+	jne short 000000018167E26Eh
+	inc edi
+	cmp edi,esi
+	jl near ptr 000000018167E1B2h
+	xor eax,eax
+	mov rsi,[rsp+88h]
+	mov rbx,[rsp+80h]
+	mov rbp,[rsp+90h]
+	add rsp,50h
+	pop r15
+	pop r14
+	pop r13
+	pop r12
+	pop rdi
+	ret
+	test rdi,rdi
+	je near ptr 000000018167E48Fh
+	mov rbx,[rdi+180h]
+	mov eax,4
+	mov ecx,eax
+	cmp ebp,190h
+	jle short 000000018167E308h
+	cmp ebp,258h
+	jle short 000000018167E2EAh
+	cmp ebp,2BCh
+	jne short 000000018167E2CCh
+	mov ecx,7
+	mov eax,ecx
+	jmp short 000000018167E33Ah
+	cmp ebp,320h
+	jne short 000000018167E2DBh
+	mov eax,8
+	jmp short 000000018167E338h
+	cmp ebp,384h
+	jne short 000000018167E33Ah
+	mov eax,9
+	jmp short 000000018167E338h
+	cmp ebp,1F4h
+	jne short 000000018167E2F9h
+	mov eax,5
+	jmp short 000000018167E338h
+	cmp ebp,258h
+	jne short 000000018167E33Ah
+	mov eax,6
+	jmp short 000000018167E338h
+	cmp ebp,0C8h
+	jle short 000000018167E31Fh
+	cmp ebp,12Ch
+	jne short 000000018167E33Ah
+	mov eax,3
+	jmp short 000000018167E338h
+	cmp ebp,64h
+	jne short 000000018167E32Bh
+	mov eax,1
+	jmp short 000000018167E338h
+	cmp ebp,0C8h
+	jne short 000000018167E33Ah
+	mov eax,2
+	mov ecx,eax
+	test rbx,rbx
+	je near ptr 000000018167E48Fh
+	test dl,dl
+	je short 000000018167E35Ch
+	cmp ecx,[rbx+18h]
+	jae near ptr 000000018167E495h
+	mov eax,ecx
+	add rax,rax
+	mov rbx,[rbx+rax*8+28h]
+	jmp short 000000018167E370h
+	cmp eax,[rbx+18h]
+	jae near ptr 000000018167E495h
+	add rax,2
+	add rax,rax
+	mov rbx,[rbx+rax*8]
+	mov rcx,[181E31550h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 000000018167E385h
+	call 0000000180153C50h
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000181629620h
+	test al,al
+	je near ptr 000000018167E093h
+	test rbx,rbx
+	je near ptr 000000018167E48Fh
+	cmp qword ptr [rbx+130h],0
+	jne short 000000018167E3B7h
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001816827D0h
+	mov rcx,[rbx+130h]
+	test rcx,rcx
+	je near ptr 000000018167E48Fh
+	mov r9,[181E0EC10h]
+	lea r8,[rsp+40h]
+	mov edx,r15d
+	call 000000018089C9F0h
+	test al,al
+	je short 000000018167E446h
+	mov rax,[rsp+40h]
+	test rax,rax
+	je near ptr 000000018167E48Fh
+	mov rcx,[181E31550h]
+	mov rsi,[rax+18h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 000000018167E406h
+	call 0000000180153C50h
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rsi
+	call 0000000181629620h
+	test al,al
+	jne short 000000018167E480h
+	cmp qword ptr [rbx+130h],0
+	jne short 000000018167E42Bh
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001816827D0h
+	mov rcx,[rbx+130h]
+	test rcx,rcx
+	je short 000000018167E48Fh
+	mov r8,[181E0EBA0h]
+	mov edx,r15d
+	call 0000000180893AA0h
+	cmp dword ptr [rbx+0A8h],1
+	je short 000000018167E45Ch
+	cmp dword ptr [rbx+0A8h],2
+	jne near ptr 000000018167E093h
+	xor r9d,r9d
+	mov qword ptr [rsp+20h],0
+	lea r8,[rsp+40h]
+	mov edx,r15d
+	mov rcx,rbx
+	call 00000001816837B0h
+	test al,al
+	je near ptr 000000018167E093h
+	mov byte ptr [r12],1
+	mov rax,[rsp+40h]
+	jmp near ptr 000000018167E26Eh
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 Move stack:0x18, rbp
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -8
+	005 Move stack:0x0, r12
+	006 ShiftStack -8
+	007 Move stack:0x0, r13
+	008 ShiftStack -8
+	009 Move stack:0x0, r14
+	010 ShiftStack -8
+	011 Move stack:0x0, r15
+	012 ShiftStack -80
+	013 Compare [0x181F22C45], 0
+	014 Move r13, r9
+	015 Move rbp, stack:0xA0
+	016 Move rdi, rdx
+	017 Move r14, r8
+	018 Move r15, rcx
+	019 JumpIfNotEqual {35}
+	020 LoadAddress rcx, [0x181E0EBA0]
+	021 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	022 LoadAddress rcx, [0x181E0EC10]
+	023 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	024 LoadAddress rcx, [0x181E146A8]
+	025 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	026 LoadAddress rcx, [0x181E214A0]
+	027 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	028 LoadAddress rcx, [0x181E30210]
+	029 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	030 LoadAddress rcx, [0x181E30270]
+	031 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	032 LoadAddress rcx, [0x181E31550]
+	033 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	034 Move [0x181F22C45], 1
+	035 Move r12, stack:0xA8
+	036 Move rdx, r13
+	037 ShiftRight rdx, 1
+	038 Move stack:0x80, rbx
+	039 Move stack:0x88, rsi
+	040 Move [r12], 0
+	041 Move stack:0x40, 0
+	042 And rdx, rdx, 1
+	043 JumpIfNotEqual {178}
+	044 Compare rbp, 400
+	045 JumpIfNotEqual {178}
+	046 Compare rdi, 0
+	047 JumpIfEqual {303}
+	048 Compare [rdi+304], 0
+	049 JumpIfNotEqual {53}
+	050 Move rdx, 0
+	051 Move rcx, rdi
+	052 Call FontAsset.ReadFontAssetDefinition, rcx, rdx
+	053 Move rcx, [rdi+304]
+	054 Compare rcx, 0
+	055 JumpIfEqual {303}
+	056 Move r9, [0x181E0EC10]
+	057 LoadAddress r8, stack:0x40
+	058 Move rdx, r15
+	059 Call Dictionary`2<UInt32, Object>.TryGetValue, rcx, rdx, r8
+	060 Compare rax, 0
+	061 JumpIfEqual {87}
+	062 Move rax, stack:0x40
+	063 Compare rax, 0
+	064 JumpIfEqual {303}
+	065 Move rcx, typeof(UnityEngine.Object)
+	066 Move rbx, [rax+24]
+	067 Compare [rcx+224], 0
+	068 JumpIfNotEqual {70}
+	069 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	070 Move r8, 0
+	071 Move rdx, 0
+	072 Move rcx, rbx
+	073 Call Object.op_Inequality, rcx, rdx, r8
+	074 Compare rax, 0
+	075 JumpIfNotEqual {301}
+	076 Compare [rdi+304], 0
+	077 JumpIfNotEqual {81}
+	078 Move rdx, 0
+	079 Move rcx, rdi
+	080 Call FontAsset.ReadFontAssetDefinition, rcx, rdx
+	081 Move rcx, [rdi+304]
+	082 Compare rcx, 0
+	083 JumpIfEqual {303}
+	084 Move r8, [0x181E0EBA0]
+	085 Move rdx, r15
+	086 Call Dictionary`2<UInt32, Object>.Remove, rcx, rdx
+	087 Compare [rdi+168], 1
+	088 JumpIfEqual {91}
+	089 Compare [rdi+168], 2
+	090 JumpIfNotEqual {99}
+	091 Move r9, 0
+	092 Move stack:0x20, 0
+	093 LoadAddress r8, stack:0x40
+	094 Move rdx, r15
+	095 Move rcx, rdi
+	096 Call FontAsset.TryAddCharacterInternal, rcx, rdx, r8, r9
+	097 Compare rax, 0
+	098 JumpIfNotEqual {301}
+	099 Move rcx, 0
+	100 Compare stack:0x40, rcx
+	101 JumpIfNotEqual {103}
+	102 Move rcx, r14
+	103 Nop 
+	104 Compare rcx, 0
+	105 JumpIfEqual {162}
+	106 Compare [rdi+376], 0
+	107 JumpIfLessOrEqual {162}
+	108 Move r14, [rdi+376]
+	109 Move rsi, [r14+24]
+	110 Compare rsi, 0
+	111 JumpIfEqual {162}
+	112 Move rdi, 0
+	113 Compare rsi, 0
+	114 JumpIfLessOrEqual {162}
+	115 Move r8, [0x181E30270]
+	116 Move rdx, rdi
+	117 Move rcx, r14
+	118 Call 0x1809F6E90, rcx, rdx
+	119 Move rcx, typeof(UnityEngine.Object)
+	120 Move rbx, rax
+	121 Compare [rcx+224], 0
+	122 JumpIfNotEqual {124}
+	123 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	124 Move r8, 0
+	125 Move rdx, 0
+	126 Move rcx, rbx
+	127 Call Object.op_Equality, rcx, rdx, r8
+	128 Compare rax, 0
+	129 JumpIfNotEqual {159}
+	130 Compare rbx, 0
+	131 JumpIfEqual {303}
+	132 Compare [rbx+32], 0
+	133 JumpIfNotEqual {138}
+	134 Move rdx, 0
+	135 Move rcx, rbx
+	136 Call Object.GetInstanceID, rcx, rdx
+	137 Move [rbx+32], rax
+	138 Move rax, typeof(UnityEngine.TextCore.Text.FontAssetUtilities)
+	139 Move rcx, [rax+184]
+	140 Move rcx, [rcx]
+	141 Compare rcx, 0
+	142 JumpIfEqual {303}
+	143 Move r8, [0x181E214A0]
+	144 Move rdx, [rbx+32]
+	145 Call 0x180981A00, rcx, rdx
+	146 Compare rax, 0
+	147 JumpIfEqual {159}
+	148 Move stack:0x30, 0
+	149 Move r9, r13
+	150 Move stack:0x28, r12
+	151 Move r8, 1
+	152 Move rdx, rbx
+	153 Move stack:0x20, rbp
+	154 Move rcx, r15
+	155 Call FontAssetUtilities.GetCharacterFromFontAsset_Internal, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10
+	156 Move stack:0x40, rax
+	157 Compare rax, 0
+	158 JumpIfNotEqual {163}
+	159 Add rdi, rdi, 1
+	160 Compare rdi, rsi
+	161 JumpIfLess {115}
+	162 Move rax, 0
+	163 Move rsi, stack:0x88
+	164 Move rbx, stack:0x80
+	165 Move rbp, stack:0x90
+	166 ShiftStack 80
+	167 Move r15, stack:0x0
+	168 ShiftStack 8
+	169 Move r14, stack:0x0
+	170 ShiftStack 8
+	171 Move r13, stack:0x0
+	172 ShiftStack 8
+	173 Move r12, stack:0x0
+	174 ShiftStack 8
+	175 Move rdi, stack:0x0
+	176 ShiftStack 8
+	177 Return rax
+	178 Compare rdi, 0
+	179 JumpIfEqual {303}
+	180 Move rbx, [rdi+384]
+	181 Move rax, 4
+	182 Move rcx, rax
+	183 Compare rbp, 400
+	184 JumpIfLessOrEqual {208}
+	185 Compare rbp, 600
+	186 JumpIfLessOrEqual {200}
+	187 Compare rbp, 700
+	188 JumpIfNotEqual {192}
+	189 Move rcx, 7
+	190 Move rax, rcx
+	191 Goto {222}
+	192 Compare rbp, 800
+	193 JumpIfNotEqual {196}
+	194 Move rax, 8
+	195 Goto {221}
+	196 Compare rbp, 900
+	197 JumpIfNotEqual {222}
+	198 Move rax, 9
+	199 Goto {221}
+	200 Compare rbp, 500
+	201 JumpIfNotEqual {204}
+	202 Move rax, 5
+	203 Goto {221}
+	204 Compare rbp, 600
+	205 JumpIfNotEqual {222}
+	206 Move rax, 6
+	207 Goto {221}
+	208 Compare rbp, 200
+	209 JumpIfLessOrEqual {214}
+	210 Compare rbp, 300
+	211 JumpIfNotEqual {222}
+	212 Move rax, 3
+	213 Goto {221}
+	214 Compare rbp, 100
+	215 JumpIfNotEqual {218}
+	216 Move rax, 1
+	217 Goto {221}
+	218 Compare rbp, 200
+	219 JumpIfNotEqual {222}
+	220 Move rax, 2
+	221 Move rcx, rax
+	222 Compare rbx, 0
+	223 JumpIfEqual {303}
+	224 Compare rdx, 0
+	225 JumpIfEqual {232}
+	226 Compare rcx, [rbx+24]
+	227 JumpIfGreaterOrEqual {305}
+	228 Move rax, rcx
+	229 Add rax, rax, rax
+	230 Move rbx, [rbx+40+rax*8]
+	231 Goto {237}
+	232 Compare rax, [rbx+24]
+	233 JumpIfGreaterOrEqual {305}
+	234 Add rax, rax, 2
+	235 Add rax, rax, rax
+	236 Move rbx, [rbx+rax*8]
+	237 Move rcx, typeof(UnityEngine.Object)
+	238 Compare [rcx+224], 0
+	239 JumpIfNotEqual {241}
+	240 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	241 Move r8, 0
+	242 Move rdx, 0
+	243 Move rcx, rbx
+	244 Call Object.op_Inequality, rcx, rdx, r8
+	245 Compare rax, 0
+	246 JumpIfEqual {48}
+	247 Compare rbx, 0
+	248 JumpIfEqual {303}
+	249 Compare [rbx+304], 0
+	250 JumpIfNotEqual {254}
+	251 Move rdx, 0
+	252 Move rcx, rbx
+	253 Call FontAsset.ReadFontAssetDefinition, rcx, rdx
+	254 Move rcx, [rbx+304]
+	255 Compare rcx, 0
+	256 JumpIfEqual {303}
+	257 Move r9, [0x181E0EC10]
+	258 LoadAddress r8, stack:0x40
+	259 Move rdx, r15
+	260 Call Dictionary`2<UInt32, Object>.TryGetValue, rcx, rdx, r8
+	261 Compare rax, 0
+	262 JumpIfEqual {288}
+	263 Move rax, stack:0x40
+	264 Compare rax, 0
+	265 JumpIfEqual {303}
+	266 Move rcx, typeof(UnityEngine.Object)
+	267 Move rsi, [rax+24]
+	268 Compare [rcx+224], 0
+	269 JumpIfNotEqual {271}
+	270 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	271 Move r8, 0
+	272 Move rdx, 0
+	273 Move rcx, rsi
+	274 Call Object.op_Inequality, rcx, rdx, r8
+	275 Compare rax, 0
+	276 JumpIfNotEqual {300}
+	277 Compare [rbx+304], 0
+	278 JumpIfNotEqual {282}
+	279 Move rdx, 0
+	280 Move rcx, rbx
+	281 Call FontAsset.ReadFontAssetDefinition, rcx, rdx
+	282 Move rcx, [rbx+304]
+	283 Compare rcx, 0
+	284 JumpIfEqual {303}
+	285 Move r8, [0x181E0EBA0]
+	286 Move rdx, r15
+	287 Call Dictionary`2<UInt32, Object>.Remove, rcx, rdx
+	288 Compare [rbx+168], 1
+	289 JumpIfEqual {292}
+	290 Compare [rbx+168], 2
+	291 JumpIfNotEqual {48}
+	292 Move r9, 0
+	293 Move stack:0x20, 0
+	294 LoadAddress r8, stack:0x40
+	295 Move rdx, r15
+	296 Move rcx, rbx
+	297 Call FontAsset.TryAddCharacterInternal, rcx, rdx, r8, r9
+	298 Compare rax, 0
+	299 JumpIfEqual {48}
+	300 Move [r12], 1
+	301 Move rax, stack:0x40
+	302 Goto {163}
+	303 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	304 Interrupt 
+	305 Call 0x1801E2C90, rcx, rdx, r8, r9
+
+Method: UnityEngine.TextCore.Text.Character GetCharacterFromFontAssets(System.UInt32 unicode, UnityEngine.TextCore.Text.FontAsset sourceFontAsset, System.Collections.Generic.List`1<UnityEngine.TextCore.Text.FontAsset> fontAssets, System.Boolean includeFallbacks, UnityEngine.TextCore.Text.FontStyles fontStyle, UnityEngine.TextCore.Text.TextFontWeight fontWeight, out System.Boolean isAlternativeTypeface)
+
+Disassembly:
+	mov [rsp+8],ecx
+	push rbp
+	push r12
+	push r15
+	sub rsp,50h
+	cmp byte ptr [181F22C46h],0
+	movzx r12d,r9b
+	mov rbp,r8
+	jne short 000000018167E628h
+	lea rcx,[181E146A8h]
+	call 00000001801E2A80h
+	lea rcx,[181E21508h]
+	call 00000001801E2A80h
+	lea rcx,[181E21378h]
+	call 00000001801E2A80h
+	lea rcx,[181E284A8h]
+	call 00000001801E2A80h
+	lea rcx,[181E30210h]
+	call 00000001801E2A80h
+	lea rcx,[181E30270h]
+	call 00000001801E2A80h
+	lea rcx,[181E31550h]
+	call 00000001801E2A80h
+	mov byte ptr [181F22C46h],1
+	mov r15,[rsp+0A0h]
+	mov byte ptr [r15],0
+	test rbp,rbp
+	je near ptr 000000018167E778h
+	cmp dword ptr [rbp+18h],0
+	je near ptr 000000018167E778h
+	mov [rsp+78h],rbx
+	mov [rsp+40h],r14
+	test r12b,r12b
+	je short 000000018167E6C0h
+	mov rcx,[181E146A8h]
+	mov rax,[rcx+0B8h]
+	cmp qword ptr [rax],0
+	je short 000000018167E67Bh
+	mov rdx,[181E21508h]
+	mov rcx,[rax]
+	call 0000000180983310h
+	jmp short 000000018167E6C0h
+	mov rcx,[181E284A8h]
+	call 0000000180197840h
+	mov rdx,[181E21378h]
+	mov rcx,rax
+	mov rbx,rax
+	call 000000018098F150h
+	mov rcx,[181E146A8h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rbx
+	mov rdx,rbx
+	mov rcx,[181E146A8h]
+	mov rcx,[rcx+0B8h]
+	call 00000001801E1E30h
+	mov [rsp+80h],rsi
+	mov [rsp+48h],r13
+	mov r14d,[rbp+18h]
+	xor ebx,ebx
+	test r14d,r14d
+	jle near ptr 000000018167E755h
+	mov r13d,[rsp+98h]
+	mov r8,[181E30270h]
+	mov edx,ebx
+	mov rcx,rbp
+	call 00000001809F6E90h
+	mov rcx,[181E31550h]
+	mov rsi,rax
+	cmp dword ptr [rcx+0E0h],0
+	jne short 000000018167E70Dh
+	call 0000000180153C50h
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rsi
+	call 0000000181629480h
+	test al,al
+	jne short 000000018167E74Eh
+	mov r9d,[rsp+90h]
+	movzx r8d,r12b
+	mov ecx,[rsp+70h]
+	mov rdx,rsi
+	mov qword ptr [rsp+30h],0
+	mov [rsp+28h],r15
+	mov [rsp+20h],r13d
+	call 000000018167DFC0h
+	test rax,rax
+	jne short 000000018167E757h
+	inc ebx
+	cmp ebx,r14d
+	jl short 000000018167E6E4h
+	xor eax,eax
+	mov r13,[rsp+48h]
+	mov rsi,[rsp+80h]
+	mov rbx,[rsp+78h]
+	mov r14,[rsp+40h]
+	add rsp,50h
+	pop r15
+	pop r12
+	pop rbp
+	ret
+	xor eax,eax
+	add rsp,50h
+	pop r15
+	pop r12
+	pop rbp
+	ret
+
+ISIL:
+	001 Move stack:0x8, rcx
+	002 ShiftStack -8
+	003 Move stack:0x0, rbp
+	004 ShiftStack -8
+	005 Move stack:0x0, r12
+	006 ShiftStack -8
+	007 Move stack:0x0, r15
+	008 ShiftStack -80
+	009 Compare [0x181F22C46], 0
+	010 Move r12, r9
+	011 Move rbp, r8
+	012 JumpIfNotEqual {28}
+	013 LoadAddress rcx, [0x181E146A8]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x181E21508]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 LoadAddress rcx, [0x181E21378]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 LoadAddress rcx, [0x181E284A8]
+	020 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	021 LoadAddress rcx, [0x181E30210]
+	022 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	023 LoadAddress rcx, [0x181E30270]
+	024 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	025 LoadAddress rcx, [0x181E31550]
+	026 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	027 Move [0x181F22C46], 1
+	028 Move r15, stack:0xA0
+	029 Move [r15], 0
+	030 Compare rbp, 0
+	031 JumpIfEqual {107}
+	032 Compare [rbp+24], 0
+	033 JumpIfEqual {107}
+	034 Move stack:0x78, rbx
+	035 Move stack:0x40, r14
+	036 Compare r12, 0
+	037 JumpIfEqual {59}
+	038 Move rcx, typeof(UnityEngine.TextCore.Text.FontAssetUtilities)
+	039 Move rax, [rcx+184]
+	040 Compare [rax], 0
+	041 JumpIfEqual {46}
+	042 Move rdx, [0x181E21508]
+	043 Move rcx, [rax]
+	044 Call 0x180983310, rcx, rdx
+	045 Goto {59}
+	046 Move rcx, typeof(System.Collections.Generic.HashSet`1<Int32>)
+	047 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	048 Move rdx, [0x181E21378]
+	049 Move rcx, rax
+	050 Move rbx, rax
+	051 Call 0x18098F150, rcx, rdx
+	052 Move rcx, typeof(UnityEngine.TextCore.Text.FontAssetUtilities)
+	053 Move rdx, [rcx+184]
+	054 Move [rdx], rbx
+	055 Move rdx, rbx
+	056 Move rcx, typeof(UnityEngine.TextCore.Text.FontAssetUtilities)
+	057 Move rcx, [rcx+184]
+	058 Call 0x1801E1E30, rcx, rdx, r8, r9
+	059 Move stack:0x80, rsi
+	060 Move stack:0x48, r13
+	061 Move r14, [rbp+24]
+	062 Move rbx, 0
+	063 Compare r14, 0
+	064 JumpIfLessOrEqual {94}
+	065 Move r13, stack:0x98
+	066 Move r8, [0x181E30270]
+	067 Move rdx, rbx
+	068 Move rcx, rbp
+	069 Call 0x1809F6E90, rcx, rdx
+	070 Move rcx, typeof(UnityEngine.Object)
+	071 Move rsi, rax
+	072 Compare [rcx+224], 0
+	073 JumpIfNotEqual {75}
+	074 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	075 Move r8, 0
+	076 Move rdx, 0
+	077 Move rcx, rsi
+	078 Call Object.op_Equality, rcx, rdx, r8
+	079 Compare rax, 0
+	080 JumpIfNotEqual {91}
+	081 Move r9, stack:0x90
+	082 Move r8, r12
+	083 Move rcx, stack:0x70
+	084 Move rdx, rsi
+	085 Move stack:0x30, 0
+	086 Move stack:0x28, r15
+	087 Move stack:0x20, r13
+	088 Call FontAssetUtilities.GetCharacterFromFontAsset_Internal, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10
+	089 Compare rax, 0
+	090 JumpIfNotEqual {95}
+	091 Add rbx, rbx, 1
+	092 Compare rbx, r14
+	093 JumpIfLess {66}
+	094 Move rax, 0
+	095 Move r13, stack:0x48
+	096 Move rsi, stack:0x80
+	097 Move rbx, stack:0x78
+	098 Move r14, stack:0x40
+	099 ShiftStack 80
+	100 Move r15, stack:0x0
+	101 ShiftStack 8
+	102 Move r12, stack:0x0
+	103 ShiftStack 8
+	104 Move rbp, stack:0x0
+	105 ShiftStack 8
+	106 Return rax
+	107 Move rax, 0
+	108 ShiftStack 80
+	109 Move r15, stack:0x0
+	110 ShiftStack 8
+	111 Move r12, stack:0x0
+	112 ShiftStack 8
+	113 Move rbp, stack:0x0
+	114 ShiftStack 8
+	115 Return rax
+
+Method: UnityEngine.TextCore.Text.SpriteCharacter GetSpriteCharacterFromSpriteAsset(System.UInt32 unicode, UnityEngine.TextCore.Text.SpriteAsset spriteAsset, System.Boolean includeFallbacks)
+
+Disassembly:
+	push rbx
+	push rdi
+	push r14
+	sub rsp,20h
+	cmp byte ptr [181F22C47h],0
+	movzx ebx,r8b
+	mov rdi,rdx
+	mov r14d,ecx
+	jne short 000000018167E9DFh
+	lea rcx,[181E0F998h]
+	call 00000001801E2A80h
+	lea rcx,[181E146A8h]
+	call 00000001801E2A80h
+	lea rcx,[181E214A0h]
+	call 00000001801E2A80h
+	lea rcx,[181E21508h]
+	call 00000001801E2A80h
+	lea rcx,[181E21378h]
+	call 00000001801E2A80h
+	lea rcx,[181E284A8h]
+	call 00000001801E2A80h
+	lea rcx,[181DF6D18h]
+	call 00000001801E2A80h
+	lea rcx,[181DF6D80h]
+	call 00000001801E2A80h
+	lea rcx,[181E31550h]
+	call 00000001801E2A80h
+	mov byte ptr [181F22C47h],1
+	mov rcx,[181E31550h]
+	mov qword ptr [rsp+48h],0
+	cmp dword ptr [rcx+0E0h],0
+	jne short 000000018167E9FDh
+	call 0000000180153C50h
+	mov [rsp+40h],rbp
+	xor r8d,r8d
+	xor edx,edx
+	mov [rsp+50h],rsi
+	mov rcx,rdi
+	call 0000000181629480h
+	test al,al
+	jne near ptr 000000018167EBE0h
+	test rdi,rdi
+	je near ptr 000000018167EBFCh
+	cmp qword ptr [rdi+0B8h],0
+	jne short 000000018167EA39h
+	xor edx,edx
+	mov rcx,rdi
+	call 000000018168D850h
+	mov rcx,[rdi+0B8h]
+	test rcx,rcx
+	je near ptr 000000018167EBFCh
+	mov r9,[181E0F998h]
+	lea r8,[rsp+48h]
+	mov edx,r14d
+	call 000000018089C9F0h
+	test al,al
+	jne near ptr 000000018167EBF5h
+	test bl,bl
+	je near ptr 000000018167EBE0h
+	mov rcx,[181E146A8h]
+	mov rax,[rcx+0B8h]
+	cmp qword ptr [rax],0
+	je short 000000018167EA92h
+	mov rdx,[181E21508h]
+	mov rcx,[rax]
+	call 0000000180983310h
+	jmp short 000000018167EAD7h
+	mov rcx,[181E284A8h]
+	call 0000000180197840h
+	mov rdx,[181E21378h]
+	mov rcx,rax
+	mov rbx,rax
+	call 000000018098F150h
+	mov rcx,[181E146A8h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rbx
+	mov rdx,rbx
+	mov rcx,[181E146A8h]
+	mov rcx,[rcx+0B8h]
+	call 00000001801E1E30h
+	cmp dword ptr [rdi+20h],0
+	mov rax,[181E146A8h]
+	mov rcx,[rax+0B8h]
+	mov rbx,[rcx]
+	jne short 000000018167EAFBh
+	xor edx,edx
+	mov rcx,rdi
+	call 00000001816290A0h
+	mov [rdi+20h],eax
+	test rbx,rbx
+	je near ptr 000000018167EBFCh
+	mov r8,[181E214A0h]
+	mov rcx,rbx
+	mov edx,[rdi+20h]
+	call 0000000180981A00h
+	mov rsi,[rdi+0D0h]
+	test rsi,rsi
+	je near ptr 000000018167EBE0h
+	cmp dword ptr [rsi+18h],0
+	jle near ptr 000000018167EBE0h
+	mov ebp,[rsi+18h]
+	xor edi,edi
+	nop word ptr [rax+rax]
+	mov r8,[181DF6D80h]
+	mov edx,edi
+	mov rcx,rsi
+	call 00000001809F6E90h
+	mov rcx,[181E31550h]
+	mov rbx,rax
+	cmp dword ptr [rcx+0E0h],0
+	jne short 000000018167EB69h
+	call 0000000180153C50h
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000181629480h
+	test al,al
+	jne short 000000018167EBD6h
+	test rbx,rbx
+	je short 000000018167EBFCh
+	cmp dword ptr [rbx+20h],0
+	jne short 000000018167EB92h
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001816290A0h
+	mov [rbx+20h],eax
+	mov rax,[181E146A8h]
+	mov rcx,[rax+0B8h]
+	mov rcx,[rcx]
+	test rcx,rcx
+	je short 000000018167EBFCh
+	mov r8,[181E214A0h]
+	mov edx,[rbx+20h]
+	call 0000000180981A00h
+	test al,al
+	je short 000000018167EBD6h
+	xor r9d,r9d
+	mov r8b,1
+	mov rdx,rbx
+	mov ecx,r14d
+	call 000000018167E790h
+	mov [rsp+48h],rax
+	test rax,rax
+	jne short 000000018167EBE2h
+	inc edi
+	cmp edi,ebp
+	jl near ptr 000000018167EB40h
+	xor eax,eax
+	mov rsi,[rsp+50h]
+	mov rbp,[rsp+40h]
+	add rsp,20h
+	pop r14
+	pop rdi
+	pop rbx
+	ret
+	mov rax,[rsp+48h]
+	jmp short 000000018167EBE2h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -8
+	006 Move stack:0x0, r14
+	007 ShiftStack -32
+	008 Compare [0x181F22C47], 0
+	009 Move rbx, r8
+	010 Move rdi, rdx
+	011 Move r14, rcx
+	012 JumpIfNotEqual {32}
+	013 LoadAddress rcx, [0x181E0F998]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x181E146A8]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 LoadAddress rcx, [0x181E214A0]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 LoadAddress rcx, [0x181E21508]
+	020 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	021 LoadAddress rcx, [0x181E21378]
+	022 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	023 LoadAddress rcx, [0x181E284A8]
+	024 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	025 LoadAddress rcx, [0x181DF6D18]
+	026 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	027 LoadAddress rcx, [0x181DF6D80]
+	028 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	029 LoadAddress rcx, [0x181E31550]
+	030 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	031 Move [0x181F22C47], 1
+	032 Move rcx, typeof(UnityEngine.Object)
+	033 Move stack:0x48, 0
+	034 Compare [rcx+224], 0
+	035 JumpIfNotEqual {37}
+	036 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	037 Move stack:0x40, rbp
+	038 Move r8, 0
+	039 Move rdx, 0
+	040 Move stack:0x50, rsi
+	041 Move rcx, rdi
+	042 Call Object.op_Equality, rcx, rdx, r8
+	043 Compare rax, 0
+	044 JumpIfNotEqual {151}
+	045 Compare rdi, 0
+	046 JumpIfEqual {164}
+	047 Compare [rdi+184], 0
+	048 JumpIfNotEqual {52}
+	049 Move rdx, 0
+	050 Move rcx, rdi
+	051 Call SpriteAsset.UpdateLookupTables, rcx, rdx
+	052 Move rcx, [rdi+184]
+	053 Compare rcx, 0
+	054 JumpIfEqual {164}
+	055 Move r9, [0x181E0F998]
+	056 LoadAddress r8, stack:0x48
+	057 Move rdx, r14
+	058 Call Dictionary`2<UInt32, Object>.TryGetValue, rcx, rdx, r8
+	059 Compare rax, 0
+	060 JumpIfNotEqual {162}
+	061 Compare rbx, 0
+	062 JumpIfEqual {151}
+	063 Move rcx, typeof(UnityEngine.TextCore.Text.FontAssetUtilities)
+	064 Move rax, [rcx+184]
+	065 Compare [rax], 0
+	066 JumpIfEqual {71}
+	067 Move rdx, [0x181E21508]
+	068 Move rcx, [rax]
+	069 Call 0x180983310, rcx, rdx
+	070 Goto {84}
+	071 Move rcx, typeof(System.Collections.Generic.HashSet`1<Int32>)
+	072 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	073 Move rdx, [0x181E21378]
+	074 Move rcx, rax
+	075 Move rbx, rax
+	076 Call 0x18098F150, rcx, rdx
+	077 Move rcx, typeof(UnityEngine.TextCore.Text.FontAssetUtilities)
+	078 Move rdx, [rcx+184]
+	079 Move [rdx], rbx
+	080 Move rdx, rbx
+	081 Move rcx, typeof(UnityEngine.TextCore.Text.FontAssetUtilities)
+	082 Move rcx, [rcx+184]
+	083 Call 0x1801E1E30, rcx, rdx, r8, r9
+	084 Compare [rdi+32], 0
+	085 Move rax, typeof(UnityEngine.TextCore.Text.FontAssetUtilities)
+	086 Move rcx, [rax+184]
+	087 Move rbx, [rcx]
+	088 JumpIfNotEqual {93}
+	089 Move rdx, 0
+	090 Move rcx, rdi
+	091 Call Object.GetInstanceID, rcx, rdx
+	092 Move [rdi+32], rax
+	093 Compare rbx, 0
+	094 JumpIfEqual {164}
+	095 Move r8, [0x181E214A0]
+	096 Move rcx, rbx
+	097 Move rdx, [rdi+32]
+	098 Call 0x180981A00, rcx, rdx
+	099 Move rsi, [rdi+208]
+	100 Compare rsi, 0
+	101 JumpIfEqual {151}
+	102 Compare [rsi+24], 0
+	103 JumpIfLessOrEqual {151}
+	104 Move rbp, [rsi+24]
+	105 Move rdi, 0
+	106 Nop 
+	107 Move r8, [0x181DF6D80]
+	108 Move rdx, rdi
+	109 Move rcx, rsi
+	110 Call 0x1809F6E90, rcx, rdx
+	111 Move rcx, typeof(UnityEngine.Object)
+	112 Move rbx, rax
+	113 Compare [rcx+224], 0
+	114 JumpIfNotEqual {116}
+	115 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	116 Move r8, 0
+	117 Move rdx, 0
+	118 Move rcx, rbx
+	119 Call Object.op_Equality, rcx, rdx, r8
+	120 Compare rax, 0
+	121 JumpIfNotEqual {148}
+	122 Compare rbx, 0
+	123 JumpIfEqual {164}
+	124 Compare [rbx+32], 0
+	125 JumpIfNotEqual {130}
+	126 Move rdx, 0
+	127 Move rcx, rbx
+	128 Call Object.GetInstanceID, rcx, rdx
+	129 Move [rbx+32], rax
+	130 Move rax, typeof(UnityEngine.TextCore.Text.FontAssetUtilities)
+	131 Move rcx, [rax+184]
+	132 Move rcx, [rcx]
+	133 Compare rcx, 0
+	134 JumpIfEqual {164}
+	135 Move r8, [0x181E214A0]
+	136 Move rdx, [rbx+32]
+	137 Call 0x180981A00, rcx, rdx
+	138 Compare rax, 0
+	139 JumpIfEqual {148}
+	140 Move r9, 0
+	141 Move r8, 1
+	142 Move rdx, rbx
+	143 Move rcx, r14
+	144 Call FontAssetUtilities.GetSpriteCharacterFromSpriteAsset_Internal, rcx, rdx, r8, r9
+	145 Move stack:0x48, rax
+	146 Compare rax, 0
+	147 JumpIfNotEqual {152}
+	148 Add rdi, rdi, 1
+	149 Compare rdi, rbp
+	150 JumpIfLess {107}
+	151 Move rax, 0
+	152 Move rsi, stack:0x50
+	153 Move rbp, stack:0x40
+	154 ShiftStack 32
+	155 Move r14, stack:0x0
+	156 ShiftStack 8
+	157 Move rdi, stack:0x0
+	158 ShiftStack 8
+	159 Move rbx, stack:0x0
+	160 ShiftStack 8
+	161 Return rax
+	162 Move rax, stack:0x48
+	163 Goto {152}
+	164 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: UnityEngine.TextCore.Text.SpriteCharacter GetSpriteCharacterFromSpriteAsset_Internal(System.UInt32 unicode, UnityEngine.TextCore.Text.SpriteAsset spriteAsset, System.Boolean includeFallbacks)
+
+Disassembly:
+	push rbx
+	push rdi
+	push r14
+	sub rsp,20h
+	cmp byte ptr [181F22C48h],0
+	movzx edi,r8b
+	mov rbx,rdx
+	mov r14d,ecx
+	jne short 000000018167E7FBh
+	lea rcx,[181E0F998h]
+	call 00000001801E2A80h
+	lea rcx,[181E146A8h]
+	call 00000001801E2A80h
+	lea rcx,[181E214A0h]
+	call 00000001801E2A80h
+	lea rcx,[181DF6D18h]
+	call 00000001801E2A80h
+	lea rcx,[181DF6D80h]
+	call 00000001801E2A80h
+	lea rcx,[181E31550h]
+	call 00000001801E2A80h
+	mov byte ptr [181F22C48h],1
+	mov [rsp+40h],rbp
+	mov [rsp+50h],rsi
+	mov qword ptr [rsp+48h],0
+	test rbx,rbx
+	je near ptr 000000018167E93Ch
+	cmp qword ptr [rbx+0B8h],0
+	jne short 000000018167E82Bh
+	xor edx,edx
+	mov rcx,rbx
+	call 000000018168D850h
+	mov rcx,[rbx+0B8h]
+	test rcx,rcx
+	je near ptr 000000018167E93Ch
+	mov r9,[181E0F998h]
+	lea r8,[rsp+48h]
+	mov edx,r14d
+	call 000000018089C9F0h
+	test al,al
+	jne near ptr 000000018167E935h
+	test dil,dil
+	je near ptr 000000018167E920h
+	mov rsi,[rbx+0D0h]
+	test rsi,rsi
+	je near ptr 000000018167E920h
+	cmp dword ptr [rsi+18h],0
+	jle near ptr 000000018167E920h
+	mov ebp,[rsi+18h]
+	xor edi,edi
+	nop
+	mov r8,[181DF6D80h]
+	mov edx,edi
+	mov rcx,rsi
+	call 00000001809F6E90h
+	mov rcx,[181E31550h]
+	mov rbx,rax
+	cmp dword ptr [rcx+0E0h],0
+	jne short 000000018167E8A9h
+	call 0000000180153C50h
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000181629480h
+	test al,al
+	jne short 000000018167E916h
+	test rbx,rbx
+	je short 000000018167E93Ch
+	cmp dword ptr [rbx+20h],0
+	jne short 000000018167E8D2h
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001816290A0h
+	mov [rbx+20h],eax
+	mov rax,[181E146A8h]
+	mov rcx,[rax+0B8h]
+	mov rcx,[rcx]
+	test rcx,rcx
+	je short 000000018167E93Ch
+	mov r8,[181E214A0h]
+	mov edx,[rbx+20h]
+	call 0000000180981A00h
+	test al,al
+	je short 000000018167E916h
+	xor r9d,r9d
+	mov r8b,1
+	mov rdx,rbx
+	mov ecx,r14d
+	call 000000018167E790h
+	mov [rsp+48h],rax
+	test rax,rax
+	jne short 000000018167E922h
+	inc edi
+	cmp edi,ebp
+	jl near ptr 000000018167E880h
+	xor eax,eax
+	mov rsi,[rsp+50h]
+	mov rbp,[rsp+40h]
+	add rsp,20h
+	pop r14
+	pop rdi
+	pop rbx
+	ret
+	mov rax,[rsp+48h]
+	jmp short 000000018167E922h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -8
+	006 Move stack:0x0, r14
+	007 ShiftStack -32
+	008 Compare [0x181F22C48], 0
+	009 Move rdi, r8
+	010 Move rbx, rdx
+	011 Move r14, rcx
+	012 JumpIfNotEqual {26}
+	013 LoadAddress rcx, [0x181E0F998]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x181E146A8]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 LoadAddress rcx, [0x181E214A0]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 LoadAddress rcx, [0x181DF6D18]
+	020 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	021 LoadAddress rcx, [0x181DF6D80]
+	022 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	023 LoadAddress rcx, [0x181E31550]
+	024 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	025 Move [0x181F22C48], 1
+	026 Move stack:0x40, rbp
+	027 Move stack:0x50, rsi
+	028 Move stack:0x48, 0
+	029 Compare rbx, 0
+	030 JumpIfEqual {112}
+	031 Compare [rbx+184], 0
+	032 JumpIfNotEqual {36}
+	033 Move rdx, 0
+	034 Move rcx, rbx
+	035 Call SpriteAsset.UpdateLookupTables, rcx, rdx
+	036 Move rcx, [rbx+184]
+	037 Compare rcx, 0
+	038 JumpIfEqual {112}
+	039 Move r9, [0x181E0F998]
+	040 LoadAddress r8, stack:0x48
+	041 Move rdx, r14
+	042 Call Dictionary`2<UInt32, Object>.TryGetValue, rcx, rdx, r8
+	043 Compare rax, 0
+	044 JumpIfNotEqual {110}
+	045 Compare rdi, 0
+	046 JumpIfEqual {99}
+	047 Move rsi, [rbx+208]
+	048 Compare rsi, 0
+	049 JumpIfEqual {99}
+	050 Compare [rsi+24], 0
+	051 JumpIfLessOrEqual {99}
+	052 Move rbp, [rsi+24]
+	053 Move rdi, 0
+	054 Nop 
+	055 Move r8, [0x181DF6D80]
+	056 Move rdx, rdi
+	057 Move rcx, rsi
+	058 Call 0x1809F6E90, rcx, rdx
+	059 Move rcx, typeof(UnityEngine.Object)
+	060 Move rbx, rax
+	061 Compare [rcx+224], 0
+	062 JumpIfNotEqual {64}
+	063 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	064 Move r8, 0
+	065 Move rdx, 0
+	066 Move rcx, rbx
+	067 Call Object.op_Equality, rcx, rdx, r8
+	068 Compare rax, 0
+	069 JumpIfNotEqual {96}
+	070 Compare rbx, 0
+	071 JumpIfEqual {112}
+	072 Compare [rbx+32], 0
+	073 JumpIfNotEqual {78}
+	074 Move rdx, 0
+	075 Move rcx, rbx
+	076 Call Object.GetInstanceID, rcx, rdx
+	077 Move [rbx+32], rax
+	078 Move rax, typeof(UnityEngine.TextCore.Text.FontAssetUtilities)
+	079 Move rcx, [rax+184]
+	080 Move rcx, [rcx]
+	081 Compare rcx, 0
+	082 JumpIfEqual {112}
+	083 Move r8, [0x181E214A0]
+	084 Move rdx, [rbx+32]
+	085 Call 0x180981A00, rcx, rdx
+	086 Compare rax, 0
+	087 JumpIfEqual {96}
+	088 Move r9, 0
+	089 Move r8, 1
+	090 Move rdx, rbx
+	091 Move rcx, r14
+	092 Call FontAssetUtilities.GetSpriteCharacterFromSpriteAsset_Internal, rcx, rdx, r8, r9
+	093 Move stack:0x48, rax
+	094 Compare rax, 0
+	095 JumpIfNotEqual {100}
+	096 Add rdi, rdi, 1
+	097 Compare rdi, rbp
+	098 JumpIfLess {55}
+	099 Move rax, 0
+	100 Move rsi, stack:0x50
+	101 Move rbp, stack:0x40
+	102 ShiftStack 32
+	103 Move r14, stack:0x0
+	104 ShiftStack 8
+	105 Move rdi, stack:0x0
+	106 ShiftStack 8
+	107 Move rbx, stack:0x0
+	108 ShiftStack 8
+	109 Return rax
+	110 Move rax, stack:0x48
+	111 Goto {100}
+	112 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

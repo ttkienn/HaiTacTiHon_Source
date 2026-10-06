@@ -1,0 +1,85 @@
+Type: System.Linq.Expressions.CoalesceConversionBinaryExpression
+
+Method: System.Void .ctor(System.Linq.Expressions.Expression left, System.Linq.Expressions.Expression right, System.Linq.Expressions.LambdaExpression conversion)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,r9
+	mov rbx,rcx
+	xor r9d,r9d
+	call 00000001810BF6F0h
+	lea rcx,[rbx+20h]
+	mov [rbx+20h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, r9
+	006 Move rbx, rcx
+	007 Move r9, 0
+	008 Call BinaryExpression..ctor, rcx, rdx, r8
+	009 LoadAddress rcx, [rbx+32]
+	010 Move [rbx+32], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.Linq.Expressions.LambdaExpression GetConversion()
+
+Disassembly:
+	mov rax,[rcx+20h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+32]
+	002 Return rax
+
+Method: System.Linq.Expressions.ExpressionType get_NodeType()
+
+Disassembly:
+	mov eax,7
+	ret
+
+ISIL:
+	001 Move rax, 7
+	002 Return rax
+
+Method: System.Type get_Type()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 00000001802539C5h
+	mov rdx,[rcx]
+	mov rax,[rdx+188h]
+	mov rdx,[rdx+190h]
+	add rsp,28h
+	jmp rax
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+16]
+	003 Compare rcx, 0
+	004 JumpIfEqual {10}
+	005 Move rdx, [rcx]
+	006 Move rax, [rdx+392]
+	007 Move rdx, [rdx+400]
+	008 ShiftStack 40
+	009 CallNoReturn rax
+	010 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

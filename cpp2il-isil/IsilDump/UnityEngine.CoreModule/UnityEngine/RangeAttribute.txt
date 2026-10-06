@@ -1,0 +1,42 @@
+Type: UnityEngine.RangeAttribute
+
+Method: System.Void .ctor(System.Single min, System.Single max)
+
+Disassembly:
+	push rbx
+	sub rsp,40h
+	movaps [rsp+30h],xmm6
+	xor edx,edx
+	movaps [rsp+20h],xmm7
+	movaps xmm6,xmm1
+	movaps xmm7,xmm2
+	mov rbx,rcx
+	call 000000018024B5B0h
+	movss dword ptr [rbx+10h],xmm6
+	movaps xmm6,[rsp+30h]
+	movss dword ptr [rbx+14h],xmm7
+	movaps xmm7,[rsp+20h]
+	add rsp,40h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -64
+	004 Move stack:0x30, xmm6
+	005 Move rdx, 0
+	006 Move stack:0x20, xmm7
+	007 Move xmm6, xmm1
+	008 Move xmm7, xmm2
+	009 Move rbx, rcx
+	010 Call 0x18024B5B0, rcx, rdx, r8
+	011 Move [rbx+16], xmm6
+	012 Move xmm6, stack:0x30
+	013 Move [rbx+20], xmm7
+	014 Move xmm7, stack:0x20
+	015 ShiftStack 64
+	016 Move rbx, stack:0x0
+	017 ShiftStack 8
+	018 Return 
+

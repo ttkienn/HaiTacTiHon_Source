@@ -1,0 +1,76 @@
+Type: UnityEngine.CullingGroup
+
+Method: System.Void SendEvents(UnityEngine.CullingGroup cullingGroup, System.IntPtr eventsPtr, System.Int32 count)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	mov [rsp+18h],rdi
+	push r14
+	sub rsp,20h
+	mov r14,rdx
+	mov rdi,rcx
+	test rcx,rcx
+	je short 00000001816086CAh
+	cmp qword ptr [rcx+18h],0
+	je short 00000001816086B4h
+	test r8d,r8d
+	jle short 00000001816086B4h
+	movsxd rsi,r8d
+	xor ebx,ebx
+	mov rcx,[rdi+18h]
+	test rcx,rcx
+	je short 00000001816086CAh
+	mov rax,[rcx+18h]
+	mov r8,[rcx+28h]
+	mov rcx,[rcx+40h]
+	mov rdx,[r14+rbx*8]
+	call rax
+	inc rbx
+	cmp rbx,rsi
+	jl short 0000000181608691h
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	mov rdi,[rsp+40h]
+	add rsp,20h
+	pop r14
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 Move stack:0x18, rdi
+	004 ShiftStack -8
+	005 Move stack:0x0, r14
+	006 ShiftStack -32
+	007 Move r14, rdx
+	008 Move rdi, rcx
+	009 Compare rcx, 0
+	010 JumpIfEqual {35}
+	011 Compare [rcx+24], 0
+	012 JumpIfEqual {28}
+	013 Compare r8, 0
+	014 JumpIfLessOrEqual {28}
+	015 Move rsi, r8
+	016 Move rbx, 0
+	017 Move rcx, [rdi+24]
+	018 Compare rcx, 0
+	019 JumpIfEqual {35}
+	020 Move rax, [rcx+24]
+	021 Move r8, [rcx+40]
+	022 Move rcx, [rcx+64]
+	023 Move rdx, [r14+rbx*8]
+	024 Call rax
+	025 Add rbx, rbx, 1
+	026 Compare rbx, rsi
+	027 JumpIfLess {17}
+	028 Move rbx, stack:0x30
+	029 Move rsi, stack:0x38
+	030 Move rdi, stack:0x40
+	031 ShiftStack 32
+	032 Move r14, stack:0x0
+	033 ShiftStack 8
+	034 Return 
+	035 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

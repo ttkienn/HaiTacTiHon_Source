@@ -1,0 +1,30 @@
+Type: System.DTSubString
+
+Method: System.Char get_Item(System.Int32 relativeIndex)
+
+Disassembly:
+	sub rsp,28h
+	mov r8d,[rcx+10h]
+	add r8d,edx
+	mov rdx,[rcx]
+	cmp r8d,[rcx+8]
+	jae short 0000000180F196C0h
+	movsxd rax,r8d
+	movzx eax,word ptr [rdx+rax*2]
+	add rsp,28h
+	ret
+	call 00000001801E2C90h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move r8, [rcx+16]
+	003 Add r8, r8, rdx
+	004 Move rdx, [rcx]
+	005 Compare r8, [rcx+8]
+	006 JumpIfGreaterOrEqual {11}
+	007 Move rax, r8
+	008 Move rax, [rdx+rax*2]
+	009 ShiftStack 40
+	010 Return rax
+	011 Call 0x1801E2C90, rcx, rdx, r8, r9
+

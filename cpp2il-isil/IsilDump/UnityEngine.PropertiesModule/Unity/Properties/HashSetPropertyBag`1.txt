@@ -1,0 +1,86 @@
+Type: Unity.Properties.HashSetPropertyBag`1
+
+Method: Unity.Properties.InstantiationKind get_InstantiationKind()
+
+Disassembly:
+	mov eax,1
+	ret
+
+ISIL:
+	001 Move rax, 1
+	002 Return rax
+
+Method: System.Collections.Generic.HashSet`1<TElement> Instantiate()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rax,[rdx+20h]
+	mov rdi,rdx
+	mov rcx,[rax+0C0h]
+	mov rax,[rcx]
+	test byte ptr [rax+135h],1
+	jne short 000000018082D12Ch
+	mov rcx,rax
+	call 0000000180188F60h
+	mov rcx,rax
+	call 0000000180197840h
+	mov rcx,[rdi+20h]
+	mov rbx,rax
+	mov rdx,[rcx+0C0h]
+	mov rcx,rax
+	mov rdx,[rdx+8]
+	mov r8,[rdx]
+	call r8
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rax, [rdx+32]
+	006 Move rdi, rdx
+	007 Move rcx, [rax+192]
+	008 Move rax, [rcx]
+	009 Compare [rax+309], 1
+	010 JumpIfNotEqual {13}
+	011 Move rcx, rax
+	012 Call 0x180188F60, rcx, rdx, r8, r9
+	013 Move rcx, rax
+	014 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	015 Move rcx, [rdi+32]
+	016 Move rbx, rax
+	017 Move rdx, [rcx+192]
+	018 Move rcx, rax
+	019 Move rdx, [rdx+8]
+	020 Move r8, [rdx]
+	021 Call r8
+	022 Move rax, rbx
+	023 Move rbx, stack:0x30
+	024 ShiftStack 32
+	025 Move rdi, stack:0x0
+	026 ShiftStack 8
+	027 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	mov rax,[rdx+20h]
+	mov rdx,[rax+0C0h]
+	mov rdx,[rdx+10h]
+	mov rax,[rdx]
+	jmp rax
+
+ISIL:
+	001 Move rax, [rdx+32]
+	002 Move rdx, [rax+192]
+	003 Move rdx, [rdx+16]
+	004 Move rax, [rdx]
+	005 CallNoReturn rax
+

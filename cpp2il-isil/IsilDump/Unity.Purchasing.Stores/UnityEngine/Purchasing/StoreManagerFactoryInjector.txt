@@ -1,0 +1,55 @@
+Type: UnityEngine.Purchasing.StoreManagerFactoryInjector
+
+Method: System.Void SetStoreManagerFactory()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [181F209FCh],0
+	jne short 00000001815A3E22h
+	lea rcx,[181E20A38h]
+	call 00000001801E2A80h
+	mov byte ptr [181F209FCh],1
+	xor ecx,ecx
+	call 0000000181584A60h
+	xor ecx,ecx
+	mov rbx,rax
+	call 00000001815A29B0h
+	test rbx,rbx
+	je short 00000001815A3E51h
+	mov rdx,[181E20A38h]
+	xor ecx,ecx
+	mov r9,rax
+	mov r8,rbx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 0000000180002F00h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x181F209FC], 0
+	005 JumpIfNotEqual {9}
+	006 LoadAddress rcx, [0x181E20A38]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 Move [0x181F209FC], 1
+	009 Move rcx, 0
+	010 Call StoreManager.Instance, rcx
+	011 Move rcx, 0
+	012 Move rbx, rax
+	013 Call StoreFactory.Instance, rcx
+	014 Compare rbx, 0
+	015 JumpIfEqual {25}
+	016 Move rdx, typeof(UnityEngine.Purchasing.IStoreManagerFactoryInjectionPoint)
+	017 Move rcx, 0
+	018 Move r9, rax
+	019 Move r8, rbx
+	020 ShiftStack 32
+	021 Move rbx, stack:0x0
+	022 ShiftStack 8
+	023 Call 0x180002F00, rcx, rdx, r8, r9
+	024 Return 
+	025 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

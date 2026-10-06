@@ -1,0 +1,182 @@
+Type: UnityEngine.UIElements.UIR.GradientSettingsAtlas+RawTexture
+
+Method: System.Void WriteRawInt2Packed(System.Int32 v0, System.Int32 v1, System.Int32 destX, System.Int32 destY)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov ebx,edx
+	mov eax,80808081h
+	imul edx
+	mov eax,80808081h
+	mov edi,r9d
+	mov r9,[rcx]
+	lea r11d,[rbx+rdx]
+	imul r8d
+	sar r11d,7
+	add edx,r8d
+	mov r10d,r11d
+	sar edx,7
+	mov eax,edx
+	shr r10d,1Fh
+	add r11d,r10d
+	shr eax,1Fh
+	add edx,eax
+	mov [rsp+38h],r11b
+	add r8b,dl
+	mov [rsp+3Ah],dl
+	add bl,r11b
+	mov [rsp+3Bh],r8b
+	mov [rsp+39h],bl
+	test r9,r9
+	je short 0000000181731B25h
+	mov eax,[rsp+50h]
+	imul eax,[rcx+8]
+	lea ecx,[rax+rdi]
+	cmp ecx,[r9+18h]
+	jae short 0000000181731B2Bh
+	mov eax,[rsp+38h]
+	mov rbx,[rsp+30h]
+	movsxd rcx,ecx
+	mov [r9+rcx*4+20h],eax
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rdx
+	006 Move rax, 0x80808081
+	007 NotImplemented "imul edx"
+	008 Move rax, 0x80808081
+	009 Move rdi, r9
+	010 Move r9, [rcx]
+	011 LoadAddress r11, [rbx+rdx]
+	012 NotImplemented "imul r8d"
+	013 ShiftRight r11, 7
+	014 Add rdx, rdx, r8
+	015 Move r10, r11
+	016 ShiftRight rdx, 7
+	017 Move rax, rdx
+	018 ShiftRight r10, 31
+	019 Add r11, r11, r10
+	020 ShiftRight rax, 31
+	021 Add rdx, rdx, rax
+	022 Move stack:0x38, r11
+	023 Add r8, r8, rdx
+	024 Move stack:0x3A, rdx
+	025 Add rbx, rbx, r11
+	026 Move stack:0x3B, r8
+	027 Move stack:0x39, rbx
+	028 Compare r9, 0
+	029 JumpIfEqual {43}
+	030 Move rax, stack:0x50
+	031 Multiply rax, rax, [rcx+8]
+	032 LoadAddress rcx, [rax+rdi]
+	033 Compare rcx, [r9+24]
+	034 JumpIfGreaterOrEqual {45}
+	035 Move rax, stack:0x38
+	036 Move rbx, stack:0x30
+	037 Move rcx, rcx
+	038 Move [r9+32+rcx*4], rax
+	039 ShiftStack 32
+	040 Move rdi, stack:0x0
+	041 ShiftStack 8
+	042 Return 
+	043 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	044 Interrupt 
+	045 Call 0x1801E2C90, rcx, rdx, r8, r9
+
+Method: System.Void WriteRawFloat4Packed(System.Single f0, System.Single f1, System.Single f2, System.Single f3, System.Int32 destX, System.Int32 destY)
+
+Disassembly:
+	sub rsp,38h
+	movss xmm0,dword ptr [rsp+60h]
+	mov r10,rcx
+	movss xmm4,dword ptr [1818BCB78h]
+	movss xmm5,dword ptr [1818BCB60h]
+	mulss xmm1,xmm4
+	mov rdx,[r10]
+	mulss xmm2,xmm4
+	mulss xmm3,xmm4
+	addss xmm1,xmm5
+	mulss xmm0,xmm4
+	addss xmm2,xmm5
+	movaps [rsp+20h],xmm6
+	addss xmm3,xmm5
+	xorps xmm6,xmm6
+	addss xmm0,xmm5
+	cvttss2si r9d,xmm1
+	cvttss2si r8d,xmm2
+	mov [rsp+60h],r9b
+	cvttss2si ecx,xmm3
+	mov [rsp+61h],r8b
+	cvttss2si eax,xmm0
+	mov [rsp+62h],cl
+	mov [rsp+63h],al
+	test rdx,rdx
+	je short 0000000181731A8Bh
+	mov r8d,[rsp+70h]
+	imul r8d,[r10+8]
+	add r8d,[rsp+68h]
+	cmp r8d,[rdx+18h]
+	jae short 0000000181731A91h
+	mov eax,[rsp+60h]
+	movaps xmm6,[rsp+20h]
+	movsxd rcx,r8d
+	mov [rdx+rcx*4+20h],eax
+	add rsp,38h
+	ret
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move xmm0, stack:0x60
+	003 Move r10, rcx
+	004 Move xmm4, [0x1818BCB78]
+	005 Move xmm5, [0x1818BCB60]
+	006 Multiply xmm1, xmm1, xmm4
+	007 Move rdx, [r10]
+	008 Multiply xmm2, xmm2, xmm4
+	009 Multiply xmm3, xmm3, xmm4
+	010 Add xmm1, xmm1, xmm5
+	011 Multiply xmm0, xmm0, xmm4
+	012 Add xmm2, xmm2, xmm5
+	013 Move stack:0x20, xmm6
+	014 Add xmm3, xmm3, xmm5
+	015 Move xmm6, 0
+	016 Add xmm0, xmm0, xmm5
+	017 NotImplemented "cvttss2si r9d,xmm1"
+	018 NotImplemented "cvttss2si r8d,xmm2"
+	019 Move stack:0x60, r9
+	020 NotImplemented "cvttss2si ecx,xmm3"
+	021 Move stack:0x61, r8
+	022 NotImplemented "cvttss2si eax,xmm0"
+	023 Move stack:0x62, rcx
+	024 Move stack:0x63, rax
+	025 Compare rdx, 0
+	026 JumpIfEqual {38}
+	027 Move r8, stack:0x70
+	028 Multiply r8, r8, [r10+8]
+	029 Add r8, r8, stack:0x68
+	030 Compare r8, [rdx+24]
+	031 JumpIfGreaterOrEqual {40}
+	032 Move rax, stack:0x60
+	033 Move xmm6, stack:0x20
+	034 Move rcx, r8
+	035 Move [rdx+32+rcx*4], rax
+	036 ShiftStack 56
+	037 Return 
+	038 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	039 Interrupt 
+	040 Call 0x1801E2C90, rcx, rdx, r8, r9
+

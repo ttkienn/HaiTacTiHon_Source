@@ -1,0 +1,103 @@
+Type: UnityEngine.Purchasing.SerializationExtensions
+
+Method: System.String TryGetString(System.Collections.Generic.Dictionary`2<System.String, System.Object> dic, System.String key)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F20AFBh],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 00000001815C6EF8h
+	lea rcx,[181E09C78h]
+	call 00000001801E2A80h
+	lea rcx,[181E09E28h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20AFBh],1
+	test rbx,rbx
+	je short 00000001815C6F6Fh
+	mov r8,[181E09C78h]
+	mov rdx,rdi
+	mov rcx,rbx
+	call 0000000180856280h
+	test al,al
+	je short 00000001815C6F62h
+	mov r8,[181E09E28h]
+	mov rdx,rdi
+	mov rcx,rbx
+	call 000000018087AAA0h
+	test rax,rax
+	je short 00000001815C6F62h
+	mov r8,[181E09E28h]
+	mov rdx,rdi
+	mov rcx,rbx
+	call 000000018087AAA0h
+	test rax,rax
+	je short 00000001815C6F6Fh
+	mov rdx,[rax]
+	mov rcx,rax
+	mov r8,[rdx+168h]
+	mov rdx,[rdx+170h]
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp r8
+	mov rbx,[rsp+30h]
+	xor eax,eax
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F20AFB], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {14}
+	009 LoadAddress rcx, [0x181E09C78]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x181E09E28]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x181F20AFB], 1
+	014 Compare rbx, 0
+	015 JumpIfEqual {49}
+	016 Move r8, [0x181E09C78]
+	017 Move rdx, rdi
+	018 Move rcx, rbx
+	019 Call 0x180856280, rcx, rdx
+	020 Compare rax, 0
+	021 JumpIfEqual {43}
+	022 Move r8, [0x181E09E28]
+	023 Move rdx, rdi
+	024 Move rcx, rbx
+	025 Call 0x18087AAA0, rcx, rdx
+	026 Compare rax, 0
+	027 JumpIfEqual {43}
+	028 Move r8, [0x181E09E28]
+	029 Move rdx, rdi
+	030 Move rcx, rbx
+	031 Call 0x18087AAA0, rcx, rdx
+	032 Compare rax, 0
+	033 JumpIfEqual {49}
+	034 Move rdx, [rax]
+	035 Move rcx, rax
+	036 Move r8, [rdx+360]
+	037 Move rdx, [rdx+368]
+	038 Move rbx, stack:0x30
+	039 ShiftStack 32
+	040 Move rdi, stack:0x0
+	041 ShiftStack 8
+	042 CallNoReturn r8
+	043 Move rbx, stack:0x30
+	044 Move rax, 0
+	045 ShiftStack 32
+	046 Move rdi, stack:0x0
+	047 ShiftStack 8
+	048 Return rax
+	049 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

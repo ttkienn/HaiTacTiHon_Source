@@ -1,0 +1,81 @@
+Type: Mono.Btls.MonoBtlsSsl+BoringSslHandle
+
+Method: System.Void .ctor(System.IntPtr handle)
+
+Disassembly:
+	xor r9d,r9d
+	mov r8b,1
+	jmp near ptr 0000000181153680h
+
+ISIL:
+	001 Move r9, 0
+	002 Move r8, 1
+	003 Call MonoBtlsHandle..ctor, rcx, rdx, r8
+	004 Return 
+
+Method: System.Boolean ReleaseHandle()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,50h
+	mov rax,[181F1FDB0h]
+	mov rbx,rcx
+	mov rdi,[rcx+10h]
+	test rax,rax
+	jne short 0000000181492265h
+	lea rax,[181924E38h]
+	mov qword ptr [rsp+28h],13h
+	mov [rsp+20h],rax
+	lea rcx,[rsp+20h]
+	lea rax,[181925230h]
+	mov qword ptr [rsp+38h],15h
+	mov [rsp+30h],rax
+	mov dword ptr [rsp+40h],0
+	mov dword ptr [rsp+44h],2
+	mov dword ptr [rsp+48h],8
+	mov byte ptr [rsp+4Ch],0
+	call 00000001801E2CF0h
+	mov [181F1FDB0h],rax
+	mov rcx,rdi
+	call rax
+	mov qword ptr [rbx+10h],0
+	mov al,1
+	mov rbx,[rsp+60h]
+	add rsp,50h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -80
+	005 Move rax, [0x181F1FDB0]
+	006 Move rbx, rcx
+	007 Move rdi, [rcx+16]
+	008 Compare rax, 0
+	009 JumpIfNotEqual {23}
+	010 LoadAddress rax, [0x181924E38]
+	011 Move stack:0x28, 19
+	012 Move stack:0x20, rax
+	013 LoadAddress rcx, stack:0x20
+	014 LoadAddress rax, [0x181925230]
+	015 Move stack:0x38, 21
+	016 Move stack:0x30, rax
+	017 Move stack:0x40, 0
+	018 Move stack:0x44, 2
+	019 Move stack:0x48, 8
+	020 Move stack:0x4C, 0
+	021 Call 0x1801E2CF0, rcx, rdx, r8, r9
+	022 Move [0x181F1FDB0], rax
+	023 Move rcx, rdi
+	024 Call rax
+	025 Move [rbx+16], 0
+	026 Move rax, 1
+	027 Move rbx, stack:0x60
+	028 ShiftStack 80
+	029 Move rdi, stack:0x0
+	030 ShiftStack 8
+	031 Return rax
+

@@ -1,0 +1,315 @@
+Type: System.TypeIdentifiers+Display
+
+Method: System.Void .ctor(System.String displayName)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	mov [rcx+10h],rdx
+	add rcx,10h
+	call 00000001801E1E30h
+	lea rcx,[rbx+18h]
+	mov qword ptr [rbx+18h],0
+	xor edx,edx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move [rcx+16], rdx
+	006 Add rcx, rcx, 16
+	007 Call 0x1801E1E30, rcx, rdx, r8, r9
+	008 LoadAddress rcx, [rbx+24]
+	009 Move [rbx+24], 0
+	010 Move rdx, 0
+	011 ShiftStack 32
+	012 Move rbx, stack:0x0
+	013 ShiftStack 8
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 Return 
+
+Method: System.String get_DisplayName()
+
+Disassembly:
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.String get_InternalName()
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp qword ptr [rcx+18h],0
+	mov rbp,rcx
+	jne near ptr 0000000180F7687Fh
+	cmp byte ptr [181F1D62Ch],0
+	mov rdi,[rcx+10h]
+	jne short 0000000180F767E2h
+	lea rcx,[181DFC670h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1D62Ch],1
+	test rdi,rdi
+	je near ptr 0000000180F76898h
+	mov rcx,[181DFC670h]
+	mov ebx,[rdi+10h]
+	call 0000000180197840h
+	xor r8d,r8d
+	mov edx,ebx
+	mov rcx,rax
+	mov rsi,rax
+	call 0000000180D8E1A0h
+	xor ebx,ebx
+	mov eax,ebx
+	xchg ax,ax
+	cmp ebx,[rdi+10h]
+	jge short 0000000180F76854h
+	xor r8d,r8d
+	mov edx,ebx
+	mov rcx,rdi
+	call 0000000180D85690h
+	cmp ax,5Ch
+	jne short 0000000180F7683Dh
+	lea edx,[rbx+1]
+	mov ebx,edx
+	cmp edx,[rdi+10h]
+	jge short 0000000180F7683Dh
+	xor r8d,r8d
+	mov rcx,rdi
+	call 0000000180D85690h
+	test rsi,rsi
+	je short 0000000180F76898h
+	xor r8d,r8d
+	movzx edx,ax
+	mov rcx,rsi
+	call 0000000180D8B4A0h
+	inc ebx
+	jmp short 0000000180F7680Ch
+	test rsi,rsi
+	je short 0000000180F76898h
+	mov rdx,[rsi]
+	mov rcx,rsi
+	mov rax,[rdx+168h]
+	mov rdx,[rdx+170h]
+	call rax
+	lea rcx,[rbp+18h]
+	mov [rbp+18h],rax
+	mov rdx,rax
+	call 00000001801E1E30h
+	mov rax,[rbp+18h]
+	mov rbp,[rsp+38h]
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [rcx+24], 0
+	008 Move rbp, rcx
+	009 JumpIfNotEqual {63}
+	010 Compare [0x181F1D62C], 0
+	011 Move rdi, [rcx+16]
+	012 JumpIfNotEqual {16}
+	013 LoadAddress rcx, [0x181DFC670]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x181F1D62C], 1
+	016 Compare rdi, 0
+	017 JumpIfEqual {71}
+	018 Move rcx, typeof(System.Text.StringBuilder)
+	019 Move rbx, [rdi+16]
+	020 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	021 Move r8, 0
+	022 Move rdx, rbx
+	023 Move rcx, rax
+	024 Move rsi, rax
+	025 Call StringBuilder..ctor, rcx, rdx
+	026 Move rbx, 0
+	027 Move rax, rbx
+	028 Nop 
+	029 Compare rbx, [rdi+16]
+	030 JumpIfGreaterOrEqual {52}
+	031 Move r8, 0
+	032 Move rdx, rbx
+	033 Move rcx, rdi
+	034 Call String.get_Chars, rcx, rdx
+	035 Compare rax, 92
+	036 JumpIfNotEqual {44}
+	037 LoadAddress rdx, [rbx+1]
+	038 Move rbx, rdx
+	039 Compare rdx, [rdi+16]
+	040 JumpIfGreaterOrEqual {44}
+	041 Move r8, 0
+	042 Move rcx, rdi
+	043 Call String.get_Chars, rcx, rdx
+	044 Compare rsi, 0
+	045 JumpIfEqual {71}
+	046 Move r8, 0
+	047 Move rdx, rax
+	048 Move rcx, rsi
+	049 Call StringBuilder.Append, rcx, rdx
+	050 Add rbx, rbx, 1
+	051 Goto {27}
+	052 Compare rsi, 0
+	053 JumpIfEqual {71}
+	054 Move rdx, [rsi]
+	055 Move rcx, rsi
+	056 Move rax, [rdx+360]
+	057 Move rdx, [rdx+368]
+	058 Call rax
+	059 LoadAddress rcx, [rbp+24]
+	060 Move [rbp+24], rax
+	061 Move rdx, rax
+	062 Call 0x1801E1E30, rcx, rdx, r8, r9
+	063 Move rax, [rbp+24]
+	064 Move rbp, stack:0x38
+	065 Move rbx, stack:0x30
+	066 Move rsi, stack:0x40
+	067 ShiftStack 32
+	068 Move rdi, stack:0x0
+	069 ShiftStack 8
+	070 Return rax
+	071 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.String GetInternalName()
+
+Disassembly:
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1D62Ch],0
+	mov rdi,[rcx+10h]
+	jne short 0000000180F766E6h
+	lea rcx,[181DFC670h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1D62Ch],1
+	mov [rsp+30h],rbx
+	mov [rsp+38h],rsi
+	test rdi,rdi
+	je near ptr 0000000180F7678Fh
+	mov rcx,[181DFC670h]
+	mov ebx,[rdi+10h]
+	call 0000000180197840h
+	xor r8d,r8d
+	mov edx,ebx
+	mov rcx,rax
+	mov rsi,rax
+	call 0000000180D8E1A0h
+	xor ebx,ebx
+	mov eax,ebx
+	nop dword ptr [rax]
+	cmp ebx,[rdi+10h]
+	jge short 0000000180F76764h
+	xor r8d,r8d
+	mov edx,ebx
+	mov rcx,rdi
+	call 0000000180D85690h
+	cmp ax,5Ch
+	jne short 0000000180F7674Dh
+	lea edx,[rbx+1]
+	mov ebx,edx
+	cmp edx,[rdi+10h]
+	jge short 0000000180F7674Dh
+	xor r8d,r8d
+	mov rcx,rdi
+	call 0000000180D85690h
+	test rsi,rsi
+	je short 0000000180F7678Fh
+	xor r8d,r8d
+	movzx edx,ax
+	mov rcx,rsi
+	call 0000000180D8B4A0h
+	inc ebx
+	jmp short 0000000180F7671Ah
+	test rsi,rsi
+	je short 0000000180F7678Fh
+	mov rdx,[rsi]
+	mov rcx,rsi
+	mov rax,[rdx+168h]
+	mov rdx,[rdx+170h]
+	mov rsi,[rsp+38h]
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp rax
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rdi
+	003 ShiftStack -32
+	004 Compare [0x181F1D62C], 0
+	005 Move rdi, [rcx+16]
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x181DFC670]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x181F1D62C], 1
+	010 Move stack:0x30, rbx
+	011 Move stack:0x38, rsi
+	012 Compare rdi, 0
+	013 JumpIfEqual {60}
+	014 Move rcx, typeof(System.Text.StringBuilder)
+	015 Move rbx, [rdi+16]
+	016 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	017 Move r8, 0
+	018 Move rdx, rbx
+	019 Move rcx, rax
+	020 Move rsi, rax
+	021 Call StringBuilder..ctor, rcx, rdx
+	022 Move rbx, 0
+	023 Move rax, rbx
+	024 Nop 
+	025 Compare rbx, [rdi+16]
+	026 JumpIfGreaterOrEqual {48}
+	027 Move r8, 0
+	028 Move rdx, rbx
+	029 Move rcx, rdi
+	030 Call String.get_Chars, rcx, rdx
+	031 Compare rax, 92
+	032 JumpIfNotEqual {40}
+	033 LoadAddress rdx, [rbx+1]
+	034 Move rbx, rdx
+	035 Compare rdx, [rdi+16]
+	036 JumpIfGreaterOrEqual {40}
+	037 Move r8, 0
+	038 Move rcx, rdi
+	039 Call String.get_Chars, rcx, rdx
+	040 Compare rsi, 0
+	041 JumpIfEqual {60}
+	042 Move r8, 0
+	043 Move rdx, rax
+	044 Move rcx, rsi
+	045 Call StringBuilder.Append, rcx, rdx
+	046 Add rbx, rbx, 1
+	047 Goto {23}
+	048 Compare rsi, 0
+	049 JumpIfEqual {60}
+	050 Move rdx, [rsi]
+	051 Move rcx, rsi
+	052 Move rax, [rdx+360]
+	053 Move rdx, [rdx+368]
+	054 Move rsi, stack:0x38
+	055 Move rbx, stack:0x30
+	056 ShiftStack 32
+	057 Move rdi, stack:0x0
+	058 ShiftStack 8
+	059 CallNoReturn rax
+	060 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

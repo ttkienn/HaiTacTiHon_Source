@@ -1,0 +1,313 @@
+Type: UnityEngine.UIElements.PointerDeviceState+PointerLocation
+
+Method: UnityEngine.Vector2 get_Position()
+
+Disassembly:
+	mov rax,[rcx]
+	ret
+
+ISIL:
+	001 Move rax, [rcx]
+	002 Return rax
+
+Method: System.Void set_Position(UnityEngine.Vector2 value)
+
+Disassembly:
+	mov [rcx],rdx
+	ret
+
+ISIL:
+	001 Move [rcx], rdx
+	002 Return 
+
+Method: UnityEngine.UIElements.IPanel get_Panel()
+
+Disassembly:
+	mov rax,[rcx+8]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+8]
+	002 Return rax
+
+Method: System.Void set_Panel(UnityEngine.UIElements.IPanel value)
+
+Disassembly:
+	mov [rcx+8],rdx
+	add rcx,8
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move [rcx+8], rdx
+	002 Add rcx, rcx, 8
+	003 Call 0x1801E1E30, rcx, rdx, r8, r9
+	004 Return 
+
+Method: UnityEngine.UIElements.PointerDeviceState+LocationFlag get_Flags()
+
+Disassembly:
+	mov eax,[rcx+10h]
+	ret
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	push rbx
+	sub rsp,60h
+	cmp byte ptr [181F1A34Dh],0
+	mov rbx,rcx
+	movaps [rsp+50h],xmm6
+	movaps [rsp+40h],xmm7
+	movaps [rsp+30h],xmm8
+	movaps [rsp+20h],xmm9
+	jne short 000000018024B04Bh
+	lea rcx,[181E2B218h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1A34Dh],1
+	mov rcx,[181E2B218h]
+	movss xmm8,dword ptr [rbx]
+	movss xmm9,dword ptr [rbx+4]
+	movaps xmm7,xmm8
+	movaps xmm6,xmm9
+	cmp dword ptr [rcx+0E0h],0
+	jne short 000000018024B073h
+	call 0000000180153C50h
+	mulss xmm6,xmm9
+	xorps xmm0,xmm0
+	mulss xmm7,xmm8
+	addss xmm6,xmm7
+	cvtps2pd xmm1,xmm6
+	ucomisd xmm0,xmm1
+	ja short 000000018024B097h
+	sqrtpd xmm0,xmm1
+	cvtpd2ps xmm0,xmm0
+	jmp short 000000018024B0A3h
+	movaps xmm0,xmm1
+	call 000000018021A830h
+	cvtsd2ss xmm0,xmm0
+	movaps xmm6,[rsp+50h]
+	movaps xmm7,[rsp+40h]
+	movaps xmm8,[rsp+30h]
+	movaps xmm9,[rsp+20h]
+	add rsp,60h
+	pop rbx
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+	003 Interrupt 
+	004 Interrupt 
+	005 Interrupt 
+	006 Interrupt 
+	007 Interrupt 
+	008 Interrupt 
+	009 Interrupt 
+	010 Interrupt 
+	011 Interrupt 
+	012 Interrupt 
+	013 Interrupt 
+	014 Interrupt 
+	015 ShiftStack -8
+	016 Move stack:0x0, rbx
+	017 ShiftStack -96
+	018 Compare [0x181F1A34D], 0
+	019 Move rbx, rcx
+	020 Move stack:0x50, xmm6
+	021 Move stack:0x40, xmm7
+	022 Move stack:0x30, xmm8
+	023 Move stack:0x20, xmm9
+	024 JumpIfNotEqual {28}
+	025 LoadAddress rcx, [0x181E2B218]
+	026 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	027 Move [0x181F1A34D], 1
+	028 Move rcx, typeof(System.Math)
+	029 Move xmm8, [rbx]
+	030 Move xmm9, [rbx+4]
+	031 Move xmm7, xmm8
+	032 Move xmm6, xmm9
+	033 Compare [rcx+224], 0
+	034 JumpIfNotEqual {36}
+	035 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	036 Multiply xmm6, xmm6, xmm9
+	037 Move xmm0, 0
+	038 Multiply xmm7, xmm7, xmm8
+	039 Add xmm6, xmm6, xmm7
+	040 Move xmm1, xmm6
+	041 NotImplemented "ucomisd xmm0,xmm1"
+	042 JumpIfGreater {46}
+	043 NotImplemented "sqrtpd xmm0,xmm1"
+	044 NotImplemented "cvtpd2ps xmm0,xmm0"
+	045 Goto {49}
+	046 Move xmm0, xmm1
+	047 Call 0x18021A830, rcx, rdx, r8, r9
+	048 NotImplemented "cvtsd2ss xmm0,xmm0"
+	049 Move xmm6, stack:0x50
+	050 Move xmm7, stack:0x40
+	051 Move xmm8, stack:0x30
+	052 Move xmm9, stack:0x20
+	053 ShiftStack 96
+	054 Move rbx, stack:0x0
+	055 ShiftStack 8
+	056 Return rax
+
+Method: System.Void set_Flags(UnityEngine.UIElements.PointerDeviceState+LocationFlag value)
+
+Disassembly:
+	mov [rcx+10h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Return 
+
+Method: System.Void SetLocation(UnityEngine.Vector2 position, UnityEngine.UIElements.IPanel panel)
+
+Disassembly:
+	mov [rsp+18h],rbx
+	mov [rsp+20h],rsi
+	push rdi
+	sub rsp,40h
+	cmp byte ptr [181F23A5Ch],0
+	mov rsi,r8
+	movaps [rsp+30h],xmm6
+	mov rbx,rcx
+	movq xmm6,rdx
+	movsd qword ptr [rsp+50h],xmm6
+	jne short 00000001817E7B01h
+	lea rcx,[181E1E9E8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F23A5Ch],1
+	lea rcx,[rbx+8]
+	movsd qword ptr [rbx],xmm6
+	mov rdx,rsi
+	mov [rbx+8],rsi
+	call 00000001801E1E30h
+	xor edi,edi
+	mov [rbx+10h],edi
+	test rsi,rsi
+	je short 00000001817E7B88h
+	mov rdx,[181E1E9E8h]
+	xor ecx,ecx
+	mov r8,rsi
+	call 0000000180003100h
+	test rax,rax
+	je short 00000001817E7BA1h
+	xor r8d,r8d
+	lea rcx,[rsp+20h]
+	mov rdx,rax
+	call 000000018182C980h
+	movups xmm1,[rax]
+	movss xmm2,dword ptr [rsp+50h]
+	comiss xmm2,xmm1
+	jb short 00000001817E7B84h
+	movaps xmm0,xmm1
+	shufps xmm0,xmm1,0AAh
+	addss xmm0,xmm1
+	comiss xmm0,xmm2
+	jbe short 00000001817E7B84h
+	movss xmm2,dword ptr [rsp+54h]
+	movaps xmm0,xmm1
+	shufps xmm0,xmm1,55h
+	comiss xmm2,xmm0
+	jb short 00000001817E7B84h
+	shufps xmm1,xmm1,0FFh
+	addss xmm1,xmm0
+	comiss xmm1,xmm2
+	seta dil
+	test edi,edi
+	jne short 00000001817E7B8Ch
+	or dword ptr [rbx+10h],1
+	mov rbx,[rsp+60h]
+	mov rsi,[rsp+68h]
+	movaps xmm6,[rsp+30h]
+	add rsp,40h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x18, rbx
+	002 Move stack:0x20, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -64
+	006 Compare [0x181F23A5C], 0
+	007 Move rsi, r8
+	008 Move stack:0x30, xmm6
+	009 Move rbx, rcx
+	010 Move xmm6, rdx
+	011 Move stack:0x50, xmm6
+	012 JumpIfNotEqual {16}
+	013 LoadAddress rcx, [0x181E1E9E8]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x181F23A5C], 1
+	016 LoadAddress rcx, [rbx+8]
+	017 Move [rbx], xmm6
+	018 Move rdx, rsi
+	019 Move [rbx+8], rsi
+	020 Call 0x1801E1E30, rcx, rdx, r8, r9
+	021 Move rdi, 0
+	022 Move [rbx+16], rdi
+	023 Compare rsi, 0
+	024 JumpIfEqual {67}
+	025 Move rdx, typeof(UnityEngine.UIElements.IPanel)
+	026 Move rcx, 0
+	027 Move r8, rsi
+	028 Call 0x180003100, rcx, rdx, r8, r9
+	029 Compare rax, 0
+	030 JumpIfEqual {75}
+	031 Move r8, 0
+	032 LoadAddress rcx, stack:0x20
+	033 Move rdx, rax
+	034 Call VisualElement.get_layout, rcx, rdx
+	035 Move xmm1, [rax]
+	036 Move xmm2, stack:0x50
+	037 Compare xmm2, xmm1
+	038 JumpIfLess {65}
+	039 Move xmm0, xmm1
+	040 Move XMM_TEMP.S[0], xmm0.S[2]
+	041 Move XMM_TEMP.S[1], xmm0.S[2]
+	042 Move XMM_TEMP.S[2], xmm1.S[2]
+	043 Move XMM_TEMP.S[3], xmm1.S[2]
+	044 Move xmm0, XMM_TEMP
+	045 Add xmm0, xmm0, xmm1
+	046 Compare xmm0, xmm2
+	047 JumpIfLessOrEqual {65}
+	048 Move xmm2, stack:0x54
+	049 Move xmm0, xmm1
+	050 Move XMM_TEMP.S[0], xmm0.S[1]
+	051 Move XMM_TEMP.S[1], xmm0.S[1]
+	052 Move XMM_TEMP.S[2], xmm1.S[1]
+	053 Move XMM_TEMP.S[3], xmm1.S[1]
+	054 Move xmm0, XMM_TEMP
+	055 Compare xmm2, xmm0
+	056 JumpIfLess {65}
+	057 Move XMM_TEMP.S[0], xmm1.S[3]
+	058 Move XMM_TEMP.S[1], xmm1.S[3]
+	059 Move XMM_TEMP.S[2], xmm1.S[3]
+	060 Move XMM_TEMP.S[3], xmm1.S[3]
+	061 Move xmm1, XMM_TEMP
+	062 Add xmm1, xmm1, xmm0
+	063 Compare xmm1, xmm2
+	064 NotImplemented "seta dil"
+	065 Compare rdi, 0
+	066 JumpIfNotEqual {68}
+	067 Or [rbx+16], [rbx+16], 1
+	068 Move rbx, stack:0x60
+	069 Move rsi, stack:0x68
+	070 Move xmm6, stack:0x30
+	071 ShiftStack 64
+	072 Move rdi, stack:0x0
+	073 ShiftStack 8
+	074 Return 
+	075 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

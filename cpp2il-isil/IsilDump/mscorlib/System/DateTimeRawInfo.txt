@@ -1,0 +1,54 @@
+Type: System.DateTimeRawInfo
+
+Method: System.Void Init(System.Int32* numberBuffer)
+
+Disassembly:
+	mov rax,0BFF0000000000000h
+	mov qword ptr [rcx+0Ch],0FFFFFFFFFFFFFFFFh
+	mov [rcx+20h],rax
+	mov qword ptr [rcx+14h],0FFFFFFFFFFFFFFFFh
+	mov dword ptr [rcx+1Ch],0FFFFFFFFh
+	mov [rcx],rdx
+	ret
+
+ISIL:
+	001 Move rax, 13830554455654793216
+	002 Move [rcx+12], 18446744073709551615
+	003 Move [rcx+32], rax
+	004 Move [rcx+20], 18446744073709551615
+	005 Move [rcx+28], 0xFFFFFFFF
+	006 Move [rcx], rdx
+	007 Return 
+
+Method: System.Void AddNumber(System.Int32 value)
+
+Disassembly:
+	movsxd r8,dword ptr [rcx+8]
+	lea eax,[r8+1]
+	mov [rcx+8],eax
+	mov rax,[rcx]
+	mov [rax+r8*4],edx
+	ret
+
+ISIL:
+	001 Move r8, [rcx+8]
+	002 LoadAddress rax, [r8+1]
+	003 Move [rcx+8], rax
+	004 Move rax, [rcx]
+	005 Move [rax+r8*4], rdx
+	006 Return 
+
+Method: System.Int32 GetNumber(System.Int32 index)
+
+Disassembly:
+	mov rax,[rcx]
+	movsxd rdx,edx
+	mov eax,[rax+rdx*4]
+	ret
+
+ISIL:
+	001 Move rax, [rcx]
+	002 Move rdx, rdx
+	003 Move rax, [rax+rdx*4]
+	004 Return rax
+

@@ -1,0 +1,65 @@
+Type: System.Threading.LockHolder
+
+Method: System.Threading.LockHolder Hold(System.Threading.Lock l)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	test rcx,rcx
+	je short 0000000180F982E4h
+	mov rcx,[rcx+10h]
+	call 0000000180187360h
+	mov rdx,rbx
+	mov [rsp+30h],rbx
+	lea rcx,[rsp+30h]
+	call 00000001801E1E30h
+	mov rax,[rsp+30h]
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Compare rcx, 0
+	006 JumpIfEqual {18}
+	007 Move rcx, [rcx+16]
+	008 Call 0x180187360, rcx, rdx, r8, r9
+	009 Move rdx, rbx
+	010 Move stack:0x30, rbx
+	011 LoadAddress rcx, stack:0x30
+	012 Call 0x1801E1E30, rcx, rdx, r8, r9
+	013 Move rax, stack:0x30
+	014 ShiftStack 32
+	015 Move rbx, stack:0x0
+	016 ShiftStack 8
+	017 Return rax
+	018 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void Dispose()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx]
+	test rcx,rcx
+	je short 0000000180F982A9h
+	mov rcx,[rcx+10h]
+	add rsp,28h
+	jmp near ptr 0000000180187390h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rcx, [rcx+16]
+	006 ShiftStack 40
+	007 Call 0x180187390, rcx, rdx, r8, r9
+	008 Return 
+	009 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

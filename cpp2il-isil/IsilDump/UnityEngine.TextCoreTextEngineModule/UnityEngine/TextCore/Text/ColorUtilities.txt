@@ -1,0 +1,176 @@
+Type: UnityEngine.TextCore.Text.ColorUtilities
+
+Method: System.Boolean CompareColors(UnityEngine.Color32 a, UnityEngine.Color32 b)
+
+Disassembly:
+	cmp cl,dl
+	jne short 000000018167DCF2h
+	mov r8d,ecx
+	mov eax,edx
+	shr r8d,8
+	shr eax,8
+	cmp r8b,al
+	jne short 000000018167DCF2h
+	mov r8d,ecx
+	mov eax,edx
+	shr r8d,10h
+	shr eax,10h
+	cmp r8b,al
+	jne short 000000018167DCF2h
+	shr ecx,18h
+	shr edx,18h
+	cmp cl,dl
+	sete al
+	ret
+	xor eax,eax
+	ret
+
+ISIL:
+	001 Compare rcx, rdx
+	002 JumpIfNotEqual {20}
+	003 Move r8, rcx
+	004 Move rax, rdx
+	005 ShiftRight r8, 8
+	006 ShiftRight rax, 8
+	007 Compare r8, rax
+	008 JumpIfNotEqual {20}
+	009 Move r8, rcx
+	010 Move rax, rdx
+	011 ShiftRight r8, 16
+	012 ShiftRight rax, 16
+	013 Compare r8, rax
+	014 JumpIfNotEqual {20}
+	015 ShiftRight rcx, 24
+	016 ShiftRight rdx, 24
+	017 Compare rcx, rdx
+	018 NotImplemented "sete al"
+	019 Return rax
+	020 Move rax, 0
+	021 Return rax
+
+Method: UnityEngine.Color32 MultiplyColors(UnityEngine.Color32 c1, UnityEngine.Color32 c2)
+
+Disassembly:
+	movss xmm2,dword ptr [1818BCB78h]
+	xorps xmm3,xmm3
+	movzx eax,dl
+	movd xmm1,eax
+	cvtdq2ps xmm1,xmm1
+	movzx eax,cl
+	movd xmm0,eax
+	mov eax,ecx
+	divss xmm1,xmm2
+	shr eax,8
+	movzx eax,al
+	cvtdq2ps xmm0,xmm0
+	divss xmm0,xmm2
+	mulss xmm1,xmm0
+	mulss xmm1,xmm2
+	cvttss2si r10d,xmm1
+	movd xmm1,eax
+	mov eax,edx
+	cvtdq2ps xmm1,xmm1
+	shr eax,8
+	movzx eax,al
+	mov [rsp+8],r10b
+	divss xmm1,xmm2
+	movd xmm0,eax
+	mov eax,ecx
+	cvtdq2ps xmm0,xmm0
+	shr eax,10h
+	movzx eax,al
+	shr ecx,18h
+	divss xmm0,xmm2
+	mulss xmm1,xmm0
+	mulss xmm1,xmm2
+	cvttss2si r9d,xmm1
+	movd xmm1,eax
+	mov eax,edx
+	cvtdq2ps xmm1,xmm1
+	shr eax,10h
+	movzx eax,al
+	shr edx,18h
+	mov [rsp+9],r9b
+	divss xmm1,xmm2
+	movd xmm0,eax
+	cvtdq2ps xmm0,xmm0
+	divss xmm0,xmm2
+	mulss xmm1,xmm0
+	movd xmm0,edx
+	cvtdq2ps xmm0,xmm0
+	mulss xmm1,xmm2
+	divss xmm0,xmm2
+	cvttss2si r8d,xmm1
+	movd xmm1,ecx
+	cvtdq2ps xmm1,xmm1
+	mov [rsp+0Ah],r8b
+	divss xmm1,xmm2
+	mulss xmm1,xmm0
+	mulss xmm1,xmm2
+	cvttss2si eax,xmm1
+	mov [rsp+0Bh],al
+	mov eax,[rsp+8]
+	ret
+
+ISIL:
+	001 Move xmm2, [0x1818BCB78]
+	002 Move xmm3, 0
+	003 Move rax, rdx
+	004 Move xmm1, rax
+	005 Move xmm1, xmm1
+	006 Move rax, rcx
+	007 Move xmm0, rax
+	008 Move rax, rcx
+	009 Divide xmm1, xmm1, xmm2
+	010 ShiftRight rax, 8
+	011 Move rax, rax
+	012 Move xmm0, xmm0
+	013 Divide xmm0, xmm0, xmm2
+	014 Multiply xmm1, xmm1, xmm0
+	015 Multiply xmm1, xmm1, xmm2
+	016 NotImplemented "cvttss2si r10d,xmm1"
+	017 Move xmm1, rax
+	018 Move rax, rdx
+	019 Move xmm1, xmm1
+	020 ShiftRight rax, 8
+	021 Move rax, rax
+	022 Move stack:0x8, r10
+	023 Divide xmm1, xmm1, xmm2
+	024 Move xmm0, rax
+	025 Move rax, rcx
+	026 Move xmm0, xmm0
+	027 ShiftRight rax, 16
+	028 Move rax, rax
+	029 ShiftRight rcx, 24
+	030 Divide xmm0, xmm0, xmm2
+	031 Multiply xmm1, xmm1, xmm0
+	032 Multiply xmm1, xmm1, xmm2
+	033 NotImplemented "cvttss2si r9d,xmm1"
+	034 Move xmm1, rax
+	035 Move rax, rdx
+	036 Move xmm1, xmm1
+	037 ShiftRight rax, 16
+	038 Move rax, rax
+	039 ShiftRight rdx, 24
+	040 Move stack:0x9, r9
+	041 Divide xmm1, xmm1, xmm2
+	042 Move xmm0, rax
+	043 Move xmm0, xmm0
+	044 Divide xmm0, xmm0, xmm2
+	045 Multiply xmm1, xmm1, xmm0
+	046 Move xmm0, rdx
+	047 Move xmm0, xmm0
+	048 Multiply xmm1, xmm1, xmm2
+	049 Divide xmm0, xmm0, xmm2
+	050 NotImplemented "cvttss2si r8d,xmm1"
+	051 Move xmm1, rcx
+	052 Move xmm1, xmm1
+	053 Move stack:0xA, r8
+	054 Divide xmm1, xmm1, xmm2
+	055 Multiply xmm1, xmm1, xmm0
+	056 Multiply xmm1, xmm1, xmm2
+	057 NotImplemented "cvttss2si eax,xmm1"
+	058 Move stack:0xB, rax
+	059 Move rax, stack:0x8
+	060 Return rax
+

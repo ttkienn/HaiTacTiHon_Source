@@ -1,0 +1,132 @@
+Type: System.Linq.Expressions.Interpreter.InitializeLocalInstruction+Parameter
+
+Method: System.Void .ctor(System.Int32 index)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov edi,edx
+	mov rbx,rcx
+	xor edx,edx
+	call 000000018024B5B0h
+	mov [rbx+10h],edi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x18024B5B0, rcx, rdx, r8
+	009 Move [rbx+16], rdi
+	010 Move rbx, stack:0x30
+	011 ShiftStack 32
+	012 Move rdi, stack:0x0
+	013 ShiftStack 8
+	014 Return 
+
+Method: System.Int32 Run(System.Linq.Expressions.Interpreter.InterpretedFrame frame)
+
+Disassembly:
+	mov eax,1
+	ret
+
+ISIL:
+	001 Move rax, 1
+	002 Return rax
+
+Method: System.Linq.Expressions.Interpreter.Instruction BoxIfIndexMatches(System.Int32 index)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1E4C5h],0
+	mov ebx,edx
+	mov rdi,rcx
+	jne short 000000018113680Bh
+	lea rcx,[181E23BE0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E4C5h],1
+	cmp ebx,[rdi+10h]
+	je short 000000018113681Dh
+	xor eax,eax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	mov rcx,[181E23BE0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000181136832h
+	call 0000000180153C50h
+	xor edx,edx
+	mov ecx,ebx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000181106930h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1E4C5], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E23BE0]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F1E4C5], 1
+	012 Compare rbx, [rdi+16]
+	013 JumpIfEqual {20}
+	014 Move rax, 0
+	015 Move rbx, stack:0x30
+	016 ShiftStack 32
+	017 Move rdi, stack:0x0
+	018 ShiftStack 8
+	019 Return rax
+	020 Move rcx, typeof(System.Linq.Expressions.Interpreter.InstructionList)
+	021 Compare [rcx+224], 0
+	022 JumpIfNotEqual {24}
+	023 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	024 Move rdx, 0
+	025 Move rcx, rbx
+	026 Move rbx, stack:0x30
+	027 ShiftStack 32
+	028 Move rdi, stack:0x0
+	029 ShiftStack 8
+	030 Call InstructionList.ParameterBox, rcx, rdx
+	031 Return rax
+
+Method: System.String get_InstructionName()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1E4C6h],0
+	jne short 0000000181136870h
+	lea rcx,[181E02840h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E4C6h],1
+	mov rax,[181E02840h]
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1E4C6], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E02840]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F1E4C6], 1
+	007 Move rax, "InitParameter"
+	008 ShiftStack 40
+	009 Return rax
+

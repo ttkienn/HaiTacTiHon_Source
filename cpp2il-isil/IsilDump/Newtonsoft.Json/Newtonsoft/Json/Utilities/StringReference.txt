@@ -1,0 +1,128 @@
+Type: Newtonsoft.Json.Utilities.StringReference
+
+Method: System.Char get_Item(System.Int32 i)
+
+Disassembly:
+	sub rsp,28h
+	mov r8,[rcx]
+	test r8,r8
+	je short 000000018104CD70h
+	cmp edx,[r8+18h]
+	jae short 000000018104CD76h
+	movsxd rax,edx
+	movzx eax,word ptr [r8+rax*2+20h]
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move r8, [rcx]
+	003 Compare r8, 0
+	004 JumpIfEqual {11}
+	005 Compare rdx, [r8+24]
+	006 JumpIfGreaterOrEqual {13}
+	007 Move rax, rdx
+	008 Move rax, [r8+32+rax*2]
+	009 ShiftStack 40
+	010 Return rax
+	011 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	012 Interrupt 
+	013 Call 0x1801E2C90, rcx, rdx, r8, r9
+
+Method: System.Char[] get_Chars()
+
+Disassembly:
+	mov rax,[rcx]
+	ret
+
+ISIL:
+	001 Move rax, [rcx]
+	002 Return rax
+
+Method: System.Int32 get_StartIndex()
+
+Disassembly:
+	mov eax,[rcx+8]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+8]
+	002 Return rax
+
+Method: System.Int32 get_Length()
+
+Disassembly:
+	mov eax,[rcx+0Ch]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+12]
+	002 Return rax
+
+Method: System.Void .ctor(System.Char[] chars, System.Int32 startIndex, System.Int32 length)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov esi,r9d
+	mov [rcx],rdx
+	mov edi,r8d
+	mov rbx,rcx
+	call 00000001801E1E30h
+	mov [rbx+0Ch],esi
+	mov rsi,[rsp+38h]
+	mov [rbx+8],edi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rsi, r9
+	007 Move [rcx], rdx
+	008 Move rdi, r8
+	009 Move rbx, rcx
+	010 Call 0x1801E1E30, rcx, rdx, r8, r9
+	011 Move [rbx+12], rsi
+	012 Move rsi, stack:0x38
+	013 Move [rbx+8], rdi
+	014 Move rbx, stack:0x30
+	015 ShiftStack 32
+	016 Move rdi, stack:0x0
+	017 ShiftStack 8
+	018 Return 
+
+Method: System.String ToString()
+
+Disassembly:
+	sub rsp,38h
+	mov r9d,[rcx+0Ch]
+	mov r8d,[rcx+8]
+	mov rdx,[rcx]
+	xor ecx,ecx
+	mov qword ptr [rsp+20h],0
+	call 0000000180D7C6D0h
+	add rsp,38h
+	ret
+
+ISIL:
+	001 ShiftStack -56
+	002 Move r9, [rcx+12]
+	003 Move r8, [rcx+8]
+	004 Move rdx, [rcx]
+	005 Move rcx, 0
+	006 Move stack:0x20, 0
+	007 Call String.CreateString, rcx, rdx, r8, r9
+	008 ShiftStack 56
+	009 Return rax
+

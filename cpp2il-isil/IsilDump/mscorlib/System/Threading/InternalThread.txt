@@ -1,0 +1,72 @@
+Type: System.Threading.InternalThread
+
+Method: System.Void Thread_free_internal()
+
+Disassembly:
+	jmp near ptr 0000000180187AE0h
+
+ISIL:
+	001 Call 0x180187AE0, rcx, rdx, r8, r9
+	002 Return 
+
+Method: System.Void Finalize()
+
+Disassembly:
+	mov [rsp+8],rcx
+	sub rsp,48h
+	mov qword ptr [rsp+28h],0
+	lea rax,[rsp+50h]
+	mov [rsp+30h],rax
+	mov rcx,[rsp+50h]
+	call 0000000180187AE0h
+	nop
+	xor edx,edx
+	mov rcx,[rsp+50h]
+	call 0000000180E366D0h
+	jmp short 0000000180FAE74Bh
+	xor edx,edx
+	mov rcx,[rsp+50h]
+	call 0000000180E366D0h
+	mov rcx,[rsp+28h]
+	test rcx,rcx
+	jne short 0000000180FAE750h
+	add rsp,48h
+	ret
+	call 000000018018E770h
+
+ISIL:
+	001 Move stack:0x8, rcx
+	002 ShiftStack -72
+	003 Move stack:0x28, 0
+	004 LoadAddress rax, stack:0x50
+	005 Move stack:0x30, rax
+	006 Move rcx, stack:0x50
+	007 Call 0x180187AE0, rcx, rdx, r8, r9
+	008 Nop 
+	009 Move rdx, 0
+	010 Move rcx, stack:0x50
+	011 Call CriticalFinalizerObject.Finalize, rcx, rdx
+	012 Goto {19}
+	013 Move rdx, 0
+	014 Move rcx, stack:0x50
+	015 Call CriticalFinalizerObject.Finalize, rcx, rdx
+	016 Move rcx, stack:0x28
+	017 Compare rcx, 0
+	018 JumpIfNotEqual {21}
+	019 ShiftStack 72
+	020 Return 
+	021 Call 0x18018E770, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	mov dword ptr [rcx+0E0h],2
+	jmp near ptr 000000018024B5B0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Move [rcx+224], 2
+	003 Call 0x18024B5B0, rcx, rdx, r8
+	004 Return 
+

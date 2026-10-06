@@ -1,0 +1,146 @@
+Type: System.Runtime.Serialization.Formatters.Binary.SerObjectInfoCache
+
+Method: System.Void .ctor(System.String typeName, System.String assemblyName, System.Boolean hasTypeForwardedFrom)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	movzx ebp,r9b
+	xor edx,edx
+	mov rdi,r8
+	mov rsi,rcx
+	call 000000018024B730h
+	lea rcx,[rsi+10h]
+	mov [rsi+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	lea rcx,[rsi+18h]
+	mov [rsi+18h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	mov rbx,[rsp+30h]
+	mov [rsi+20h],bpl
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbx, rdx
+	008 Move rbp, r9
+	009 Move rdx, 0
+	010 Move rdi, r8
+	011 Move rsi, rcx
+	012 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	013 LoadAddress rcx, [rsi+16]
+	014 Move [rsi+16], rbx
+	015 Move rdx, rbx
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 LoadAddress rcx, [rsi+24]
+	018 Move [rsi+24], rdi
+	019 Move rdx, rdi
+	020 Call 0x1801E1E30, rcx, rdx, r8, r9
+	021 Move rbx, stack:0x30
+	022 Move [rsi+32], rbp
+	023 Move rbp, stack:0x38
+	024 Move rsi, stack:0x40
+	025 ShiftStack 32
+	026 Move rdi, stack:0x0
+	027 ShiftStack 8
+	028 Return 
+
+Method: System.Void .ctor(System.Type type)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1CA7Eh],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 0000000180E293DCh
+	lea rcx,[181E01D98h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1CA7Eh],1
+	xor edx,edx
+	mov rcx,rbx
+	call 000000018024B730h
+	mov rcx,[181E01D98h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180E293FBh
+	call 0000000180153C50h
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000180E19560h
+	mov rdi,rax
+	test rax,rax
+	je short 0000000180E29441h
+	mov rdx,[rax+10h]
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdx
+	call 00000001801E1E30h
+	mov rdx,[rdi+18h]
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rdx
+	call 00000001801E1E30h
+	movzx eax,byte ptr [rdi+20h]
+	mov [rbx+20h],al
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1CA7E], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E01D98]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F1CA7E], 1
+	012 Move rdx, 0
+	013 Move rcx, rbx
+	014 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	015 Move rcx, typeof(System.Runtime.Serialization.Formatters.Binary.BinaryFormatter)
+	016 Compare [rcx+224], 0
+	017 JumpIfNotEqual {19}
+	018 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	019 Move rdx, 0
+	020 Move rcx, rdi
+	021 Call BinaryFormatter.GetTypeInformation, rcx, rdx
+	022 Move rdi, rax
+	023 Compare rax, 0
+	024 JumpIfEqual {40}
+	025 Move rdx, [rax+16]
+	026 LoadAddress rcx, [rbx+16]
+	027 Move [rbx+16], rdx
+	028 Call 0x1801E1E30, rcx, rdx, r8, r9
+	029 Move rdx, [rdi+24]
+	030 LoadAddress rcx, [rbx+24]
+	031 Move [rbx+24], rdx
+	032 Call 0x1801E1E30, rcx, rdx, r8, r9
+	033 Move rax, [rdi+32]
+	034 Move [rbx+32], rax
+	035 Move rbx, stack:0x30
+	036 ShiftStack 32
+	037 Move rdi, stack:0x0
+	038 ShiftStack 8
+	039 Return 
+	040 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

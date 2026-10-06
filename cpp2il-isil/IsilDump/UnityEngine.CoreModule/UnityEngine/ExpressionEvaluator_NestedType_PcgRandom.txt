@@ -1,0 +1,150 @@
+Type: UnityEngine.ExpressionEvaluator+PcgRandom
+
+Method: System.Void .ctor(System.UInt64 state = 0, System.UInt64 sequence = 0)
+
+Disassembly:
+	add r8,r8
+	or r8,1
+	mov [rcx],r8
+	lea rax,[r8+rdx]
+	mov rdx,5851F42D4C957F2Dh
+	imul rax,rdx
+	add rax,r8
+	mov [rcx+8],rax
+	ret
+
+ISIL:
+	001 Add r8, r8, r8
+	002 Or r8, r8, 1
+	003 Move [rcx], r8
+	004 LoadAddress rax, [r8+rdx]
+	005 Move rdx, 0x5851F42D4C957F2D
+	006 Multiply rax, rax, rdx
+	007 Add rax, rax, r8
+	008 Move [rcx+8], rax
+	009 Return 
+
+Method: System.UInt32 GetUInt()
+
+Disassembly:
+	mov rdx,[rcx+8]
+	mov r8,5851F42D4C957F2Dh
+	mov rax,rdx
+	mov r9,rdx
+	imul rax,r8
+	mov r8,rdx
+	shr r9,2Dh
+	add rax,[rcx]
+	shr r8,3Bh
+	shr rdx,1Bh
+	mov [rcx+8],rax
+	xor r9d,edx
+	mov eax,r9d
+	mov ecx,r8d
+	neg ecx
+	shl eax,cl
+	mov ecx,r8d
+	shr r9d,cl
+	or eax,r9d
+	ret
+
+ISIL:
+	001 Move rdx, [rcx+8]
+	002 Move r8, 0x5851F42D4C957F2D
+	003 Move rax, rdx
+	004 Move r9, rdx
+	005 Multiply rax, rax, r8
+	006 Move r8, rdx
+	007 ShiftRight r9, 45
+	008 Add rax, rax, [rcx]
+	009 ShiftRight r8, 59
+	010 ShiftRight rdx, 27
+	011 Move [rcx+8], rax
+	012 Xor r9, r9, rdx
+	013 Move rax, r9
+	014 Move rcx, r8
+	015 Neg rcx
+	016 ShiftLeft rax, rcx
+	017 Move rcx, r8
+	018 ShiftRight r9, rcx
+	019 Or rax, rax, r9
+	020 Return rax
+
+Method: System.UInt32 RotateRight(System.UInt32 v, System.Int32 rot)
+
+Disassembly:
+	mov r8d,ecx
+	mov ecx,edx
+	neg ecx
+	mov eax,r8d
+	shl eax,cl
+	and edx,1Fh
+	movzx ecx,dl
+	shr r8d,cl
+	or eax,r8d
+	ret
+
+ISIL:
+	001 Move r8, rcx
+	002 Move rcx, rdx
+	003 Neg rcx
+	004 Move rax, r8
+	005 ShiftLeft rax, rcx
+	006 And rdx, rdx, 31
+	007 Move rcx, rdx
+	008 ShiftRight r8, rcx
+	009 Or rax, rax, r8
+	010 Return rax
+
+Method: System.UInt32 XshRr(System.UInt64 s)
+
+Disassembly:
+	mov r8,rcx
+	mov rdx,rcx
+	shr rcx,1Bh
+	shr r8,2Dh
+	xor r8d,ecx
+	shr rdx,3Bh
+	mov eax,r8d
+	mov ecx,edx
+	neg ecx
+	shl eax,cl
+	mov ecx,edx
+	shr r8d,cl
+	or eax,r8d
+	ret
+
+ISIL:
+	001 Move r8, rcx
+	002 Move rdx, rcx
+	003 ShiftRight rcx, 27
+	004 ShiftRight r8, 45
+	005 Xor r8, r8, rcx
+	006 ShiftRight rdx, 59
+	007 Move rax, r8
+	008 Move rcx, rdx
+	009 Neg rcx
+	010 ShiftLeft rax, rcx
+	011 Move rcx, rdx
+	012 ShiftRight r8, rcx
+	013 Or rax, rax, r8
+	014 Return rax
+
+Method: System.Void Step()
+
+Disassembly:
+	mov rax,[rcx+8]
+	mov rdx,5851F42D4C957F2Dh
+	imul rax,rdx
+	add rax,[rcx]
+	mov [rcx+8],rax
+	ret
+
+ISIL:
+	001 Move rax, [rcx+8]
+	002 Move rdx, 0x5851F42D4C957F2D
+	003 Multiply rax, rax, rdx
+	004 Add rax, rax, [rcx]
+	005 Move [rcx+8], rax
+	006 Return 
+

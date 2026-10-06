@@ -1,0 +1,39 @@
+Type: System.Data.DataTable+RowDiffIdUsageSection
+
+Method: System.Void Prepare(System.Data.DataTable table)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rdx
+	mov [rcx],rdx
+	call 00000001801E1E30h
+	test rbx,rbx
+	je short 000000018119FD04h
+	lea rcx,[rbx+208h]
+	mov qword ptr [rbx+208h],0
+	xor edx,edx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001801E1E30h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rdx
+	005 Move [rcx], rdx
+	006 Call 0x1801E1E30, rcx, rdx, r8, r9
+	007 Compare rbx, 0
+	008 JumpIfEqual {17}
+	009 LoadAddress rcx, [rbx+520]
+	010 Move [rbx+520], 0
+	011 Move rdx, 0
+	012 ShiftStack 32
+	013 Move rbx, stack:0x0
+	014 ShiftStack 8
+	015 Call 0x1801E1E30, rcx, rdx, r8, r9
+	016 Return 
+	017 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

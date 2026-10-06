@@ -1,0 +1,86 @@
+Type: UnityEngine.UIElements.UIR.UIRenderDevice+DeviceToFree
+
+Method: System.Void Dispose()
+
+Disassembly:
+	sub rsp,28h
+	cmp qword ptr [rcx+8],0
+	jbe near ptr 000000018172E08Ah
+	mov [rsp+30h],rbx
+	lea rbx,[rcx+8]
+	mov [rsp+20h],rdi
+	nop dword ptr [rax]
+	mov rdi,[rbx]
+	test rdi,rdi
+	je short 000000018172E08Fh
+	mov rdx,[rdi+28h]
+	mov rcx,rbx
+	mov [rbx],rdx
+	call 00000001801E1E30h
+	cmp byte ptr [181F23525h],0
+	jne short 000000018172E043h
+	lea rcx,[181E153C0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F23525h],1
+	mov r8,[rdi]
+	mov dl,1
+	mov rcx,rdi
+	mov rax,[r8+188h]
+	mov r8,[r8+190h]
+	call rax
+	mov rcx,[181E153C0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 000000018172E070h
+	call 0000000180153C50h
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000180F60F50h
+	cmp qword ptr [rbx],0
+	ja short 000000018172E010h
+	mov rbx,[rsp+30h]
+	mov rdi,[rsp+20h]
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [rcx+8], 0
+	003 JumpIfLessOrEqual {37}
+	004 Move stack:0x30, rbx
+	005 LoadAddress rbx, [rcx+8]
+	006 Move stack:0x20, rdi
+	007 Nop 
+	008 Move rdi, [rbx]
+	009 Compare rdi, 0
+	010 JumpIfEqual {39}
+	011 Move rdx, [rdi+40]
+	012 Move rcx, rbx
+	013 Move [rbx], rdx
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 Compare [0x181F23525], 0
+	016 JumpIfNotEqual {20}
+	017 LoadAddress rcx, [0x181E153C0]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 Move [0x181F23525], 1
+	020 Move r8, [rdi]
+	021 Move rdx, 1
+	022 Move rcx, rdi
+	023 Move rax, [r8+392]
+	024 Move r8, [r8+400]
+	025 Call rax
+	026 Move rcx, typeof(System.GC)
+	027 Compare [rcx+224], 0
+	028 JumpIfNotEqual {30}
+	029 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	030 Move rdx, 0
+	031 Move rcx, rdi
+	032 Call GC.SuppressFinalize, rcx, rdx
+	033 Compare [rbx], 0
+	034 JumpIfGreater {8}
+	035 Move rbx, stack:0x30
+	036 Move rdi, stack:0x20
+	037 ShiftStack 40
+	038 Return 
+	039 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

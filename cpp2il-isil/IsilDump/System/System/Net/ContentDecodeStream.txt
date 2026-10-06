@@ -1,0 +1,326 @@
+Type: System.Net.ContentDecodeStream
+
+Method: System.Net.ContentDecodeStream Create(System.Net.WebOperation operation, System.IO.Stream innerStream, System.Net.ContentDecodeStream+Mode mode)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F20667h],0
+	mov ebx,r8d
+	mov rsi,rdx
+	mov rbp,rcx
+	jne short 00000001815517A1h
+	lea rcx,[181E083B0h]
+	call 00000001801E2A80h
+	lea rcx,[181E0E458h]
+	call 00000001801E2A80h
+	lea rcx,[181E15C80h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20667h],1
+	test ebx,ebx
+	je short 00000001815517C7h
+	mov rcx,[181E0E458h]
+	call 0000000180197840h
+	xor r9d,r9d
+	xor r8d,r8d
+	mov rdx,rsi
+	mov rcx,rax
+	mov rdi,rax
+	call 000000018151AF20h
+	jmp short 00000001815517E7h
+	mov rcx,[181E15C80h]
+	call 0000000180197840h
+	xor r9d,r9d
+	xor r8d,r8d
+	mov rdx,rsi
+	mov rcx,rax
+	mov rdi,rax
+	call 000000018151CD30h
+	mov rcx,[181E083B0h]
+	call 0000000180197840h
+	xor r9d,r9d
+	mov r8,rdi
+	mov rdx,rbp
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000181472BA0h
+	lea rcx,[rbx+40h]
+	mov [rbx+40h],rsi
+	mov rdx,rsi
+	call 00000001801E1E30h
+	mov rbp,[rsp+38h]
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [0x181F20667], 0
+	008 Move rbx, r8
+	009 Move rsi, rdx
+	010 Move rbp, rcx
+	011 JumpIfNotEqual {19}
+	012 LoadAddress rcx, [0x181E083B0]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 LoadAddress rcx, [0x181E0E458]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 LoadAddress rcx, [0x181E15C80]
+	017 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	018 Move [0x181F20667], 1
+	019 Compare rbx, 0
+	020 JumpIfEqual {30}
+	021 Move rcx, typeof(System.IO.Compression.DeflateStream)
+	022 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	023 Move r9, 0
+	024 Move r8, 0
+	025 Move rdx, rsi
+	026 Move rcx, rax
+	027 Move rdi, rax
+	028 Call DeflateStream..ctor, rcx, rdx, r8
+	029 Goto {38}
+	030 Move rcx, typeof(System.IO.Compression.GZipStream)
+	031 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	032 Move r9, 0
+	033 Move r8, 0
+	034 Move rdx, rsi
+	035 Move rcx, rax
+	036 Move rdi, rax
+	037 Call GZipStream..ctor, rcx, rdx, r8
+	038 Move rcx, typeof(System.Net.ContentDecodeStream)
+	039 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	040 Move r9, 0
+	041 Move r8, rdi
+	042 Move rdx, rbp
+	043 Move rcx, rax
+	044 Move rbx, rax
+	045 Call WebReadStream..ctor, rcx, rdx, r8
+	046 LoadAddress rcx, [rbx+64]
+	047 Move [rbx+64], rsi
+	048 Move rdx, rsi
+	049 Call 0x1801E1E30, rcx, rdx, r8, r9
+	050 Move rbp, stack:0x38
+	051 Move rax, rbx
+	052 Move rbx, stack:0x30
+	053 Move rsi, stack:0x40
+	054 ShiftStack 32
+	055 Move rdi, stack:0x0
+	056 ShiftStack 8
+	057 Return rax
+
+Method: System.IO.Stream get_OriginalInnerStream()
+
+Disassembly:
+	mov rax,[rcx+40h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+64]
+	002 Return rax
+
+Method: System.Void .ctor(System.Net.WebOperation operation, System.IO.Stream decodeStream, System.IO.Stream originalInnerStream)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,r9
+	mov rbx,rcx
+	xor r9d,r9d
+	call 0000000181472BA0h
+	lea rcx,[rbx+40h]
+	mov [rbx+40h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, r9
+	006 Move rbx, rcx
+	007 Move r9, 0
+	008 Call WebReadStream..ctor, rcx, rdx, r8
+	009 LoadAddress rcx, [rbx+64]
+	010 Move [rbx+64], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.Threading.Tasks.Task`1<System.Int32> ProcessReadAsync(System.Byte[] buffer, System.Int32 offset, System.Int32 size, System.Threading.CancellationToken cancellationToken)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+30h]
+	test rcx,rcx
+	je short 0000000181547B6Ah
+	mov rax,[rcx]
+	mov r10,[rax+2C8h]
+	mov rax,[rax+2D0h]
+	mov [rsp+68h],rax
+	add rsp,38h
+	jmp r10
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+48]
+	003 Compare rcx, 0
+	004 JumpIfEqual {11}
+	005 Move rax, [rcx]
+	006 Move r10, [rax+712]
+	007 Move rax, [rax+720]
+	008 Move stack:0x68, rax
+	009 ShiftStack 56
+	010 CallNoReturn r10
+	011 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Threading.Tasks.Task FinishReading(System.Threading.CancellationToken cancellationToken)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F20668h],0
+	mov rbx,rdx
+	mov rdi,rcx
+	jne short 0000000181551868h
+	lea rcx,[181DFEDE0h]
+	call 00000001801E2A80h
+	lea rcx,[181E09528h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20668h],1
+	mov rdx,[rdi+40h]
+	test rdx,rdx
+	je short 00000001815518D1h
+	mov r8,[181E09528h]
+	mov r9,[rdx]
+	movzx eax,byte ptr [r8+130h]
+	cmp [r9+130h],al
+	jb short 00000001815518A1h
+	movzx ecx,al
+	mov rax,[r9+0C8h]
+	cmp [rax+rcx*8-8],r8
+	jne short 00000001815518A1h
+	mov al,1
+	jmp short 00000001815518A3h
+	xor al,al
+	xor ecx,ecx
+	test al,al
+	cmovne rcx,rdx
+	test rcx,rcx
+	je short 00000001815518D1h
+	mov r8,[rcx]
+	mov rdx,rbx
+	mov rax,[r8+3B8h]
+	mov r8,[r8+3C0h]
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp rax
+	mov rcx,[181DFEDE0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001815518E6h
+	call 0000000180153C50h
+	cmp byte ptr [181F1C746h],0
+	jne short 0000000181551902h
+	lea rcx,[181DFEDE0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C746h],1
+	mov rcx,[181DFEDE0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000181551917h
+	call 0000000180153C50h
+	mov rax,[181DFEDE0h]
+	mov rbx,[rsp+30h]
+	mov rax,[rax+0B8h]
+	mov rax,[rax+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F20668], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {14}
+	009 LoadAddress rcx, [0x181DFEDE0]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x181E09528]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x181F20668], 1
+	014 Move rdx, [rdi+64]
+	015 Compare rdx, 0
+	016 JumpIfEqual {45}
+	017 Move r8, typeof(System.Net.WebReadStream)
+	018 Move r9, [rdx]
+	019 Move rax, [r8+304]
+	020 Compare [r9+304], rax
+	021 JumpIfLess {28}
+	022 Move rcx, rax
+	023 Move rax, [r9+200]
+	024 Compare [rax+0xFFFFFFF8+rcx*8], r8
+	025 JumpIfNotEqual {28}
+	026 Move rax, 1
+	027 Goto {29}
+	028 Move rax, 0
+	029 Move rcx, 0
+	030 Compare rax, 0
+	031 JumpIfEqual {33}
+	032 Move rcx, rdx
+	033 Nop 
+	034 Compare rcx, 0
+	035 JumpIfEqual {45}
+	036 Move r8, [rcx]
+	037 Move rdx, rbx
+	038 Move rax, [r8+952]
+	039 Move r8, [r8+960]
+	040 Move rbx, stack:0x30
+	041 ShiftStack 32
+	042 Move rdi, stack:0x0
+	043 ShiftStack 8
+	044 CallNoReturn rax
+	045 Move rcx, typeof(System.Threading.Tasks.Task)
+	046 Compare [rcx+224], 0
+	047 JumpIfNotEqual {49}
+	048 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	049 Compare [0x181F1C746], 0
+	050 JumpIfNotEqual {54}
+	051 LoadAddress rcx, [0x181DFEDE0]
+	052 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	053 Move [0x181F1C746], 1
+	054 Move rcx, typeof(System.Threading.Tasks.Task)
+	055 Compare [rcx+224], 0
+	056 JumpIfNotEqual {58}
+	057 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	058 Move rax, typeof(System.Threading.Tasks.Task)
+	059 Move rbx, stack:0x30
+	060 Move rax, [rax+184]
+	061 Move rax, [rax+48]
+	062 ShiftStack 32
+	063 Move rdi, stack:0x0
+	064 ShiftStack 8
+	065 Return rax
+

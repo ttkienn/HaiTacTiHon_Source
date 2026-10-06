@@ -1,0 +1,146 @@
+Type: UnityEngine.Playables.PlayableBinding+CreateOutputMethod
+
+Method: System.Void .ctor(System.Object object, System.IntPtr method)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rax,[r8+8]
+	mov rbx,r8
+	mov [rcx+10h],rax
+	mov rdi,rcx
+	mov [rcx+28h],rbx
+	mov rsi,rdx
+	mov [rcx+20h],rdx
+	add rcx,20h
+	call 00000001801E1E30h
+	movzx ebp,byte ptr [rbx+52h]
+	mov rcx,rbx
+	mov [rdi+40h],rdi
+	call 00000001801E1E60h
+	test al,al
+	je short 000000018163BD59h
+	cmp bpl,2
+	jne short 000000018163BD5Eh
+	lea rcx,[180122D80h]
+	jmp short 000000018163BD6Ah
+	test rsi,rsi
+	je short 000000018163BD96h
+	mov rax,[rdi+20h]
+	mov rcx,[rdi+10h]
+	mov [rdi+40h],rax
+	mov eax,18h
+	mov rdx,rdi
+	mov [rax+rdx],rcx
+	lea rax,[180122CE0h]
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	mov [rdi+38h],rax
+	add rsp,20h
+	pop rdi
+	ret
+	lea rdx,[1818BCB20h]
+	xor ecx,ecx
+	call 00000001801E26D0h
+	mov rcx,rax
+	xor edx,edx
+	call 00000001801E2C60h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rax, [r8+8]
+	008 Move rbx, r8
+	009 Move [rcx+16], rax
+	010 Move rdi, rcx
+	011 Move [rcx+40], rbx
+	012 Move rsi, rdx
+	013 Move [rcx+32], rdx
+	014 Add rcx, rcx, 32
+	015 Call 0x1801E1E30, rcx, rdx, r8, r9
+	016 Move rbp, [rbx+82]
+	017 Move rcx, rbx
+	018 Move [rdi+64], rdi
+	019 Call 0x1801E1E60, rcx, rdx, r8, r9
+	020 Compare rax, 0
+	021 JumpIfEqual {26}
+	022 Compare rbp, 2
+	023 JumpIfNotEqual {28}
+	024 LoadAddress rcx, [0x180122D80]
+	025 Goto {31}
+	026 Compare rsi, 0
+	027 JumpIfEqual {43}
+	028 Move rax, [rdi+32]
+	029 Move rcx, [rdi+16]
+	030 Move [rdi+64], rax
+	031 Move rax, 24
+	032 Move rdx, rdi
+	033 Move [rax+rdx], rcx
+	034 LoadAddress rax, [0x180122CE0]
+	035 Move rbx, stack:0x30
+	036 Move rbp, stack:0x38
+	037 Move rsi, stack:0x40
+	038 Move [rdi+56], rax
+	039 ShiftStack 32
+	040 Move rdi, stack:0x0
+	041 ShiftStack 8
+	042 Return 
+	043 LoadAddress rdx, [0x1818BCB20]
+	044 Move rcx, 0
+	045 Call 0x1801E26D0, rcx, rdx, r8, r9
+	046 Move rcx, rax
+	047 Move rdx, 0
+	048 Call 0x1801E2C60, rcx, rdx, r8, r9
+
+Method: UnityEngine.Playables.PlayableOutput Invoke(UnityEngine.Playables.PlayableGraph graph, System.String name)
+
+Disassembly:
+	push rbx
+	sub rsp,50h
+	movups xmm0,[r8]
+	mov rax,[rdx+28h]
+	lea r8,[rsp+30h]
+	mov r10,[rdx+18h]
+	mov rbx,rcx
+	mov rdx,[rdx+40h]
+	lea rcx,[rsp+40h]
+	movaps [rsp+30h],xmm0
+	mov [rsp+20h],rax
+	call r10
+	movups xmm0,[rax]
+	mov rax,rbx
+	movups [rbx],xmm0
+	add rsp,50h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -80
+	004 Move xmm0, [r8]
+	005 Move rax, [rdx+40]
+	006 LoadAddress r8, stack:0x30
+	007 Move r10, [rdx+24]
+	008 Move rbx, rcx
+	009 Move rdx, [rdx+64]
+	010 LoadAddress rcx, stack:0x40
+	011 Move stack:0x30, xmm0
+	012 Move stack:0x20, rax
+	013 Call r10
+	014 Move xmm0, [rax]
+	015 Move rax, rbx
+	016 Move [rbx], xmm0
+	017 ShiftStack 80
+	018 Move rbx, stack:0x0
+	019 ShiftStack 8
+	020 Return rax
+

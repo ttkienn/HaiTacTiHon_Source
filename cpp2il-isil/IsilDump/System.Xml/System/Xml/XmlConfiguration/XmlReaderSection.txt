@@ -1,0 +1,64 @@
+Type: System.Xml.XmlConfiguration.XmlReaderSection
+
+Method: System.Boolean get_ProhibitDefaultUrlResolver()
+
+Disassembly:
+	xor al,al
+	ret
+
+ISIL:
+	001 Move rax, 0
+	002 Return rax
+
+Method: System.Xml.XmlResolver CreateDefaultResolver()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [181F1F9F1h],0
+	jne short 00000001814239E2h
+	lea rcx,[181E11E28h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1F9F1h],1
+	mov rcx,[181E11E28h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 000000018024B5B0h
+	mov rax,rbx
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x181F1F9F1], 0
+	005 JumpIfNotEqual {9}
+	006 LoadAddress rcx, [0x181E11E28]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 Move [0x181F1F9F1], 1
+	009 Move rcx, typeof(System.Xml.XmlUrlResolver)
+	010 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	011 Move rdx, 0
+	012 Move rcx, rax
+	013 Move rbx, rax
+	014 Call 0x18024B5B0, rcx, rdx, r8
+	015 Move rax, rbx
+	016 ShiftStack 32
+	017 Move rbx, stack:0x0
+	018 ShiftStack 8
+	019 Return rax
+
+Method: System.Boolean get_CollapseWhiteSpaceIntoEmptyString()
+
+Disassembly:
+	xor al,al
+	ret
+
+ISIL:
+	001 Move rax, 0
+	002 Return rax
+

@@ -1,0 +1,165 @@
+Type: System.Threading.Tasks.Task+ContingentProperties
+
+Method: System.Void SetCompleted()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,[rcx+18h]
+	call 00000001801E2C10h
+	test rbx,rbx
+	je short 0000000180FA7393h
+	xor edx,edx
+	mov rcx,rbx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 0000000180F98D30h
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, [rcx+24]
+	005 Call 0x1801E2C10, rcx, rdx, r8, r9
+	006 Compare rbx, 0
+	007 JumpIfEqual {15}
+	008 Move rdx, 0
+	009 Move rcx, rbx
+	010 ShiftStack 32
+	011 Move rbx, stack:0x0
+	012 ShiftStack 8
+	013 Call ManualResetEventSlim.Set, rcx, rdx
+	014 Return 
+	015 ShiftStack 32
+	016 Move rbx, stack:0x0
+	017 ShiftStack 8
+	018 Return 
+
+Method: System.Void UnregisterCancellationCallback()
+
+Disassembly:
+	mov [rsp+8],rcx
+	push rbx
+	sub rsp,50h
+	mov rbx,rcx
+	cmp byte ptr [181F1D7E4h],0
+	jne short 0000000180FA73C9h
+	lea rcx,[181E04B98h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1D7E4h],1
+	xorps xmm0,xmm0
+	xor eax,eax
+	movups [rsp+30h],xmm0
+	mov [rsp+40h],rax
+	cmp [rbx+30h],rax
+	je short 0000000180FA743Ah
+	mov rcx,[rbx+30h]
+	mov r8,[181E04B98h]
+	test rcx,rcx
+	je short 0000000180FA7448h
+	mov rdx,[rcx]
+	mov rax,[r8+40h]
+	cmp [rdx+40h],rax
+	jne short 0000000180FA7440h
+	call 0000000180153B70h
+	movups xmm0,[rax]
+	movups [rsp+30h],xmm0
+	movsd xmm1,qword ptr [rax+10h]
+	movsd qword ptr [rsp+40h],xmm1
+	xor edx,edx
+	lea rcx,[rsp+30h]
+	call 0000000180F8CAB0h
+	nop
+	jmp short 0000000180FA7427h
+	mov rbx,[rsp+60h]
+	mov qword ptr [rbx+30h],0
+	lea rcx,[rbx+30h]
+	xor edx,edx
+	call 00000001801E1E30h
+	add rsp,50h
+	pop rbx
+	ret
+	mov rdx,r8
+	call 00000001801E1E70h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rcx
+	002 ShiftStack -8
+	003 Move stack:0x0, rbx
+	004 ShiftStack -80
+	005 Move rbx, rcx
+	006 Compare [0x181F1D7E4], 0
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x181E04B98]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x181F1D7E4], 1
+	011 Move xmm0, 0
+	012 Move rax, 0
+	013 Move stack:0x30, xmm0
+	014 Move stack:0x40, rax
+	015 Compare [rbx+48], rax
+	016 JumpIfEqual {40}
+	017 Move rcx, [rbx+48]
+	018 Move r8, typeof(System.Threading.CancellationTokenRegistration)
+	019 Compare rcx, 0
+	020 JumpIfEqual {46}
+	021 Move rdx, [rcx]
+	022 Move rax, [r8+64]
+	023 Compare [rdx+64], rax
+	024 JumpIfNotEqual {44}
+	025 Call "il2cpp_object_unbox", rcx, rdx, r8, r9
+	026 Move xmm0, [rax]
+	027 Move stack:0x30, xmm0
+	028 Move xmm1, [rax+16]
+	029 Move stack:0x40, xmm1
+	030 Move rdx, 0
+	031 LoadAddress rcx, stack:0x30
+	032 Call CancellationTokenRegistration.Dispose, rcx, rdx
+	033 Nop 
+	034 Goto {36}
+	035 Move rbx, stack:0x60
+	036 Move [rbx+48], 0
+	037 LoadAddress rcx, [rbx+48]
+	038 Move rdx, 0
+	039 Call 0x1801E1E30, rcx, rdx, r8, r9
+	040 ShiftStack 80
+	041 Move rbx, stack:0x0
+	042 ShiftStack 8
+	043 Return 
+	044 Move rdx, r8
+	045 Call 0x1801E1E70, rcx, rdx, r8, r9
+	046 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	call 00000001801E2C10h
+	xor edx,edx
+	mov dword ptr [rbx+3Ch],1
+	mov rcx,rbx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Call 0x1801E2C10, rcx, rdx, r8, r9
+	006 Move rdx, 0
+	007 Move [rbx+60], 1
+	008 Move rcx, rbx
+	009 ShiftStack 32
+	010 Move rbx, stack:0x0
+	011 ShiftStack 8
+	012 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	013 Return 
+

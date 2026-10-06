@@ -1,0 +1,24 @@
+Type: Mono.RuntimeRemoteClassHandle
+
+Method: Mono.RuntimeClassHandle get_ProxyClass()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx]
+	test rax,rax
+	je short 0000000180D61735h
+	mov rax,[rax+10h]
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+16]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

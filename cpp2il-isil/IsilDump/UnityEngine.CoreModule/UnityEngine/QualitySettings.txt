@@ -1,0 +1,84 @@
+Type: UnityEngine.QualitySettings
+
+Method: System.Void OnActiveQualityLevelChanged(System.Int32 previousQualityLevel, System.Int32 currentQualityLevel)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F214E6h],0
+	mov ebx,edx
+	mov edi,ecx
+	jne short 0000000181615A9Ah
+	lea rcx,[181E36A70h]
+	call 00000001801E2A80h
+	mov byte ptr [181F214E6h],1
+	mov rax,[181E36A70h]
+	mov r8,[rax+0B8h]
+	mov rcx,[r8]
+	test rcx,rcx
+	je short 0000000181615AC3h
+	mov rax,[rcx+18h]
+	mov r8d,ebx
+	mov r9,[rcx+28h]
+	mov edx,edi
+	mov rcx,[rcx+40h]
+	call rax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F214E6], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E36A70]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F214E6], 1
+	012 Move rax, typeof(UnityEngine.QualitySettings)
+	013 Move r8, [rax+184]
+	014 Move rcx, [r8]
+	015 Compare rcx, 0
+	016 JumpIfEqual {23}
+	017 Move rax, [rcx+24]
+	018 Move r8, rbx
+	019 Move r9, [rcx+40]
+	020 Move rdx, rdi
+	021 Move rcx, [rcx+64]
+	022 Call rax
+	023 Move rbx, stack:0x30
+	024 ShiftStack 32
+	025 Move rdi, stack:0x0
+	026 ShiftStack 8
+	027 Return 
+
+Method: UnityEngine.ColorSpace get_activeColorSpace()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[181F214E8h]
+	test rax,rax
+	jne short 0000000181615AF3h
+	lea rcx,[181929520h]
+	call 00000001801E2D00h
+	mov [181F214E8h],rax
+	add rsp,28h
+	jmp rax
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [0x181F214E8]
+	003 Compare rax, 0
+	004 JumpIfNotEqual {8}
+	005 LoadAddress rcx, [0x181929520]
+	006 Call 0x1801E2D00, rcx, rdx, r8, r9
+	007 Move [0x181F214E8], rax
+	008 ShiftStack 40
+	009 CallNoReturn rax
+

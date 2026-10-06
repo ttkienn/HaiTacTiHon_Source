@@ -1,0 +1,168 @@
+Type: System.Linq.Expressions.Interpreter.CoalescingBranchInstruction
+
+Method: System.Linq.Expressions.Interpreter.Instruction[] get_Cache()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1E317h],0
+	jne short 00000001810E2A6Ch
+	lea rcx,[181E065C0h]
+	call 00000001801E2A80h
+	lea rcx,[181DF7F70h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E317h],1
+	mov rcx,[181E065C0h]
+	mov rax,[rcx+0B8h]
+	cmp qword ptr [rax],0
+	jne short 00000001810E2AC6h
+	mov rcx,[181DF7F70h]
+	mov edx,20h
+	call 00000001801E1EB0h
+	mov rcx,[181E065C0h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rax
+	mov rdx,rax
+	mov rcx,[181E065C0h]
+	mov rcx,[rcx+0B8h]
+	call 00000001801E1E30h
+	mov rax,[181E065C0h]
+	mov rax,[rax+0B8h]
+	mov rax,[rax]
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1E317], 0
+	003 JumpIfNotEqual {9}
+	004 LoadAddress rcx, [0x181E065C0]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 LoadAddress rcx, [0x181DF7F70]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 Move [0x181F1E317], 1
+	009 Move rcx, typeof(System.Linq.Expressions.Interpreter.CoalescingBranchInstruction)
+	010 Move rax, [rcx+184]
+	011 Compare [rax], 0
+	012 JumpIfNotEqual {25}
+	013 Move rcx, typeof(System.Linq.Expressions.Interpreter.Instruction[1])
+	014 Move rdx, 32
+	015 Call "SzArrayNew", rcx, rdx, r8, r9
+	016 Move rcx, typeof(System.Linq.Expressions.Interpreter.CoalescingBranchInstruction)
+	017 Move rdx, [rcx+184]
+	018 Move [rdx], rax
+	019 Move rdx, rax
+	020 Move rcx, typeof(System.Linq.Expressions.Interpreter.CoalescingBranchInstruction)
+	021 Move rcx, [rcx+184]
+	022 Call 0x1801E1E30, rcx, rdx, r8, r9
+	023 Move rax, typeof(System.Linq.Expressions.Interpreter.CoalescingBranchInstruction)
+	024 Move rax, [rax+184]
+	025 Move rax, [rax]
+	026 ShiftStack 40
+	027 Return rax
+
+Method: System.String get_InstructionName()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1E318h],0
+	jne short 00000001810E2AF0h
+	lea rcx,[181E1C618h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E318h],1
+	mov rax,[181E1C618h]
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1E318], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E1C618]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F1E318], 1
+	007 Move rax, "CoalescingBranch"
+	008 ShiftStack 40
+	009 Return rax
+
+Method: System.Int32 get_ConsumedStack()
+
+Disassembly:
+	mov eax,1
+	ret
+
+ISIL:
+	001 Move rax, 1
+	002 Return rax
+
+Method: System.Int32 get_ProducedStack()
+
+Disassembly:
+	mov eax,1
+	ret
+
+ISIL:
+	001 Move rax, 1
+	002 Return rax
+
+Method: System.Int32 Run(System.Linq.Expressions.Interpreter.InterpretedFrame frame)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rax,rdx
+	mov rbx,rcx
+	test rdx,rdx
+	je short 00000001810E2A34h
+	xor edx,edx
+	mov rcx,rax
+	call 00000001811078C0h
+	test rax,rax
+	jne short 00000001810E2A2Bh
+	mov eax,1
+	add rsp,20h
+	pop rbx
+	ret
+	mov eax,[rbx+10h]
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rax, rdx
+	005 Move rbx, rcx
+	006 Compare rdx, 0
+	007 JumpIfEqual {23}
+	008 Move rdx, 0
+	009 Move rcx, rax
+	010 Call InterpretedFrame.Peek, rcx, rdx
+	011 Compare rax, 0
+	012 JumpIfNotEqual {18}
+	013 Move rax, 1
+	014 ShiftStack 32
+	015 Move rbx, stack:0x0
+	016 ShiftStack 8
+	017 Return rax
+	018 Move rax, [rbx+16]
+	019 ShiftStack 32
+	020 Move rbx, stack:0x0
+	021 ShiftStack 8
+	022 Return rax
+	023 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	mov dword ptr [rcx+10h],80000000h
+	jmp near ptr 000000018024B5B0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Move [rcx+16], 0x80000000
+	003 Call 0x18024B5B0, rcx, rdx, r8
+	004 Return 
+

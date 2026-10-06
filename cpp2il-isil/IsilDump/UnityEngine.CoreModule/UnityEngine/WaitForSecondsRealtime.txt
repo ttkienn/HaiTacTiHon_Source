@@ -1,0 +1,150 @@
+Type: UnityEngine.WaitForSecondsRealtime
+
+Method: System.Single get_waitTime()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+10h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+16]
+	002 Return xmm0
+
+Method: System.Void set_waitTime(System.Single value)
+
+Disassembly:
+	movss dword ptr [rcx+10h],xmm1
+	ret
+
+ISIL:
+	001 Move [rcx+16], xmm1
+	002 Return 
+
+Method: System.Boolean get_keepWaiting()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	xorps xmm0,xmm0
+	mov rbx,rcx
+	comiss xmm0,dword ptr [rcx+14h]
+	jbe short 000000018163A2D1h
+	mov rax,[181F21E28h]
+	test rax,rax
+	jne short 000000018163A2C5h
+	lea rcx,[18192D6B0h]
+	call 00000001801E2D00h
+	mov [181F21E28h],rax
+	call rax
+	addss xmm0,dword ptr [rbx+10h]
+	movss dword ptr [rbx+14h],xmm0
+	mov rax,[181F21E28h]
+	test rax,rax
+	jne short 000000018163A2F0h
+	lea rcx,[18192D6B0h]
+	call 00000001801E2D00h
+	mov [181F21E28h],rax
+	call rax
+	movss xmm1,dword ptr [rbx+14h]
+	comiss xmm1,xmm0
+	seta dil
+	test dil,dil
+	jne short 000000018163A31Ah
+	mov rdx,[rbx]
+	mov rcx,rbx
+	mov r8,[rdx+1B8h]
+	mov rdx,[rdx+1C0h]
+	call r8
+	movzx eax,dil
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move xmm0, 0
+	006 Move rbx, rcx
+	007 Compare xmm0, [rcx+20]
+	008 JumpIfLessOrEqual {18}
+	009 Move rax, [0x181F21E28]
+	010 Compare rax, 0
+	011 JumpIfNotEqual {15}
+	012 LoadAddress rcx, [0x18192D6B0]
+	013 Call 0x1801E2D00, rcx, rdx, r8, r9
+	014 Move [0x181F21E28], rax
+	015 Call rax
+	016 Add xmm0, xmm0, [rbx+16]
+	017 Move [rbx+20], xmm0
+	018 Move rax, [0x181F21E28]
+	019 Compare rax, 0
+	020 JumpIfNotEqual {24}
+	021 LoadAddress rcx, [0x18192D6B0]
+	022 Call 0x1801E2D00, rcx, rdx, r8, r9
+	023 Move [0x181F21E28], rax
+	024 Call rax
+	025 Move xmm1, [rbx+20]
+	026 Compare xmm1, xmm0
+	027 NotImplemented "seta dil"
+	028 Compare rdi, 0
+	029 JumpIfNotEqual {35}
+	030 Move rdx, [rbx]
+	031 Move rcx, rbx
+	032 Move r8, [rdx+440]
+	033 Move rdx, [rdx+448]
+	034 Call r8
+	035 Move rax, rdi
+	036 Move rbx, stack:0x30
+	037 ShiftStack 32
+	038 Move rdi, stack:0x0
+	039 ShiftStack 8
+	040 Return rax
+
+Method: System.Void .ctor(System.Single time)
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	movaps [rsp+20h],xmm6
+	xor edx,edx
+	movaps xmm6,xmm1
+	mov dword ptr [rcx+14h],0BF800000h
+	mov rbx,rcx
+	call 000000018024B730h
+	movss dword ptr [rbx+10h],xmm6
+	movaps xmm6,[rsp+20h]
+	add rsp,30h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move stack:0x20, xmm6
+	005 Move rdx, 0
+	006 Move xmm6, xmm1
+	007 Move [rcx+20], 0xBF800000
+	008 Move rbx, rcx
+	009 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	010 Move [rbx+16], xmm6
+	011 Move xmm6, stack:0x20
+	012 ShiftStack 48
+	013 Move rbx, stack:0x0
+	014 ShiftStack 8
+	015 Return 
+
+Method: System.Void Reset()
+
+Disassembly:
+	mov dword ptr [rcx+14h],0BF800000h
+	ret
+
+ISIL:
+	001 Move [rcx+20], 0xBF800000
+	002 Return 
+

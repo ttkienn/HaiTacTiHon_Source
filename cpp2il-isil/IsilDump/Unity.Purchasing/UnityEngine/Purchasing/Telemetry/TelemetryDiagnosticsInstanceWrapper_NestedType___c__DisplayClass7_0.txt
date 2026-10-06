@@ -1,0 +1,45 @@
+Type: UnityEngine.Purchasing.Telemetry.TelemetryDiagnosticsInstanceWrapper+<>c__DisplayClass7_0
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+
+Method: System.Void <SendDiagnosticOnMainThread>b__0()
+
+Disassembly:
+	sub rsp,38h
+	mov rax,[rcx+10h]
+	test rax,rax
+	je short 00000001815CA80Bh
+	movups xmm0,[rcx+18h]
+	xor r8d,r8d
+	lea rdx,[rsp+20h]
+	mov rcx,rax
+	movaps [rsp+20h],xmm0
+	call 00000001815C8130h
+	add rsp,38h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rax, [rcx+16]
+	003 Compare rax, 0
+	004 JumpIfEqual {13}
+	005 Move xmm0, [rcx+24]
+	006 Move r8, 0
+	007 LoadAddress rdx, stack:0x20
+	008 Move rcx, rax
+	009 Move stack:0x20, xmm0
+	010 Call TelemetryDiagnosticsInstanceWrapper.SendDiagnosticAndCatchExceptions, rcx, rdx
+	011 ShiftStack 56
+	012 Return 
+	013 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

@@ -1,0 +1,188 @@
+Type: UnityEngine.UIElements.DropdownMenuAction
+
+Method: System.Void set_status(UnityEngine.UIElements.DropdownMenuAction+Status value)
+
+Disassembly:
+	mov [rcx+18h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+24], rdx
+	002 Return 
+
+Method: System.Void set_eventInfo(UnityEngine.UIElements.DropdownMenuEventInfo value)
+
+Disassembly:
+	mov [rcx+20h],rdx
+	add rcx,20h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move [rcx+32], rdx
+	002 Add rcx, rcx, 32
+	003 Call 0x1801E1E30, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Void set_userData(System.Object value)
+
+Disassembly:
+	mov [rcx+28h],rdx
+	add rcx,28h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move [rcx+40], rdx
+	002 Add rcx, rcx, 40
+	003 Call 0x1801E1E30, rcx, rdx, r8, r9
+	004 Return 
+
+Method: UnityEngine.UIElements.DropdownMenuAction+Status AlwaysEnabled(UnityEngine.UIElements.DropdownMenuAction a)
+
+Disassembly:
+	xchg ax,ax
+	mov eax,1
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, 1
+	003 Return rax
+
+Method: UnityEngine.UIElements.DropdownMenuAction+Status AlwaysDisabled(UnityEngine.UIElements.DropdownMenuAction a)
+
+Disassembly:
+	xchg ax,ax
+	mov eax,2
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, 2
+	003 Return rax
+
+Method: System.Void .ctor(System.String actionName, System.Action`1<UnityEngine.UIElements.DropdownMenuAction> actionCallback, System.Func`2<UnityEngine.UIElements.DropdownMenuAction, UnityEngine.UIElements.DropdownMenuAction+Status> actionStatusCallback, System.Object userData = null)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rsi,r9
+	xor edx,edx
+	mov rdi,r8
+	mov rbp,rcx
+	call 000000018024B730h
+	lea rcx,[rbp+10h]
+	mov [rbp+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	lea rcx,[rbp+30h]
+	mov [rbp+30h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	lea rcx,[rbp+38h]
+	mov [rbp+38h],rsi
+	mov rdx,rsi
+	call 00000001801E1E30h
+	mov rdx,[rsp+50h]
+	lea rcx,[rbp+28h]
+	mov [rbp+28h],rdx
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbx, rdx
+	008 Move rsi, r9
+	009 Move rdx, 0
+	010 Move rdi, r8
+	011 Move rbp, rcx
+	012 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	013 LoadAddress rcx, [rbp+16]
+	014 Move [rbp+16], rbx
+	015 Move rdx, rbx
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 LoadAddress rcx, [rbp+48]
+	018 Move [rbp+48], rdi
+	019 Move rdx, rdi
+	020 Call 0x1801E1E30, rcx, rdx, r8, r9
+	021 LoadAddress rcx, [rbp+56]
+	022 Move [rbp+56], rsi
+	023 Move rdx, rsi
+	024 Call 0x1801E1E30, rcx, rdx, r8, r9
+	025 Move rdx, stack:0x50
+	026 LoadAddress rcx, [rbp+40]
+	027 Move [rbp+40], rdx
+	028 Move rbx, stack:0x30
+	029 Move rbp, stack:0x38
+	030 Move rsi, stack:0x40
+	031 ShiftStack 32
+	032 Move rdi, stack:0x0
+	033 ShiftStack 8
+	034 Call 0x1801E1E30, rcx, rdx, r8, r9
+	035 Return 
+
+Method: System.Void UpdateActionStatus(UnityEngine.UIElements.DropdownMenuEventInfo eventInfo)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	mov [rcx+20h],rdx
+	add rcx,20h
+	call 00000001801E1E30h
+	mov rcx,[rbx+38h]
+	test rcx,rcx
+	je short 00000001817BF469h
+	mov rax,[rcx+18h]
+	mov rdx,rbx
+	mov r8,[rcx+28h]
+	mov rcx,[rcx+40h]
+	call rax
+	mov [rbx+18h],eax
+	add rsp,20h
+	pop rbx
+	ret
+	mov dword ptr [rbx+18h],8
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move [rcx+32], rdx
+	006 Add rcx, rcx, 32
+	007 Call 0x1801E1E30, rcx, rdx, r8, r9
+	008 Move rcx, [rbx+56]
+	009 Compare rcx, 0
+	010 JumpIfEqual {21}
+	011 Move rax, [rcx+24]
+	012 Move rdx, rbx
+	013 Move r8, [rcx+40]
+	014 Move rcx, [rcx+64]
+	015 Call rax
+	016 Move [rbx+24], rax
+	017 ShiftStack 32
+	018 Move rbx, stack:0x0
+	019 ShiftStack 8
+	020 Return 
+	021 Move [rbx+24], 8
+	022 ShiftStack 32
+	023 Move rbx, stack:0x0
+	024 ShiftStack 8
+	025 Return 
+

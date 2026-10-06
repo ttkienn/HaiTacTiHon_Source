@@ -1,0 +1,38 @@
+Type: UnityEngine.VFX.VFXManager
+
+Method: System.Void .cctor()
+
+Disassembly:
+	sub rsp,38h
+	cmp byte ptr [181F243EBh],0
+	jne short 000000018188FEF0h
+	lea rcx,[181E06EC0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F243EBh],1
+	mov rax,[181E06EC0h]
+	mov dword ptr [rsp+20h],1
+	mov dword ptr [rsp+24h],1
+	movsd xmm0,qword ptr [rsp+20h]
+	mov rcx,[rax+0B8h]
+	movsd qword ptr [rcx],xmm0
+	mov dword ptr [rcx+8],0
+	add rsp,38h
+	ret
+
+ISIL:
+	001 ShiftStack -56
+	002 Compare [0x181F243EB], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E06EC0]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F243EB], 1
+	007 Move rax, typeof(UnityEngine.VFX.VFXManager)
+	008 Move stack:0x20, 1
+	009 Move stack:0x24, 1
+	010 Move xmm0, stack:0x20
+	011 Move rcx, [rax+184]
+	012 Move [rcx], xmm0
+	013 Move [rcx+8], 0
+	014 ShiftStack 56
+	015 Return 
+

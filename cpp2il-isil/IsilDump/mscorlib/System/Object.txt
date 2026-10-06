@@ -1,0 +1,156 @@
+Type: System.Object
+
+Method: System.Boolean Equals(System.Object obj)
+
+Disassembly:
+	cmp rcx,rdx
+	sete al
+	ret
+
+ISIL:
+	001 Compare rcx, rdx
+	002 NotImplemented "sete al"
+	003 Return rax
+
+Method: System.Boolean Equals(System.Object objA, System.Object objB)
+
+Disassembly:
+	cmp rcx,rdx
+	je short 0000000180E36516h
+	test rcx,rcx
+	je short 0000000180E36513h
+	test rdx,rdx
+	je short 0000000180E36513h
+	mov r8,[rcx]
+	mov rax,[r8+138h]
+	mov r8,[r8+140h]
+	jmp rax
+	xor al,al
+	ret
+	mov al,1
+	ret
+
+ISIL:
+	001 Compare rcx, rdx
+	002 JumpIfEqual {13}
+	003 Compare rcx, 0
+	004 JumpIfEqual {11}
+	005 Compare rdx, 0
+	006 JumpIfEqual {11}
+	007 Move r8, [rcx]
+	008 Move rax, [r8+312]
+	009 Move r8, [r8+320]
+	010 CallNoReturn rax
+	011 Move rax, 0
+	012 Return rax
+	013 Move rax, 1
+	014 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void Finalize()
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Int32 GetHashCode()
+
+Disassembly:
+	jmp near ptr 00000001801AC930h
+
+ISIL:
+	001 Call 0x1801AC930, rcx, rdx, r8, r9
+	002 Return rax
+
+Method: System.Type GetType()
+
+Disassembly:
+	jmp near ptr 00000001801AC780h
+
+ISIL:
+	001 Call 0x1801AC780, rcx, rdx, r8, r9
+	002 Return rax
+
+Method: System.Object MemberwiseClone()
+
+Disassembly:
+	jmp near ptr 00000001801ACAF0h
+
+ISIL:
+	001 Call 0x1801ACAF0, rcx, rdx, r8, r9
+	002 Return rax
+
+Method: System.String ToString()
+
+Disassembly:
+	sub rsp,28h
+	call 00000001801AC780h
+	test rax,rax
+	je short 0000000180F7D4F9h
+	mov rdx,[rax]
+	mov rcx,rax
+	mov r8,[rdx+168h]
+	mov rdx,[rdx+170h]
+	add rsp,28h
+	jmp r8
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Call 0x1801AC780, rcx, rdx, r8, r9
+	003 Compare rax, 0
+	004 JumpIfEqual {11}
+	005 Move rdx, [rax]
+	006 Move rcx, rax
+	007 Move r8, [rdx+360]
+	008 Move rdx, [rdx+368]
+	009 ShiftStack 40
+	010 CallNoReturn r8
+	011 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Boolean ReferenceEquals(System.Object objA, System.Object objB)
+
+Disassembly:
+	cmp rcx,rdx
+	sete al
+	ret
+
+ISIL:
+	001 Compare rcx, rdx
+	002 NotImplemented "sete al"
+	003 Return rax
+
+Method: System.Int32 InternalGetHashCode(System.Object o)
+
+Disassembly:
+	jmp near ptr 00000001801AC930h
+
+ISIL:
+	001 Call 0x1801AC930, rcx, rdx, r8, r9
+	002 Return rax
+
+Method: System.Void FieldGetter(System.String typeName, System.String fieldName, ref System.Object val)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void FieldSetter(System.String typeName, System.String fieldName, System.Object val)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+

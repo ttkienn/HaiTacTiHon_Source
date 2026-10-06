@@ -1,0 +1,86 @@
+Type: Microsoft.Win32.SafeHandles.SafeHandleMinusOneIsInvalid
+
+Method: System.Void .ctor(System.Boolean ownsHandle)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	movzx ebx,dl
+	mov qword ptr [rsp+48h],0
+	mov rdi,rcx
+	mov edx,0FFFFFFFFh
+	lea rcx,[rsp+48h]
+	xor r8d,r8d
+	call 0000000180F78590h
+	mov rdx,[rsp+48h]
+	xor r9d,r9d
+	movzx r8d,bl
+	mov rcx,rdi
+	call 0000000180E4A5F0h
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rdx
+	006 Move stack:0x48, 0
+	007 Move rdi, rcx
+	008 Move rdx, 0xFFFFFFFF
+	009 LoadAddress rcx, stack:0x48
+	010 Move r8, 0
+	011 Call 0x180F78590, rcx, rdx
+	012 Move rdx, stack:0x48
+	013 Move r9, 0
+	014 Move r8, rbx
+	015 Move rcx, rdi
+	016 Call SafeHandle..ctor, rcx, rdx, r8
+	017 Move rbx, stack:0x30
+	018 ShiftStack 32
+	019 Move rdi, stack:0x0
+	020 ShiftStack 8
+	021 Return 
+
+Method: System.Boolean get_IsInvalid()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,[rcx+10h]
+	xor r8d,r8d
+	lea rcx,[rsp+30h]
+	mov qword ptr [rsp+30h],0
+	mov edx,0FFFFFFFFh
+	call 0000000180F78590h
+	mov rdx,[rsp+30h]
+	xor r8d,r8d
+	mov rcx,rbx
+	call 0000000180772240h
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, [rcx+16]
+	005 Move r8, 0
+	006 LoadAddress rcx, stack:0x30
+	007 Move stack:0x30, 0
+	008 Move rdx, 0xFFFFFFFF
+	009 Call 0x180F78590, rcx, rdx
+	010 Move rdx, stack:0x30
+	011 Move r8, 0
+	012 Move rcx, rbx
+	013 Call 0x180772240, rcx, rdx, r8
+	014 ShiftStack 32
+	015 Move rbx, stack:0x0
+	016 ShiftStack 8
+	017 Return rax
+

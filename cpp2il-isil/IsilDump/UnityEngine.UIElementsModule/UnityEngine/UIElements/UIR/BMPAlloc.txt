@@ -1,0 +1,182 @@
+Type: UnityEngine.UIElements.UIR.BMPAlloc
+
+Method: System.Boolean Equals(UnityEngine.UIElements.UIR.BMPAlloc other)
+
+Disassembly:
+	cmp [rcx],edx
+	jne short 000000018174600Ch
+	mov rax,rdx
+	shr rax,20h
+	cmp [rcx+4],ax
+	jne short 000000018174600Ch
+	shr rdx,30h
+	cmp [rcx+6],dl
+	sete al
+	ret
+	xor eax,eax
+	ret
+
+ISIL:
+	001 Compare [rcx], rdx
+	002 JumpIfNotEqual {11}
+	003 Move rax, rdx
+	004 ShiftRight rax, 32
+	005 Compare [rcx+4], rax
+	006 JumpIfNotEqual {11}
+	007 ShiftRight rdx, 48
+	008 Compare [rcx+6], rdx
+	009 NotImplemented "sete al"
+	010 Return rax
+	011 Move rax, 0
+	012 Return rax
+
+Method: System.Boolean IsValid()
+
+Disassembly:
+	xchg ax,ax
+	mov eax,[rcx]
+	shr eax,1Fh
+	xor al,1
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, [rcx]
+	003 ShiftRight rax, 31
+	004 Xor rax, rax, 1
+	005 Return rax
+
+Method: System.String ToString()
+
+Disassembly:
+	push rbx
+	push rsi
+	push rdi
+	sub rsp,30h
+	cmp byte ptr [181F235B0h],0
+	mov rsi,rcx
+	jne short 000000018174606Bh
+	lea rcx,[181E03DA8h]
+	call 00000001801E2A80h
+	lea rcx,[181E23D70h]
+	call 00000001801E2A80h
+	lea rcx,[181E04718h]
+	call 00000001801E2A80h
+	lea rcx,[181E0D3D8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F235B0h],1
+	mov eax,[rsi]
+	lea rdx,[rsp+68h]
+	mov rcx,[181E23D70h]
+	mov [rsp+68h],eax
+	call 0000000180154460h
+	movzx ecx,word ptr [rsi+4]
+	lea rdx,[rsp+60h]
+	mov [rsp+60h],cx
+	mov rdi,rax
+	mov rcx,[181E04718h]
+	call 0000000180154460h
+	movzx ecx,byte ptr [rsi+6]
+	lea rdx,[rsp+50h]
+	mov [rsp+50h],cl
+	mov rbx,rax
+	mov rcx,[181E03DA8h]
+	call 0000000180154460h
+	mov rcx,[181E0D3D8h]
+	mov r9,rax
+	mov r8,rbx
+	mov qword ptr [rsp+20h],0
+	mov rdx,rdi
+	call 0000000180D7E8C0h
+	add rsp,30h
+	pop rdi
+	pop rsi
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -8
+	004 Move stack:0x0, rsi
+	005 ShiftStack -8
+	006 Move stack:0x0, rdi
+	007 ShiftStack -48
+	008 Compare [0x181F235B0], 0
+	009 Move rsi, rcx
+	010 JumpIfNotEqual {20}
+	011 LoadAddress rcx, [0x181E03DA8]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x181E23D70]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x181E04718]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 LoadAddress rcx, [0x181E0D3D8]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 Move [0x181F235B0], 1
+	020 Move rax, [rsi]
+	021 LoadAddress rdx, stack:0x68
+	022 Move rcx, typeof(System.Int32)
+	023 Move stack:0x68, rax
+	024 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	025 Move rcx, [rsi+4]
+	026 LoadAddress rdx, stack:0x60
+	027 Move stack:0x60, rcx
+	028 Move rdi, rax
+	029 Move rcx, typeof(System.UInt16)
+	030 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	031 Move rcx, [rsi+6]
+	032 LoadAddress rdx, stack:0x50
+	033 Move stack:0x50, rcx
+	034 Move rbx, rax
+	035 Move rcx, typeof(System.Byte)
+	036 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	037 Move rcx, "{0},{1},{2}"
+	038 Move r9, rax
+	039 Move r8, rbx
+	040 Move stack:0x20, 0
+	041 Move rdx, rdi
+	042 Call String.Format, rcx, rdx, r8, r9, stack:0x0
+	043 ShiftStack 48
+	044 Move rdi, stack:0x0
+	045 ShiftStack 8
+	046 Move rsi, stack:0x0
+	047 ShiftStack 8
+	048 Move rbx, stack:0x0
+	049 ShiftStack 8
+	050 Return rax
+
+Method: System.Void .cctor()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F235B1h],0
+	jne short 0000000181746110h
+	lea rcx,[181E00888h]
+	call 00000001801E2A80h
+	mov byte ptr [181F235B1h],1
+	mov rax,[181E00888h]
+	mov qword ptr [rsp+38h],0
+	mov dword ptr [rsp+38h],0FFFFFFFFh
+	mov rcx,[rax+0B8h]
+	mov rax,[rsp+38h]
+	mov [rcx],rax
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F235B1], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E00888]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F235B1], 1
+	007 Move rax, typeof(UnityEngine.UIElements.UIR.BMPAlloc)
+	008 Move stack:0x38, 0
+	009 Move stack:0x38, 0xFFFFFFFF
+	010 Move rcx, [rax+184]
+	011 Move rax, stack:0x38
+	012 Move [rcx], rax
+	013 ShiftStack 40
+	014 Return 
+

@@ -1,0 +1,101 @@
+Type: Interop+NtDll+FILE_FULL_DIR_INFORMATION
+
+Method: System.ReadOnlySpan`1<System.Char> get_FileName()
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1C498h],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 0000000180D59791h
+	lea rcx,[181E13BC8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C498h],1
+	mov eax,[rdi+3Ch]
+	lea rsi,[rdi+44h]
+	cdq
+	xorps xmm0,xmm0
+	sub eax,edx
+	sar eax,1
+	mov edi,eax
+	movups [rbx],xmm0
+	jns short 0000000180D597AEh
+	xor ecx,ecx
+	call 0000000180F434A0h
+	mov [rbx],rsi
+	mov rax,rbx
+	mov rsi,[rsp+38h]
+	mov [rbx+8],edi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x181F1C498], 0
+	007 Move rdi, rdx
+	008 Move rbx, rcx
+	009 JumpIfNotEqual {13}
+	010 LoadAddress rcx, [0x181E13BC8]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x181F1C498], 1
+	013 Move rax, [rdi+60]
+	014 LoadAddress rsi, [rdi+68]
+	015 Move TEMP, rax
+	016 ShiftRight TEMP, 31
+	017 Compare TEMP, 1
+	018 JumpIfNotEqual {21}
+	019 Move rdx, 0xFFFFFFFF
+	020 Goto {22}
+	021 Move rdx, 0
+	022 Nop 
+	023 Move xmm0, 0
+	024 Subtract rax, rax, rdx
+	025 ShiftRight rax, 1
+	026 Move rdi, rax
+	027 Move [rbx], xmm0
+	028 JumpIfNotSign {31}
+	029 Move rcx, 0
+	030 Call ThrowHelper.ThrowArgumentOutOfRangeException, rcx
+	031 Move [rbx], rsi
+	032 Move rax, rbx
+	033 Move rsi, stack:0x38
+	034 Move [rbx+8], rdi
+	035 Move rbx, stack:0x30
+	036 ShiftStack 32
+	037 Move rdi, stack:0x0
+	038 ShiftStack 8
+	039 Return rax
+
+Method: Interop+NtDll+FILE_FULL_DIR_INFORMATION* GetNextInfo(Interop+NtDll+FILE_FULL_DIR_INFORMATION* info)
+
+Disassembly:
+	test rcx,rcx
+	je short 0000000180D5974Fh
+	mov eax,[rcx]
+	test eax,eax
+	je short 0000000180D5974Fh
+	add rax,rcx
+	ret
+	xor eax,eax
+	ret
+
+ISIL:
+	001 Compare rcx, 0
+	002 JumpIfEqual {8}
+	003 Move rax, [rcx]
+	004 Compare rax, 0
+	005 JumpIfEqual {8}
+	006 Add rax, rax, rcx
+	007 Return rax
+	008 Move rax, 0
+	009 Return rax
+

@@ -1,0 +1,87 @@
+Type: UnityEngine.UIElements.VisualElement+SimpleScheduledItem
+
+Method: System.Void .ctor(UnityEngine.UIElements.VisualElement handler, System.Action updateEvent)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F23D87h],0
+	mov rbx,r8
+	mov rdi,rdx
+	mov rsi,rcx
+	jne short 000000018181DDB4h
+	lea rcx,[181E299F0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F23D87h],1
+	mov r9,[181E299F0h]
+	mov r8,rbx
+	mov rdx,rdi
+	mov rcx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180CB8610h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x181F23D87], 0
+	007 Move rbx, r8
+	008 Move rdi, rdx
+	009 Move rsi, rcx
+	010 JumpIfNotEqual {14}
+	011 LoadAddress rcx, [0x181E299F0]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x181F23D87], 1
+	014 Move r9, [0x181E299F0]
+	015 Move r8, rbx
+	016 Move rdx, rdi
+	017 Move rcx, rsi
+	018 Move rbx, stack:0x30
+	019 Move rsi, stack:0x38
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Call 0x180CB8610, rcx, rdx, r8
+	024 Return 
+
+Method: System.Void PerformTimerUpdate(UnityEngine.UIElements.TimerState state)
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [rcx+40h],0
+	je short 000000018181DD66h
+	mov rcx,[rcx+50h]
+	test rcx,rcx
+	je short 000000018181DD6Bh
+	mov rax,[rcx+18h]
+	mov rdx,[rcx+28h]
+	mov rcx,[rcx+40h]
+	add rsp,28h
+	jmp rax
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [rcx+64], 0
+	003 JumpIfEqual {12}
+	004 Move rcx, [rcx+80]
+	005 Compare rcx, 0
+	006 JumpIfEqual {14}
+	007 Move rax, [rcx+24]
+	008 Move rdx, [rcx+40]
+	009 Move rcx, [rcx+64]
+	010 ShiftStack 40
+	011 CallNoReturn rax
+	012 ShiftStack 40
+	013 Return 
+	014 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

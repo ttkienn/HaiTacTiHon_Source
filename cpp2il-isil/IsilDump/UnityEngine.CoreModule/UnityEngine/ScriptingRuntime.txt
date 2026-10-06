@@ -1,0 +1,26 @@
+Type: UnityEngine.ScriptingRuntime
+
+Method: System.String[] GetAllUserAssemblies()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[181F21C98h]
+	test rax,rax
+	jne short 0000000181630993h
+	lea rcx,[18192CD68h]
+	call 00000001801E2D00h
+	mov [181F21C98h],rax
+	add rsp,28h
+	jmp rax
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [0x181F21C98]
+	003 Compare rax, 0
+	004 JumpIfNotEqual {8}
+	005 LoadAddress rcx, [0x18192CD68]
+	006 Call 0x1801E2D00, rcx, rdx, r8, r9
+	007 Move [0x181F21C98], rax
+	008 ShiftStack 40
+	009 CallNoReturn rax
+

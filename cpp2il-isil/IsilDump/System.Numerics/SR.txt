@@ -1,0 +1,59 @@
+Type: SR
+
+Method: System.String Format(System.String resourceFormat, System.Object p1)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1EFCFh],0
+	mov rbx,rdx
+	mov rdi,rcx
+	jne short 0000000181280D0Ch
+	lea rcx,[181E09788h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1EFCFh],1
+	mov rcx,[181E09788h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000181280D21h
+	call 0000000180153C50h
+	xor ecx,ecx
+	call 0000000180EAB7B0h
+	xor r9d,r9d
+	mov r8,rbx
+	mov rdx,rdi
+	mov rcx,rax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180D7E2C0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1EFCF], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E09788]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F1EFCF], 1
+	012 Move rcx, typeof(System.Globalization.CultureInfo)
+	013 Compare [rcx+224], 0
+	014 JumpIfNotEqual {16}
+	015 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	016 Move rcx, 0
+	017 Call CultureInfo.get_InvariantCulture, rcx
+	018 Move r9, 0
+	019 Move r8, rbx
+	020 Move rdx, rdi
+	021 Move rcx, rax
+	022 Move rbx, stack:0x30
+	023 ShiftStack 32
+	024 Move rdi, stack:0x0
+	025 ShiftStack 8
+	026 Call String.Format, rcx, rdx, r8, r9
+	027 Return rax
+

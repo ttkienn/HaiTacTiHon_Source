@@ -1,0 +1,4694 @@
+Type: Mono.Btls.MonoBtlsContext
+
+Method: System.Void .ctor(Mono.Net.Security.MobileAuthenticatedStream parent, Mono.Net.Security.MonoSslAuthenticationOptions options)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	xor r9d,r9d
+	mov rbx,rcx
+	call 000000018114F410h
+	cmp byte ptr [rbx+28h],0
+	je short 0000000181152F8Eh
+	cmp qword ptr [rbx+50h],0
+	je short 0000000181152F8Eh
+	mov rcx,[rbx+50h]
+	xor edx,edx
+	call 00000001811512F0h
+	lea rcx,[rbx+68h]
+	mov [rbx+68h],rax
+	mov rdx,rax
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001801E1E30h
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move r9, 0
+	005 Move rbx, rcx
+	006 Call MobileTlsContext..ctor, rcx, rdx, r8
+	007 Compare [rbx+40], 0
+	008 JumpIfEqual {22}
+	009 Compare [rbx+80], 0
+	010 JumpIfEqual {22}
+	011 Move rcx, [rbx+80]
+	012 Move rdx, 0
+	013 Call MonoBtlsContext.GetPrivateCertificate, rcx, rdx
+	014 LoadAddress rcx, [rbx+104]
+	015 Move [rbx+104], rax
+	016 Move rdx, rax
+	017 ShiftStack 32
+	018 Move rbx, stack:0x0
+	019 ShiftStack 8
+	020 Call 0x1801E1E30, rcx, rdx, r8, r9
+	021 Return 
+	022 ShiftStack 32
+	023 Move rbx, stack:0x0
+	024 ShiftStack 8
+	025 Return 
+
+Method: Mono.Btls.X509CertificateImplBtls GetPrivateCertificate(System.Security.Cryptography.X509Certificates.X509Certificate certificate)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	push rsi
+	push rdi
+	push r14
+	sub rsp,60h
+	mov rsi,rcx
+	cmp byte ptr [181F1E6EFh],0
+	jne short 0000000181151334h
+	lea rcx,[181E1B1D8h]
+	call 00000001801E2A80h
+	lea rcx,[181DF6508h]
+	call 00000001801E2A80h
+	lea rcx,[181E0A458h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E6EFh],1
+	xorps xmm0,xmm0
+	movups [rsp+48h],xmm0
+	xor edi,edi
+	mov [rsp+90h],rdi
+	test rsi,rsi
+	je near ptr 000000018115150Fh
+	mov rdx,[rsi+10h]
+	test rdx,rdx
+	je near ptr 0000000181151401h
+	mov r9,[rdx]
+	mov r8,[181E0A458h]
+	movzx eax,byte ptr [r8+130h]
+	cmp [r9+130h],al
+	jb short 000000018115138Ch
+	movzx ecx,al
+	mov rax,[r9+0C8h]
+	cmp [rax+rcx*8-8],r8
+	jne short 000000018115138Ch
+	mov al,1
+	jmp short 000000018115138Eh
+	xor al,al
+	mov rcx,rdi
+	test al,al
+	cmovne rcx,rdx
+	test rcx,rcx
+	je short 0000000181151401h
+	mov rdx,[rcx]
+	mov rax,[rdx+198h]
+	mov rdx,[rdx+1A0h]
+	call rax
+	mov r8,rax
+	mov rdx,[181E0A458h]
+	test rax,rax
+	je short 00000001811513EDh
+	mov r9,[rax]
+	movzx eax,byte ptr [rdx+130h]
+	cmp [r9+130h],al
+	jb near ptr 0000000181151515h
+	movzx ecx,al
+	mov rax,[r9+0C8h]
+	cmp [rax+rcx*8-8],rdx
+	jne near ptr 0000000181151515h
+	mov rdi,r8
+	mov rax,rdi
+	mov rbx,[rsp+88h]
+	add rsp,60h
+	pop r14
+	pop rdi
+	pop rsi
+	ret
+	xor edx,edx
+	lea rcx,[rsp+38h]
+	call 0000000180F1A620h
+	movups xmm0,[rax]
+	movups [rsp+48h],xmm0
+	xor edx,edx
+	lea rcx,[rsp+48h]
+	call 0000000180F1ACA0h
+	mov r14,rax
+	mov rcx,[181DF6508h]
+	call 0000000180197840h
+	mov rbx,rax
+	xor r8d,r8d
+	mov rdx,r14
+	mov rcx,rax
+	call 0000000180D79B90h
+	mov [rsp+80h],rbx
+	mov [rsp+38h],rdi
+	lea rax,[rsp+80h]
+	mov [rsp+40h],rax
+	mov r9,[rsi]
+	mov rax,[r9+1D8h]
+	mov r9,[r9+1E0h]
+	mov r8,r14
+	mov edx,3
+	mov rcx,rsi
+	call rax
+	mov r14,rax
+	mov rsi,[rsp+80h]
+	mov rcx,[181E0A458h]
+	call 0000000180197840h
+	mov rbx,rax
+	mov [rsp+20h],rdi
+	xor r9d,r9d
+	mov r8,rsi
+	mov rdx,r14
+	mov rcx,rax
+	call 00000001814ABC70h
+	mov [rsp+90h],rbx
+	mov r8,[rsp+80h]
+	test r8,r8
+	je short 00000001811514CCh
+	xor ecx,ecx
+	mov rdx,[181E1B1D8h]
+	call 0000000180003100h
+	jmp short 00000001811514FBh
+	mov r8,[rsp+80h]
+	test r8,r8
+	je short 00000001811514E9h
+	xor ecx,ecx
+	mov rdx,[181E1B1D8h]
+	call 0000000180003100h
+	mov rcx,[rsp+38h]
+	test rcx,rcx
+	jne short 000000018115151Eh
+	mov rbx,[rsp+90h]
+	mov rax,rbx
+	mov rbx,[rsp+88h]
+	add rsp,60h
+	pop r14
+	pop rdi
+	pop rsi
+	ret
+	call 00000001801E2CA0h
+	int 3
+	mov rcx,r8
+	call 00000001801E1E70h
+	int 3
+	call 000000018018E770h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -8
+	007 Move stack:0x0, r14
+	008 ShiftStack -96
+	009 Move rsi, rcx
+	010 Compare [0x181F1E6EF], 0
+	011 JumpIfNotEqual {19}
+	012 LoadAddress rcx, [0x181E1B1D8]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 LoadAddress rcx, [0x181DF6508]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 LoadAddress rcx, [0x181E0A458]
+	017 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	018 Move [0x181F1E6EF], 1
+	019 Move xmm0, 0
+	020 Move stack:0x48, xmm0
+	021 Move rdi, 0
+	022 Move stack:0x90, rdi
+	023 Compare rsi, 0
+	024 JumpIfEqual {140}
+	025 Move rdx, [rsi+16]
+	026 Compare rdx, 0
+	027 JumpIfEqual {74}
+	028 Move r9, [rdx]
+	029 Move r8, typeof(Mono.Btls.X509CertificateImplBtls)
+	030 Move rax, [r8+304]
+	031 Compare [r9+304], rax
+	032 JumpIfLess {39}
+	033 Move rcx, rax
+	034 Move rax, [r9+200]
+	035 Compare [rax+0xFFFFFFF8+rcx*8], r8
+	036 JumpIfNotEqual {39}
+	037 Move rax, 1
+	038 Goto {40}
+	039 Move rax, 0
+	040 Move rcx, rdi
+	041 Compare rax, 0
+	042 JumpIfEqual {44}
+	043 Move rcx, rdx
+	044 Nop 
+	045 Compare rcx, 0
+	046 JumpIfEqual {74}
+	047 Move rdx, [rcx]
+	048 Move rax, [rdx+408]
+	049 Move rdx, [rdx+416]
+	050 Call rax
+	051 Move r8, rax
+	052 Move rdx, typeof(Mono.Btls.X509CertificateImplBtls)
+	053 Compare rax, 0
+	054 JumpIfEqual {64}
+	055 Move r9, [rax]
+	056 Move rax, [rdx+304]
+	057 Compare [r9+304], rax
+	058 JumpIfLess {142}
+	059 Move rcx, rax
+	060 Move rax, [r9+200]
+	061 Compare [rax+0xFFFFFFF8+rcx*8], rdx
+	062 JumpIfNotEqual {142}
+	063 Move rdi, r8
+	064 Move rax, rdi
+	065 Move rbx, stack:0x88
+	066 ShiftStack 96
+	067 Move r14, stack:0x0
+	068 ShiftStack 8
+	069 Move rdi, stack:0x0
+	070 ShiftStack 8
+	071 Move rsi, stack:0x0
+	072 ShiftStack 8
+	073 Return rax
+	074 Move rdx, 0
+	075 LoadAddress rcx, stack:0x38
+	076 Call Guid.NewGuid, rcx
+	077 Move xmm0, [rax]
+	078 Move stack:0x48, xmm0
+	079 Move rdx, 0
+	080 LoadAddress rcx, stack:0x48
+	081 Call Guid.ToString, rcx, rdx
+	082 Move r14, rax
+	083 Move rcx, typeof(Microsoft.Win32.SafeHandles.SafePasswordHandle)
+	084 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	085 Move rbx, rax
+	086 Move r8, 0
+	087 Move rdx, r14
+	088 Move rcx, rax
+	089 Call SafePasswordHandle..ctor, rcx, rdx
+	090 Move stack:0x80, rbx
+	091 Move stack:0x38, rdi
+	092 LoadAddress rax, stack:0x80
+	093 Move stack:0x40, rax
+	094 Move r9, [rsi]
+	095 Move rax, [r9+472]
+	096 Move r9, [r9+480]
+	097 Move r8, r14
+	098 Move rdx, 3
+	099 Move rcx, rsi
+	100 Call rax
+	101 Move r14, rax
+	102 Move rsi, stack:0x80
+	103 Move rcx, typeof(Mono.Btls.X509CertificateImplBtls)
+	104 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	105 Move rbx, rax
+	106 Move stack:0x20, rdi
+	107 Move r9, 0
+	108 Move r8, rsi
+	109 Move rdx, r14
+	110 Move rcx, rax
+	111 Call X509CertificateImplBtls..ctor, rcx, rdx, r8, r9
+	112 Move stack:0x90, rbx
+	113 Move r8, stack:0x80
+	114 Compare r8, 0
+	115 JumpIfEqual {119}
+	116 Move rcx, 0
+	117 Move rdx, typeof(System.IDisposable)
+	118 Call 0x180003100, rcx, rdx, r8, r9
+	119 Goto {130}
+	120 Move r8, stack:0x80
+	121 Compare r8, 0
+	122 JumpIfEqual {126}
+	123 Move rcx, 0
+	124 Move rdx, typeof(System.IDisposable)
+	125 Call 0x180003100, rcx, rdx, r8, r9
+	126 Move rcx, stack:0x38
+	127 Compare rcx, 0
+	128 JumpIfNotEqual {145}
+	129 Move rbx, stack:0x90
+	130 Move rax, rbx
+	131 Move rbx, stack:0x88
+	132 ShiftStack 96
+	133 Move r14, stack:0x0
+	134 ShiftStack 8
+	135 Move rdi, stack:0x0
+	136 ShiftStack 8
+	137 Move rsi, stack:0x0
+	138 ShiftStack 8
+	139 Return rax
+	140 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	141 Interrupt 
+	142 Move rcx, r8
+	143 Call 0x1801E1E70, rcx, rdx, r8, r9
+	144 Interrupt 
+	145 Call 0x18018E770, rcx, rdx, r8, r9
+
+Method: System.Int32 VerifyCallback(Mono.Btls.MonoBtlsX509StoreCtx storeCtx)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rsi
+	push rdi
+	push r14
+	sub rsp,70h
+	mov r14,rdx
+	mov rsi,rcx
+	cmp byte ptr [181F1E6F0h],0
+	jne short 0000000181152B07h
+	lea rcx,[181E1B1D8h]
+	call 00000001801E2A80h
+	lea rcx,[181E0A748h]
+	call 00000001801E2A80h
+	lea rcx,[181E0A598h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E6F0h],1
+	xor edi,edi
+	mov [rsp+0A8h],rdi
+	mov [rsp+98h],edi
+	mov rcx,[181E0A748h]
+	call 0000000180197840h
+	mov rbx,rax
+	xor r8d,r8d
+	mov rdx,r14
+	mov rcx,rax
+	call 00000001814AC390h
+	mov [rsp+30h],rbx
+	mov [rsp+58h],rdi
+	lea rax,[rsp+30h]
+	mov [rsp+60h],rax
+	mov r14,[rsp+30h]
+	mov rcx,[181E0A598h]
+	call 0000000180197840h
+	mov rbx,rax
+	xor r8d,r8d
+	mov rdx,r14
+	mov rcx,rax
+	call 00000001814F1DC0h
+	mov [rsp+0A8h],rbx
+	mov [rsp+48h],rdi
+	lea rax,[rsp+0A8h]
+	mov [rsp+50h],rax
+	mov rcx,[rsp+0A8h]
+	test rcx,rcx
+	je near ptr 0000000181152CB5h
+	xor edx,edx
+	call 00000001814F1F30h
+	test rax,rax
+	je near ptr 0000000181152CB0h
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rax
+	call 00000001814EC5F0h
+	test rax,rax
+	je near ptr 0000000181152CABh
+	mov rcx,[rsi+10h]
+	mov rdx,[rsp+0A8h]
+	test rcx,rcx
+	je near ptr 0000000181152CA5h
+	mov [rsp+28h],rdi
+	mov [rsp+20h],rdx
+	mov r9,[rax+10h]
+	movzx r8d,byte ptr [rsi+28h]
+	mov rdx,[rsi+30h]
+	call 000000018114B660h
+	test rax,rax
+	je short 0000000181152C00h
+	cmp [rax+10h],dil
+	je short 0000000181152C00h
+	cmp [rax+11h],dil
+	sete dil
+	mov byte ptr [rsi+0A0h],1
+	mov [rsp+98h],edi
+	mov r8,[rsp+0A8h]
+	test r8,r8
+	je short 0000000181152C2Ah
+	xor ecx,ecx
+	mov rdx,[181E1B1D8h]
+	call 0000000180003100h
+	nop
+	mov r8,[rsp+30h]
+	test r8,r8
+	je short 0000000181152C42h
+	xor ecx,ecx
+	mov rdx,[181E1B1D8h]
+	call 0000000180003100h
+	jmp short 0000000181152C92h
+	mov r8,[rsp+0A8h]
+	test r8,r8
+	je short 0000000181152C5Fh
+	xor ecx,ecx
+	mov rdx,[181E1B1D8h]
+	call 0000000180003100h
+	mov rcx,[rsp+48h]
+	test rcx,rcx
+	jne short 0000000181152CBBh
+	mov r8,[rsp+30h]
+	test r8,r8
+	je short 0000000181152C81h
+	xor ecx,ecx
+	mov rdx,[181E1B1D8h]
+	call 0000000180003100h
+	mov rcx,[rsp+58h]
+	test rcx,rcx
+	jne short 0000000181152CC1h
+	mov edi,[rsp+98h]
+	mov eax,edi
+	mov rbx,[rsp+90h]
+	add rsp,70h
+	pop r14
+	pop rdi
+	pop rsi
+	ret
+	call 00000001801E2CA0h
+	nop
+	call 00000001801E2CA0h
+	call 00000001801E2CA0h
+	call 00000001801E2CA0h
+	nop
+	call 000000018018E770h
+	nop
+	call 000000018018E770h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -8
+	007 Move stack:0x0, r14
+	008 ShiftStack -112
+	009 Move r14, rdx
+	010 Move rsi, rcx
+	011 Compare [0x181F1E6F0], 0
+	012 JumpIfNotEqual {20}
+	013 LoadAddress rcx, [0x181E1B1D8]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x181E0A748]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 LoadAddress rcx, [0x181E0A598]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 Move [0x181F1E6F0], 1
+	020 Move rdi, 0
+	021 Move stack:0xA8, rdi
+	022 Move stack:0x98, rdi
+	023 Move rcx, typeof(Mono.Btls.X509ChainImplBtls)
+	024 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	025 Move rbx, rax
+	026 Move r8, 0
+	027 Move rdx, r14
+	028 Move rcx, rax
+	029 Call X509ChainImplBtls..ctor, rcx, rdx
+	030 Move stack:0x30, rbx
+	031 Move stack:0x58, rdi
+	032 LoadAddress rax, stack:0x30
+	033 Move stack:0x60, rax
+	034 Move r14, stack:0x30
+	035 Move rcx, typeof(System.Security.Cryptography.X509Certificates.X509Chain)
+	036 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	037 Move rbx, rax
+	038 Move r8, 0
+	039 Move rdx, r14
+	040 Move rcx, rax
+	041 Call X509Chain..ctor, rcx, rdx
+	042 Move stack:0xA8, rbx
+	043 Move stack:0x48, rdi
+	044 LoadAddress rax, stack:0xA8
+	045 Move stack:0x50, rax
+	046 Move rcx, stack:0xA8
+	047 Compare rcx, 0
+	048 JumpIfEqual {124}
+	049 Move rdx, 0
+	050 Call X509Chain.get_ChainElements, rcx, rdx
+	051 Compare rax, 0
+	052 JumpIfEqual {123}
+	053 Move r8, 0
+	054 Move rdx, 0
+	055 Move rcx, rax
+	056 Call X509ChainElementCollection.get_Item, rcx, rdx
+	057 Compare rax, 0
+	058 JumpIfEqual {122}
+	059 Move rcx, [rsi+16]
+	060 Move rdx, stack:0xA8
+	061 Compare rcx, 0
+	062 JumpIfEqual {120}
+	063 Move stack:0x28, rdi
+	064 Move stack:0x20, rdx
+	065 Move r9, [rax+16]
+	066 Move r8, [rsi+40]
+	067 Move rdx, [rsi+48]
+	068 Call ChainValidationHelper.ValidateCertificate, rcx, rdx, r8, r9, stack:0x0
+	069 Compare rax, 0
+	070 JumpIfEqual {75}
+	071 Compare [rax+16], rdi
+	072 JumpIfEqual {75}
+	073 Compare [rax+17], rdi
+	074 NotImplemented "sete dil"
+	075 Move [rsi+160], 1
+	076 Move stack:0x98, rdi
+	077 Move r8, stack:0xA8
+	078 Compare r8, 0
+	079 JumpIfEqual {84}
+	080 Move rcx, 0
+	081 Move rdx, typeof(System.IDisposable)
+	082 Call 0x180003100, rcx, rdx, r8, r9
+	083 Nop 
+	084 Move r8, stack:0x30
+	085 Compare r8, 0
+	086 JumpIfEqual {90}
+	087 Move rcx, 0
+	088 Move rdx, typeof(System.IDisposable)
+	089 Call 0x180003100, rcx, rdx, r8, r9
+	090 Goto {110}
+	091 Move r8, stack:0xA8
+	092 Compare r8, 0
+	093 JumpIfEqual {97}
+	094 Move rcx, 0
+	095 Move rdx, typeof(System.IDisposable)
+	096 Call 0x180003100, rcx, rdx, r8, r9
+	097 Move rcx, stack:0x48
+	098 Compare rcx, 0
+	099 JumpIfNotEqual {126}
+	100 Move r8, stack:0x30
+	101 Compare r8, 0
+	102 JumpIfEqual {106}
+	103 Move rcx, 0
+	104 Move rdx, typeof(System.IDisposable)
+	105 Call 0x180003100, rcx, rdx, r8, r9
+	106 Move rcx, stack:0x58
+	107 Compare rcx, 0
+	108 JumpIfNotEqual {128}
+	109 Move rdi, stack:0x98
+	110 Move rax, rdi
+	111 Move rbx, stack:0x90
+	112 ShiftStack 112
+	113 Move r14, stack:0x0
+	114 ShiftStack 8
+	115 Move rdi, stack:0x0
+	116 ShiftStack 8
+	117 Move rsi, stack:0x0
+	118 ShiftStack 8
+	119 Return rax
+	120 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	121 Nop 
+	122 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	123 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	124 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	125 Nop 
+	126 Call 0x18018E770, rcx, rdx, r8, r9
+	127 Nop 
+	128 Call 0x18018E770, rcx, rdx, r8, r9
+
+Method: System.Int32 SelectCallback(System.String[] acceptableIssuers)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	push rsi
+	sub rsp,20h
+	cmp byte ptr [181F1E6F1h],0
+	mov rbx,rdx
+	mov rsi,rcx
+	jne short 00000001811524DCh
+	lea rcx,[181E0A088h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E6F1h],1
+	cmp qword ptr [rsi+70h],0
+	jne near ptr 0000000181152568h
+	xor edx,edx
+	mov rcx,rsi
+	call 0000000181151210h
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rsi
+	call 000000018114EBB0h
+	test rax,rax
+	je short 0000000181152568h
+	mov [rsp+30h],rdi
+	xor edx,edx
+	mov rcx,rax
+	call 00000001811512F0h
+	lea rcx,[rsi+70h]
+	mov [rsi+70h],rax
+	mov rdx,rax
+	call 00000001801E1E30h
+	mov rcx,[181E0A088h]
+	mov rbx,[rsi+70h]
+	call 0000000180197840h
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 0000000180DD44A0h
+	lea rcx,[rsi+60h]
+	mov [rsi+60h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	mov rdx,[rsi+70h]
+	xor r8d,r8d
+	mov rcx,rsi
+	call 00000001811525F0h
+	mov rdi,[rsp+30h]
+	mov rbx,[rsp+38h]
+	mov eax,1
+	add rsp,20h
+	pop rsi
+	ret
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rsi
+	004 ShiftStack -32
+	005 Compare [0x181F1E6F1], 0
+	006 Move rbx, rdx
+	007 Move rsi, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E0A088]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F1E6F1], 1
+	012 Compare [rsi+112], 0
+	013 JumpIfNotEqual {48}
+	014 Move rdx, 0
+	015 Move rcx, rsi
+	016 Call MonoBtlsContext.GetPeerCertificate, rcx, rdx
+	017 Move r8, 0
+	018 Move rdx, rbx
+	019 Move rcx, rsi
+	020 Call MobileTlsContext.SelectClientCertificate, rcx, rdx
+	021 Compare rax, 0
+	022 JumpIfEqual {48}
+	023 Move stack:0x30, rdi
+	024 Move rdx, 0
+	025 Move rcx, rax
+	026 Call MonoBtlsContext.GetPrivateCertificate, rcx, rdx
+	027 LoadAddress rcx, [rsi+112]
+	028 Move [rsi+112], rax
+	029 Move rdx, rax
+	030 Call 0x1801E1E30, rcx, rdx, r8, r9
+	031 Move rcx, typeof(System.Security.Cryptography.X509Certificates.X509Certificate)
+	032 Move rbx, [rsi+112]
+	033 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	034 Move r8, 0
+	035 Move rdx, rbx
+	036 Move rcx, rax
+	037 Move rdi, rax
+	038 Call X509Certificate..ctor, rcx, rdx
+	039 LoadAddress rcx, [rsi+96]
+	040 Move [rsi+96], rdi
+	041 Move rdx, rdi
+	042 Call 0x1801E1E30, rcx, rdx, r8, r9
+	043 Move rdx, [rsi+112]
+	044 Move r8, 0
+	045 Move rcx, rsi
+	046 Call MonoBtlsContext.SetPrivateCertificate, rcx, rdx
+	047 Move rdi, stack:0x30
+	048 Move rbx, stack:0x38
+	049 Move rax, 1
+	050 ShiftStack 32
+	051 Move rsi, stack:0x0
+	052 ShiftStack 8
+	053 Return rax
+
+Method: System.Int32 ServerNameCallback()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	mov rcx,[rcx+80h]
+	test rcx,rcx
+	je short 00000001811525E3h
+	xor edx,edx
+	call 0000000181499780h
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rbx
+	call 000000018114F0E0h
+	test rax,rax
+	je short 00000001811525D8h
+	xor edx,edx
+	mov rcx,rax
+	call 00000001811512F0h
+	lea rcx,[rbx+68h]
+	mov [rbx+68h],rax
+	mov rdx,rax
+	call 00000001801E1E30h
+	mov rdx,[rbx+68h]
+	xor r8d,r8d
+	mov rcx,rbx
+	call 00000001811525F0h
+	mov eax,1
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move rcx, [rcx+128]
+	006 Compare rcx, 0
+	007 JumpIfEqual {32}
+	008 Move rdx, 0
+	009 Call MonoBtlsSsl.GetServerName, rcx, rdx
+	010 Move r8, 0
+	011 Move rdx, rax
+	012 Move rcx, rbx
+	013 Call MobileTlsContext.SelectServerCertificate, rcx, rdx
+	014 Compare rax, 0
+	015 JumpIfEqual {27}
+	016 Move rdx, 0
+	017 Move rcx, rax
+	018 Call MonoBtlsContext.GetPrivateCertificate, rcx, rdx
+	019 LoadAddress rcx, [rbx+104]
+	020 Move [rbx+104], rax
+	021 Move rdx, rax
+	022 Call 0x1801E1E30, rcx, rdx, r8, r9
+	023 Move rdx, [rbx+104]
+	024 Move r8, 0
+	025 Move rcx, rbx
+	026 Call MonoBtlsContext.SetPrivateCertificate, rcx, rdx
+	027 Move rax, 1
+	028 ShiftStack 32
+	029 Move rbx, stack:0x0
+	030 ShiftStack 8
+	031 Return rax
+	032 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void StartHandshake()
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1E6F2h],0
+	mov rsi,rcx
+	jne short 000000018115299Ah
+	lea rcx,[181E2D030h]
+	call 00000001801E2A80h
+	lea rcx,[181E2D350h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E6F2h],1
+	xor edx,edx
+	mov rcx,rsi
+	call 00000001811515B0h
+	mov rcx,[181E2D350h]
+	mov rbx,[rsi+78h]
+	call 0000000180197840h
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 000000018149A6B0h
+	lea rcx,[rsi+80h]
+	mov [rsi+80h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	mov rcx,[181E2D030h]
+	call 0000000180197840h
+	xor r8d,r8d
+	mov rdx,rsi
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001811504D0h
+	lea rcx,[rsi+88h]
+	mov [rsi+88h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	mov rcx,[rsi+80h]
+	test rcx,rcx
+	je near ptr 0000000181152AACh
+	mov rdx,[rsi+88h]
+	xor r8d,r8d
+	call 0000000181499D40h
+	cmp byte ptr [rsi+28h],0
+	jne short 0000000181152A4Dh
+	mov rcx,[rsi+80h]
+	test rcx,rcx
+	je short 0000000181152AACh
+	mov rdx,[rsi+38h]
+	xor r8d,r8d
+	call 000000018149A180h
+	jmp short 0000000181152A63h
+	cmp qword ptr [rsi+68h],0
+	je short 0000000181152A63h
+	mov rdx,[rsi+68h]
+	xor r8d,r8d
+	mov rcx,rsi
+	call 00000001811525F0h
+	mov rcx,[rsi+18h]
+	test rcx,rcx
+	je short 0000000181152AACh
+	mov rdx,[rcx]
+	mov rax,[rdx+188h]
+	mov rdx,[rdx+190h]
+	call rax
+	test al,al
+	je short 0000000181152A9Ch
+	mov rcx,[rsi+80h]
+	test rcx,rcx
+	je short 0000000181152AACh
+	xor r8d,r8d
+	mov edx,2
+	call 000000018149A0D0h
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x181F1E6F2], 0
+	007 Move rsi, rcx
+	008 JumpIfNotEqual {14}
+	009 LoadAddress rcx, [0x181E2D030]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x181E2D350]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x181F1E6F2], 1
+	014 Move rdx, 0
+	015 Move rcx, rsi
+	016 Call MonoBtlsContext.InitializeConnection, rcx, rdx
+	017 Move rcx, typeof(Mono.Btls.MonoBtlsSsl)
+	018 Move rbx, [rsi+120]
+	019 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	020 Move r8, 0
+	021 Move rdx, rbx
+	022 Move rcx, rax
+	023 Move rdi, rax
+	024 Call MonoBtlsSsl..ctor, rcx, rdx
+	025 LoadAddress rcx, [rsi+128]
+	026 Move [rsi+128], rdi
+	027 Move rdx, rdi
+	028 Call 0x1801E1E30, rcx, rdx, r8, r9
+	029 Move rcx, typeof(Mono.Btls.MonoBtlsBioMono)
+	030 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	031 Move r8, 0
+	032 Move rdx, rsi
+	033 Move rcx, rax
+	034 Move rbx, rax
+	035 Call MonoBtlsBioMono..ctor, rcx, rdx
+	036 LoadAddress rcx, [rsi+136]
+	037 Move [rsi+136], rbx
+	038 Move rdx, rbx
+	039 Call 0x1801E1E30, rcx, rdx, r8, r9
+	040 Move rcx, [rsi+128]
+	041 Compare rcx, 0
+	042 JumpIfEqual {82}
+	043 Move rdx, [rsi+136]
+	044 Move r8, 0
+	045 Call MonoBtlsSsl.SetBio, rcx, rdx
+	046 Compare [rsi+40], 0
+	047 JumpIfNotEqual {55}
+	048 Move rcx, [rsi+128]
+	049 Compare rcx, 0
+	050 JumpIfEqual {82}
+	051 Move rdx, [rsi+56]
+	052 Move r8, 0
+	053 Call MonoBtlsSsl.SetServerName, rcx, rdx
+	054 Goto {61}
+	055 Compare [rsi+104], 0
+	056 JumpIfEqual {61}
+	057 Move rdx, [rsi+104]
+	058 Move r8, 0
+	059 Move rcx, rsi
+	060 Call MonoBtlsContext.SetPrivateCertificate, rcx, rdx
+	061 Move rcx, [rsi+24]
+	062 Compare rcx, 0
+	063 JumpIfEqual {82}
+	064 Move rdx, [rcx]
+	065 Move rax, [rdx+392]
+	066 Move rdx, [rdx+400]
+	067 Call rax
+	068 Compare rax, 0
+	069 JumpIfEqual {76}
+	070 Move rcx, [rsi+128]
+	071 Compare rcx, 0
+	072 JumpIfEqual {82}
+	073 Move r8, 0
+	074 Move rdx, 2
+	075 Call MonoBtlsSsl.SetRenegotiateMode, rcx, rdx
+	076 Move rbx, stack:0x30
+	077 Move rsi, stack:0x38
+	078 ShiftStack 32
+	079 Move rdi, stack:0x0
+	080 ShiftStack 8
+	081 Return 
+	082 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void SetPrivateCertificate(Mono.Btls.X509CertificateImplBtls privateCert)
+
+Disassembly:
+	mov [rsp+18h],rbx
+	mov [rsp+20h],rdi
+	push r14
+	sub rsp,20h
+	cmp byte ptr [181F1E6F3h],0
+	mov rbx,rdx
+	mov r14,rcx
+	jne short 0000000181152652h
+	lea rcx,[181E1A2F8h]
+	call 00000001801E2A80h
+	lea rcx,[181E0A0F8h]
+	call 00000001801E2A80h
+	lea rcx,[181E0A458h]
+	call 00000001801E2A80h
+	lea rcx,[181E0A598h]
+	call 00000001801E2A80h
+	lea rcx,[181E10EF0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E6F3h],1
+	mov rdi,[r14+80h]
+	mov [rsp+30h],rbp
+	mov [rsp+38h],rsi
+	test rbx,rbx
+	je near ptr 00000001811528F8h
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001814ABF40h
+	test rdi,rdi
+	je near ptr 00000001811528F8h
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rdi
+	call 0000000181499E30h
+	mov rdi,[r14+80h]
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001814ABF20h
+	test rdi,rdi
+	je near ptr 00000001811528F8h
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rdi
+	call 0000000181499F30h
+	mov rdx,[rbx]
+	mov rcx,rbx
+	mov rax,[rdx+308h]
+	mov rdx,[rdx+310h]
+	call rax
+	mov rsi,rax
+	test rax,rax
+	je near ptr 000000018115276Bh
+	xor ebx,ebx
+	mov edi,ebx
+	nop dword ptr [rax+rax]
+	xor edx,edx
+	mov rcx,rsi
+	call 00000001814EC190h
+	cmp ebx,eax
+	jge near ptr 00000001811528D4h
+	xor r8d,r8d
+	mov edx,ebx
+	mov rcx,rsi
+	call 00000001814EC1D0h
+	mov r8,[181E0A458h]
+	mov rcx,rax
+	test rax,rax
+	je near ptr 00000001811528F8h
+	mov r9,[rax]
+	movzx eax,byte ptr [r8+130h]
+	cmp [r9+130h],al
+	jb near ptr 00000001811528EFh
+	movzx edx,al
+	mov rax,[r9+0C8h]
+	cmp [rax+rdx*8-8],r8
+	jne near ptr 00000001811528EFh
+	mov rdi,[r14+80h]
+	xor edx,edx
+	call 00000001814ABF40h
+	test rdi,rdi
+	je near ptr 00000001811528F8h
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rdi
+	call 0000000181498F90h
+	inc ebx
+	jmp near ptr 00000001811526D9h
+	mov rcx,[181E0A598h]
+	call 0000000180197840h
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rax
+	mov rsi,rax
+	call 00000001814F1EB0h
+	test rsi,rsi
+	je near ptr 00000001811528F8h
+	xor edx,edx
+	mov rcx,rsi
+	call 00000001814F1FB0h
+	test rax,rax
+	je near ptr 00000001811528F8h
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rax
+	call 00000001814F1820h
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001814ABF40h
+	test rax,rax
+	je near ptr 00000001811528F8h
+	xor r8d,r8d
+	mov edx,1
+	mov rcx,rax
+	call 00000001814A28F0h
+	mov rcx,[181E0A0F8h]
+	mov rbx,rax
+	call 0000000180197840h
+	mov r8,[181E10EF0h]
+	xor r9d,r9d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 00000001814EA900h
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rsi
+	call 00000001814F1AC0h
+	xor edx,edx
+	mov rcx,rsi
+	call 00000001814F1F30h
+	mov edi,1
+	mov rbp,rax
+	mov ebx,edi
+	test rax,rax
+	je near ptr 00000001811528F8h
+	xor edx,edx
+	mov rcx,rbp
+	call 0000000180EBD910h
+	cmp ebx,eax
+	jge near ptr 00000001811528D4h
+	xor r8d,r8d
+	mov edx,edi
+	mov rcx,rbp
+	call 00000001814EC5F0h
+	test rax,rax
+	je near ptr 00000001811528F8h
+	mov rbx,[rax+10h]
+	test rbx,rbx
+	je near ptr 00000001811528F8h
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001814EB3D0h
+	test rax,rax
+	je near ptr 00000001811528F8h
+	mov rsi,[rax+18h]
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001814EAED0h
+	test rax,rax
+	je short 00000001811528F8h
+	mov r8,[181E1A2F8h]
+	mov rcx,rsi
+	mov rdx,[rax+18h]
+	call 0000000180725200h
+	test al,al
+	jne short 00000001811528D4h
+	mov rsi,[r14+80h]
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001814EB2C0h
+	xor r8d,r8d
+	mov edx,1
+	mov rcx,rax
+	call 00000001814A2E30h
+	test rsi,rsi
+	je short 00000001811528F8h
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rsi
+	call 0000000181498F90h
+	inc edi
+	mov ebx,edi
+	jmp near ptr 0000000181152825h
+	mov rsi,[rsp+38h]
+	mov rbp,[rsp+30h]
+	mov rbx,[rsp+40h]
+	mov rdi,[rsp+48h]
+	add rsp,20h
+	pop r14
+	ret
+	mov rdx,r8
+	call 00000001801E1E70h
+	int 3
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x18, rbx
+	002 Move stack:0x20, rdi
+	003 ShiftStack -8
+	004 Move stack:0x0, r14
+	005 ShiftStack -32
+	006 Compare [0x181F1E6F3], 0
+	007 Move rbx, rdx
+	008 Move r14, rcx
+	009 JumpIfNotEqual {21}
+	010 LoadAddress rcx, [0x181E1A2F8]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x181E0A0F8]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 LoadAddress rcx, [0x181E0A458]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 LoadAddress rcx, [0x181E0A598]
+	017 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	018 LoadAddress rcx, [0x181E10EF0]
+	019 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	020 Move [0x181F1E6F3], 1
+	021 Move rdi, [r14+128]
+	022 Move stack:0x30, rbp
+	023 Move stack:0x38, rsi
+	024 Compare rbx, 0
+	025 JumpIfEqual {195}
+	026 Move rdx, 0
+	027 Move rcx, rbx
+	028 Call X509CertificateImplBtls.get_X509, rcx, rdx
+	029 Compare rdi, 0
+	030 JumpIfEqual {195}
+	031 Move r8, 0
+	032 Move rdx, rax
+	033 Move rcx, rdi
+	034 Call MonoBtlsSsl.SetCertificate, rcx, rdx
+	035 Move rdi, [r14+128]
+	036 Move rdx, 0
+	037 Move rcx, rbx
+	038 Call 0x1814ABF20, rcx, rdx
+	039 Compare rdi, 0
+	040 JumpIfEqual {195}
+	041 Move r8, 0
+	042 Move rdx, rax
+	043 Move rcx, rdi
+	044 Call MonoBtlsSsl.SetPrivateKey, rcx, rdx
+	045 Move rdx, [rbx]
+	046 Move rcx, rbx
+	047 Move rax, [rdx+776]
+	048 Move rdx, [rdx+784]
+	049 Call rax
+	050 Move rsi, rax
+	051 Compare rax, 0
+	052 JumpIfEqual {88}
+	053 Move rbx, 0
+	054 Move rdi, rbx
+	055 Nop 
+	056 Move rdx, 0
+	057 Move rcx, rsi
+	058 Call X509CertificateImplCollection.get_Count, rcx, rdx
+	059 Compare rbx, rax
+	060 JumpIfGreaterOrEqual {184}
+	061 Move r8, 0
+	062 Move rdx, rbx
+	063 Move rcx, rsi
+	064 Call X509CertificateImplCollection.get_Item, rcx, rdx
+	065 Move r8, typeof(Mono.Btls.X509CertificateImplBtls)
+	066 Move rcx, rax
+	067 Compare rax, 0
+	068 JumpIfEqual {195}
+	069 Move r9, [rax]
+	070 Move rax, [r8+304]
+	071 Compare [r9+304], rax
+	072 JumpIfLess {192}
+	073 Move rdx, rax
+	074 Move rax, [r9+200]
+	075 Compare [rax+0xFFFFFFF8+rdx*8], r8
+	076 JumpIfNotEqual {192}
+	077 Move rdi, [r14+128]
+	078 Move rdx, 0
+	079 Call X509CertificateImplBtls.get_X509, rcx, rdx
+	080 Compare rdi, 0
+	081 JumpIfEqual {195}
+	082 Move r8, 0
+	083 Move rdx, rax
+	084 Move rcx, rdi
+	085 Call MonoBtlsSsl.AddIntermediateCertificate, rcx, rdx
+	086 Add rbx, rbx, 1
+	087 Goto {54}
+	088 Move rcx, typeof(System.Security.Cryptography.X509Certificates.X509Chain)
+	089 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	090 Move r8, 0
+	091 Move rdx, 0
+	092 Move rcx, rax
+	093 Move rsi, rax
+	094 Call X509Chain..ctor, rcx, rdx
+	095 Compare rsi, 0
+	096 JumpIfEqual {195}
+	097 Move rdx, 0
+	098 Move rcx, rsi
+	099 Call X509Chain.get_ChainPolicy, rcx, rdx
+	100 Compare rax, 0
+	101 JumpIfEqual {195}
+	102 Move r8, 0
+	103 Move rdx, 0
+	104 Move rcx, rax
+	105 Call X509ChainPolicy.set_RevocationMode, rcx, rdx
+	106 Move rdx, 0
+	107 Move rcx, rbx
+	108 Call X509CertificateImplBtls.get_X509, rcx, rdx
+	109 Compare rax, 0
+	110 JumpIfEqual {195}
+	111 Move r8, 0
+	112 Move rdx, 1
+	113 Move rcx, rax
+	114 Call MonoBtlsX509.GetRawData, rcx, rdx
+	115 Move rcx, typeof(System.Security.Cryptography.X509Certificates.X509Certificate2)
+	116 Move rbx, rax
+	117 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	118 Move r8, ""
+	119 Move r9, 0
+	120 Move rdx, rbx
+	121 Move rcx, rax
+	122 Move rdi, rax
+	123 Call X509Certificate2..ctor, rcx, rdx, r8
+	124 Move r8, 0
+	125 Move rdx, rdi
+	126 Move rcx, rsi
+	127 Call X509Chain.Build, rcx, rdx
+	128 Move rdx, 0
+	129 Move rcx, rsi
+	130 Call X509Chain.get_ChainElements, rcx, rdx
+	131 Move rdi, 1
+	132 Move rbp, rax
+	133 Move rbx, rdi
+	134 Compare rax, 0
+	135 JumpIfEqual {195}
+	136 Move rdx, 0
+	137 Move rcx, rbp
+	138 Call 0x180EBD910, rcx, rdx
+	139 Compare rbx, rax
+	140 JumpIfGreaterOrEqual {184}
+	141 Move r8, 0
+	142 Move rdx, rdi
+	143 Move rcx, rbp
+	144 Call X509ChainElementCollection.get_Item, rcx, rdx
+	145 Compare rax, 0
+	146 JumpIfEqual {195}
+	147 Move rbx, [rax+16]
+	148 Compare rbx, 0
+	149 JumpIfEqual {195}
+	150 Move rdx, 0
+	151 Move rcx, rbx
+	152 Call X509Certificate2.get_SubjectName, rcx, rdx
+	153 Compare rax, 0
+	154 JumpIfEqual {195}
+	155 Move rsi, [rax+24]
+	156 Move rdx, 0
+	157 Move rcx, rbx
+	158 Call X509Certificate2.get_IssuerName, rcx, rdx
+	159 Compare rax, 0
+	160 JumpIfEqual {195}
+	161 Move r8, [0x181E1A2F8]
+	162 Move rcx, rsi
+	163 Move rdx, [rax+24]
+	164 Call 0x180725200, rcx, rdx, r8
+	165 Compare rax, 0
+	166 JumpIfNotEqual {184}
+	167 Move rsi, [r14+128]
+	168 Move rdx, 0
+	169 Move rcx, rbx
+	170 Call X509Certificate2.get_RawData, rcx, rdx
+	171 Move r8, 0
+	172 Move rdx, 1
+	173 Move rcx, rax
+	174 Call MonoBtlsX509.LoadFromData, rcx, rdx, r8
+	175 Compare rsi, 0
+	176 JumpIfEqual {195}
+	177 Move r8, 0
+	178 Move rdx, rax
+	179 Move rcx, rsi
+	180 Call MonoBtlsSsl.AddIntermediateCertificate, rcx, rdx
+	181 Add rdi, rdi, 1
+	182 Move rbx, rdi
+	183 Goto {136}
+	184 Move rsi, stack:0x38
+	185 Move rbp, stack:0x30
+	186 Move rbx, stack:0x40
+	187 Move rdi, stack:0x48
+	188 ShiftStack 32
+	189 Move r14, stack:0x0
+	190 ShiftStack 8
+	191 Return 
+	192 Move rdx, r8
+	193 Call 0x1801E1E70, rcx, rdx, r8, r9
+	194 Interrupt 
+	195 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Exception GetException(Mono.Btls.MonoBtlsSslError status)
+
+Disassembly:
+	push rbp
+	push rbx
+	push rsi
+	push r14
+	push r15
+	mov rbp,rsp
+	sub rsp,60h
+	cmp byte ptr [181F1E6F4h],0
+	mov esi,ecx
+	jne short 0000000181150E05h
+	lea rcx,[181E23D70h]
+	call 00000001801E2A80h
+	lea rcx,[181E2D0F8h]
+	call 00000001801E2A80h
+	lea rcx,[181E2D418h]
+	call 00000001801E2A80h
+	lea rcx,[181DF8DD8h]
+	call 00000001801E2A80h
+	lea rcx,[181E01848h]
+	call 00000001801E2A80h
+	lea rcx,[181E0CF78h]
+	call 00000001801E2A80h
+	lea rcx,[181E0CFE8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E6F4h],1
+	xor r14d,r14d
+	cmp [181F1E721h],r14b
+	mov [rbp+40h],r14d
+	jne short 0000000181150E28h
+	lea rcx,[181E2ACA0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E721h],1
+	mov rax,[181F1E708h]
+	lea r15,[181924E38h]
+	mov [rbp+48h],r14
+	test rax,rax
+	jne short 0000000181150E84h
+	lea rax,[181924EF0h]
+	mov [rbp-30h],r15
+	lea rcx,[rbp-30h]
+	mov [rbp-20h],rax
+	mov qword ptr [rbp-28h],13h
+	mov qword ptr [rbp-18h],1Eh
+	mov [rbp-10h],r14d
+	mov dword ptr [rbp-0Ch],2
+	mov dword ptr [rbp-8],10h
+	mov [rbp-4],r14b
+	call 00000001801E2CF0h
+	mov [181F1E708h],rax
+	lea rdx,[rbp+40h]
+	mov [rsp+90h],rdi
+	lea rcx,[rbp+48h]
+	call rax
+	mov rcx,[rbp+48h]
+	xor r8d,r8d
+	xor edx,edx
+	mov ebx,eax
+	call 0000000180F44AA0h
+	test al,al
+	jne short 0000000181150EB2h
+	mov rax,r14
+	mov rcx,r14
+	jmp short 0000000181150ED8h
+	mov rcx,[181E2ACA0h]
+	mov rdi,[rbp+48h]
+	cmp [rcx+0E0h],r14d
+	jne short 0000000181150ECBh
+	call 0000000180153C50h
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000180E3C7E0h
+	mov rcx,rax
+	mov [rbp-38h],rcx
+	mov rdx,rax
+	lea rcx,[rbp-38h]
+	call 00000001801E1E30h
+	test ebx,ebx
+	je near ptr 0000000181151120h
+	mov rax,[181F1E718h]
+	test rax,rax
+	jne short 0000000181150F41h
+	lea rax,[181924F38h]
+	mov [rbp-30h],r15
+	lea rcx,[rbp-30h]
+	mov [rbp-20h],rax
+	mov qword ptr [rbp-28h],13h
+	mov qword ptr [rbp-18h],1Ah
+	mov [rbp-10h],r14d
+	mov dword ptr [rbp-0Ch],2
+	mov dword ptr [rbp-8],4
+	mov [rbp-4],r14b
+	call 00000001801E2CF0h
+	mov [181F1E718h],rax
+	mov ecx,ebx
+	call rax
+	mov edi,eax
+	test eax,eax
+	jg near ptr 0000000181151100h
+	xor edx,edx
+	mov ecx,ebx
+	call 0000000181153090h
+	mov rdi,rax
+	cmp [rbp-38h],r14
+	jne short 0000000181150F8Eh
+	mov rcx,[181E2D418h]
+	lea rdx,[rbp+48h]
+	mov [rbp+48h],esi
+	call 0000000180154460h
+	mov rcx,[181E0CF78h]
+	xor r9d,r9d
+	mov r8,rdi
+	mov rdx,rax
+	call 0000000180D7ECB0h
+	jmp near ptr 00000001811510CCh
+	mov rcx,[181DF8DD8h]
+	mov edx,4
+	call 00000001801E1EB0h
+	mov rcx,[181E2D418h]
+	lea rdx,[rbp-40h]
+	mov rbx,rax
+	mov [rbp-40h],esi
+	call 0000000180154460h
+	mov rsi,rax
+	test rbx,rbx
+	je near ptr 00000001811511FBh
+	test rax,rax
+	je short 0000000181150FDEh
+	mov rdx,[rbx]
+	mov rcx,rax
+	mov rdx,[rdx+40h]
+	call 00000001801E1E50h
+	test rax,rax
+	je near ptr 00000001811511B5h
+	cmp [rbx+18h],r14d
+	jbe near ptr 00000001811511F5h
+	lea rcx,[rbx+20h]
+	mov [rbx+20h],rsi
+	mov rdx,rsi
+	call 00000001801E1E30h
+	test rdi,rdi
+	je short 0000000181151015h
+	mov rdx,[rbx]
+	mov rcx,rdi
+	mov rdx,[rdx+40h]
+	call 00000001801E1E50h
+	test rax,rax
+	je near ptr 00000001811511C5h
+	cmp dword ptr [rbx+18h],1
+	jbe near ptr 00000001811511F5h
+	lea rcx,[rbx+28h]
+	mov [rbx+28h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	mov rdi,[rbp-38h]
+	test rdi,rdi
+	je short 0000000181151050h
+	mov rdx,[rbx]
+	mov rcx,rdi
+	mov rdx,[rdx+40h]
+	call 00000001801E1E50h
+	test rax,rax
+	je near ptr 00000001811511D5h
+	cmp dword ptr [rbx+18h],2
+	jbe near ptr 00000001811511F5h
+	lea rcx,[rbx+30h]
+	mov [rbx+30h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	mov eax,[rbp+40h]
+	lea rdx,[rbp-3Ch]
+	mov rcx,[181E23D70h]
+	mov [rbp-3Ch],eax
+	call 0000000180154460h
+	mov rdi,rax
+	test rax,rax
+	je short 00000001811510A0h
+	mov rdx,[rbx]
+	mov rcx,rax
+	mov rdx,[rdx+40h]
+	call 00000001801E1E50h
+	test rax,rax
+	je near ptr 00000001811511E5h
+	cmp dword ptr [rbx+18h],3
+	jbe near ptr 00000001811511F5h
+	lea rcx,[rbx+38h]
+	mov [rbx+38h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	mov rcx,[181E0CFE8h]
+	xor r8d,r8d
+	mov rdx,rbx
+	call 0000000180D7E720h
+	mov rdi,rax
+	mov rcx,[181E2D0F8h]
+	call 0000000180197840h
+	cmp [181F1E724h],r14b
+	mov rbx,rax
+	jne near ptr 000000018115117Bh
+	lea rcx,[181E12570h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E724h],1
+	jmp short 000000018115117Bh
+	mov rcx,[181E01848h]
+	call 0000000180197840h
+	xor r8d,r8d
+	movzx edx,dil
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180D54C60h
+	jmp short 000000018115119Eh
+	mov rcx,[181E2D0F8h]
+	call 0000000180197840h
+	cmp [181F1E723h],r14b
+	mov rbx,rax
+	jne short 0000000181151157h
+	lea rcx,[181E12570h]
+	call 00000001801E2A80h
+	lea rcx,[181E2D418h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E723h],1
+	mov rcx,[181E2D418h]
+	xor edx,edx
+	mov [rbp-30h],rcx
+	lea rcx,[rbp-30h]
+	mov qword ptr [rbp-28h],0FFFFFFFFFFFFFFFFh
+	mov [rbp-20h],esi
+	call 0000000180F5E8B0h
+	mov rdi,rax
+	mov rcx,[181E12570h]
+	cmp [rcx+0E0h],r14d
+	jne short 0000000181151190h
+	call 0000000180153C50h
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rbx
+	call 0000000180F606C0h
+	mov rdi,[rsp+90h]
+	mov rax,rbx
+	add rsp,60h
+	pop r15
+	pop r14
+	pop rsi
+	pop rbx
+	pop rbp
+	ret
+	call 00000001801E26E0h
+	mov rcx,rax
+	xor edx,edx
+	call 00000001801E2C60h
+	int 3
+	call 00000001801E26E0h
+	mov rcx,rax
+	xor edx,edx
+	call 00000001801E2C60h
+	int 3
+	call 00000001801E26E0h
+	mov rcx,rax
+	xor edx,edx
+	call 00000001801E2C60h
+	int 3
+	call 00000001801E26E0h
+	mov rcx,rax
+	xor edx,edx
+	call 00000001801E2C60h
+	int 3
+	call 00000001801E2C90h
+	int 3
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbp
+	003 ShiftStack -8
+	004 Move stack:0x0, rbx
+	005 ShiftStack -8
+	006 Move stack:0x0, rsi
+	007 ShiftStack -8
+	008 Move stack:0x0, r14
+	009 ShiftStack -8
+	010 Move stack:0x0, r15
+	011 Move rbp, rsp
+	012 ShiftStack -96
+	013 Compare [0x181F1E6F4], 0
+	014 Move rsi, rcx
+	015 JumpIfNotEqual {31}
+	016 LoadAddress rcx, [0x181E23D70]
+	017 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	018 LoadAddress rcx, [0x181E2D0F8]
+	019 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	020 LoadAddress rcx, [0x181E2D418]
+	021 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	022 LoadAddress rcx, [0x181DF8DD8]
+	023 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	024 LoadAddress rcx, [0x181E01848]
+	025 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	026 LoadAddress rcx, [0x181E0CF78]
+	027 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	028 LoadAddress rcx, [0x181E0CFE8]
+	029 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	030 Move [0x181F1E6F4], 1
+	031 Move r14, 0
+	032 Compare [0x181F1E721], r14
+	033 Move [rbp+64], r14
+	034 JumpIfNotEqual {38}
+	035 LoadAddress rcx, [0x181E2ACA0]
+	036 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	037 Move [0x181F1E721], 1
+	038 Move rax, [0x181F1E708]
+	039 LoadAddress r15, [0x181924E38]
+	040 Move [rbp+72], r14
+	041 Compare rax, 0
+	042 JumpIfNotEqual {55}
+	043 LoadAddress rax, [0x181924EF0]
+	044 Move [rbp-48], r15
+	045 LoadAddress rcx, [rbp-48]
+	046 Move [rbp-32], rax
+	047 Move [rbp-40], 19
+	048 Move [rbp-24], 30
+	049 Move [rbp-16], r14
+	050 Move [rbp-12], 2
+	051 Move [rbp-8], 16
+	052 Move [rbp-4], r14
+	053 Call 0x1801E2CF0, rcx, rdx, r8, r9
+	054 Move [0x181F1E708], rax
+	055 LoadAddress rdx, [rbp+64]
+	056 Move stack:0x90, rdi
+	057 LoadAddress rcx, [rbp+72]
+	058 Call rax
+	059 Move rcx, [rbp+72]
+	060 Move r8, 0
+	061 Move rdx, 0
+	062 Move rbx, rax
+	063 Call 0x180F44AA0, rcx, rdx, r8
+	064 Compare rax, 0
+	065 JumpIfNotEqual {69}
+	066 Move rax, r14
+	067 Move rcx, r14
+	068 Goto {78}
+	069 Move rcx, typeof(System.Runtime.InteropServices.Marshal)
+	070 Move rdi, [rbp+72]
+	071 Compare [rcx+224], r14
+	072 JumpIfNotEqual {74}
+	073 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	074 Move rdx, 0
+	075 Move rcx, rdi
+	076 Call Marshal.PtrToStringAnsi, rcx, rdx
+	077 Move rcx, rax
+	078 Move [rbp-56], rcx
+	079 Move rdx, rax
+	080 LoadAddress rcx, [rbp-56]
+	081 Call 0x1801E1E30, rcx, rdx, r8, r9
+	082 Compare rbx, 0
+	083 JumpIfEqual {216}
+	084 Move rax, [0x181F1E718]
+	085 Compare rax, 0
+	086 JumpIfNotEqual {99}
+	087 LoadAddress rax, [0x181924F38]
+	088 Move [rbp-48], r15
+	089 LoadAddress rcx, [rbp-48]
+	090 Move [rbp-32], rax
+	091 Move [rbp-40], 19
+	092 Move [rbp-24], 26
+	093 Move [rbp-16], r14
+	094 Move [rbp-12], 2
+	095 Move [rbp-8], 4
+	096 Move [rbp-4], r14
+	097 Call 0x1801E2CF0, rcx, rdx, r8, r9
+	098 Move [0x181F1E718], rax
+	099 Move rcx, rbx
+	100 Call rax
+	101 Move rdi, rax
+	102 Compare rax, 0
+	103 JumpIfGreater {208}
+	104 Move rdx, 0
+	105 Move rcx, rbx
+	106 Call MonoBtlsError.GetErrorString, rcx, rdx
+	107 Move rdi, rax
+	108 Compare [rbp-56], r14
+	109 JumpIfNotEqual {120}
+	110 Move rcx, typeof(Mono.Btls.MonoBtlsSslError)
+	111 LoadAddress rdx, [rbp+72]
+	112 Move [rbp+72], rsi
+	113 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	114 Move rcx, "{0} {1}"
+	115 Move r9, 0
+	116 Move r8, rdi
+	117 Move rdx, rax
+	118 Call String.Format, rcx, rdx, r8, r9
+	119 Goto {198}
+	120 Move rcx, typeof(System.Object[1])
+	121 Move rdx, 4
+	122 Call "SzArrayNew", rcx, rdx, r8, r9
+	123 Move rcx, typeof(Mono.Btls.MonoBtlsSslError)
+	124 LoadAddress rdx, [rbp-64]
+	125 Move rbx, rax
+	126 Move [rbp-64], rsi
+	127 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	128 Move rsi, rax
+	129 Compare rbx, 0
+	130 JumpIfEqual {278}
+	131 Compare rax, 0
+	132 JumpIfEqual {139}
+	133 Move rdx, [rbx]
+	134 Move rcx, rax
+	135 Move rdx, [rdx+64]
+	136 Call 0x1801E1E50, rcx, rdx, r8, r9
+	137 Compare rax, 0
+	138 JumpIfEqual {256}
+	139 Compare [rbx+24], r14
+	140 JumpIfLessOrEqual {276}
+	141 LoadAddress rcx, [rbx+32]
+	142 Move [rbx+32], rsi
+	143 Move rdx, rsi
+	144 Call 0x1801E1E30, rcx, rdx, r8, r9
+	145 Compare rdi, 0
+	146 JumpIfEqual {153}
+	147 Move rdx, [rbx]
+	148 Move rcx, rdi
+	149 Move rdx, [rdx+64]
+	150 Call 0x1801E1E50, rcx, rdx, r8, r9
+	151 Compare rax, 0
+	152 JumpIfEqual {261}
+	153 Compare [rbx+24], 1
+	154 JumpIfLessOrEqual {276}
+	155 LoadAddress rcx, [rbx+40]
+	156 Move [rbx+40], rdi
+	157 Move rdx, rdi
+	158 Call 0x1801E1E30, rcx, rdx, r8, r9
+	159 Move rdi, [rbp-56]
+	160 Compare rdi, 0
+	161 JumpIfEqual {168}
+	162 Move rdx, [rbx]
+	163 Move rcx, rdi
+	164 Move rdx, [rdx+64]
+	165 Call 0x1801E1E50, rcx, rdx, r8, r9
+	166 Compare rax, 0
+	167 JumpIfEqual {266}
+	168 Compare [rbx+24], 2
+	169 JumpIfLessOrEqual {276}
+	170 LoadAddress rcx, [rbx+48]
+	171 Move [rbx+48], rdi
+	172 Move rdx, rdi
+	173 Call 0x1801E1E30, rcx, rdx, r8, r9
+	174 Move rax, [rbp+64]
+	175 LoadAddress rdx, [rbp-60]
+	176 Move rcx, typeof(System.Int32)
+	177 Move [rbp-60], rax
+	178 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	179 Move rdi, rax
+	180 Compare rax, 0
+	181 JumpIfEqual {188}
+	182 Move rdx, [rbx]
+	183 Move rcx, rax
+	184 Move rdx, [rdx+64]
+	185 Call 0x1801E1E50, rcx, rdx, r8, r9
+	186 Compare rax, 0
+	187 JumpIfEqual {271}
+	188 Compare [rbx+24], 3
+	189 JumpIfLessOrEqual {276}
+	190 LoadAddress rcx, [rbx+56]
+	191 Move [rbx+56], rdi
+	192 Move rdx, rdi
+	193 Call 0x1801E1E30, rcx, rdx, r8, r9
+	194 Move rcx, "{0} {1}
+  at {2}:{3}"
+	195 Move r8, 0
+	196 Move rdx, rbx
+	197 Call String.Format, rcx, rdx, r8
+	198 Move rdi, rax
+	199 Move rcx, typeof(Mono.Btls.MonoBtlsException)
+	200 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	201 Compare [0x181F1E724], r14
+	202 Move rbx, rax
+	203 JumpIfNotEqual {234}
+	204 LoadAddress rcx, [0x181E12570]
+	205 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	206 Move [0x181F1E724], 1
+	207 Goto {234}
+	208 Move rcx, typeof(Mono.Security.Interface.TlsException)
+	209 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	210 Move r8, 0
+	211 Move rdx, rdi
+	212 Move rcx, rax
+	213 Move rbx, rax
+	214 Call TlsException..ctor, rcx, rdx
+	215 Goto {242}
+	216 Move rcx, typeof(Mono.Btls.MonoBtlsException)
+	217 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	218 Compare [0x181F1E723], r14
+	219 Move rbx, rax
+	220 JumpIfNotEqual {226}
+	221 LoadAddress rcx, [0x181E12570]
+	222 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	223 LoadAddress rcx, [0x181E2D418]
+	224 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	225 Move [0x181F1E723], 1
+	226 Move rcx, typeof(Mono.Btls.MonoBtlsSslError)
+	227 Move rdx, 0
+	228 Move [rbp-48], rcx
+	229 LoadAddress rcx, [rbp-48]
+	230 Move [rbp-40], 18446744073709551615
+	231 Move [rbp-32], rsi
+	232 Call Enum.ToString, rcx, rdx
+	233 Move rdi, rax
+	234 Move rcx, typeof(System.Exception)
+	235 Compare [rcx+224], r14
+	236 JumpIfNotEqual {238}
+	237 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	238 Move r8, 0
+	239 Move rdx, rdi
+	240 Move rcx, rbx
+	241 Call Exception..ctor, rcx, rdx
+	242 Move rdi, stack:0x90
+	243 Move rax, rbx
+	244 ShiftStack 96
+	245 Move r15, stack:0x0
+	246 ShiftStack 8
+	247 Move r14, stack:0x0
+	248 ShiftStack 8
+	249 Move rsi, stack:0x0
+	250 ShiftStack 8
+	251 Move rbx, stack:0x0
+	252 ShiftStack 8
+	253 Move rbp, stack:0x0
+	254 ShiftStack 8
+	255 Return rax
+	256 Call 0x1801E26E0, rcx, rdx, r8, r9
+	257 Move rcx, rax
+	258 Move rdx, 0
+	259 Call 0x1801E2C60, rcx, rdx, r8, r9
+	260 Interrupt 
+	261 Call 0x1801E26E0, rcx, rdx, r8, r9
+	262 Move rcx, rax
+	263 Move rdx, 0
+	264 Call 0x1801E2C60, rcx, rdx, r8, r9
+	265 Interrupt 
+	266 Call 0x1801E26E0, rcx, rdx, r8, r9
+	267 Move rcx, rax
+	268 Move rdx, 0
+	269 Call 0x1801E2C60, rcx, rdx, r8, r9
+	270 Interrupt 
+	271 Call 0x1801E26E0, rcx, rdx, r8, r9
+	272 Move rcx, rax
+	273 Move rdx, 0
+	274 Call 0x1801E2C60, rcx, rdx, r8, r9
+	275 Interrupt 
+	276 Call 0x1801E2C90, rcx, rdx, r8, r9
+	277 Interrupt 
+	278 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Boolean ProcessHandshake()
+
+Disassembly:
+	mov [rsp+10h],rbx
+	mov [rsp+18h],rbp
+	mov [rsp+20h],rsi
+	push r14
+	sub rsp,50h
+	mov rbx,rcx
+	mov [rsp+60h],rdi
+	lea rbp,[181924E38h]
+	xor esi,esi
+	lea r14,[181924ED0h]
+	nop dword ptr [rax]
+	mov rax,[181F1E700h]
+	test rax,rax
+	jne short 00000001811520ABh
+	lea rcx,[rsp+20h]
+	mov [rsp+20h],rbp
+	mov qword ptr [rsp+28h],13h
+	mov [rsp+30h],r14
+	mov qword ptr [rsp+38h],1Bh
+	mov [rsp+40h],esi
+	mov qword ptr [rsp+44h],2
+	mov [rsp+4Ch],sil
+	call 00000001801E2CF0h
+	mov [181F1E700h],rax
+	call rax
+	mov rcx,[rbx+80h]
+	cmp [rbx+0A2h],sil
+	jne short 00000001811520DFh
+	cmp [rbx+28h],sil
+	jne short 00000001811520D1h
+	test rcx,rcx
+	je short 0000000181152142h
+	xor edx,edx
+	call 0000000181499150h
+	jmp short 00000001811520EBh
+	test rcx,rcx
+	je short 0000000181152142h
+	xor edx,edx
+	call 0000000181498ED0h
+	jmp short 00000001811520EBh
+	test rcx,rcx
+	je short 0000000181152142h
+	xor edx,edx
+	call 0000000181499920h
+	mov edi,eax
+	test eax,eax
+	jne short 0000000181152136h
+	cmp [rbx+0A2h],sil
+	jne short 0000000181152106h
+	mov byte ptr [rbx+0A2h],1
+	jmp near ptr 0000000181152060h
+	mov rcx,[rbx+80h]
+	test rcx,rcx
+	je short 0000000181152142h
+	xor edx,edx
+	call 0000000181499AD0h
+	mov al,1
+	mov rdi,[rsp+60h]
+	mov rbx,[rsp+68h]
+	mov rbp,[rsp+70h]
+	mov rsi,[rsp+78h]
+	add rsp,50h
+	pop r14
+	ret
+	lea eax,[rdi-2]
+	cmp eax,1
+	ja short 0000000181152148h
+	xor al,al
+	jmp short 000000018115211Bh
+	call 00000001801E2CA0h
+	int 3
+	mov rbx,[rbx+78h]
+	mov rcx,rbx
+	call 00000001800031F0h
+	lea rcx,[181E33058h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	xor r8d,r8d
+	mov rcx,rbx
+	call 00000001811540B0h
+	xor edx,edx
+	mov ecx,edi
+	call 0000000181150D90h
+	lea rcx,[181DFAC20h]
+	mov rbx,rax
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 Move stack:0x18, rbp
+	003 Move stack:0x20, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, r14
+	006 ShiftStack -80
+	007 Move rbx, rcx
+	008 Move stack:0x60, rdi
+	009 LoadAddress rbp, [0x181924E38]
+	010 Move rsi, 0
+	011 LoadAddress r14, [0x181924ED0]
+	012 Nop 
+	013 Move rax, [0x181F1E700]
+	014 Compare rax, 0
+	015 JumpIfNotEqual {26}
+	016 LoadAddress rcx, stack:0x20
+	017 Move stack:0x20, rbp
+	018 Move stack:0x28, 19
+	019 Move stack:0x30, r14
+	020 Move stack:0x38, 27
+	021 Move stack:0x40, rsi
+	022 Move stack:0x44, 2
+	023 Move stack:0x4C, rsi
+	024 Call 0x1801E2CF0, rcx, rdx, r8, r9
+	025 Move [0x181F1E700], rax
+	026 Call rax
+	027 Move rcx, [rbx+128]
+	028 Compare [rbx+162], rsi
+	029 JumpIfNotEqual {42}
+	030 Compare [rbx+40], rsi
+	031 JumpIfNotEqual {37}
+	032 Compare rcx, 0
+	033 JumpIfEqual {72}
+	034 Move rdx, 0
+	035 Call MonoBtlsSsl.Connect, rcx, rdx
+	036 Goto {46}
+	037 Compare rcx, 0
+	038 JumpIfEqual {72}
+	039 Move rdx, 0
+	040 Call MonoBtlsSsl.Accept, rcx, rdx
+	041 Goto {46}
+	042 Compare rcx, 0
+	043 JumpIfEqual {72}
+	044 Move rdx, 0
+	045 Call MonoBtlsSsl.Handshake, rcx, rdx
+	046 Move rdi, rax
+	047 Compare rax, 0
+	048 JumpIfNotEqual {67}
+	049 Compare [rbx+162], rsi
+	050 JumpIfNotEqual {53}
+	051 Move [rbx+162], 1
+	052 Goto {13}
+	053 Move rcx, [rbx+128]
+	054 Compare rcx, 0
+	055 JumpIfEqual {72}
+	056 Move rdx, 0
+	057 Call MonoBtlsSsl.PrintErrors, rcx, rdx
+	058 Move rax, 1
+	059 Move rdi, stack:0x60
+	060 Move rbx, stack:0x68
+	061 Move rbp, stack:0x70
+	062 Move rsi, stack:0x78
+	063 ShiftStack 80
+	064 Move r14, stack:0x0
+	065 ShiftStack 8
+	066 Return rax
+	067 LoadAddress rax, [rdi-2]
+	068 Compare rax, 1
+	069 JumpIfGreater {74}
+	070 Move rax, 0
+	071 Goto {59}
+	072 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	073 Interrupt 
+	074 Move rbx, [rbx+120]
+	075 Move rcx, rbx
+	076 Call 0x1800031F0, rcx, rdx, r8, r9
+	077 LoadAddress rcx, [0x181E33058]
+	078 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	079 Move rdx, rax
+	080 Move r8, 0
+	081 Move rcx, rbx
+	082 Call MonoBtlsObject.CheckLastError, rcx, rdx
+	083 Move rdx, 0
+	084 Move rcx, rdi
+	085 Call MonoBtlsContext.GetException, rcx, rdx
+	086 LoadAddress rcx, [0x181DFAC20]
+	087 Move rbx, rax
+	088 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	089 Move rdx, rax
+	090 Move rcx, rbx
+	091 Call 0x1801E2C60, rcx, rdx, r8, r9
+
+Method: Mono.Btls.MonoBtlsSslError DoProcessHandshake()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [rcx+0A2h],0
+	mov rax,rcx
+	mov rcx,[rcx+80h]
+	jne short 0000000181150D0Dh
+	cmp byte ptr [rax+28h],0
+	jne short 0000000181150CFDh
+	test rcx,rcx
+	je short 0000000181150D1Dh
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 0000000181499150h
+	test rcx,rcx
+	je short 0000000181150D1Dh
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 0000000181498ED0h
+	test rcx,rcx
+	je short 0000000181150D1Dh
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 0000000181499920h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [rcx+162], 0
+	003 Move rax, rcx
+	004 Move rcx, [rcx+128]
+	005 JumpIfNotEqual {20}
+	006 Compare [rax+40], 0
+	007 JumpIfNotEqual {14}
+	008 Compare rcx, 0
+	009 JumpIfEqual {26}
+	010 Move rdx, 0
+	011 ShiftStack 40
+	012 Call MonoBtlsSsl.Connect, rcx, rdx
+	013 Return rax
+	014 Compare rcx, 0
+	015 JumpIfEqual {26}
+	016 Move rdx, 0
+	017 ShiftStack 40
+	018 Call MonoBtlsSsl.Accept, rcx, rdx
+	019 Return rax
+	020 Compare rcx, 0
+	021 JumpIfEqual {26}
+	022 Move rdx, 0
+	023 ShiftStack 40
+	024 Call MonoBtlsSsl.Handshake, rcx, rdx
+	025 Return rax
+	026 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void FinishHandshake()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	xor edx,edx
+	mov rbx,rcx
+	call 0000000181151DA0h
+	mov byte ptr [rbx+0A1h],1
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rdx, 0
+	005 Move rbx, rcx
+	006 Call MonoBtlsContext.InitializeSession, rcx, rdx
+	007 Move [rbx+161], 1
+	008 ShiftStack 32
+	009 Move rbx, stack:0x0
+	010 ShiftStack 8
+	011 Return 
+
+Method: System.Void InitializeConnection()
+
+Disassembly:
+	push rbp
+	push rbx
+	push rsi
+	push rdi
+	mov rbp,rsp
+	sub rsp,38h
+	cmp byte ptr [181F1E6F5h],0
+	mov rdi,rcx
+	jne short 0000000181151647h
+	lea rcx,[181DF7FD0h]
+	call 00000001801E2A80h
+	lea rcx,[181DFAD50h]
+	call 00000001801E2A80h
+	lea rcx,[181DFADB0h]
+	call 00000001801E2A80h
+	lea rcx,[181DFAE18h]
+	call 00000001801E2A80h
+	lea rcx,[181E2D288h]
+	call 00000001801E2A80h
+	lea rcx,[181E2D2E8h]
+	call 00000001801E2A80h
+	lea rcx,[181E2D3B0h]
+	call 00000001801E2A80h
+	lea rcx,[181E2D540h]
+	call 00000001801E2A80h
+	lea rcx,[181E0B980h]
+	call 00000001801E2A80h
+	lea rcx,[181E0B9F0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E6F5h],1
+	mov rcx,[181E2D3B0h]
+	xor esi,esi
+	mov [rsp+68h],r12
+	mov [rsp+30h],r13
+	mov [rsp+28h],r14
+	mov [rsp+20h],r15
+	mov [rbp+28h],esi
+	mov [rbp+38h],esi
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000181498270h
+	lea rcx,[rdi+78h]
+	mov [rdi+78h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	mov rbx,[rdi+78h]
+	test rbx,rbx
+	je near ptr 0000000181151D2Bh
+	mov r15,[rdi+20h]
+	mov rbx,[rbx+68h]
+	test r15,r15
+	je near ptr 0000000181151D2Bh
+	cmp [181F1E7AEh],sil
+	mov r15,[r15+90h]
+	movzx r14d,byte ptr [rdi+28h]
+	jne short 000000018115170Eh
+	lea rcx,[181DFA458h]
+	call 00000001801E2A80h
+	lea rcx,[181DFA718h]
+	call 00000001801E2A80h
+	lea rcx,[181DFA330h]
+	call 00000001801E2A80h
+	lea rcx,[181DFA6B0h]
+	call 00000001801E2A80h
+	lea rcx,[181DFA520h]
+	call 00000001801E2A80h
+	lea rcx,[181DFA2C8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E7AEh],1
+	test r14b,r14b
+	jne near ptr 0000000181151916h
+	test r15,r15
+	je near ptr 000000018115194Fh
+	cmp [r15+40h],rsi
+	je near ptr 000000018115191Fh
+	mov r13,[r15+40h]
+	mov r12d,esi
+	mov eax,esi
+	cmp eax,[r13+18h]
+	jge near ptr 00000001811519C3h
+	cmp r12d,[r13+18h]
+	jae near ptr 0000000181151D8Bh
+	mov rdx,[181DFA2C8h]
+	xor r8d,r8d
+	movsxd rax,r12d
+	mov r14,[r13+rax*8+20h]
+	mov rcx,r14
+	call 0000000180D7D9D0h
+	test al,al
+	je short 00000001811517D4h
+	cmp [r15+30h],rsi
+	je short 0000000181151789h
+	test rbx,rbx
+	je near ptr 0000000181151D2Bh
+	mov rdx,[r15+30h]
+	xor r9d,r9d
+	mov r8d,2
+	mov rcx,rbx
+	call 00000001814A0B60h
+	xor edx,edx
+	mov ecx,4
+	call 00000001814A0650h
+	xor edx,edx
+	mov rcx,rax
+	mov r14,rax
+	call 0000000180ED1D60h
+	test al,al
+	je short 00000001811517C3h
+	test rbx,rbx
+	je near ptr 0000000181151D2Bh
+	xor r9d,r9d
+	mov r8d,1
+	mov rdx,r14
+	mov rcx,rbx
+	call 00000001814A0C30h
+	xor edx,edx
+	mov ecx,1
+	call 00000001814A0650h
+	jmp near ptr 00000001811518DDh
+	mov rdx,[181DFA6B0h]
+	xor r8d,r8d
+	mov rcx,r14
+	call 0000000180D7D9D0h
+	test al,al
+	je short 000000018115181Dh
+	cmp [r15+30h],rsi
+	je near ptr 000000018115190Bh
+	test rbx,rbx
+	je near ptr 0000000181151D2Bh
+	mov rdx,[r15+30h]
+	xor r9d,r9d
+	mov r8d,2
+	mov rcx,rbx
+	call 00000001814A0B60h
+	inc r12d
+	mov eax,r12d
+	jmp near ptr 0000000181151733h
+	mov rdx,[181DFA718h]
+	xor r8d,r8d
+	mov rcx,r14
+	call 0000000180D7D9D0h
+	test al,al
+	je short 0000000181151844h
+	xor edx,edx
+	mov ecx,4
+	call 00000001814A0650h
+	jmp near ptr 00000001811518DDh
+	mov rdx,[181DFA458h]
+	xor r8d,r8d
+	mov rcx,r14
+	call 0000000180D7D9D0h
+	test al,al
+	je short 0000000181151868h
+	xor edx,edx
+	mov ecx,1
+	call 00000001814A0650h
+	jmp short 00000001811518DDh
+	test r14,r14
+	je near ptr 0000000181151D2Bh
+	mov rdx,[181DFA520h]
+	xor r8d,r8d
+	mov rcx,r14
+	call 0000000180D84200h
+	xor r8d,r8d
+	mov rcx,r14
+	test al,al
+	jne short 00000001811518D3h
+	mov rdx,[181DFA330h]
+	call 0000000180D84200h
+	test al,al
+	je near ptr 0000000181151D31h
+	xor r8d,r8d
+	mov edx,5
+	mov rcx,r14
+	call 0000000180D84310h
+	xor edx,edx
+	mov rcx,rax
+	mov r14,rax
+	call 0000000180ED1D60h
+	test al,al
+	je short 000000018115190Bh
+	test rbx,rbx
+	je near ptr 0000000181151D2Bh
+	mov r8d,2
+	jmp short 00000001811518FDh
+	mov edx,5
+	call 0000000180D84310h
+	xor edx,edx
+	mov rcx,rax
+	mov r14,rax
+	call 0000000180ED1D60h
+	test al,al
+	je short 000000018115190Bh
+	test rbx,rbx
+	je near ptr 0000000181151D2Bh
+	mov r8d,1
+	xor r9d,r9d
+	mov rdx,r14
+	mov rcx,rbx
+	call 00000001814A0C30h
+	inc r12d
+	mov eax,r12d
+	jmp near ptr 0000000181151733h
+	test r15,r15
+	je near ptr 00000001811519C3h
+	cmp [r15+30h],rsi
+	je short 000000018115194Ah
+	test rbx,rbx
+	je near ptr 0000000181151D2Bh
+	mov rdx,[r15+30h]
+	movzx eax,r14b
+	neg al
+	mov rcx,rbx
+	sbb r8d,r8d
+	xor r9d,r9d
+	add r8d,2
+	call 00000001814A0B60h
+	test r14b,r14b
+	jne short 00000001811519C3h
+	xor edx,edx
+	mov ecx,4
+	call 00000001814A0650h
+	xor edx,edx
+	mov rcx,rax
+	mov r14,rax
+	call 0000000180ED1D60h
+	test al,al
+	je short 0000000181151989h
+	test rbx,rbx
+	je near ptr 0000000181151D2Bh
+	xor r9d,r9d
+	mov r8d,1
+	mov rdx,r14
+	mov rcx,rbx
+	call 00000001814A0C30h
+	xor edx,edx
+	mov ecx,1
+	call 00000001814A0650h
+	xor edx,edx
+	mov rcx,rax
+	mov r14,rax
+	call 0000000180ED1D60h
+	test al,al
+	je short 00000001811519C3h
+	test rbx,rbx
+	je near ptr 0000000181151D2Bh
+	xor r9d,r9d
+	mov r8d,1
+	mov rdx,r14
+	mov rcx,rbx
+	call 00000001814A0C30h
+	cmp [rdi+28h],sil
+	je short 00000001811519CFh
+	cmp [rdi+40h],sil
+	je short 0000000181151A11h
+	mov rcx,[181E2D540h]
+	mov rbx,[rdi+78h]
+	call 0000000180197840h
+	mov r8,[181DFAE18h]
+	xor r9d,r9d
+	mov rdx,rdi
+	mov rcx,rax
+	mov r14,rax
+	call 0000000180973B00h
+	test rbx,rbx
+	je near ptr 0000000181151D2Bh
+	xor r9d,r9d
+	xor r8d,r8d
+	mov rdx,r14
+	mov rcx,rbx
+	call 0000000181498050h
+	cmp [rdi+28h],sil
+	jne short 0000000181151A5Ch
+	mov rcx,[181E2D288h]
+	mov rbx,[rdi+78h]
+	call 0000000180197840h
+	mov r8,[181DFAD50h]
+	xor r9d,r9d
+	mov rdx,rdi
+	mov rcx,rax
+	mov r14,rax
+	call 0000000181496C80h
+	test rbx,rbx
+	je near ptr 0000000181151D2Bh
+	xor r8d,r8d
+	mov rdx,r14
+	mov rcx,rbx
+	call 0000000181497ED0h
+	cmp [rdi+28h],sil
+	je short 0000000181151AD1h
+	mov rax,[rdi+18h]
+	test rax,rax
+	je near ptr 0000000181151D2Bh
+	cmp [rax+10h],rsi
+	jne short 0000000181151A92h
+	mov rax,[rdi+20h]
+	test rax,rax
+	je near ptr 0000000181151D2Bh
+	mov rcx,[rax+90h]
+	test rcx,rcx
+	je near ptr 0000000181151D2Bh
+	cmp [rcx+18h],rsi
+	je short 0000000181151AD1h
+	mov rcx,[181E2D2E8h]
+	mov rbx,[rdi+78h]
+	call 0000000180197840h
+	mov r8,[181DFADB0h]
+	xor r9d,r9d
+	mov rdx,rdi
+	mov rcx,rax
+	mov r14,rax
+	call 0000000180972C80h
+	test rbx,rbx
+	je near ptr 0000000181151D2Bh
+	xor r8d,r8d
+	mov rdx,r14
+	mov rcx,rbx
+	call 0000000181497F90h
+	mov rcx,[rdi+20h]
+	mov rbx,[rdi+78h]
+	test rcx,rcx
+	je near ptr 0000000181151D2Bh
+	movzx r8d,byte ptr [rdi+28h]
+	xor r9d,r9d
+	mov rdx,[rdi+38h]
+	mov rcx,[rcx+90h]
+	call 0000000181155FD0h
+	test rbx,rbx
+	je near ptr 0000000181151D2Bh
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rbx
+	call 0000000181498130h
+	cmp [181F1E697h],sil
+	jne short 0000000181151B2Dh
+	lea rcx,[181E0B910h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E697h],1
+	test byte ptr [rdi+44h],0C0h
+	jne short 0000000181151B53h
+	test dword ptr [rdi+44h],300h
+	jne short 0000000181151B4Ch
+	test dword ptr [rdi+44h],0C00h
+	je short 0000000181151B7Ah
+	mov edx,303h
+	jmp short 0000000181151B58h
+	mov edx,302h
+	jmp short 0000000181151B58h
+	mov edx,301h
+	mov r8,[181E0B910h]
+	lea rcx,[rbp+40h]
+	mov [rbp+40h],esi
+	call 0000000180AA7E30h
+	mov eax,[rbp+40h]
+	mov [rbp+28h],eax
+	test dword ptr [rdi+44h],0C00h
+	jne short 0000000181151B97h
+	test dword ptr [rdi+44h],300h
+	jne short 0000000181151B90h
+	test byte ptr [rdi+44h],0C0h
+	je short 0000000181151BB5h
+	mov edx,301h
+	jmp short 0000000181151B9Ch
+	mov edx,302h
+	jmp short 0000000181151B9Ch
+	mov edx,303h
+	mov r8,[181E0B910h]
+	lea rcx,[rbp+40h]
+	mov [rbp+40h],esi
+	call 0000000180AA7E30h
+	mov eax,[rbp+40h]
+	mov [rbp+38h],eax
+	cmp [rbp+28h],sil
+	je short 0000000181151BE6h
+	mov rdx,[181E0B9F0h]
+	lea rcx,[rbp+28h]
+	mov rbx,[rdi+78h]
+	call 0000000180AA80D0h
+	test rbx,rbx
+	je near ptr 0000000181151D2Bh
+	movsx edx,ax
+	xor r8d,r8d
+	mov rcx,rbx
+	call 0000000181497E20h
+	cmp [rbp+38h],sil
+	je short 0000000181151C17h
+	mov rdx,[181E0B9F0h]
+	lea rcx,[rbp+38h]
+	mov rbx,[rdi+78h]
+	call 0000000180AA80D0h
+	test rbx,rbx
+	je near ptr 0000000181151D2Bh
+	movsx edx,ax
+	xor r8d,r8d
+	mov rcx,rbx
+	call 0000000181497D70h
+	mov rax,[rdi+20h]
+	test rax,rax
+	je near ptr 0000000181151D2Bh
+	cmp [rax+90h],rsi
+	je near ptr 0000000181151CD4h
+	mov rcx,[rax+90h]
+	cmp [rcx+68h],rsi
+	je near ptr 0000000181151CD4h
+	mov rdx,[rcx+68h]
+	mov rcx,[181DF7FD0h]
+	mov edx,[rdx+18h]
+	call 00000001801E1EB0h
+	mov r10,rax
+	mov eax,esi
+	test r10,r10
+	je near ptr 0000000181151D2Bh
+	cmp eax,[r10+18h]
+	jge short 0000000181151CBDh
+	mov rax,[rdi+20h]
+	test rax,rax
+	je near ptr 0000000181151D2Bh
+	mov rdx,[rax+90h]
+	test rdx,rdx
+	je near ptr 0000000181151D2Bh
+	mov rdx,[rdx+68h]
+	test rdx,rdx
+	je near ptr 0000000181151D2Bh
+	cmp esi,[rdx+18h]
+	jae near ptr 0000000181151D8Bh
+	cmp esi,[r10+18h]
+	jae near ptr 0000000181151D8Bh
+	movsxd rax,esi
+	movsxd rcx,esi
+	inc esi
+	movzx eax,word ptr [rdx+rax*2+20h]
+	mov [r10+rcx*2+20h],ax
+	mov eax,esi
+	jmp short 0000000181151C63h
+	mov rcx,[rdi+78h]
+	test rcx,rcx
+	je short 0000000181151D2Bh
+	xor r9d,r9d
+	mov r8b,1
+	mov rdx,r10
+	call 0000000181497710h
+	cmp byte ptr [rdi+28h],0
+	je short 0000000181151D0Eh
+	mov rax,[rdi+20h]
+	test rax,rax
+	je short 0000000181151D2Bh
+	mov rcx,[rax+90h]
+	test rcx,rcx
+	je short 0000000181151D0Eh
+	cmp qword ptr [rcx+50h],0
+	je short 0000000181151D0Eh
+	mov rdx,rcx
+	mov rcx,[rdi+78h]
+	test rcx,rcx
+	je short 0000000181151D2Bh
+	mov rdx,[rdx+50h]
+	xor r8d,r8d
+	call 0000000181497920h
+	mov r15,[rsp+20h]
+	mov r14,[rsp+28h]
+	mov r13,[rsp+30h]
+	mov r12,[rsp+68h]
+	add rsp,38h
+	pop rdi
+	pop rsi
+	pop rbx
+	pop rbp
+	ret
+	call 00000001801E2CA0h
+	int 3
+	lea rcx,[181E08360h]
+	call 00000001801E2AA0h
+	mov rcx,rax
+	xor r8d,r8d
+	mov rdx,r14
+	call 0000000180D7EA00h
+	lea rcx,[181E30AC8h]
+	mov rbx,rax
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 0000000180F23960h
+	lea rcx,[181DFB260h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rdi
+	call 00000001801E2C60h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbp
+	003 ShiftStack -8
+	004 Move stack:0x0, rbx
+	005 ShiftStack -8
+	006 Move stack:0x0, rsi
+	007 ShiftStack -8
+	008 Move stack:0x0, rdi
+	009 Move rbp, rsp
+	010 ShiftStack -56
+	011 Compare [0x181F1E6F5], 0
+	012 Move rdi, rcx
+	013 JumpIfNotEqual {35}
+	014 LoadAddress rcx, [0x181DF7FD0]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 LoadAddress rcx, [0x181DFAD50]
+	017 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	018 LoadAddress rcx, [0x181DFADB0]
+	019 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	020 LoadAddress rcx, [0x181DFAE18]
+	021 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	022 LoadAddress rcx, [0x181E2D288]
+	023 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	024 LoadAddress rcx, [0x181E2D2E8]
+	025 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	026 LoadAddress rcx, [0x181E2D3B0]
+	027 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	028 LoadAddress rcx, [0x181E2D540]
+	029 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	030 LoadAddress rcx, [0x181E0B980]
+	031 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	032 LoadAddress rcx, [0x181E0B9F0]
+	033 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	034 Move [0x181F1E6F5], 1
+	035 Move rcx, typeof(Mono.Btls.MonoBtlsSslCtx)
+	036 Move rsi, 0
+	037 Move stack:0x68, r12
+	038 Move stack:0x30, r13
+	039 Move stack:0x28, r14
+	040 Move stack:0x20, r15
+	041 Move [rbp+40], rsi
+	042 Move [rbp+56], rsi
+	043 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	044 Move rdx, 0
+	045 Move rcx, rax
+	046 Move rbx, rax
+	047 Call MonoBtlsSslCtx..ctor, rcx, rdx
+	048 LoadAddress rcx, [rdi+120]
+	049 Move [rdi+120], rbx
+	050 Move rdx, rbx
+	051 Call 0x1801E1E30, rcx, rdx, r8, r9
+	052 Move rbx, [rdi+120]
+	053 Compare rbx, 0
+	054 JumpIfEqual {479}
+	055 Move r15, [rdi+32]
+	056 Move rbx, [rbx+104]
+	057 Compare r15, 0
+	058 JumpIfEqual {479}
+	059 Compare [0x181F1E7AE], rsi
+	060 Move r15, [r15+144]
+	061 Move r14, [rdi+40]
+	062 JumpIfNotEqual {76}
+	063 LoadAddress rcx, [0x181DFA458]
+	064 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	065 LoadAddress rcx, [0x181DFA718]
+	066 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	067 LoadAddress rcx, [0x181DFA330]
+	068 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	069 LoadAddress rcx, [0x181DFA6B0]
+	070 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	071 LoadAddress rcx, [0x181DFA520]
+	072 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	073 LoadAddress rcx, [0x181DFA2C8]
+	074 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	075 Move [0x181F1E7AE], 1
+	076 Compare r14, 0
+	077 JumpIfNotEqual {210}
+	078 Compare r15, 0
+	079 JumpIfEqual {226}
+	080 Compare [r15+64], rsi
+	081 JumpIfEqual {212}
+	082 Move r13, [r15+64]
+	083 Move r12, rsi
+	084 Move rax, rsi
+	085 Compare rax, [r13+24]
+	086 JumpIfGreaterOrEqual {258}
+	087 Compare r12, [r13+24]
+	088 JumpIfGreaterOrEqual {503}
+	089 Move rdx, "@default"
+	090 Move r8, 0
+	091 Move rax, r12
+	092 Move r14, [r13+32+rax*8]
+	093 Move rcx, r14
+	094 Call 0x180D7D9D0, rcx, rdx, r8
+	095 Compare rax, 0
+	096 JumpIfEqual {126}
+	097 Compare [r15+48], rsi
+	098 JumpIfEqual {106}
+	099 Compare rbx, 0
+	100 JumpIfEqual {479}
+	101 Move rdx, [r15+48]
+	102 Move r9, 0
+	103 Move r8, 2
+	104 Move rcx, rbx
+	105 Call MonoBtlsX509Store.AddCollection, rcx, rdx, r8
+	106 Move rdx, 0
+	107 Move rcx, 4
+	108 Call MonoBtlsX509StoreManager.GetStorePath, rcx, rdx
+	109 Move rdx, 0
+	110 Move rcx, rax
+	111 Move r14, rax
+	112 Call Directory.Exists, rcx, rdx
+	113 Compare rax, 0
+	114 JumpIfEqual {122}
+	115 Compare rbx, 0
+	116 JumpIfEqual {479}
+	117 Move r9, 0
+	118 Move r8, 1
+	119 Move rdx, r14
+	120 Move rcx, rbx
+	121 Call MonoBtlsX509Store.AddDirectoryLookup, rcx, rdx, r8
+	122 Move rdx, 0
+	123 Move rcx, 1
+	124 Call MonoBtlsX509StoreManager.GetStorePath, rcx, rdx
+	125 Goto {194}
+	126 Move rdx, "@trusted"
+	127 Move r8, 0
+	128 Move rcx, r14
+	129 Call 0x180D7D9D0, rcx, rdx, r8
+	130 Compare rax, 0
+	131 JumpIfEqual {144}
+	132 Compare [r15+48], rsi
+	133 JumpIfEqual {207}
+	134 Compare rbx, 0
+	135 JumpIfEqual {479}
+	136 Move rdx, [r15+48]
+	137 Move r9, 0
+	138 Move r8, 2
+	139 Move rcx, rbx
+	140 Call MonoBtlsX509Store.AddCollection, rcx, rdx, r8
+	141 Add r12, r12, 1
+	142 Move rax, r12
+	143 Goto {85}
+	144 Move rdx, "@user"
+	145 Move r8, 0
+	146 Move rcx, r14
+	147 Call 0x180D7D9D0, rcx, rdx, r8
+	148 Compare rax, 0
+	149 JumpIfEqual {154}
+	150 Move rdx, 0
+	151 Move rcx, 4
+	152 Call MonoBtlsX509StoreManager.GetStorePath, rcx, rdx
+	153 Goto {194}
+	154 Move rdx, "@machine"
+	155 Move r8, 0
+	156 Move rcx, r14
+	157 Call 0x180D7D9D0, rcx, rdx, r8
+	158 Compare rax, 0
+	159 JumpIfEqual {164}
+	160 Move rdx, 0
+	161 Move rcx, 1
+	162 Call MonoBtlsX509StoreManager.GetStorePath, rcx, rdx
+	163 Goto {194}
+	164 Compare r14, 0
+	165 JumpIfEqual {479}
+	166 Move rdx, "@pem:"
+	167 Move r8, 0
+	168 Move rcx, r14
+	169 Call String.StartsWith, rcx, rdx
+	170 Move r8, 0
+	171 Move rcx, r14
+	172 Compare rax, 0
+	173 JumpIfNotEqual {192}
+	174 Move rdx, "@der:"
+	175 Call String.StartsWith, rcx, rdx
+	176 Compare rax, 0
+	177 JumpIfEqual {481}
+	178 Move r8, 0
+	179 Move rdx, 5
+	180 Move rcx, r14
+	181 Call String.Substring, rcx, rdx
+	182 Move rdx, 0
+	183 Move rcx, rax
+	184 Move r14, rax
+	185 Call Directory.Exists, rcx, rdx
+	186 Compare rax, 0
+	187 JumpIfEqual {207}
+	188 Compare rbx, 0
+	189 JumpIfEqual {479}
+	190 Move r8, 2
+	191 Goto {203}
+	192 Move rdx, 5
+	193 Call String.Substring, rcx, rdx
+	194 Move rdx, 0
+	195 Move rcx, rax
+	196 Move r14, rax
+	197 Call Directory.Exists, rcx, rdx
+	198 Compare rax, 0
+	199 JumpIfEqual {207}
+	200 Compare rbx, 0
+	201 JumpIfEqual {479}
+	202 Move r8, 1
+	203 Move r9, 0
+	204 Move rdx, r14
+	205 Move rcx, rbx
+	206 Call MonoBtlsX509Store.AddDirectoryLookup, rcx, rdx, r8
+	207 Add r12, r12, 1
+	208 Move rax, r12
+	209 Goto {85}
+	210 Compare r15, 0
+	211 JumpIfEqual {258}
+	212 Compare [r15+48], rsi
+	213 JumpIfEqual {224}
+	214 Compare rbx, 0
+	215 JumpIfEqual {479}
+	216 Move rdx, [r15+48]
+	217 Move rax, r14
+	218 Neg rax
+	219 Move rcx, rbx
+	220 NotImplemented "sbb r8d,r8d"
+	221 Move r9, 0
+	222 Add r8, r8, 2
+	223 Call MonoBtlsX509Store.AddCollection, rcx, rdx, r8
+	224 Compare r14, 0
+	225 JumpIfNotEqual {258}
+	226 Move rdx, 0
+	227 Move rcx, 4
+	228 Call MonoBtlsX509StoreManager.GetStorePath, rcx, rdx
+	229 Move rdx, 0
+	230 Move rcx, rax
+	231 Move r14, rax
+	232 Call Directory.Exists, rcx, rdx
+	233 Compare rax, 0
+	234 JumpIfEqual {242}
+	235 Compare rbx, 0
+	236 JumpIfEqual {479}
+	237 Move r9, 0
+	238 Move r8, 1
+	239 Move rdx, r14
+	240 Move rcx, rbx
+	241 Call MonoBtlsX509Store.AddDirectoryLookup, rcx, rdx, r8
+	242 Move rdx, 0
+	243 Move rcx, 1
+	244 Call MonoBtlsX509StoreManager.GetStorePath, rcx, rdx
+	245 Move rdx, 0
+	246 Move rcx, rax
+	247 Move r14, rax
+	248 Call Directory.Exists, rcx, rdx
+	249 Compare rax, 0
+	250 JumpIfEqual {258}
+	251 Compare rbx, 0
+	252 JumpIfEqual {479}
+	253 Move r9, 0
+	254 Move r8, 1
+	255 Move rdx, r14
+	256 Move rcx, rbx
+	257 Call MonoBtlsX509Store.AddDirectoryLookup, rcx, rdx, r8
+	258 Compare [rdi+40], rsi
+	259 JumpIfEqual {262}
+	260 Compare [rdi+64], rsi
+	261 JumpIfEqual {278}
+	262 Move rcx, typeof(Mono.Btls.MonoBtlsVerifyCallback)
+	263 Move rbx, [rdi+120]
+	264 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	265 Move r8, [0x181DFAE18]
+	266 Move r9, 0
+	267 Move rdx, rdi
+	268 Move rcx, rax
+	269 Move r14, rax
+	270 Call 0x180973B00, rcx, rdx, r8
+	271 Compare rbx, 0
+	272 JumpIfEqual {479}
+	273 Move r9, 0
+	274 Move r8, 0
+	275 Move rdx, r14
+	276 Move rcx, rbx
+	277 Call MonoBtlsSslCtx.SetVerifyCallback, rcx, rdx, r8
+	278 Compare [rdi+40], rsi
+	279 JumpIfNotEqual {297}
+	280 Move rcx, typeof(Mono.Btls.MonoBtlsSelectCallback)
+	281 Move rbx, [rdi+120]
+	282 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	283 Move r8, [0x181DFAD50]
+	284 Move r9, 0
+	285 Move rdx, rdi
+	286 Move rcx, rax
+	287 Move r14, rax
+	288 Call MonoBtlsSelectCallback..ctor, rcx, rdx, r8
+	289 Compare rbx, 0
+	290 JumpIfEqual {479}
+	291 Move r8, 0
+	292 Move rdx, r14
+	293 Move rcx, rbx
+	294 Call MonoBtlsSslCtx.SetSelectCallback, rcx, rdx
+	295 Compare [rdi+40], rsi
+	296 JumpIfEqual {325}
+	297 Move rax, [rdi+24]
+	298 Compare rax, 0
+	299 JumpIfEqual {479}
+	300 Compare [rax+16], rsi
+	301 JumpIfNotEqual {310}
+	302 Move rax, [rdi+32]
+	303 Compare rax, 0
+	304 JumpIfEqual {479}
+	305 Move rcx, [rax+144]
+	306 Compare rcx, 0
+	307 JumpIfEqual {479}
+	308 Compare [rcx+24], rsi
+	309 JumpIfEqual {325}
+	310 Move rcx, typeof(Mono.Btls.MonoBtlsServerNameCallback)
+	311 Move rbx, [rdi+120]
+	312 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	313 Move r8, [0x181DFADB0]
+	314 Move r9, 0
+	315 Move rdx, rdi
+	316 Move rcx, rax
+	317 Move r14, rax
+	318 Call 0x180972C80, rcx, rdx, r8
+	319 Compare rbx, 0
+	320 JumpIfEqual {479}
+	321 Move r8, 0
+	322 Move rdx, r14
+	323 Move rcx, rbx
+	324 Call MonoBtlsSslCtx.SetServerNameCallback, rcx, rdx
+	325 Move rcx, [rdi+32]
+	326 Move rbx, [rdi+120]
+	327 Compare rcx, 0
+	328 JumpIfEqual {479}
+	329 Move r8, [rdi+40]
+	330 Move r9, 0
+	331 Move rdx, [rdi+56]
+	332 Move rcx, [rcx+144]
+	333 Call MonoBtlsProvider.GetVerifyParam, rcx, rdx, r8, r9
+	334 Compare rbx, 0
+	335 JumpIfEqual {479}
+	336 Move r8, 0
+	337 Move rdx, rax
+	338 Move rcx, rbx
+	339 Call MonoBtlsSslCtx.SetVerifyParam, rcx, rdx
+	340 Compare [0x181F1E697], rsi
+	341 JumpIfNotEqual {345}
+	342 LoadAddress rcx, [0x181E0B910]
+	343 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	344 Move [0x181F1E697], 1
+	345 Compare [rdi+68], 192
+	346 JumpIfNotEqual {355}
+	347 Compare [rdi+68], 768
+	348 JumpIfNotEqual {353}
+	349 Compare [rdi+68], 3072
+	350 JumpIfEqual {364}
+	351 Move rdx, 771
+	352 Goto {356}
+	353 Move rdx, 770
+	354 Goto {356}
+	355 Move rdx, 769
+	356 Move r8, [0x181E0B910]
+	357 LoadAddress rcx, [rbp+64]
+	358 Move [rbp+64], rsi
+	359 Call 0x180AA7E30, rcx, rdx
+	360 Move rax, [rbp+64]
+	361 Move [rbp+40], rax
+	362 Compare [rdi+68], 3072
+	363 JumpIfNotEqual {372}
+	364 Compare [rdi+68], 768
+	365 JumpIfNotEqual {370}
+	366 Compare [rdi+68], 192
+	367 JumpIfEqual {379}
+	368 Move rdx, 769
+	369 Goto {373}
+	370 Move rdx, 770
+	371 Goto {373}
+	372 Move rdx, 771
+	373 Move r8, [0x181E0B910]
+	374 LoadAddress rcx, [rbp+64]
+	375 Move [rbp+64], rsi
+	376 Call 0x180AA7E30, rcx, rdx
+	377 Move rax, [rbp+64]
+	378 Move [rbp+56], rax
+	379 Compare [rbp+40], rsi
+	380 JumpIfEqual {391}
+	381 Move rdx, [0x181E0B9F0]
+	382 LoadAddress rcx, [rbp+40]
+	383 Move rbx, [rdi+120]
+	384 Call 0x180AA80D0, rcx, rdx
+	385 Compare rbx, 0
+	386 JumpIfEqual {479}
+	387 Move rdx, rax
+	388 Move r8, 0
+	389 Move rcx, rbx
+	390 Call MonoBtlsSslCtx.SetMinVersion, rcx, rdx
+	391 Compare [rbp+56], rsi
+	392 JumpIfEqual {403}
+	393 Move rdx, [0x181E0B9F0]
+	394 LoadAddress rcx, [rbp+56]
+	395 Move rbx, [rdi+120]
+	396 Call 0x180AA80D0, rcx, rdx
+	397 Compare rbx, 0
+	398 JumpIfEqual {479}
+	399 Move rdx, rax
+	400 Move r8, 0
+	401 Move rcx, rbx
+	402 Call MonoBtlsSslCtx.SetMaxVersion, rcx, rdx
+	403 Move rax, [rdi+32]
+	404 Compare rax, 0
+	405 JumpIfEqual {479}
+	406 Compare [rax+144], rsi
+	407 JumpIfEqual {448}
+	408 Move rcx, [rax+144]
+	409 Compare [rcx+104], rsi
+	410 JumpIfEqual {448}
+	411 Move rdx, [rcx+104]
+	412 Move rcx, typeof(System.Int16[1])
+	413 Move rdx, [rdx+24]
+	414 Call "SzArrayNew", rcx, rdx, r8, r9
+	415 Move r10, rax
+	416 Move rax, rsi
+	417 Compare r10, 0
+	418 JumpIfEqual {479}
+	419 Compare rax, [r10+24]
+	420 JumpIfGreaterOrEqual {441}
+	421 Move rax, [rdi+32]
+	422 Compare rax, 0
+	423 JumpIfEqual {479}
+	424 Move rdx, [rax+144]
+	425 Compare rdx, 0
+	426 JumpIfEqual {479}
+	427 Move rdx, [rdx+104]
+	428 Compare rdx, 0
+	429 JumpIfEqual {479}
+	430 Compare rsi, [rdx+24]
+	431 JumpIfGreaterOrEqual {503}
+	432 Compare rsi, [r10+24]
+	433 JumpIfGreaterOrEqual {503}
+	434 Move rax, rsi
+	435 Move rcx, rsi
+	436 Add rsi, rsi, 1
+	437 Move rax, [rdx+32+rax*2]
+	438 Move [r10+32+rcx*2], rax
+	439 Move rax, rsi
+	440 Goto {419}
+	441 Move rcx, [rdi+120]
+	442 Compare rcx, 0
+	443 JumpIfEqual {479}
+	444 Move r9, 0
+	445 Move r8, 1
+	446 Move rdx, r10
+	447 Call MonoBtlsSslCtx.SetCiphers, rcx, rdx, r8
+	448 Compare [rdi+40], 0
+	449 JumpIfEqual {465}
+	450 Move rax, [rdi+32]
+	451 Compare rax, 0
+	452 JumpIfEqual {479}
+	453 Move rcx, [rax+144]
+	454 Compare rcx, 0
+	455 JumpIfEqual {465}
+	456 Compare [rcx+80], 0
+	457 JumpIfEqual {465}
+	458 Move rdx, rcx
+	459 Move rcx, [rdi+120]
+	460 Compare rcx, 0
+	461 JumpIfEqual {479}
+	462 Move rdx, [rdx+80]
+	463 Move r8, 0
+	464 Call MonoBtlsSslCtx.SetClientCertificateIssuers, rcx, rdx
+	465 Move r15, stack:0x20
+	466 Move r14, stack:0x28
+	467 Move r13, stack:0x30
+	468 Move r12, stack:0x68
+	469 ShiftStack 56
+	470 Move rdi, stack:0x0
+	471 ShiftStack 8
+	472 Move rsi, stack:0x0
+	473 ShiftStack 8
+	474 Move rbx, stack:0x0
+	475 ShiftStack 8
+	476 Move rbp, stack:0x0
+	477 ShiftStack 8
+	478 Return 
+	479 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	480 Interrupt 
+	481 LoadAddress rcx, [0x181E08360]
+	482 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	483 Move rcx, rax
+	484 Move r8, 0
+	485 Move rdx, r14
+	486 Call String.Format, rcx, rdx, r8
+	487 LoadAddress rcx, [0x181E30AC8]
+	488 Move rbx, rax
+	489 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	490 Move rcx, rax
+	491 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	492 Move r8, 0
+	493 Move rdx, rbx
+	494 Move rcx, rax
+	495 Move rdi, rax
+	496 Call NotSupportedException..ctor, rcx, rdx
+	497 LoadAddress rcx, [0x181DFB260]
+	498 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	499 Move rdx, rax
+	500 Move rcx, rdi
+	501 Call 0x1801E2C60, rcx, rdx, r8, r9
+	502 Interrupt 
+	503 Call 0x1801E2C90, rcx, rdx, r8, r9
+
+Method: System.Void GetPeerCertificate()
+
+Disassembly:
+	push rbx
+	sub rsp,40h
+	mov rbx,rcx
+	cmp byte ptr [181F1E6F6h],0
+	jne short 0000000181151235h
+	lea rcx,[181E1B1D8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E6F6h],1
+	cmp qword ptr [rbx+58h],0
+	jne near ptr 00000001811512CFh
+	mov rcx,[rbx+80h]
+	test rcx,rcx
+	je near ptr 00000001811512DBh
+	xor edx,edx
+	call 0000000181499650h
+	mov [rsp+50h],rax
+	mov qword ptr [rsp+28h],0
+	lea rax,[rsp+50h]
+	mov [rsp+30h],rax
+	mov r8,[rsp+50h]
+	test r8,r8
+	je short 0000000181151298h
+	xor edx,edx
+	mov rcx,r8
+	call 0000000181155700h
+	mov [rbx+58h],rax
+	lea rcx,[rbx+58h]
+	mov rdx,rax
+	call 00000001801E1E30h
+	mov r8,[rsp+50h]
+	test r8,r8
+	je short 00000001811512ABh
+	xor ecx,ecx
+	mov rdx,[181E1B1D8h]
+	call 0000000180003100h
+	jmp short 00000001811512CFh
+	mov r8,[rsp+50h]
+	test r8,r8
+	je short 00000001811512C5h
+	xor ecx,ecx
+	mov rdx,[181E1B1D8h]
+	call 0000000180003100h
+	mov rcx,[rsp+28h]
+	test rcx,rcx
+	jne short 00000001811512D5h
+	add rsp,40h
+	pop rbx
+	ret
+	call 000000018018E770h
+	int 3
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -64
+	004 Move rbx, rcx
+	005 Compare [0x181F1E6F6], 0
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x181E1B1D8]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x181F1E6F6], 1
+	010 Compare [rbx+88], 0
+	011 JumpIfNotEqual {47}
+	012 Move rcx, [rbx+128]
+	013 Compare rcx, 0
+	014 JumpIfEqual {53}
+	015 Move rdx, 0
+	016 Call MonoBtlsSsl.GetPeerCertificate, rcx, rdx
+	017 Move stack:0x50, rax
+	018 Move stack:0x28, 0
+	019 LoadAddress rax, stack:0x50
+	020 Move stack:0x30, rax
+	021 Move r8, stack:0x50
+	022 Compare r8, 0
+	023 JumpIfEqual {32}
+	024 Move rdx, 0
+	025 Move rcx, r8
+	026 Call MonoBtlsProvider.CreateCertificate, rcx, rdx
+	027 Move [rbx+88], rax
+	028 LoadAddress rcx, [rbx+88]
+	029 Move rdx, rax
+	030 Call 0x1801E1E30, rcx, rdx, r8, r9
+	031 Move r8, stack:0x50
+	032 Compare r8, 0
+	033 JumpIfEqual {37}
+	034 Move rcx, 0
+	035 Move rdx, typeof(System.IDisposable)
+	036 Call 0x180003100, rcx, rdx, r8, r9
+	037 Goto {47}
+	038 Move r8, stack:0x50
+	039 Compare r8, 0
+	040 JumpIfEqual {44}
+	041 Move rcx, 0
+	042 Move rdx, typeof(System.IDisposable)
+	043 Call 0x180003100, rcx, rdx, r8, r9
+	044 Move rcx, stack:0x28
+	045 Compare rcx, 0
+	046 JumpIfNotEqual {51}
+	047 ShiftStack 64
+	048 Move rbx, stack:0x0
+	049 ShiftStack 8
+	050 Return 
+	051 Call 0x18018E770, rcx, rdx, r8, r9
+	052 Interrupt 
+	053 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void InitializeSession()
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	cmp byte ptr [181F1E6F7h],0
+	mov rbx,rcx
+	jne short 0000000181151DC5h
+	lea rcx,[181E2DD78h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E6F7h],1
+	mov [rsp+40h],rbp
+	xor edx,edx
+	mov [rsp+48h],rsi
+	mov rcx,rbx
+	mov [rsp+50h],rdi
+	mov [rsp+58h],r14
+	call 0000000181151210h
+	cmp byte ptr [rbx+28h],0
+	je short 0000000181151E3Fh
+	cmp byte ptr [rbx+40h],0
+	je short 0000000181151E3Fh
+	cmp byte ptr [rbx+0A0h],0
+	jne short 0000000181151E3Fh
+	mov rcx,[rbx+10h]
+	test rcx,rcx
+	je near ptr 0000000181151F1Dh
+	movzx r8d,byte ptr [rbx+28h]
+	xor eax,eax
+	mov rdx,[rbx+30h]
+	xor r9d,r9d
+	mov [rsp+28h],rax
+	mov [rsp+20h],rax
+	call 000000018114B660h
+	test rax,rax
+	je near ptr 0000000181151F23h
+	cmp byte ptr [rax+10h],0
+	je near ptr 0000000181151F23h
+	cmp byte ptr [rax+11h],0
+	jne near ptr 0000000181151F23h
+	mov rcx,[rbx+80h]
+	test rcx,rcx
+	je near ptr 0000000181151F1Dh
+	xor edx,edx
+	call 0000000181499350h
+	mov rcx,[rbx+80h]
+	mov r14d,eax
+	test rcx,rcx
+	je near ptr 0000000181151F1Dh
+	xor edx,edx
+	call 0000000181499880h
+	mov rcx,[rbx+80h]
+	mov ebp,eax
+	test rcx,rcx
+	je near ptr 0000000181151F1Dh
+	xor edx,edx
+	call 0000000181499780h
+	mov rcx,[181E2DD78h]
+	mov rsi,rax
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rdi,rax
+	call 000000018024B5B0h
+	test rdi,rdi
+	je short 0000000181151F1Dh
+	movsx edx,bp
+	mov [rdi+10h],r14w
+	sub edx,301h
+	je short 0000000181151ED6h
+	sub edx,1
+	je short 0000000181151ECFh
+	cmp edx,1
+	jne near ptr 0000000181151F5Fh
+	mov eax,0C00h
+	jmp short 0000000181151EDBh
+	mov eax,300h
+	jmp short 0000000181151EDBh
+	mov eax,0C0h
+	lea rcx,[rdi+18h]
+	mov [rdi+14h],eax
+	mov rdx,rsi
+	mov [rdi+18h],rsi
+	call 00000001801E1E30h
+	lea rcx,[rbx+98h]
+	mov [rbx+98h],rdi
+	mov rdx,rdi
+	mov r14,[rsp+58h]
+	mov rdi,[rsp+50h]
+	mov rsi,[rsp+48h]
+	mov rbp,[rsp+40h]
+	add rsp,30h
+	pop rbx
+	jmp near ptr 00000001801E1E30h
+	call 00000001801E2CA0h
+	int 3
+	lea rcx,[181E01848h]
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	xor r8d,r8d
+	mov dl,2Eh
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180D54C60h
+	lea rcx,[181DFABC0h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+	int 3
+	lea rcx,[181E30AC8h]
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180F238F0h
+	lea rcx,[181DFAB58h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Compare [0x181F1E6F7], 0
+	005 Move rbx, rcx
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x181E2DD78]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x181F1E6F7], 1
+	010 Move stack:0x40, rbp
+	011 Move rdx, 0
+	012 Move stack:0x48, rsi
+	013 Move rcx, rbx
+	014 Move stack:0x50, rdi
+	015 Move stack:0x58, r14
+	016 Call MonoBtlsContext.GetPeerCertificate, rcx, rdx
+	017 Compare [rbx+40], 0
+	018 JumpIfEqual {39}
+	019 Compare [rbx+64], 0
+	020 JumpIfEqual {39}
+	021 Compare [rbx+160], 0
+	022 JumpIfNotEqual {39}
+	023 Move rcx, [rbx+16]
+	024 Compare rcx, 0
+	025 JumpIfEqual {95}
+	026 Move r8, [rbx+40]
+	027 Move rax, 0
+	028 Move rdx, [rbx+48]
+	029 Move r9, 0
+	030 Move stack:0x28, rax
+	031 Move stack:0x20, rax
+	032 Call ChainValidationHelper.ValidateCertificate, rcx, rdx, r8, r9, stack:0x0
+	033 Compare rax, 0
+	034 JumpIfEqual {97}
+	035 Compare [rax+16], 0
+	036 JumpIfEqual {97}
+	037 Compare [rax+17], 0
+	038 JumpIfNotEqual {97}
+	039 Move rcx, [rbx+128]
+	040 Compare rcx, 0
+	041 JumpIfEqual {95}
+	042 Move rdx, 0
+	043 Call MonoBtlsSsl.GetCipher, rcx, rdx
+	044 Move rcx, [rbx+128]
+	045 Move r14, rax
+	046 Compare rcx, 0
+	047 JumpIfEqual {95}
+	048 Move rdx, 0
+	049 Call MonoBtlsSsl.GetVersion, rcx, rdx
+	050 Move rcx, [rbx+128]
+	051 Move rbp, rax
+	052 Compare rcx, 0
+	053 JumpIfEqual {95}
+	054 Move rdx, 0
+	055 Call MonoBtlsSsl.GetServerName, rcx, rdx
+	056 Move rcx, typeof(Mono.Security.Interface.MonoTlsConnectionInfo)
+	057 Move rsi, rax
+	058 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	059 Move rdx, 0
+	060 Move rcx, rax
+	061 Move rdi, rax
+	062 Call 0x18024B5B0, rcx, rdx, r8
+	063 Compare rdi, 0
+	064 JumpIfEqual {95}
+	065 Move rdx, rbp
+	066 Move [rdi+16], r14
+	067 Subtract rdx, rdx, 769
+	068 JumpIfEqual {77}
+	069 Subtract rdx, rdx, 1
+	070 JumpIfEqual {75}
+	071 Compare rdx, 1
+	072 JumpIfNotEqual {112}
+	073 Move rax, 3072
+	074 Goto {78}
+	075 Move rax, 768
+	076 Goto {78}
+	077 Move rax, 192
+	078 LoadAddress rcx, [rdi+24]
+	079 Move [rdi+20], rax
+	080 Move rdx, rsi
+	081 Move [rdi+24], rsi
+	082 Call 0x1801E1E30, rcx, rdx, r8, r9
+	083 LoadAddress rcx, [rbx+152]
+	084 Move [rbx+152], rdi
+	085 Move rdx, rdi
+	086 Move r14, stack:0x58
+	087 Move rdi, stack:0x50
+	088 Move rsi, stack:0x48
+	089 Move rbp, stack:0x40
+	090 ShiftStack 48
+	091 Move rbx, stack:0x0
+	092 ShiftStack 8
+	093 Call 0x1801E1E30, rcx, rdx, r8, r9
+	094 Return 
+	095 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	096 Interrupt 
+	097 LoadAddress rcx, [0x181E01848]
+	098 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	099 Move rcx, rax
+	100 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	101 Move r8, 0
+	102 Move rdx, 46
+	103 Move rcx, rax
+	104 Move rbx, rax
+	105 Call TlsException..ctor, rcx, rdx
+	106 LoadAddress rcx, [0x181DFABC0]
+	107 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	108 Move rdx, rax
+	109 Move rcx, rbx
+	110 Call 0x1801E2C60, rcx, rdx, r8, r9
+	111 Interrupt 
+	112 LoadAddress rcx, [0x181E30AC8]
+	113 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	114 Move rcx, rax
+	115 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	116 Move rdx, 0
+	117 Move rcx, rax
+	118 Move rbx, rax
+	119 Call NotSupportedException..ctor, rcx, rdx
+	120 LoadAddress rcx, [0x181DFAB58]
+	121 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	122 Move rdx, rax
+	123 Move rcx, rbx
+	124 Call 0x1801E2C60, rcx, rdx, r8, r9
+
+Method: Mono.Security.Interface.TlsProtocols GetProtocol(Mono.Security.Interface.TlsProtocolCode protocol)
+
+Disassembly:
+	sub rsp,28h
+	movsx edx,cx
+	sub edx,301h
+	je short 000000018115155Dh
+	sub edx,1
+	je short 0000000181151553h
+	cmp edx,1
+	jne short 0000000181151567h
+	mov eax,0C00h
+	add rsp,28h
+	ret
+	mov eax,300h
+	add rsp,28h
+	ret
+	mov eax,0C0h
+	add rsp,28h
+	ret
+	mov [rsp+20h],rbx
+	lea rcx,[181E30AC8h]
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180F238F0h
+	lea rcx,[181DFAB58h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+	mov rbx,[rsp+20h]
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rdx, rcx
+	003 Subtract rdx, rdx, 769
+	004 JumpIfEqual {15}
+	005 Subtract rdx, rdx, 1
+	006 JumpIfEqual {12}
+	007 Compare rdx, 1
+	008 JumpIfNotEqual {18}
+	009 Move rax, 3072
+	010 ShiftStack 40
+	011 Return rax
+	012 Move rax, 768
+	013 ShiftStack 40
+	014 Return rax
+	015 Move rax, 192
+	016 ShiftStack 40
+	017 Return rax
+	018 Move stack:0x20, rbx
+	019 LoadAddress rcx, [0x181E30AC8]
+	020 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	021 Move rcx, rax
+	022 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	023 Move rdx, 0
+	024 Move rcx, rax
+	025 Move rbx, rax
+	026 Call NotSupportedException..ctor, rcx, rdx
+	027 LoadAddress rcx, [0x181DFAB58]
+	028 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	029 Move rdx, rax
+	030 Move rcx, rbx
+	031 Call 0x1801E2C60, rcx, rdx, r8, r9
+	032 Move rbx, stack:0x20
+
+Method: System.Void Flush()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	lea rcx,[181E30A00h]
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180F238A0h
+	lea rcx,[181DFAAF8h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 LoadAddress rcx, [0x181E30A00]
+	005 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	006 Move rcx, rax
+	007 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	008 Move rdx, 0
+	009 Move rcx, rax
+	010 Move rbx, rax
+	011 Call NotImplementedException..ctor, rcx, rdx
+	012 LoadAddress rcx, [0x181DFAAF8]
+	013 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	014 Move rdx, rax
+	015 Move rcx, rbx
+	016 Call 0x1801E2C60, rcx, rdx, r8, r9
+
+Method: System.ValueTuple`2<System.Int32, System.Boolean> Read(System.Byte[] buffer, System.Int32 offset, System.Int32 size)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	mov [rsp+20h],r9d
+	push rdi
+	push r14
+	push r15
+	sub rsp,60h
+	mov ebx,r9d
+	mov esi,r8d
+	mov r14,rdx
+	mov rdi,rcx
+	cmp byte ptr [181F1E6F8h],0
+	jne short 00000001811521F3h
+	lea rcx,[181E2ACA0h]
+	call 00000001801E2A80h
+	lea rcx,[181E288C0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E6F8h],1
+	mov ebx,[rsp+98h]
+	xor r15d,r15d
+	mov [rsp+38h],r15
+	mov rcx,[181E2ACA0h]
+	cmp [rcx+0E0h],r15d
+	jne short 0000000181152210h
+	call 0000000180153C50h
+	xor edx,edx
+	mov ecx,ebx
+	call 0000000180E3B4C0h
+	mov [rsp+30h],rax
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rax
+	call 0000000180772240h
+	test al,al
+	jne near ptr 0000000181152405h
+	mov [rsp+50h],r15
+	lea rax,[rsp+30h]
+	mov [rsp+58h],rax
+	xor ecx,ecx
+	call 0000000181152FA0h
+	mov rcx,[rdi+80h]
+	test rcx,rcx
+	je near ptr 0000000181152461h
+	xor r9d,r9d
+	lea r8,[rsp+98h]
+	mov rdx,[rsp+30h]
+	call 0000000181499BA0h
+	cmp eax,2
+	je near ptr 000000018115236Ah
+	cmp eax,6
+	je near ptr 0000000181152317h
+	test eax,eax
+	jne near ptr 000000018115243Eh
+	mov ebx,[rsp+98h]
+	test ebx,ebx
+	jle short 00000001811522C9h
+	mov rdi,[rsp+30h]
+	mov rcx,[181E2ACA0h]
+	cmp [rcx+0E0h],eax
+	jne short 00000001811522ACh
+	call 0000000180153C50h
+	mov [rsp+20h],r15
+	mov r9d,ebx
+	mov r8d,esi
+	mov rdx,r14
+	mov rcx,rdi
+	call 0000000180E3BDF0h
+	mov ebx,[rsp+98h]
+	mov [rsp+40h],r15
+	mov r9,[181E288C0h]
+	xor r8d,r8d
+	mov edx,ebx
+	lea rcx,[rsp+40h]
+	call 0000000180C0F120h
+	mov rbx,[rsp+40h]
+	mov [rsp+38h],rbx
+	mov rdi,[rsp+30h]
+	mov rcx,[181E2ACA0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000181152308h
+	call 0000000180153C50h
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000180E3BF10h
+	jmp near ptr 00000001811523ECh
+	mov [rsp+40h],r15
+	mov r9,[181E288C0h]
+	xor r8d,r8d
+	mov edx,[rsp+98h]
+	lea rcx,[rsp+40h]
+	call 0000000180C0F120h
+	mov rbx,[rsp+40h]
+	mov [rsp+38h],rbx
+	mov rdi,[rsp+30h]
+	mov rcx,[181E2ACA0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 000000018115235Bh
+	call 0000000180153C50h
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000180E3BF10h
+	jmp near ptr 00000001811523ECh
+	mov [rsp+40h],r15
+	mov r9,[181E288C0h]
+	mov r8b,1
+	xor edx,edx
+	lea rcx,[rsp+40h]
+	call 0000000180C0F120h
+	mov rbx,[rsp+40h]
+	mov [rsp+38h],rbx
+	mov rdi,[rsp+30h]
+	mov rcx,[181E2ACA0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001811523A9h
+	call 0000000180153C50h
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000180E3BF10h
+	jmp short 00000001811523ECh
+	mov rbx,[rsp+30h]
+	mov rcx,[181E2ACA0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001811523CFh
+	call 0000000180153C50h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000180E3BF10h
+	mov rcx,[rsp+50h]
+	test rcx,rcx
+	jne near ptr 0000000181152467h
+	mov rbx,[rsp+38h]
+	mov rax,rbx
+	lea r11,[rsp+60h]
+	mov rbx,[r11+20h]
+	mov rsi,[r11+28h]
+	mov rsp,r11
+	pop r15
+	pop r14
+	pop rdi
+	ret
+	lea rcx,[181E326E8h]
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	mov rbx,rax
+	xor edx,edx
+	mov rcx,rax
+	call 0000000180F3B5D0h
+	lea rcx,[181DFAC88h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+	nop
+	xor edx,edx
+	mov ecx,eax
+	call 0000000181150D90h
+	mov rbx,rax
+	lea rcx,[181DFAC88h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+	call 00000001801E2CA0h
+	nop
+	call 000000018018E770h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 Move stack:0x20, r9
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -8
+	007 Move stack:0x0, r14
+	008 ShiftStack -8
+	009 Move stack:0x0, r15
+	010 ShiftStack -96
+	011 Move rbx, r9
+	012 Move rsi, r8
+	013 Move r14, rdx
+	014 Move rdi, rcx
+	015 Compare [0x181F1E6F8], 0
+	016 JumpIfNotEqual {23}
+	017 LoadAddress rcx, [0x181E2ACA0]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 LoadAddress rcx, [0x181E288C0]
+	020 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	021 Move [0x181F1E6F8], 1
+	022 Move rbx, stack:0x98
+	023 Move r15, 0
+	024 Move stack:0x38, r15
+	025 Move rcx, typeof(System.Runtime.InteropServices.Marshal)
+	026 Compare [rcx+224], r15
+	027 JumpIfNotEqual {29}
+	028 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	029 Move rdx, 0
+	030 Move rcx, rbx
+	031 Call Marshal.AllocHGlobal, rcx, rdx
+	032 Move stack:0x30, rax
+	033 Move r8, 0
+	034 Move rdx, 0
+	035 Move rcx, rax
+	036 Call 0x180772240, rcx, rdx, r8
+	037 Compare rax, 0
+	038 JumpIfNotEqual {147}
+	039 Move stack:0x50, r15
+	040 LoadAddress rax, stack:0x30
+	041 Move stack:0x58, rax
+	042 Move rcx, 0
+	043 Call 0x181152FA0, rcx
+	044 Move rcx, [rdi+128]
+	045 Compare rcx, 0
+	046 JumpIfEqual {170}
+	047 Move r9, 0
+	048 LoadAddress r8, stack:0x98
+	049 Move rdx, stack:0x30
+	050 Call MonoBtlsSsl.Read, rcx, rdx, r8
+	051 Compare rax, 2
+	052 JumpIfEqual {106}
+	053 Compare rax, 6
+	054 JumpIfEqual {89}
+	055 Compare rax, 0
+	056 JumpIfNotEqual {161}
+	057 Move rbx, stack:0x98
+	058 Compare rbx, 0
+	059 JumpIfLessOrEqual {72}
+	060 Move rdi, stack:0x30
+	061 Move rcx, typeof(System.Runtime.InteropServices.Marshal)
+	062 Compare [rcx+224], rax
+	063 JumpIfNotEqual {65}
+	064 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	065 Move stack:0x20, r15
+	066 Move r9, rbx
+	067 Move r8, rsi
+	068 Move rdx, r14
+	069 Move rcx, rdi
+	070 Call Marshal.Copy, rcx, rdx, r8, r9, stack:0x0
+	071 Move rbx, stack:0x98
+	072 Move stack:0x40, r15
+	073 Move r9, [0x181E288C0]
+	074 Move r8, 0
+	075 Move rdx, rbx
+	076 LoadAddress rcx, stack:0x40
+	077 Call 0x180C0F120, rcx, rdx, r8
+	078 Move rbx, stack:0x40
+	079 Move stack:0x38, rbx
+	080 Move rdi, stack:0x30
+	081 Move rcx, typeof(System.Runtime.InteropServices.Marshal)
+	082 Compare [rcx+224], 0
+	083 JumpIfNotEqual {85}
+	084 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	085 Move rdx, 0
+	086 Move rcx, rdi
+	087 Call Marshal.FreeHGlobal, rcx, rdx
+	088 Goto {135}
+	089 Move stack:0x40, r15
+	090 Move r9, [0x181E288C0]
+	091 Move r8, 0
+	092 Move rdx, stack:0x98
+	093 LoadAddress rcx, stack:0x40
+	094 Call 0x180C0F120, rcx, rdx, r8
+	095 Move rbx, stack:0x40
+	096 Move stack:0x38, rbx
+	097 Move rdi, stack:0x30
+	098 Move rcx, typeof(System.Runtime.InteropServices.Marshal)
+	099 Compare [rcx+224], 0
+	100 JumpIfNotEqual {102}
+	101 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	102 Move rdx, 0
+	103 Move rcx, rdi
+	104 Call Marshal.FreeHGlobal, rcx, rdx
+	105 Goto {135}
+	106 Move stack:0x40, r15
+	107 Move r9, [0x181E288C0]
+	108 Move r8, 1
+	109 Move rdx, 0
+	110 LoadAddress rcx, stack:0x40
+	111 Call 0x180C0F120, rcx, rdx, r8
+	112 Move rbx, stack:0x40
+	113 Move stack:0x38, rbx
+	114 Move rdi, stack:0x30
+	115 Move rcx, typeof(System.Runtime.InteropServices.Marshal)
+	116 Compare [rcx+224], 0
+	117 JumpIfNotEqual {119}
+	118 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	119 Move rdx, 0
+	120 Move rcx, rdi
+	121 Call Marshal.FreeHGlobal, rcx, rdx
+	122 Goto {135}
+	123 Move rbx, stack:0x30
+	124 Move rcx, typeof(System.Runtime.InteropServices.Marshal)
+	125 Compare [rcx+224], 0
+	126 JumpIfNotEqual {128}
+	127 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	128 Move rdx, 0
+	129 Move rcx, rbx
+	130 Call Marshal.FreeHGlobal, rcx, rdx
+	131 Move rcx, stack:0x50
+	132 Compare rcx, 0
+	133 JumpIfNotEqual {172}
+	134 Move rbx, stack:0x38
+	135 Move rax, rbx
+	136 LoadAddress r11, stack:0x60
+	137 Move rbx, [r11+32]
+	138 Move rsi, [r11+40]
+	139 Move rsp, r11
+	140 Move r15, stack:0x0
+	141 ShiftStack 8
+	142 Move r14, stack:0x0
+	143 ShiftStack 8
+	144 Move rdi, stack:0x0
+	145 ShiftStack 8
+	146 Return rax
+	147 LoadAddress rcx, [0x181E326E8]
+	148 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	149 Move rcx, rax
+	150 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	151 Move rbx, rax
+	152 Move rdx, 0
+	153 Move rcx, rax
+	154 Call OutOfMemoryException..ctor, rcx, rdx
+	155 LoadAddress rcx, [0x181DFAC88]
+	156 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	157 Move rdx, rax
+	158 Move rcx, rbx
+	159 Call 0x1801E2C60, rcx, rdx, r8, r9
+	160 Nop 
+	161 Move rdx, 0
+	162 Move rcx, rax
+	163 Call MonoBtlsContext.GetException, rcx, rdx
+	164 Move rbx, rax
+	165 LoadAddress rcx, [0x181DFAC88]
+	166 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	167 Move rdx, rax
+	168 Move rcx, rbx
+	169 Call 0x1801E2C60, rcx, rdx, r8, r9
+	170 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	171 Nop 
+	172 Call 0x18018E770, rcx, rdx, r8, r9
+
+Method: System.ValueTuple`2<System.Int32, System.Boolean> Write(System.Byte[] buffer, System.Int32 offset, System.Int32 size)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	mov [rsp+18h],rdi
+	mov [rsp+20h],r9d
+	push r12
+	push r14
+	push r15
+	sub rsp,60h
+	mov ebx,r9d
+	mov r14d,r8d
+	mov r15,rdx
+	mov rsi,rcx
+	cmp byte ptr [181F1E6F9h],0
+	jne short 0000000181152D29h
+	lea rcx,[181E2ACA0h]
+	call 00000001801E2A80h
+	lea rcx,[181E288C0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E6F9h],1
+	mov ebx,[rsp+98h]
+	xor r12d,r12d
+	mov [rsp+38h],r12
+	mov rcx,[181E2ACA0h]
+	cmp [rcx+0E0h],r12d
+	jne short 0000000181152D46h
+	call 0000000180153C50h
+	xor edx,edx
+	mov ecx,ebx
+	call 0000000180E3B4C0h
+	mov [rsp+30h],rax
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rax
+	call 0000000180772240h
+	test al,al
+	jne near ptr 0000000181152EDBh
+	mov [rsp+50h],r12
+	lea rax,[rsp+30h]
+	mov [rsp+58h],rax
+	xor ecx,ecx
+	call 0000000181152FA0h
+	mov rbx,[rsp+30h]
+	mov edi,[rsp+98h]
+	mov rcx,[181E2ACA0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000181152DA0h
+	call 0000000180153C50h
+	mov [rsp+20h],r12
+	mov r9d,edi
+	mov r8,rbx
+	mov edx,r14d
+	mov rcx,r15
+	call 0000000180E3B630h
+	mov rcx,[rsi+80h]
+	test rcx,rcx
+	je near ptr 0000000181152F37h
+	xor r9d,r9d
+	lea r8,[rsp+98h]
+	mov rdx,[rsp+30h]
+	call 000000018149A5A0h
+	cmp eax,3
+	je short 0000000181152E3Bh
+	test eax,eax
+	jne near ptr 0000000181152F14h
+	mov [rsp+40h],r12
+	mov r9,[181E288C0h]
+	xor r8d,r8d
+	mov edx,[rsp+98h]
+	lea rcx,[rsp+40h]
+	call 0000000180C0F120h
+	mov rbx,[rsp+40h]
+	mov [rsp+38h],rbx
+	mov rdi,[rsp+30h]
+	mov rcx,[181E2ACA0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000181152E2Ch
+	call 0000000180153C50h
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000180E3BF10h
+	jmp near ptr 0000000181152EBDh
+	mov [rsp+40h],r12
+	mov r9,[181E288C0h]
+	mov r8b,1
+	xor edx,edx
+	lea rcx,[rsp+40h]
+	call 0000000180C0F120h
+	mov rbx,[rsp+40h]
+	mov [rsp+38h],rbx
+	mov rdi,[rsp+30h]
+	mov rcx,[181E2ACA0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000181152E7Ah
+	call 0000000180153C50h
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000180E3BF10h
+	jmp short 0000000181152EBDh
+	mov rbx,[rsp+30h]
+	mov rcx,[181E2ACA0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000181152EA0h
+	call 0000000180153C50h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000180E3BF10h
+	mov rcx,[rsp+50h]
+	test rcx,rcx
+	jne near ptr 0000000181152F3Dh
+	mov rbx,[rsp+38h]
+	mov rax,rbx
+	lea r11,[rsp+60h]
+	mov rbx,[r11+20h]
+	mov rsi,[r11+28h]
+	mov rdi,[r11+30h]
+	mov rsp,r11
+	pop r15
+	pop r14
+	pop r12
+	ret
+	lea rcx,[181E326E8h]
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	mov rbx,rax
+	xor edx,edx
+	mov rcx,rax
+	call 0000000180F3B5D0h
+	lea rcx,[181DFAE78h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+	nop
+	xor edx,edx
+	mov ecx,eax
+	call 0000000181150D90h
+	mov rbx,rax
+	lea rcx,[181DFAE78h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+	call 00000001801E2CA0h
+	nop
+	call 000000018018E770h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 Move stack:0x18, rdi
+	004 Move stack:0x20, r9
+	005 ShiftStack -8
+	006 Move stack:0x0, r12
+	007 ShiftStack -8
+	008 Move stack:0x0, r14
+	009 ShiftStack -8
+	010 Move stack:0x0, r15
+	011 ShiftStack -96
+	012 Move rbx, r9
+	013 Move r14, r8
+	014 Move r15, rdx
+	015 Move rsi, rcx
+	016 Compare [0x181F1E6F9], 0
+	017 JumpIfNotEqual {24}
+	018 LoadAddress rcx, [0x181E2ACA0]
+	019 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	020 LoadAddress rcx, [0x181E288C0]
+	021 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	022 Move [0x181F1E6F9], 1
+	023 Move rbx, stack:0x98
+	024 Move r12, 0
+	025 Move stack:0x38, r12
+	026 Move rcx, typeof(System.Runtime.InteropServices.Marshal)
+	027 Compare [rcx+224], r12
+	028 JumpIfNotEqual {30}
+	029 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	030 Move rdx, 0
+	031 Move rcx, rbx
+	032 Call Marshal.AllocHGlobal, rcx, rdx
+	033 Move stack:0x30, rax
+	034 Move r8, 0
+	035 Move rdx, 0
+	036 Move rcx, rax
+	037 Call 0x180772240, rcx, rdx, r8
+	038 Compare rax, 0
+	039 JumpIfNotEqual {127}
+	040 Move stack:0x50, r12
+	041 LoadAddress rax, stack:0x30
+	042 Move stack:0x58, rax
+	043 Move rcx, 0
+	044 Call 0x181152FA0, rcx
+	045 Move rbx, stack:0x30
+	046 Move rdi, stack:0x98
+	047 Move rcx, typeof(System.Runtime.InteropServices.Marshal)
+	048 Compare [rcx+224], 0
+	049 JumpIfNotEqual {51}
+	050 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	051 Move stack:0x20, r12
+	052 Move r9, rdi
+	053 Move r8, rbx
+	054 Move rdx, r14
+	055 Move rcx, r15
+	056 Call Marshal.Copy, rcx, rdx, r8, r9, stack:0x0
+	057 Move rcx, [rsi+128]
+	058 Compare rcx, 0
+	059 JumpIfEqual {150}
+	060 Move r9, 0
+	061 LoadAddress r8, stack:0x98
+	062 Move rdx, stack:0x30
+	063 Call MonoBtlsSsl.Write, rcx, rdx, r8
+	064 Compare rax, 3
+	065 JumpIfEqual {85}
+	066 Compare rax, 0
+	067 JumpIfNotEqual {141}
+	068 Move stack:0x40, r12
+	069 Move r9, [0x181E288C0]
+	070 Move r8, 0
+	071 Move rdx, stack:0x98
+	072 LoadAddress rcx, stack:0x40
+	073 Call 0x180C0F120, rcx, rdx, r8
+	074 Move rbx, stack:0x40
+	075 Move stack:0x38, rbx
+	076 Move rdi, stack:0x30
+	077 Move rcx, typeof(System.Runtime.InteropServices.Marshal)
+	078 Compare [rcx+224], 0
+	079 JumpIfNotEqual {81}
+	080 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	081 Move rdx, 0
+	082 Move rcx, rdi
+	083 Call Marshal.FreeHGlobal, rcx, rdx
+	084 Goto {114}
+	085 Move stack:0x40, r12
+	086 Move r9, [0x181E288C0]
+	087 Move r8, 1
+	088 Move rdx, 0
+	089 LoadAddress rcx, stack:0x40
+	090 Call 0x180C0F120, rcx, rdx, r8
+	091 Move rbx, stack:0x40
+	092 Move stack:0x38, rbx
+	093 Move rdi, stack:0x30
+	094 Move rcx, typeof(System.Runtime.InteropServices.Marshal)
+	095 Compare [rcx+224], 0
+	096 JumpIfNotEqual {98}
+	097 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	098 Move rdx, 0
+	099 Move rcx, rdi
+	100 Call Marshal.FreeHGlobal, rcx, rdx
+	101 Goto {114}
+	102 Move rbx, stack:0x30
+	103 Move rcx, typeof(System.Runtime.InteropServices.Marshal)
+	104 Compare [rcx+224], 0
+	105 JumpIfNotEqual {107}
+	106 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	107 Move rdx, 0
+	108 Move rcx, rbx
+	109 Call Marshal.FreeHGlobal, rcx, rdx
+	110 Move rcx, stack:0x50
+	111 Compare rcx, 0
+	112 JumpIfNotEqual {152}
+	113 Move rbx, stack:0x38
+	114 Move rax, rbx
+	115 LoadAddress r11, stack:0x60
+	116 Move rbx, [r11+32]
+	117 Move rsi, [r11+40]
+	118 Move rdi, [r11+48]
+	119 Move rsp, r11
+	120 Move r15, stack:0x0
+	121 ShiftStack 8
+	122 Move r14, stack:0x0
+	123 ShiftStack 8
+	124 Move r12, stack:0x0
+	125 ShiftStack 8
+	126 Return rax
+	127 LoadAddress rcx, [0x181E326E8]
+	128 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	129 Move rcx, rax
+	130 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	131 Move rbx, rax
+	132 Move rdx, 0
+	133 Move rcx, rax
+	134 Call OutOfMemoryException..ctor, rcx, rdx
+	135 LoadAddress rcx, [0x181DFAE78]
+	136 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	137 Move rdx, rax
+	138 Move rcx, rbx
+	139 Call 0x1801E2C60, rcx, rdx, r8, r9
+	140 Nop 
+	141 Move rdx, 0
+	142 Move rcx, rax
+	143 Call MonoBtlsContext.GetException, rcx, rdx
+	144 Move rbx, rax
+	145 LoadAddress rcx, [0x181DFAE78]
+	146 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	147 Move rdx, rax
+	148 Move rcx, rbx
+	149 Call 0x1801E2C60, rcx, rdx, r8, r9
+	150 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	151 Nop 
+	152 Call 0x18018E770, rcx, rdx, r8, r9
+
+Method: System.Void Renegotiate()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	lea rcx,[181E30AC8h]
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180F238F0h
+	lea rcx,[181DFACE8h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 LoadAddress rcx, [0x181E30AC8]
+	005 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	006 Move rcx, rax
+	007 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	008 Move rdx, 0
+	009 Move rcx, rax
+	010 Move rbx, rax
+	011 Call NotSupportedException..ctor, rcx, rdx
+	012 LoadAddress rcx, [0x181DFACE8]
+	013 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	014 Move rdx, rax
+	015 Move rcx, rbx
+	016 Call 0x1801E2C60, rcx, rdx, r8, r9
+
+Method: System.Void Shutdown()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rax,[rcx+20h]
+	mov rbx,rcx
+	test rax,rax
+	je short 0000000181152954h
+	cmp qword ptr [rax+90h],0
+	je short 0000000181152929h
+	mov rdx,[rax+90h]
+	cmp byte ptr [rdx+48h],0
+	jne short 000000018115293Ch
+	mov rcx,[rcx+80h]
+	test rcx,rcx
+	je short 0000000181152954h
+	xor edx,edx
+	call 000000018149A030h
+	mov rcx,[rbx+80h]
+	test rcx,rcx
+	je short 0000000181152954h
+	xor edx,edx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 000000018149A330h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rax, [rcx+32]
+	005 Move rbx, rcx
+	006 Compare rax, 0
+	007 JumpIfEqual {27}
+	008 Compare [rax+144], 0
+	009 JumpIfEqual {13}
+	010 Move rdx, [rax+144]
+	011 Compare [rdx+72], 0
+	012 JumpIfNotEqual {18}
+	013 Move rcx, [rcx+128]
+	014 Compare rcx, 0
+	015 JumpIfEqual {27}
+	016 Move rdx, 0
+	017 Call MonoBtlsSsl.SetQuietShutdown, rcx, rdx
+	018 Move rcx, [rbx+128]
+	019 Compare rcx, 0
+	020 JumpIfEqual {27}
+	021 Move rdx, 0
+	022 ShiftStack 32
+	023 Move rbx, stack:0x0
+	024 ShiftStack 8
+	025 Call MonoBtlsSsl.Shutdown, rcx, rdx
+	026 Return 
+	027 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Boolean PendingRenegotiation()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+80h]
+	test rcx,rcx
+	je short 000000018115201Bh
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 0000000181499CA0h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+128]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rdx, 0
+	006 ShiftStack 40
+	007 Call MonoBtlsSsl.RenegotiatePending, rcx, rdx
+	008 Return rax
+	009 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void Dispose(ref T disposable)
+
+Disassembly:
+	mov [rsp+10h],rdx
+	sub rsp,58h
+	cmp byte ptr [181F1AF60h],0
+	jne short 0000000180751DF5h
+	lea rcx,[181E1B1D8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1AF60h],1
+	mov qword ptr [rsp+38h],0
+	lea rax,[rsp+68h]
+	mov [rsp+40h],rax
+	mov rax,[rsp+68h]
+	cmp qword ptr [rax],0
+	je short 0000000180751E29h
+	xor ecx,ecx
+	mov r8,[rax]
+	mov rdx,[181E1B1D8h]
+	call 0000000180003100h
+	mov rax,[rsp+68h]
+	xor ecx,ecx
+	mov [rax],rcx
+	jmp short 0000000180751E50h
+	xor ecx,ecx
+	mov rax,[rsp+68h]
+	mov [rax],rcx
+	jmp short 0000000180751E50h
+	xor ecx,ecx
+	mov rax,[rsp+68h]
+	mov [rax],rcx
+	mov rcx,[rsp+38h]
+	test rcx,rcx
+	jne short 0000000180751E55h
+	add rsp,58h
+	ret
+	call 000000018018E770h
+
+ISIL:
+	001 Move stack:0x10, rdx
+	002 ShiftStack -88
+	003 Compare [0x181F1AF60], 0
+	004 JumpIfNotEqual {8}
+	005 LoadAddress rcx, [0x181E1B1D8]
+	006 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	007 Move [0x181F1AF60], 1
+	008 Move stack:0x38, 0
+	009 LoadAddress rax, stack:0x68
+	010 Move stack:0x40, rax
+	011 Move rax, stack:0x68
+	012 Compare [rax], 0
+	013 JumpIfEqual {19}
+	014 Move rcx, 0
+	015 Move r8, [rax]
+	016 Move rdx, typeof(System.IDisposable)
+	017 Call 0x180003100, rcx, rdx, r8, r9
+	018 Move rax, stack:0x68
+	019 Move rcx, 0
+	020 Move [rax], rcx
+	021 Goto {32}
+	022 Move rcx, 0
+	023 Move rax, stack:0x68
+	024 Move [rax], rcx
+	025 Goto {32}
+	026 Move rcx, 0
+	027 Move rax, stack:0x68
+	028 Move [rax], rcx
+	029 Move rcx, stack:0x38
+	030 Compare rcx, 0
+	031 JumpIfNotEqual {34}
+	032 ShiftStack 88
+	033 Return 
+	034 Call 0x18018E770, rcx, rdx, r8, r9
+
+Method: System.Void Dispose(System.Boolean disposing)
+
+Disassembly:
+	mov [rsp+10h],dl
+	mov [rsp+8],rcx
+	sub rsp,48h
+	cmp byte ptr [181F1E6FAh],0
+	jne short 0000000181150BD5h
+	lea rcx,[181DFA8A0h]
+	call 00000001801E2A80h
+	lea rcx,[181DFA968h]
+	call 00000001801E2A80h
+	lea rcx,[181DFA900h]
+	call 00000001801E2A80h
+	lea rcx,[181DFAA30h]
+	call 00000001801E2A80h
+	lea rcx,[181DFAA90h]
+	call 00000001801E2A80h
+	lea rcx,[181DFA9C8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E6FAh],1
+	mov qword ptr [rsp+28h],0
+	lea rax,[rsp+58h]
+	mov [rsp+30h],rax
+	lea rax,[rsp+50h]
+	mov [rsp+38h],rax
+	cmp byte ptr [rsp+58h],0
+	je near ptr 0000000181150CAFh
+	mov rcx,[rsp+50h]
+	lea rdx,[rcx+80h]
+	mov r8,[181DFA900h]
+	call 0000000180751DD0h
+	mov rcx,[rsp+50h]
+	lea rdx,[rcx+78h]
+	mov r8,[181DFA968h]
+	call 0000000180751DD0h
+	mov rcx,[rsp+50h]
+	lea rdx,[rcx+58h]
+	mov r8,[181DFAA30h]
+	call 0000000180751DD0h
+	mov rcx,[rsp+50h]
+	lea rdx,[rcx+68h]
+	mov r8,[181DFAA90h]
+	call 0000000180751DD0h
+	mov rcx,[rsp+50h]
+	lea rdx,[rcx+70h]
+	mov r8,[181DFAA90h]
+	call 0000000180751DD0h
+	mov rcx,[rsp+50h]
+	lea rdx,[rcx+60h]
+	mov r8,[181DFA9C8h]
+	call 0000000180751DD0h
+	mov rcx,[rsp+50h]
+	lea rdx,[rcx+88h]
+	mov r8,[181DFA8A0h]
+	call 0000000180751DD0h
+	mov rcx,[rsp+50h]
+	lea rdx,[rcx+90h]
+	mov r8,[181DFA8A0h]
+	call 0000000180751DD0h
+	nop
+	jmp short 0000000181150CBBh
+	mov rcx,[rsp+28h]
+	test rcx,rcx
+	jne short 0000000181150CC0h
+	add rsp,48h
+	ret
+	call 000000018018E770h
+
+ISIL:
+	001 Move stack:0x10, rdx
+	002 Move stack:0x8, rcx
+	003 ShiftStack -72
+	004 Compare [0x181F1E6FA], 0
+	005 JumpIfNotEqual {19}
+	006 LoadAddress rcx, [0x181DFA8A0]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 LoadAddress rcx, [0x181DFA968]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x181DFA900]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x181DFAA30]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 LoadAddress rcx, [0x181DFAA90]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 LoadAddress rcx, [0x181DFA9C8]
+	017 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	018 Move [0x181F1E6FA], 1
+	019 Move stack:0x28, 0
+	020 LoadAddress rax, stack:0x58
+	021 Move stack:0x30, rax
+	022 LoadAddress rax, stack:0x50
+	023 Move stack:0x38, rax
+	024 Compare stack:0x58, 0
+	025 JumpIfEqual {59}
+	026 Move rcx, stack:0x50
+	027 LoadAddress rdx, [rcx+128]
+	028 Move r8, [0x181DFA900]
+	029 Call 0x180751DD0, rcx, rdx
+	030 Move rcx, stack:0x50
+	031 LoadAddress rdx, [rcx+120]
+	032 Move r8, [0x181DFA968]
+	033 Call 0x180751DD0, rcx, rdx
+	034 Move rcx, stack:0x50
+	035 LoadAddress rdx, [rcx+88]
+	036 Move r8, [0x181DFAA30]
+	037 Call 0x180751DD0, rcx, rdx
+	038 Move rcx, stack:0x50
+	039 LoadAddress rdx, [rcx+104]
+	040 Move r8, [0x181DFAA90]
+	041 Call 0x180751DD0, rcx, rdx
+	042 Move rcx, stack:0x50
+	043 LoadAddress rdx, [rcx+112]
+	044 Move r8, [0x181DFAA90]
+	045 Call 0x180751DD0, rcx, rdx
+	046 Move rcx, stack:0x50
+	047 LoadAddress rdx, [rcx+96]
+	048 Move r8, [0x181DFA9C8]
+	049 Call 0x180751DD0, rcx, rdx
+	050 Move rcx, stack:0x50
+	051 LoadAddress rdx, [rcx+136]
+	052 Move r8, [0x181DFA8A0]
+	053 Call 0x180751DD0, rcx, rdx
+	054 Move rcx, stack:0x50
+	055 LoadAddress rdx, [rcx+144]
+	056 Move r8, [0x181DFA8A0]
+	057 Call 0x180751DD0, rcx, rdx
+	058 Nop 
+	059 Goto {63}
+	060 Move rcx, stack:0x28
+	061 Compare rcx, 0
+	062 JumpIfNotEqual {65}
+	063 ShiftStack 72
+	064 Return 
+	065 Call 0x18018E770, rcx, rdx, r8, r9
+
+Method: System.Int32 Mono.Btls.IMonoBtlsBioMono.Read(System.Byte[] buffer, System.Int32 offset, System.Int32 size, out System.Boolean wantMore)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 0000000181151FBFh
+	mov qword ptr [rsp+68h],0
+	add rsp,38h
+	jmp near ptr 000000018114D110h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move stack:0x68, 0
+	006 ShiftStack 56
+	007 Call MobileAuthenticatedStream.InternalRead, rcx, rdx, r8, r9, stack:0x0
+	008 Return rax
+	009 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Boolean Mono.Btls.IMonoBtlsBioMono.Write(System.Byte[] buffer, System.Int32 offset, System.Int32 size)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 0000000181151FEFh
+	mov qword ptr [rsp+60h],0
+	add rsp,38h
+	jmp near ptr 000000018114D4C0h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move stack:0x60, 0
+	006 ShiftStack 56
+	007 Call MobileAuthenticatedStream.InternalWrite, rcx, rdx, r8, r9
+	008 Return rax
+	009 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void Mono.Btls.IMonoBtlsBioMono.Flush()
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void Mono.Btls.IMonoBtlsBioMono.Close()
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Boolean get_IsAuthenticated()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+0A1h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+161]
+	002 Return rax
+
+Method: System.Security.Cryptography.X509Certificates.X509Certificate get_LocalClientCertificate()
+
+Disassembly:
+	mov rax,[rcx+60h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+96]
+	002 Return rax
+
+Method: System.Security.Cryptography.X509Certificates.X509Certificate2 get_RemoteCertificate()
+
+Disassembly:
+	mov rax,[rcx+58h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+88]
+	002 Return rax
+

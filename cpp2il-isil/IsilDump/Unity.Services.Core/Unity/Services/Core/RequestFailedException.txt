@@ -1,0 +1,142 @@
+Type: Unity.Services.Core.RequestFailedException
+
+Method: System.Int32 get_ErrorCode()
+
+Disassembly:
+	mov eax,[rcx+90h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+144]
+	002 Return rax
+
+Method: System.Void .ctor(System.Int32 errorCode, System.String message)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F20C41h],0
+	mov rdi,r8
+	mov esi,edx
+	mov rbx,rcx
+	jne short 00000001815E0E83h
+	lea rcx,[181E12570h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20C41h],1
+	mov rcx,[181E12570h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001815E0E98h
+	call 0000000180153C50h
+	xor r9d,r9d
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rbx
+	call 0000000180F60700h
+	mov [rbx+90h],esi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x181F20C41], 0
+	007 Move rdi, r8
+	008 Move rsi, rdx
+	009 Move rbx, rcx
+	010 JumpIfNotEqual {14}
+	011 LoadAddress rcx, [0x181E12570]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x181F20C41], 1
+	014 Move rcx, typeof(System.Exception)
+	015 Compare [rcx+224], 0
+	016 JumpIfNotEqual {18}
+	017 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	018 Move r9, 0
+	019 Move r8, 0
+	020 Move rdx, rdi
+	021 Move rcx, rbx
+	022 Call Exception..ctor, rcx, rdx, r8
+	023 Move [rbx+144], rsi
+	024 Move rbx, stack:0x30
+	025 Move rsi, stack:0x38
+	026 ShiftStack 32
+	027 Move rdi, stack:0x0
+	028 ShiftStack 8
+	029 Return 
+
+Method: System.Void .ctor(System.Int32 errorCode, System.String message, System.Exception innerException)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F20C41h],0
+	mov rdi,r9
+	mov rsi,r8
+	mov ebp,edx
+	mov rbx,rcx
+	jne short 00000001815E0E0Bh
+	lea rcx,[181E12570h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20C41h],1
+	mov rcx,[181E12570h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001815E0E20h
+	call 0000000180153C50h
+	xor r9d,r9d
+	mov r8,rdi
+	mov rdx,rsi
+	mov rcx,rbx
+	call 0000000180F60700h
+	mov rsi,[rsp+40h]
+	mov [rbx+90h],ebp
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [0x181F20C41], 0
+	008 Move rdi, r9
+	009 Move rsi, r8
+	010 Move rbp, rdx
+	011 Move rbx, rcx
+	012 JumpIfNotEqual {16}
+	013 LoadAddress rcx, [0x181E12570]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x181F20C41], 1
+	016 Move rcx, typeof(System.Exception)
+	017 Compare [rcx+224], 0
+	018 JumpIfNotEqual {20}
+	019 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	020 Move r9, 0
+	021 Move r8, rdi
+	022 Move rdx, rsi
+	023 Move rcx, rbx
+	024 Call Exception..ctor, rcx, rdx, r8
+	025 Move rsi, stack:0x40
+	026 Move [rbx+144], rbp
+	027 Move rbx, stack:0x30
+	028 Move rbp, stack:0x38
+	029 ShiftStack 32
+	030 Move rdi, stack:0x0
+	031 ShiftStack 8
+	032 Return 
+

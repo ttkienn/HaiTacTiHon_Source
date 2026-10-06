@@ -1,0 +1,87 @@
+Type: UnityEngine.Purchasing.GoogleOrderInfo
+
+Method: System.String get_ObfuscatedAccountId()
+
+Disassembly:
+	mov rax,[rcx+28h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+40]
+	002 Return rax
+
+Method: System.Void set_ObfuscatedAccountId(System.String value)
+
+Disassembly:
+	mov [rcx+28h],rdx
+	add rcx,28h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move [rcx+40], rdx
+	002 Add rcx, rcx, 40
+	003 Call 0x1801E1E30, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.String get_ObfuscatedProfileId()
+
+Disassembly:
+	mov rax,[rcx+30h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+48]
+	002 Return rax
+
+Method: System.Void set_ObfuscatedProfileId(System.String value)
+
+Disassembly:
+	mov [rcx+30h],rdx
+	add rcx,30h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move [rcx+48], rdx
+	002 Add rcx, rcx, 48
+	003 Call 0x1801E1E30, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Void .ctor(System.String receipt, System.String transactionID, System.String storeName, System.String obfuscatedAccountId, System.String obfuscatedProfileId)
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	mov rbx,rcx
+	mov qword ptr [rsp+20h],0
+	call 0000000181579380h
+	mov rdx,[rsp+60h]
+	lea rcx,[rbx+28h]
+	mov [rbx+28h],rdx
+	call 00000001801E1E30h
+	mov rdx,[rsp+68h]
+	lea rcx,[rbx+30h]
+	mov [rbx+30h],rdx
+	add rsp,30h
+	pop rbx
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move rbx, rcx
+	005 Move stack:0x20, 0
+	006 Call OrderInfo..ctor, rcx, rdx, r8, r9
+	007 Move rdx, stack:0x60
+	008 LoadAddress rcx, [rbx+40]
+	009 Move [rbx+40], rdx
+	010 Call 0x1801E1E30, rcx, rdx, r8, r9
+	011 Move rdx, stack:0x68
+	012 LoadAddress rcx, [rbx+48]
+	013 Move [rbx+48], rdx
+	014 ShiftStack 48
+	015 Move rbx, stack:0x0
+	016 ShiftStack 8
+	017 Call 0x1801E1E30, rcx, rdx, r8, r9
+	018 Return 
+

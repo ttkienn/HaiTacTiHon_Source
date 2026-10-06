@@ -1,0 +1,54 @@
+Type: System.LocalAppContextSwitches
+
+Method: System.Boolean get_AllowArbitraryTypeInstantiation()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1E831h],0
+	jne short 000000018119F7CCh
+	lea rcx,[181E28F60h]
+	call 00000001801E2A80h
+	lea rcx,[181E019A0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E831h],1
+	mov rax,[181E28F60h]
+	mov rdx,[rax+0B8h]
+	cmp dword ptr [rdx],0
+	jl short 000000018119F7FBh
+	ja short 000000018119F7F4h
+	mov rcx,[181E019A0h]
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018119F810h
+	mov al,1
+	add rsp,28h
+	ret
+	xor al,al
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1E831], 0
+	003 JumpIfNotEqual {9}
+	004 LoadAddress rcx, [0x181E28F60]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 LoadAddress rcx, [0x181E019A0]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 Move [0x181F1E831], 1
+	009 Move rax, typeof(System.LocalAppContextSwitches)
+	010 Move rdx, [rax+184]
+	011 Compare [rdx], 0
+	012 JumpIfLess {21}
+	013 JumpIfGreater {18}
+	014 Move rcx, "Switch.System.Data.AllowArbitraryDataSetTypeInstantiation"
+	015 Move r8, 0
+	016 ShiftStack 40
+	017 Invalid "Jump target not found in method."
+	018 Move rax, 1
+	019 ShiftStack 40
+	020 Return rax
+	021 Move rax, 0
+	022 ShiftStack 40
+	023 Return rax
+

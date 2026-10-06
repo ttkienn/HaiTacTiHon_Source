@@ -1,0 +1,511 @@
+Type: System.Runtime.Remoting.Channels.CADSerializer
+
+Method: System.Runtime.Remoting.Messaging.IMessage DeserializeMessage(System.IO.MemoryStream mem, System.Runtime.Remoting.Messaging.IMethodCallMessage msg)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	lea rcx,[181E30AC8h]
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180F238F0h
+	lea rcx,[181DF8250h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 LoadAddress rcx, [0x181E30AC8]
+	005 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	006 Move rcx, rax
+	007 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	008 Move rdx, 0
+	009 Move rcx, rax
+	010 Move rbx, rax
+	011 Call NotSupportedException..ctor, rcx, rdx
+	012 LoadAddress rcx, [0x181DF8250]
+	013 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	014 Move rdx, rax
+	015 Move rcx, rbx
+	016 Call 0x1801E2C60, rcx, rdx, r8, r9
+
+Method: System.IO.MemoryStream SerializeMessage(System.Runtime.Remoting.Messaging.IMessage msg)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1C917h],0
+	mov rbp,rcx
+	jne short 0000000180DD6D5Bh
+	lea rcx,[181E01D98h]
+	call 00000001801E2A80h
+	lea rcx,[181E2BB18h]
+	call 00000001801E2A80h
+	lea rcx,[181DF42B0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C917h],1
+	mov rcx,[181E2BB18h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180ED6780h
+	mov rcx,[181E01D98h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rdi,rax
+	call 0000000180E19C20h
+	mov rcx,[181DF42B0h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rsi,rax
+	call 000000018024B5B0h
+	test rdi,rdi
+	je short 0000000180DD6E01h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rsi
+	mov rdx,rsi
+	call 00000001801E1E30h
+	xor r9d,r9d
+	mov r8,rbp
+	mov rdx,rbx
+	mov rcx,rdi
+	call 0000000180E19B70h
+	test rbx,rbx
+	je short 0000000180DD6E01h
+	mov r8,[rbx]
+	xor edx,edx
+	mov rcx,rbx
+	mov rax,[r8+208h]
+	mov r8,[r8+210h]
+	call rax
+	mov rbp,[rsp+38h]
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [0x181F1C917], 0
+	008 Move rbp, rcx
+	009 JumpIfNotEqual {17}
+	010 LoadAddress rcx, [0x181E01D98]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x181E2BB18]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 LoadAddress rcx, [0x181DF42B0]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 Move [0x181F1C917], 1
+	017 Move rcx, typeof(System.IO.MemoryStream)
+	018 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	019 Move rdx, 0
+	020 Move rcx, rax
+	021 Move rbx, rax
+	022 Call MemoryStream..ctor, rcx, rdx
+	023 Move rcx, typeof(System.Runtime.Serialization.Formatters.Binary.BinaryFormatter)
+	024 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	025 Move rdx, 0
+	026 Move rcx, rax
+	027 Move rdi, rax
+	028 Call BinaryFormatter..ctor, rcx, rdx
+	029 Move rcx, typeof(System.Runtime.Remoting.Messaging.RemotingSurrogateSelector)
+	030 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	031 Move rdx, 0
+	032 Move rcx, rax
+	033 Move rsi, rax
+	034 Call 0x18024B5B0, rcx, rdx, r8
+	035 Compare rdi, 0
+	036 JumpIfEqual {62}
+	037 LoadAddress rcx, [rdi+16]
+	038 Move [rdi+16], rsi
+	039 Move rdx, rsi
+	040 Call 0x1801E1E30, rcx, rdx, r8, r9
+	041 Move r9, 0
+	042 Move r8, rbp
+	043 Move rdx, rbx
+	044 Move rcx, rdi
+	045 Call BinaryFormatter.Serialize, rcx, rdx, r8
+	046 Compare rbx, 0
+	047 JumpIfEqual {62}
+	048 Move r8, [rbx]
+	049 Move rdx, 0
+	050 Move rcx, rbx
+	051 Move rax, [r8+520]
+	052 Move r8, [r8+528]
+	053 Call rax
+	054 Move rbp, stack:0x38
+	055 Move rax, rbx
+	056 Move rbx, stack:0x30
+	057 Move rsi, stack:0x40
+	058 ShiftStack 32
+	059 Move rdi, stack:0x0
+	060 ShiftStack 8
+	061 Return rax
+	062 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Object DeserializeObjectSafe(System.Byte[] mem)
+
+Disassembly:
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1C918h],0
+	mov rdi,rcx
+	jne short 0000000180DD6B91h
+	lea rcx,[181DF5D10h]
+	call 00000001801E2A80h
+	lea rcx,[181E2BB18h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C918h],1
+	mov [rsp+30h],rbx
+	test rdi,rdi
+	je near ptr 0000000180DD6C62h
+	mov edx,[rdi+18h]
+	mov rcx,[181DF5D10h]
+	call 00000001801E1EB0h
+	mov r8d,[rdi+18h]
+	xor r9d,r9d
+	mov rdx,rax
+	mov rcx,rdi
+	mov rbx,rax
+	call 0000000180F34500h
+	mov rcx,[181E2BB18h]
+	call 0000000180197840h
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 0000000180ED66A0h
+	cmp byte ptr [181F1C91Ah],0
+	jne short 0000000180DD6BFCh
+	lea rcx,[181E01D98h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C91Ah],1
+	mov rcx,[181E01D98h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180E19C20h
+	test rbx,rbx
+	je short 0000000180DD6C62h
+	lea rcx,[rbx+10h]
+	mov qword ptr [rbx+10h],0
+	xor edx,edx
+	call 00000001801E1E30h
+	test rdi,rdi
+	je short 0000000180DD6C62h
+	mov r8,[rdi]
+	xor edx,edx
+	mov rcx,rdi
+	mov rax,[r8+208h]
+	mov r8,[r8+210h]
+	call rax
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180E19540h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rdi
+	003 ShiftStack -32
+	004 Compare [0x181F1C918], 0
+	005 Move rdi, rcx
+	006 JumpIfNotEqual {12}
+	007 LoadAddress rcx, [0x181DF5D10]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 LoadAddress rcx, [0x181E2BB18]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F1C918], 1
+	012 Move stack:0x30, rbx
+	013 Compare rdi, 0
+	014 JumpIfEqual {65}
+	015 Move rdx, [rdi+24]
+	016 Move rcx, typeof(System.Byte[1])
+	017 Call "SzArrayNew", rcx, rdx, r8, r9
+	018 Move r8, [rdi+24]
+	019 Move r9, 0
+	020 Move rdx, rax
+	021 Move rcx, rdi
+	022 Move rbx, rax
+	023 Call Array.Copy, rcx, rdx, r8, r9
+	024 Move rcx, typeof(System.IO.MemoryStream)
+	025 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	026 Move r8, 0
+	027 Move rdx, rbx
+	028 Move rcx, rax
+	029 Move rdi, rax
+	030 Call MemoryStream..ctor, rcx, rdx
+	031 Compare [0x181F1C91A], 0
+	032 JumpIfNotEqual {36}
+	033 LoadAddress rcx, [0x181E01D98]
+	034 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	035 Move [0x181F1C91A], 1
+	036 Move rcx, typeof(System.Runtime.Serialization.Formatters.Binary.BinaryFormatter)
+	037 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	038 Move rdx, 0
+	039 Move rcx, rax
+	040 Move rbx, rax
+	041 Call BinaryFormatter..ctor, rcx, rdx
+	042 Compare rbx, 0
+	043 JumpIfEqual {65}
+	044 LoadAddress rcx, [rbx+16]
+	045 Move [rbx+16], 0
+	046 Move rdx, 0
+	047 Call 0x1801E1E30, rcx, rdx, r8, r9
+	048 Compare rdi, 0
+	049 JumpIfEqual {65}
+	050 Move r8, [rdi]
+	051 Move rdx, 0
+	052 Move rcx, rdi
+	053 Move rax, [r8+520]
+	054 Move r8, [r8+528]
+	055 Call rax
+	056 Move r8, 0
+	057 Move rdx, rdi
+	058 Move rcx, rbx
+	059 Move rbx, stack:0x30
+	060 ShiftStack 32
+	061 Move rdi, stack:0x0
+	062 ShiftStack 8
+	063 Call BinaryFormatter.Deserialize, rcx, rdx
+	064 Return rax
+	065 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.IO.MemoryStream SerializeObject(System.Object obj)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1C919h],0
+	mov rbp,rcx
+	jne short 0000000180DD6E5Bh
+	lea rcx,[181E01D98h]
+	call 00000001801E2A80h
+	lea rcx,[181E2BB18h]
+	call 00000001801E2A80h
+	lea rcx,[181DF42B0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C919h],1
+	mov rcx,[181E2BB18h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180ED6780h
+	mov rcx,[181E01D98h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rdi,rax
+	call 0000000180E19C20h
+	mov rcx,[181DF42B0h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rsi,rax
+	call 000000018024B5B0h
+	test rdi,rdi
+	je short 0000000180DD6F01h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rsi
+	mov rdx,rsi
+	call 00000001801E1E30h
+	xor r9d,r9d
+	mov r8,rbp
+	mov rdx,rbx
+	mov rcx,rdi
+	call 0000000180E19B70h
+	test rbx,rbx
+	je short 0000000180DD6F01h
+	mov r8,[rbx]
+	xor edx,edx
+	mov rcx,rbx
+	mov rax,[r8+208h]
+	mov r8,[r8+210h]
+	call rax
+	mov rbp,[rsp+38h]
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [0x181F1C919], 0
+	008 Move rbp, rcx
+	009 JumpIfNotEqual {17}
+	010 LoadAddress rcx, [0x181E01D98]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x181E2BB18]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 LoadAddress rcx, [0x181DF42B0]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 Move [0x181F1C919], 1
+	017 Move rcx, typeof(System.IO.MemoryStream)
+	018 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	019 Move rdx, 0
+	020 Move rcx, rax
+	021 Move rbx, rax
+	022 Call MemoryStream..ctor, rcx, rdx
+	023 Move rcx, typeof(System.Runtime.Serialization.Formatters.Binary.BinaryFormatter)
+	024 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	025 Move rdx, 0
+	026 Move rcx, rax
+	027 Move rdi, rax
+	028 Call BinaryFormatter..ctor, rcx, rdx
+	029 Move rcx, typeof(System.Runtime.Remoting.Messaging.RemotingSurrogateSelector)
+	030 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	031 Move rdx, 0
+	032 Move rcx, rax
+	033 Move rsi, rax
+	034 Call 0x18024B5B0, rcx, rdx, r8
+	035 Compare rdi, 0
+	036 JumpIfEqual {62}
+	037 LoadAddress rcx, [rdi+16]
+	038 Move [rdi+16], rsi
+	039 Move rdx, rsi
+	040 Call 0x1801E1E30, rcx, rdx, r8, r9
+	041 Move r9, 0
+	042 Move r8, rbp
+	043 Move rdx, rbx
+	044 Move rcx, rdi
+	045 Call BinaryFormatter.Serialize, rcx, rdx, r8
+	046 Compare rbx, 0
+	047 JumpIfEqual {62}
+	048 Move r8, [rbx]
+	049 Move rdx, 0
+	050 Move rcx, rbx
+	051 Move rax, [r8+520]
+	052 Move r8, [r8+528]
+	053 Call rax
+	054 Move rbp, stack:0x38
+	055 Move rax, rbx
+	056 Move rbx, stack:0x30
+	057 Move rsi, stack:0x40
+	058 ShiftStack 32
+	059 Move rdi, stack:0x0
+	060 ShiftStack 8
+	061 Return rax
+	062 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Object DeserializeObject(System.IO.MemoryStream mem)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1C91Ah],0
+	mov rdi,rcx
+	jne short 0000000180DD6C99h
+	lea rcx,[181E01D98h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C91Ah],1
+	mov rcx,[181E01D98h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180E19C20h
+	test rbx,rbx
+	je short 0000000180DD6CFFh
+	lea rcx,[rbx+10h]
+	mov qword ptr [rbx+10h],0
+	xor edx,edx
+	call 00000001801E1E30h
+	test rdi,rdi
+	je short 0000000180DD6CFFh
+	mov r8,[rdi]
+	xor edx,edx
+	mov rcx,rdi
+	mov rax,[r8+208h]
+	mov r8,[r8+210h]
+	call rax
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180E19540h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1C91A], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x181E01D98]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x181F1C91A], 1
+	011 Move rcx, typeof(System.Runtime.Serialization.Formatters.Binary.BinaryFormatter)
+	012 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	013 Move rdx, 0
+	014 Move rcx, rax
+	015 Move rbx, rax
+	016 Call BinaryFormatter..ctor, rcx, rdx
+	017 Compare rbx, 0
+	018 JumpIfEqual {40}
+	019 LoadAddress rcx, [rbx+16]
+	020 Move [rbx+16], 0
+	021 Move rdx, 0
+	022 Call 0x1801E1E30, rcx, rdx, r8, r9
+	023 Compare rdi, 0
+	024 JumpIfEqual {40}
+	025 Move r8, [rdi]
+	026 Move rdx, 0
+	027 Move rcx, rdi
+	028 Move rax, [r8+520]
+	029 Move r8, [r8+528]
+	030 Call rax
+	031 Move r8, 0
+	032 Move rdx, rdi
+	033 Move rcx, rbx
+	034 Move rbx, stack:0x30
+	035 ShiftStack 32
+	036 Move rdi, stack:0x0
+	037 ShiftStack 8
+	038 Call BinaryFormatter.Deserialize, rcx, rdx
+	039 Return rax
+	040 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

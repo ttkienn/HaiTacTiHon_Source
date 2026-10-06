@@ -1,0 +1,309 @@
+Type: System.Collections.Generic.BitHelper
+
+Method: System.Void .ctor(System.Int32* bitArrayPtr, System.Int32 length)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov esi,r8d
+	xor edx,edx
+	mov rdi,rcx
+	call 000000018024B730h
+	mov [rdi+18h],rbx
+	mov rbx,[rsp+30h]
+	mov [rdi+10h],esi
+	mov rsi,[rsp+38h]
+	mov byte ptr [rdi+28h],1
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	011 Move [rdi+24], rbx
+	012 Move rbx, stack:0x30
+	013 Move [rdi+16], rsi
+	014 Move rsi, stack:0x38
+	015 Move [rdi+40], 1
+	016 ShiftStack 32
+	017 Move rdi, stack:0x0
+	018 ShiftStack 8
+	019 Return 
+
+Method: System.Void .ctor(System.Int32[] bitArray, System.Int32 length)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov esi,r8d
+	xor edx,edx
+	mov rdi,rcx
+	call 000000018024B730h
+	lea rcx,[rdi+20h]
+	mov [rdi+20h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	mov rbx,[rsp+30h]
+	mov [rdi+10h],esi
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	011 LoadAddress rcx, [rdi+32]
+	012 Move [rdi+32], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 Move rbx, stack:0x30
+	016 Move [rdi+16], rsi
+	017 Move rsi, stack:0x38
+	018 ShiftStack 32
+	019 Move rdi, stack:0x0
+	020 ShiftStack 8
+	021 Return 
+
+Method: System.Void MarkBit(System.Int32 bitPosition)
+
+Disassembly:
+	sub rsp,28h
+	mov eax,edx
+	mov r9,rcx
+	cdq
+	and edx,1Fh
+	add eax,edx
+	mov r8d,eax
+	and eax,1Fh
+	sub eax,edx
+	sar r8d,5
+	cmp r8d,[rcx+10h]
+	jge short 000000018113D68Fh
+	test r8d,r8d
+	js short 000000018113D68Fh
+	and eax,1Fh
+	mov edx,1
+	movzx ecx,al
+	shl edx,cl
+	cmp byte ptr [r9+28h],0
+	jne short 000000018113D685h
+	mov rcx,[r9+20h]
+	test rcx,rcx
+	je short 000000018113D69Ah
+	cmp r8d,[rcx+18h]
+	jae short 000000018113D694h
+	movsxd rax,r8d
+	or [rcx+rax*4+20h],edx
+	add rsp,28h
+	ret
+	mov rax,[r9+18h]
+	movsxd rcx,r8d
+	or [rax+rcx*4],edx
+	add rsp,28h
+	ret
+	call 00000001801E2C90h
+	int 3
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, rdx
+	003 Move r9, rcx
+	004 Move TEMP, rax
+	005 ShiftRight TEMP, 31
+	006 Compare TEMP, 1
+	007 JumpIfNotEqual {10}
+	008 Move rdx, 0xFFFFFFFF
+	009 Goto {11}
+	010 Move rdx, 0
+	011 Nop 
+	012 And rdx, rdx, 31
+	013 Add rax, rax, rdx
+	014 Move r8, rax
+	015 And rax, rax, 31
+	016 Subtract rax, rax, rdx
+	017 ShiftRight r8, 5
+	018 Compare r8, [rcx+16]
+	019 JumpIfGreaterOrEqual {40}
+	020 Compare r8, 0
+	021 JumpIfSign {40}
+	022 And rax, rax, 31
+	023 Move rdx, 1
+	024 Move rcx, rax
+	025 ShiftLeft rdx, rcx
+	026 Compare [r9+40], 0
+	027 JumpIfNotEqual {37}
+	028 Move rcx, [r9+32]
+	029 Compare rcx, 0
+	030 JumpIfEqual {44}
+	031 Compare r8, [rcx+24]
+	032 JumpIfGreaterOrEqual {42}
+	033 Move rax, r8
+	034 Or [rcx+32+rax*4], [rcx+32+rax*4], rdx
+	035 ShiftStack 40
+	036 Return 
+	037 Move rax, [r9+24]
+	038 Move rcx, r8
+	039 Or [rax+rcx*4], [rax+rcx*4], rdx
+	040 ShiftStack 40
+	041 Return 
+	042 Call 0x1801E2C90, rcx, rdx, r8, r9
+	043 Interrupt 
+	044 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Boolean IsMarked(System.Int32 bitPosition)
+
+Disassembly:
+	sub rsp,28h
+	mov eax,edx
+	mov r9,rcx
+	cdq
+	and edx,1Fh
+	add eax,edx
+	mov r8d,eax
+	and eax,1Fh
+	sub eax,edx
+	sar r8d,5
+	cmp r8d,[rcx+10h]
+	jge short 000000018113D61Ah
+	test r8d,r8d
+	js short 000000018113D61Ah
+	and eax,1Fh
+	mov edx,1
+	movzx ecx,al
+	shl edx,cl
+	cmp byte ptr [r9+28h],0
+	jne short 000000018113D608h
+	mov rcx,[r9+20h]
+	test rcx,rcx
+	je short 000000018113D627h
+	cmp r8d,[rcx+18h]
+	jae short 000000018113D621h
+	movsxd rax,r8d
+	test [rcx+rax*4+20h],edx
+	seta al
+	add rsp,28h
+	ret
+	mov rax,[r9+18h]
+	movsxd rcx,r8d
+	test [rax+rcx*4],edx
+	seta al
+	add rsp,28h
+	ret
+	xor al,al
+	add rsp,28h
+	ret
+	call 00000001801E2C90h
+	int 3
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, rdx
+	003 Move r9, rcx
+	004 Move TEMP, rax
+	005 ShiftRight TEMP, 31
+	006 Compare TEMP, 1
+	007 JumpIfNotEqual {10}
+	008 Move rdx, 0xFFFFFFFF
+	009 Goto {11}
+	010 Move rdx, 0
+	011 Nop 
+	012 And rdx, rdx, 31
+	013 Add rax, rax, rdx
+	014 Move r8, rax
+	015 And rax, rax, 31
+	016 Subtract rax, rax, rdx
+	017 ShiftRight r8, 5
+	018 Compare r8, [rcx+16]
+	019 JumpIfGreaterOrEqual {44}
+	020 Compare r8, 0
+	021 JumpIfSign {44}
+	022 And rax, rax, 31
+	023 Move rdx, 1
+	024 Move rcx, rax
+	025 ShiftLeft rdx, rcx
+	026 Compare [r9+40], 0
+	027 JumpIfNotEqual {38}
+	028 Move rcx, [r9+32]
+	029 Compare rcx, 0
+	030 JumpIfEqual {49}
+	031 Compare r8, [rcx+24]
+	032 JumpIfGreaterOrEqual {47}
+	033 Move rax, r8
+	034 Compare [rcx+32+rax*4], rdx
+	035 NotImplemented "seta al"
+	036 ShiftStack 40
+	037 Return rax
+	038 Move rax, [r9+24]
+	039 Move rcx, r8
+	040 Compare [rax+rcx*4], rdx
+	041 NotImplemented "seta al"
+	042 ShiftStack 40
+	043 Return rax
+	044 Move rax, 0
+	045 ShiftStack 40
+	046 Return rax
+	047 Call 0x1801E2C90, rcx, rdx, r8, r9
+	048 Interrupt 
+	049 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Int32 ToIntArrayLength(System.Int32 n)
+
+Disassembly:
+	test ecx,ecx
+	jle short 000000018113D6B3h
+	lea eax,[rcx-1]
+	cdq
+	and edx,1Fh
+	add eax,edx
+	sar eax,5
+	inc eax
+	ret
+	xor eax,eax
+	ret
+
+ISIL:
+	001 Compare rcx, 0
+	002 JumpIfLessOrEqual {17}
+	003 LoadAddress rax, [rcx-1]
+	004 Move TEMP, rax
+	005 ShiftRight TEMP, 31
+	006 Compare TEMP, 1
+	007 JumpIfNotEqual {10}
+	008 Move rdx, 0xFFFFFFFF
+	009 Goto {11}
+	010 Move rdx, 0
+	011 Nop 
+	012 And rdx, rdx, 31
+	013 Add rax, rax, rdx
+	014 ShiftRight rax, 5
+	015 Add rax, rax, 1
+	016 Return rax
+	017 Move rax, 0
+	018 Return rax
+

@@ -1,0 +1,77 @@
+Type: System.Xml.Schema.LocatedActiveAxis
+
+Method: System.Int32 get_Column()
+
+Disassembly:
+	mov eax,[rcx+28h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+40]
+	002 Return rax
+
+Method: System.Void .ctor(System.Xml.Schema.Asttree astfield, System.Xml.Schema.KeySequence ks, System.Int32 column)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,r8
+	mov esi,r9d
+	xor r8d,r8d
+	mov rdi,rcx
+	call 00000001814118D0h
+	lea rcx,[rdi+30h]
+	mov [rdi+30h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	mov rbx,[rsp+30h]
+	mov [rdi+28h],esi
+	mov rsi,[rsp+38h]
+	mov byte ptr [rdi+2Ch],0
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, r8
+	007 Move rsi, r9
+	008 Move r8, 0
+	009 Move rdi, rcx
+	010 Call ActiveAxis..ctor, rcx, rdx
+	011 LoadAddress rcx, [rdi+48]
+	012 Move [rdi+48], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 Move rbx, stack:0x30
+	016 Move [rdi+40], rsi
+	017 Move rsi, stack:0x38
+	018 Move [rdi+44], 0
+	019 ShiftStack 32
+	020 Move rdi, stack:0x0
+	021 ShiftStack 8
+	022 Return 
+
+Method: System.Void Reactivate(System.Xml.Schema.KeySequence ks)
+
+Disassembly:
+	mov byte ptr [rcx+14h],1
+	mov dword ptr [rcx+10h],0FFFFFFFFh
+	mov [rcx+30h],rdx
+	add rcx,30h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move [rcx+20], 1
+	002 Move [rcx+16], 0xFFFFFFFF
+	003 Move [rcx+48], rdx
+	004 Add rcx, rcx, 48
+	005 Call 0x1801E1E30, rcx, rdx, r8, r9
+	006 Return 
+

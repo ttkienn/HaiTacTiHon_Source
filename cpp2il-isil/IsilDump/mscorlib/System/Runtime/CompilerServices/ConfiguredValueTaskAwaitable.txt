@@ -1,0 +1,47 @@
+Type: System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable
+
+Method: System.Void .ctor(System.Threading.Tasks.ValueTask value)
+
+Disassembly:
+	movups xmm0,[rdx]
+	xor edx,edx
+	movups [rcx],xmm0
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move rdx, 0
+	003 Move [rcx], xmm0
+	004 Call 0x1801E1E30, rcx, rdx, r8, r9
+	005 Return 
+
+Method: System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable+ConfiguredValueTaskAwaiter GetAwaiter()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	movups xmm0,[rdx]
+	xor edx,edx
+	mov rbx,rcx
+	movups [rcx],xmm0
+	call 00000001801E1E30h
+	mov rax,rbx
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move xmm0, [rdx]
+	005 Move rdx, 0
+	006 Move rbx, rcx
+	007 Move [rcx], xmm0
+	008 Call 0x1801E1E30, rcx, rdx, r8, r9
+	009 Move rax, rbx
+	010 ShiftStack 32
+	011 Move rbx, stack:0x0
+	012 ShiftStack 8
+	013 Return rax
+

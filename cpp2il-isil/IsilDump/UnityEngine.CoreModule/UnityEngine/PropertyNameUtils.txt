@@ -1,0 +1,86 @@
+Type: UnityEngine.PropertyNameUtils
+
+Method: UnityEngine.PropertyName PropertyNameFromString(System.String name)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rax,[181F21A80h]
+	mov rbx,rcx
+	mov dword ptr [rsp+30h],0
+	test rax,rax
+	jne short 000000018162DB80h
+	lea rcx,[18192BF10h]
+	call 00000001801E2D00h
+	mov [181F21A80h],rax
+	lea rdx,[rsp+30h]
+	mov rcx,rbx
+	call rax
+	mov eax,[rsp+30h]
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rax, [0x181F21A80]
+	005 Move rbx, rcx
+	006 Move stack:0x30, 0
+	007 Compare rax, 0
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x18192BF10]
+	010 Call 0x1801E2D00, rcx, rdx, r8, r9
+	011 Move [0x181F21A80], rax
+	012 LoadAddress rdx, stack:0x30
+	013 Move rcx, rbx
+	014 Call rax
+	015 Move rax, stack:0x30
+	016 ShiftStack 32
+	017 Move rbx, stack:0x0
+	018 ShiftStack 8
+	019 Return rax
+
+Method: System.Void PropertyNameFromString_Injected(System.String name, out UnityEngine.PropertyName ret)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rax,[181F21A80h]
+	mov rbx,rdx
+	mov rdi,rcx
+	test rax,rax
+	jne short 000000018162DB2Fh
+	lea rcx,[18192BF10h]
+	call 00000001801E2D00h
+	mov [181F21A80h],rax
+	mov rdx,rbx
+	mov rcx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp rax
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rax, [0x181F21A80]
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 Compare rax, 0
+	009 JumpIfNotEqual {13}
+	010 LoadAddress rcx, [0x18192BF10]
+	011 Call 0x1801E2D00, rcx, rdx, r8, r9
+	012 Move [0x181F21A80], rax
+	013 Move rdx, rbx
+	014 Move rcx, rdi
+	015 Move rbx, stack:0x30
+	016 ShiftStack 32
+	017 Move rdi, stack:0x0
+	018 ShiftStack 8
+	019 CallNoReturn rax
+

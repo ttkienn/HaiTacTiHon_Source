@@ -1,0 +1,100 @@
+Type: System.Data.DataTable+DSRowDiffIdUsageSection
+
+Method: System.Void Prepare(System.Data.DataSet ds)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov [rcx],rdx
+	call 00000001801E1E30h
+	xor ebp,ebp
+	mov ebx,ebp
+	mov esi,ebp
+	test rdi,rdi
+	je short 000000018117D6E8h
+	nop word ptr [rax+rax]
+	mov rcx,[rdi+28h]
+	test rcx,rcx
+	je short 000000018117D6E8h
+	mov rdx,[rcx]
+	mov rax,[rdx+1C8h]
+	mov rdx,[rdx+1D0h]
+	call rax
+	cmp esi,eax
+	jge short 000000018117D6D3h
+	mov rcx,[rdi+28h]
+	test rcx,rcx
+	je short 000000018117D6E8h
+	xor r8d,r8d
+	mov edx,ebx
+	call 00000001811B8A20h
+	test rax,rax
+	je short 000000018117D6E8h
+	lea rcx,[rax+208h]
+	mov [rax+208h],rbp
+	xor edx,edx
+	call 00000001801E1E30h
+	inc ebx
+	mov esi,ebx
+	jmp short 000000018117D680h
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rdi, rdx
+	008 Move [rcx], rdx
+	009 Call 0x1801E1E30, rcx, rdx, r8, r9
+	010 Move rbp, 0
+	011 Move rbx, rbp
+	012 Move rsi, rbp
+	013 Compare rdi, 0
+	014 JumpIfEqual {47}
+	015 Nop 
+	016 Move rcx, [rdi+40]
+	017 Compare rcx, 0
+	018 JumpIfEqual {47}
+	019 Move rdx, [rcx]
+	020 Move rax, [rdx+456]
+	021 Move rdx, [rdx+464]
+	022 Call rax
+	023 Compare rsi, rax
+	024 JumpIfGreaterOrEqual {40}
+	025 Move rcx, [rdi+40]
+	026 Compare rcx, 0
+	027 JumpIfEqual {47}
+	028 Move r8, 0
+	029 Move rdx, rbx
+	030 Call DataTableCollection.get_Item, rcx, rdx
+	031 Compare rax, 0
+	032 JumpIfEqual {47}
+	033 LoadAddress rcx, [rax+520]
+	034 Move [rax+520], rbp
+	035 Move rdx, 0
+	036 Call 0x1801E1E30, rcx, rdx, r8, r9
+	037 Add rbx, rbx, 1
+	038 Move rsi, rbx
+	039 Goto {16}
+	040 Move rbx, stack:0x30
+	041 Move rbp, stack:0x38
+	042 Move rsi, stack:0x40
+	043 ShiftStack 32
+	044 Move rdi, stack:0x0
+	045 ShiftStack 8
+	046 Return 
+	047 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

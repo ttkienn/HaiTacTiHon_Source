@@ -1,0 +1,209 @@
+Type: System.Xml.Schema.LeafRangeNode
+
+Method: System.Void .ctor(System.Decimal min, System.Decimal max)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rsi,r8
+	xor edx,edx
+	mov rdi,rcx
+	call 000000018024B730h
+	movups xmm0,[rbx]
+	mov rbx,[rsp+30h]
+	mov dword ptr [rdi+10h],0FFFFFFFFh
+	movups [rdi+18h],xmm0
+	movups xmm0,[rsi]
+	mov rsi,[rsp+38h]
+	movups [rdi+28h],xmm0
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	011 Move xmm0, [rbx]
+	012 Move rbx, stack:0x30
+	013 Move [rdi+16], 0xFFFFFFFF
+	014 Move [rdi+24], xmm0
+	015 Move xmm0, [rsi]
+	016 Move rsi, stack:0x38
+	017 Move [rdi+40], xmm0
+	018 ShiftStack 32
+	019 Move rdi, stack:0x0
+	020 ShiftStack 8
+	021 Return 
+
+Method: System.Void .ctor(System.Int32 pos, System.Decimal min, System.Decimal max)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov ebx,edx
+	mov rbp,r9
+	xor edx,edx
+	mov rdi,r8
+	mov rsi,rcx
+	call 000000018024B730h
+	movups xmm0,[rdi]
+	mov [rsi+10h],ebx
+	mov rbx,[rsp+30h]
+	movups [rsi+18h],xmm0
+	movups xmm0,[rbp]
+	mov rbp,[rsp+38h]
+	movups [rsi+28h],xmm0
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbx, rdx
+	008 Move rbp, r9
+	009 Move rdx, 0
+	010 Move rdi, r8
+	011 Move rsi, rcx
+	012 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	013 Move xmm0, [rdi]
+	014 Move [rsi+16], rbx
+	015 Move rbx, stack:0x30
+	016 Move [rsi+24], xmm0
+	017 Move xmm0, [rbp]
+	018 Move rbp, stack:0x38
+	019 Move [rsi+40], xmm0
+	020 Move rsi, stack:0x40
+	021 ShiftStack 32
+	022 Move rdi, stack:0x0
+	023 ShiftStack 8
+	024 Return 
+
+Method: System.Decimal get_Max()
+
+Disassembly:
+	movups xmm0,[rdx+28h]
+	mov rax,rcx
+	movups [rcx],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx+40]
+	002 Move rax, rcx
+	003 Move [rcx], xmm0
+	004 Return rax
+
+Method: System.Decimal get_Min()
+
+Disassembly:
+	movups xmm0,[rdx+18h]
+	mov rax,rcx
+	movups [rcx],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx+24]
+	002 Move rax, rcx
+	003 Move [rcx], xmm0
+	004 Return rax
+
+Method: System.Xml.Schema.BitSet get_NextIteration()
+
+Disassembly:
+	mov rax,[rcx+38h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+56]
+	002 Return rax
+
+Method: System.Void set_NextIteration(System.Xml.Schema.BitSet value)
+
+Disassembly:
+	mov [rcx+38h],rdx
+	add rcx,38h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move [rcx+56], rdx
+	002 Add rcx, rcx, 56
+	003 Call 0x1801E1E30, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Boolean get_IsRangeNode()
+
+Disassembly:
+	mov al,1
+	ret
+
+ISIL:
+	001 Move rax, 1
+	002 Return rax
+
+Method: System.Void ExpandTree(System.Xml.Schema.InteriorNode parent, System.Xml.Schema.SymbolsDictionary symbols, System.Xml.Schema.Positions positions)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	test rdx,rdx
+	je short 000000018141BE4Bh
+	mov rcx,[rdx+10h]
+	test rcx,rcx
+	je short 000000018141BE4Bh
+	mov rdx,[rcx]
+	mov rax,[rdx+198h]
+	mov rdx,[rdx+1A0h]
+	call rax
+	test al,al
+	je short 000000018141BE45h
+	xorps xmm0,xmm0
+	movups [rbx+18h],xmm0
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Compare rdx, 0
+	006 JumpIfEqual {22}
+	007 Move rcx, [rdx+16]
+	008 Compare rcx, 0
+	009 JumpIfEqual {22}
+	010 Move rdx, [rcx]
+	011 Move rax, [rdx+408]
+	012 Move rdx, [rdx+416]
+	013 Call rax
+	014 Compare rax, 0
+	015 JumpIfEqual {18}
+	016 Move xmm0, 0
+	017 Move [rbx+24], xmm0
+	018 ShiftStack 32
+	019 Move rbx, stack:0x0
+	020 ShiftStack 8
+	021 Return 
+	022 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

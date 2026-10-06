@@ -1,0 +1,130 @@
+Type: System.Collections.HashtableExtensions
+
+Method: System.Boolean TryGetValue(System.Collections.Hashtable table, System.Object key, out T value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp qword ptr [r9+38h],0
+	mov rdi,r9
+	mov rsi,r8
+	mov rbp,rdx
+	mov rbx,rcx
+	jne short 00000001807362BFh
+	mov rcx,r9
+	call 0000000180188FE0h
+	test rbx,rbx
+	je near ptr 0000000180736355h
+	mov r8,[rbx]
+	mov rdx,rbp
+	mov rcx,rbx
+	mov rax,[r8+2E8h]
+	mov r8,[r8+2F0h]
+	call rax
+	test al,al
+	jne short 00000001807362FEh
+	xor eax,eax
+	mov [rsi],eax
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+	mov r8,[rbx]
+	mov rdx,rbp
+	mov rcx,rbx
+	mov rax,[r8+308h]
+	mov r8,[r8+310h]
+	call rax
+	mov rcx,[rdi+38h]
+	mov rbx,rax
+	mov rax,[rcx+8]
+	test byte ptr [rax+135h],1
+	jne short 0000000180736333h
+	mov rcx,rax
+	call 0000000180188F60h
+	test rbx,rbx
+	je short 0000000180736355h
+	mov rcx,[rax+40h]
+	mov rdx,[rbx]
+	cmp [rdx+40h],rcx
+	mov rcx,rbx
+	jne short 000000018073635Bh
+	call 0000000180153B70h
+	mov ecx,[rax]
+	mov al,1
+	mov [rsi],ecx
+	jmp short 00000001807362E9h
+	call 00000001801E2CA0h
+	int 3
+	mov rdx,rax
+	call 00000001801E1E70h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [r9+56], 0
+	008 Move rdi, r9
+	009 Move rsi, r8
+	010 Move rbp, rdx
+	011 Move rbx, rcx
+	012 JumpIfNotEqual {15}
+	013 Move rcx, r9
+	014 Call 0x180188FE0, rcx, rdx, r8, r9
+	015 Compare rbx, 0
+	016 JumpIfEqual {59}
+	017 Move r8, [rbx]
+	018 Move rdx, rbp
+	019 Move rcx, rbx
+	020 Move rax, [r8+744]
+	021 Move r8, [r8+752]
+	022 Call rax
+	023 Compare rax, 0
+	024 JumpIfNotEqual {34}
+	025 Move rax, 0
+	026 Move [rsi], rax
+	027 Move rbx, stack:0x30
+	028 Move rbp, stack:0x38
+	029 Move rsi, stack:0x40
+	030 ShiftStack 32
+	031 Move rdi, stack:0x0
+	032 ShiftStack 8
+	033 Return rax
+	034 Move r8, [rbx]
+	035 Move rdx, rbp
+	036 Move rcx, rbx
+	037 Move rax, [r8+776]
+	038 Move r8, [r8+784]
+	039 Call rax
+	040 Move rcx, [rdi+56]
+	041 Move rbx, rax
+	042 Move rax, [rcx+8]
+	043 Compare [rax+309], 1
+	044 JumpIfNotEqual {47}
+	045 Move rcx, rax
+	046 Call 0x180188F60, rcx, rdx, r8, r9
+	047 Compare rbx, 0
+	048 JumpIfEqual {59}
+	049 Move rcx, [rax+64]
+	050 Move rdx, [rbx]
+	051 Compare [rdx+64], rcx
+	052 Move rcx, rbx
+	053 JumpIfNotEqual {61}
+	054 Call "il2cpp_object_unbox", rcx, rdx, r8, r9
+	055 Move rcx, [rax]
+	056 Move rax, 1
+	057 Move [rsi], rcx
+	058 Goto {27}
+	059 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	060 Interrupt 
+	061 Move rdx, rax
+	062 Call 0x1801E1E70, rcx, rdx, r8, r9
+

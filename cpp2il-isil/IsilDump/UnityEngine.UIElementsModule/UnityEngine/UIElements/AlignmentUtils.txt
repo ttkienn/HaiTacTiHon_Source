@@ -1,0 +1,100 @@
+Type: UnityEngine.UIElements.AlignmentUtils
+
+Method: System.Single RoundToPixelGrid(System.Single v, System.Single pixelsPerPoint, System.Single offset = 0.02)
+
+Disassembly:
+	sub rsp,38h
+	movaps [rsp+20h],xmm6
+	movaps xmm6,xmm1
+	mulss xmm0,xmm6
+	addss xmm0,dword ptr [1818BCB60h]
+	addss xmm0,xmm2
+	call 000000018021BD30h
+	divss xmm0,xmm6
+	movaps xmm6,[rsp+20h]
+	add rsp,38h
+	ret
+
+ISIL:
+	001 ShiftStack -56
+	002 Move stack:0x20, xmm6
+	003 Move xmm6, xmm1
+	004 Multiply xmm0, xmm0, xmm6
+	005 Add xmm0, xmm0, [0x1818BCB60]
+	006 Add xmm0, xmm0, xmm2
+	007 Call 0x18021BD30, rcx, rdx, r8, r9
+	008 Divide xmm0, xmm0, xmm6
+	009 Move xmm6, stack:0x20
+	010 ShiftStack 56
+	011 Return xmm0
+
+Method: System.Single CeilToPixelGrid(System.Single v, System.Single pixelsPerPoint, System.Single offset = -0.02)
+
+Disassembly:
+	sub rsp,38h
+	movaps [rsp+20h],xmm6
+	movaps xmm6,xmm1
+	mulss xmm0,xmm6
+	addss xmm0,xmm2
+	call 000000018021A790h
+	divss xmm0,xmm6
+	movaps xmm6,[rsp+20h]
+	add rsp,38h
+	ret
+
+ISIL:
+	001 ShiftStack -56
+	002 Move stack:0x20, xmm6
+	003 Move xmm6, xmm1
+	004 Multiply xmm0, xmm0, xmm6
+	005 Add xmm0, xmm0, xmm2
+	006 Call 0x18021A790, rcx, rdx, r8, r9
+	007 Divide xmm0, xmm0, xmm6
+	008 Move xmm6, stack:0x20
+	009 ShiftStack 56
+	010 Return xmm0
+
+Method: System.Single RoundToPanelPixelSize(UnityEngine.UIElements.VisualElement ve, System.Single v)
+
+Disassembly:
+	sub rsp,48h
+	movaps [rsp+20h],xmm7
+	movaps xmm7,xmm1
+	test rcx,rcx
+	je short 00000001816DBB8Ch
+	xor edx,edx
+	movaps [rsp+30h],xmm6
+	call 000000018182CF70h
+	movaps xmm6,xmm0
+	mulss xmm0,xmm7
+	addss xmm0,dword ptr [1818BCB60h]
+	addss xmm0,dword ptr [181935238h]
+	call 000000018021BD30h
+	movaps xmm7,[rsp+20h]
+	divss xmm0,xmm6
+	movaps xmm6,[rsp+30h]
+	add rsp,48h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -72
+	002 Move stack:0x20, xmm7
+	003 Move xmm7, xmm1
+	004 Compare rcx, 0
+	005 JumpIfEqual {19}
+	006 Move rdx, 0
+	007 Move stack:0x30, xmm6
+	008 Call VisualElement.get_scaledPixelsPerPoint, rcx, rdx
+	009 Move xmm6, xmm0
+	010 Multiply xmm0, xmm0, xmm7
+	011 Add xmm0, xmm0, [0x1818BCB60]
+	012 Add xmm0, xmm0, [0x181935238]
+	013 Call 0x18021BD30, rcx, rdx, r8, r9
+	014 Move xmm7, stack:0x20
+	015 Divide xmm0, xmm0, xmm6
+	016 Move xmm6, stack:0x30
+	017 ShiftStack 72
+	018 Return xmm0
+	019 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

@@ -1,0 +1,52 @@
+Type: Unity.Burst.LowLevel.BurstCompilerService
+
+Method: System.Void* GetOrCreateSharedMemory(ref UnityEngine.Hash128 key, System.UInt32 size_of, System.UInt32 alignment)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rax,[181F211C0h]
+	mov ebx,r8d
+	mov edi,edx
+	mov rsi,rcx
+	test rax,rax
+	jne short 00000001816058B6h
+	lea rcx,[1819281C0h]
+	call 00000001801E2D00h
+	mov [181F211C0h],rax
+	mov r8d,ebx
+	mov edx,edi
+	mov rcx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp rax
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rax, [0x181F211C0]
+	007 Move rbx, r8
+	008 Move rdi, rdx
+	009 Move rsi, rcx
+	010 Compare rax, 0
+	011 JumpIfNotEqual {15}
+	012 LoadAddress rcx, [0x1819281C0]
+	013 Call 0x1801E2D00, rcx, rdx, r8, r9
+	014 Move [0x181F211C0], rax
+	015 Move r8, rbx
+	016 Move rdx, rdi
+	017 Move rcx, rsi
+	018 Move rbx, stack:0x30
+	019 Move rsi, stack:0x38
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 CallNoReturn rax
+

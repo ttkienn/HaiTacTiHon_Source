@@ -1,0 +1,24 @@
+Type: System.Threading.Tasks.TaskAwaiters
+
+Method: System.Threading.Tasks.ForceAsyncAwaiter ForceAsync(System.Threading.Tasks.Task task)
+
+Disassembly:
+	sub rsp,28h
+	mov [rsp+30h],rcx
+	mov rdx,rcx
+	lea rcx,[rsp+30h]
+	call 00000001801E1E30h
+	mov rax,[rsp+30h]
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Move stack:0x30, rcx
+	003 Move rdx, rcx
+	004 LoadAddress rcx, stack:0x30
+	005 Call 0x1801E1E30, rcx, rdx, r8, r9
+	006 Move rax, stack:0x30
+	007 ShiftStack 40
+	008 Return rax
+

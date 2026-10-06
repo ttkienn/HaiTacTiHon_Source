@@ -1,0 +1,87 @@
+Type: UnityEngine.UIElements.SafeHandleAccess
+
+Method: System.Void .ctor(System.IntPtr ptr)
+
+Disassembly:
+	mov [rcx],rdx
+	ret
+
+ISIL:
+	001 Move [rcx], rdx
+	002 Return 
+
+Method: System.Boolean IsNull()
+
+Disassembly:
+	xchg ax,ax
+	mov rcx,[rcx]
+	xor r8d,r8d
+	xor edx,edx
+	jmp near ptr 0000000180772240h
+
+ISIL:
+	001 Nop 
+	002 Move rcx, [rcx]
+	003 Move r8, 0
+	004 Move rdx, 0
+	005 Call 0x180772240, rcx, rdx, r8
+	006 Return rax
+
+Method: System.IntPtr op_Implicit(UnityEngine.UIElements.SafeHandleAccess a)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	xor r8d,r8d
+	xor edx,edx
+	mov rbx,rcx
+	call 0000000180772240h
+	test al,al
+	jne short 0000000181815510h
+	mov rax,rbx
+	add rsp,20h
+	pop rbx
+	ret
+	lea rcx,[181DFEBC8h]
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180E89AD0h
+	lea rcx,[181E0EF90h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move r8, 0
+	005 Move rdx, 0
+	006 Move rbx, rcx
+	007 Call 0x180772240, rcx, rdx, r8
+	008 Compare rax, 0
+	009 JumpIfNotEqual {15}
+	010 Move rax, rbx
+	011 ShiftStack 32
+	012 Move rbx, stack:0x0
+	013 ShiftStack 8
+	014 Return rax
+	015 LoadAddress rcx, [0x181DFEBC8]
+	016 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	017 Move rcx, rax
+	018 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	019 Move rdx, 0
+	020 Move rcx, rax
+	021 Move rbx, rax
+	022 Call ArgumentNullException..ctor, rcx, rdx
+	023 LoadAddress rcx, [0x181E0EF90]
+	024 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	025 Move rdx, rax
+	026 Move rcx, rbx
+	027 Call 0x1801E2C60, rcx, rdx, r8, r9
+

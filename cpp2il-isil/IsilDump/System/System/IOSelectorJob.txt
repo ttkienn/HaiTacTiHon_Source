@@ -1,0 +1,125 @@
+Type: System.IOSelectorJob
+
+Method: System.Void .ctor(System.IOOperation operation, System.IOAsyncCallback callback, System.IOAsyncResult state)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov ebx,edx
+	mov rbp,r9
+	xor edx,edx
+	mov rdi,r8
+	mov rsi,rcx
+	call 000000018024B730h
+	lea rcx,[rsi+18h]
+	mov [rsi+10h],ebx
+	mov rdx,rdi
+	mov [rsi+18h],rdi
+	call 00000001801E1E30h
+	lea rcx,[rsi+20h]
+	mov [rsi+20h],rbp
+	mov rdx,rbp
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbx, rdx
+	008 Move rbp, r9
+	009 Move rdx, 0
+	010 Move rdi, r8
+	011 Move rsi, rcx
+	012 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	013 LoadAddress rcx, [rsi+24]
+	014 Move [rsi+16], rbx
+	015 Move rdx, rdi
+	016 Move [rsi+24], rdi
+	017 Call 0x1801E1E30, rcx, rdx, r8, r9
+	018 LoadAddress rcx, [rsi+32]
+	019 Move [rsi+32], rbp
+	020 Move rdx, rbp
+	021 Move rbx, stack:0x30
+	022 Move rbp, stack:0x38
+	023 Move rsi, stack:0x40
+	024 ShiftStack 32
+	025 Move rdi, stack:0x0
+	026 ShiftStack 8
+	027 Call 0x1801E1E30, rcx, rdx, r8, r9
+	028 Return 
+
+Method: System.Void System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+
+Disassembly:
+	sub rsp,28h
+	mov rdx,rcx
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001814B12C7h
+	mov rax,[rcx+18h]
+	mov r8,[rcx+28h]
+	mov rcx,[rcx+40h]
+	mov rdx,[rdx+20h]
+	add rsp,28h
+	jmp rax
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rdx, rcx
+	003 Move rcx, [rcx+24]
+	004 Compare rcx, 0
+	005 JumpIfEqual {12}
+	006 Move rax, [rcx+24]
+	007 Move r8, [rcx+40]
+	008 Move rcx, [rcx+64]
+	009 Move rdx, [rdx+32]
+	010 ShiftStack 40
+	011 CallNoReturn rax
+	012 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void System.Threading.IThreadPoolWorkItem.MarkAborted(System.Threading.ThreadAbortException tae)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void MarkDisposed()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+20h]
+	test rcx,rcx
+	je short 00000001814B1295h
+	mov rdx,[rcx]
+	mov rax,[rdx+1B8h]
+	mov rdx,[rdx+1C0h]
+	add rsp,28h
+	jmp rax
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+32]
+	003 Compare rcx, 0
+	004 JumpIfEqual {10}
+	005 Move rdx, [rcx]
+	006 Move rax, [rdx+440]
+	007 Move rdx, [rdx+448]
+	008 ShiftStack 40
+	009 CallNoReturn rax
+	010 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

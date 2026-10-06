@@ -1,0 +1,98 @@
+Type: UnityEngine.AndroidJavaException
+
+Method: System.Void .ctor(System.String message, System.String javaStackTrace)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F20D29h],0
+	mov rdi,r8
+	mov rsi,rdx
+	mov rbx,rcx
+	jne short 00000001815F6F74h
+	lea rcx,[181E12570h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20D29h],1
+	mov rcx,[181E12570h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001815F6F89h
+	call 0000000180153C50h
+	xor r8d,r8d
+	mov rdx,rsi
+	mov rcx,rbx
+	call 0000000180F606C0h
+	lea rcx,[rbx+90h]
+	mov [rbx+90h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x181F20D29], 0
+	007 Move rdi, r8
+	008 Move rsi, rdx
+	009 Move rbx, rcx
+	010 JumpIfNotEqual {14}
+	011 LoadAddress rcx, [0x181E12570]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x181F20D29], 1
+	014 Move rcx, typeof(System.Exception)
+	015 Compare [rcx+224], 0
+	016 JumpIfNotEqual {18}
+	017 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	018 Move r8, 0
+	019 Move rdx, rsi
+	020 Move rcx, rbx
+	021 Call Exception..ctor, rcx, rdx
+	022 LoadAddress rcx, [rbx+144]
+	023 Move [rbx+144], rdi
+	024 Move rdx, rdi
+	025 Move rbx, stack:0x30
+	026 Move rsi, stack:0x38
+	027 ShiftStack 32
+	028 Move rdi, stack:0x0
+	029 ShiftStack 8
+	030 Call 0x1801E1E30, rcx, rdx, r8, r9
+	031 Return 
+
+Method: System.String get_StackTrace()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,[rcx+90h]
+	xor edx,edx
+	call 0000000180F60A50h
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rbx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 0000000180D7BAD0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, [rcx+144]
+	005 Move rdx, 0
+	006 Call Exception.get_StackTrace, rcx, rdx
+	007 Move r8, 0
+	008 Move rdx, rax
+	009 Move rcx, rbx
+	010 ShiftStack 32
+	011 Move rbx, stack:0x0
+	012 ShiftStack 8
+	013 Call String.Concat, rcx, rdx, r8
+	014 Return rax
+

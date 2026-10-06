@@ -1,0 +1,36 @@
+Type: UnityEngine.AnimatorOverrideController
+
+Method: System.Void OnInvalidateOverrideController(UnityEngine.AnimatorOverrideController controller)
+
+Disassembly:
+	sub rsp,28h
+	test rcx,rcx
+	je short 000000018160096Ch
+	cmp qword ptr [rcx+18h],0
+	jbe short 0000000181600967h
+	mov rcx,[rcx+18h]
+	mov rax,[rcx+18h]
+	mov rdx,[rcx+28h]
+	mov rcx,[rcx+40h]
+	add rsp,28h
+	jmp rax
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rcx, 0
+	003 JumpIfEqual {14}
+	004 Compare [rcx+24], 0
+	005 JumpIfLessOrEqual {12}
+	006 Move rcx, [rcx+24]
+	007 Move rax, [rcx+24]
+	008 Move rdx, [rcx+40]
+	009 Move rcx, [rcx+64]
+	010 ShiftStack 40
+	011 CallNoReturn rax
+	012 ShiftStack 40
+	013 Return 
+	014 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

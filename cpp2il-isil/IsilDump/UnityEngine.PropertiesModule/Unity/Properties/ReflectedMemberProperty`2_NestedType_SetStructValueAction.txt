@@ -1,0 +1,124 @@
+Type: Unity.Properties.ReflectedMemberProperty`2+SetStructValueAction
+
+Method: System.Void .ctor(System.Object object, System.IntPtr method)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rax,[r8+8]
+	mov rbx,r8
+	mov [rcx+10h],rax
+	mov rdi,rcx
+	mov [rcx+28h],rbx
+	mov rbp,rdx
+	mov [rcx+20h],rdx
+	add rcx,20h
+	call 00000001801E1E30h
+	movzx esi,byte ptr [rbx+52h]
+	mov rcx,rbx
+	mov [rdi+40h],rdi
+	call 00000001801E1E60h
+	test al,al
+	je short 0000000180AC8B02h
+	cmp sil,2
+	lea rcx,[180011AF0h]
+	lea rax,[1800117E0h]
+	cmovne rcx,rax
+	jmp short 0000000180AC8B1Dh
+	cmp sil,1
+	jne short 0000000180AC8B11h
+	lea rcx,[1800119E0h]
+	jmp short 0000000180AC8B1Dh
+	test rbp,rbp
+	je short 0000000180AC8B49h
+	lea rcx,[1800117A0h]
+	mov eax,18h
+	mov rdx,rdi
+	mov [rdx+rax],rcx
+	lea rax,[180011820h]
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	mov [rdi+38h],rax
+	add rsp,20h
+	pop rdi
+	ret
+	lea rdx,[1818BCB20h]
+	xor ecx,ecx
+	call 00000001801E26D0h
+	mov rcx,rax
+	xor edx,edx
+	call 00000001801E2C60h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rax, [r8+8]
+	008 Move rbx, r8
+	009 Move [rcx+16], rax
+	010 Move rdi, rcx
+	011 Move [rcx+40], rbx
+	012 Move rbp, rdx
+	013 Move [rcx+32], rdx
+	014 Add rcx, rcx, 32
+	015 Call 0x1801E1E30, rcx, rdx, r8, r9
+	016 Move rsi, [rbx+82]
+	017 Move rcx, rbx
+	018 Move [rdi+64], rdi
+	019 Call 0x1801E1E60, rcx, rdx, r8, r9
+	020 Compare rax, 0
+	021 JumpIfEqual {29}
+	022 Compare rsi, 2
+	023 LoadAddress rcx, [0x180011AF0]
+	024 LoadAddress rax, [0x1800117E0]
+	025 JumpIfEqual {27}
+	026 Move rcx, rax
+	027 Nop 
+	028 Goto {36}
+	029 Compare rsi, 1
+	030 JumpIfNotEqual {33}
+	031 LoadAddress rcx, [0x1800119E0]
+	032 Goto {36}
+	033 Compare rbp, 0
+	034 JumpIfEqual {48}
+	035 LoadAddress rcx, [0x1800117A0]
+	036 Move rax, 24
+	037 Move rdx, rdi
+	038 Move [rdx+rax], rcx
+	039 LoadAddress rax, [0x180011820]
+	040 Move rbx, stack:0x30
+	041 Move rbp, stack:0x38
+	042 Move rsi, stack:0x40
+	043 Move [rdi+56], rax
+	044 ShiftStack 32
+	045 Move rdi, stack:0x0
+	046 ShiftStack 8
+	047 Return 
+	048 LoadAddress rdx, [0x1818BCB20]
+	049 Move rcx, 0
+	050 Call 0x1801E26D0, rcx, rdx, r8, r9
+	051 Move rcx, rax
+	052 Move rdx, 0
+	053 Call 0x1801E2C60, rcx, rdx, r8, r9
+
+Method: System.Void Invoke(ref TContainer container, TValue value)
+
+Disassembly:
+	mov rax,[rcx+18h]
+	mov r9,[rcx+28h]
+	mov rcx,[rcx+40h]
+	jmp rax
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Move r9, [rcx+40]
+	003 Move rcx, [rcx+64]
+	004 CallNoReturn rax
+

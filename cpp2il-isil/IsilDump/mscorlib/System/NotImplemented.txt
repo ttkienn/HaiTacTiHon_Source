@@ -1,0 +1,44 @@
+Type: System.NotImplemented
+
+Method: System.Exception get_ByDesign()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [181F1D441h],0
+	jne short 0000000180F3A452h
+	lea rcx,[181E30A00h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1D441h],1
+	mov rcx,[181E30A00h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180F238A0h
+	mov rax,rbx
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x181F1D441], 0
+	005 JumpIfNotEqual {9}
+	006 LoadAddress rcx, [0x181E30A00]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 Move [0x181F1D441], 1
+	009 Move rcx, typeof(System.NotImplementedException)
+	010 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	011 Move rdx, 0
+	012 Move rcx, rax
+	013 Move rbx, rax
+	014 Call NotImplementedException..ctor, rcx, rdx
+	015 Move rax, rbx
+	016 ShiftStack 32
+	017 Move rbx, stack:0x0
+	018 ShiftStack 8
+	019 Return rax
+

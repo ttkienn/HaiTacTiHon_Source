@@ -1,0 +1,80 @@
+Type: UnityEngine.Animations.AnimationClipPlayable
+
+Method: UnityEngine.Playables.PlayableHandle GetHandle()
+
+Disassembly:
+	movups xmm0,[rdx]
+	movups [rcx],xmm0
+	mov rax,rcx
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move [rcx], xmm0
+	003 Move rax, rcx
+	004 Return rax
+
+Method: System.Boolean Equals(UnityEngine.Animations.AnimationClipPlayable other)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,50h
+	cmp byte ptr [181F21090h],0
+	mov rdi,rdx
+	movaps [rsp+40h],xmm6
+	mov rbx,rcx
+	jne short 00000001815FF171h
+	lea rcx,[181E33D28h]
+	call 00000001801E2A80h
+	mov byte ptr [181F21090h],1
+	movups xmm6,[rbx]
+	mov rcx,[181E33D28h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001815FF189h
+	call 0000000180153C50h
+	movups xmm0,[rdi]
+	movdqa [rsp+30h],xmm6
+	movaps [rsp+20h],xmm0
+	xor r8d,r8d
+	lea rdx,[rsp+20h]
+	lea rcx,[rsp+30h]
+	call 000000018163F100h
+	mov rbx,[rsp+60h]
+	movaps xmm6,[rsp+40h]
+	add rsp,50h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -80
+	005 Compare [0x181F21090], 0
+	006 Move rdi, rdx
+	007 Move stack:0x40, xmm6
+	008 Move rbx, rcx
+	009 JumpIfNotEqual {13}
+	010 LoadAddress rcx, [0x181E33D28]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x181F21090], 1
+	013 Move xmm6, [rbx]
+	014 Move rcx, typeof(UnityEngine.Playables.PlayableHandle)
+	015 Compare [rcx+224], 0
+	016 JumpIfNotEqual {18}
+	017 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	018 Move xmm0, [rdi]
+	019 Move stack:0x30, xmm6
+	020 Move stack:0x20, xmm0
+	021 Move r8, 0
+	022 LoadAddress rdx, stack:0x20
+	023 LoadAddress rcx, stack:0x30
+	024 Call PlayableHandle.op_Equality, rcx, rdx, r8
+	025 Move rbx, stack:0x60
+	026 Move xmm6, stack:0x40
+	027 ShiftStack 80
+	028 Move rdi, stack:0x0
+	029 ShiftStack 8
+	030 Return rax
+

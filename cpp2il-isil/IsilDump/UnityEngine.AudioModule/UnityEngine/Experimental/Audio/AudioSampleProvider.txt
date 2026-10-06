@@ -1,0 +1,54 @@
+Type: UnityEngine.Experimental.Audio.AudioSampleProvider
+
+Method: System.Void InvokeSampleFramesAvailable(System.Int32 sampleFrameCount)
+
+Disassembly:
+	cmp qword ptr [rcx+10h],0
+	mov r8d,edx
+	mov rdx,rcx
+	jbe short 0000000181600BD0h
+	mov rcx,[rcx+10h]
+	mov rax,[rcx+18h]
+	mov r9,[rcx+28h]
+	mov rcx,[rcx+40h]
+	jmp rax
+	ret
+
+ISIL:
+	001 Compare [rcx+16], 0
+	002 Move r8, rdx
+	003 Move rdx, rcx
+	004 JumpIfLessOrEqual {10}
+	005 Move rcx, [rcx+16]
+	006 Move rax, [rcx+24]
+	007 Move r9, [rcx+40]
+	008 Move rcx, [rcx+64]
+	009 CallNoReturn rax
+	010 Return 
+
+Method: System.Void InvokeSampleFramesOverflow(System.Int32 droppedSampleFrameCount)
+
+Disassembly:
+	cmp qword ptr [rcx+18h],0
+	mov r8d,edx
+	mov rdx,rcx
+	jbe short 0000000181600C00h
+	mov rcx,[rcx+18h]
+	mov rax,[rcx+18h]
+	mov r9,[rcx+28h]
+	mov rcx,[rcx+40h]
+	jmp rax
+	ret
+
+ISIL:
+	001 Compare [rcx+24], 0
+	002 Move r8, rdx
+	003 Move rdx, rcx
+	004 JumpIfLessOrEqual {10}
+	005 Move rcx, [rcx+24]
+	006 Move rax, [rcx+24]
+	007 Move r9, [rcx+40]
+	008 Move rcx, [rcx+64]
+	009 CallNoReturn rax
+	010 Return 
+

@@ -1,0 +1,118 @@
+Type: Mono.Unity.UnityTls+unitytls_interface_struct+unitytls_x509verify_default_ca_t
+
+Method: System.Void .ctor(System.Object object, System.IntPtr method)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rax,[r8+8]
+	mov rbx,r8
+	mov [rcx+10h],rax
+	mov rdi,rcx
+	mov [rcx+28h],rbx
+	mov rsi,rdx
+	mov [rcx+20h],rdx
+	add rcx,20h
+	call 00000001801E1E30h
+	movzx ebp,byte ptr [rbx+52h]
+	mov rcx,rbx
+	mov [rdi+40h],rdi
+	call 00000001801E1E60h
+	test al,al
+	je short 0000000181163749h
+	cmp bpl,6
+	jne short 000000018116374Eh
+	lea rcx,[1801044B0h]
+	jmp short 000000018116375Ah
+	test rsi,rsi
+	je short 0000000181163786h
+	mov rax,[rdi+20h]
+	mov rcx,[rdi+10h]
+	mov [rdi+40h],rax
+	mov eax,18h
+	mov rdx,rdi
+	mov [rax+rdx],rcx
+	lea rax,[1801043E0h]
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	mov [rdi+38h],rax
+	add rsp,20h
+	pop rdi
+	ret
+	lea rdx,[1818BCB20h]
+	xor ecx,ecx
+	call 00000001801E26D0h
+	mov rcx,rax
+	xor edx,edx
+	call 00000001801E2C60h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rax, [r8+8]
+	008 Move rbx, r8
+	009 Move [rcx+16], rax
+	010 Move rdi, rcx
+	011 Move [rcx+40], rbx
+	012 Move rsi, rdx
+	013 Move [rcx+32], rdx
+	014 Add rcx, rcx, 32
+	015 Call 0x1801E1E30, rcx, rdx, r8, r9
+	016 Move rbp, [rbx+82]
+	017 Move rcx, rbx
+	018 Move [rdi+64], rdi
+	019 Call 0x1801E1E60, rcx, rdx, r8, r9
+	020 Compare rax, 0
+	021 JumpIfEqual {26}
+	022 Compare rbp, 6
+	023 JumpIfNotEqual {28}
+	024 LoadAddress rcx, [0x1801044B0]
+	025 Goto {31}
+	026 Compare rsi, 0
+	027 JumpIfEqual {43}
+	028 Move rax, [rdi+32]
+	029 Move rcx, [rdi+16]
+	030 Move [rdi+64], rax
+	031 Move rax, 24
+	032 Move rdx, rdi
+	033 Move [rax+rdx], rcx
+	034 LoadAddress rax, [0x1801043E0]
+	035 Move rbx, stack:0x30
+	036 Move rbp, stack:0x38
+	037 Move rsi, stack:0x40
+	038 Move [rdi+56], rax
+	039 ShiftStack 32
+	040 Move rdi, stack:0x0
+	041 ShiftStack 8
+	042 Return 
+	043 LoadAddress rdx, [0x1818BCB20]
+	044 Move rcx, 0
+	045 Call 0x1801E26D0, rcx, rdx, r8, r9
+	046 Move rcx, rax
+	047 Move rdx, 0
+	048 Call 0x1801E2C60, rcx, rdx, r8, r9
+
+Method: Mono.Unity.UnityTls+unitytls_x509verify_result Invoke(Mono.Unity.UnityTls+unitytls_x509list_ref chain, System.Byte* cn, System.IntPtr cnLen, Mono.Unity.UnityTls+unitytls_x509verify_callback cb, System.Void* userData, Mono.Unity.UnityTls+unitytls_errorstate* errorState)
+
+Disassembly:
+	mov rax,[rcx+28h]
+	mov r10,[rcx+18h]
+	mov rcx,[rcx+40h]
+	mov [rsp+40h],rax
+	jmp r10
+
+ISIL:
+	001 Move rax, [rcx+40]
+	002 Move r10, [rcx+24]
+	003 Move rcx, [rcx+64]
+	004 Move stack:0x40, rax
+	005 CallNoReturn r10
+

@@ -1,0 +1,73 @@
+Type: UnityEngine.UIElements.StyleSheets.StyleSheetCache+SheetHandleKeyComparer
+
+Method: System.Boolean Equals(UnityEngine.UIElements.StyleSheets.StyleSheetCache+SheetHandleKey x, UnityEngine.UIElements.StyleSheets.StyleSheetCache+SheetHandleKey y)
+
+Disassembly:
+	cmp edx,r8d
+	je short 0000000181781068h
+	xor eax,eax
+	ret
+	shr rdx,20h
+	shr r8,20h
+	cmp edx,r8d
+	sete al
+	ret
+
+ISIL:
+	001 Compare rdx, r8
+	002 JumpIfEqual {5}
+	003 Move rax, 0
+	004 Return rax
+	005 ShiftRight rdx, 32
+	006 ShiftRight r8, 32
+	007 Compare rdx, r8
+	008 NotImplemented "sete al"
+	009 Return rax
+
+Method: System.Int32 GetHashCode(UnityEngine.UIElements.StyleSheets.StyleSheetCache+SheetHandleKey key)
+
+Disassembly:
+	mov [rsp+10h],rdx
+	push rbx
+	sub rsp,20h
+	xor edx,edx
+	lea rcx,[rsp+38h]
+	call 0000000180772300h
+	mov ebx,eax
+	xor edx,edx
+	lea rcx,[rsp+3Ch]
+	call 0000000180772300h
+	xor eax,ebx
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 Move stack:0x10, rdx
+	002 ShiftStack -8
+	003 Move stack:0x0, rbx
+	004 ShiftStack -32
+	005 Move rdx, 0
+	006 LoadAddress rcx, stack:0x38
+	007 Call 0x180772300, rcx, rdx
+	008 Move rbx, rax
+	009 Move rdx, 0
+	010 LoadAddress rcx, stack:0x3C
+	011 Call 0x180772300, rcx, rdx
+	012 Xor rax, rax, rbx
+	013 ShiftStack 32
+	014 Move rbx, stack:0x0
+	015 ShiftStack 8
+	016 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+

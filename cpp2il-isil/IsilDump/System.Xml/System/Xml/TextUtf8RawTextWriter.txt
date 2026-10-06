@@ -1,0 +1,243 @@
+Type: System.Xml.TextUtf8RawTextWriter
+
+Method: System.Void .ctor(System.IO.Stream stream, System.Xml.XmlWriterSettings settings)
+
+Disassembly:
+	xor r9d,r9d
+	jmp near ptr 000000018139E470h
+
+ISIL:
+	001 Move r9, 0
+	002 Call XmlUtf8RawTextWriter..ctor, rcx, rdx, r8
+	003 Return 
+
+Method: System.Void WriteXmlDeclaration(System.Xml.XmlStandalone standalone)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteXmlDeclaration(System.String xmldecl)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteDocType(System.String name, System.String pubid, System.String sysid, System.String subset)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteStartElement(System.String prefix, System.String localName, System.String ns)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteEndElement(System.String prefix, System.String localName, System.String ns)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteFullEndElement(System.String prefix, System.String localName, System.String ns)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void StartElementContent()
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteStartAttribute(System.String prefix, System.String localName, System.String ns)
+
+Disassembly:
+	mov byte ptr [rcx+6Ah],1
+	ret
+
+ISIL:
+	001 Move [rcx+106], 1
+	002 Return 
+
+Method: System.Void WriteEndAttribute()
+
+Disassembly:
+	mov byte ptr [rcx+6Ah],0
+	ret
+
+ISIL:
+	001 Move [rcx+106], 0
+	002 Return 
+
+Method: System.Void WriteNamespaceDeclaration(System.String prefix, System.String ns)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Boolean get_SupportsNamespaceDeclarationInChunks()
+
+Disassembly:
+	xor al,al
+	ret
+
+ISIL:
+	001 Move rax, 0
+	002 Return rax
+
+Method: System.Void WriteCData(System.String text)
+
+Disassembly:
+	xor r8d,r8d
+	jmp near ptr 000000018139DCE0h
+
+ISIL:
+	001 Move r8, 0
+	002 Call XmlUtf8RawTextWriter.WriteRaw, rcx, rdx
+	003 Return 
+
+Method: System.Void WriteComment(System.String text)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteProcessingInstruction(System.String name, System.String text)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteEntityRef(System.String name)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteCharEntity(System.Char ch)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteSurrogateCharEntity(System.Char lowChar, System.Char highChar)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteWhitespace(System.String ws)
+
+Disassembly:
+	cmp byte ptr [rcx+6Ah],0
+	jne short 000000018138413Eh
+	xor r8d,r8d
+	jmp near ptr 000000018139DCE0h
+	ret
+
+ISIL:
+	001 Compare [rcx+106], 0
+	002 JumpIfNotEqual {6}
+	003 Move r8, 0
+	004 Call XmlUtf8RawTextWriter.WriteRaw, rcx, rdx
+	005 Return 
+	006 Return 
+
+Method: System.Void WriteString(System.String textBlock)
+
+Disassembly:
+	cmp byte ptr [rcx+6Ah],0
+	jne short 000000018138413Eh
+	xor r8d,r8d
+	jmp near ptr 000000018139DCE0h
+	ret
+
+ISIL:
+	001 Compare [rcx+106], 0
+	002 JumpIfNotEqual {6}
+	003 Move r8, 0
+	004 Call XmlUtf8RawTextWriter.WriteRaw, rcx, rdx
+	005 Return 
+	006 Return 
+
+Method: System.Void WriteChars(System.Char[] buffer, System.Int32 index, System.Int32 count)
+
+Disassembly:
+	cmp byte ptr [rcx+6Ah],0
+	jne short 0000000181384124h
+	mov qword ptr [rsp+28h],0
+	jmp near ptr 000000018139DC90h
+	ret
+
+ISIL:
+	001 Compare [rcx+106], 0
+	002 JumpIfNotEqual {6}
+	003 Move stack:0x28, 0
+	004 Call XmlUtf8RawTextWriter.WriteRaw, rcx, rdx, r8, r9
+	005 Return 
+	006 Return 
+
+Method: System.Void WriteRaw(System.Char[] buffer, System.Int32 index, System.Int32 count)
+
+Disassembly:
+	cmp byte ptr [rcx+6Ah],0
+	jne short 0000000181384124h
+	mov qword ptr [rsp+28h],0
+	jmp near ptr 000000018139DC90h
+	ret
+
+ISIL:
+	001 Compare [rcx+106], 0
+	002 JumpIfNotEqual {6}
+	003 Move stack:0x28, 0
+	004 Call XmlUtf8RawTextWriter.WriteRaw, rcx, rdx, r8, r9
+	005 Return 
+	006 Return 
+
+Method: System.Void WriteRaw(System.String data)
+
+Disassembly:
+	cmp byte ptr [rcx+6Ah],0
+	jne short 000000018138413Eh
+	xor r8d,r8d
+	jmp near ptr 000000018139DCE0h
+	ret
+
+ISIL:
+	001 Compare [rcx+106], 0
+	002 JumpIfNotEqual {6}
+	003 Move r8, 0
+	004 Call XmlUtf8RawTextWriter.WriteRaw, rcx, rdx
+	005 Return 
+	006 Return 
+

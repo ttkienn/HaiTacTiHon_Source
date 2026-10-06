@@ -1,0 +1,347 @@
+Type: System.Xml.XmlCDataSection
+
+Method: System.Void .ctor(System.String data, System.Xml.XmlDocument doc)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rax,r8
+	mov rdi,rdx
+	mov rdx,rax
+	xor r8d,r8d
+	mov rbx,rcx
+	call 00000001813D7C40h
+	lea rcx,[rbx+18h]
+	mov qword ptr [rbx+18h],0
+	xor edx,edx
+	call 00000001801E1E30h
+	lea rcx,[rbx+20h]
+	mov [rbx+20h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rax, r8
+	006 Move rdi, rdx
+	007 Move rdx, rax
+	008 Move r8, 0
+	009 Move rbx, rcx
+	010 Call XmlNode..ctor, rcx, rdx
+	011 LoadAddress rcx, [rbx+24]
+	012 Move [rbx+24], 0
+	013 Move rdx, 0
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 LoadAddress rcx, [rbx+32]
+	016 Move [rbx+32], rdi
+	017 Move rdx, rdi
+	018 Move rbx, stack:0x30
+	019 ShiftStack 32
+	020 Move rdi, stack:0x0
+	021 ShiftStack 8
+	022 Call 0x1801E1E30, rcx, rdx, r8, r9
+	023 Return 
+
+Method: System.String get_Name()
+
+Disassembly:
+	sub rsp,28h
+	mov rdx,[rcx]
+	mov rax,[rdx+228h]
+	mov rdx,[rdx+230h]
+	call rax
+	test rax,rax
+	je short 00000001813AAA18h
+	mov rax,[rax+0B8h]
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rdx, [rcx]
+	003 Move rax, [rdx+552]
+	004 Move rdx, [rdx+560]
+	005 Call rax
+	006 Compare rax, 0
+	007 JumpIfEqual {11}
+	008 Move rax, [rax+184]
+	009 ShiftStack 40
+	010 Return rax
+	011 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.String get_LocalName()
+
+Disassembly:
+	sub rsp,28h
+	mov rdx,[rcx]
+	mov rax,[rdx+228h]
+	mov rdx,[rdx+230h]
+	call rax
+	test rax,rax
+	je short 00000001813AAA18h
+	mov rax,[rax+0B8h]
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rdx, [rcx]
+	003 Move rax, [rdx+552]
+	004 Move rdx, [rdx+560]
+	005 Call rax
+	006 Compare rax, 0
+	007 JumpIfEqual {11}
+	008 Move rax, [rax+184]
+	009 ShiftStack 40
+	010 Return rax
+	011 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Xml.XmlNodeType get_NodeType()
+
+Disassembly:
+	mov eax,4
+	ret
+
+ISIL:
+	001 Move rax, 4
+	002 Return rax
+
+Method: System.Xml.XmlNode get_ParentNode()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 00000001813AAAAEh
+	mov rdx,[rcx]
+	mov rax,[rdx+1C8h]
+	mov rdx,[rdx+1D0h]
+	call rax
+	lea edx,[rax-3]
+	cmp edx,1
+	jbe short 00000001813AAA6Ch
+	cmp eax,9
+	jne short 00000001813AAA5Ah
+	xor eax,eax
+	add rsp,20h
+	pop rbx
+	ret
+	add eax,0FFFFFFF3h
+	cmp eax,1
+	jbe short 00000001813AAA6Ch
+	mov rax,[rbx+10h]
+	add rsp,20h
+	pop rbx
+	ret
+	mov rbx,[rbx+10h]
+	test rbx,rbx
+	je short 00000001813AAAAEh
+	mov rbx,[rbx+10h]
+	test rbx,rbx
+	je short 00000001813AAAAEh
+	xchg ax,ax
+	mov rdx,[rbx]
+	mov rcx,rbx
+	mov rax,[rdx+4A8h]
+	mov rdx,[rdx+4B0h]
+	call rax
+	test al,al
+	je short 00000001813AAAA5h
+	mov rbx,[rbx+10h]
+	test rbx,rbx
+	je short 00000001813AAAAEh
+	jmp short 00000001813AAA80h
+	mov rax,rbx
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move rcx, [rcx+16]
+	006 Compare rcx, 0
+	007 JumpIfEqual {53}
+	008 Move rdx, [rcx]
+	009 Move rax, [rdx+456]
+	010 Move rdx, [rdx+464]
+	011 Call rax
+	012 LoadAddress rdx, [rax-3]
+	013 Compare rdx, 1
+	014 JumpIfLessOrEqual {30}
+	015 Compare rax, 9
+	016 JumpIfNotEqual {22}
+	017 Move rax, 0
+	018 ShiftStack 32
+	019 Move rbx, stack:0x0
+	020 ShiftStack 8
+	021 Return rax
+	022 Add rax, rax, 18446744073709551603
+	023 Compare rax, 1
+	024 JumpIfLessOrEqual {30}
+	025 Move rax, [rbx+16]
+	026 ShiftStack 32
+	027 Move rbx, stack:0x0
+	028 ShiftStack 8
+	029 Return rax
+	030 Move rbx, [rbx+16]
+	031 Compare rbx, 0
+	032 JumpIfEqual {53}
+	033 Move rbx, [rbx+16]
+	034 Compare rbx, 0
+	035 JumpIfEqual {53}
+	036 Nop 
+	037 Move rdx, [rbx]
+	038 Move rcx, rbx
+	039 Move rax, [rdx+1192]
+	040 Move rdx, [rdx+1200]
+	041 Call rax
+	042 Compare rax, 0
+	043 JumpIfEqual {48}
+	044 Move rbx, [rbx+16]
+	045 Compare rbx, 0
+	046 JumpIfEqual {53}
+	047 Goto {37}
+	048 Move rax, rbx
+	049 ShiftStack 32
+	050 Move rbx, stack:0x0
+	051 ShiftStack 8
+	052 Return rax
+	053 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Xml.XmlNode CloneNode(System.Boolean deep)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdx,[rcx]
+	mov rbx,rcx
+	mov rax,[rdx+228h]
+	mov rdx,[rdx+230h]
+	call rax
+	mov rdx,[rbx]
+	mov rcx,rbx
+	mov rdi,rax
+	mov r8,[rdx+4B8h]
+	mov rdx,[rdx+4C0h]
+	call r8
+	test rdi,rdi
+	je short 00000001813AA943h
+	mov r8,[rdi]
+	mov rdx,rax
+	mov rcx,rdi
+	mov r9,[r8+4E8h]
+	mov r8,[r8+4F0h]
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp r9
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdx, [rcx]
+	006 Move rbx, rcx
+	007 Move rax, [rdx+552]
+	008 Move rdx, [rdx+560]
+	009 Call rax
+	010 Move rdx, [rbx]
+	011 Move rcx, rbx
+	012 Move rdi, rax
+	013 Move r8, [rdx+1208]
+	014 Move rdx, [rdx+1216]
+	015 Call r8
+	016 Compare rdi, 0
+	017 JumpIfEqual {28}
+	018 Move r8, [rdi]
+	019 Move rdx, rax
+	020 Move rcx, rdi
+	021 Move r9, [r8+1256]
+	022 Move r8, [r8+1264]
+	023 Move rbx, stack:0x30
+	024 ShiftStack 32
+	025 Move rdi, stack:0x0
+	026 ShiftStack 8
+	027 CallNoReturn r9
+	028 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void WriteTo(System.Xml.XmlWriter w)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rdx
+	mov rdx,[rcx]
+	mov rax,[rdx+4B8h]
+	mov rdx,[rdx+4C0h]
+	call rax
+	test rbx,rbx
+	je short 00000001813AA990h
+	mov r8,[rbx]
+	mov rdx,rax
+	mov rcx,rbx
+	mov r9,[r8+218h]
+	mov r8,[r8+220h]
+	add rsp,20h
+	pop rbx
+	jmp r9
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rdx
+	005 Move rdx, [rcx]
+	006 Move rax, [rdx+1208]
+	007 Move rdx, [rdx+1216]
+	008 Call rax
+	009 Compare rbx, 0
+	010 JumpIfEqual {20}
+	011 Move r8, [rbx]
+	012 Move rdx, rax
+	013 Move rcx, rbx
+	014 Move r9, [r8+536]
+	015 Move r8, [r8+544]
+	016 ShiftStack 32
+	017 Move rbx, stack:0x0
+	018 ShiftStack 8
+	019 CallNoReturn r9
+	020 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void WriteContentTo(System.Xml.XmlWriter w)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Boolean get_IsText()
+
+Disassembly:
+	mov al,1
+	ret
+
+ISIL:
+	001 Move rax, 1
+	002 Return rax
+

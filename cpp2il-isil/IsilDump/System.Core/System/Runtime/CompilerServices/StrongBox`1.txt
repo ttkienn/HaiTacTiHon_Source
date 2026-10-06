@@ -1,0 +1,139 @@
+Type: System.Runtime.CompilerServices.StrongBox`1
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+
+Method: System.Void .ctor(T value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov edi,edx
+	mov rbx,rcx
+	xor edx,edx
+	call 000000018024B730h
+	mov [rbx+10h],edi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	009 Move [rbx+16], rdi
+	010 Move rbx, stack:0x30
+	011 ShiftStack 32
+	012 Move rdi, stack:0x0
+	013 ShiftStack 8
+	014 Return 
+
+Method: System.Object System.Runtime.CompilerServices.IStrongBox.get_Value()
+
+Disassembly:
+	sub rsp,28h
+	mov eax,[rcx+10h]
+	mov [rsp+30h],eax
+	mov rax,[rdx+20h]
+	lea rdx,[rsp+30h]
+	mov rcx,[rax+0C0h]
+	mov rcx,[rcx]
+	call 0000000180154460h
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+16]
+	003 Move stack:0x30, rax
+	004 Move rax, [rdx+32]
+	005 LoadAddress rdx, stack:0x30
+	006 Move rcx, [rax+192]
+	007 Move rcx, [rcx]
+	008 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	009 ShiftStack 40
+	010 Return rax
+
+Method: System.Void System.Runtime.CompilerServices.IStrongBox.set_Value(System.Object value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rax,[r8+20h]
+	mov rbx,rdx
+	mov rdi,rcx
+	mov r8,[rax+0C0h]
+	mov rax,[r8]
+	test byte ptr [rax+135h],1
+	jne short 0000000180B48F1Fh
+	mov rcx,rax
+	call 0000000180188F60h
+	test rbx,rbx
+	je short 0000000180B48F49h
+	mov rcx,[rax+40h]
+	mov rdx,[rbx]
+	cmp [rdx+40h],rcx
+	mov rcx,rbx
+	jne short 0000000180B48F4Fh
+	call 0000000180153B70h
+	mov rbx,[rsp+30h]
+	mov ecx,[rax]
+	mov [rdi+10h],ecx
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+	int 3
+	mov rdx,rax
+	call 00000001801E1E70h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rax, [r8+32]
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 Move r8, [rax+192]
+	009 Move rax, [r8]
+	010 Compare [rax+309], 1
+	011 JumpIfNotEqual {14}
+	012 Move rcx, rax
+	013 Call 0x180188F60, rcx, rdx, r8, r9
+	014 Compare rbx, 0
+	015 JumpIfEqual {29}
+	016 Move rcx, [rax+64]
+	017 Move rdx, [rbx]
+	018 Compare [rdx+64], rcx
+	019 Move rcx, rbx
+	020 JumpIfNotEqual {31}
+	021 Call "il2cpp_object_unbox", rcx, rdx, r8, r9
+	022 Move rbx, stack:0x30
+	023 Move rcx, [rax]
+	024 Move [rdi+16], rcx
+	025 ShiftStack 32
+	026 Move rdi, stack:0x0
+	027 ShiftStack 8
+	028 Return 
+	029 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	030 Interrupt 
+	031 Move rdx, rax
+	032 Call 0x1801E1E70, rcx, rdx, r8, r9
+

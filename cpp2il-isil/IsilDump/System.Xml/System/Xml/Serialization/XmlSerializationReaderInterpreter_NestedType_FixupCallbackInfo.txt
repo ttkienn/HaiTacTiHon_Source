@@ -1,0 +1,94 @@
+Type: System.Xml.Serialization.XmlSerializationReaderInterpreter+FixupCallbackInfo
+
+Method: System.Void .ctor(System.Xml.Serialization.XmlSerializationReaderInterpreter sri, System.Xml.Serialization.ClassMap map, System.Boolean isValueList)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	movzx ebp,r9b
+	xor edx,edx
+	mov rdi,r8
+	mov rsi,rcx
+	call 000000018024B730h
+	lea rcx,[rsi+10h]
+	mov [rsi+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	lea rcx,[rsi+18h]
+	mov [rsi+18h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	mov rbx,[rsp+30h]
+	mov [rsi+20h],bpl
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbx, rdx
+	008 Move rbp, r9
+	009 Move rdx, 0
+	010 Move rdi, r8
+	011 Move rsi, rcx
+	012 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	013 LoadAddress rcx, [rsi+16]
+	014 Move [rsi+16], rbx
+	015 Move rdx, rbx
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 LoadAddress rcx, [rsi+24]
+	018 Move [rsi+24], rdi
+	019 Move rdx, rdi
+	020 Call 0x1801E1E30, rcx, rdx, r8, r9
+	021 Move rbx, stack:0x30
+	022 Move [rsi+32], rbp
+	023 Move rbp, stack:0x38
+	024 Move rsi, stack:0x40
+	025 ShiftStack 32
+	026 Move rdi, stack:0x0
+	027 ShiftStack 8
+	028 Return 
+
+Method: System.Void FixupMembers(System.Object fixup)
+
+Disassembly:
+	sub rsp,38h
+	mov rax,[rcx+10h]
+	test rax,rax
+	je short 00000001813F5DDFh
+	movzx r9d,byte ptr [rcx+20h]
+	mov r8,rdx
+	mov rdx,[rcx+18h]
+	mov rcx,rax
+	mov qword ptr [rsp+20h],0
+	call 0000000181402E10h
+	add rsp,38h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rax, [rcx+16]
+	003 Compare rax, 0
+	004 JumpIfEqual {13}
+	005 Move r9, [rcx+32]
+	006 Move r8, rdx
+	007 Move rdx, [rcx+24]
+	008 Move rcx, rax
+	009 Move stack:0x20, 0
+	010 Call XmlSerializationReaderInterpreter.FixupMembers, rcx, rdx, r8, r9
+	011 ShiftStack 56
+	012 Return 
+	013 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

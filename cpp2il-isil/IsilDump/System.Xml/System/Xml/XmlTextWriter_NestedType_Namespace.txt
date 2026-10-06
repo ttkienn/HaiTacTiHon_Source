@@ -1,0 +1,50 @@
+Type: System.Xml.XmlTextWriter+Namespace
+
+Method: System.Void Set(System.String prefix, System.String ns, System.Boolean declared)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	movzx esi,r9b
+	mov [rcx],rdx
+	mov rbx,r8
+	mov rdi,rcx
+	call 00000001801E1E30h
+	lea rcx,[rdi+8]
+	mov [rdi+8],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	mov rbx,[rsp+30h]
+	mov [rdi+10h],sil
+	mov rsi,[rsp+38h]
+	mov dword ptr [rdi+14h],0FFFFFFFFh
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rsi, r9
+	007 Move [rcx], rdx
+	008 Move rbx, r8
+	009 Move rdi, rcx
+	010 Call 0x1801E1E30, rcx, rdx, r8, r9
+	011 LoadAddress rcx, [rdi+8]
+	012 Move [rdi+8], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 Move rbx, stack:0x30
+	016 Move [rdi+16], rsi
+	017 Move rsi, stack:0x38
+	018 Move [rdi+20], 0xFFFFFFFF
+	019 ShiftStack 32
+	020 Move rdi, stack:0x0
+	021 ShiftStack 8
+	022 Return 
+

@@ -1,0 +1,146 @@
+Type: System.Runtime.CompilerServices.FormattableStringFactory+ConcreteFormattableString
+
+Method: System.Void .ctor(System.String format, System.Object[] arguments)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rsi,r8
+	xor edx,edx
+	mov rdi,rcx
+	call 000000018024B5B0h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	lea rcx,[rdi+18h]
+	mov [rdi+18h],rsi
+	mov rdx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x18024B5B0, rcx, rdx, r8
+	011 LoadAddress rcx, [rdi+16]
+	012 Move [rdi+16], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 LoadAddress rcx, [rdi+24]
+	016 Move [rdi+24], rsi
+	017 Move rdx, rsi
+	018 Move rbx, stack:0x30
+	019 Move rsi, stack:0x38
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Call 0x1801E1E30, rcx, rdx, r8, r9
+	024 Return 
+
+Method: System.String get_Format()
+
+Disassembly:
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Object[] GetArguments()
+
+Disassembly:
+	mov rax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Int32 get_ArgumentCount()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+18h]
+	test rax,rax
+	je short 0000000180E10455h
+	mov eax,[rax+18h]
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+24]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+24]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Object GetArgument(System.Int32 index)
+
+Disassembly:
+	sub rsp,28h
+	mov r8,[rcx+18h]
+	test r8,r8
+	je short 0000000180E10240h
+	cmp edx,[r8+18h]
+	jae short 0000000180E10246h
+	movsxd rax,edx
+	mov rax,[r8+rax*8+20h]
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move r8, [rcx+24]
+	003 Compare r8, 0
+	004 JumpIfEqual {11}
+	005 Compare rdx, [r8+24]
+	006 JumpIfGreaterOrEqual {13}
+	007 Move rax, rdx
+	008 Move rax, [r8+32+rax*8]
+	009 ShiftStack 40
+	010 Return rax
+	011 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	012 Interrupt 
+	013 Call 0x1801E2C90, rcx, rdx, r8, r9
+
+Method: System.String ToString(System.IFormatProvider formatProvider)
+
+Disassembly:
+	mov r8,[rcx+18h]
+	mov rax,rdx
+	mov rdx,[rcx+10h]
+	xor r9d,r9d
+	mov rcx,rax
+	jmp near ptr 0000000180D7E410h
+
+ISIL:
+	001 Move r8, [rcx+24]
+	002 Move rax, rdx
+	003 Move rdx, [rcx+16]
+	004 Move r9, 0
+	005 Move rcx, rax
+	006 Call String.Format, rcx, rdx, r8, r9
+	007 Return rax
+

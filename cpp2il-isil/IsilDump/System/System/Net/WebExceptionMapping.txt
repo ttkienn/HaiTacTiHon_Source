@@ -1,0 +1,245 @@
+Type: System.Net.WebExceptionMapping
+
+Method: System.String GetWebStatusString(System.Net.WebExceptionStatus status)
+
+Disassembly:
+	push rbx
+	sub rsp,40h
+	cmp byte ptr [181F205B9h],0
+	movsxd rbx,ecx
+	jne short 000000018154B14Dh
+	lea rcx,[181E09308h]
+	call 00000001801E2A80h
+	lea rcx,[181E09378h]
+	call 00000001801E2A80h
+	lea rcx,[181E2CA48h]
+	call 00000001801E2A80h
+	mov byte ptr [181F205B9h],1
+	mov rcx,[181E09308h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 000000018154B169h
+	call 0000000180153C50h
+	mov rcx,[181E09308h]
+	mov rax,[rcx+0B8h]
+	mov [rsp+50h],rdi
+	mov rdx,[rax]
+	test rdx,rdx
+	je near ptr 000000018154B267h
+	cmp ebx,[rdx+18h]
+	jge near ptr 000000018154B27Fh
+	test ebx,ebx
+	js near ptr 000000018154B27Fh
+	cmp dword ptr [rcx+0E0h],0
+	jne short 000000018154B1A7h
+	call 0000000180153C50h
+	mov rcx,[181E09308h]
+	mov rax,[rcx+0B8h]
+	mov rdi,[rax]
+	test rdi,rdi
+	je near ptr 000000018154B267h
+	cmp ebx,[rdi+18h]
+	jae near ptr 000000018154B26Dh
+	mov rdi,[rdi+rbx*8+20h]
+	call 00000001801E2C10h
+	test rdi,rdi
+	jne near ptr 000000018154B259h
+	mov rax,[181E09378h]
+	lea rcx,[rsp+20h]
+	xor edx,edx
+	mov [rsp+20h],rax
+	mov qword ptr [rsp+28h],0FFFFFFFFFFFFFFFFh
+	mov [rsp+30h],ebx
+	call 0000000180F5E8B0h
+	mov rcx,[181E2CA48h]
+	xor r8d,r8d
+	mov rdx,rax
+	call 0000000180D7BAD0h
+	mov rcx,[181E09308h]
+	mov rdi,rax
+	cmp dword ptr [rcx+0E0h],0
+	jne short 000000018154B22Ch
+	call 0000000180153C50h
+	mov rcx,[181E09308h]
+	mov rcx,[rcx+0B8h]
+	mov rdx,[rcx]
+	test rdx,rdx
+	je short 000000018154B279h
+	cmp ebx,[rdx+18h]
+	jae short 000000018154B273h
+	lea rbx,[rdx+rbx*8]
+	call 00000001801E2C10h
+	mov rdx,rdi
+	mov [rbx+20h],rdi
+	lea rcx,[rbx+20h]
+	call 00000001801E1E30h
+	mov rax,rdi
+	mov rdi,[rsp+50h]
+	add rsp,40h
+	pop rbx
+	ret
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+	int 3
+	call 00000001801E2C90h
+	int 3
+	call 00000001801E2CA0h
+	int 3
+	lea rcx,[181E24348h]
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180DB4280h
+	lea rcx,[181E31280h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -64
+	004 Compare [0x181F205B9], 0
+	005 Move rbx, rcx
+	006 JumpIfNotEqual {14}
+	007 LoadAddress rcx, [0x181E09308]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 LoadAddress rcx, [0x181E09378]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x181E2CA48]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x181F205B9], 1
+	014 Move rcx, typeof(System.Net.WebExceptionMapping)
+	015 Compare [rcx+224], 0
+	016 JumpIfNotEqual {19}
+	017 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	018 Move rcx, typeof(System.Net.WebExceptionMapping)
+	019 Move rax, [rcx+184]
+	020 Move stack:0x50, rdi
+	021 Move rdx, [rax]
+	022 Compare rdx, 0
+	023 JumpIfEqual {77}
+	024 Compare rbx, [rdx+24]
+	025 JumpIfGreaterOrEqual {85}
+	026 Compare rbx, 0
+	027 JumpIfSign {85}
+	028 Compare [rcx+224], 0
+	029 JumpIfNotEqual {32}
+	030 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	031 Move rcx, typeof(System.Net.WebExceptionMapping)
+	032 Move rax, [rcx+184]
+	033 Move rdi, [rax]
+	034 Compare rdi, 0
+	035 JumpIfEqual {77}
+	036 Compare rbx, [rdi+24]
+	037 JumpIfGreaterOrEqual {79}
+	038 Move rdi, [rdi+32+rbx*8]
+	039 Call 0x1801E2C10, rcx, rdx, r8, r9
+	040 Compare rdi, 0
+	041 JumpIfNotEqual {71}
+	042 Move rax, typeof(System.Net.WebExceptionStatus)
+	043 LoadAddress rcx, stack:0x20
+	044 Move rdx, 0
+	045 Move stack:0x20, rax
+	046 Move stack:0x28, 18446744073709551615
+	047 Move stack:0x30, rbx
+	048 Call Enum.ToString, rcx, rdx
+	049 Move rcx, "net_webstatus_"
+	050 Move r8, 0
+	051 Move rdx, rax
+	052 Call String.Concat, rcx, rdx, r8
+	053 Move rcx, typeof(System.Net.WebExceptionMapping)
+	054 Move rdi, rax
+	055 Compare [rcx+224], 0
+	056 JumpIfNotEqual {59}
+	057 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	058 Move rcx, typeof(System.Net.WebExceptionMapping)
+	059 Move rcx, [rcx+184]
+	060 Move rdx, [rcx]
+	061 Compare rdx, 0
+	062 JumpIfEqual {83}
+	063 Compare rbx, [rdx+24]
+	064 JumpIfGreaterOrEqual {81}
+	065 LoadAddress rbx, [rdx+rbx*8]
+	066 Call 0x1801E2C10, rcx, rdx, r8, r9
+	067 Move rdx, rdi
+	068 Move [rbx+32], rdi
+	069 LoadAddress rcx, [rbx+32]
+	070 Call 0x1801E1E30, rcx, rdx, r8, r9
+	071 Move rax, rdi
+	072 Move rdi, stack:0x50
+	073 ShiftStack 64
+	074 Move rbx, stack:0x0
+	075 ShiftStack 8
+	076 Return rax
+	077 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	078 Interrupt 
+	079 Call 0x1801E2C90, rcx, rdx, r8, r9
+	080 Interrupt 
+	081 Call 0x1801E2C90, rcx, rdx, r8, r9
+	082 Interrupt 
+	083 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	084 Interrupt 
+	085 LoadAddress rcx, [0x181E24348]
+	086 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	087 Move rcx, rax
+	088 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	089 Move rdx, 0
+	090 Move rcx, rax
+	091 Move rbx, rax
+	092 Call 0x180DB4280, rcx, rdx, r8
+	093 LoadAddress rcx, [0x181E31280]
+	094 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	095 Move rdx, rax
+	096 Move rcx, rbx
+	097 Call 0x1801E2C60, rcx, rdx, r8, r9
+
+Method: System.Void .cctor()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F205BAh],0
+	jne short 000000018154B2ECh
+	lea rcx,[181DFA1B0h]
+	call 00000001801E2A80h
+	lea rcx,[181E09308h]
+	call 00000001801E2A80h
+	mov byte ptr [181F205BAh],1
+	mov rcx,[181DFA1B0h]
+	mov edx,15h
+	call 00000001801E1EB0h
+	mov rcx,[181E09308h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rax
+	mov rdx,rax
+	mov rcx,[181E09308h]
+	mov rcx,[rcx+0B8h]
+	add rsp,28h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F205BA], 0
+	003 JumpIfNotEqual {9}
+	004 LoadAddress rcx, [0x181DFA1B0]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 LoadAddress rcx, [0x181E09308]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 Move [0x181F205BA], 1
+	009 Move rcx, typeof(System.String[1])
+	010 Move rdx, 21
+	011 Call "SzArrayNew", rcx, rdx, r8, r9
+	012 Move rcx, typeof(System.Net.WebExceptionMapping)
+	013 Move rdx, [rcx+184]
+	014 Move [rdx], rax
+	015 Move rdx, rax
+	016 Move rcx, typeof(System.Net.WebExceptionMapping)
+	017 Move rcx, [rcx+184]
+	018 ShiftStack 40
+	019 Call 0x1801E1E30, rcx, rdx, r8, r9
+	020 Return 
+

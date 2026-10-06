@@ -1,0 +1,89 @@
+Type: Unity.Properties.ArrayPropertyBag`1
+
+Method: Unity.Properties.InstantiationKind get_InstantiationKind()
+
+Disassembly:
+	mov eax,1
+	ret
+
+ISIL:
+	001 Move rax, 1
+	002 Return rax
+
+Method: TElement[] InstantiateWithCount(System.Int32 count)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rax,[r8+20h]
+	mov ebx,edx
+	mov rcx,[rax+0C0h]
+	mov rax,[rcx]
+	test byte ptr [rax+135h],1
+	jne short 00000001808CA9B7h
+	mov rcx,rax
+	call 0000000180188F60h
+	mov edx,ebx
+	mov rcx,rax
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001801E1EB0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rax, [r8+32]
+	005 Move rbx, rdx
+	006 Move rcx, [rax+192]
+	007 Move rax, [rcx]
+	008 Compare [rax+309], 1
+	009 JumpIfNotEqual {12}
+	010 Move rcx, rax
+	011 Call 0x180188F60, rcx, rdx, r8, r9
+	012 Move rdx, rbx
+	013 Move rcx, rax
+	014 ShiftStack 32
+	015 Move rbx, stack:0x0
+	016 ShiftStack 8
+	017 Call "SzArrayNew", rcx, rdx, r8, r9
+	018 Return rax
+
+Method: TElement[] Instantiate()
+
+Disassembly:
+	mov rax,[rdx+20h]
+	mov rcx,[rax+0C0h]
+	mov rax,[rcx+10h]
+	mov r8,[rax]
+	mov rax,[rdx+20h]
+	mov rcx,[rax+0C0h]
+	mov rcx,[rcx+10h]
+	jmp r8
+
+ISIL:
+	001 Move rax, [rdx+32]
+	002 Move rcx, [rax+192]
+	003 Move rax, [rcx+16]
+	004 Move r8, [rax]
+	005 Move rax, [rdx+32]
+	006 Move rcx, [rax+192]
+	007 Move rcx, [rcx+16]
+	008 CallNoReturn r8
+
+Method: System.Void .ctor()
+
+Disassembly:
+	mov rax,[rdx+20h]
+	mov rdx,[rax+0C0h]
+	mov rdx,[rdx+18h]
+	mov rax,[rdx]
+	jmp rax
+
+ISIL:
+	001 Move rax, [rdx+32]
+	002 Move rdx, [rax+192]
+	003 Move rdx, [rdx+24]
+	004 Move rax, [rdx]
+	005 CallNoReturn rax
+

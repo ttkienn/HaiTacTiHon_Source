@@ -1,0 +1,125 @@
+Type: UnityEngine.Purchasing.RetryService
+
+Method: System.Void .ctor(Uniject.IUtil util)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 000000018024B730h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Return 
+
+Method: UnityEngine.Purchasing.IRetryRequest CreateRequest(System.Action request, UnityEngine.Purchasing.IRetryPolicy retryPolicy)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F207CFh],0
+	mov rsi,r8
+	mov rbp,rdx
+	mov rdi,rcx
+	jne short 0000000181581619h
+	lea rcx,[181DF4D38h]
+	call 00000001801E2A80h
+	mov byte ptr [181F207CFh],1
+	mov rcx,[181DF4D38h]
+	mov rdi,[rdi+10h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 000000018024B730h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rbp
+	mov rdx,rbp
+	call 00000001801E1E30h
+	lea rcx,[rbx+20h]
+	mov [rbx+20h],rsi
+	mov rdx,rsi
+	call 00000001801E1E30h
+	lea rcx,[rbx+28h]
+	mov [rbx+28h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	mov rbp,[rsp+38h]
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [0x181F207CF], 0
+	008 Move rsi, r8
+	009 Move rbp, rdx
+	010 Move rdi, rcx
+	011 JumpIfNotEqual {15}
+	012 LoadAddress rcx, [0x181DF4D38]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 Move [0x181F207CF], 1
+	015 Move rcx, typeof(UnityEngine.Purchasing.RetryRequest)
+	016 Move rdi, [rdi+16]
+	017 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	018 Move rdx, 0
+	019 Move rcx, rax
+	020 Move rbx, rax
+	021 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	022 LoadAddress rcx, [rbx+24]
+	023 Move [rbx+24], rbp
+	024 Move rdx, rbp
+	025 Call 0x1801E1E30, rcx, rdx, r8, r9
+	026 LoadAddress rcx, [rbx+32]
+	027 Move [rbx+32], rsi
+	028 Move rdx, rsi
+	029 Call 0x1801E1E30, rcx, rdx, r8, r9
+	030 LoadAddress rcx, [rbx+40]
+	031 Move [rbx+40], rdi
+	032 Move rdx, rdi
+	033 Call 0x1801E1E30, rcx, rdx, r8, r9
+	034 Move rbp, stack:0x38
+	035 Move rax, rbx
+	036 Move rbx, stack:0x30
+	037 Move rsi, stack:0x40
+	038 ShiftStack 32
+	039 Move rdi, stack:0x0
+	040 ShiftStack 8
+	041 Return rax
+

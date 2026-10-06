@@ -1,0 +1,69 @@
+Type: System.Data.DataViewManager
+
+Method: System.Data.DataViewSettingCollection get_DataViewSettings()
+
+Disassembly:
+	mov rax,[rcx+20h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+32]
+	002 Return rax
+
+Method: System.Void .cctor()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [181F1EABBh],0
+	jne short 00000001811C614Eh
+	lea rcx,[181E0B0C8h]
+	call 00000001801E2A80h
+	lea rcx,[181E30AC8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1EABBh],1
+	mov rcx,[181E30AC8h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180F238F0h
+	mov rcx,[181E0B0C8h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rbx
+	mov rdx,rbx
+	mov rcx,[181E0B0C8h]
+	mov rcx,[rcx+0B8h]
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x181F1EABB], 0
+	005 JumpIfNotEqual {11}
+	006 LoadAddress rcx, [0x181E0B0C8]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 LoadAddress rcx, [0x181E30AC8]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x181F1EABB], 1
+	011 Move rcx, typeof(System.NotSupportedException)
+	012 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	013 Move rdx, 0
+	014 Move rcx, rax
+	015 Move rbx, rax
+	016 Call NotSupportedException..ctor, rcx, rdx
+	017 Move rcx, typeof(System.Data.DataViewManager)
+	018 Move rdx, [rcx+184]
+	019 Move [rdx], rbx
+	020 Move rdx, rbx
+	021 Move rcx, typeof(System.Data.DataViewManager)
+	022 Move rcx, [rcx+184]
+	023 ShiftStack 32
+	024 Move rbx, stack:0x0
+	025 ShiftStack 8
+	026 Call 0x1801E1E30, rcx, rdx, r8, r9
+	027 Return 
+

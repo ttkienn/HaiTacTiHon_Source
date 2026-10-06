@@ -1,0 +1,56 @@
+Type: System.MonoCustomAttrs+AttributeInfo
+
+Method: System.Void .ctor(System.AttributeUsageAttribute usage, System.Int32 inheritanceLevel)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rbx,rcx
+	mov [rcx+10h],rdx
+	add rcx,10h
+	mov edi,r8d
+	call 00000001801E1E30h
+	mov [rbx+18h],edi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rcx
+	006 Move [rcx+16], rdx
+	007 Add rcx, rcx, 16
+	008 Move rdi, r8
+	009 Call 0x1801E1E30, rcx, rdx, r8, r9
+	010 Move [rbx+24], rdi
+	011 Move rbx, stack:0x30
+	012 ShiftStack 32
+	013 Move rdi, stack:0x0
+	014 ShiftStack 8
+	015 Return 
+
+Method: System.AttributeUsageAttribute get_Usage()
+
+Disassembly:
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Int32 get_InheritanceLevel()
+
+Disassembly:
+	mov eax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+

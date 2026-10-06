@@ -1,0 +1,84 @@
+Type: Interop+BCrypt
+
+Method: Interop+BCrypt+NTSTATUS BCryptGenRandom(System.IntPtr hAlgorithm, System.Byte* pbBuffer, System.Int32 cbBuffer, System.Int32 dwFlags)
+
+Disassembly:
+	mov r11,rsp
+	mov [r11+8],rbx
+	mov [r11+10h],rbp
+	mov [r11+18h],rsi
+	push rdi
+	sub rsp,50h
+	mov rax,[181F1C468h]
+	mov ebx,r9d
+	mov edi,r8d
+	mov rsi,rdx
+	mov rbp,rcx
+	test rax,rax
+	jne short 0000000180D5882Fh
+	mov qword ptr [r11-30h],0Ah
+	lea rax,[181924978h]
+	mov [r11-38h],rax
+	lea rcx,[r11-38h]
+	mov qword ptr [r11-20h],0Fh
+	lea rax,[181924968h]
+	mov [r11-28h],rax
+	mov dword ptr [rsp+40h],0
+	mov dword ptr [rsp+44h],1
+	mov dword ptr [rsp+48h],18h
+	mov byte ptr [rsp+4Ch],0
+	call 00000001801E2CF0h
+	mov [181F1C468h],rax
+	mov r9d,ebx
+	mov r8d,edi
+	mov rdx,rsi
+	mov rcx,rbp
+	call rax
+	mov rbx,[rsp+60h]
+	mov rbp,[rsp+68h]
+	mov rsi,[rsp+70h]
+	add rsp,50h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move r11, rsp
+	002 Move [r11+8], rbx
+	003 Move [r11+16], rbp
+	004 Move [r11+24], rsi
+	005 ShiftStack -8
+	006 Move stack:0x0, rdi
+	007 ShiftStack -80
+	008 Move rax, [0x181F1C468]
+	009 Move rbx, r9
+	010 Move rdi, r8
+	011 Move rsi, rdx
+	012 Move rbp, rcx
+	013 Compare rax, 0
+	014 JumpIfNotEqual {28}
+	015 Move [r11-48], 10
+	016 LoadAddress rax, [0x181924978]
+	017 Move [r11-56], rax
+	018 LoadAddress rcx, [r11-56]
+	019 Move [r11-32], 15
+	020 LoadAddress rax, [0x181924968]
+	021 Move [r11-40], rax
+	022 Move stack:0x40, 0
+	023 Move stack:0x44, 1
+	024 Move stack:0x48, 24
+	025 Move stack:0x4C, 0
+	026 Call 0x1801E2CF0, rcx, rdx, r8, r9
+	027 Move [0x181F1C468], rax
+	028 Move r9, rbx
+	029 Move r8, rdi
+	030 Move rdx, rsi
+	031 Move rcx, rbp
+	032 Call rax
+	033 Move rbx, stack:0x60
+	034 Move rbp, stack:0x68
+	035 Move rsi, stack:0x70
+	036 ShiftStack 80
+	037 Move rdi, stack:0x0
+	038 ShiftStack 8
+	039 Return rax
+

@@ -1,0 +1,279 @@
+Type: UnityEngine.UI.CoroutineTween.FloatTween
+
+Method: System.Single get_startValue()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+8]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+8]
+	002 Return xmm0
+
+Method: System.Void set_startValue(System.Single value)
+
+Disassembly:
+	movss dword ptr [rcx+8],xmm1
+	ret
+
+ISIL:
+	001 Move [rcx+8], xmm1
+	002 Return 
+
+Method: System.Single get_targetValue()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+0Ch]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+12]
+	002 Return xmm0
+
+Method: System.Void set_targetValue(System.Single value)
+
+Disassembly:
+	movss dword ptr [rcx+0Ch],xmm1
+	ret
+
+ISIL:
+	001 Move [rcx+12], xmm1
+	002 Return 
+
+Method: System.Single get_duration()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+10h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+16]
+	002 Return xmm0
+
+Method: System.Void set_duration(System.Single value)
+
+Disassembly:
+	movss dword ptr [rcx+10h],xmm1
+	ret
+
+ISIL:
+	001 Move [rcx+16], xmm1
+	002 Return 
+
+Method: System.Boolean get_ignoreTimeScale()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+14h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+20]
+	002 Return rax
+
+Method: System.Void set_ignoreTimeScale(System.Boolean value)
+
+Disassembly:
+	mov [rcx+14h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+20], rdx
+	002 Return 
+
+Method: System.Void TweenValue(System.Single floatPercentage)
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	cmp byte ptr [181F241E1h],0
+	mov rbx,rcx
+	movaps [rsp+20h],xmm6
+	movaps xmm6,xmm1
+	jne short 000000018187EA3Dh
+	lea rcx,[181E24988h]
+	call 00000001801E2A80h
+	mov byte ptr [181F241E1h],1
+	cmp qword ptr [rbx],0
+	jbe short 000000018187EA85h
+	movss xmm2,dword ptr [rbx+8]
+	xorps xmm0,xmm0
+	movss xmm1,dword ptr [rbx+0Ch]
+	comiss xmm0,xmm6
+	mov rcx,[rbx]
+	ja short 000000018187EA6Ah
+	movss xmm0,dword ptr [1818BCB64h]
+	comiss xmm6,xmm0
+	jbe short 000000018187EA6Dh
+	movaps xmm6,xmm0
+	jmp short 000000018187EA6Dh
+	xorps xmm6,xmm6
+	mov r8,[181E24988h]
+	subss xmm1,xmm2
+	mulss xmm1,xmm6
+	addss xmm1,xmm2
+	call 0000000180BE1ED0h
+	movaps xmm6,[rsp+20h]
+	add rsp,30h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Compare [0x181F241E1], 0
+	005 Move rbx, rcx
+	006 Move stack:0x20, xmm6
+	007 Move xmm6, xmm1
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E24988]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F241E1], 1
+	012 Compare [rbx], 0
+	013 JumpIfLessOrEqual {31}
+	014 Move xmm2, [rbx+8]
+	015 Move xmm0, 0
+	016 Move xmm1, [rbx+12]
+	017 Compare xmm0, xmm6
+	018 Move rcx, [rbx]
+	019 JumpIfGreater {25}
+	020 Move xmm0, [0x1818BCB64]
+	021 Compare xmm6, xmm0
+	022 JumpIfLessOrEqual {26}
+	023 Move xmm6, xmm0
+	024 Goto {26}
+	025 Move xmm6, 0
+	026 Move r8, [0x181E24988]
+	027 Subtract xmm1, xmm1, xmm2
+	028 Multiply xmm1, xmm1, xmm6
+	029 Add xmm1, xmm1, xmm2
+	030 Call UnityEvent`1<Single>.Invoke, rcx, rdx
+	031 Move xmm6, stack:0x20
+	032 ShiftStack 48
+	033 Move rbx, stack:0x0
+	034 ShiftStack 8
+	035 Return 
+
+Method: System.Void AddOnChangedCallback(UnityEngine.Events.UnityAction`1<System.Single> callback)
+
+Disassembly:
+	push rsi
+	sub rsp,20h
+	cmp byte ptr [181F241E2h],0
+	mov rsi,rdx
+	mov [rsp+30h],rbx
+	mov rbx,rcx
+	jne short 000000018187E989h
+	lea rcx,[181E1AD18h]
+	call 00000001801E2A80h
+	lea rcx,[181E24928h]
+	call 00000001801E2A80h
+	mov byte ptr [181F241E2h],1
+	cmp qword ptr [rbx],0
+	jne short 000000018187E9E1h
+	mov rcx,[181E1AD18h]
+	mov [rsp+38h],rdi
+	call 0000000180197840h
+	cmp byte ptr [181F241E3h],0
+	mov rdi,rax
+	jne short 000000018187E9BFh
+	lea rcx,[181E248C8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F241E3h],1
+	mov rdx,[181E248C8h]
+	mov rcx,rdi
+	call 0000000180BE2460h
+	mov rdx,rdi
+	mov [rbx],rdi
+	mov rcx,rbx
+	call 00000001801E1E30h
+	mov rdi,[rsp+38h]
+	mov rcx,[rbx]
+	mov rbx,[rsp+30h]
+	test rcx,rcx
+	je short 000000018187EA02h
+	mov r8,[181E24928h]
+	mov rdx,rsi
+	add rsp,20h
+	pop rsi
+	jmp near ptr 0000000180BE0430h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rsi
+	003 ShiftStack -32
+	004 Compare [0x181F241E2], 0
+	005 Move rsi, rdx
+	006 Move stack:0x30, rbx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {14}
+	009 LoadAddress rcx, [0x181E1AD18]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x181E24928]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x181F241E2], 1
+	014 Compare [rbx], 0
+	015 JumpIfNotEqual {33}
+	016 Move rcx, typeof(UnityEngine.UI.CoroutineTween.FloatTween+FloatTweenCallback)
+	017 Move stack:0x38, rdi
+	018 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	019 Compare [0x181F241E3], 0
+	020 Move rdi, rax
+	021 JumpIfNotEqual {25}
+	022 LoadAddress rcx, [0x181E248C8]
+	023 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	024 Move [0x181F241E3], 1
+	025 Move rdx, [0x181E248C8]
+	026 Move rcx, rdi
+	027 Call 0x180BE2460, rcx, rdx
+	028 Move rdx, rdi
+	029 Move [rbx], rdi
+	030 Move rcx, rbx
+	031 Call 0x1801E1E30, rcx, rdx, r8, r9
+	032 Move rdi, stack:0x38
+	033 Move rcx, [rbx]
+	034 Move rbx, stack:0x30
+	035 Compare rcx, 0
+	036 JumpIfEqual {44}
+	037 Move r8, [0x181E24928]
+	038 Move rdx, rsi
+	039 ShiftStack 32
+	040 Move rsi, stack:0x0
+	041 ShiftStack 8
+	042 Call 0x180BE0430, rcx, rdx
+	043 Return 
+	044 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Boolean GetIgnoreTimescale()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+14h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+20]
+	002 Return rax
+
+Method: System.Single GetDuration()
+
+Disassembly:
+	movss xmm0,dword ptr [rcx+10h]
+	ret
+
+ISIL:
+	001 Move xmm0, [rcx+16]
+	002 Return xmm0
+
+Method: System.Boolean ValidTarget()
+
+Disassembly:
+	cmp qword ptr [rcx],0
+	seta al
+	ret
+
+ISIL:
+	001 Compare [rcx], 0
+	002 NotImplemented "seta al"
+	003 Return rax
+

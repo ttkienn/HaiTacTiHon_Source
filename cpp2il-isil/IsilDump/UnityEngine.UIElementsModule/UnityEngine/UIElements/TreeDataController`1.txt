@@ -1,0 +1,664 @@
+Type: UnityEngine.UIElements.TreeDataController`1
+
+Method: System.Void SetRootItems(System.Collections.Generic.IList`1<UnityEngine.UIElements.TreeViewItemData`1<T>> rootItems)
+
+Disassembly:
+	push rbx
+	sub rsp,40h
+	mov rax,[r8+20h]
+	xorps xmm0,xmm0
+	movups [rsp+20h],xmm0
+	mov rbx,rcx
+	lea rcx,[rsp+20h]
+	movups [rsp+30h],xmm0
+	mov r8,[rax+0C0h]
+	mov r8,[r8+10h]
+	call 0000000180BC33A0h
+	movups xmm0,[rsp+20h]
+	lea rcx,[rbx+10h]
+	xor edx,edx
+	movups xmm1,[rsp+30h]
+	movups [rbx+10h],xmm0
+	movups [rbx+20h],xmm1
+	call 00000001801E1E30h
+	add rsp,40h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -64
+	004 Move rax, [r8+32]
+	005 Move xmm0, 0
+	006 Move stack:0x20, xmm0
+	007 Move rbx, rcx
+	008 LoadAddress rcx, stack:0x20
+	009 Move stack:0x30, xmm0
+	010 Move r8, [rax+192]
+	011 Move r8, [r8+16]
+	012 Call 0x180BC33A0, rcx, rdx
+	013 Move xmm0, stack:0x20
+	014 LoadAddress rcx, [rbx+16]
+	015 Move rdx, 0
+	016 Move xmm1, stack:0x30
+	017 Move [rbx+16], xmm0
+	018 Move [rbx+32], xmm1
+	019 Call 0x1801E1E30, rcx, rdx, r8, r9
+	020 ShiftStack 64
+	021 Move rbx, stack:0x0
+	022 ShiftStack 8
+	023 Return 
+
+Method: T GetDataForId(System.Int32 id)
+
+Disassembly:
+	sub rsp,48h
+	mov rax,[r8+20h]
+	mov r10d,edx
+	lea rdx,[rcx+10h]
+	lea rcx,[rsp+20h]
+	mov r8,[rax+0C0h]
+	mov r9,[r8+20h]
+	mov r8d,r10d
+	call 0000000180079A50h
+	movups xmm1,[rax]
+	psrldq xmm1,8
+	movq rax,xmm1
+	add rsp,48h
+	ret
+
+ISIL:
+	001 ShiftStack -72
+	002 Move rax, [r8+32]
+	003 Move r10, rdx
+	004 LoadAddress rdx, [rcx+16]
+	005 LoadAddress rcx, stack:0x20
+	006 Move r8, [rax+192]
+	007 Move r9, [r8+32]
+	008 Move r8, r10
+	009 Call 0x180079A50, rcx, rdx, r8, r9
+	010 Move xmm1, [rax]
+	011 NotImplemented "psrldq xmm1,8"
+	012 Move rax, xmm1
+	013 ShiftStack 72
+	014 Return rax
+
+Method: System.Int32 GetParentId(System.Int32 id)
+
+Disassembly:
+	mov rax,[r8+20h]
+	mov r8,[rax+0C0h]
+	mov r8,[r8+50h]
+	add rcx,10h
+	jmp near ptr 0000000180079B20h
+
+ISIL:
+	001 Move rax, [r8+32]
+	002 Move r8, [rax+192]
+	003 Move r8, [r8+80]
+	004 Add rcx, rcx, 16
+	005 Call 0x180079B20, rcx, rdx, r8, r9
+	006 Return rax
+
+Method: System.Boolean HasChildren(System.Int32 id)
+
+Disassembly:
+	push rbx
+	sub rsp,50h
+	mov rbx,r8
+	mov r8d,edx
+	lea rdx,[rcx+10h]
+	lea rcx,[rsp+38h]
+	mov rax,[rbx+20h]
+	mov r9,[rax+0C0h]
+	mov r9,[r9+20h]
+	call 0000000180079A50h
+	movsd xmm1,qword ptr [rax+10h]
+	movsd qword ptr [rsp+30h],xmm1
+	cmp qword ptr [rsp+30h],0
+	jne short 0000000180BBFE67h
+	xor ecx,ecx
+	movzx eax,cl
+	add rsp,50h
+	pop rbx
+	ret
+	mov rax,[rbx+20h]
+	mov rcx,[rax+0C0h]
+	mov rax,[rcx+58h]
+	mov rax,[rax+20h]
+	test byte ptr [rax+135h],1
+	jne short 0000000180BBFE8Bh
+	mov rcx,rax
+	call 0000000180188F60h
+	mov rax,[rax+0C0h]
+	mov rax,[rax+20h]
+	test byte ptr [rax+135h],1
+	jne short 0000000180BBFEA7h
+	mov rcx,rax
+	call 0000000180188F60h
+	mov r8,[rsp+30h]
+	xor ecx,ecx
+	mov rdx,rax
+	call 0000000180003100h
+	test eax,eax
+	setg al
+	add rsp,50h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -80
+	004 Move rbx, r8
+	005 Move r8, rdx
+	006 LoadAddress rdx, [rcx+16]
+	007 LoadAddress rcx, stack:0x38
+	008 Move rax, [rbx+32]
+	009 Move r9, [rax+192]
+	010 Move r9, [r9+32]
+	011 Call 0x180079A50, rcx, rdx, r8, r9
+	012 Move xmm1, [rax+16]
+	013 Move stack:0x30, xmm1
+	014 Compare stack:0x30, 0
+	015 JumpIfNotEqual {22}
+	016 Move rcx, 0
+	017 Move rax, rcx
+	018 ShiftStack 80
+	019 Move rbx, stack:0x0
+	020 ShiftStack 8
+	021 Return rax
+	022 Move rax, [rbx+32]
+	023 Move rcx, [rax+192]
+	024 Move rax, [rcx+88]
+	025 Move rax, [rax+32]
+	026 Compare [rax+309], 1
+	027 JumpIfNotEqual {30}
+	028 Move rcx, rax
+	029 Call 0x180188F60, rcx, rdx, r8, r9
+	030 Move rax, [rax+192]
+	031 Move rax, [rax+32]
+	032 Compare [rax+309], 1
+	033 JumpIfNotEqual {36}
+	034 Move rcx, rax
+	035 Call 0x180188F60, rcx, rdx, r8, r9
+	036 Move r8, stack:0x30
+	037 Move rcx, 0
+	038 Move rdx, rax
+	039 Call 0x180003100, rcx, rdx, r8, r9
+	040 Compare rax, 0
+	041 NotImplemented "setg al"
+	042 ShiftStack 80
+	043 Move rbx, stack:0x0
+	044 ShiftStack 8
+	045 Return rax
+
+Method: System.Collections.Generic.IEnumerable`1<System.Int32> GetItemIds(System.Collections.Generic.IEnumerable`1<UnityEngine.UIElements.TreeViewItemData`1<T>> items)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rax,[rdx+20h]
+	mov rsi,rdx
+	mov rdi,rcx
+	test byte ptr [rax+135h],1
+	jne short 0000000180BBFAFAh
+	mov rcx,rax
+	call 0000000180188F60h
+	mov rax,[rax+0C0h]
+	mov rax,[rax+60h]
+	test byte ptr [rax+135h],1
+	jne short 0000000180BBFB16h
+	mov rcx,rax
+	call 0000000180188F60h
+	mov rcx,rax
+	call 0000000180197840h
+	mov rbx,rax
+	mov rax,[rsi+20h]
+	test byte ptr [rax+135h],1
+	jne short 0000000180BBFB36h
+	mov rcx,rax
+	call 0000000180188F60h
+	mov r8,[rax+0C0h]
+	mov edx,0FFFFFFFEh
+	mov rcx,rbx
+	mov r8,[r8+68h]
+	call 00000001807CC2F0h
+	test rbx,rbx
+	je short 0000000180BBFB76h
+	lea rcx,[rbx+28h]
+	mov [rbx+28h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	mov rsi,[rsp+38h]
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rax, [rdx+32]
+	007 Move rsi, rdx
+	008 Move rdi, rcx
+	009 Compare [rax+309], 1
+	010 JumpIfNotEqual {13}
+	011 Move rcx, rax
+	012 Call 0x180188F60, rcx, rdx, r8, r9
+	013 Move rax, [rax+192]
+	014 Move rax, [rax+96]
+	015 Compare [rax+309], 1
+	016 JumpIfNotEqual {19}
+	017 Move rcx, rax
+	018 Call 0x180188F60, rcx, rdx, r8, r9
+	019 Move rcx, rax
+	020 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	021 Move rbx, rax
+	022 Move rax, [rsi+32]
+	023 Compare [rax+309], 1
+	024 JumpIfNotEqual {27}
+	025 Move rcx, rax
+	026 Call 0x180188F60, rcx, rdx, r8, r9
+	027 Move r8, [rax+192]
+	028 Move rdx, 0xFFFFFFFE
+	029 Move rcx, rbx
+	030 Move r8, [r8+104]
+	031 Call 0x1807CC2F0, rcx, rdx
+	032 Compare rbx, 0
+	033 JumpIfEqual {45}
+	034 LoadAddress rcx, [rbx+40]
+	035 Move [rbx+40], rdi
+	036 Move rdx, rdi
+	037 Call 0x1801E1E30, rcx, rdx, r8, r9
+	038 Move rsi, stack:0x38
+	039 Move rax, rbx
+	040 Move rbx, stack:0x30
+	041 ShiftStack 32
+	042 Move rdi, stack:0x0
+	043 ShiftStack 8
+	044 Return rax
+	045 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Collections.Generic.IEnumerable`1<System.Int32> GetChildrenIds(System.Int32 id)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,50h
+	mov rbx,r8
+	mov r8d,edx
+	lea rdx,[rcx+10h]
+	lea rcx,[rsp+38h]
+	mov rax,[rbx+20h]
+	mov r9,[rax+0C0h]
+	mov r9,[r9+20h]
+	call 0000000180079A50h
+	movsd xmm1,qword ptr [rax+10h]
+	mov rax,[rbx+20h]
+	movsd qword ptr [rsp+30h],xmm1
+	mov rcx,[rax+0C0h]
+	mov rdi,[rcx+80h]
+	mov rax,[rdi+20h]
+	test byte ptr [rax+135h],1
+	jne short 0000000180BBF6FFh
+	mov rcx,rax
+	call 0000000180188F60h
+	mov rax,[rax+0C0h]
+	mov rax,[rax+60h]
+	test byte ptr [rax+135h],1
+	jne short 0000000180BBF71Bh
+	mov rcx,rax
+	call 0000000180188F60h
+	mov rcx,rax
+	call 0000000180197840h
+	mov rbx,rax
+	mov rax,[rdi+20h]
+	test byte ptr [rax+135h],1
+	jne short 0000000180BBF73Bh
+	mov rcx,rax
+	call 0000000180188F60h
+	mov r8,[rax+0C0h]
+	mov edx,0FFFFFFFEh
+	mov rcx,rbx
+	mov r8,[r8+68h]
+	call 00000001807CC2F0h
+	test rbx,rbx
+	je short 0000000180BBF778h
+	mov rdx,[rsp+30h]
+	lea rcx,[rbx+28h]
+	mov [rbx+28h],rdx
+	call 00000001801E1E30h
+	mov rax,rbx
+	mov rbx,[rsp+60h]
+	add rsp,50h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -80
+	005 Move rbx, r8
+	006 Move r8, rdx
+	007 LoadAddress rdx, [rcx+16]
+	008 LoadAddress rcx, stack:0x38
+	009 Move rax, [rbx+32]
+	010 Move r9, [rax+192]
+	011 Move r9, [r9+32]
+	012 Call 0x180079A50, rcx, rdx, r8, r9
+	013 Move xmm1, [rax+16]
+	014 Move rax, [rbx+32]
+	015 Move stack:0x30, xmm1
+	016 Move rcx, [rax+192]
+	017 Move rdi, [rcx+128]
+	018 Move rax, [rdi+32]
+	019 Compare [rax+309], 1
+	020 JumpIfNotEqual {23}
+	021 Move rcx, rax
+	022 Call 0x180188F60, rcx, rdx, r8, r9
+	023 Move rax, [rax+192]
+	024 Move rax, [rax+96]
+	025 Compare [rax+309], 1
+	026 JumpIfNotEqual {29}
+	027 Move rcx, rax
+	028 Call 0x180188F60, rcx, rdx, r8, r9
+	029 Move rcx, rax
+	030 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	031 Move rbx, rax
+	032 Move rax, [rdi+32]
+	033 Compare [rax+309], 1
+	034 JumpIfNotEqual {37}
+	035 Move rcx, rax
+	036 Call 0x180188F60, rcx, rdx, r8, r9
+	037 Move r8, [rax+192]
+	038 Move rdx, 0xFFFFFFFE
+	039 Move rcx, rbx
+	040 Move r8, [r8+104]
+	041 Call 0x1807CC2F0, rcx, rdx
+	042 Compare rbx, 0
+	043 JumpIfEqual {54}
+	044 Move rdx, stack:0x30
+	045 LoadAddress rcx, [rbx+40]
+	046 Move [rbx+40], rdx
+	047 Call 0x1801E1E30, rcx, rdx, r8, r9
+	048 Move rax, rbx
+	049 Move rbx, stack:0x60
+	050 ShiftStack 80
+	051 Move rdi, stack:0x0
+	052 ShiftStack 8
+	053 Return rax
+	054 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void Move(System.Int32 id, System.Int32 newParentId, System.Int32 childIndex = -1)
+
+Disassembly:
+	cmp edx,r8d
+	je near ptr 0000000180BBFFC9h
+	mov [rsp+10h],rbx
+	mov [rsp+18h],rbp
+	mov [rsp+20h],rsi
+	push rdi
+	sub rsp,30h
+	mov ebp,r9d
+	mov [rsp+40h],r14
+	mov ebx,r8d
+	mov edi,edx
+	mov rsi,rcx
+	mov r14,[rsp+60h]
+	mov rax,[r14+20h]
+	mov r10,[rax+0C0h]
+	mov rax,[r10+90h]
+	mov r10,[rax+20h]
+	mov rax,[r10+0C0h]
+	mov r9,[rax+0A0h]
+	mov r8d,edx
+	mov edx,ebx
+	add rcx,10h
+	call 0000000180079B90h
+	test al,al
+	jne short 0000000180BBFFB0h
+	mov rax,[r14+20h]
+	lea rcx,[rsi+10h]
+	mov r9d,ebp
+	mov r8d,ebx
+	mov edx,edi
+	mov rax,[rax+0C0h]
+	mov rax,[rax+98h]
+	mov [rsp+20h],rax
+	call 0000000180BC23B0h
+	mov r14,[rsp+40h]
+	mov rbx,[rsp+48h]
+	mov rbp,[rsp+50h]
+	mov rsi,[rsp+58h]
+	add rsp,30h
+	pop rdi
+	ret
+
+ISIL:
+	001 Compare rdx, r8
+	002 JumpIfEqual {43}
+	003 Move stack:0x10, rbx
+	004 Move stack:0x18, rbp
+	005 Move stack:0x20, rsi
+	006 ShiftStack -8
+	007 Move stack:0x0, rdi
+	008 ShiftStack -48
+	009 Move rbp, r9
+	010 Move stack:0x40, r14
+	011 Move rbx, r8
+	012 Move rdi, rdx
+	013 Move rsi, rcx
+	014 Move r14, stack:0x60
+	015 Move rax, [r14+32]
+	016 Move r10, [rax+192]
+	017 Move rax, [r10+144]
+	018 Move r10, [rax+32]
+	019 Move rax, [r10+192]
+	020 Move r9, [rax+160]
+	021 Move r8, rdx
+	022 Move rdx, rbx
+	023 Add rcx, rcx, 16
+	024 Call 0x180079B90, rcx, rdx, r8, r9
+	025 Compare rax, 0
+	026 JumpIfNotEqual {36}
+	027 Move rax, [r14+32]
+	028 LoadAddress rcx, [rsi+16]
+	029 Move r9, rbp
+	030 Move r8, rbx
+	031 Move rdx, rdi
+	032 Move rax, [rax+192]
+	033 Move rax, [rax+152]
+	034 Move stack:0x20, rax
+	035 Call 0x180BC23B0, rcx, rdx, r8, r9
+	036 Move r14, stack:0x40
+	037 Move rbx, stack:0x48
+	038 Move rbp, stack:0x50
+	039 Move rsi, stack:0x58
+	040 ShiftStack 48
+	041 Move rdi, stack:0x0
+	042 ShiftStack 8
+	043 Return 
+
+Method: System.Boolean IsChildOf(System.Int32 childId, System.Int32 id)
+
+Disassembly:
+	mov rax,[r9+20h]
+	mov r9,[rax+0C0h]
+	mov r9,[r9+0A0h]
+	add rcx,10h
+	jmp near ptr 0000000180079B90h
+
+ISIL:
+	001 Move rax, [r9+32]
+	002 Move r9, [rax+192]
+	003 Move r9, [r9+160]
+	004 Add rcx, rcx, 16
+	005 Call 0x180079B90, rcx, rdx, r8, r9
+	006 Return rax
+
+Method: System.Collections.Generic.IEnumerable`1<System.Int32> GetAllItemIds(System.Collections.Generic.IEnumerable`1<System.Int32> rootIds = null)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rax,[r8+20h]
+	mov rbp,r8
+	mov rdi,rdx
+	mov rsi,rcx
+	mov r9,[rax+0C0h]
+	mov rax,[r9+0A8h]
+	test byte ptr [rax+135h],1
+	jne short 0000000180BBF580h
+	mov rcx,rax
+	call 0000000180188F60h
+	mov rcx,rax
+	call 0000000180197840h
+	mov rcx,[rbp+20h]
+	mov edx,0FFFFFFFEh
+	mov rbx,rax
+	mov r8,[rcx+0C0h]
+	mov rcx,rax
+	mov r8,[r8+0B0h]
+	call 00000001807CC2F0h
+	test rbx,rbx
+	je short 0000000180BBF5E7h
+	lea rcx,[rbx+30h]
+	mov [rbx+30h],rsi
+	mov rdx,rsi
+	call 00000001801E1E30h
+	lea rcx,[rbx+28h]
+	mov [rbx+28h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	mov rbp,[rsp+38h]
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rax, [r8+32]
+	008 Move rbp, r8
+	009 Move rdi, rdx
+	010 Move rsi, rcx
+	011 Move r9, [rax+192]
+	012 Move rax, [r9+168]
+	013 Compare [rax+309], 1
+	014 JumpIfNotEqual {17}
+	015 Move rcx, rax
+	016 Call 0x180188F60, rcx, rdx, r8, r9
+	017 Move rcx, rax
+	018 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	019 Move rcx, [rbp+32]
+	020 Move rdx, 0xFFFFFFFE
+	021 Move rbx, rax
+	022 Move r8, [rcx+192]
+	023 Move rcx, rax
+	024 Move r8, [r8+176]
+	025 Call 0x1807CC2F0, rcx, rdx
+	026 Compare rbx, 0
+	027 JumpIfEqual {44}
+	028 LoadAddress rcx, [rbx+48]
+	029 Move [rbx+48], rsi
+	030 Move rdx, rsi
+	031 Call 0x1801E1E30, rcx, rdx, r8, r9
+	032 LoadAddress rcx, [rbx+40]
+	033 Move [rbx+40], rdi
+	034 Move rdx, rdi
+	035 Call 0x1801E1E30, rcx, rdx, r8, r9
+	036 Move rbp, stack:0x38
+	037 Move rax, rbx
+	038 Move rbx, stack:0x30
+	039 Move rsi, stack:0x40
+	040 ShiftStack 32
+	041 Move rdi, stack:0x0
+	042 ShiftStack 8
+	043 Return rax
+	044 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1BCD0h],0
+	mov rdi,rcx
+	jne short 0000000180BC01F5h
+	lea rcx,[181E15BA8h]
+	call 00000001801E2A80h
+	lea rcx,[181E36D08h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1BCD0h],1
+	mov rcx,[181E36D08h]
+	call 0000000180197840h
+	mov rdx,[181E15BA8h]
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180ACDE40h
+	lea rcx,[rdi+30h]
+	mov [rdi+30h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	xor edx,edx
+	mov rcx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1BCD0], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {13}
+	008 LoadAddress rcx, [0x181E15BA8]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x181E36D08]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x181F1BCD0], 1
+	013 Move rcx, typeof(System.Collections.Generic.Stack`1<IEnumerator`1<Int32>>)
+	014 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	015 Move rdx, [0x181E15BA8]
+	016 Move rcx, rax
+	017 Move rbx, rax
+	018 Call 0x180ACDE40, rcx, rdx
+	019 LoadAddress rcx, [rdi+48]
+	020 Move [rdi+48], rbx
+	021 Move rdx, rbx
+	022 Call 0x1801E1E30, rcx, rdx, r8, r9
+	023 Move rdx, 0
+	024 Move rcx, rdi
+	025 Move rbx, stack:0x30
+	026 ShiftStack 32
+	027 Move rdi, stack:0x0
+	028 ShiftStack 8
+	029 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	030 Return 
+

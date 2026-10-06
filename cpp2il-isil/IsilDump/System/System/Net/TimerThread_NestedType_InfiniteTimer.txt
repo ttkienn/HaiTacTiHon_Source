@@ -1,0 +1,68 @@
+Type: System.Net.TimerThread+InfiniteTimer
+
+Method: System.Void .ctor()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	xor edx,edx
+	mov rbx,rcx
+	call 000000018024B730h
+	xor ecx,ecx
+	mov dword ptr [rbx+14h],0FFFFFFFFh
+	call 0000000180F78230h
+	mov [rbx+10h],eax
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rdx, 0
+	005 Move rbx, rcx
+	006 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	007 Move rcx, 0
+	008 Move [rbx+20], 0xFFFFFFFF
+	009 Call Environment.get_TickCount, rcx
+	010 Move [rbx+16], rax
+	011 ShiftStack 32
+	012 Move rbx, stack:0x0
+	013 ShiftStack 8
+	014 Return 
+
+Method: System.Boolean get_HasExpired()
+
+Disassembly:
+	xor al,al
+	ret
+
+ISIL:
+	001 Move rax, 0
+	002 Return rax
+
+Method: System.Boolean Cancel()
+
+Disassembly:
+	sub rsp,28h
+	add rcx,18h
+	xor r8d,r8d
+	mov edx,1
+	call 0000000180FAD840h
+	test eax,eax
+	sete al
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Add rcx, rcx, 24
+	003 Move r8, 0
+	004 Move rdx, 1
+	005 Call Interlocked.Exchange, rcx, rdx, r8
+	006 Compare rax, 0
+	007 NotImplemented "sete al"
+	008 ShiftStack 40
+	009 Return rax
+

@@ -1,0 +1,33 @@
+Type: System.Net.NetworkInformation.Win32IPGlobalProperties
+
+Method: System.String get_DomainName()
+
+Disassembly:
+	sub rsp,88h
+	xor edx,edx
+	lea rcx,[rsp+20h]
+	call 0000000181491AB0h
+	mov rax,[rax+8]
+	add rsp,88h
+	ret
+
+ISIL:
+	001 ShiftStack -136
+	002 Move rdx, 0
+	003 LoadAddress rcx, stack:0x20
+	004 Call Win32NetworkInterface.get_FixedInfo, rcx
+	005 Move rax, [rax+8]
+	006 ShiftStack 136
+	007 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+

@@ -1,0 +1,26 @@
+Type: UnityEngine.Android.AndroidApp
+
+Method: System.IntPtr get_UnityPlayerRaw()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[181F21068h]
+	test rax,rax
+	jne short 00000001815F1113h
+	lea rcx,[181927468h]
+	call 00000001801E2D00h
+	mov [181F21068h],rax
+	add rsp,28h
+	jmp rax
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [0x181F21068]
+	003 Compare rax, 0
+	004 JumpIfNotEqual {8}
+	005 LoadAddress rcx, [0x181927468]
+	006 Call 0x1801E2D00, rcx, rdx, r8, r9
+	007 Move [0x181F21068], rax
+	008 ShiftStack 40
+	009 CallNoReturn rax
+

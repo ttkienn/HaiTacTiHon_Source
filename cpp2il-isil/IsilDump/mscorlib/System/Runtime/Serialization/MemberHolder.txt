@@ -1,0 +1,158 @@
+Type: System.Runtime.Serialization.MemberHolder
+
+Method: System.Void .ctor(System.Type type, System.Runtime.Serialization.StreamingContext ctx)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rdi,r8
+	xor edx,edx
+	mov rsi,rcx
+	call 000000018024B730h
+	lea rcx,[rsi+10h]
+	mov [rsi+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	movups xmm0,[rdi]
+	lea rcx,[rsi+18h]
+	xor edx,edx
+	movups [rsi+18h],xmm0
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rdi, r8
+	008 Move rdx, 0
+	009 Move rsi, rcx
+	010 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	011 LoadAddress rcx, [rsi+16]
+	012 Move [rsi+16], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 Move xmm0, [rdi]
+	016 LoadAddress rcx, [rsi+24]
+	017 Move rdx, 0
+	018 Move [rsi+24], xmm0
+	019 Move rbx, stack:0x30
+	020 Move rsi, stack:0x38
+	021 ShiftStack 32
+	022 Move rdi, stack:0x0
+	023 ShiftStack 8
+	024 Call 0x1801E1E30, rcx, rdx, r8, r9
+	025 Return 
+
+Method: System.Int32 GetHashCode()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 0000000180D3B965h
+	mov rdx,[rcx]
+	mov rax,[rdx+158h]
+	mov rdx,[rdx+160h]
+	add rsp,28h
+	jmp rax
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+16]
+	003 Compare rcx, 0
+	004 JumpIfEqual {10}
+	005 Move rdx, [rcx]
+	006 Move rax, [rdx+344]
+	007 Move rdx, [rdx+352]
+	008 ShiftStack 40
+	009 CallNoReturn rax
+	010 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Boolean Equals(System.Object obj)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1C9CBh],0
+	mov rbx,rdx
+	mov rdi,rcx
+	jne short 0000000180E01EECh
+	lea rcx,[181E2B6C8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C9CBh],1
+	test rbx,rbx
+	je short 0000000180E01F26h
+	mov rax,[181E2B6C8h]
+	xor r8d,r8d
+	cmp [rbx],rax
+	cmove r8,rbx
+	test r8,r8
+	je short 0000000180E01F26h
+	mov rax,[rdi+10h]
+	cmp [r8+10h],rax
+	jne short 0000000180E01F26h
+	mov eax,[rdi+20h]
+	cmp [r8+20h],eax
+	sete al
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	mov rbx,[rsp+30h]
+	xor al,al
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1C9CB], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E2B6C8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F1C9CB], 1
+	012 Compare rbx, 0
+	013 JumpIfEqual {33}
+	014 Move rax, typeof(System.Runtime.Serialization.MemberHolder)
+	015 Move r8, 0
+	016 Compare [rbx], rax
+	017 JumpIfNotEqual {19}
+	018 Move r8, rbx
+	019 Nop 
+	020 Compare r8, 0
+	021 JumpIfEqual {33}
+	022 Move rax, [rdi+16]
+	023 Compare [r8+16], rax
+	024 JumpIfNotEqual {33}
+	025 Move rax, [rdi+32]
+	026 Compare [r8+32], rax
+	027 NotImplemented "sete al"
+	028 Move rbx, stack:0x30
+	029 ShiftStack 32
+	030 Move rdi, stack:0x0
+	031 ShiftStack 8
+	032 Return rax
+	033 Move rbx, stack:0x30
+	034 Move rax, 0
+	035 ShiftStack 32
+	036 Move rdi, stack:0x0
+	037 ShiftStack 8
+	038 Return rax
+

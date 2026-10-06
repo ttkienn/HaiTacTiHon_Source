@@ -1,0 +1,188 @@
+Type: System.Data.ParentForeignKeyConstraintEnumerator
+
+Method: System.Void .ctor(System.Data.DataSet dataSet, System.Data.DataTable inTable)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rsi,r8
+	xor edx,edx
+	mov rbx,rcx
+	call 000000018024B730h
+	test rdi,rdi
+	je short 00000001811A01B2h
+	mov rcx,[rdi+28h]
+	test rcx,rcx
+	je short 00000001811A01FBh
+	mov rdx,[rcx]
+	mov rax,[rdx+1E8h]
+	mov rdx,[rdx+1F0h]
+	call rax
+	jmp short 00000001811A01B4h
+	xor eax,eax
+	test rbx,rbx
+	je short 00000001811A01FBh
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rax
+	mov rdx,rax
+	call 00000001801E1E30h
+	lea rcx,[rbx+20h]
+	mov qword ptr [rbx+20h],0
+	xor edx,edx
+	call 00000001801E1E30h
+	lea rcx,[rbx+28h]
+	mov [rbx+28h],rsi
+	mov rdx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rdi, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rbx, rcx
+	010 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	011 Compare rdi, 0
+	012 JumpIfEqual {21}
+	013 Move rcx, [rdi+40]
+	014 Compare rcx, 0
+	015 JumpIfEqual {42}
+	016 Move rdx, [rcx]
+	017 Move rax, [rdx+488]
+	018 Move rdx, [rdx+496]
+	019 Call rax
+	020 Goto {22}
+	021 Move rax, 0
+	022 Compare rbx, 0
+	023 JumpIfEqual {42}
+	024 LoadAddress rcx, [rbx+16]
+	025 Move [rbx+16], rax
+	026 Move rdx, rax
+	027 Call 0x1801E1E30, rcx, rdx, r8, r9
+	028 LoadAddress rcx, [rbx+32]
+	029 Move [rbx+32], 0
+	030 Move rdx, 0
+	031 Call 0x1801E1E30, rcx, rdx, r8, r9
+	032 LoadAddress rcx, [rbx+40]
+	033 Move [rbx+40], rsi
+	034 Move rdx, rsi
+	035 Move rbx, stack:0x30
+	036 Move rsi, stack:0x38
+	037 ShiftStack 32
+	038 Move rdi, stack:0x0
+	039 ShiftStack 8
+	040 Call 0x1801E1E30, rcx, rdx, r8, r9
+	041 Return 
+	042 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Boolean IsValidCandidate(System.Data.Constraint constraint)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1E9EBh],0
+	mov rbx,rdx
+	mov rdi,rcx
+	jne short 00000001811BA24Ch
+	lea rcx,[181E149B8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E9EBh],1
+	test rbx,rbx
+	je short 00000001811BA2C2h
+	mov rdx,[181E149B8h]
+	mov r8,[rbx]
+	movzx eax,byte ptr [rdx+130h]
+	cmp [r8+130h],al
+	jb short 00000001811BA2C2h
+	movzx ecx,al
+	mov rax,[r8+0C8h]
+	cmp [rax+rcx*8-8],rdx
+	jne short 00000001811BA2C2h
+	movzx eax,byte ptr [rdx+130h]
+	cmp [r8+130h],al
+	jb short 00000001811BA2CFh
+	movzx ecx,al
+	mov rax,[r8+0C8h]
+	cmp [rax+rcx*8-8],rdx
+	jne short 00000001811BA2CFh
+	mov rax,[r8+2C8h]
+	mov rcx,rbx
+	mov rdx,[r8+2D0h]
+	call rax
+	cmp rax,[rdi+28h]
+	sete al
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	mov rbx,[rsp+30h]
+	xor al,al
+	add rsp,20h
+	pop rdi
+	ret
+	mov rcx,rbx
+	call 00000001801E1E70h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1E9EB], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E149B8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F1E9EB], 1
+	012 Compare rbx, 0
+	013 JumpIfEqual {41}
+	014 Move rdx, typeof(System.Data.ForeignKeyConstraint)
+	015 Move r8, [rbx]
+	016 Move rax, [rdx+304]
+	017 Compare [r8+304], rax
+	018 JumpIfLess {41}
+	019 Move rcx, rax
+	020 Move rax, [r8+200]
+	021 Compare [rax+0xFFFFFFF8+rcx*8], rdx
+	022 JumpIfNotEqual {41}
+	023 Move rax, [rdx+304]
+	024 Compare [r8+304], rax
+	025 JumpIfLess {47}
+	026 Move rcx, rax
+	027 Move rax, [r8+200]
+	028 Compare [rax+0xFFFFFFF8+rcx*8], rdx
+	029 JumpIfNotEqual {47}
+	030 Move rax, [r8+712]
+	031 Move rcx, rbx
+	032 Move rdx, [r8+720]
+	033 Call rax
+	034 Compare rax, [rdi+40]
+	035 NotImplemented "sete al"
+	036 Move rbx, stack:0x30
+	037 ShiftStack 32
+	038 Move rdi, stack:0x0
+	039 ShiftStack 8
+	040 Return rax
+	041 Move rbx, stack:0x30
+	042 Move rax, 0
+	043 ShiftStack 32
+	044 Move rdi, stack:0x0
+	045 ShiftStack 8
+	046 Return rax
+	047 Move rcx, rbx
+	048 Call 0x1801E1E70, rcx, rdx, r8, r9
+

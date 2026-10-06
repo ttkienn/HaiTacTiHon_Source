@@ -1,0 +1,69 @@
+Type: System.Net.Cache.RequestCache
+
+Method: System.Void .cctor()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1FCE8h],0
+	jne short 000000018147BDECh
+	lea rcx,[181DF5F00h]
+	call 00000001801E2A80h
+	lea rcx,[181DF46F8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1FCE8h],1
+	mov rcx,[181DF5F00h]
+	mov edx,2
+	call 00000001801E1EB0h
+	mov rdx,rax
+	test rax,rax
+	je short 000000018147BE45h
+	cmp dword ptr [rax+18h],0
+	jbe short 000000018147BE4Bh
+	mov word ptr [rax+20h],0Dh
+	cmp dword ptr [rax+18h],1
+	jbe short 000000018147BE4Bh
+	mov word ptr [rax+22h],0Ah
+	mov rcx,[181DF46F8h]
+	mov rax,[rcx+0B8h]
+	mov [rax],rdx
+	mov rcx,[181DF46F8h]
+	mov rcx,[rcx+0B8h]
+	add rsp,28h
+	jmp near ptr 00000001801E1E30h
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1FCE8], 0
+	003 JumpIfNotEqual {9}
+	004 LoadAddress rcx, [0x181DF5F00]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 LoadAddress rcx, [0x181DF46F8]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 Move [0x181F1FCE8], 1
+	009 Move rcx, typeof(System.Char[1])
+	010 Move rdx, 2
+	011 Call "SzArrayNew", rcx, rdx, r8, r9
+	012 Move rdx, rax
+	013 Compare rax, 0
+	014 JumpIfEqual {29}
+	015 Compare [rax+24], 0
+	016 JumpIfLessOrEqual {31}
+	017 Move [rax+32], 13
+	018 Compare [rax+24], 1
+	019 JumpIfLessOrEqual {31}
+	020 Move [rax+34], 10
+	021 Move rcx, typeof(System.Net.Cache.RequestCache)
+	022 Move rax, [rcx+184]
+	023 Move [rax], rdx
+	024 Move rcx, typeof(System.Net.Cache.RequestCache)
+	025 Move rcx, [rcx+184]
+	026 ShiftStack 40
+	027 Call 0x1801E1E30, rcx, rdx, r8, r9
+	028 Return 
+	029 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	030 Interrupt 
+	031 Call 0x1801E2C90, rcx, rdx, r8, r9
+

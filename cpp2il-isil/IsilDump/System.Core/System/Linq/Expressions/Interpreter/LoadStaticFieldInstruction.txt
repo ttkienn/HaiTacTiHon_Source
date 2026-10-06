@@ -1,0 +1,189 @@
+Type: System.Linq.Expressions.Interpreter.LoadStaticFieldInstruction
+
+Method: System.Void .ctor(System.Reflection.FieldInfo field)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 000000018024B730h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.String get_InstructionName()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1E37Ah],0
+	jne short 000000018111E8A0h
+	lea rcx,[181E164E8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E37Ah],1
+	mov rax,[181E164E8h]
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1E37A], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E164E8]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F1E37A], 1
+	007 Move rax, "LoadStaticField"
+	008 ShiftStack 40
+	009 Return rax
+
+Method: System.Int32 get_ProducedStack()
+
+Disassembly:
+	mov eax,1
+	ret
+
+ISIL:
+	001 Move rax, 1
+	002 Return rax
+
+Method: System.Int32 Run(System.Linq.Expressions.Interpreter.InterpretedFrame frame)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rcx,[rcx+10h]
+	mov rsi,rdx
+	test rcx,rcx
+	je near ptr 000000018111E864h
+	mov r8,[rcx]
+	xor edx,edx
+	mov rax,[r8+2E8h]
+	mov r8,[r8+2F0h]
+	call rax
+	mov rdi,rax
+	test rsi,rsi
+	je short 000000018111E864h
+	movsxd rbp,dword ptr [rsi+48h]
+	mov rbx,[rsi+38h]
+	lea ecx,[rbp+1]
+	mov [rsi+48h],ecx
+	test rbx,rbx
+	je short 000000018111E864h
+	test rax,rax
+	je short 000000018111E82Dh
+	mov rdx,[rbx]
+	mov rcx,rax
+	mov rdx,[rdx+40h]
+	call 00000001801E1E50h
+	test rax,rax
+	je short 000000018111E86Ah
+	mov rax,rbp
+	cmp ebp,[rbx+18h]
+	jae short 000000018111E87Ah
+	add rax,4
+	mov [rbx+rbp*8+20h],rdi
+	mov rdx,rdi
+	lea rcx,[rbx+rax*8]
+	call 00000001801E1E30h
+	mov rbx,[rsp+30h]
+	mov eax,1
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E26E0h
+	mov rcx,rax
+	xor edx,edx
+	call 00000001801E2C60h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rcx, [rcx+16]
+	008 Move rsi, rdx
+	009 Compare rcx, 0
+	010 JumpIfEqual {49}
+	011 Move r8, [rcx]
+	012 Move rdx, 0
+	013 Move rax, [r8+744]
+	014 Move r8, [r8+752]
+	015 Call rax
+	016 Move rdi, rax
+	017 Compare rsi, 0
+	018 JumpIfEqual {49}
+	019 Move rbp, [rsi+72]
+	020 Move rbx, [rsi+56]
+	021 LoadAddress rcx, [rbp+1]
+	022 Move [rsi+72], rcx
+	023 Compare rbx, 0
+	024 JumpIfEqual {49}
+	025 Compare rax, 0
+	026 JumpIfEqual {33}
+	027 Move rdx, [rbx]
+	028 Move rcx, rax
+	029 Move rdx, [rdx+64]
+	030 Call 0x1801E1E50, rcx, rdx, r8, r9
+	031 Compare rax, 0
+	032 JumpIfEqual {51}
+	033 Move rax, rbp
+	034 Compare rbp, [rbx+24]
+	035 JumpIfGreaterOrEqual {56}
+	036 Add rax, rax, 4
+	037 Move [rbx+32+rbp*8], rdi
+	038 Move rdx, rdi
+	039 LoadAddress rcx, [rbx+rax*8]
+	040 Call 0x1801E1E30, rcx, rdx, r8, r9
+	041 Move rbx, stack:0x30
+	042 Move rax, 1
+	043 Move rbp, stack:0x38
+	044 Move rsi, stack:0x40
+	045 ShiftStack 32
+	046 Move rdi, stack:0x0
+	047 ShiftStack 8
+	048 Return rax
+	049 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	050 Interrupt 
+	051 Call 0x1801E26E0, rcx, rdx, r8, r9
+	052 Move rcx, rax
+	053 Move rdx, 0
+	054 Call 0x1801E2C60, rcx, rdx, r8, r9
+	055 Interrupt 
+	056 Call 0x1801E2C90, rcx, rdx, r8, r9
+

@@ -1,0 +1,65 @@
+Type: System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1
+
+Method: System.Void .ctor(System.Threading.Tasks.ValueTask`1<TResult> value)
+
+Disassembly:
+	movups xmm0,[rdx]
+	xor edx,edx
+	movups [rcx],xmm0
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move rdx, 0
+	003 Move [rcx], xmm0
+	004 Call 0x1801E1E30, rcx, rdx, r8, r9
+	005 Return 
+
+Method: System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1+ConfiguredValueTaskAwaiter<TResult> GetAwaiter()
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	movups xmm0,[rdx]
+	mov rbx,rcx
+	movups [rsp+20h],xmm0
+	xorps xmm0,xmm0
+	movups [rcx],xmm0
+	mov rcx,[r8+20h]
+	test byte ptr [rcx+135h],1
+	jne short 0000000180823149h
+	call 0000000180188F60h
+	movups xmm0,[rsp+20h]
+	xor edx,edx
+	mov rcx,rbx
+	movups [rbx],xmm0
+	call 00000001801E1E30h
+	mov rax,rbx
+	add rsp,30h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move xmm0, [rdx]
+	005 Move rbx, rcx
+	006 Move stack:0x20, xmm0
+	007 Move xmm0, 0
+	008 Move [rcx], xmm0
+	009 Move rcx, [r8+32]
+	010 Compare [rcx+309], 1
+	011 JumpIfNotEqual {13}
+	012 Call 0x180188F60, rcx, rdx, r8, r9
+	013 Move xmm0, stack:0x20
+	014 Move rdx, 0
+	015 Move rcx, rbx
+	016 Move [rbx], xmm0
+	017 Call 0x1801E1E30, rcx, rdx, r8, r9
+	018 Move rax, rbx
+	019 ShiftStack 48
+	020 Move rbx, stack:0x0
+	021 ShiftStack 8
+	022 Return rax
+

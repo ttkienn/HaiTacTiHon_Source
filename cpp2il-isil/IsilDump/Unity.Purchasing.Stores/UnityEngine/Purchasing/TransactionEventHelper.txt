@@ -1,0 +1,398 @@
+Type: UnityEngine.Purchasing.TransactionEventHelper
+
+Method: System.Void .ctor(UnityEngine.Purchasing.IAnalyticsServiceWrapper analytics, UnityEngine.ILogger logger)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rsi,r8
+	xor edx,edx
+	mov rdi,rcx
+	call 000000018024B730h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	lea rcx,[rdi+18h]
+	mov [rdi+18h],rsi
+	mov rdx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	011 LoadAddress rcx, [rdi+16]
+	012 Move [rdi+16], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 LoadAddress rcx, [rdi+24]
+	016 Move [rdi+24], rsi
+	017 Move rdx, rsi
+	018 Move rbx, stack:0x30
+	019 Move rsi, stack:0x38
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Call 0x1801E1E30, rcx, rdx, r8, r9
+	024 Return 
+
+Method: System.Int64 CheckCurrencyCodeAndExtractRealCurrencyAmount(UnityEngine.Purchasing.Product product)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F208B4h],0
+	mov rbx,rdx
+	mov rdi,rcx
+	jne short 00000001815A4E68h
+	lea rcx,[181E10558h]
+	call 00000001801E2A80h
+	lea rcx,[181E190C0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F208B4h],1
+	test rbx,rbx
+	je short 00000001815A4ED7h
+	mov rax,[rbx+18h]
+	test rax,rax
+	je short 00000001815A4ED7h
+	cmp qword ptr [rax+28h],0
+	jne short 00000001815A4EBFh
+	mov rdx,[rbx+10h]
+	mov rdi,[rdi+18h]
+	test rdx,rdx
+	je short 00000001815A4ED7h
+	mov r8,[181E190C0h]
+	xor r9d,r9d
+	mov rdx,[rdx+10h]
+	mov rcx,[181E10558h]
+	call 0000000180D7B7B0h
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rdi
+	call 00000001815B54D0h
+	xor eax,eax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001815A4EE0h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F208B4], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {14}
+	009 LoadAddress rcx, [0x181E10558]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x181E190C0]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x181F208B4], 1
+	014 Compare rbx, 0
+	015 JumpIfEqual {48}
+	016 Move rax, [rbx+24]
+	017 Compare rax, 0
+	018 JumpIfEqual {48}
+	019 Compare [rax+40], 0
+	020 JumpIfNotEqual {40}
+	021 Move rdx, [rbx+16]
+	022 Move rdi, [rdi+24]
+	023 Compare rdx, 0
+	024 JumpIfEqual {48}
+	025 Move r8, " is null. Were you trying to purchase an unavailable product? The price will be recorded as 0."
+	026 Move r9, 0
+	027 Move rdx, [rdx+16]
+	028 Move rcx, "The isoCurrencyCode for product ID "
+	029 Call String.Concat, rcx, rdx, r8, r9
+	030 Move r8, 0
+	031 Move rdx, rax
+	032 Move rcx, rdi
+	033 Call LoggerExtensions.LogIAPWarning, rcx, rdx, r8
+	034 Move rax, 0
+	035 Move rbx, stack:0x30
+	036 ShiftStack 32
+	037 Move rdi, stack:0x0
+	038 ShiftStack 8
+	039 Return rax
+	040 Move r8, 0
+	041 Move rdx, rbx
+	042 Move rcx, rdi
+	043 Move rbx, stack:0x30
+	044 ShiftStack 32
+	045 Move rdi, stack:0x0
+	046 ShiftStack 8
+	047 Invalid "Jump target not found in method."
+	048 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Int64 ExtractRealCurrencyAmount(UnityEngine.Purchasing.Product product)
+
+Disassembly:
+	mov [rsp+18h],rbx
+	mov [rsp+20h],rsi
+	mov [rsp+10h],rdx
+	mov [rsp+8],rcx
+	push rdi
+	sub rsp,50h
+	movaps [rsp+40h],xmm6
+	mov rbx,rdx
+	mov rdi,rcx
+	cmp byte ptr [181F208B5h],0
+	jne short 00000001815A4F38h
+	lea rcx,[181E0D5E8h]
+	call 00000001801E2A80h
+	lea rcx,[181E189A8h]
+	call 00000001801E2A80h
+	lea rcx,[181E188D8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F208B5h],1
+	mov r8,[rdi+10h]
+	test r8,r8
+	je near ptr 00000001815A50B9h
+	xor ecx,ecx
+	mov rdx,[181E189A8h]
+	call 0000000180003100h
+	mov rdi,rax
+	test rax,rax
+	je near ptr 00000001815A5030h
+	test rbx,rbx
+	je near ptr 00000001815A50B4h
+	mov rax,[rbx+18h]
+	test rax,rax
+	je near ptr 00000001815A50AEh
+	mov rsi,[rax+28h]
+	movups xmm6,[rax+30h]
+	mov rcx,[181E0D5E8h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001815A4F92h
+	call 0000000180153C50h
+	movdqa [rsp+30h],xmm6
+	xor edx,edx
+	lea rcx,[rsp+30h]
+	call 0000000180F95A40h
+	movaps xmm6,xmm0
+	mov r9,[181E188D8h]
+	mov r10,[rdi]
+	xor ecx,ecx
+	movzx edx,word ptr [r10+12Eh]
+	cmp cx,dx
+	jae short 00000001815A4FE4h
+	mov r8,[r10+0B0h]
+	nop word ptr [rax+rax]
+	movzx eax,cx
+	add rax,rax
+	cmp [r8+rax*8],r9
+	je short 00000001815A500Fh
+	inc cx
+	cmp cx,dx
+	jb short 00000001815A4FD0h
+	mov r8d,4
+	mov rdx,r9
+	mov rcx,rdi
+	call 0000000180188860h
+	mov r9,rax
+	mov rax,[r9]
+	mov r9,[r9+8]
+	movaps xmm2,xmm6
+	mov rdx,rsi
+	mov rcx,rdi
+	call rax
+	mov rcx,rax
+	jmp short 00000001815A5032h
+	movzx ecx,cx
+	add rcx,rcx
+	mov ecx,[r8+rcx*8+8]
+	add ecx,4
+	movsxd r9,ecx
+	shl r9,4
+	add r9,138h
+	add r9,r10
+	jmp short 00000001815A4FF8h
+	xor ecx,ecx
+	jmp short 00000001815A5090h
+	mov rax,[rsp+60h]
+	mov rsi,[rax+18h]
+	mov rax,[rsp+68h]
+	test rax,rax
+	je short 00000001815A50A8h
+	mov rdi,[rax+10h]
+	test rdi,rdi
+	je short 00000001815A50A8h
+	mov rdi,[rdi+10h]
+	lea rcx,[181E28690h]
+	call 00000001801E2AA0h
+	mov rbx,rax
+	lea rcx,[181E205D8h]
+	call 00000001801E2AA0h
+	xor r9d,r9d
+	mov r8,rbx
+	mov rdx,rdi
+	mov rcx,rax
+	call 0000000180D7B7B0h
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rsi
+	call 00000001815B54D0h
+	xor ecx,ecx
+	mov rax,rcx
+	mov rbx,[rsp+70h]
+	mov rsi,[rsp+78h]
+	movaps xmm6,[rsp+40h]
+	add rsp,50h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+	nop
+	call 00000001801E2CA0h
+	nop
+	call 00000001801E2CA0h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x18, rbx
+	002 Move stack:0x20, rsi
+	003 Move stack:0x10, rdx
+	004 Move stack:0x8, rcx
+	005 ShiftStack -8
+	006 Move stack:0x0, rdi
+	007 ShiftStack -80
+	008 Move stack:0x40, xmm6
+	009 Move rbx, rdx
+	010 Move rdi, rcx
+	011 Compare [0x181F208B5], 0
+	012 JumpIfNotEqual {20}
+	013 LoadAddress rcx, [0x181E0D5E8]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x181E189A8]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 LoadAddress rcx, [0x181E188D8]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 Move [0x181F208B5], 1
+	020 Move r8, [rdi+16]
+	021 Compare r8, 0
+	022 JumpIfEqual {121}
+	023 Move rcx, 0
+	024 Move rdx, typeof(UnityEngine.Purchasing.IAnalyticsServiceWrapper)
+	025 Call 0x180003100, rcx, rdx, r8, r9
+	026 Move rdi, rax
+	027 Compare rax, 0
+	028 JumpIfEqual {82}
+	029 Compare rbx, 0
+	030 JumpIfEqual {120}
+	031 Move rax, [rbx+24]
+	032 Compare rax, 0
+	033 JumpIfEqual {118}
+	034 Move rsi, [rax+40]
+	035 Move xmm6, [rax+48]
+	036 Move rcx, typeof(System.Decimal)
+	037 Compare [rcx+224], 0
+	038 JumpIfNotEqual {40}
+	039 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	040 Move stack:0x30, xmm6
+	041 Move rdx, 0
+	042 LoadAddress rcx, stack:0x30
+	043 Call Decimal.op_Explicit, rcx, rdx
+	044 Move xmm6, xmm0
+	045 Move r9, typeof(Unity.Services.Analytics.IAnalyticsService)
+	046 Move r10, [rdi]
+	047 Move rcx, 0
+	048 Move rdx, [r10+302]
+	049 Compare rcx, rdx
+	050 JumpIfGreaterOrEqual {60}
+	051 Move r8, [r10+176]
+	052 Nop 
+	053 Move rax, rcx
+	054 Add rax, rax, rax
+	055 Compare [r8+rax*8], r9
+	056 JumpIfEqual {73}
+	057 Add rcx, rcx, 1
+	058 Compare rcx, rdx
+	059 JumpIfLess {53}
+	060 Move r8, 4
+	061 Move rdx, r9
+	062 Move rcx, rdi
+	063 Call 0x180188860, rcx, rdx, r8, r9
+	064 Move r9, rax
+	065 Move rax, [r9]
+	066 Move r9, [r9+8]
+	067 Move xmm2, xmm6
+	068 Move rdx, rsi
+	069 Move rcx, rdi
+	070 Call rax
+	071 Move rcx, rax
+	072 Goto {83}
+	073 Move rcx, rcx
+	074 Add rcx, rcx, rcx
+	075 Move rcx, [r8+8+rcx*8]
+	076 Add rcx, rcx, 4
+	077 Move r9, rcx
+	078 ShiftLeft r9, 4
+	079 Add r9, r9, 312
+	080 Add r9, r9, r10
+	081 Goto {65}
+	082 Move rcx, 0
+	083 Goto {108}
+	084 Move rax, stack:0x60
+	085 Move rsi, [rax+24]
+	086 Move rax, stack:0x68
+	087 Compare rax, 0
+	088 JumpIfEqual {116}
+	089 Move rdi, [rax+16]
+	090 Compare rdi, 0
+	091 JumpIfEqual {116}
+	092 Move rdi, [rdi+16]
+	093 LoadAddress rcx, [0x181E28690]
+	094 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	095 Move rbx, rax
+	096 LoadAddress rcx, [0x181E205D8]
+	097 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	098 Move r9, 0
+	099 Move r8, rbx
+	100 Move rdx, rdi
+	101 Move rcx, rax
+	102 Call String.Concat, rcx, rdx, r8, r9
+	103 Move r8, 0
+	104 Move rdx, rax
+	105 Move rcx, rsi
+	106 Call LoggerExtensions.LogIAPWarning, rcx, rdx, r8
+	107 Move rcx, 0
+	108 Move rax, rcx
+	109 Move rbx, stack:0x70
+	110 Move rsi, stack:0x78
+	111 Move xmm6, stack:0x40
+	112 ShiftStack 80
+	113 Move rdi, stack:0x0
+	114 ShiftStack 8
+	115 Return rax
+	116 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	117 Nop 
+	118 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	119 Nop 
+	120 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	121 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

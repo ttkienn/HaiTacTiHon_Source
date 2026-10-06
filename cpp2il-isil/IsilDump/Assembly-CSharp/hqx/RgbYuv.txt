@@ -1,0 +1,381 @@
+Type: hqx.RgbYuv
+
+Method: System.Int32 getYuv(System.Int32 rgb)
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 00000001805E79C0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call RgbYuv.rgb2yuv, rcx, rdx
+	003 Return rax
+
+Method: System.Void hqxInit()
+
+Disassembly:
+	sub rsp,78h
+	cmp byte ptr [181F1AC53h],0
+	movaps [rsp+60h],xmm6
+	movaps [rsp+50h],xmm7
+	movaps [rsp+40h],xmm8
+	movaps [rsp+30h],xmm9
+	movaps [rsp+20h],xmm10
+	jne short 00000001805E784Ch
+	lea rcx,[181DF4FF8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1AC53h],1
+	movsd xmm4,qword ptr [1818BCD78h]
+	mov edx,0FFFFFFh
+	movsd xmm5,qword ptr [1818BCD50h]
+	movsd xmm3,qword ptr [1818BCD60h]
+	movsd xmm6,qword ptr [1818BCD68h]
+	movsd xmm7,qword ptr [1818BCD48h]
+	movsd xmm8,qword ptr [1818BCD40h]
+	movsd xmm9,qword ptr [1818BCD58h]
+	movsd xmm10,qword ptr [1818BCD38h]
+	nop dword ptr [rax]
+	nop dword ptr [rax+rax]
+	mov eax,edx
+	movzx r11d,dl
+	shr eax,10h
+	movzx r9d,al
+	mov eax,edx
+	shr eax,8
+	movzx r10d,al
+	mov rax,[181DF4FF8h]
+	mov rcx,[rax+0B8h]
+	mov r8,[rcx]
+	test r8,r8
+	je near ptr 00000001805E79AEh
+	cmp edx,[r8+18h]
+	jae near ptr 00000001805E79B4h
+	xorps xmm2,xmm2
+	xorps xmm0,xmm0
+	cvtsi2sd xmm2,r9d
+	xorps xmm1,xmm1
+	cvtsi2sd xmm0,r10d
+	mulsd xmm2,xmm4
+	cvtsi2sd xmm1,r11d
+	mulsd xmm0,xmm5
+	mulsd xmm1,xmm3
+	subsd xmm2,xmm0
+	xorps xmm0,xmm0
+	cvtsi2sd xmm0,r9d
+	addsd xmm2,xmm1
+	xorps xmm1,xmm1
+	cvtsi2sd xmm1,r11d
+	cvttsd2si ecx,xmm2
+	xorps xmm2,xmm2
+	mulsd xmm0,xmm7
+	sub ecx,0FFFFFF80h
+	cvtsi2sd xmm2,r10d
+	shl ecx,8
+	mulsd xmm1,xmm8
+	mulsd xmm2,xmm6
+	addsd xmm2,xmm0
+	xorps xmm0,xmm0
+	cvtsi2sd xmm0,r10d
+	addsd xmm2,xmm1
+	xorps xmm1,xmm1
+	cvtsi2sd xmm1,r11d
+	cvttsd2si eax,xmm2
+	xorps xmm2,xmm2
+	mulsd xmm0,xmm9
+	shl eax,10h
+	or ecx,eax
+	mulsd xmm1,xmm10
+	cvtsi2sd xmm2,r9d
+	mulsd xmm2,xmm3
+	subsd xmm2,xmm0
+	subsd xmm2,xmm1
+	cvttsd2si eax,xmm2
+	sub eax,0FFFFFF80h
+	or ecx,eax
+	mov eax,edx
+	sub edx,1
+	mov [r8+rax*4+20h],ecx
+	jns near ptr 00000001805E78A0h
+	movaps xmm6,[rsp+60h]
+	movaps xmm7,[rsp+50h]
+	movaps xmm8,[rsp+40h]
+	movaps xmm9,[rsp+30h]
+	movaps xmm10,[rsp+20h]
+	add rsp,78h
+	ret
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 ShiftStack -120
+	002 Compare [0x181F1AC53], 0
+	003 Move stack:0x60, xmm6
+	004 Move stack:0x50, xmm7
+	005 Move stack:0x40, xmm8
+	006 Move stack:0x30, xmm9
+	007 Move stack:0x20, xmm10
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181DF4FF8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F1AC53], 1
+	012 Move xmm4, [0x1818BCD78]
+	013 Move rdx, 0xFFFFFF
+	014 Move xmm5, [0x1818BCD50]
+	015 Move xmm3, [0x1818BCD60]
+	016 Move xmm6, [0x1818BCD68]
+	017 Move xmm7, [0x1818BCD48]
+	018 Move xmm8, [0x1818BCD40]
+	019 Move xmm9, [0x1818BCD58]
+	020 Move xmm10, [0x1818BCD38]
+	021 Nop 
+	022 Nop 
+	023 Move rax, rdx
+	024 Move r11, rdx
+	025 ShiftRight rax, 16
+	026 Move r9, rax
+	027 Move rax, rdx
+	028 ShiftRight rax, 8
+	029 Move r10, rax
+	030 Move rax, typeof(hqx.RgbYuv)
+	031 Move rcx, [rax+184]
+	032 Move r8, [rcx]
+	033 Compare r8, 0
+	034 JumpIfEqual {90}
+	035 Compare rdx, [r8+24]
+	036 JumpIfGreaterOrEqual {92}
+	037 Move xmm2, 0
+	038 Move xmm0, 0
+	039 NotImplemented "cvtsi2sd xmm2,r9d"
+	040 Move xmm1, 0
+	041 NotImplemented "cvtsi2sd xmm0,r10d"
+	042 NotImplemented "mulsd xmm2,xmm4"
+	043 NotImplemented "cvtsi2sd xmm1,r11d"
+	044 NotImplemented "mulsd xmm0,xmm5"
+	045 NotImplemented "mulsd xmm1,xmm3"
+	046 NotImplemented "subsd xmm2,xmm0"
+	047 Move xmm0, 0
+	048 NotImplemented "cvtsi2sd xmm0,r9d"
+	049 NotImplemented "addsd xmm2,xmm1"
+	050 Move xmm1, 0
+	051 NotImplemented "cvtsi2sd xmm1,r11d"
+	052 Move rcx, xmm2
+	053 Move xmm2, 0
+	054 NotImplemented "mulsd xmm0,xmm7"
+	055 Subtract rcx, rcx, 18446744073709551488
+	056 NotImplemented "cvtsi2sd xmm2,r10d"
+	057 ShiftLeft rcx, 8
+	058 NotImplemented "mulsd xmm1,xmm8"
+	059 NotImplemented "mulsd xmm2,xmm6"
+	060 NotImplemented "addsd xmm2,xmm0"
+	061 Move xmm0, 0
+	062 NotImplemented "cvtsi2sd xmm0,r10d"
+	063 NotImplemented "addsd xmm2,xmm1"
+	064 Move xmm1, 0
+	065 NotImplemented "cvtsi2sd xmm1,r11d"
+	066 Move rax, xmm2
+	067 Move xmm2, 0
+	068 NotImplemented "mulsd xmm0,xmm9"
+	069 ShiftLeft rax, 16
+	070 Or rcx, rcx, rax
+	071 NotImplemented "mulsd xmm1,xmm10"
+	072 NotImplemented "cvtsi2sd xmm2,r9d"
+	073 NotImplemented "mulsd xmm2,xmm3"
+	074 NotImplemented "subsd xmm2,xmm0"
+	075 NotImplemented "subsd xmm2,xmm1"
+	076 Move rax, xmm2
+	077 Subtract rax, rax, 18446744073709551488
+	078 Or rcx, rcx, rax
+	079 Move rax, rdx
+	080 Subtract rdx, rdx, 1
+	081 Move [r8+32+rax*4], rcx
+	082 JumpIfNotSign {23}
+	083 Move xmm6, stack:0x60
+	084 Move xmm7, stack:0x50
+	085 Move xmm8, stack:0x40
+	086 Move xmm9, stack:0x30
+	087 Move xmm10, stack:0x20
+	088 ShiftStack 120
+	089 Return 
+	090 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	091 Interrupt 
+	092 Call 0x1801E2C90, rcx, rdx, r8, r9
+
+Method: System.Int32 rgb2yuv(System.Int32 c)
+
+Disassembly:
+	movsd xmm4,qword ptr [1818BCD70h]
+	mov r9d,ecx
+	mov r10d,ecx
+	sar r9d,10h
+	mov r8d,ecx
+	sar r10d,8
+	movzx eax,r9b
+	xorps xmm3,xmm3
+	movd xmm2,eax
+	cvtdq2pd xmm2,xmm2
+	movzx eax,r10b
+	movd xmm0,eax
+	mulsd xmm2,qword ptr [1818BCD78h]
+	movzx eax,cl
+	cvtdq2pd xmm0,xmm0
+	movd xmm1,eax
+	mulsd xmm0,qword ptr [1818BCD50h]
+	movzx eax,r9b
+	cvtdq2pd xmm1,xmm1
+	subsd xmm2,xmm0
+	movsd xmm0,qword ptr [1818BCD60h]
+	mulsd xmm1,xmm0
+	addsd xmm2,xmm1
+	xorps xmm1,xmm1
+	addsd xmm2,xmm4
+	cvttsd2si ecx,xmm2
+	xorps xmm2,xmm2
+	cvtsi2sd xmm2,eax
+	movzx eax,r10b
+	movzx ecx,cl
+	mulsd xmm2,xmm0
+	xorps xmm0,xmm0
+	cvtsi2sd xmm0,eax
+	movzx eax,r8b
+	cvtsi2sd xmm1,eax
+	movzx eax,r10b
+	mulsd xmm0,qword ptr [1818BCD58h]
+	mulsd xmm1,qword ptr [1818BCD38h]
+	subsd xmm2,xmm0
+	xorps xmm0,xmm0
+	subsd xmm2,xmm1
+	xorps xmm1,xmm1
+	addsd xmm2,xmm4
+	cvttsd2si edx,xmm2
+	xorps xmm2,xmm2
+	cvtsi2sd xmm2,eax
+	movzx eax,r9b
+	cvtsi2sd xmm0,eax
+	movzx eax,r8b
+	mulsd xmm2,qword ptr [1818BCD68h]
+	mulsd xmm0,qword ptr [1818BCD48h]
+	cvtsi2sd xmm1,eax
+	addsd xmm2,xmm0
+	mulsd xmm1,qword ptr [1818BCD40h]
+	addsd xmm2,xmm1
+	cvttsd2si eax,xmm2
+	movzx eax,al
+	shl eax,8
+	or eax,ecx
+	movzx ecx,dl
+	shl eax,8
+	or eax,ecx
+	ret
+
+ISIL:
+	001 Move xmm4, [0x1818BCD70]
+	002 Move r9, rcx
+	003 Move r10, rcx
+	004 ShiftRight r9, 16
+	005 Move r8, rcx
+	006 ShiftRight r10, 8
+	007 Move rax, r9
+	008 Move xmm3, 0
+	009 Move xmm2, rax
+	010 NotImplemented "cvtdq2pd xmm2,xmm2"
+	011 Move rax, r10
+	012 Move xmm0, rax
+	013 NotImplemented "mulsd xmm2,qword ptr [1818BCD78h]"
+	014 Move rax, rcx
+	015 NotImplemented "cvtdq2pd xmm0,xmm0"
+	016 Move xmm1, rax
+	017 NotImplemented "mulsd xmm0,qword ptr [1818BCD50h]"
+	018 Move rax, r9
+	019 NotImplemented "cvtdq2pd xmm1,xmm1"
+	020 NotImplemented "subsd xmm2,xmm0"
+	021 Move xmm0, [0x1818BCD60]
+	022 NotImplemented "mulsd xmm1,xmm0"
+	023 NotImplemented "addsd xmm2,xmm1"
+	024 Move xmm1, 0
+	025 NotImplemented "addsd xmm2,xmm4"
+	026 Move rcx, xmm2
+	027 Move xmm2, 0
+	028 NotImplemented "cvtsi2sd xmm2,eax"
+	029 Move rax, r10
+	030 Move rcx, rcx
+	031 NotImplemented "mulsd xmm2,xmm0"
+	032 Move xmm0, 0
+	033 NotImplemented "cvtsi2sd xmm0,eax"
+	034 Move rax, r8
+	035 NotImplemented "cvtsi2sd xmm1,eax"
+	036 Move rax, r10
+	037 NotImplemented "mulsd xmm0,qword ptr [1818BCD58h]"
+	038 NotImplemented "mulsd xmm1,qword ptr [1818BCD38h]"
+	039 NotImplemented "subsd xmm2,xmm0"
+	040 Move xmm0, 0
+	041 NotImplemented "subsd xmm2,xmm1"
+	042 Move xmm1, 0
+	043 NotImplemented "addsd xmm2,xmm4"
+	044 Move rdx, xmm2
+	045 Move xmm2, 0
+	046 NotImplemented "cvtsi2sd xmm2,eax"
+	047 Move rax, r9
+	048 NotImplemented "cvtsi2sd xmm0,eax"
+	049 Move rax, r8
+	050 NotImplemented "mulsd xmm2,qword ptr [1818BCD68h]"
+	051 NotImplemented "mulsd xmm0,qword ptr [1818BCD48h]"
+	052 NotImplemented "cvtsi2sd xmm1,eax"
+	053 NotImplemented "addsd xmm2,xmm0"
+	054 NotImplemented "mulsd xmm1,qword ptr [1818BCD40h]"
+	055 NotImplemented "addsd xmm2,xmm1"
+	056 Move rax, xmm2
+	057 Move rax, rax
+	058 ShiftLeft rax, 8
+	059 Or rax, rax, rcx
+	060 Move rcx, rdx
+	061 ShiftLeft rax, 8
+	062 Or rax, rax, rcx
+	063 Return rax
+
+Method: System.Void hqxDeinit()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1AC54h],0
+	jne short 00000001805E77E0h
+	lea rcx,[181DF4FF8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1AC54h],1
+	mov rax,[181DF4FF8h]
+	xor edx,edx
+	mov rcx,[rax+0B8h]
+	mov qword ptr [rcx],0
+	mov rcx,[181DF4FF8h]
+	mov rcx,[rcx+0B8h]
+	add rsp,28h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1AC54], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181DF4FF8]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F1AC54], 1
+	007 Move rax, typeof(hqx.RgbYuv)
+	008 Move rdx, 0
+	009 Move rcx, [rax+184]
+	010 Move [rcx], 0
+	011 Move rcx, typeof(hqx.RgbYuv)
+	012 Move rcx, [rcx+184]
+	013 ShiftStack 40
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+

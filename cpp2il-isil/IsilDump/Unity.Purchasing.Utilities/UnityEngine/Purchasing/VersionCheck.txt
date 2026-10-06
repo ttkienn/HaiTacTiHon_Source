@@ -1,0 +1,535 @@
+Type: UnityEngine.Purchasing.VersionCheck
+
+Method: System.Boolean GreaterThanOrEqual(System.String versionA, System.String versionB)
+
+Disassembly:
+	sub rsp,28h
+	xor r8d,r8d
+	call 00000001815B9E50h
+	xor al,1
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Move r8, 0
+	003 Call VersionCheck.LessThan, rcx, rdx, r8
+	004 Xor rax, rax, 1
+	005 ShiftStack 40
+	006 Return rax
+
+Method: System.Boolean GreaterThan(System.String versionA, System.String versionB)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	xor r8d,r8d
+	mov rbx,rdx
+	mov rdi,rcx
+	call 00000001815B9E50h
+	test al,al
+	je short 00000001815B9DD9h
+	xor al,al
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001815B9E50h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move r8, 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 Call VersionCheck.LessThan, rcx, rdx, r8
+	009 Compare rax, 0
+	010 JumpIfEqual {17}
+	011 Move rax, 0
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Return rax
+	017 Move r8, 0
+	018 Move rdx, rdi
+	019 Move rcx, rbx
+	020 Move rbx, stack:0x30
+	021 ShiftStack 32
+	022 Move rdi, stack:0x0
+	023 ShiftStack 8
+	024 Call VersionCheck.LessThan, rcx, rdx, r8
+	025 Return rax
+
+Method: System.Boolean LessThan(System.String versionA, System.String versionB)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	push r14
+	push r15
+	sub rsp,20h
+	mov rdi,rdx
+	xor r8d,r8d
+	xor edx,edx
+	mov rbx,rcx
+	call 00000001815B9F90h
+	xor r8d,r8d
+	mov edx,1
+	mov rcx,rbx
+	mov r14d,eax
+	call 00000001815B9F90h
+	xor r8d,r8d
+	mov edx,2
+	mov rcx,rbx
+	mov esi,eax
+	call 00000001815B9F90h
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rdi
+	mov ebx,eax
+	call 00000001815B9F90h
+	xor r8d,r8d
+	mov edx,1
+	mov rcx,rdi
+	mov r15d,eax
+	call 00000001815B9F90h
+	xor r8d,r8d
+	mov edx,2
+	mov rcx,rdi
+	mov ebp,eax
+	call 00000001815B9F90h
+	cmp r14d,r15d
+	jg short 00000001815B9EE6h
+	jl short 00000001815B9EE2h
+	cmp esi,ebp
+	jg short 00000001815B9EE6h
+	jl short 00000001815B9EE2h
+	cmp ebx,eax
+	jge short 00000001815B9EE6h
+	mov al,1
+	jmp short 00000001815B9EE8h
+	xor al,al
+	mov rbx,[rsp+40h]
+	mov rbp,[rsp+48h]
+	mov rsi,[rsp+50h]
+	add rsp,20h
+	pop r15
+	pop r14
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -8
+	007 Move stack:0x0, r14
+	008 ShiftStack -8
+	009 Move stack:0x0, r15
+	010 ShiftStack -32
+	011 Move rdi, rdx
+	012 Move r8, 0
+	013 Move rdx, 0
+	014 Move rbx, rcx
+	015 Call VersionCheck.PartialVersion, rcx, rdx, r8
+	016 Move r8, 0
+	017 Move rdx, 1
+	018 Move rcx, rbx
+	019 Move r14, rax
+	020 Call VersionCheck.PartialVersion, rcx, rdx, r8
+	021 Move r8, 0
+	022 Move rdx, 2
+	023 Move rcx, rbx
+	024 Move rsi, rax
+	025 Call VersionCheck.PartialVersion, rcx, rdx, r8
+	026 Move r8, 0
+	027 Move rdx, 0
+	028 Move rcx, rdi
+	029 Move rbx, rax
+	030 Call VersionCheck.PartialVersion, rcx, rdx, r8
+	031 Move r8, 0
+	032 Move rdx, 1
+	033 Move rcx, rdi
+	034 Move r15, rax
+	035 Call VersionCheck.PartialVersion, rcx, rdx, r8
+	036 Move r8, 0
+	037 Move rdx, 2
+	038 Move rcx, rdi
+	039 Move rbp, rax
+	040 Call VersionCheck.PartialVersion, rcx, rdx, r8
+	041 Compare r14, r15
+	042 JumpIfGreater {51}
+	043 JumpIfLess {49}
+	044 Compare rsi, rbp
+	045 JumpIfGreater {51}
+	046 JumpIfLess {49}
+	047 Compare rbx, rax
+	048 JumpIfGreaterOrEqual {51}
+	049 Move rax, 1
+	050 Goto {52}
+	051 Move rax, 0
+	052 Move rbx, stack:0x40
+	053 Move rbp, stack:0x48
+	054 Move rsi, stack:0x50
+	055 ShiftStack 32
+	056 Move r15, stack:0x0
+	057 ShiftStack 8
+	058 Move r14, stack:0x0
+	059 ShiftStack 8
+	060 Move rdi, stack:0x0
+	061 ShiftStack 8
+	062 Return rax
+
+Method: System.Boolean LessThanOrEqual(System.String versionA, System.String versionB)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	xor r8d,r8d
+	mov rbx,rdx
+	mov rdi,rcx
+	call 00000001815B9E50h
+	test al,al
+	je short 00000001815B9E29h
+	mov al,1
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rbx
+	call 00000001815B9E50h
+	mov rbx,[rsp+30h]
+	xor al,1
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move r8, 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 Call VersionCheck.LessThan, rcx, rdx, r8
+	009 Compare rax, 0
+	010 JumpIfEqual {17}
+	011 Move rax, 1
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Return rax
+	017 Move r8, 0
+	018 Move rdx, rdi
+	019 Move rcx, rbx
+	020 Call VersionCheck.LessThan, rcx, rdx, r8
+	021 Move rbx, stack:0x30
+	022 Xor rax, rax, 1
+	023 ShiftStack 32
+	024 Move rdi, stack:0x0
+	025 ShiftStack 8
+	026 Return rax
+
+Method: System.Boolean Equal(System.String versionA, System.String versionB)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	xor r8d,r8d
+	mov rbx,rdx
+	mov rdi,rcx
+	call 00000001815B9E50h
+	test al,al
+	je short 00000001815B9D69h
+	xor al,al
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rbx
+	call 00000001815B9E50h
+	mov rbx,[rsp+30h]
+	xor al,1
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move r8, 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 Call VersionCheck.LessThan, rcx, rdx, r8
+	009 Compare rax, 0
+	010 JumpIfEqual {17}
+	011 Move rax, 0
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Return rax
+	017 Move r8, 0
+	018 Move rdx, rdi
+	019 Move rcx, rbx
+	020 Call VersionCheck.LessThan, rcx, rdx, r8
+	021 Move rbx, stack:0x30
+	022 Xor rax, rax, 1
+	023 ShiftStack 32
+	024 Move rdi, stack:0x0
+	025 ShiftStack 8
+	026 Return rax
+
+Method: System.Int32 MajorVersion(System.String version)
+
+Disassembly:
+	xor r8d,r8d
+	xor edx,edx
+	jmp near ptr 00000001815B9F90h
+
+ISIL:
+	001 Move r8, 0
+	002 Move rdx, 0
+	003 Call VersionCheck.PartialVersion, rcx, rdx, r8
+	004 Return rax
+
+Method: System.Int32 MinorVersion(System.String version)
+
+Disassembly:
+	xor r8d,r8d
+	mov edx,1
+	jmp near ptr 00000001815B9F90h
+
+ISIL:
+	001 Move r8, 0
+	002 Move rdx, 1
+	003 Call VersionCheck.PartialVersion, rcx, rdx, r8
+	004 Return rax
+
+Method: System.Int32 PatchVersion(System.String version)
+
+Disassembly:
+	xor r8d,r8d
+	mov edx,2
+	jmp near ptr 00000001815B9F90h
+
+ISIL:
+	001 Move r8, 0
+	002 Move rdx, 2
+	003 Call VersionCheck.PartialVersion, rcx, rdx, r8
+	004 Return rax
+
+Method: UnityEngine.Purchasing.VersionCheck+Version Parse(System.String version)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	xor eax,eax
+	mov rbx,rdx
+	mov [rcx],rax
+	mov rdi,rcx
+	mov [rcx+8],eax
+	xor r8d,r8d
+	mov rcx,rbx
+	xor edx,edx
+	call 00000001815B9F90h
+	xor r8d,r8d
+	mov [rdi],eax
+	mov edx,1
+	mov rcx,rbx
+	call 00000001815B9F90h
+	xor r8d,r8d
+	mov [rdi+4],eax
+	mov edx,2
+	mov rcx,rbx
+	call 00000001815B9F90h
+	mov rbx,[rsp+30h]
+	mov [rdi+8],eax
+	mov rax,rdi
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rax, 0
+	006 Move rbx, rdx
+	007 Move [rcx], rax
+	008 Move rdi, rcx
+	009 Move [rcx+8], rax
+	010 Move r8, 0
+	011 Move rcx, rbx
+	012 Move rdx, 0
+	013 Call VersionCheck.PartialVersion, rcx, rdx, r8
+	014 Move r8, 0
+	015 Move [rdi], rax
+	016 Move rdx, 1
+	017 Move rcx, rbx
+	018 Call VersionCheck.PartialVersion, rcx, rdx, r8
+	019 Move r8, 0
+	020 Move [rdi+4], rax
+	021 Move rdx, 2
+	022 Move rcx, rbx
+	023 Call VersionCheck.PartialVersion, rcx, rdx, r8
+	024 Move rbx, stack:0x30
+	025 Move [rdi+8], rax
+	026 Move rax, rdi
+	027 ShiftStack 32
+	028 Move rdi, stack:0x0
+	029 ShiftStack 8
+	030 Return rax
+
+Method: System.Int32 PartialVersion(System.String version, System.Int32 index)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F20A77h],0
+	mov rdi,rcx
+	movsxd rbx,edx
+	jne short 00000001815B9FCDh
+	lea rcx,[181DF5F00h]
+	call 00000001801E2A80h
+	lea rcx,[181E03EB8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20A77h],1
+	mov rcx,[181DF5F00h]
+	mov edx,4
+	call 00000001801E1EB0h
+	mov rdx,[181E03EB8h]
+	xor r8d,r8d
+	mov rcx,rax
+	mov rsi,rax
+	call 0000000180E489A0h
+	test rdi,rdi
+	je short 00000001815BA06Ah
+	xor r8d,r8d
+	mov rdx,rsi
+	mov rcx,rdi
+	call 0000000180D83CB0h
+	test rax,rax
+	je short 00000001815BA06Ah
+	cmp dword ptr [rax+18h],0
+	jbe short 00000001815BA070h
+	mov rcx,[rax+20h]
+	mov dword ptr [rsp+30h],0
+	test rcx,rcx
+	je short 00000001815BA06Ah
+	mov edx,2Eh
+	xor r9d,r9d
+	xor r8d,r8d
+	call 0000000180D83DC0h
+	test rax,rax
+	je short 00000001815BA06Ah
+	lea ecx,[rbx+1]
+	cmp [rax+18h],ecx
+	jl short 00000001815BA056h
+	cmp ebx,[rax+18h]
+	jae short 00000001815BA070h
+	mov rcx,[rax+rbx*8+20h]
+	lea rdx,[rsp+30h]
+	xor r8d,r8d
+	call 0000000180F1FB90h
+	mov eax,[rsp+30h]
+	mov rbx,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 Move stack:0x18, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x181F20A77], 0
+	007 Move rdi, rcx
+	008 Move rbx, rdx
+	009 JumpIfNotEqual {15}
+	010 LoadAddress rcx, [0x181DF5F00]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x181E03EB8]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 Move [0x181F20A77], 1
+	015 Move rcx, typeof(System.Char[1])
+	016 Move rdx, 4
+	017 Call "SzArrayNew", rcx, rdx, r8, r9
+	018 Move rdx, [0x181E03EB8]
+	019 Move r8, 0
+	020 Move rcx, rax
+	021 Move rsi, rax
+	022 Call RuntimeHelpers.InitializeArray, rcx, rdx, r8
+	023 Compare rdi, 0
+	024 JumpIfEqual {59}
+	025 Move r8, 0
+	026 Move rdx, rsi
+	027 Move rcx, rdi
+	028 Call String.Split, rcx, rdx
+	029 Compare rax, 0
+	030 JumpIfEqual {59}
+	031 Compare [rax+24], 0
+	032 JumpIfLessOrEqual {61}
+	033 Move rcx, [rax+32]
+	034 Move stack:0x30, 0
+	035 Compare rcx, 0
+	036 JumpIfEqual {59}
+	037 Move rdx, 46
+	038 Move r9, 0
+	039 Move r8, 0
+	040 Call String.Split, rcx, rdx, r8
+	041 Compare rax, 0
+	042 JumpIfEqual {59}
+	043 LoadAddress rcx, [rbx+1]
+	044 Compare [rax+24], rcx
+	045 JumpIfLess {52}
+	046 Compare rbx, [rax+24]
+	047 JumpIfGreaterOrEqual {61}
+	048 Move rcx, [rax+32+rbx*8]
+	049 LoadAddress rdx, stack:0x30
+	050 Move r8, 0
+	051 Call Int32.TryParse, rcx, rdx, r8
+	052 Move rax, stack:0x30
+	053 Move rbx, stack:0x38
+	054 Move rsi, stack:0x40
+	055 ShiftStack 32
+	056 Move rdi, stack:0x0
+	057 ShiftStack 8
+	058 Return rax
+	059 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	060 Interrupt 
+	061 Call 0x1801E2C90, rcx, rdx, r8, r9
+

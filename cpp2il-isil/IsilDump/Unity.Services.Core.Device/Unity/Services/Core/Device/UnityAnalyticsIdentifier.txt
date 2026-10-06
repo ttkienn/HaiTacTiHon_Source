@@ -1,0 +1,86 @@
+Type: Unity.Services.Core.Device.UnityAnalyticsIdentifier
+
+Method: System.String get_UserId()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F20C67h],0
+	jne short 00000001815E2ED0h
+	lea rcx,[181E02AD0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20C67h],1
+	mov rcx,[181E02AD0h]
+	xor edx,edx
+	add rsp,28h
+	jmp near ptr 000000018162D660h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F20C67], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E02AD0]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F20C67], 1
+	007 Move rcx, "unity.cloud_userid"
+	008 Move rdx, 0
+	009 ShiftStack 40
+	010 Call PlayerPrefs.GetString, rcx, rdx
+	011 Return rax
+
+Method: System.Void set_UserId(System.String value)
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	mov rbx,rdx
+	cmp byte ptr [181F20C68h],0
+	jne short 00000001815E2F15h
+	lea rcx,[181E02AD0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20C68h],1
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,[181E02AD0h]
+	call 000000018162D820h
+	xor ecx,ecx
+	call 000000018162D760h
+	nop
+	jmp short 00000001815E2F31h
+	add rsp,30h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move rbx, rdx
+	005 Compare [0x181F20C68], 0
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x181E02AD0]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x181F20C68], 1
+	010 Move r8, 0
+	011 Move rdx, rbx
+	012 Move rcx, "unity.cloud_userid"
+	013 Call PlayerPrefs.SetString, rcx, rdx, r8
+	014 Move rcx, 0
+	015 Call PlayerPrefs.Save, rcx
+	016 Nop 
+	017 Goto {18}
+	018 ShiftStack 48
+	019 Move rbx, stack:0x0
+	020 ShiftStack 8
+	021 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+

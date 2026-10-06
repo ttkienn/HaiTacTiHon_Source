@@ -1,0 +1,273 @@
+Type: System.Reflection.ConstructorInfo
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+
+Method: System.Reflection.MemberTypes get_MemberType()
+
+Disassembly:
+	mov eax,1
+	ret
+
+ISIL:
+	001 Move rax, 1
+	002 Return rax
+
+Method: System.Object Invoke(System.Object[] parameters)
+
+Disassembly:
+	sub rsp,38h
+	mov rax,[rcx]
+	mov r9,rdx
+	xor r8d,r8d
+	mov edx,200h
+	mov r10,[rax+3C8h]
+	mov rax,[rax+3D0h]
+	mov [rsp+28h],rax
+	mov qword ptr [rsp+20h],0
+	call r10
+	add rsp,38h
+	ret
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rax, [rcx]
+	003 Move r9, rdx
+	004 Move r8, 0
+	005 Move rdx, 512
+	006 Move r10, [rax+968]
+	007 Move rax, [rax+976]
+	008 Move stack:0x28, rax
+	009 Move stack:0x20, 0
+	010 Call r10
+	011 ShiftStack 56
+	012 Return rax
+
+Method: System.Object Invoke(System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture)
+
+Disassembly:
+	
+
+ISIL:
+No ISIL was generated
+Method: System.Boolean Equals(System.Object obj)
+
+Disassembly:
+	xor r8d,r8d
+	jmp near ptr 0000000180772240h
+
+ISIL:
+	001 Move r8, 0
+	002 Call 0x180772240, rcx, rdx, r8
+	003 Return rax
+
+Method: System.Int32 GetHashCode()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 0000000180F7D4B0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x180F7D4B0, rcx, rdx
+	003 Return rax
+
+Method: System.Boolean op_Equality(System.Reflection.ConstructorInfo left, System.Reflection.ConstructorInfo right)
+
+Disassembly:
+	cmp rcx,rdx
+	je short 0000000180E36516h
+	test rcx,rcx
+	je short 0000000180E36513h
+	test rdx,rdx
+	je short 0000000180E36513h
+	mov r8,[rcx]
+	mov rax,[r8+138h]
+	mov r8,[r8+140h]
+	jmp rax
+	xor al,al
+	ret
+	mov al,1
+	ret
+
+ISIL:
+	001 Compare rcx, rdx
+	002 JumpIfEqual {13}
+	003 Compare rcx, 0
+	004 JumpIfEqual {11}
+	005 Compare rdx, 0
+	006 JumpIfEqual {11}
+	007 Move r8, [rcx]
+	008 Move rax, [r8+312]
+	009 Move r8, [r8+320]
+	010 CallNoReturn rax
+	011 Move rax, 0
+	012 Return rax
+	013 Move rax, 1
+	014 Return rax
+
+Method: System.Boolean op_Inequality(System.Reflection.ConstructorInfo left, System.Reflection.ConstructorInfo right)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1CB58h],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 0000000180E3654Ch
+	lea rcx,[181E08348h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1CB58h],1
+	mov rcx,[181E08348h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180E36561h
+	call 0000000180153C50h
+	cmp rbx,rdi
+	je short 0000000180E365A6h
+	test rbx,rbx
+	je short 0000000180E36599h
+	test rdi,rdi
+	je short 0000000180E36599h
+	mov r8,[rbx]
+	mov rdx,rdi
+	mov rcx,rbx
+	mov rax,[r8+138h]
+	mov r8,[r8+140h]
+	call rax
+	test al,al
+	sete al
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	mov al,1
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	mov rbx,[rsp+30h]
+	mov al,0
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1CB58], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E08348]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F1CB58], 1
+	012 Move rcx, typeof(System.Reflection.ConstructorInfo)
+	013 Compare [rcx+224], 0
+	014 JumpIfNotEqual {16}
+	015 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	016 Compare rbx, rdi
+	017 JumpIfEqual {41}
+	018 Compare rbx, 0
+	019 JumpIfEqual {35}
+	020 Compare rdi, 0
+	021 JumpIfEqual {35}
+	022 Move r8, [rbx]
+	023 Move rdx, rdi
+	024 Move rcx, rbx
+	025 Move rax, [r8+312]
+	026 Move r8, [r8+320]
+	027 Call rax
+	028 Compare rax, 0
+	029 NotImplemented "sete al"
+	030 Move rbx, stack:0x30
+	031 ShiftStack 32
+	032 Move rdi, stack:0x0
+	033 ShiftStack 8
+	034 Return rax
+	035 Move rax, 1
+	036 Move rbx, stack:0x30
+	037 ShiftStack 32
+	038 Move rdi, stack:0x0
+	039 ShiftStack 8
+	040 Return rax
+	041 Move rbx, stack:0x30
+	042 Move rax, 0
+	043 ShiftStack 32
+	044 Move rdi, stack:0x0
+	045 ShiftStack 8
+	046 Return rax
+
+Method: System.Void .cctor()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1CB59h],0
+	jne short 0000000180E36478h
+	lea rcx,[181E08348h]
+	call 00000001801E2A80h
+	lea rcx,[181E28DF8h]
+	call 00000001801E2A80h
+	lea rcx,[181E28CD0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1CB59h],1
+	mov rax,[181E08348h]
+	mov rcx,[rax+0B8h]
+	mov rax,[181E28DF8h]
+	mov [rcx],rax
+	mov rcx,[181E08348h]
+	mov rdx,[181E28DF8h]
+	mov rcx,[rcx+0B8h]
+	call 00000001801E1E30h
+	mov rax,[181E08348h]
+	mov rcx,[rax+0B8h]
+	mov rax,[181E28CD0h]
+	mov [rcx+8],rax
+	mov rax,[181E08348h]
+	mov rdx,[181E28CD0h]
+	mov rcx,[rax+0B8h]
+	add rcx,8
+	add rsp,28h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1CB59], 0
+	003 JumpIfNotEqual {11}
+	004 LoadAddress rcx, [0x181E08348]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 LoadAddress rcx, [0x181E28DF8]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 LoadAddress rcx, [0x181E28CD0]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x181F1CB59], 1
+	011 Move rax, typeof(System.Reflection.ConstructorInfo)
+	012 Move rcx, [rax+184]
+	013 Move rax, ".ctor"
+	014 Move [rcx], rax
+	015 Move rcx, typeof(System.Reflection.ConstructorInfo)
+	016 Move rdx, ".ctor"
+	017 Move rcx, [rcx+184]
+	018 Call 0x1801E1E30, rcx, rdx, r8, r9
+	019 Move rax, typeof(System.Reflection.ConstructorInfo)
+	020 Move rcx, [rax+184]
+	021 Move rax, ".cctor"
+	022 Move [rcx+8], rax
+	023 Move rax, typeof(System.Reflection.ConstructorInfo)
+	024 Move rdx, ".cctor"
+	025 Move rcx, [rax+184]
+	026 Add rcx, rcx, 8
+	027 ShiftStack 40
+	028 Call 0x1801E1E30, rcx, rdx, r8, r9
+	029 Return 
+

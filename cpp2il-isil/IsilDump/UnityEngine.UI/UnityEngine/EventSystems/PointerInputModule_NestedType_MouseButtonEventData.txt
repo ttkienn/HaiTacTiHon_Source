@@ -1,0 +1,53 @@
+Type: UnityEngine.EventSystems.PointerInputModule+MouseButtonEventData
+
+Method: System.Boolean PressedThisFrame()
+
+Disassembly:
+	cmp dword ptr [rcx+10h],0
+	jne short 000000018187EA99h
+	mov al,1
+	ret
+	cmp dword ptr [rcx+10h],2
+	sete al
+	ret
+
+ISIL:
+	001 Compare [rcx+16], 0
+	002 JumpIfNotEqual {5}
+	003 Move rax, 1
+	004 Return rax
+	005 Compare [rcx+16], 2
+	006 NotImplemented "sete al"
+	007 Return rax
+
+Method: System.Boolean ReleasedThisFrame()
+
+Disassembly:
+	cmp dword ptr [rcx+10h],1
+	jne short 000000018187EAB9h
+	mov al,1
+	ret
+	cmp dword ptr [rcx+10h],2
+	sete al
+	ret
+
+ISIL:
+	001 Compare [rcx+16], 1
+	002 JumpIfNotEqual {5}
+	003 Move rax, 1
+	004 Return rax
+	005 Compare [rcx+16], 2
+	006 NotImplemented "sete al"
+	007 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+

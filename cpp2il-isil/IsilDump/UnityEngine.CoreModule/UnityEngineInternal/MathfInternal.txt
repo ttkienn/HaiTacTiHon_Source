@@ -1,0 +1,98 @@
+Type: UnityEngineInternal.MathfInternal
+
+Method: System.Void .cctor()
+
+Disassembly:
+	sub rsp,48h
+	cmp byte ptr [181F21102h],0
+	movaps [rsp+30h],xmm6
+	movaps [rsp+20h],xmm7
+	jne short 0000000181610E1Ah
+	lea rcx,[181E2B2E0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F21102h],1
+	call 00000001801E2C10h
+	mov rax,[181E2B2E0h]
+	mov rcx,[rax+0B8h]
+	mov dword ptr [rcx],800000h
+	call 00000001801E2C10h
+	mov rax,[181E2B2E0h]
+	mov rcx,[rax+0B8h]
+	mov dword ptr [rcx+4],1
+	mov rax,[181E2B2E0h]
+	mov rcx,[rax+0B8h]
+	movss xmm7,dword ptr [rcx+4]
+	call 00000001801E2C10h
+	mov rax,[181E2B2E0h]
+	xor r9d,r9d
+	xorps xmm2,xmm2
+	movaps xmm1,xmm7
+	xorps xmm6,xmm6
+	mov rcx,[rax+0B8h]
+	add rcx,4
+	call 0000000180FAD7F0h
+	ucomiss xmm0,xmm6
+	jp short 0000000181610EB0h
+	jne short 0000000181610EB0h
+	mov rax,[181E2B2E0h]
+	mov rcx,[rax+0B8h]
+	mov byte ptr [rcx+8],1
+	movaps xmm6,[rsp+30h]
+	movaps xmm7,[rsp+20h]
+	add rsp,48h
+	ret
+	mov rax,[181E2B2E0h]
+	movaps xmm6,[rsp+30h]
+	movaps xmm7,[rsp+20h]
+	mov rcx,[rax+0B8h]
+	mov byte ptr [rcx+8],0
+	add rsp,48h
+	ret
+
+ISIL:
+	001 ShiftStack -72
+	002 Compare [0x181F21102], 0
+	003 Move stack:0x30, xmm6
+	004 Move stack:0x20, xmm7
+	005 JumpIfNotEqual {9}
+	006 LoadAddress rcx, [0x181E2B2E0]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 Move [0x181F21102], 1
+	009 Call 0x1801E2C10, rcx, rdx, r8, r9
+	010 Move rax, typeof(UnityEngineInternal.MathfInternal)
+	011 Move rcx, [rax+184]
+	012 Move [rcx], 0x800000
+	013 Call 0x1801E2C10, rcx, rdx, r8, r9
+	014 Move rax, typeof(UnityEngineInternal.MathfInternal)
+	015 Move rcx, [rax+184]
+	016 Move [rcx+4], 1
+	017 Move rax, typeof(UnityEngineInternal.MathfInternal)
+	018 Move rcx, [rax+184]
+	019 Move xmm7, [rcx+4]
+	020 Call 0x1801E2C10, rcx, rdx, r8, r9
+	021 Move rax, typeof(UnityEngineInternal.MathfInternal)
+	022 Move r9, 0
+	023 Move xmm2, 0
+	024 Move xmm1, xmm7
+	025 Move xmm6, 0
+	026 Move rcx, [rax+184]
+	027 Add rcx, rcx, 4
+	028 Call Interlocked.CompareExchange, rcx, xmm1, xmm2, r9
+	029 Compare xmm0, xmm6
+	030 NotImplemented "jp short 0000000181610EB0h"
+	031 JumpIfNotEqual {39}
+	032 Move rax, typeof(UnityEngineInternal.MathfInternal)
+	033 Move rcx, [rax+184]
+	034 Move [rcx+8], 1
+	035 Move xmm6, stack:0x30
+	036 Move xmm7, stack:0x20
+	037 ShiftStack 72
+	038 Return 
+	039 Move rax, typeof(UnityEngineInternal.MathfInternal)
+	040 Move xmm6, stack:0x30
+	041 Move xmm7, stack:0x20
+	042 Move rcx, [rax+184]
+	043 Move [rcx+8], 0
+	044 ShiftStack 72
+	045 Return 
+

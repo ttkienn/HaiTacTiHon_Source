@@ -1,0 +1,210 @@
+Type: UnityEngine.Pool.PoolManager
+
+Method: System.Void Register(UnityEngine.Pool.IPool pool)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F220F0h],0
+	mov rsi,rcx
+	jne short 000000018162D992h
+	lea rcx,[181E29C88h]
+	call 00000001801E2A80h
+	lea rcx,[181E34CC8h]
+	call 00000001801E2A80h
+	lea rcx,[181E29A58h]
+	call 00000001801E2A80h
+	lea rcx,[181DF4608h]
+	call 00000001801E2A80h
+	mov byte ptr [181F220F0h],1
+	mov rax,[181E34CC8h]
+	cmp dword ptr [rax+0E0h],0
+	jne short 000000018162D9B1h
+	mov rcx,rax
+	call 0000000180153C50h
+	mov rax,[181E34CC8h]
+	mov rax,[rax+0B8h]
+	mov rcx,[181DF4608h]
+	mov rbx,[rax]
+	call 0000000180197840h
+	mov r8,[181E29A58h]
+	mov rdx,rsi
+	mov rcx,rax
+	mov rdi,rax
+	call 0000000180CB8A00h
+	test rbx,rbx
+	je short 000000018162DA58h
+	mov rax,[181E29C88h]
+	inc dword ptr [rbx+1Ch]
+	mov rdx,[rbx+10h]
+	movsxd rcx,dword ptr [rbx+18h]
+	test rdx,rdx
+	je short 000000018162DA58h
+	cmp ecx,[rdx+18h]
+	jb short 000000018162DA26h
+	mov rax,[rax+20h]
+	mov rdx,rdi
+	mov rcx,rbx
+	mov r8,[rax+0C0h]
+	mov r8,[r8+70h]
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180A16980h
+	lea eax,[rcx+1]
+	mov [rbx+18h],eax
+	mov rax,rcx
+	cmp ecx,[rdx+18h]
+	jae short 000000018162DA5Eh
+	mov [rdx+rcx*8+20h],rdi
+	add rax,4
+	lea rcx,[rdx+rax*8]
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x181F220F0], 0
+	007 Move rsi, rcx
+	008 JumpIfNotEqual {18}
+	009 LoadAddress rcx, [0x181E29C88]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x181E34CC8]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x181E29A58]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x181DF4608]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 Move [0x181F220F0], 1
+	018 Move rax, typeof(UnityEngine.Pool.PoolManager)
+	019 Compare [rax+224], 0
+	020 JumpIfNotEqual {24}
+	021 Move rcx, rax
+	022 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	023 Move rax, typeof(UnityEngine.Pool.PoolManager)
+	024 Move rax, [rax+184]
+	025 Move rcx, typeof(System.WeakReference`1<IPool>)
+	026 Move rbx, [rax]
+	027 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	028 Move r8, [0x181E29A58]
+	029 Move rdx, rsi
+	030 Move rcx, rax
+	031 Move rdi, rax
+	032 Call 0x180CB8A00, rcx, rdx
+	033 Compare rbx, 0
+	034 JumpIfEqual {71}
+	035 Move rax, [0x181E29C88]
+	036 Add [rbx+28], [rbx+28], 1
+	037 Move rdx, [rbx+16]
+	038 Move rcx, [rbx+24]
+	039 Compare rdx, 0
+	040 JumpIfEqual {71}
+	041 Compare rcx, [rdx+24]
+	042 JumpIfLess {55}
+	043 Move rax, [rax+32]
+	044 Move rdx, rdi
+	045 Move rcx, rbx
+	046 Move r8, [rax+192]
+	047 Move r8, [r8+112]
+	048 Move rbx, stack:0x30
+	049 Move rsi, stack:0x38
+	050 ShiftStack 32
+	051 Move rdi, stack:0x0
+	052 ShiftStack 8
+	053 Call List`1<Object>.AddWithResize, rcx, rdx
+	054 Return 
+	055 LoadAddress rax, [rcx+1]
+	056 Move [rbx+24], rax
+	057 Move rax, rcx
+	058 Compare rcx, [rdx+24]
+	059 JumpIfGreaterOrEqual {73}
+	060 Move [rdx+32+rcx*8], rdi
+	061 Add rax, rax, 4
+	062 LoadAddress rcx, [rdx+rax*8]
+	063 Move rdx, rdi
+	064 Move rbx, stack:0x30
+	065 Move rsi, stack:0x38
+	066 ShiftStack 32
+	067 Move rdi, stack:0x0
+	068 ShiftStack 8
+	069 Call 0x1801E1E30, rcx, rdx, r8, r9
+	070 Return 
+	071 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	072 Interrupt 
+	073 Call 0x1801E2C90, rcx, rdx, r8, r9
+
+Method: System.Void .cctor()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [181F220F1h],0
+	jne short 000000018162DAAAh
+	lea rcx,[181E29C20h]
+	call 00000001801E2A80h
+	lea rcx,[181E2E3F0h]
+	call 00000001801E2A80h
+	lea rcx,[181E34CC8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F220F1h],1
+	mov rcx,[181E2E3F0h]
+	call 0000000180197840h
+	mov rdx,[181E29C20h]
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001809DA440h
+	mov rcx,[181E34CC8h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rbx
+	mov rdx,rbx
+	mov rcx,[181E34CC8h]
+	mov rcx,[rcx+0B8h]
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x181F220F1], 0
+	005 JumpIfNotEqual {13}
+	006 LoadAddress rcx, [0x181E29C20]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 LoadAddress rcx, [0x181E2E3F0]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x181E34CC8]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x181F220F1], 1
+	013 Move rcx, typeof(System.Collections.Generic.List`1<WeakReference`1<IPool>>)
+	014 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	015 Move rdx, [0x181E29C20]
+	016 Move rcx, rax
+	017 Move rbx, rax
+	018 Call 0x1809DA440, rcx, rdx
+	019 Move rcx, typeof(UnityEngine.Pool.PoolManager)
+	020 Move rdx, [rcx+184]
+	021 Move [rdx], rbx
+	022 Move rdx, rbx
+	023 Move rcx, typeof(UnityEngine.Pool.PoolManager)
+	024 Move rcx, [rcx+184]
+	025 ShiftStack 32
+	026 Move rbx, stack:0x0
+	027 ShiftStack 8
+	028 Call 0x1801E1E30, rcx, rdx, r8, r9
+	029 Return 
+

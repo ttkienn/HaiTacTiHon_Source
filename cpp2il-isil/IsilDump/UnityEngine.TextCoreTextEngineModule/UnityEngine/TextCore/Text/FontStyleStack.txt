@@ -1,0 +1,348 @@
+Type: UnityEngine.TextCore.Text.FontStyleStack
+
+Method: System.Void Clear()
+
+Disassembly:
+	mov qword ptr [rcx],0
+	mov word ptr [rcx+8],0
+	ret
+
+ISIL:
+	001 Move [rcx], 0
+	002 Move [rcx+8], 0
+	003 Return 
+
+Method: System.Byte Add(UnityEngine.TextCore.Text.FontStyles style)
+
+Disassembly:
+	cmp edx,10h
+	jle short 00000001816B0772h
+	cmp edx,80h
+	jle short 00000001816B0751h
+	cmp edx,100h
+	jne short 00000001816B073Fh
+	movzx eax,byte ptr [rcx+6]
+	inc al
+	mov [rcx+6],al
+	ret
+	cmp edx,200h
+	jne short 00000001816B07B5h
+	movzx eax,byte ptr [rcx+4]
+	inc al
+	mov [rcx+4],al
+	ret
+	cmp edx,40h
+	jne short 00000001816B0760h
+	movzx eax,byte ptr [rcx+3]
+	inc al
+	mov [rcx+3],al
+	ret
+	cmp edx,80h
+	jne short 00000001816B07B5h
+	movzx eax,byte ptr [rcx+5]
+	inc al
+	mov [rcx+5],al
+	ret
+	lea r8d,[rdx-1]
+	test r8d,r8d
+	je short 00000001816B07C2h
+	sub r8d,1
+	je short 00000001816B07B8h
+	sub r8d,1
+	je short 00000001816B07B5h
+	cmp r8d,1
+	je short 00000001816B07ABh
+	cmp edx,8
+	jne short 00000001816B079Ch
+	movzx eax,byte ptr [rcx+8]
+	inc al
+	mov [rcx+8],al
+	ret
+	cmp edx,10h
+	jne short 00000001816B07B5h
+	movzx eax,byte ptr [rcx+7]
+	inc al
+	mov [rcx+7],al
+	ret
+	movzx eax,byte ptr [rcx+2]
+	inc al
+	mov [rcx+2],al
+	ret
+	xor al,al
+	ret
+	movzx eax,byte ptr [rcx+1]
+	inc al
+	mov [rcx+1],al
+	ret
+	inc byte ptr [rcx]
+	movzx eax,byte ptr [rcx]
+	ret
+
+ISIL:
+	001 Compare rdx, 16
+	002 JumpIfLessOrEqual {29}
+	003 Compare rdx, 128
+	004 JumpIfLessOrEqual {17}
+	005 Compare rdx, 256
+	006 JumpIfNotEqual {11}
+	007 Move rax, [rcx+6]
+	008 Add rax, rax, 1
+	009 Move [rcx+6], rax
+	010 Return rax
+	011 Compare rdx, 512
+	012 JumpIfNotEqual {54}
+	013 Move rax, [rcx+4]
+	014 Add rax, rax, 1
+	015 Move [rcx+4], rax
+	016 Return rax
+	017 Compare rdx, 64
+	018 JumpIfNotEqual {23}
+	019 Move rax, [rcx+3]
+	020 Add rax, rax, 1
+	021 Move [rcx+3], rax
+	022 Return rax
+	023 Compare rdx, 128
+	024 JumpIfNotEqual {54}
+	025 Move rax, [rcx+5]
+	026 Add rax, rax, 1
+	027 Move [rcx+5], rax
+	028 Return rax
+	029 LoadAddress r8, [rdx-1]
+	030 Compare r8, 0
+	031 JumpIfEqual {60}
+	032 Subtract r8, r8, 1
+	033 JumpIfEqual {56}
+	034 Subtract r8, r8, 1
+	035 JumpIfEqual {54}
+	036 Compare r8, 1
+	037 JumpIfEqual {50}
+	038 Compare rdx, 8
+	039 JumpIfNotEqual {44}
+	040 Move rax, [rcx+8]
+	041 Add rax, rax, 1
+	042 Move [rcx+8], rax
+	043 Return rax
+	044 Compare rdx, 16
+	045 JumpIfNotEqual {54}
+	046 Move rax, [rcx+7]
+	047 Add rax, rax, 1
+	048 Move [rcx+7], rax
+	049 Return rax
+	050 Move rax, [rcx+2]
+	051 Add rax, rax, 1
+	052 Move [rcx+2], rax
+	053 Return rax
+	054 Move rax, 0
+	055 Return rax
+	056 Move rax, [rcx+1]
+	057 Add rax, rax, 1
+	058 Move [rcx+1], rax
+	059 Return rax
+	060 Add [rcx], [rcx], 1
+	061 Move rax, [rcx]
+	062 Return rax
+
+Method: System.Byte Remove(UnityEngine.TextCore.Text.FontStyles style)
+
+Disassembly:
+	cmp edx,10h
+	jle near ptr 00000001816B0872h
+	cmp edx,80h
+	jle short 00000001816B0833h
+	cmp edx,100h
+	jne short 00000001816B0810h
+	cmp byte ptr [rcx+6],1
+	ja short 00000001816B0808h
+	mov byte ptr [rcx+6],0
+	movzx eax,byte ptr [rcx+6]
+	ret
+	dec byte ptr [rcx+6]
+	movzx eax,byte ptr [rcx+6]
+	ret
+	cmp edx,200h
+	jne near ptr 00000001816B08DCh
+	cmp byte ptr [rcx+4],1
+	ja short 00000001816B082Bh
+	mov byte ptr [rcx+4],0
+	movzx eax,byte ptr [rcx+4]
+	ret
+	dec byte ptr [rcx+4]
+	movzx eax,byte ptr [rcx+4]
+	ret
+	cmp edx,40h
+	jne short 00000001816B084Fh
+	cmp byte ptr [rcx+3],1
+	ja short 00000001816B0847h
+	mov byte ptr [rcx+3],0
+	movzx eax,byte ptr [rcx+3]
+	ret
+	dec byte ptr [rcx+3]
+	movzx eax,byte ptr [rcx+3]
+	ret
+	cmp edx,80h
+	jne near ptr 00000001816B08DCh
+	cmp byte ptr [rcx+5],1
+	ja short 00000001816B086Ah
+	mov byte ptr [rcx+5],0
+	movzx eax,byte ptr [rcx+5]
+	ret
+	dec byte ptr [rcx+5]
+	movzx eax,byte ptr [rcx+5]
+	ret
+	lea r8d,[rdx-1]
+	test r8d,r8d
+	je short 00000001816B08F6h
+	sub r8d,1
+	je short 00000001816B08DFh
+	sub r8d,1
+	je short 00000001816B08DCh
+	cmp r8d,1
+	je short 00000001816B08C5h
+	cmp edx,8
+	jne short 00000001816B08A9h
+	cmp byte ptr [rcx+8],1
+	ja short 00000001816B08A1h
+	mov byte ptr [rcx+8],0
+	movzx eax,byte ptr [rcx+8]
+	ret
+	dec byte ptr [rcx+8]
+	movzx eax,byte ptr [rcx+8]
+	ret
+	cmp edx,10h
+	jne short 00000001816B08DCh
+	cmp byte ptr [rcx+7],1
+	ja short 00000001816B08BDh
+	mov byte ptr [rcx+7],0
+	movzx eax,byte ptr [rcx+7]
+	ret
+	dec byte ptr [rcx+7]
+	movzx eax,byte ptr [rcx+7]
+	ret
+	cmp byte ptr [rcx+2],1
+	ja short 00000001816B08D4h
+	mov byte ptr [rcx+2],0
+	movzx eax,byte ptr [rcx+2]
+	ret
+	dec byte ptr [rcx+2]
+	movzx eax,byte ptr [rcx+2]
+	ret
+	xor al,al
+	ret
+	cmp byte ptr [rcx+1],1
+	ja short 00000001816B08EEh
+	mov byte ptr [rcx+1],0
+	movzx eax,byte ptr [rcx+1]
+	ret
+	dec byte ptr [rcx+1]
+	movzx eax,byte ptr [rcx+1]
+	ret
+	cmp byte ptr [rcx],1
+	ja short 00000001816B0902h
+	mov byte ptr [rcx],0
+	movzx eax,byte ptr [rcx]
+	ret
+	dec byte ptr [rcx]
+	movzx eax,byte ptr [rcx]
+	ret
+
+ISIL:
+	001 Compare rdx, 16
+	002 JumpIfLessOrEqual {45}
+	003 Compare rdx, 128
+	004 JumpIfLessOrEqual {25}
+	005 Compare rdx, 256
+	006 JumpIfNotEqual {15}
+	007 Compare [rcx+6], 1
+	008 JumpIfGreater {12}
+	009 Move [rcx+6], 0
+	010 Move rax, [rcx+6]
+	011 Return rax
+	012 Subtract [rcx+6], [rcx+6], 1
+	013 Move rax, [rcx+6]
+	014 Return rax
+	015 Compare rdx, 512
+	016 JumpIfNotEqual {82}
+	017 Compare [rcx+4], 1
+	018 JumpIfGreater {22}
+	019 Move [rcx+4], 0
+	020 Move rax, [rcx+4]
+	021 Return rax
+	022 Subtract [rcx+4], [rcx+4], 1
+	023 Move rax, [rcx+4]
+	024 Return rax
+	025 Compare rdx, 64
+	026 JumpIfNotEqual {35}
+	027 Compare [rcx+3], 1
+	028 JumpIfGreater {32}
+	029 Move [rcx+3], 0
+	030 Move rax, [rcx+3]
+	031 Return rax
+	032 Subtract [rcx+3], [rcx+3], 1
+	033 Move rax, [rcx+3]
+	034 Return rax
+	035 Compare rdx, 128
+	036 JumpIfNotEqual {82}
+	037 Compare [rcx+5], 1
+	038 JumpIfGreater {42}
+	039 Move [rcx+5], 0
+	040 Move rax, [rcx+5]
+	041 Return rax
+	042 Subtract [rcx+5], [rcx+5], 1
+	043 Move rax, [rcx+5]
+	044 Return rax
+	045 LoadAddress r8, [rdx-1]
+	046 Compare r8, 0
+	047 JumpIfEqual {92}
+	048 Subtract r8, r8, 1
+	049 JumpIfEqual {84}
+	050 Subtract r8, r8, 1
+	051 JumpIfEqual {82}
+	052 Compare r8, 1
+	053 JumpIfEqual {74}
+	054 Compare rdx, 8
+	055 JumpIfNotEqual {64}
+	056 Compare [rcx+8], 1
+	057 JumpIfGreater {61}
+	058 Move [rcx+8], 0
+	059 Move rax, [rcx+8]
+	060 Return rax
+	061 Subtract [rcx+8], [rcx+8], 1
+	062 Move rax, [rcx+8]
+	063 Return rax
+	064 Compare rdx, 16
+	065 JumpIfNotEqual {82}
+	066 Compare [rcx+7], 1
+	067 JumpIfGreater {71}
+	068 Move [rcx+7], 0
+	069 Move rax, [rcx+7]
+	070 Return rax
+	071 Subtract [rcx+7], [rcx+7], 1
+	072 Move rax, [rcx+7]
+	073 Return rax
+	074 Compare [rcx+2], 1
+	075 JumpIfGreater {79}
+	076 Move [rcx+2], 0
+	077 Move rax, [rcx+2]
+	078 Return rax
+	079 Subtract [rcx+2], [rcx+2], 1
+	080 Move rax, [rcx+2]
+	081 Return rax
+	082 Move rax, 0
+	083 Return rax
+	084 Compare [rcx+1], 1
+	085 JumpIfGreater {89}
+	086 Move [rcx+1], 0
+	087 Move rax, [rcx+1]
+	088 Return rax
+	089 Subtract [rcx+1], [rcx+1], 1
+	090 Move rax, [rcx+1]
+	091 Return rax
+	092 Compare [rcx], 1
+	093 JumpIfGreater {97}
+	094 Move [rcx], 0
+	095 Move rax, [rcx]
+	096 Return rax
+	097 Subtract [rcx], [rcx], 1
+	098 Move rax, [rcx]
+	099 Return rax
+

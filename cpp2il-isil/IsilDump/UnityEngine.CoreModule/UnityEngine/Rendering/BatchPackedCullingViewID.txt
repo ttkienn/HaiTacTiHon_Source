@@ -1,0 +1,114 @@
+Type: UnityEngine.Rendering.BatchPackedCullingViewID
+
+Method: System.Int32 GetHashCode()
+
+Disassembly:
+	xchg ax,ax
+	xor edx,edx
+	jmp near ptr 0000000180F4C1D0h
+
+ISIL:
+	001 Nop 
+	002 Move rdx, 0
+	003 Call UInt64.GetHashCode, rcx, rdx
+	004 Return rax
+
+Method: System.Boolean Equals(UnityEngine.Rendering.BatchPackedCullingViewID other)
+
+Disassembly:
+	xchg ax,ax
+	cmp [rcx],rdx
+	sete al
+	ret
+
+ISIL:
+	001 Nop 
+	002 Compare [rcx], rdx
+	003 NotImplemented "sete al"
+	004 Return rax
+
+Method: System.Boolean Equals(System.Object obj)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F22131h],0
+	mov rbx,rdx
+	mov rdi,rcx
+	jne short 000000018163B7BCh
+	lea rcx,[181E013E8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F22131h],1
+	test rbx,rbx
+	je short 000000018163B7FFh
+	mov rdx,[181E013E8h]
+	xor eax,eax
+	cmp [rbx],rdx
+	cmove rax,rbx
+	test rax,rax
+	je short 000000018163B7FFh
+	mov rcx,[rbx]
+	mov rax,[rdx+40h]
+	cmp [rcx+40h],rax
+	mov rcx,rbx
+	jne short 000000018163B80Ch
+	call 0000000180153B70h
+	mov rax,[rax]
+	cmp [rdi],rax
+	sete al
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	xor al,al
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E1E70h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F22131], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E013E8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F22131], 1
+	012 Compare rbx, 0
+	013 JumpIfEqual {36}
+	014 Move rdx, typeof(UnityEngine.Rendering.BatchPackedCullingViewID)
+	015 Move rax, 0
+	016 Compare [rbx], rdx
+	017 JumpIfNotEqual {19}
+	018 Move rax, rbx
+	019 Nop 
+	020 Compare rax, 0
+	021 JumpIfEqual {36}
+	022 Move rcx, [rbx]
+	023 Move rax, [rdx+64]
+	024 Compare [rcx+64], rax
+	025 Move rcx, rbx
+	026 JumpIfNotEqual {42}
+	027 Call "il2cpp_object_unbox", rcx, rdx, r8, r9
+	028 Move rax, [rax]
+	029 Compare [rdi], rax
+	030 NotImplemented "sete al"
+	031 Move rbx, stack:0x30
+	032 ShiftStack 32
+	033 Move rdi, stack:0x0
+	034 ShiftStack 8
+	035 Return rax
+	036 Move rax, 0
+	037 Move rbx, stack:0x30
+	038 ShiftStack 32
+	039 Move rdi, stack:0x0
+	040 ShiftStack 8
+	041 Return rax
+	042 Call 0x1801E1E70, rcx, rdx, r8, r9
+

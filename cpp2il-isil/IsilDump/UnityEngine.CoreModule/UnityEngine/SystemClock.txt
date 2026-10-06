@@ -1,0 +1,89 @@
+Type: UnityEngine.SystemClock
+
+Method: System.DateTime get_now()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F21DF8h],0
+	jne short 00000001816325A0h
+	lea rcx,[181E0CD98h]
+	call 00000001801E2A80h
+	mov byte ptr [181F21DF8h],1
+	mov rcx,[181E0CD98h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001816325B5h
+	call 0000000180153C50h
+	xor ecx,ecx
+	add rsp,28h
+	jmp near ptr 0000000180F170A0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F21DF8], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E0CD98]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F21DF8], 1
+	007 Move rcx, typeof(System.DateTime)
+	008 Compare [rcx+224], 0
+	009 JumpIfNotEqual {11}
+	010 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	011 Move rcx, 0
+	012 ShiftStack 40
+	013 Call DateTime.get_Now, rcx
+	014 Return rax
+
+Method: System.Void .cctor()
+
+Disassembly:
+	sub rsp,58h
+	cmp byte ptr [181F21DF9h],0
+	jne short 0000000181632520h
+	lea rcx,[181DFE420h]
+	call 00000001801E2A80h
+	mov byte ptr [181F21DF9h],1
+	xor eax,eax
+	lea rcx,[rsp+68h]
+	mov [rsp+40h],rax
+	mov r9d,1
+	mov dword ptr [rsp+38h],1
+	mov edx,7B2h
+	mov [rsp+30h],eax
+	mov r8d,r9d
+	mov [rsp+28h],eax
+	mov [rsp+20h],eax
+	mov [rsp+68h],rax
+	call 0000000180F16A90h
+	mov rax,[181DFE420h]
+	mov rcx,[rax+0B8h]
+	mov rax,[rsp+68h]
+	mov [rcx],rax
+	add rsp,58h
+	ret
+
+ISIL:
+	001 ShiftStack -88
+	002 Compare [0x181F21DF9], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181DFE420]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F21DF9], 1
+	007 Move rax, 0
+	008 LoadAddress rcx, stack:0x68
+	009 Move stack:0x40, rax
+	010 Move r9, 1
+	011 Move stack:0x38, 1
+	012 Move rdx, 1970
+	013 Move stack:0x30, rax
+	014 Move r8, r9
+	015 Move stack:0x28, rax
+	016 Move stack:0x20, rax
+	017 Move stack:0x68, rax
+	018 Call DateTime..ctor, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18
+	019 Move rax, typeof(UnityEngine.SystemClock)
+	020 Move rcx, [rax+184]
+	021 Move rax, stack:0x68
+	022 Move [rcx], rax
+	023 ShiftStack 88
+	024 Return 
+

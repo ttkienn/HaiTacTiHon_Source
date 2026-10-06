@@ -1,0 +1,105 @@
+Type: Newtonsoft.Json.Schema.JsonSchemaGenerator+TypeSchema
+
+Method: System.Type get_Type()
+
+Disassembly:
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: Newtonsoft.Json.Schema.JsonSchema get_Schema()
+
+Disassembly:
+	mov rax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Void .ctor(System.Type type, Newtonsoft.Json.Schema.JsonSchema schema)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1DD67h],0
+	mov rdi,r8
+	mov rsi,rdx
+	mov rbx,rcx
+	jne short 0000000181069F90h
+	lea rcx,[181DF3368h]
+	call 00000001801E2A80h
+	lea rcx,[181DFED10h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1DD67h],1
+	xor edx,edx
+	mov rcx,rbx
+	call 000000018024B730h
+	mov rdx,[181DFED10h]
+	xor r8d,r8d
+	mov rcx,rsi
+	call 000000018104FBD0h
+	mov rdx,[181DF3368h]
+	xor r8d,r8d
+	mov rcx,rdi
+	call 000000018104FBD0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rsi
+	mov rdx,rsi
+	call 00000001801E1E30h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x181F1DD67], 0
+	007 Move rdi, r8
+	008 Move rsi, rdx
+	009 Move rbx, rcx
+	010 JumpIfNotEqual {16}
+	011 LoadAddress rcx, [0x181DF3368]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x181DFED10]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x181F1DD67], 1
+	016 Move rdx, 0
+	017 Move rcx, rbx
+	018 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	019 Move rdx, "type"
+	020 Move r8, 0
+	021 Move rcx, rsi
+	022 Call ValidationUtils.ArgumentNotNull, rcx, rdx, r8
+	023 Move rdx, "schema"
+	024 Move r8, 0
+	025 Move rcx, rdi
+	026 Call ValidationUtils.ArgumentNotNull, rcx, rdx, r8
+	027 LoadAddress rcx, [rbx+16]
+	028 Move [rbx+16], rsi
+	029 Move rdx, rsi
+	030 Call 0x1801E1E30, rcx, rdx, r8, r9
+	031 LoadAddress rcx, [rbx+24]
+	032 Move [rbx+24], rdi
+	033 Move rdx, rdi
+	034 Move rbx, stack:0x30
+	035 Move rsi, stack:0x38
+	036 ShiftStack 32
+	037 Move rdi, stack:0x0
+	038 ShiftStack 8
+	039 Call 0x1801E1E30, rcx, rdx, r8, r9
+	040 Return 
+

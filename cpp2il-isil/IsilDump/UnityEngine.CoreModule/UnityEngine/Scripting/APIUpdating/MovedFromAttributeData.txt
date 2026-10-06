@@ -1,0 +1,82 @@
+Type: UnityEngine.Scripting.APIUpdating.MovedFromAttributeData
+
+Method: System.Void Set(System.Boolean autoUpdateAPI, System.String sourceNamespace = null, System.String sourceAssembly = null, System.String sourceClassName = null)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	movzx ebp,dl
+	mov rdi,r9
+	mov rdx,[rsp+50h]
+	mov rbx,r8
+	mov [rcx],rdx
+	mov rsi,rcx
+	call 00000001801E1E30h
+	cmp qword ptr [rsi],0
+	lea rcx,[rsi+8]
+	mov rdx,rbx
+	mov [rsi+8],rbx
+	seta al
+	mov [rsi+18h],al
+	call 00000001801E1E30h
+	cmp qword ptr [rsi+8],0
+	lea rcx,[rsi+10h]
+	mov rdx,rdi
+	mov [rsi+10h],rdi
+	seta al
+	mov [rsi+19h],al
+	call 00000001801E1E30h
+	cmp qword ptr [rsi+10h],0
+	mov rbx,[rsp+30h]
+	mov [rsi+1Bh],bpl
+	seta al
+	mov rbp,[rsp+38h]
+	mov [rsi+1Ah],al
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbp, rdx
+	008 Move rdi, r9
+	009 Move rdx, stack:0x50
+	010 Move rbx, r8
+	011 Move [rcx], rdx
+	012 Move rsi, rcx
+	013 Call 0x1801E1E30, rcx, rdx, r8, r9
+	014 Compare [rsi], 0
+	015 LoadAddress rcx, [rsi+8]
+	016 Move rdx, rbx
+	017 Move [rsi+8], rbx
+	018 NotImplemented "seta al"
+	019 Move [rsi+24], rax
+	020 Call 0x1801E1E30, rcx, rdx, r8, r9
+	021 Compare [rsi+8], 0
+	022 LoadAddress rcx, [rsi+16]
+	023 Move rdx, rdi
+	024 Move [rsi+16], rdi
+	025 NotImplemented "seta al"
+	026 Move [rsi+25], rax
+	027 Call 0x1801E1E30, rcx, rdx, r8, r9
+	028 Compare [rsi+16], 0
+	029 Move rbx, stack:0x30
+	030 Move [rsi+27], rbp
+	031 NotImplemented "seta al"
+	032 Move rbp, stack:0x38
+	033 Move [rsi+26], rax
+	034 Move rsi, stack:0x40
+	035 ShiftStack 32
+	036 Move rdi, stack:0x0
+	037 ShiftStack 8
+	038 Return 
+

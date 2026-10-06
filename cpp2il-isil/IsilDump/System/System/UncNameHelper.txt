@@ -1,0 +1,544 @@
+Type: System.UncNameHelper
+
+Method: System.String ParseCanonicalName(System.String str, System.Int32 start, System.Int32 end, ref System.Boolean loopback)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	mov [rsp+18h],rsi
+	push rdi
+	push r14
+	push r15
+	sub rsp,20h
+	cmp byte ptr [181F200F6h],0
+	mov r15,r9
+	mov ebx,r8d
+	mov r14d,edx
+	mov rsi,rcx
+	jne short 00000001814C4D33h
+	lea rcx,[181E09788h]
+	call 00000001801E2A80h
+	lea rcx,[181E26918h]
+	call 00000001801E2A80h
+	lea rcx,[181E27080h]
+	call 00000001801E2A80h
+	mov byte ptr [181F200F6h],1
+	lea edi,[rbx-1]
+	mov [rsp+40h],rbp
+	cmp edi,r14d
+	jl near ptr 00000001814C4DE9h
+	mov ebp,ebx
+	test rsi,rsi
+	je near ptr 00000001814C4E58h
+	nop
+	xor r8d,r8d
+	mov edx,edi
+	mov rcx,rsi
+	call 0000000180D85690h
+	cmp ax,41h
+	jb short 00000001814C4D76h
+	xor r8d,r8d
+	mov edx,edi
+	mov rcx,rsi
+	call 0000000180D85690h
+	cmp ax,5Ah
+	jbe short 00000001814C4D97h
+	xor r8d,r8d
+	mov edx,edi
+	mov rcx,rsi
+	call 0000000180D85690h
+	cmp ax,3Ah
+	mov ebx,edi
+	cmovne ebx,ebp
+	dec edi
+	cmp edi,r14d
+	jl short 00000001814C4DEEh
+	mov ebp,ebx
+	jmp short 00000001814C4D50h
+	mov r8d,ebx
+	xor r9d,r9d
+	sub r8d,r14d
+	mov edx,r14d
+	mov rcx,rsi
+	call 0000000180D84320h
+	mov rcx,[181E09788h]
+	mov rdi,rax
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001814C4DC3h
+	call 0000000180153C50h
+	xor ecx,ecx
+	call 0000000180EAB7B0h
+	test rdi,rdi
+	je near ptr 00000001814C4E58h
+	xor r8d,r8d
+	mov rdx,rax
+	mov rcx,rdi
+	call 0000000180D84E00h
+	mov rdi,rax
+	test rax,rax
+	jne short 00000001814C4E05h
+	test rsi,rsi
+	je short 00000001814C4E58h
+	sub ebx,r14d
+	xor r9d,r9d
+	mov r8d,ebx
+	mov edx,r14d
+	mov rcx,rsi
+	call 0000000180D84320h
+	mov rdi,rax
+	mov rdx,[181E26918h]
+	xor r8d,r8d
+	mov rcx,rdi
+	call 0000000180D7D9D0h
+	test al,al
+	jne short 00000001814C4E31h
+	mov rdx,[181E27080h]
+	xor r8d,r8d
+	mov rcx,rdi
+	call 0000000180D7D9D0h
+	test al,al
+	je short 00000001814C4E3Ch
+	mov byte ptr [r15],1
+	mov rdi,[181E26918h]
+	mov rbp,[rsp+40h]
+	mov rax,rdi
+	mov rbx,[rsp+48h]
+	mov rsi,[rsp+50h]
+	add rsp,20h
+	pop r15
+	pop r14
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 Move stack:0x18, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -8
+	006 Move stack:0x0, r14
+	007 ShiftStack -8
+	008 Move stack:0x0, r15
+	009 ShiftStack -32
+	010 Compare [0x181F200F6], 0
+	011 Move r15, r9
+	012 Move rbx, r8
+	013 Move r14, rdx
+	014 Move rsi, rcx
+	015 JumpIfNotEqual {23}
+	016 LoadAddress rcx, [0x181E09788]
+	017 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	018 LoadAddress rcx, [0x181E26918]
+	019 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	020 LoadAddress rcx, [0x181E27080]
+	021 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	022 Move [0x181F200F6], 1
+	023 LoadAddress rdi, [rbx-1]
+	024 Move stack:0x40, rbp
+	025 Compare rdi, r14
+	026 JumpIfLess {79}
+	027 Move rbp, rbx
+	028 Compare rsi, 0
+	029 JumpIfEqual {114}
+	030 Nop 
+	031 Move r8, 0
+	032 Move rdx, rdi
+	033 Move rcx, rsi
+	034 Call String.get_Chars, rcx, rdx
+	035 Compare rax, 65
+	036 JumpIfLess {43}
+	037 Move r8, 0
+	038 Move rdx, rdi
+	039 Move rcx, rsi
+	040 Call String.get_Chars, rcx, rdx
+	041 Compare rax, 90
+	042 JumpIfLessOrEqual {57}
+	043 Move r8, 0
+	044 Move rdx, rdi
+	045 Move rcx, rsi
+	046 Call String.get_Chars, rcx, rdx
+	047 Compare rax, 58
+	048 Move rbx, rdi
+	049 JumpIfEqual {51}
+	050 Move rbx, rbp
+	051 Nop 
+	052 Subtract rdi, rdi, 1
+	053 Compare rdi, r14
+	054 JumpIfLess {81}
+	055 Move rbp, rbx
+	056 Goto {31}
+	057 Move r8, rbx
+	058 Move r9, 0
+	059 Subtract r8, r8, r14
+	060 Move rdx, r14
+	061 Move rcx, rsi
+	062 Call String.Substring, rcx, rdx, r8
+	063 Move rcx, typeof(System.Globalization.CultureInfo)
+	064 Move rdi, rax
+	065 Compare [rcx+224], 0
+	066 JumpIfNotEqual {68}
+	067 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	068 Move rcx, 0
+	069 Call CultureInfo.get_InvariantCulture, rcx
+	070 Compare rdi, 0
+	071 JumpIfEqual {114}
+	072 Move r8, 0
+	073 Move rdx, rax
+	074 Move rcx, rdi
+	075 Call String.ToLower, rcx, rdx
+	076 Move rdi, rax
+	077 Compare rax, 0
+	078 JumpIfNotEqual {88}
+	079 Compare rsi, 0
+	080 JumpIfEqual {114}
+	081 Subtract rbx, rbx, r14
+	082 Move r9, 0
+	083 Move r8, rbx
+	084 Move rdx, r14
+	085 Move rcx, rsi
+	086 Call String.Substring, rcx, rdx, r8
+	087 Move rdi, rax
+	088 Move rdx, "localhost"
+	089 Move r8, 0
+	090 Move rcx, rdi
+	091 Call 0x180D7D9D0, rcx, rdx, r8
+	092 Compare rax, 0
+	093 JumpIfNotEqual {100}
+	094 Move rdx, "loopback"
+	095 Move r8, 0
+	096 Move rcx, rdi
+	097 Call 0x180D7D9D0, rcx, rdx, r8
+	098 Compare rax, 0
+	099 JumpIfEqual {102}
+	100 Move [r15], 1
+	101 Move rdi, "localhost"
+	102 Move rbp, stack:0x40
+	103 Move rax, rdi
+	104 Move rbx, stack:0x48
+	105 Move rsi, stack:0x50
+	106 ShiftStack 32
+	107 Move r15, stack:0x0
+	108 ShiftStack 8
+	109 Move r14, stack:0x0
+	110 ShiftStack 8
+	111 Move rdi, stack:0x0
+	112 ShiftStack 8
+	113 Return rax
+	114 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Boolean IsValid(System.Char* name, System.UInt16 start, ref System.Int32 returnedEnd, System.Boolean notImplicitFile)
+
+Disassembly:
+	push rbp
+	push r12
+	push r13
+	push r14
+	push r15
+	sub rsp,20h
+	cmp byte ptr [181F200FBh],0
+	movzx r12d,r9b
+	mov r13,r8
+	movzx r15d,dx
+	mov r14,rcx
+	jne short 00000001814C4AE8h
+	lea rcx,[181E05620h]
+	call 00000001801E2A80h
+	mov byte ptr [181F200FBh],1
+	movzx ebp,word ptr [r13]
+	mov [rsp+50h],rbx
+	mov [rsp+58h],rsi
+	mov [rsp+60h],rdi
+	cmp r15w,bp
+	je near ptr 00000001814C4B95h
+	xor sil,sil
+	movzx ebx,r15w
+	cmp r15w,bp
+	jae near ptr 00000001814C4B95h
+	mov rcx,8400000800000000h
+	movzx eax,bx
+	movzx edi,word ptr [r14+rax*2]
+	cmp edi,2Fh
+	je near ptr 00000001814C4BD3h
+	cmp edi,5Ch
+	je near ptr 00000001814C4BD3h
+	test r12b,r12b
+	je short 00000001814C4B4Fh
+	cmp edi,3Fh
+	ja short 00000001814C4B4Fh
+	bt rcx,rdi
+	jb near ptr 00000001814C4BD3h
+	cmp edi,2Eh
+	je short 00000001814C4BCEh
+	mov rcx,[181E05620h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001814C4B69h
+	call 0000000180153C50h
+	xor edx,edx
+	movzx ecx,di
+	call 0000000180E8E200h
+	test al,al
+	jne short 00000001814C4BB4h
+	movzx eax,bx
+	movzx ecx,word ptr [r14+rax*2]
+	cmp cx,2Dh
+	je short 00000001814C4BB4h
+	cmp cx,5Fh
+	je short 00000001814C4BB4h
+	sub cx,30h
+	cmp cx,9
+	jbe short 00000001814C4BB7h
+	xor al,al
+	mov rdi,[rsp+60h]
+	mov rsi,[rsp+58h]
+	mov rbx,[rsp+50h]
+	add rsp,20h
+	pop r15
+	pop r14
+	pop r13
+	pop r12
+	pop rbp
+	ret
+	mov sil,1
+	inc bx
+	mov rcx,8400000800000000h
+	cmp bx,bp
+	jae short 00000001814C4BD6h
+	jmp near ptr 00000001814C4B21h
+	inc bx
+	jmp short 00000001814C4BD6h
+	movzx ebp,bx
+	test sil,sil
+	je short 00000001814C4B95h
+	cmp bx,bp
+	jae near ptr 00000001814C4CAFh
+	movzx eax,bx
+	movzx edi,word ptr [r14+rax*2]
+	cmp edi,2Fh
+	je near ptr 00000001814C4CACh
+	cmp edi,5Ch
+	je near ptr 00000001814C4CACh
+	test r12b,r12b
+	je short 00000001814C4C12h
+	cmp edi,3Fh
+	ja short 00000001814C4C12h
+	bt rcx,rdi
+	jb near ptr 00000001814C4CACh
+	cmp edi,2Eh
+	je short 00000001814C4C6Fh
+	cmp edi,2Dh
+	je short 00000001814C4C64h
+	cmp edi,5Fh
+	je short 00000001814C4C64h
+	mov rcx,[181E05620h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001814C4C36h
+	call 0000000180153C50h
+	xor edx,edx
+	movzx ecx,di
+	call 0000000180E8E200h
+	test al,al
+	jne short 00000001814C4C5Ah
+	movzx eax,bx
+	movzx ecx,word ptr [r14+rax*2]
+	sub cx,30h
+	cmp cx,9
+	ja near ptr 00000001814C4B95h
+	test sil,sil
+	jne short 00000001814C4C95h
+	mov sil,1
+	jmp short 00000001814C4C95h
+	test sil,sil
+	je near ptr 00000001814C4B95h
+	jmp short 00000001814C4C95h
+	test sil,sil
+	je near ptr 00000001814C4B95h
+	movzx ecx,bx
+	dec ecx
+	cmp ecx,r15d
+	jl short 00000001814C4C92h
+	movzx eax,bx
+	cmp word ptr [r14+rax*2-2],2Eh
+	je near ptr 00000001814C4B95h
+	xor sil,sil
+	inc bx
+	cmp bx,bp
+	jae short 00000001814C4CAFh
+	mov rcx,8400000800000000h
+	jmp near ptr 00000001814C4BE4h
+	movzx ebp,bx
+	movzx ecx,bx
+	dec ecx
+	cmp ecx,r15d
+	jl short 00000001814C4CC5h
+	movzx eax,bx
+	cmp word ptr [r14+rax*2-2],2Eh
+	je short 00000001814C4CCEh
+	test sil,sil
+	je near ptr 00000001814C4B95h
+	movzx eax,bp
+	mov [r13],eax
+	mov al,1
+	jmp near ptr 00000001814C4B97h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbp
+	003 ShiftStack -8
+	004 Move stack:0x0, r12
+	005 ShiftStack -8
+	006 Move stack:0x0, r13
+	007 ShiftStack -8
+	008 Move stack:0x0, r14
+	009 ShiftStack -8
+	010 Move stack:0x0, r15
+	011 ShiftStack -32
+	012 Compare [0x181F200FB], 0
+	013 Move r12, r9
+	014 Move r13, r8
+	015 Move r15, rdx
+	016 Move r14, rcx
+	017 JumpIfNotEqual {21}
+	018 LoadAddress rcx, [0x181E05620]
+	019 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	020 Move [0x181F200FB], 1
+	021 Move rbp, [r13]
+	022 Move stack:0x50, rbx
+	023 Move stack:0x58, rsi
+	024 Move stack:0x60, rdi
+	025 Compare r15, rbp
+	026 JumpIfEqual {64}
+	027 Move rsi, 0
+	028 Move rbx, r15
+	029 Compare r15, rbp
+	030 JumpIfGreaterOrEqual {64}
+	031 Move rcx, 9511602447366225920
+	032 Move rax, rbx
+	033 Move rdi, [r14+rax*2]
+	034 Compare rdi, 47
+	035 JumpIfEqual {88}
+	036 Compare rdi, 92
+	037 JumpIfEqual {88}
+	038 Compare r12, 0
+	039 JumpIfEqual {44}
+	040 Compare rdi, 63
+	041 JumpIfGreater {44}
+	042 NotImplemented "bt rcx,rdi"
+	043 JumpIfLess {88}
+	044 Compare rdi, 46
+	045 JumpIfEqual {86}
+	046 Move rcx, typeof(System.Char)
+	047 Compare [rcx+224], 0
+	048 JumpIfNotEqual {50}
+	049 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	050 Move rdx, 0
+	051 Move rcx, rdi
+	052 Call Char.IsLetter, rcx, rdx
+	053 Compare rax, 0
+	054 JumpIfNotEqual {80}
+	055 Move rax, rbx
+	056 Move rcx, [r14+rax*2]
+	057 Compare rcx, 45
+	058 JumpIfEqual {80}
+	059 Compare rcx, 95
+	060 JumpIfEqual {80}
+	061 Subtract rcx, rcx, 48
+	062 Compare rcx, 9
+	063 JumpIfLessOrEqual {81}
+	064 Move rax, 0
+	065 Move rdi, stack:0x60
+	066 Move rsi, stack:0x58
+	067 Move rbx, stack:0x50
+	068 ShiftStack 32
+	069 Move r15, stack:0x0
+	070 ShiftStack 8
+	071 Move r14, stack:0x0
+	072 ShiftStack 8
+	073 Move r13, stack:0x0
+	074 ShiftStack 8
+	075 Move r12, stack:0x0
+	076 ShiftStack 8
+	077 Move rbp, stack:0x0
+	078 ShiftStack 8
+	079 Return rax
+	080 Move rsi, 1
+	081 Add rbx, rbx, 1
+	082 Move rcx, 9511602447366225920
+	083 Compare rbx, rbp
+	084 JumpIfGreaterOrEqual {89}
+	085 Goto {32}
+	086 Add rbx, rbx, 1
+	087 Goto {89}
+	088 Move rbp, rbx
+	089 Compare rsi, 0
+	090 JumpIfEqual {64}
+	091 Compare rbx, rbp
+	092 JumpIfGreaterOrEqual {148}
+	093 Move rax, rbx
+	094 Move rdi, [r14+rax*2]
+	095 Compare rdi, 47
+	096 JumpIfEqual {147}
+	097 Compare rdi, 92
+	098 JumpIfEqual {147}
+	099 Compare r12, 0
+	100 JumpIfEqual {105}
+	101 Compare rdi, 63
+	102 JumpIfGreater {105}
+	103 NotImplemented "bt rcx,rdi"
+	104 JumpIfLess {147}
+	105 Compare rdi, 46
+	106 JumpIfEqual {132}
+	107 Compare rdi, 45
+	108 JumpIfEqual {129}
+	109 Compare rdi, 95
+	110 JumpIfEqual {129}
+	111 Move rcx, typeof(System.Char)
+	112 Compare [rcx+224], 0
+	113 JumpIfNotEqual {115}
+	114 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	115 Move rdx, 0
+	116 Move rcx, rdi
+	117 Call Char.IsLetter, rcx, rdx
+	118 Compare rax, 0
+	119 JumpIfNotEqual {125}
+	120 Move rax, rbx
+	121 Move rcx, [r14+rax*2]
+	122 Subtract rcx, rcx, 48
+	123 Compare rcx, 9
+	124 JumpIfGreater {64}
+	125 Compare rsi, 0
+	126 JumpIfNotEqual {142}
+	127 Move rsi, 1
+	128 Goto {142}
+	129 Compare rsi, 0
+	130 JumpIfEqual {64}
+	131 Goto {142}
+	132 Compare rsi, 0
+	133 JumpIfEqual {64}
+	134 Move rcx, rbx
+	135 Subtract rcx, rcx, 1
+	136 Compare rcx, r15
+	137 JumpIfLess {141}
+	138 Move rax, rbx
+	139 Compare [r14+0xFFFFFFFE+rax*2], 46
+	140 JumpIfEqual {64}
+	141 Move rsi, 0
+	142 Add rbx, rbx, 1
+	143 Compare rbx, rbp
+	144 JumpIfGreaterOrEqual {148}
+	145 Move rcx, 9511602447366225920
+	146 Goto {93}
+	147 Move rbp, rbx
+	148 Move rcx, rbx
+	149 Subtract rcx, rcx, 1
+	150 Compare rcx, r15
+	151 JumpIfLess {155}
+	152 Move rax, rbx
+	153 Compare [r14+0xFFFFFFFE+rax*2], 46
+	154 JumpIfEqual {157}
+	155 Compare rsi, 0
+	156 JumpIfEqual {64}
+	157 Move rax, rbp
+	158 Move [r13], rax
+	159 Move rax, 1
+	160 Goto {65}
+

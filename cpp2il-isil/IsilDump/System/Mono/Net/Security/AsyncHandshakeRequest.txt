@@ -1,0 +1,38 @@
+Type: Mono.Net.Security.AsyncHandshakeRequest
+
+Method: System.Void .ctor(Mono.Net.Security.MobileAuthenticatedStream parent, System.Boolean sync)
+
+Disassembly:
+	xor r9d,r9d
+	jmp near ptr 000000018114A160h
+
+ISIL:
+	001 Move r9, 0
+	002 Call AsyncProtocolRequest..ctor, rcx, rdx, r8
+	003 Return 
+
+Method: Mono.Net.Security.AsyncOperationStatus Run(Mono.Net.Security.AsyncOperationStatus status)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 0000000181149CBCh
+	xor r9d,r9d
+	xor r8d,r8d
+	add rsp,28h
+	jmp near ptr 000000018114D770h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+16]
+	003 Compare rcx, 0
+	004 JumpIfEqual {10}
+	005 Move r9, 0
+	006 Move r8, 0
+	007 ShiftStack 40
+	008 Call MobileAuthenticatedStream.ProcessHandshake, rcx, rdx, r8
+	009 Return rax
+	010 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

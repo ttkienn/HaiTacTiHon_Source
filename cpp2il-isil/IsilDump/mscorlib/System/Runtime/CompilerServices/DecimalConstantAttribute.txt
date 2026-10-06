@@ -1,0 +1,86 @@
+Type: System.Runtime.CompilerServices.DecimalConstantAttribute
+
+Method: System.Void .ctor(System.Byte scale, System.Byte sign, System.UInt32 hi, System.UInt32 mid, System.UInt32 low)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,50h
+	movzx edi,dl
+	mov esi,r9d
+	xor edx,edx
+	movzx ebx,r8b
+	mov rbp,rcx
+	call 000000018024B5B0h
+	mov r8d,[rsp+80h]
+	lea rcx,[rsp+40h]
+	mov edx,[rsp+88h]
+	test bl,bl
+	xorps xmm0,xmm0
+	mov qword ptr [rsp+30h],0
+	setne al
+	mov [rsp+28h],dil
+	mov r9d,esi
+	mov [rsp+20h],al
+	movups [rsp+40h],xmm0
+	call 0000000180F95270h
+	movups xmm0,[rsp+40h]
+	mov rbx,[rsp+60h]
+	mov rsi,[rsp+70h]
+	movups [rbp+10h],xmm0
+	mov rbp,[rsp+68h]
+	add rsp,50h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -80
+	007 Move rdi, rdx
+	008 Move rsi, r9
+	009 Move rdx, 0
+	010 Move rbx, r8
+	011 Move rbp, rcx
+	012 Call 0x18024B5B0, rcx, rdx, r8
+	013 Move r8, stack:0x80
+	014 LoadAddress rcx, stack:0x40
+	015 Move rdx, stack:0x88
+	016 Compare rbx, 0
+	017 Move xmm0, 0
+	018 Move stack:0x30, 0
+	019 NotImplemented "setne al"
+	020 Move stack:0x28, rdi
+	021 Move r9, rsi
+	022 Move stack:0x20, rax
+	023 Move stack:0x40, xmm0
+	024 Call Decimal..ctor, rcx, rdx, r8, r9, stack:0x0, stack:0x8
+	025 Move xmm0, stack:0x40
+	026 Move rbx, stack:0x60
+	027 Move rsi, stack:0x70
+	028 Move [rbp+16], xmm0
+	029 Move rbp, stack:0x68
+	030 ShiftStack 80
+	031 Move rdi, stack:0x0
+	032 ShiftStack 8
+	033 Return 
+
+Method: System.Decimal get_Value()
+
+Disassembly:
+	movups xmm0,[rdx+10h]
+	mov rax,rcx
+	movups [rcx],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx+16]
+	002 Move rax, rcx
+	003 Move [rcx], xmm0
+	004 Return rax
+

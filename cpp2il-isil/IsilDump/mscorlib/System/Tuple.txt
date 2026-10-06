@@ -1,0 +1,216 @@
+Type: System.Tuple
+
+Method: System.Tuple`2<T1, T2> Create(T1 item1, T2 item2)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp qword ptr [r8+38h],0
+	mov rdi,r8
+	mov rsi,rdx
+	mov rbp,rcx
+	jne short 000000018076BDCCh
+	mov rcx,r8
+	call 0000000180188FE0h
+	mov rax,[rdi+38h]
+	mov rax,[rax+10h]
+	test byte ptr [rax+135h],1
+	jne short 000000018076BDE5h
+	mov rcx,rax
+	call 0000000180188F60h
+	mov rcx,rax
+	call 0000000180197840h
+	mov r9,[rdi+38h]
+	mov r8,rsi
+	mov rdx,rbp
+	mov rcx,rax
+	mov rbx,rax
+	mov r9,[r9+18h]
+	call 0000000180BC7C20h
+	mov rbp,[rsp+38h]
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [r8+56], 0
+	008 Move rdi, r8
+	009 Move rsi, rdx
+	010 Move rbp, rcx
+	011 JumpIfNotEqual {14}
+	012 Move rcx, r8
+	013 Call 0x180188FE0, rcx, rdx, r8, r9
+	014 Move rax, [rdi+56]
+	015 Move rax, [rax+16]
+	016 Compare [rax+309], 1
+	017 JumpIfNotEqual {20}
+	018 Move rcx, rax
+	019 Call 0x180188F60, rcx, rdx, r8, r9
+	020 Move rcx, rax
+	021 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	022 Move r9, [rdi+56]
+	023 Move r8, rsi
+	024 Move rdx, rbp
+	025 Move rcx, rax
+	026 Move rbx, rax
+	027 Move r9, [r9+24]
+	028 Call 0x180BC7C20, rcx, rdx, r8
+	029 Move rbp, stack:0x38
+	030 Move rax, rbx
+	031 Move rbx, stack:0x30
+	032 Move rsi, stack:0x40
+	033 ShiftStack 32
+	034 Move rdi, stack:0x0
+	035 ShiftStack 8
+	036 Return rax
+
+Method: System.Tuple`3<T1, T2, T3> Create(T1 item1, T2 item2, T3 item3)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	mov [rsp+20h],rdi
+	push r14
+	sub rsp,40h
+	cmp qword ptr [r9+38h],0
+	mov rdi,r9
+	mov rsi,r8
+	mov rbp,rdx
+	mov r14,rcx
+	jne short 000000018076BC95h
+	mov rcx,r9
+	call 0000000180188FE0h
+	mov rax,[rdi+38h]
+	mov rax,[rax+18h]
+	test byte ptr [rax+135h],1
+	jne short 000000018076BCAEh
+	mov rcx,rax
+	call 0000000180188F60h
+	mov rcx,rax
+	call 0000000180197840h
+	mov rcx,[rdi+38h]
+	lea r8,[rsp+30h]
+	movups xmm0,[rbp]
+	mov r9,rsi
+	mov rbx,rax
+	mov rdx,[rcx+20h]
+	mov rcx,rax
+	mov [rsp+20h],rdx
+	mov rdx,r14
+	movaps [rsp+30h],xmm0
+	call 0000000180BC9E90h
+	mov rbp,[rsp+58h]
+	mov rax,rbx
+	mov rbx,[rsp+50h]
+	mov rsi,[rsp+60h]
+	mov rdi,[rsp+68h]
+	add rsp,40h
+	pop r14
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 Move stack:0x20, rdi
+	005 ShiftStack -8
+	006 Move stack:0x0, r14
+	007 ShiftStack -64
+	008 Compare [r9+56], 0
+	009 Move rdi, r9
+	010 Move rsi, r8
+	011 Move rbp, rdx
+	012 Move r14, rcx
+	013 JumpIfNotEqual {16}
+	014 Move rcx, r9
+	015 Call 0x180188FE0, rcx, rdx, r8, r9
+	016 Move rax, [rdi+56]
+	017 Move rax, [rax+24]
+	018 Compare [rax+309], 1
+	019 JumpIfNotEqual {22}
+	020 Move rcx, rax
+	021 Call 0x180188F60, rcx, rdx, r8, r9
+	022 Move rcx, rax
+	023 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	024 Move rcx, [rdi+56]
+	025 LoadAddress r8, stack:0x30
+	026 Move xmm0, [rbp]
+	027 Move r9, rsi
+	028 Move rbx, rax
+	029 Move rdx, [rcx+32]
+	030 Move rcx, rax
+	031 Move stack:0x20, rdx
+	032 Move rdx, r14
+	033 Move stack:0x30, xmm0
+	034 Call 0x180BC9E90, rcx, rdx, r8, r9
+	035 Move rbp, stack:0x58
+	036 Move rax, rbx
+	037 Move rbx, stack:0x50
+	038 Move rsi, stack:0x60
+	039 Move rdi, stack:0x68
+	040 ShiftStack 64
+	041 Move r14, stack:0x0
+	042 ShiftStack 8
+	043 Return rax
+
+Method: System.Int32 CombineHashCodes(System.Int32 h1, System.Int32 h2)
+
+Disassembly:
+	imul eax,ecx,21h
+	xor eax,edx
+	ret
+
+ISIL:
+	001 Multiply rax, rcx, 33
+	002 Xor rax, rax, rdx
+	003 Return rax
+
+Method: System.Int32 CombineHashCodes(System.Int32 h1, System.Int32 h2, System.Int32 h3)
+
+Disassembly:
+	imul eax,ecx,21h
+	xor eax,edx
+	imul eax,21h
+	xor eax,r8d
+	ret
+
+ISIL:
+	001 Multiply rax, rcx, 33
+	002 Xor rax, rax, rdx
+	003 Multiply rax, rax, 33
+	004 Xor rax, rax, r8
+	005 Return rax
+
+Method: System.Int32 CombineHashCodes(System.Int32 h1, System.Int32 h2, System.Int32 h3, System.Int32 h4)
+
+Disassembly:
+	imul eax,ecx,21h
+	imul ecx,r8d,21h
+	xor eax,edx
+	imul eax,21h
+	xor eax,ecx
+	xor eax,r9d
+	ret
+
+ISIL:
+	001 Multiply rax, rcx, 33
+	002 Multiply rcx, r8, 33
+	003 Xor rax, rax, rdx
+	004 Multiply rax, rax, 33
+	005 Xor rax, rax, rcx
+	006 Xor rax, rax, r9
+	007 Return rax
+

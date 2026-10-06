@@ -1,0 +1,310 @@
+Type: Newtonsoft.Json.JsonWriterException
+
+Method: System.String get_Path()
+
+Disassembly:
+	mov rax,[rcx+90h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+144]
+	002 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 0000000180FC5D70h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x180FC5D70, rcx, rdx
+	003 Return 
+
+Method: System.Void .ctor(System.String message)
+
+Disassembly:
+	xor r8d,r8d
+	jmp near ptr 0000000180FC5DC0h
+
+ISIL:
+	001 Move r8, 0
+	002 Call 0x180FC5DC0, rcx, rdx
+	003 Return 
+
+Method: System.Void .ctor(System.String message, System.Exception innerException)
+
+Disassembly:
+	xor r9d,r9d
+	jmp near ptr 0000000180FC5E20h
+
+ISIL:
+	001 Move r9, 0
+	002 Call 0x180FC5E20, rcx, rdx, r8
+	003 Return 
+
+Method: System.Void .ctor(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+
+Disassembly:
+	sub rsp,38h
+	movups xmm0,[r8]
+	xor r9d,r9d
+	lea r8,[rsp+20h]
+	movaps [rsp+20h],xmm0
+	call 0000000180FC5E90h
+	add rsp,38h
+	ret
+
+ISIL:
+	001 ShiftStack -56
+	002 Move xmm0, [r8]
+	003 Move r9, 0
+	004 LoadAddress r8, stack:0x20
+	005 Move stack:0x20, xmm0
+	006 Call 0x180FC5E90, rcx, rdx, r8
+	007 ShiftStack 56
+	008 Return 
+
+Method: System.Void .ctor(System.String message, System.String path, System.Exception innerException)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rax,r9
+	mov rdi,r8
+	mov r8,rax
+	xor r9d,r9d
+	mov rbx,rcx
+	call 0000000180FC5E20h
+	lea rcx,[rbx+90h]
+	mov [rbx+90h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rax, r9
+	006 Move rdi, r8
+	007 Move r8, rax
+	008 Move r9, 0
+	009 Move rbx, rcx
+	010 Call 0x180FC5E20, rcx, rdx, r8
+	011 LoadAddress rcx, [rbx+144]
+	012 Move [rbx+144], rdi
+	013 Move rdx, rdi
+	014 Move rbx, stack:0x30
+	015 ShiftStack 32
+	016 Move rdi, stack:0x0
+	017 ShiftStack 8
+	018 Call 0x1801E1E30, rcx, rdx, r8, r9
+	019 Return 
+
+Method: Newtonsoft.Json.JsonWriterException Create(Newtonsoft.Json.JsonWriter writer, System.String message, System.Exception ex)
+
+Disassembly:
+	mov [rsp+18h],rbx
+	push rbp
+	sub rsp,20h
+	mov rbp,r8
+	mov rbx,rdx
+	test rcx,rcx
+	je near ptr 000000018102442Bh
+	mov [rsp+30h],rsi
+	xor edx,edx
+	mov [rsp+38h],rdi
+	call 0000000181009530h
+	cmp byte ptr [181F1DB3Ch],0
+	mov rsi,rax
+	jne short 00000001810243B5h
+	lea rcx,[181E26278h]
+	call 00000001801E2A80h
+	lea rcx,[181E26E98h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1DB3Ch],1
+	mov rcx,[181E26278h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001810243CAh
+	call 0000000180153C50h
+	xor r9d,r9d
+	mov r8,rbx
+	mov rdx,rsi
+	xor ecx,ecx
+	call 0000000180FC6630h
+	mov rcx,[181E26E98h]
+	mov rbx,rax
+	call 0000000180197840h
+	xor r9d,r9d
+	mov r8,rbp
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 0000000180FC5E20h
+	lea rcx,[rdi+90h]
+	mov [rdi+90h],rsi
+	mov rdx,rsi
+	call 00000001801E1E30h
+	mov rsi,[rsp+30h]
+	mov rax,rdi
+	mov rdi,[rsp+38h]
+	mov rbx,[rsp+40h]
+	add rsp,20h
+	pop rbp
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x18, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rbp
+	004 ShiftStack -32
+	005 Move rbp, r8
+	006 Move rbx, rdx
+	007 Compare rcx, 0
+	008 JumpIfEqual {51}
+	009 Move stack:0x30, rsi
+	010 Move rdx, 0
+	011 Move stack:0x38, rdi
+	012 Call JsonWriter.get_ContainerPath, rcx, rdx
+	013 Compare [0x181F1DB3C], 0
+	014 Move rsi, rax
+	015 JumpIfNotEqual {21}
+	016 LoadAddress rcx, [0x181E26278]
+	017 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	018 LoadAddress rcx, [0x181E26E98]
+	019 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	020 Move [0x181F1DB3C], 1
+	021 Move rcx, typeof(Newtonsoft.Json.JsonPosition)
+	022 Compare [rcx+224], 0
+	023 JumpIfNotEqual {25}
+	024 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	025 Move r9, 0
+	026 Move r8, rbx
+	027 Move rdx, rsi
+	028 Move rcx, 0
+	029 Call JsonPosition.FormatMessage, rcx, rdx, r8, r9
+	030 Move rcx, typeof(Newtonsoft.Json.JsonWriterException)
+	031 Move rbx, rax
+	032 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	033 Move r9, 0
+	034 Move r8, rbp
+	035 Move rdx, rbx
+	036 Move rcx, rax
+	037 Move rdi, rax
+	038 Call 0x180FC5E20, rcx, rdx, r8
+	039 LoadAddress rcx, [rdi+144]
+	040 Move [rdi+144], rsi
+	041 Move rdx, rsi
+	042 Call 0x1801E1E30, rcx, rdx, r8, r9
+	043 Move rsi, stack:0x30
+	044 Move rax, rdi
+	045 Move rdi, stack:0x38
+	046 Move rbx, stack:0x40
+	047 ShiftStack 32
+	048 Move rbp, stack:0x0
+	049 ShiftStack 8
+	050 Return rax
+	051 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: Newtonsoft.Json.JsonWriterException Create(System.String path, System.String message, System.Exception ex)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1DB3Ch],0
+	mov rbp,r8
+	mov rbx,rdx
+	mov rsi,rcx
+	jne short 00000001810242E5h
+	lea rcx,[181E26278h]
+	call 00000001801E2A80h
+	lea rcx,[181E26E98h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1DB3Ch],1
+	mov rcx,[181E26278h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001810242FAh
+	call 0000000180153C50h
+	xor r9d,r9d
+	mov r8,rbx
+	mov rdx,rsi
+	xor ecx,ecx
+	call 0000000180FC6630h
+	mov rcx,[181E26E98h]
+	mov rbx,rax
+	call 0000000180197840h
+	xor r9d,r9d
+	mov r8,rbp
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 0000000180FC5E20h
+	lea rcx,[rdi+90h]
+	mov [rdi+90h],rsi
+	mov rdx,rsi
+	call 00000001801E1E30h
+	mov rbx,[rsp+30h]
+	mov rax,rdi
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [0x181F1DB3C], 0
+	008 Move rbp, r8
+	009 Move rbx, rdx
+	010 Move rsi, rcx
+	011 JumpIfNotEqual {17}
+	012 LoadAddress rcx, [0x181E26278]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 LoadAddress rcx, [0x181E26E98]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 Move [0x181F1DB3C], 1
+	017 Move rcx, typeof(Newtonsoft.Json.JsonPosition)
+	018 Compare [rcx+224], 0
+	019 JumpIfNotEqual {21}
+	020 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	021 Move r9, 0
+	022 Move r8, rbx
+	023 Move rdx, rsi
+	024 Move rcx, 0
+	025 Call JsonPosition.FormatMessage, rcx, rdx, r8, r9
+	026 Move rcx, typeof(Newtonsoft.Json.JsonWriterException)
+	027 Move rbx, rax
+	028 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	029 Move r9, 0
+	030 Move r8, rbp
+	031 Move rdx, rbx
+	032 Move rcx, rax
+	033 Move rdi, rax
+	034 Call 0x180FC5E20, rcx, rdx, r8
+	035 LoadAddress rcx, [rdi+144]
+	036 Move [rdi+144], rsi
+	037 Move rdx, rsi
+	038 Call 0x1801E1E30, rcx, rdx, r8, r9
+	039 Move rbx, stack:0x30
+	040 Move rax, rdi
+	041 Move rbp, stack:0x38
+	042 Move rsi, stack:0x40
+	043 ShiftStack 32
+	044 Move rdi, stack:0x0
+	045 ShiftStack 8
+	046 Return rax
+

@@ -1,0 +1,318 @@
+Type: DataMap
+
+Method: System.Void setDataMap(System.SByte[] mdata)
+
+Disassembly:
+	mov [rcx+18h],rdx
+	add rcx,18h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move [rcx+24], rdx
+	002 Add rcx, rcx, 24
+	003 Call 0x1801E1E30, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Void setDataItemMap(System.SByte[] mdata)
+
+Disassembly:
+	mov [rcx+10h],rdx
+	add rcx,10h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Add rcx, rcx, 16
+	003 Call 0x1801E1E30, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Void setAddVecPointMap(Message msg)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	mov [rsp+18h],rdi
+	mov [rsp+20h],r14
+	push r15
+	sub rsp,30h
+	mov rsi,rdx
+	mov r15,rcx
+	cmp byte ptr [181F1AF2Fh],0
+	jne short 00000001806AEB5Ch
+	lea rcx,[181E34178h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1AF2Fh],1
+	test rsi,rsi
+	je near ptr 00000001806AEC4Eh
+	mov rcx,[rsi+18h]
+	test rcx,rcx
+	je near ptr 00000001806AEC49h
+	xor edx,edx
+	call 0000000180263B70h
+	movsx r14d,al
+	xor edi,edi
+	nop
+	cmp edi,r14d
+	jge near ptr 00000001806AEC12h
+	mov rcx,[181E34178h]
+	call 0000000180197840h
+	mov rbx,rax
+	xor edx,edx
+	mov rcx,rax
+	call 000000018024B5B0h
+	mov rcx,[rsi+18h]
+	test rcx,rcx
+	je near ptr 00000001806AEC44h
+	xor edx,edx
+	call 0000000180264180h
+	test rbx,rbx
+	je near ptr 00000001806AEC3Fh
+	mov [rbx+78h],rax
+	lea rcx,[rbx+78h]
+	mov rdx,rax
+	call 00000001801E1E30h
+	mov rcx,[rsi+18h]
+	test rcx,rcx
+	je short 00000001806AEC3Ah
+	xor edx,edx
+	call 0000000180263DE0h
+	cwde
+	mov [rbx+10h],eax
+	mov rcx,[rsi+18h]
+	test rcx,rcx
+	je short 00000001806AEC35h
+	xor edx,edx
+	call 0000000180263DE0h
+	cwde
+	mov [rbx+14h],eax
+	mov rcx,[r15+20h]
+	test rcx,rcx
+	je short 00000001806AEC2Fh
+	xor r8d,r8d
+	mov rdx,rbx
+	call 00000001802520D0h
+	inc edi
+	jmp near ptr 00000001806AEB80h
+	jmp short 00000001806AEC14h
+	mov rbx,[rsp+40h]
+	mov rsi,[rsp+48h]
+	mov rdi,[rsp+50h]
+	mov r14,[rsp+58h]
+	add rsp,30h
+	pop r15
+	ret
+	call 00000001801E2CA0h
+	nop
+	call 00000001801E2CA0h
+	call 00000001801E2CA0h
+	call 00000001801E2CA0h
+	call 00000001801E2CA0h
+	call 00000001801E2CA0h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 Move stack:0x18, rdi
+	004 Move stack:0x20, r14
+	005 ShiftStack -8
+	006 Move stack:0x0, r15
+	007 ShiftStack -48
+	008 Move rsi, rdx
+	009 Move r15, rcx
+	010 Compare [0x181F1AF2F], 0
+	011 JumpIfNotEqual {15}
+	012 LoadAddress rcx, [0x181E34178]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 Move [0x181F1AF2F], 1
+	015 Compare rsi, 0
+	016 JumpIfEqual {82}
+	017 Move rcx, [rsi+24]
+	018 Compare rcx, 0
+	019 JumpIfEqual {81}
+	020 Move rdx, 0
+	021 Call 0x180263B70, rcx, rdx
+	022 Move r14, rax
+	023 Move rdi, 0
+	024 Nop 
+	025 Compare rdi, r14
+	026 JumpIfGreaterOrEqual {66}
+	027 Move rcx, typeof(Point)
+	028 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	029 Move rbx, rax
+	030 Move rdx, 0
+	031 Move rcx, rax
+	032 Call 0x18024B5B0, rcx, rdx, r8
+	033 Move rcx, [rsi+24]
+	034 Compare rcx, 0
+	035 JumpIfEqual {80}
+	036 Move rdx, 0
+	037 Call myReader.readUTF, rcx, rdx
+	038 Compare rbx, 0
+	039 JumpIfEqual {79}
+	040 Move [rbx+120], rax
+	041 LoadAddress rcx, [rbx+120]
+	042 Move rdx, rax
+	043 Call 0x1801E1E30, rcx, rdx, r8, r9
+	044 Move rcx, [rsi+24]
+	045 Compare rcx, 0
+	046 JumpIfEqual {78}
+	047 Move rdx, 0
+	048 Call myReader.readShort, rcx, rdx
+	049 Move rax, rax
+	050 Move [rbx+16], rax
+	051 Move rcx, [rsi+24]
+	052 Compare rcx, 0
+	053 JumpIfEqual {77}
+	054 Move rdx, 0
+	055 Call myReader.readShort, rcx, rdx
+	056 Move rax, rax
+	057 Move [rbx+20], rax
+	058 Move rcx, [r15+32]
+	059 Compare rcx, 0
+	060 JumpIfEqual {75}
+	061 Move r8, 0
+	062 Move rdx, rbx
+	063 Call 0x1802520D0, rcx, rdx
+	064 Add rdi, rdi, 1
+	065 Goto {25}
+	066 Goto {67}
+	067 Move rbx, stack:0x40
+	068 Move rsi, stack:0x48
+	069 Move rdi, stack:0x50
+	070 Move r14, stack:0x58
+	071 ShiftStack 48
+	072 Move r15, stack:0x0
+	073 ShiftStack 8
+	074 Return 
+	075 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	076 Nop 
+	077 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	078 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	079 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	080 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	081 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	082 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1AF30h],0
+	mov rdi,rcx
+	jne short 00000001806AEAD5h
+	lea rcx,[181E26268h]
+	call 00000001801E2A80h
+	lea rcx,[181E12EC8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1AF30h],1
+	mov rcx,[181E12EC8h]
+	call 0000000180197840h
+	mov rdx,[181E26268h]
+	xor r8d,r8d
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180263630h
+	lea rcx,[rdi+20h]
+	mov [rdi+20h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	xor edx,edx
+	mov rcx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1AF30], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {13}
+	008 LoadAddress rcx, [0x181E26268]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x181E12EC8]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x181F1AF30], 1
+	013 Move rcx, typeof(mVector)
+	014 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	015 Move rdx, "DataMap.vecPointMap"
+	016 Move r8, 0
+	017 Move rcx, rax
+	018 Move rbx, rax
+	019 Call mVector..ctor, rcx, rdx
+	020 LoadAddress rcx, [rdi+32]
+	021 Move [rdi+32], rbx
+	022 Move rdx, rbx
+	023 Call 0x1801E1E30, rcx, rdx, r8, r9
+	024 Move rdx, 0
+	025 Move rcx, rdi
+	026 Move rbx, stack:0x30
+	027 ShiftStack 32
+	028 Move rdi, stack:0x0
+	029 ShiftStack 8
+	030 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	031 Return 
+
+Method: System.Void .cctor()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [181F1AF31h],0
+	jne short 00000001806AEA4Eh
+	lea rcx,[181E0A570h]
+	call 00000001801E2A80h
+	lea rcx,[181E2F4E8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1AF31h],1
+	mov rcx,[181E2F4E8h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180251ED0h
+	mov rcx,[181E0A570h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rbx
+	mov rdx,rbx
+	mov rcx,[181E0A570h]
+	mov rcx,[rcx+0B8h]
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x181F1AF31], 0
+	005 JumpIfNotEqual {11}
+	006 LoadAddress rcx, [0x181E0A570]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 LoadAddress rcx, [0x181E2F4E8]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x181F1AF31], 1
+	011 Move rcx, typeof(MyHashTable)
+	012 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	013 Move rdx, 0
+	014 Move rcx, rax
+	015 Move rbx, rax
+	016 Call MyHashTable..ctor, rcx, rdx
+	017 Move rcx, typeof(DataMap)
+	018 Move rdx, [rcx+184]
+	019 Move [rdx], rbx
+	020 Move rdx, rbx
+	021 Move rcx, typeof(DataMap)
+	022 Move rcx, [rcx+184]
+	023 ShiftStack 32
+	024 Move rbx, stack:0x0
+	025 ShiftStack 8
+	026 Call 0x1801E1E30, rcx, rdx, r8, r9
+	027 Return 
+

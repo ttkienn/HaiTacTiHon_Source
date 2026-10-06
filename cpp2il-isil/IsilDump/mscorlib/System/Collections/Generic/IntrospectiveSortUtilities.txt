@@ -1,0 +1,81 @@
+Type: System.Collections.Generic.IntrospectiveSortUtilities
+
+Method: System.Int32 FloorLog2PlusOne(System.Int32 n)
+
+Disassembly:
+	xor eax,eax
+	cmp ecx,1
+	jl short 0000000180EC6370h
+	inc eax
+	shr ecx,1
+	cmp ecx,1
+	jae short 0000000180EC6367h
+	ret
+
+ISIL:
+	001 Move rax, 0
+	002 Compare rcx, 1
+	003 JumpIfLess {8}
+	004 Add rax, rax, 1
+	005 ShiftRight rcx, 1
+	006 Compare rcx, 1
+	007 JumpIfGreaterOrEqual {4}
+	008 Return rax
+
+Method: System.Void ThrowOrIgnoreBadComparer(System.Object comparer)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rbx,rcx
+	lea rcx,[181E25698h]
+	call 00000001801E2AA0h
+	mov rcx,rax
+	xor r8d,r8d
+	mov rdx,rbx
+	call 0000000180D618D0h
+	lea rcx,[181DFEB60h]
+	mov rbx,rax
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 0000000180E89800h
+	lea rcx,[181E2F890h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rdi
+	call 00000001801E2C60h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rcx
+	006 LoadAddress rcx, [0x181E25698]
+	007 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	008 Move rcx, rax
+	009 Move r8, 0
+	010 Move rdx, rbx
+	011 Call SR.Format, rcx, rdx, r8
+	012 LoadAddress rcx, [0x181DFEB60]
+	013 Move rbx, rax
+	014 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	015 Move rcx, rax
+	016 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	017 Move r8, 0
+	018 Move rdx, rbx
+	019 Move rcx, rax
+	020 Move rdi, rax
+	021 Call ArgumentException..ctor, rcx, rdx
+	022 LoadAddress rcx, [0x181E2F890]
+	023 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	024 Move rdx, rax
+	025 Move rcx, rdi
+	026 Call 0x1801E2C60, rcx, rdx, r8, r9
+

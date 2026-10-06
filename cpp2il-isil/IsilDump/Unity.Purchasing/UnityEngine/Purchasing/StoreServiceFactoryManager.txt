@@ -1,0 +1,100 @@
+Type: UnityEngine.Purchasing.StoreServiceFactoryManager
+
+Method: UnityEngine.Purchasing.StoreServiceFactoryManager Instance()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F207F2h],0
+	jne short 0000000181585060h
+	lea rcx,[181DFC220h]
+	call 00000001801E2A80h
+	mov byte ptr [181F207F2h],1
+	mov rcx,[181DFC220h]
+	mov rax,[rcx+0B8h]
+	cmp qword ptr [rax],0
+	jne short 00000001815850C5h
+	mov [rsp+20h],rbx
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 000000018024B730h
+	mov rcx,[181DFC220h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rbx
+	mov rdx,rbx
+	mov rcx,[181DFC220h]
+	mov rcx,[rcx+0B8h]
+	call 00000001801E1E30h
+	mov rax,[181DFC220h]
+	mov rbx,[rsp+20h]
+	mov rax,[rax+0B8h]
+	mov rax,[rax]
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F207F2], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181DFC220]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F207F2], 1
+	007 Move rcx, typeof(UnityEngine.Purchasing.StoreServiceFactoryManager)
+	008 Move rax, [rcx+184]
+	009 Compare [rax], 0
+	010 JumpIfNotEqual {27}
+	011 Move stack:0x20, rbx
+	012 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	013 Move rdx, 0
+	014 Move rcx, rax
+	015 Move rbx, rax
+	016 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	017 Move rcx, typeof(UnityEngine.Purchasing.StoreServiceFactoryManager)
+	018 Move rdx, [rcx+184]
+	019 Move [rdx], rbx
+	020 Move rdx, rbx
+	021 Move rcx, typeof(UnityEngine.Purchasing.StoreServiceFactoryManager)
+	022 Move rcx, [rcx+184]
+	023 Call 0x1801E1E30, rcx, rdx, r8, r9
+	024 Move rax, typeof(UnityEngine.Purchasing.StoreServiceFactoryManager)
+	025 Move rbx, stack:0x20
+	026 Move rax, [rax+184]
+	027 Move rax, [rax]
+	028 ShiftStack 40
+	029 Return rax
+
+Method: System.Void SetServiceFactory(UnityEngine.Purchasing.IStoreServiceFactory serviceFactory)
+
+Disassembly:
+	mov [rcx+10h],rdx
+	add rcx,10h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Add rcx, rcx, 16
+	003 Call 0x1801E1E30, rcx, rdx, r8, r9
+	004 Return 
+
+Method: UnityEngine.Purchasing.IStoreServiceFactory GetServiceFactory()
+
+Disassembly:
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+

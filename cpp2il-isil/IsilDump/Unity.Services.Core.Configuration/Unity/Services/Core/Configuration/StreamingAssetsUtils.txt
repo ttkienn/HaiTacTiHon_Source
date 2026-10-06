@@ -1,0 +1,154 @@
+Type: Unity.Services.Core.Configuration.StreamingAssetsUtils
+
+Method: System.Threading.Tasks.Task`1<System.String> GetFileTextFromStreamingAssetsAsync(System.String path)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	push rdi
+	sub rsp,30h
+	mov rdi,rcx
+	cmp byte ptr [181F20C2Eh],0
+	jne short 00000001815E01A5h
+	lea rcx,[181DFE970h]
+	call 00000001801E2A80h
+	lea rcx,[181E33238h]
+	call 00000001801E2A80h
+	lea rcx,[181E1B790h]
+	call 00000001801E2A80h
+	lea rcx,[181E1B6C0h]
+	call 00000001801E2A80h
+	lea rcx,[181E1B8C8h]
+	call 00000001801E2A80h
+	lea rcx,[181E378C0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20C2Eh],1
+	mov rcx,[181DFE970h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001815E01BAh
+	call 0000000180153C50h
+	xor ecx,ecx
+	call 00000001816046F0h
+	mov rbx,rax
+	mov rcx,[181E33238h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001815E01D9h
+	call 0000000180153C50h
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rbx
+	call 0000000180EF82B0h
+	mov rdi,rax
+	mov rcx,[181E378C0h]
+	call 0000000180197840h
+	mov rbx,rax
+	mov [rsp+40h],rax
+	mov rdx,[181E1B6C0h]
+	mov rcx,rax
+	call 0000000180B4FD60h
+	nop
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000180ED3E20h
+	test rbx,rbx
+	je short 00000001815E026Dh
+	mov r8,[181E1B790h]
+	mov rdx,rax
+	mov rcx,rbx
+	call 0000000180B4E9F0h
+	nop
+	jmp short 00000001815E0258h
+	mov rbx,[rsp+40h]
+	test rbx,rbx
+	je short 00000001815E0267h
+	lea rcx,[181E1B728h]
+	call 00000001801E2AA0h
+	mov r8,rax
+	mov rdx,[rsp+50h]
+	mov rcx,rbx
+	call 0000000180B4E780h
+	mov rax,[rbx+10h]
+	mov rbx,[rsp+48h]
+	add rsp,30h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+	nop
+	call 00000001801E2CA0h
+	nop
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -48
+	005 Move rdi, rcx
+	006 Compare [0x181F20C2E], 0
+	007 JumpIfNotEqual {21}
+	008 LoadAddress rcx, [0x181DFE970]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x181E33238]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x181E1B790]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 LoadAddress rcx, [0x181E1B6C0]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 LoadAddress rcx, [0x181E1B8C8]
+	017 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	018 LoadAddress rcx, [0x181E378C0]
+	019 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	020 Move [0x181F20C2E], 1
+	021 Move rcx, typeof(UnityEngine.Application)
+	022 Compare [rcx+224], 0
+	023 JumpIfNotEqual {25}
+	024 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	025 Move rcx, 0
+	026 Call Application.get_streamingAssetsPath, rcx
+	027 Move rbx, rax
+	028 Move rcx, typeof(System.IO.Path)
+	029 Compare [rcx+224], 0
+	030 JumpIfNotEqual {32}
+	031 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	032 Move r8, 0
+	033 Move rdx, rdi
+	034 Move rcx, rbx
+	035 Call Path.Combine, rcx, rdx, r8
+	036 Move rdi, rax
+	037 Move rcx, typeof(System.Threading.Tasks.TaskCompletionSource`1<String>)
+	038 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	039 Move rbx, rax
+	040 Move stack:0x40, rax
+	041 Move rdx, [0x181E1B6C0]
+	042 Move rcx, rax
+	043 Call TaskCompletionSource`1<Object>..ctor, rcx, rdx
+	044 Nop 
+	045 Move rdx, 0
+	046 Move rcx, rdi
+	047 Call File.ReadAllText, rcx, rdx
+	048 Compare rbx, 0
+	049 JumpIfEqual {73}
+	050 Move r8, [0x181E1B790]
+	051 Move rdx, rax
+	052 Move rcx, rbx
+	053 Call TaskCompletionSource`1<Object>.SetResult, rcx, rdx
+	054 Nop 
+	055 Goto {65}
+	056 Move rbx, stack:0x40
+	057 Compare rbx, 0
+	058 JumpIfEqual {71}
+	059 LoadAddress rcx, [0x181E1B728]
+	060 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	061 Move r8, rax
+	062 Move rdx, stack:0x50
+	063 Move rcx, rbx
+	064 Call TaskCompletionSource`1<Object>.SetException, rcx, rdx
+	065 Move rax, [rbx+16]
+	066 Move rbx, stack:0x48
+	067 ShiftStack 48
+	068 Move rdi, stack:0x0
+	069 ShiftStack 8
+	070 Return rax
+	071 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	072 Nop 
+	073 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	074 Nop 
+

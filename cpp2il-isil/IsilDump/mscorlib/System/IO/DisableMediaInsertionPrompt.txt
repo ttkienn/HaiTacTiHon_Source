@@ -1,0 +1,84 @@
+Type: System.IO.DisableMediaInsertionPrompt
+
+Method: System.IO.DisableMediaInsertionPrompt Create()
+
+Disassembly:
+	sub rsp,38h
+	cmp byte ptr [181F1CFBAh],0
+	jne short 0000000180EBE720h
+	lea rcx,[181E0F398h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1CFBAh],1
+	mov qword ptr [rsp+48h],0
+	mov rax,[181E0F398h]
+	mov rcx,[rax+0B8h]
+	cmp byte ptr [rcx],0
+	jne short 0000000180EBE76Fh
+	xor r8d,r8d
+	lea rdx,[rsp+4Ch]
+	mov ecx,1
+	call 0000000180D5AD70h
+	mov [rsp+48h],al
+	jmp short 0000000180EBE76Fh
+	lea rcx,[181E0F398h]
+	call 00000001801E2AA0h
+	mov rcx,[rax+0B8h]
+	mov byte ptr [rcx],1
+	mov byte ptr [rsp+48h],0
+	mov rax,[rsp+48h]
+	add rsp,38h
+	ret
+
+ISIL:
+	001 ShiftStack -56
+	002 Compare [0x181F1CFBA], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E0F398]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F1CFBA], 1
+	007 Move stack:0x48, 0
+	008 Move rax, typeof(System.IO.DisableMediaInsertionPrompt)
+	009 Move rcx, [rax+184]
+	010 Compare [rcx], 0
+	011 JumpIfNotEqual {23}
+	012 Move r8, 0
+	013 LoadAddress rdx, stack:0x4C
+	014 Move rcx, 1
+	015 Call Kernel32.SetThreadErrorMode, rcx, rdx, r8
+	016 Move stack:0x48, rax
+	017 Goto {23}
+	018 LoadAddress rcx, [0x181E0F398]
+	019 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	020 Move rcx, [rax+184]
+	021 Move [rcx], 1
+	022 Move stack:0x48, 0
+	023 Move rax, stack:0x48
+	024 ShiftStack 56
+	025 Return rax
+
+Method: System.Void Dispose()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [rcx],0
+	mov dword ptr [rsp+30h],0
+	je short 0000000180EBE7A1h
+	mov ecx,[rcx+4]
+	lea rdx,[rsp+30h]
+	xor r8d,r8d
+	call 0000000180D5AD70h
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [rcx], 0
+	003 Move stack:0x30, 0
+	004 JumpIfEqual {9}
+	005 Move rcx, [rcx+4]
+	006 LoadAddress rdx, stack:0x30
+	007 Move r8, 0
+	008 Call Kernel32.SetThreadErrorMode, rcx, rdx, r8
+	009 ShiftStack 40
+	010 Return 
+

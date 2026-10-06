@@ -1,0 +1,106 @@
+Type: UnityEngine.UIElements.Scroller+ScrollerSlider
+
+Method: System.Void .ctor(System.Single start, System.Single end, UnityEngine.UIElements.SliderDirection direction, System.Single pageSize)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,60h
+	cmp byte ptr [181F23871h],0
+	mov ebx,r9d
+	movaps [rsp+50h],xmm6
+	mov rdi,rcx
+	movaps [rsp+40h],xmm7
+	movaps xmm6,xmm2
+	movaps xmm7,xmm1
+	jne short 00000001817AFFFCh
+	lea rcx,[181DF98F0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F23871h],1
+	mov rcx,[181DF98F0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001817B0011h
+	call 0000000180153C50h
+	movss xmm0,dword ptr [rsp+90h]
+	movaps xmm3,xmm6
+	mov qword ptr [rsp+30h],0
+	movaps xmm2,xmm7
+	movss dword ptr [rsp+28h],xmm0
+	xor edx,edx
+	mov rcx,rdi
+	mov [rsp+20h],ebx
+	call 00000001817B2640h
+	mov rbx,[rsp+70h]
+	movaps xmm6,[rsp+50h]
+	movaps xmm7,[rsp+40h]
+	add rsp,60h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -96
+	005 Compare [0x181F23871], 0
+	006 Move rbx, r9
+	007 Move stack:0x50, xmm6
+	008 Move rdi, rcx
+	009 Move stack:0x40, xmm7
+	010 Move xmm6, xmm2
+	011 Move xmm7, xmm1
+	012 JumpIfNotEqual {16}
+	013 LoadAddress rcx, [0x181DF98F0]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x181F23871], 1
+	016 Move rcx, typeof(UnityEngine.UIElements.Slider)
+	017 Compare [rcx+224], 0
+	018 JumpIfNotEqual {20}
+	019 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	020 Move xmm0, stack:0x90
+	021 Move xmm3, xmm6
+	022 Move stack:0x30, 0
+	023 Move xmm2, xmm7
+	024 Move stack:0x28, xmm0
+	025 Move rdx, 0
+	026 Move rcx, rdi
+	027 Move stack:0x20, rbx
+	028 Call Slider..ctor, rcx, xmm1, xmm2, r9, stack:0x0, stack:0x8
+	029 Move rbx, stack:0x70
+	030 Move xmm6, stack:0x50
+	031 Move xmm7, stack:0x40
+	032 ShiftStack 96
+	033 Move rdi, stack:0x0
+	034 ShiftStack 8
+	035 Return 
+
+Method: System.Single SliderNormalizeValue(System.Single currentValue, System.Single lowerValue, System.Single higherValue)
+
+Disassembly:
+	xchg ax,ax
+	subss xmm1,xmm2
+	xorps xmm0,xmm0
+	subss xmm3,xmm2
+	divss xmm1,xmm3
+	comiss xmm0,xmm1
+	ja short 00000001817AFFB6h
+	movss xmm0,dword ptr [1818BCB64h]
+	comiss xmm1,xmm0
+	ja short 00000001817AFFB6h
+	movaps xmm0,xmm1
+	ret
+
+ISIL:
+	001 Nop 
+	002 Subtract xmm1, xmm1, xmm2
+	003 Move xmm0, 0
+	004 Subtract xmm3, xmm3, xmm2
+	005 Divide xmm1, xmm1, xmm3
+	006 Compare xmm0, xmm1
+	007 JumpIfGreater {12}
+	008 Move xmm0, [0x1818BCB64]
+	009 Compare xmm1, xmm0
+	010 JumpIfGreater {12}
+	011 Move xmm0, xmm1
+	012 Return xmm0
+

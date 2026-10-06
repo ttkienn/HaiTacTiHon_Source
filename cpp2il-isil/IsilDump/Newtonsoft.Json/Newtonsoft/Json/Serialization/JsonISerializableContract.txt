@@ -1,0 +1,51 @@
+Type: Newtonsoft.Json.Serialization.JsonISerializableContract
+
+Method: Newtonsoft.Json.Serialization.ObjectConstructor`1<System.Object> get_ISerializableCreator()
+
+Disassembly:
+	mov rax,[rcx+0C0h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+192]
+	002 Return rax
+
+Method: System.Void set_ISerializableCreator(Newtonsoft.Json.Serialization.ObjectConstructor`1<System.Object> value)
+
+Disassembly:
+	mov [rcx+0C0h],rdx
+	add rcx,0C0h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move [rcx+192], rdx
+	002 Add rcx, rcx, 192
+	003 Call 0x1801E1E30, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Void .ctor(System.Type underlyingType)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	xor r8d,r8d
+	mov rbx,rcx
+	call 000000018103A0D0h
+	mov dword ptr [rbx+24h],7
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move r8, 0
+	005 Move rbx, rcx
+	006 Call JsonContainerContract..ctor, rcx, rdx
+	007 Move [rbx+36], 7
+	008 ShiftStack 32
+	009 Move rbx, stack:0x0
+	010 ShiftStack 8
+	011 Return 
+

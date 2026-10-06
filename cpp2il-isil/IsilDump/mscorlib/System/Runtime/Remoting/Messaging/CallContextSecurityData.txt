@@ -1,0 +1,87 @@
+Type: System.Runtime.Remoting.Messaging.CallContextSecurityData
+
+Method: System.Boolean get_HasInfo()
+
+Disassembly:
+	cmp qword ptr [rcx+10h],0
+	seta al
+	ret
+
+ISIL:
+	001 Compare [rcx+16], 0
+	002 NotImplemented "seta al"
+	003 Return rax
+
+Method: System.Object Clone()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1C940h],0
+	mov rdi,rcx
+	jne short 0000000180DF9D29h
+	lea rcx,[181E046F0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C940h],1
+	mov rcx,[181E046F0h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 000000018024B730h
+	mov rdx,[rdi+10h]
+	test rbx,rbx
+	je short 0000000180DF9D66h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdx
+	call 00000001801E1E30h
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1C940], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x181E046F0]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x181F1C940], 1
+	011 Move rcx, typeof(System.Runtime.Remoting.Messaging.CallContextSecurityData)
+	012 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	013 Move rdx, 0
+	014 Move rcx, rax
+	015 Move rbx, rax
+	016 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	017 Move rdx, [rdi+16]
+	018 Compare rbx, 0
+	019 JumpIfEqual {29}
+	020 LoadAddress rcx, [rbx+16]
+	021 Move [rbx+16], rdx
+	022 Call 0x1801E1E30, rcx, rdx, r8, r9
+	023 Move rax, rbx
+	024 Move rbx, stack:0x30
+	025 ShiftStack 32
+	026 Move rdi, stack:0x0
+	027 ShiftStack 8
+	028 Return rax
+	029 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+

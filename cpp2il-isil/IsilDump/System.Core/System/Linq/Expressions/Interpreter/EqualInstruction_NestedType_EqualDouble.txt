@@ -1,0 +1,149 @@
+Type: System.Linq.Expressions.Interpreter.EqualInstruction+EqualDouble
+
+Method: System.Int32 Run(System.Linq.Expressions.Interpreter.InterpretedFrame frame)
+
+Disassembly:
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1E361h],0
+	mov rdi,rdx
+	jne short 00000001810E6745h
+	lea rcx,[181E0F8D8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E361h],1
+	test rdi,rdi
+	je near ptr 00000001810E67EEh
+	mov [rsp+30h],rbx
+	xor edx,edx
+	mov rcx,rdi
+	mov [rsp+38h],rsi
+	call 00000001811079B0h
+	xor edx,edx
+	mov rcx,rdi
+	mov rbx,rax
+	call 00000001811079B0h
+	test rax,rax
+	je short 00000001810E67C8h
+	test rbx,rbx
+	je short 00000001810E67C4h
+	mov r8,[181E0F8D8h]
+	mov rdx,[rax]
+	mov rcx,[r8+40h]
+	cmp [rdx+40h],rcx
+	mov rcx,rax
+	jne short 00000001810E67FDh
+	call 0000000180153B70h
+	mov r8,[181E0F8D8h]
+	mov rsi,rax
+	mov rdx,[rbx]
+	mov rcx,[r8+40h]
+	cmp [rdx+40h],rcx
+	mov rcx,rbx
+	jne short 00000001810E67F4h
+	call 0000000180153B70h
+	movsd xmm0,qword ptr [rsi]
+	ucomisd xmm0,qword ptr [rax]
+	jp short 00000001810E67C4h
+	jne short 00000001810E67C4h
+	mov dl,1
+	jmp short 00000001810E67CEh
+	xor dl,dl
+	jmp short 00000001810E67CEh
+	test rbx,rbx
+	sete dl
+	xor r8d,r8d
+	mov rcx,rdi
+	call 0000000181107ED0h
+	mov rsi,[rsp+38h]
+	mov eax,1
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+	int 3
+	mov rdx,r8
+	call 00000001801E1E70h
+	int 3
+	mov rdx,r8
+	call 00000001801E1E70h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rdi
+	003 ShiftStack -32
+	004 Compare [0x181F1E361], 0
+	005 Move rdi, rdx
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x181E0F8D8]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x181F1E361], 1
+	010 Compare rdi, 0
+	011 JumpIfEqual {60}
+	012 Move stack:0x30, rbx
+	013 Move rdx, 0
+	014 Move rcx, rdi
+	015 Move stack:0x38, rsi
+	016 Call InterpretedFrame.Pop, rcx, rdx
+	017 Move rdx, 0
+	018 Move rcx, rdi
+	019 Move rbx, rax
+	020 Call InterpretedFrame.Pop, rcx, rdx
+	021 Compare rax, 0
+	022 JumpIfEqual {48}
+	023 Compare rbx, 0
+	024 JumpIfEqual {46}
+	025 Move r8, typeof(System.Double)
+	026 Move rdx, [rax]
+	027 Move rcx, [r8+64]
+	028 Compare [rdx+64], rcx
+	029 Move rcx, rax
+	030 JumpIfNotEqual {65}
+	031 Call "il2cpp_object_unbox", rcx, rdx, r8, r9
+	032 Move r8, typeof(System.Double)
+	033 Move rsi, rax
+	034 Move rdx, [rbx]
+	035 Move rcx, [r8+64]
+	036 Compare [rdx+64], rcx
+	037 Move rcx, rbx
+	038 JumpIfNotEqual {62}
+	039 Call "il2cpp_object_unbox", rcx, rdx, r8, r9
+	040 Move xmm0, [rsi]
+	041 NotImplemented "ucomisd xmm0,qword ptr [rax]"
+	042 NotImplemented "jp short 00000001810E67C4h"
+	043 JumpIfNotEqual {46}
+	044 Move rdx, 1
+	045 Goto {50}
+	046 Move rdx, 0
+	047 Goto {50}
+	048 Compare rbx, 0
+	049 NotImplemented "sete dl"
+	050 Move r8, 0
+	051 Move rcx, rdi
+	052 Call InterpretedFrame.Push, rcx, rdx
+	053 Move rsi, stack:0x38
+	054 Move rax, 1
+	055 Move rbx, stack:0x30
+	056 ShiftStack 32
+	057 Move rdi, stack:0x0
+	058 ShiftStack 8
+	059 Return rax
+	060 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	061 Interrupt 
+	062 Move rdx, r8
+	063 Call 0x1801E1E70, rcx, rdx, r8, r9
+	064 Interrupt 
+	065 Move rdx, r8
+	066 Call 0x1801E1E70, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B5B0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B5B0, rcx, rdx, r8
+	003 Return 
+

@@ -1,0 +1,745 @@
+Type: hqx.Interpolation
+
+Method: System.Int32 Mix3To1(System.Int32 c1, System.Int32 c2)
+
+Disassembly:
+	movsxd rax,edx
+	cmp ecx,eax
+	je short 00000001805E738Dh
+	mov r9,rax
+	movsxd r8,ecx
+	shr eax,2
+	and eax,3FC00000h
+	shr ecx,2
+	and ecx,3FC00000h
+	lea edx,[rcx+rcx*2]
+	add edx,eax
+	mov rax,r8
+	and eax,0FF00FFh
+	and r8d,0FF00h
+	and edx,0FF000000h
+	lea rcx,[rax+rax*2]
+	mov rax,r9
+	and eax,0FF00FFh
+	and r9d,0FF00h
+	add rax,rcx
+	lea rcx,[r8+r8*2]
+	add rcx,r9
+	shr rax,2
+	shr rcx,2
+	and eax,0FF00FFh
+	and ecx,0FF00h
+	or eax,edx
+	or eax,ecx
+	ret
+	mov eax,ecx
+	ret
+
+ISIL:
+	001 Move rax, rdx
+	002 Compare rcx, rax
+	003 JumpIfEqual {30}
+	004 Move r9, rax
+	005 Move r8, rcx
+	006 ShiftRight rax, 2
+	007 And rax, rax, 0x3FC00000
+	008 ShiftRight rcx, 2
+	009 And rcx, rcx, 0x3FC00000
+	010 LoadAddress rdx, [rcx+rcx*2]
+	011 Add rdx, rdx, rax
+	012 Move rax, r8
+	013 And rax, rax, 0xFF00FF
+	014 And r8, r8, 0xFF00
+	015 And rdx, rdx, 0xFF000000
+	016 LoadAddress rcx, [rax+rax*2]
+	017 Move rax, r9
+	018 And rax, rax, 0xFF00FF
+	019 And r9, r9, 0xFF00
+	020 Add rax, rax, rcx
+	021 LoadAddress rcx, [r8+r8*2]
+	022 Add rcx, rcx, r9
+	023 ShiftRight rax, 2
+	024 ShiftRight rcx, 2
+	025 And rax, rax, 0xFF00FF
+	026 And rcx, rcx, 0xFF00
+	027 Or rax, rax, rdx
+	028 Or rax, rax, rcx
+	029 Return rax
+	030 Move rax, rcx
+	031 Return rax
+
+Method: System.Int32 Mix2To1To1(System.Int32 c1, System.Int32 c2, System.Int32 c3)
+
+Disassembly:
+	mov [rsp+8],rbx
+	movsxd r11,ecx
+	movsxd rbx,edx
+	shr ecx,2
+	and ecx,3FC00000h
+	movsxd r9,r8d
+	mov rax,r9
+	shr edx,2
+	and eax,0FF00FFh
+	shr r8d,2
+	and edx,3FC00000h
+	and r9d,0FF00h
+	and r8d,3FC00000h
+	lea r10d,[rdx+rcx*2]
+	mov rcx,r11
+	and ecx,0FF00FFh
+	and r11d,0FF00h
+	add r10d,r8d
+	and r10d,0FF000000h
+	lea rdx,[rax+rcx*2]
+	mov rax,rbx
+	and eax,0FF00FFh
+	lea rcx,[r9+r11*2]
+	add rax,rdx
+	and ebx,0FF00h
+	shr rax,2
+	add rcx,rbx
+	mov rbx,[rsp+8]
+	and eax,0FF00FFh
+	shr rcx,2
+	or eax,r10d
+	and ecx,0FF00h
+	or eax,ecx
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move r11, rcx
+	003 Move rbx, rdx
+	004 ShiftRight rcx, 2
+	005 And rcx, rcx, 0x3FC00000
+	006 Move r9, r8
+	007 Move rax, r9
+	008 ShiftRight rdx, 2
+	009 And rax, rax, 0xFF00FF
+	010 ShiftRight r8, 2
+	011 And rdx, rdx, 0x3FC00000
+	012 And r9, r9, 0xFF00
+	013 And r8, r8, 0x3FC00000
+	014 LoadAddress r10, [rdx+rcx*2]
+	015 Move rcx, r11
+	016 And rcx, rcx, 0xFF00FF
+	017 And r11, r11, 0xFF00
+	018 Add r10, r10, r8
+	019 And r10, r10, 0xFF000000
+	020 LoadAddress rdx, [rax+rcx*2]
+	021 Move rax, rbx
+	022 And rax, rax, 0xFF00FF
+	023 LoadAddress rcx, [r9+r11*2]
+	024 Add rax, rax, rdx
+	025 And rbx, rbx, 0xFF00
+	026 ShiftRight rax, 2
+	027 Add rcx, rcx, rbx
+	028 Move rbx, stack:0x8
+	029 And rax, rax, 0xFF00FF
+	030 ShiftRight rcx, 2
+	031 Or rax, rax, r10
+	032 And rcx, rcx, 0xFF00
+	033 Or rax, rax, rcx
+	034 Return rax
+
+Method: System.Int32 Mix7To1(System.Int32 c1, System.Int32 c2)
+
+Disassembly:
+	cmp ecx,edx
+	je short 00000001805E75BFh
+	movsxd r8,ecx
+	shr ecx,3
+	mov rax,r8
+	and eax,0FF00FFh
+	movsxd r9,edx
+	and ecx,1FE00000h
+	shr edx,3
+	imul r10d,ecx,7
+	and r8d,0FF00h
+	imul rcx,rax,7
+	mov rax,r9
+	and edx,1FE00000h
+	and eax,0FF00FFh
+	and r9d,0FF00h
+	add rax,rcx
+	add r10d,edx
+	shr rax,3
+	and r10d,0FF000000h
+	imul rcx,r8,7
+	and eax,0FF00FFh
+	add rcx,r9
+	or eax,r10d
+	shr rcx,3
+	and ecx,0FF00h
+	or eax,ecx
+	ret
+	mov eax,ecx
+	ret
+
+ISIL:
+	001 Compare rcx, rdx
+	002 JumpIfEqual {29}
+	003 Move r8, rcx
+	004 ShiftRight rcx, 3
+	005 Move rax, r8
+	006 And rax, rax, 0xFF00FF
+	007 Move r9, rdx
+	008 And rcx, rcx, 0x1FE00000
+	009 ShiftRight rdx, 3
+	010 Multiply r10, rcx, 7
+	011 And r8, r8, 0xFF00
+	012 Multiply rcx, rax, 7
+	013 Move rax, r9
+	014 And rdx, rdx, 0x1FE00000
+	015 And rax, rax, 0xFF00FF
+	016 And r9, r9, 0xFF00
+	017 Add rax, rax, rcx
+	018 Add r10, r10, rdx
+	019 ShiftRight rax, 3
+	020 And r10, r10, 0xFF000000
+	021 Multiply rcx, r8, 7
+	022 And rax, rax, 0xFF00FF
+	023 Add rcx, rcx, r9
+	024 Or rax, rax, r10
+	025 ShiftRight rcx, 3
+	026 And rcx, rcx, 0xFF00
+	027 Or rax, rax, rcx
+	028 Return rax
+	029 Move rax, rcx
+	030 Return rax
+
+Method: System.Int32 Mix2To7To7(System.Int32 c1, System.Int32 c2, System.Int32 c3)
+
+Disassembly:
+	movsxd r11,ecx
+	movsxd r9,edx
+	movsxd r10,r8d
+	shr ecx,4
+	and ecx,0FF00000h
+	shr edx,4
+	and edx,0FF00000h
+	shr r8d,4
+	and r8d,0FF00000h
+	add edx,r8d
+	imul eax,edx,7
+	lea r8d,[rax+rcx*2]
+	mov rcx,r10
+	mov rax,r9
+	and ecx,0FF00FFh
+	and eax,0FF00FFh
+	and r10d,0FF00h
+	add rcx,rax
+	and r9d,0FF00h
+	mov rax,r11
+	add r10,r9
+	and eax,0FF00FFh
+	and r11d,0FF00h
+	imul rcx,7
+	and r8d,0FF000000h
+	lea rax,[rcx+rax*2]
+	shr rax,4
+	and eax,0FF00FFh
+	imul rcx,r10,7
+	or eax,r8d
+	lea rdx,[rcx+r11*2]
+	shr rdx,4
+	and edx,0FF00h
+	or eax,edx
+	ret
+
+ISIL:
+	001 Move r11, rcx
+	002 Move r9, rdx
+	003 Move r10, r8
+	004 ShiftRight rcx, 4
+	005 And rcx, rcx, 0xFF00000
+	006 ShiftRight rdx, 4
+	007 And rdx, rdx, 0xFF00000
+	008 ShiftRight r8, 4
+	009 And r8, r8, 0xFF00000
+	010 Add rdx, rdx, r8
+	011 Multiply rax, rdx, 7
+	012 LoadAddress r8, [rax+rcx*2]
+	013 Move rcx, r10
+	014 Move rax, r9
+	015 And rcx, rcx, 0xFF00FF
+	016 And rax, rax, 0xFF00FF
+	017 And r10, r10, 0xFF00
+	018 Add rcx, rcx, rax
+	019 And r9, r9, 0xFF00
+	020 Move rax, r11
+	021 Add r10, r10, r9
+	022 And rax, rax, 0xFF00FF
+	023 And r11, r11, 0xFF00
+	024 Multiply rcx, rcx, 7
+	025 And r8, r8, 0xFF000000
+	026 LoadAddress rax, [rcx+rax*2]
+	027 ShiftRight rax, 4
+	028 And rax, rax, 0xFF00FF
+	029 Multiply rcx, r10, 7
+	030 Or rax, rax, r8
+	031 LoadAddress rdx, [rcx+r11*2]
+	032 ShiftRight rdx, 4
+	033 And rdx, rdx, 0xFF00
+	034 Or rax, rax, rdx
+	035 Return rax
+
+Method: System.Int32 MixEven(System.Int32 c1, System.Int32 c2)
+
+Disassembly:
+	movsxd r10,ecx
+	cmp r10d,edx
+	je short 00000001805E7632h
+	mov r8,r10
+	movsxd r9,edx
+	mov rcx,r9
+	shr r10d,1
+	and r9d,0FF00h
+	shr edx,1
+	mov rax,r8
+	and r10d,7F800000h
+	and eax,0FF00FFh
+	and ecx,0FF00FFh
+	add rax,rcx
+	and r8d,0FF00h
+	shr rax,1
+	add r9,r8
+	add r10d,edx
+	shr r9,1
+	and eax,0FF00FFh
+	and r10d,0FF000000h
+	or eax,r10d
+	and r9d,0FF00h
+	or eax,r9d
+	ret
+	mov eax,r10d
+	ret
+
+ISIL:
+	001 Move r10, rcx
+	002 Compare r10, rdx
+	003 JumpIfEqual {26}
+	004 Move r8, r10
+	005 Move r9, rdx
+	006 Move rcx, r9
+	007 ShiftRight r10, 1
+	008 And r9, r9, 0xFF00
+	009 ShiftRight rdx, 1
+	010 Move rax, r8
+	011 And r10, r10, 0x7F800000
+	012 And rax, rax, 0xFF00FF
+	013 And rcx, rcx, 0xFF00FF
+	014 Add rax, rax, rcx
+	015 And r8, r8, 0xFF00
+	016 ShiftRight rax, 1
+	017 Add r9, r9, r8
+	018 Add r10, r10, rdx
+	019 ShiftRight r9, 1
+	020 And rax, rax, 0xFF00FF
+	021 And r10, r10, 0xFF000000
+	022 Or rax, rax, r10
+	023 And r9, r9, 0xFF00
+	024 Or rax, rax, r9
+	025 Return rax
+	026 Move rax, r10
+	027 Return rax
+
+Method: System.Int32 Mix4To2To1(System.Int32 c1, System.Int32 c2, System.Int32 c3)
+
+Disassembly:
+	mov [rsp+8],rbx
+	movsxd r10,edx
+	movsxd r11,ecx
+	shr edx,3
+	and edx,1FE00000h
+	movsxd rbx,r8d
+	shr ecx,3
+	and ecx,1FE00000h
+	shr r8d,3
+	and r8d,1FE00000h
+	lea eax,[rcx+rcx*4]
+	mov rcx,r10
+	lea r9d,[rax+rdx*2]
+	and ecx,0FF00FFh
+	mov rax,r11
+	and r10d,0FF00h
+	and eax,0FF00FFh
+	and r11d,0FF00h
+	add r9d,r8d
+	and r9d,0FF000000h
+	lea rax,[rax+rax*4]
+	lea rdx,[rax+rcx*2]
+	mov rax,rbx
+	and eax,0FF00FFh
+	lea rcx,[r11+r11*4]
+	add rax,rdx
+	and ebx,0FF00h
+	shr rax,3
+	lea rdx,[rcx+r10*2]
+	add rdx,rbx
+	and eax,0FF00FFh
+	mov rbx,[rsp+8]
+	or eax,r9d
+	shr rdx,3
+	and edx,0FF00h
+	or eax,edx
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move r10, rdx
+	003 Move r11, rcx
+	004 ShiftRight rdx, 3
+	005 And rdx, rdx, 0x1FE00000
+	006 Move rbx, r8
+	007 ShiftRight rcx, 3
+	008 And rcx, rcx, 0x1FE00000
+	009 ShiftRight r8, 3
+	010 And r8, r8, 0x1FE00000
+	011 LoadAddress rax, [rcx+rcx*4]
+	012 Move rcx, r10
+	013 LoadAddress r9, [rax+rdx*2]
+	014 And rcx, rcx, 0xFF00FF
+	015 Move rax, r11
+	016 And r10, r10, 0xFF00
+	017 And rax, rax, 0xFF00FF
+	018 And r11, r11, 0xFF00
+	019 Add r9, r9, r8
+	020 And r9, r9, 0xFF000000
+	021 LoadAddress rax, [rax+rax*4]
+	022 LoadAddress rdx, [rax+rcx*2]
+	023 Move rax, rbx
+	024 And rax, rax, 0xFF00FF
+	025 LoadAddress rcx, [r11+r11*4]
+	026 Add rax, rax, rdx
+	027 And rbx, rbx, 0xFF00
+	028 ShiftRight rax, 3
+	029 LoadAddress rdx, [rcx+r10*2]
+	030 Add rdx, rdx, rbx
+	031 And rax, rax, 0xFF00FF
+	032 Move rbx, stack:0x8
+	033 Or rax, rax, r9
+	034 ShiftRight rdx, 3
+	035 And rdx, rdx, 0xFF00
+	036 Or rax, rax, rdx
+	037 Return rax
+
+Method: System.Int32 Mix6To1To1(System.Int32 c1, System.Int32 c2, System.Int32 c3)
+
+Disassembly:
+	mov [rsp+8],rbx
+	movsxd rbx,edx
+	movsxd r10,ecx
+	shr edx,3
+	and edx,1FE00000h
+	movsxd r11,r8d
+	shr ecx,3
+	and ecx,1FE00000h
+	shr r8d,3
+	and r8d,1FE00000h
+	lea eax,[rcx+rcx*2]
+	lea r9d,[rdx+rax*2]
+	mov rax,r10
+	and eax,0FF00FFh
+	and r10d,0FF00h
+	add r9d,r8d
+	and r9d,0FF000000h
+	lea rcx,[rax+rax*2]
+	mov rax,r11
+	and eax,0FF00FFh
+	and r11d,0FF00h
+	lea rdx,[rax+rcx*2]
+	mov rax,rbx
+	and eax,0FF00FFh
+	lea rcx,[r10+r10*2]
+	add rax,rdx
+	and ebx,0FF00h
+	shr rax,3
+	lea rdx,[r11+rcx*2]
+	add rdx,rbx
+	and eax,0FF00FFh
+	mov rbx,[rsp+8]
+	or eax,r9d
+	shr rdx,3
+	and edx,0FF00h
+	or eax,edx
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move rbx, rdx
+	003 Move r10, rcx
+	004 ShiftRight rdx, 3
+	005 And rdx, rdx, 0x1FE00000
+	006 Move r11, r8
+	007 ShiftRight rcx, 3
+	008 And rcx, rcx, 0x1FE00000
+	009 ShiftRight r8, 3
+	010 And r8, r8, 0x1FE00000
+	011 LoadAddress rax, [rcx+rcx*2]
+	012 LoadAddress r9, [rdx+rax*2]
+	013 Move rax, r10
+	014 And rax, rax, 0xFF00FF
+	015 And r10, r10, 0xFF00
+	016 Add r9, r9, r8
+	017 And r9, r9, 0xFF000000
+	018 LoadAddress rcx, [rax+rax*2]
+	019 Move rax, r11
+	020 And rax, rax, 0xFF00FF
+	021 And r11, r11, 0xFF00
+	022 LoadAddress rdx, [rax+rcx*2]
+	023 Move rax, rbx
+	024 And rax, rax, 0xFF00FF
+	025 LoadAddress rcx, [r10+r10*2]
+	026 Add rax, rax, rdx
+	027 And rbx, rbx, 0xFF00
+	028 ShiftRight rax, 3
+	029 LoadAddress rdx, [r11+rcx*2]
+	030 Add rdx, rdx, rbx
+	031 And rax, rax, 0xFF00FF
+	032 Move rbx, stack:0x8
+	033 Or rax, rax, r9
+	034 ShiftRight rdx, 3
+	035 And rdx, rdx, 0xFF00
+	036 Or rax, rax, rdx
+	037 Return rax
+
+Method: System.Int32 Mix5To3(System.Int32 c1, System.Int32 c2)
+
+Disassembly:
+	cmp ecx,edx
+	je short 00000001805E74AAh
+	movsxd r8,edx
+	movsxd r9,ecx
+	shr edx,3
+	and edx,1FE00000h
+	shr ecx,3
+	and ecx,1FE00000h
+	lea eax,[rdx+rdx*2]
+	lea r10d,[rcx+rcx*4]
+	add r10d,eax
+	mov rax,r8
+	and eax,0FF00FFh
+	and r8d,0FF00h
+	and r10d,0FF000000h
+	lea rcx,[rax+rax*2]
+	mov rax,r9
+	and eax,0FF00FFh
+	lea rdx,[r8+r8*2]
+	and r9d,0FF00h
+	lea rax,[rax+rax*4]
+	add rax,rcx
+	lea rcx,[r9+r9*4]
+	add rdx,rcx
+	shr rax,3
+	shr rdx,3
+	and eax,0FF00FFh
+	and edx,0FF00h
+	or eax,r10d
+	or eax,edx
+	ret
+	mov eax,ecx
+	ret
+
+ISIL:
+	001 Compare rcx, rdx
+	002 JumpIfEqual {32}
+	003 Move r8, rdx
+	004 Move r9, rcx
+	005 ShiftRight rdx, 3
+	006 And rdx, rdx, 0x1FE00000
+	007 ShiftRight rcx, 3
+	008 And rcx, rcx, 0x1FE00000
+	009 LoadAddress rax, [rdx+rdx*2]
+	010 LoadAddress r10, [rcx+rcx*4]
+	011 Add r10, r10, rax
+	012 Move rax, r8
+	013 And rax, rax, 0xFF00FF
+	014 And r8, r8, 0xFF00
+	015 And r10, r10, 0xFF000000
+	016 LoadAddress rcx, [rax+rax*2]
+	017 Move rax, r9
+	018 And rax, rax, 0xFF00FF
+	019 LoadAddress rdx, [r8+r8*2]
+	020 And r9, r9, 0xFF00
+	021 LoadAddress rax, [rax+rax*4]
+	022 Add rax, rax, rcx
+	023 LoadAddress rcx, [r9+r9*4]
+	024 Add rdx, rdx, rcx
+	025 ShiftRight rax, 3
+	026 ShiftRight rdx, 3
+	027 And rax, rax, 0xFF00FF
+	028 And rdx, rdx, 0xFF00
+	029 Or rax, rax, r10
+	030 Or rax, rax, rdx
+	031 Return rax
+	032 Move rax, rcx
+	033 Return rax
+
+Method: System.Int32 Mix2To3To3(System.Int32 c1, System.Int32 c2, System.Int32 c3)
+
+Disassembly:
+	movsxd r11,ecx
+	movsxd r9,edx
+	movsxd r10,r8d
+	shr ecx,3
+	and ecx,1FE00000h
+	shr edx,3
+	and edx,1FE00000h
+	shr r8d,3
+	and r8d,1FE00000h
+	add edx,r8d
+	lea eax,[rdx+rdx*2]
+	lea r8d,[rax+rcx*2]
+	mov rcx,r10
+	mov rax,r9
+	and ecx,0FF00FFh
+	and eax,0FF00FFh
+	and r10d,0FF00h
+	add rcx,rax
+	and r9d,0FF00h
+	mov rax,r11
+	add r10,r9
+	and eax,0FF00FFh
+	and r11d,0FF00h
+	and r8d,0FF000000h
+	lea rcx,[rcx+rcx*2]
+	lea rax,[rcx+rax*2]
+	shr rax,3
+	lea rcx,[r10+r10*2]
+	and eax,0FF00FFh
+	lea rdx,[rcx+r11*2]
+	shr rdx,3
+	or eax,r8d
+	and edx,0FF00h
+	or eax,edx
+	ret
+
+ISIL:
+	001 Move r11, rcx
+	002 Move r9, rdx
+	003 Move r10, r8
+	004 ShiftRight rcx, 3
+	005 And rcx, rcx, 0x1FE00000
+	006 ShiftRight rdx, 3
+	007 And rdx, rdx, 0x1FE00000
+	008 ShiftRight r8, 3
+	009 And r8, r8, 0x1FE00000
+	010 Add rdx, rdx, r8
+	011 LoadAddress rax, [rdx+rdx*2]
+	012 LoadAddress r8, [rax+rcx*2]
+	013 Move rcx, r10
+	014 Move rax, r9
+	015 And rcx, rcx, 0xFF00FF
+	016 And rax, rax, 0xFF00FF
+	017 And r10, r10, 0xFF00
+	018 Add rcx, rcx, rax
+	019 And r9, r9, 0xFF00
+	020 Move rax, r11
+	021 Add r10, r10, r9
+	022 And rax, rax, 0xFF00FF
+	023 And r11, r11, 0xFF00
+	024 And r8, r8, 0xFF000000
+	025 LoadAddress rcx, [rcx+rcx*2]
+	026 LoadAddress rax, [rcx+rax*2]
+	027 ShiftRight rax, 3
+	028 LoadAddress rcx, [r10+r10*2]
+	029 And rax, rax, 0xFF00FF
+	030 LoadAddress rdx, [rcx+r11*2]
+	031 ShiftRight rdx, 3
+	032 Or rax, rax, r8
+	033 And rdx, rdx, 0xFF00
+	034 Or rax, rax, rdx
+	035 Return rax
+
+Method: System.Int32 Mix14To1To1(System.Int32 c1, System.Int32 c2, System.Int32 c3)
+
+Disassembly:
+	mov [rsp+8],rbx
+	movsxd r9,ecx
+	shr ecx,4
+	mov rax,r9
+	and eax,0FF00FFh
+	movsxd r10,r8d
+	and ecx,0FF00000h
+	movsxd r11,edx
+	imul ebx,ecx,0Eh
+	and r9d,0FF00h
+	imul rcx,rax,0Eh
+	mov rax,r10
+	shr edx,4
+	and eax,0FF00FFh
+	shr r8d,4
+	add rcx,rax
+	and edx,0FF00000h
+	mov rax,r11
+	add ebx,edx
+	and eax,0FF00FFh
+	and r10d,0FF00h
+	add rax,rcx
+	and r8d,0FF00000h
+	shr rax,4
+	add ebx,r8d
+	and ebx,0FF000000h
+	and eax,0FF00FFh
+	or eax,ebx
+	and r11d,0FF00h
+	mov rbx,[rsp+8]
+	imul rcx,r9,0Eh
+	add rcx,r10
+	add rcx,r11
+	shr rcx,4
+	and ecx,0FF00h
+	or eax,ecx
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move r9, rcx
+	003 ShiftRight rcx, 4
+	004 Move rax, r9
+	005 And rax, rax, 0xFF00FF
+	006 Move r10, r8
+	007 And rcx, rcx, 0xFF00000
+	008 Move r11, rdx
+	009 Multiply rbx, rcx, 14
+	010 And r9, r9, 0xFF00
+	011 Multiply rcx, rax, 14
+	012 Move rax, r10
+	013 ShiftRight rdx, 4
+	014 And rax, rax, 0xFF00FF
+	015 ShiftRight r8, 4
+	016 Add rcx, rcx, rax
+	017 And rdx, rdx, 0xFF00000
+	018 Move rax, r11
+	019 Add rbx, rbx, rdx
+	020 And rax, rax, 0xFF00FF
+	021 And r10, r10, 0xFF00
+	022 Add rax, rax, rcx
+	023 And r8, r8, 0xFF00000
+	024 ShiftRight rax, 4
+	025 Add rbx, rbx, r8
+	026 And rbx, rbx, 0xFF000000
+	027 And rax, rax, 0xFF00FF
+	028 Or rax, rax, rbx
+	029 And r11, r11, 0xFF00
+	030 Move rbx, stack:0x8
+	031 Multiply rcx, r9, 14
+	032 Add rcx, rcx, r10
+	033 Add rcx, rcx, r11
+	034 ShiftRight rcx, 4
+	035 And rcx, rcx, 0xFF00
+	036 Or rax, rax, rcx
+	037 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+

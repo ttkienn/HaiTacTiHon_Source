@@ -1,0 +1,54 @@
+Type: System.Timers.ElapsedEventArgs
+
+Method: System.Void .ctor(System.DateTime time)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F2010Eh],0
+	mov rbx,rdx
+	mov rdi,rcx
+	jne short 00000001814AF39Ch
+	lea rcx,[181E11D90h]
+	call 00000001801E2A80h
+	mov byte ptr [181F2010Eh],1
+	mov rcx,[181E11D90h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001814AF3B1h
+	call 0000000180153C50h
+	xor edx,edx
+	mov rcx,rdi
+	call 000000018024B5B0h
+	mov [rdi+10h],rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F2010E], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E11D90]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F2010E], 1
+	012 Move rcx, typeof(System.EventArgs)
+	013 Compare [rcx+224], 0
+	014 JumpIfNotEqual {16}
+	015 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	016 Move rdx, 0
+	017 Move rcx, rdi
+	018 Call 0x18024B5B0, rcx, rdx, r8
+	019 Move [rdi+16], rbx
+	020 Move rbx, stack:0x30
+	021 ShiftStack 32
+	022 Move rdi, stack:0x0
+	023 ShiftStack 8
+	024 Return 
+

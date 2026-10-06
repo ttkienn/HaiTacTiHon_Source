@@ -1,0 +1,98 @@
+Type: Small
+
+Method: System.Void .ctor(mImage img, System.Int32 id)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov ebx,r8d
+	xor edx,edx
+	mov rsi,rcx
+	call 000000018024B730h
+	lea rcx,[rsi+10h]
+	mov [rsi+10h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	xor eax,eax
+	mov [rsi+18h],ebx
+	mov [rsi+24h],rax
+	cmp [rsi+10h],rax
+	je short 0000000180393635h
+	test rdi,rdi
+	je short 0000000180393645h
+	cmp [rdi+10h],rax
+	je short 0000000180393635h
+	mov rcx,[rdi+10h]
+	xor edx,edx
+	call 0000000180477990h
+	mov [rsi+1Ch],eax
+	xor edx,edx
+	mov rcx,[rdi+10h]
+	call 0000000180477920h
+	mov [rsi+20h],eax
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rdi, rdx
+	007 Move rbx, r8
+	008 Move rdx, 0
+	009 Move rsi, rcx
+	010 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	011 LoadAddress rcx, [rsi+16]
+	012 Move [rsi+16], rdi
+	013 Move rdx, rdi
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 Move rax, 0
+	016 Move [rsi+24], rbx
+	017 Move [rsi+36], rax
+	018 Compare [rsi+16], rax
+	019 JumpIfEqual {32}
+	020 Compare rdi, 0
+	021 JumpIfEqual {38}
+	022 Compare [rdi+16], rax
+	023 JumpIfEqual {32}
+	024 Move rcx, [rdi+16]
+	025 Move rdx, 0
+	026 Call mImage.getImageWidth, rcx, rdx
+	027 Move [rsi+28], rax
+	028 Move rdx, 0
+	029 Move rcx, [rdi+16]
+	030 Call mImage.getImageHeight, rcx, rdx
+	031 Move [rsi+32], rax
+	032 Move rbx, stack:0x30
+	033 Move rsi, stack:0x38
+	034 ShiftStack 32
+	035 Move rdi, stack:0x0
+	036 ShiftStack 8
+	037 Return 
+	038 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void paint(mGraphics g, System.Int32 transform, System.Int32 x, System.Int32 y, System.Int32 anchor)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void update()
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+

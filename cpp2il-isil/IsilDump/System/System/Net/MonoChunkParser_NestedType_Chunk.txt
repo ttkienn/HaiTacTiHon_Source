@@ -1,0 +1,105 @@
+Type: System.Net.MonoChunkParser+Chunk
+
+Method: System.Void .ctor(System.Byte[] chunk)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 000000018024B730h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.Int32 Read(System.Byte[] buffer, System.Int32 offset, System.Int32 size)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,30h
+	mov rax,[rcx+10h]
+	mov edi,r9d
+	mov rbx,rcx
+	test rax,rax
+	je short 000000018145E98Dh
+	mov eax,[rax+18h]
+	sub eax,[rcx+18h]
+	cmp r9d,eax
+	jle short 000000018145E95Eh
+	mov rax,[rcx+10h]
+	mov edi,[rax+18h]
+	sub edi,[rcx+18h]
+	mov r9d,r8d
+	mov qword ptr [rsp+28h],0
+	mov r8,rdx
+	mov [rsp+20h],edi
+	mov edx,[rcx+18h]
+	mov rcx,[rcx+10h]
+	call 0000000180F52F70h
+	add [rbx+18h],edi
+	mov eax,edi
+	mov rbx,[rsp+40h]
+	add rsp,30h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -48
+	005 Move rax, [rcx+16]
+	006 Move rdi, r9
+	007 Move rbx, rcx
+	008 Compare rax, 0
+	009 JumpIfEqual {31}
+	010 Move rax, [rax+24]
+	011 Subtract rax, rax, [rcx+24]
+	012 Compare r9, rax
+	013 JumpIfLessOrEqual {17}
+	014 Move rax, [rcx+16]
+	015 Move rdi, [rax+24]
+	016 Subtract rdi, rdi, [rcx+24]
+	017 Move r9, r8
+	018 Move stack:0x28, 0
+	019 Move r8, rdx
+	020 Move stack:0x20, rdi
+	021 Move rdx, [rcx+24]
+	022 Move rcx, [rcx+16]
+	023 Call Buffer.BlockCopy, rcx, rdx, r8, r9, stack:0x0, stack:0x8
+	024 Add [rbx+24], [rbx+24], rdi
+	025 Move rax, rdi
+	026 Move rbx, stack:0x40
+	027 ShiftStack 48
+	028 Move rdi, stack:0x0
+	029 ShiftStack 8
+	030 Return rax
+	031 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

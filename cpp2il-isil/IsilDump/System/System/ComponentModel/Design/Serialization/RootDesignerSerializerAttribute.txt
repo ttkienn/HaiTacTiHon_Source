@@ -1,0 +1,170 @@
+Type: System.ComponentModel.Design.Serialization.RootDesignerSerializerAttribute
+
+Method: System.Void .ctor(System.String serializerTypeName, System.String baseSerializerTypeName, System.Boolean reloadable)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	movzx ebp,r9b
+	xor edx,edx
+	mov rdi,r8
+	mov rsi,rcx
+	call 000000018024B5B0h
+	lea rcx,[rsi+20h]
+	mov [rsi+20h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	lea rcx,[rsi+28h]
+	mov [rsi+28h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	mov rbx,[rsp+30h]
+	mov [rsi+18h],bpl
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbx, rdx
+	008 Move rbp, r9
+	009 Move rdx, 0
+	010 Move rdi, r8
+	011 Move rsi, rcx
+	012 Call 0x18024B5B0, rcx, rdx, r8
+	013 LoadAddress rcx, [rsi+32]
+	014 Move [rsi+32], rbx
+	015 Move rdx, rbx
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 LoadAddress rcx, [rsi+40]
+	018 Move [rsi+40], rdi
+	019 Move rdx, rdi
+	020 Call 0x1801E1E30, rcx, rdx, r8, r9
+	021 Move rbx, stack:0x30
+	022 Move [rsi+24], rbp
+	023 Move rbp, stack:0x38
+	024 Move rsi, stack:0x40
+	025 ShiftStack 32
+	026 Move rdi, stack:0x0
+	027 ShiftStack 8
+	028 Return 
+
+Method: System.String get_SerializerBaseTypeName()
+
+Disassembly:
+	mov rax,[rcx+28h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+40]
+	002 Return rax
+
+Method: System.Object get_TypeId()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp qword ptr [rcx+10h],0
+	mov rbx,rcx
+	jne short 0000000181527FB9h
+	mov rdi,[rcx+28h]
+	test rdi,rdi
+	je short 0000000181527FC8h
+	mov edx,2Ch
+	xor r8d,r8d
+	mov rcx,rdi
+	call 0000000180D7FBB0h
+	cmp eax,0FFFFFFFFh
+	je short 0000000181527F75h
+	xor r9d,r9d
+	mov r8d,eax
+	xor edx,edx
+	mov rcx,rdi
+	call 0000000180D84320h
+	mov rdi,rax
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000180F7D4C0h
+	test rax,rax
+	je short 0000000181527FC8h
+	mov rdx,[rax]
+	mov rcx,rax
+	mov r8,[rdx+2F8h]
+	mov rdx,[rdx+300h]
+	call r8
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rax
+	call 0000000180D7BAD0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rax
+	mov rdx,rax
+	call 00000001801E1E30h
+	mov rax,[rbx+10h]
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [rcx+16], 0
+	006 Move rbx, rcx
+	007 JumpIfNotEqual {41}
+	008 Move rdi, [rcx+40]
+	009 Compare rdi, 0
+	010 JumpIfEqual {47}
+	011 Move rdx, 44
+	012 Move r8, 0
+	013 Move rcx, rdi
+	014 Call String.IndexOf, rcx, rdx
+	015 Compare rax, 18446744073709551615
+	016 JumpIfEqual {23}
+	017 Move r9, 0
+	018 Move r8, rax
+	019 Move rdx, 0
+	020 Move rcx, rdi
+	021 Call String.Substring, rcx, rdx, r8
+	022 Move rdi, rax
+	023 Move rdx, 0
+	024 Move rcx, rbx
+	025 Call "il2cpp_vm_object_is_inst", rcx, rdx
+	026 Compare rax, 0
+	027 JumpIfEqual {47}
+	028 Move rdx, [rax]
+	029 Move rcx, rax
+	030 Move r8, [rdx+760]
+	031 Move rdx, [rdx+768]
+	032 Call r8
+	033 Move r8, 0
+	034 Move rdx, rdi
+	035 Move rcx, rax
+	036 Call String.Concat, rcx, rdx, r8
+	037 LoadAddress rcx, [rbx+16]
+	038 Move [rbx+16], rax
+	039 Move rdx, rax
+	040 Call 0x1801E1E30, rcx, rdx, r8, r9
+	041 Move rax, [rbx+16]
+	042 Move rbx, stack:0x30
+	043 ShiftStack 32
+	044 Move rdi, stack:0x0
+	045 ShiftStack 8
+	046 Return rax
+	047 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

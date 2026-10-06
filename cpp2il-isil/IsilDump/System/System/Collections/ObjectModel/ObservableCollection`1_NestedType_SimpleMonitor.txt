@@ -1,0 +1,61 @@
+Type: System.Collections.ObjectModel.ObservableCollection`1+SimpleMonitor
+
+Method: System.Void .ctor(System.Collections.ObjectModel.ObservableCollection`1<T> collection)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 000000018024B730h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	009 LoadAddress rcx, [rbx+24]
+	010 Move [rbx+24], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.Void Dispose()
+
+Disassembly:
+	sub rsp,28h
+	mov rdx,[rcx+18h]
+	test rdx,rdx
+	je short 0000000180B40535h
+	dec dword ptr [rdx+20h]
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rdx, [rcx+24]
+	003 Compare rdx, 0
+	004 JumpIfEqual {8}
+	005 Subtract [rdx+32], [rdx+32], 1
+	006 ShiftStack 40
+	007 Return 
+	008 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

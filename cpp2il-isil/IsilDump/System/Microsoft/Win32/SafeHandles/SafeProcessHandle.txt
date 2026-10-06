@@ -1,0 +1,140 @@
+Type: Microsoft.Win32.SafeHandles.SafeProcessHandle
+
+Method: System.Void .ctor(System.IntPtr handle)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	xor r8d,r8d
+	mov dl,1
+	mov rbx,rcx
+	call 0000000180D79940h
+	mov [rbx+10h],rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move r8, 0
+	007 Move rdx, 1
+	008 Move rbx, rcx
+	009 Call SafeHandleZeroOrMinusOneIsInvalid..ctor, rcx, rdx
+	010 Move [rbx+16], rdi
+	011 Move rbx, stack:0x30
+	012 ShiftStack 32
+	013 Move rdi, stack:0x0
+	014 ShiftStack 8
+	015 Return 
+
+Method: System.Void .ctor(System.IntPtr existingHandle, System.Boolean ownsHandle)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	movzx eax,r8b
+	mov rdi,rdx
+	movzx edx,al
+	xor r8d,r8d
+	mov rbx,rcx
+	call 0000000180D79940h
+	mov [rbx+10h],rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rax, r8
+	006 Move rdi, rdx
+	007 Move rdx, rax
+	008 Move r8, 0
+	009 Move rbx, rcx
+	010 Call SafeHandleZeroOrMinusOneIsInvalid..ctor, rcx, rdx
+	011 Move [rbx+16], rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Return 
+
+Method: System.Boolean ReleaseHandle()
+
+Disassembly:
+	mov rcx,[rcx+10h]
+	jmp near ptr 000000018016DE10h
+
+ISIL:
+	001 Move rcx, [rcx+16]
+	002 Call 0x18016DE10, rcx, rdx, r8, r9
+	003 Return rax
+
+Method: System.Void .cctor()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [181F200B9h],0
+	jne short 00000001814A5FE2h
+	lea rcx,[181DF6568h]
+	call 00000001801E2A80h
+	mov byte ptr [181F200B9h],1
+	mov rcx,[181DF6568h]
+	call 0000000180197840h
+	xor r8d,r8d
+	mov dl,1
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180D79940h
+	mov qword ptr [rbx+10h],0
+	mov rcx,[181DF6568h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rbx
+	mov rdx,rbx
+	mov rcx,[181DF6568h]
+	mov rcx,[rcx+0B8h]
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x181F200B9], 0
+	005 JumpIfNotEqual {9}
+	006 LoadAddress rcx, [0x181DF6568]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 Move [0x181F200B9], 1
+	009 Move rcx, typeof(Microsoft.Win32.SafeHandles.SafeProcessHandle)
+	010 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	011 Move r8, 0
+	012 Move rdx, 1
+	013 Move rcx, rax
+	014 Move rbx, rax
+	015 Call SafeHandleZeroOrMinusOneIsInvalid..ctor, rcx, rdx
+	016 Move [rbx+16], 0
+	017 Move rcx, typeof(Microsoft.Win32.SafeHandles.SafeProcessHandle)
+	018 Move rdx, [rcx+184]
+	019 Move [rdx], rbx
+	020 Move rdx, rbx
+	021 Move rcx, typeof(Microsoft.Win32.SafeHandles.SafeProcessHandle)
+	022 Move rcx, [rcx+184]
+	023 ShiftStack 32
+	024 Move rbx, stack:0x0
+	025 ShiftStack 8
+	026 Call 0x1801E1E30, rcx, rdx, r8, r9
+	027 Return 
+

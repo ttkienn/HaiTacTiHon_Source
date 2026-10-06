@@ -1,0 +1,56 @@
+Type: UnityEngine.Purchasing.AsyncDelayer
+
+Method: System.Threading.Tasks.Task Delay(System.Int32 delayMilliseconds)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [181F207B6h],0
+	mov ebx,edx
+	jne short 000000018156BB94h
+	lea rcx,[181DFEDE0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F207B6h],1
+	mov rcx,[181DFEDE0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 000000018156BBA9h
+	call 0000000180153C50h
+	xor edx,edx
+	mov ecx,ebx
+	add rsp,20h
+	pop rbx
+	jmp near ptr 0000000180FB5DC0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x181F207B6], 0
+	005 Move rbx, rdx
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x181DFEDE0]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x181F207B6], 1
+	010 Move rcx, typeof(System.Threading.Tasks.Task)
+	011 Compare [rcx+224], 0
+	012 JumpIfNotEqual {14}
+	013 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	014 Move rdx, 0
+	015 Move rcx, rbx
+	016 ShiftStack 32
+	017 Move rbx, stack:0x0
+	018 ShiftStack 8
+	019 Call Task.Delay, rcx, rdx
+	020 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+

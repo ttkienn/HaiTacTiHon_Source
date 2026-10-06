@@ -1,0 +1,125 @@
+Type: System.Linq.Expressions.Expression0`1
+
+Method: System.Void .ctor(System.Linq.Expressions.Expression body)
+
+Disassembly:
+	mov rax,[r8+20h]
+	mov r8,[rax+0C0h]
+	mov r8,[r8]
+	mov rax,[r8]
+	jmp rax
+
+ISIL:
+	001 Move rax, [r8+32]
+	002 Move r8, [rax+192]
+	003 Move r8, [r8]
+	004 Move rax, [r8]
+	005 CallNoReturn rax
+
+Method: System.Int32 get_ParameterCount()
+
+Disassembly:
+	xor eax,eax
+	ret
+
+ISIL:
+	001 Move rax, 0
+	002 Return rax
+
+Method: System.Linq.Expressions.ParameterExpression GetParameter(System.Int32 index)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	lea rcx,[181E1E500h]
+	mov rbx,r8
+	call 00000001801E2AA0h
+	mov rcx,rax
+	xor edx,edx
+	call 00000001810E8A90h
+	mov rdx,rbx
+	mov rcx,rax
+	call 00000001801E2C60h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 LoadAddress rcx, [0x181E1E500]
+	005 Move rbx, r8
+	006 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	007 Move rcx, rax
+	008 Move rdx, 0
+	009 Call Error.ArgumentOutOfRange, rcx, rdx
+	010 Move rdx, rbx
+	011 Move rcx, rax
+	012 Call 0x1801E2C60, rcx, rdx, r8, r9
+
+Method: System.Linq.Expressions.Expression`1<TDelegate> Rewrite(System.Linq.Expressions.Expression body, System.Linq.Expressions.ParameterExpression[] parameters)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1B464h],0
+	mov rbx,r9
+	mov rdi,r8
+	mov rsi,rdx
+	jne short 0000000180962744h
+	lea rcx,[181E12CE0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1B464h],1
+	mov rcx,[181E12CE0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180962759h
+	call 0000000180153C50h
+	mov rax,[rbx+20h]
+	mov rdx,rdi
+	mov rcx,[rax+0C0h]
+	mov rax,[rcx+10h]
+	mov r9,[rax]
+	mov rax,[rbx+20h]
+	mov rcx,[rax+0C0h]
+	mov r8,[rcx+10h]
+	mov rcx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp r9
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x181F1B464], 0
+	007 Move rbx, r9
+	008 Move rdi, r8
+	009 Move rsi, rdx
+	010 JumpIfNotEqual {14}
+	011 LoadAddress rcx, [0x181E12CE0]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x181F1B464], 1
+	014 Move rcx, typeof(System.Linq.Expressions.Expression)
+	015 Compare [rcx+224], 0
+	016 JumpIfNotEqual {18}
+	017 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	018 Move rax, [rbx+32]
+	019 Move rdx, rdi
+	020 Move rcx, [rax+192]
+	021 Move rax, [rcx+16]
+	022 Move r9, [rax]
+	023 Move rax, [rbx+32]
+	024 Move rcx, [rax+192]
+	025 Move r8, [rcx+16]
+	026 Move rcx, rsi
+	027 Move rbx, stack:0x30
+	028 Move rsi, stack:0x38
+	029 ShiftStack 32
+	030 Move rdi, stack:0x0
+	031 ShiftStack 8
+	032 CallNoReturn r9
+

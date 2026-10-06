@@ -1,0 +1,58 @@
+Type: Microsoft.Win32.SafeHandles.SafeHandleCache`1
+
+Method: System.Boolean IsCachedInvalidHandle(System.Runtime.InteropServices.SafeHandle handle)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rax,[rdx+20h]
+	mov rdi,rcx
+	test byte ptr [rax+135h],1
+	jne short 0000000180B3B522h
+	mov rcx,rax
+	call 0000000180188F60h
+	mov rax,[rax+0C0h]
+	mov rax,[rax+10h]
+	test byte ptr [rax+135h],1
+	jne short 0000000180B3B53Eh
+	mov rcx,rax
+	call 0000000180188F60h
+	mov rax,[rax+0B8h]
+	mov rbx,[rax]
+	call 00000001801E2C10h
+	cmp rdi,rbx
+	mov rbx,[rsp+30h]
+	sete al
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rax, [rdx+32]
+	006 Move rdi, rcx
+	007 Compare [rax+309], 1
+	008 JumpIfNotEqual {11}
+	009 Move rcx, rax
+	010 Call 0x180188F60, rcx, rdx, r8, r9
+	011 Move rax, [rax+192]
+	012 Move rax, [rax+16]
+	013 Compare [rax+309], 1
+	014 JumpIfNotEqual {17}
+	015 Move rcx, rax
+	016 Call 0x180188F60, rcx, rdx, r8, r9
+	017 Move rax, [rax+184]
+	018 Move rbx, [rax]
+	019 Call 0x1801E2C10, rcx, rdx, r8, r9
+	020 Compare rdi, rbx
+	021 Move rbx, stack:0x30
+	022 NotImplemented "sete al"
+	023 ShiftStack 32
+	024 Move rdi, stack:0x0
+	025 ShiftStack 8
+	026 Return rax
+

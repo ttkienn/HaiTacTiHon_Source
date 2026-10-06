@@ -1,0 +1,130 @@
+Type: UnityEngine.UIElements.Spacing
+
+Method: System.Single get_horizontal()
+
+Disassembly:
+	xchg ax,ax
+	movss xmm0,dword ptr [rcx+8]
+	addss xmm0,dword ptr [rcx]
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move xmm0, [rcx+8]
+	003 Add xmm0, xmm0, [rcx]
+	004 Return xmm0
+
+Method: System.Single get_vertical()
+
+Disassembly:
+	xchg ax,ax
+	movss xmm0,dword ptr [rcx+0Ch]
+	addss xmm0,dword ptr [rcx+4]
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move xmm0, [rcx+12]
+	003 Add xmm0, xmm0, [rcx+4]
+	004 Return xmm0
+
+Method: System.Void .ctor(System.Single left, System.Single top, System.Single right, System.Single bottom)
+
+Disassembly:
+	movss xmm0,dword ptr [rsp+28h]
+	movss dword ptr [rcx+0Ch],xmm0
+	movss dword ptr [rcx],xmm1
+	movss dword ptr [rcx+4],xmm2
+	movss dword ptr [rcx+8],xmm3
+	ret
+
+ISIL:
+	001 Move xmm0, stack:0x28
+	002 Move [rcx+12], xmm0
+	003 Move [rcx], xmm1
+	004 Move [rcx+4], xmm2
+	005 Move [rcx+8], xmm3
+	006 Return 
+
+Method: UnityEngine.Rect op_Subtraction(UnityEngine.Rect r, UnityEngine.UIElements.Spacing a)
+
+Disassembly:
+	xchg ax,ax
+	movss xmm5,dword ptr [rdx]
+	addss xmm5,dword ptr [r8]
+	movss xmm3,dword ptr [rdx+4]
+	addss xmm3,dword ptr [r8+4]
+	movss xmm0,dword ptr [r8+8]
+	xorps xmm2,xmm2
+	addss xmm0,dword ptr [r8]
+	movss xmm1,dword ptr [rdx+8]
+	xorps xmm4,xmm4
+	subss xmm1,xmm0
+	maxss xmm2,xmm1
+	movss xmm0,dword ptr [r8+0Ch]
+	addss xmm0,dword ptr [r8+4]
+	movss xmm1,dword ptr [rdx+0Ch]
+	shufps xmm5,xmm5,0E1h
+	movss xmm5,xmm3
+	shufps xmm5,xmm5,0C6h
+	movss xmm5,xmm2
+	subss xmm1,xmm0
+	shufps xmm5,xmm5,27h
+	maxss xmm4,xmm1
+	movss xmm5,xmm4
+	shufps xmm5,xmm5,39h
+	movups [rcx],xmm5
+	mov rax,rcx
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move xmm5, [rdx]
+	003 Add xmm5, xmm5, [r8]
+	004 Move xmm3, [rdx+4]
+	005 Add xmm3, xmm3, [r8+4]
+	006 Move xmm0, [r8+8]
+	007 Move xmm2, 0
+	008 Add xmm0, xmm0, [r8]
+	009 Move xmm1, [rdx+8]
+	010 Move xmm4, 0
+	011 Subtract xmm1, xmm1, xmm0
+	012 Compare xmm2, xmm1
+	013 JumpIfGreaterOrEqual {15}
+	014 Move xmm2, xmm1
+	015 Nop 
+	016 Move xmm0, [r8+12]
+	017 Add xmm0, xmm0, [r8+4]
+	018 Move xmm1, [rdx+12]
+	019 Move XMM_TEMP.S[0], xmm5.S[1]
+	020 Move XMM_TEMP.S[1], xmm5.S[0]
+	021 Move XMM_TEMP.S[2], xmm5.S[2]
+	022 Move XMM_TEMP.S[3], xmm5.S[3]
+	023 Move xmm5, XMM_TEMP
+	024 Move xmm5, xmm3
+	025 Move XMM_TEMP.S[0], xmm5.S[2]
+	026 Move XMM_TEMP.S[1], xmm5.S[1]
+	027 Move XMM_TEMP.S[2], xmm5.S[0]
+	028 Move XMM_TEMP.S[3], xmm5.S[3]
+	029 Move xmm5, XMM_TEMP
+	030 Move xmm5, xmm2
+	031 Subtract xmm1, xmm1, xmm0
+	032 Move XMM_TEMP.S[0], xmm5.S[3]
+	033 Move XMM_TEMP.S[1], xmm5.S[1]
+	034 Move XMM_TEMP.S[2], xmm5.S[2]
+	035 Move XMM_TEMP.S[3], xmm5.S[0]
+	036 Move xmm5, XMM_TEMP
+	037 Compare xmm4, xmm1
+	038 JumpIfGreaterOrEqual {40}
+	039 Move xmm4, xmm1
+	040 Nop 
+	041 Move xmm5, xmm4
+	042 Move XMM_TEMP.S[0], xmm5.S[1]
+	043 Move XMM_TEMP.S[1], xmm5.S[2]
+	044 Move XMM_TEMP.S[2], xmm5.S[3]
+	045 Move XMM_TEMP.S[3], xmm5.S[0]
+	046 Move xmm5, XMM_TEMP
+	047 Move [rcx], xmm5
+	048 Move rax, rcx
+	049 Return rax
+

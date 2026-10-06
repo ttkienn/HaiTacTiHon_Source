@@ -1,0 +1,306 @@
+Type: Mono.Unity.UnityTlsConversions
+
+Method: Mono.Unity.UnityTls+unitytls_protocol GetMinProtocol(System.Security.Authentication.SslProtocols protocols)
+
+Disassembly:
+	mov eax,ecx
+	and eax,0C0h
+	cmp al,0C0h
+	je short 0000000181160A16h
+	mov eax,ecx
+	and eax,300h
+	cmp eax,300h
+	je short 0000000181160A10h
+	xor edx,edx
+	and ecx,0C00h
+	cmp ecx,0C00h
+	mov eax,2
+	cmovne eax,edx
+	ret
+	mov eax,1
+	ret
+	xor eax,eax
+	ret
+
+ISIL:
+	001 Move rax, rcx
+	002 And rax, rax, 192
+	003 Compare rax, 192
+	004 JumpIfEqual {19}
+	005 Move rax, rcx
+	006 And rax, rax, 768
+	007 Compare rax, 768
+	008 JumpIfEqual {17}
+	009 Move rdx, 0
+	010 And rcx, rcx, 3072
+	011 Compare rcx, 3072
+	012 Move rax, 2
+	013 JumpIfEqual {15}
+	014 Move rax, rdx
+	015 Nop 
+	016 Return rax
+	017 Move rax, 1
+	018 Return rax
+	019 Move rax, 0
+	020 Return rax
+
+Method: Mono.Unity.UnityTls+unitytls_protocol GetMaxProtocol(System.Security.Authentication.SslProtocols protocols)
+
+Disassembly:
+	mov eax,ecx
+	and eax,0C00h
+	cmp eax,0C00h
+	je short 00000001811609D6h
+	mov eax,ecx
+	and eax,300h
+	cmp eax,300h
+	je short 00000001811609D0h
+	xor eax,eax
+	and ecx,0C0h
+	cmp cl,0C0h
+	mov edx,2
+	cmovne eax,edx
+	ret
+	mov eax,1
+	ret
+	mov eax,2
+	ret
+
+ISIL:
+	001 Move rax, rcx
+	002 And rax, rax, 3072
+	003 Compare rax, 3072
+	004 JumpIfEqual {19}
+	005 Move rax, rcx
+	006 And rax, rax, 768
+	007 Compare rax, 768
+	008 JumpIfEqual {17}
+	009 Move rax, 0
+	010 And rcx, rcx, 192
+	011 Compare rcx, 192
+	012 Move rdx, 2
+	013 JumpIfEqual {15}
+	014 Move rax, rdx
+	015 Nop 
+	016 Return rax
+	017 Move rax, 1
+	018 Return rax
+	019 Move rax, 2
+	020 Return rax
+
+Method: Mono.Security.Interface.TlsProtocols ConvertProtocolVersion(Mono.Unity.UnityTls+unitytls_protocol protocol)
+
+Disassembly:
+	test ecx,ecx
+	je short 000000018116098Dh
+	sub ecx,1
+	je short 0000000181160987h
+	sub ecx,1
+	je short 0000000181160981h
+	xor eax,eax
+	ret
+	mov eax,0C00h
+	ret
+	mov eax,300h
+	ret
+	mov eax,0C0h
+	ret
+
+ISIL:
+	001 Compare rcx, 0
+	002 JumpIfEqual {13}
+	003 Subtract rcx, rcx, 1
+	004 JumpIfEqual {11}
+	005 Subtract rcx, rcx, 1
+	006 JumpIfEqual {9}
+	007 Move rax, 0
+	008 Return rax
+	009 Move rax, 3072
+	010 Return rax
+	011 Move rax, 768
+	012 Return rax
+	013 Move rax, 192
+	014 Return rax
+
+Method: Mono.Security.Interface.AlertDescription VerifyResultToAlertDescription(Mono.Unity.UnityTls+unitytls_x509verify_result verifyResult, Mono.Security.Interface.AlertDescription defaultAlert = 80)
+
+Disassembly:
+	cmp ecx,0FFFFFFFFh
+	je short 0000000181160A79h
+	test cl,1
+	jne short 0000000181160A76h
+	test cl,2
+	jne short 0000000181160A73h
+	test cl,4
+	jne short 0000000181160A70h
+	test cl,8
+	jne short 0000000181160A79h
+	bt ecx,10h
+	jb short 0000000181160A6Dh
+	bt ecx,11h
+	jb short 0000000181160A6Dh
+	bt ecx,12h
+	jb short 0000000181160A6Dh
+	bt ecx,13h
+	jb short 0000000181160A6Dh
+	bt ecx,14h
+	jb short 0000000181160A6Dh
+	bt ecx,15h
+	jb short 0000000181160A6Dh
+	bt ecx,16h
+	jb short 0000000181160A6Dh
+	bt ecx,17h
+	jb short 0000000181160A6Dh
+	movzx eax,dl
+	ret
+	mov al,5Ah
+	ret
+	mov al,30h
+	ret
+	mov al,2Ch
+	ret
+	mov al,2Dh
+	ret
+	mov al,2Eh
+	ret
+
+ISIL:
+	001 Compare rcx, 18446744073709551615
+	002 JumpIfEqual {37}
+	003 Compare rcx, 1
+	004 JumpIfNotEqual {35}
+	005 Compare rcx, 2
+	006 JumpIfNotEqual {33}
+	007 Compare rcx, 4
+	008 JumpIfNotEqual {31}
+	009 Compare rcx, 8
+	010 JumpIfNotEqual {37}
+	011 NotImplemented "bt ecx,10h"
+	012 JumpIfLess {29}
+	013 NotImplemented "bt ecx,11h"
+	014 JumpIfLess {29}
+	015 NotImplemented "bt ecx,12h"
+	016 JumpIfLess {29}
+	017 NotImplemented "bt ecx,13h"
+	018 JumpIfLess {29}
+	019 NotImplemented "bt ecx,14h"
+	020 JumpIfLess {29}
+	021 NotImplemented "bt ecx,15h"
+	022 JumpIfLess {29}
+	023 NotImplemented "bt ecx,16h"
+	024 JumpIfLess {29}
+	025 NotImplemented "bt ecx,17h"
+	026 JumpIfLess {29}
+	027 Move rax, rdx
+	028 Return rax
+	029 Move rax, 90
+	030 Return rax
+	031 Move rax, 48
+	032 Return rax
+	033 Move rax, 44
+	034 Return rax
+	035 Move rax, 45
+	036 Return rax
+	037 Move rax, 46
+	038 Return rax
+
+Method: System.Net.Security.SslPolicyErrors VerifyResultToPolicyErrror(Mono.Unity.UnityTls+unitytls_x509verify_result verifyResult)
+
+Disassembly:
+	test ecx,ecx
+	je short 0000000181160AE2h
+	cmp ecx,0FFFFFFFFh
+	je short 0000000181160ADCh
+	mov edx,ecx
+	shr edx,1
+	and edx,2
+	mov eax,edx
+	or eax,4
+	cmp ecx,4
+	cmove eax,edx
+	ret
+	mov eax,4
+	ret
+	xor eax,eax
+	ret
+
+ISIL:
+	001 Compare rcx, 0
+	002 JumpIfEqual {17}
+	003 Compare rcx, 18446744073709551615
+	004 JumpIfEqual {15}
+	005 Move rdx, rcx
+	006 ShiftRight rdx, 1
+	007 And rdx, rdx, 2
+	008 Move rax, rdx
+	009 Or rax, rax, 4
+	010 Compare rcx, 4
+	011 JumpIfNotEqual {13}
+	012 Move rax, rdx
+	013 Nop 
+	014 Return rax
+	015 Move rax, 4
+	016 Return rax
+	017 Move rax, 0
+	018 Return rax
+
+Method: System.Security.Cryptography.X509Certificates.X509ChainStatusFlags VerifyResultToChainStatus(Mono.Unity.UnityTls+unitytls_x509verify_result verifyResult)
+
+Disassembly:
+	mov r8d,ecx
+	test ecx,ecx
+	je short 0000000181160ABCh
+	cmp ecx,0FFFFFFFFh
+	je short 0000000181160AB6h
+	mov edx,ecx
+	and edx,1
+	mov ecx,edx
+	or ecx,4
+	test r8b,2
+	cmove ecx,edx
+	mov edx,ecx
+	or edx,20h
+	test r8b,4
+	cmove edx,ecx
+	mov eax,edx
+	or eax,20h
+	test r8b,8
+	cmove eax,edx
+	ret
+	mov eax,20h
+	ret
+	xor eax,eax
+	ret
+
+ISIL:
+	001 Move r8, rcx
+	002 Compare rcx, 0
+	003 JumpIfEqual {29}
+	004 Compare rcx, 18446744073709551615
+	005 JumpIfEqual {27}
+	006 Move rdx, rcx
+	007 And rdx, rdx, 1
+	008 Move rcx, rdx
+	009 Or rcx, rcx, 4
+	010 Compare r8, 2
+	011 JumpIfNotEqual {13}
+	012 Move rcx, rdx
+	013 Nop 
+	014 Move rdx, rcx
+	015 Or rdx, rdx, 32
+	016 Compare r8, 4
+	017 JumpIfNotEqual {19}
+	018 Move rdx, rcx
+	019 Nop 
+	020 Move rax, rdx
+	021 Or rax, rax, 32
+	022 Compare r8, 8
+	023 JumpIfNotEqual {25}
+	024 Move rax, rdx
+	025 Nop 
+	026 Return rax
+	027 Move rax, 32
+	028 Return rax
+	029 Move rax, 0
+	030 Return rax
+

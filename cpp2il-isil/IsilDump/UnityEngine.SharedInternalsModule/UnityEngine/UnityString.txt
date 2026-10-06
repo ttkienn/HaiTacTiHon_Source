@@ -1,0 +1,75 @@
+Type: UnityEngine.UnityString
+
+Method: System.String Format(System.String fmt, System.Object[] args)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F22A86h],0
+	mov rbx,rdx
+	mov rdi,rcx
+	jne short 0000000181677DFCh
+	lea rcx,[181E09788h]
+	call 00000001801E2A80h
+	mov byte ptr [181F22A86h],1
+	mov rcx,[181E09788h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000181677E11h
+	call 0000000180153C50h
+	xor ecx,ecx
+	call 0000000180EAB7B0h
+	test rax,rax
+	je short 0000000181677E4Fh
+	mov rdx,[rax]
+	mov rcx,rax
+	mov r8,[rdx+228h]
+	mov rdx,[rdx+230h]
+	call r8
+	xor r9d,r9d
+	mov r8,rbx
+	mov rdx,rdi
+	mov rcx,rax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180D7E410h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F22A86], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E09788]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F22A86], 1
+	012 Move rcx, typeof(System.Globalization.CultureInfo)
+	013 Compare [rcx+224], 0
+	014 JumpIfNotEqual {16}
+	015 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	016 Move rcx, 0
+	017 Call CultureInfo.get_InvariantCulture, rcx
+	018 Compare rax, 0
+	019 JumpIfEqual {35}
+	020 Move rdx, [rax]
+	021 Move rcx, rax
+	022 Move r8, [rdx+552]
+	023 Move rdx, [rdx+560]
+	024 Call r8
+	025 Move r9, 0
+	026 Move r8, rbx
+	027 Move rdx, rdi
+	028 Move rcx, rax
+	029 Move rbx, stack:0x30
+	030 ShiftStack 32
+	031 Move rdi, stack:0x0
+	032 ShiftStack 8
+	033 Call String.Format, rcx, rdx, r8, r9
+	034 Return rax
+	035 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

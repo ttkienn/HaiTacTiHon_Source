@@ -1,0 +1,169 @@
+Type: System.Threading.Volatile
+
+Method: System.Boolean Read(ref System.Boolean location)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	movzx ebx,byte ptr [rcx]
+	call 00000001801E2C10h
+	movzx eax,bl
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, [rcx]
+	005 Call 0x1801E2C10, rcx, rdx, r8, r9
+	006 Move rax, rbx
+	007 ShiftStack 32
+	008 Move rbx, stack:0x0
+	009 ShiftStack 8
+	010 Return rax
+
+Method: System.Void Write(ref System.Boolean location, System.Boolean value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	movzx edi,dl
+	mov rbx,rcx
+	call 00000001801E2C10h
+	mov [rbx],dil
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Call 0x1801E2C10, rcx, rdx, r8, r9
+	008 Move [rbx], rdi
+	009 Move rbx, stack:0x30
+	010 ShiftStack 32
+	011 Move rdi, stack:0x0
+	012 ShiftStack 8
+	013 Return 
+
+Method: System.Int32 Read(ref System.Int32 location)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov ebx,[rcx]
+	call 00000001801E2C10h
+	mov eax,ebx
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, [rcx]
+	005 Call 0x1801E2C10, rcx, rdx, r8, r9
+	006 Move rax, rbx
+	007 ShiftStack 32
+	008 Move rbx, stack:0x0
+	009 ShiftStack 8
+	010 Return rax
+
+Method: System.Void Write(ref System.Int32 location, System.Int32 value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov edi,edx
+	mov rbx,rcx
+	call 00000001801E2C10h
+	mov [rbx],edi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Call 0x1801E2C10, rcx, rdx, r8, r9
+	008 Move [rbx], rdi
+	009 Move rbx, stack:0x30
+	010 ShiftStack 32
+	011 Move rdi, stack:0x0
+	012 ShiftStack 8
+	013 Return 
+
+Method: T Read(ref T location)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,[rcx]
+	call 00000001801E2C10h
+	mov rax,rbx
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, [rcx]
+	005 Call 0x1801E2C10, rcx, rdx, r8, r9
+	006 Move rax, rbx
+	007 ShiftStack 32
+	008 Move rbx, stack:0x0
+	009 ShiftStack 8
+	010 Return rax
+
+Method: System.Void Write(ref T location, T value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rdi,rcx
+	call 00000001801E2C10h
+	mov rdx,rbx
+	mov [rdi],rbx
+	mov rcx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rdx
+	006 Move rdi, rcx
+	007 Call 0x1801E2C10, rcx, rdx, r8, r9
+	008 Move rdx, rbx
+	009 Move [rdi], rbx
+	010 Move rcx, rdi
+	011 Move rbx, stack:0x30
+	012 ShiftStack 32
+	013 Move rdi, stack:0x0
+	014 ShiftStack 8
+	015 Call 0x1801E1E30, rcx, rdx, r8, r9
+	016 Return 
+

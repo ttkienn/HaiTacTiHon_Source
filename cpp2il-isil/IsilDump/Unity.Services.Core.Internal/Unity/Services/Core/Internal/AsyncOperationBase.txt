@@ -1,0 +1,551 @@
+Type: Unity.Services.Core.Internal.AsyncOperationBase
+
+Method: System.Boolean get_keepWaiting()
+
+Disassembly:
+	sub rsp,28h
+	mov rdx,[rcx]
+	mov rax,[rdx+218h]
+	mov rdx,[rdx+220h]
+	call rax
+	test al,al
+	sete al
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rdx, [rcx]
+	003 Move rax, [rdx+536]
+	004 Move rdx, [rdx+544]
+	005 Call rax
+	006 Compare rax, 0
+	007 NotImplemented "sete al"
+	008 ShiftStack 40
+	009 Return rax
+
+Method: System.Boolean get_IsCompleted()
+
+Disassembly:
+	
+
+ISIL:
+No ISIL was generated
+Method: System.Boolean get_IsDone()
+
+Disassembly:
+	mov rdx,[rcx]
+	mov rax,[rdx+218h]
+	mov rdx,[rdx+220h]
+	jmp rax
+
+ISIL:
+	001 Move rdx, [rcx]
+	002 Move rax, [rdx+536]
+	003 Move rdx, [rdx+544]
+	004 CallNoReturn rax
+
+Method: Unity.Services.Core.Internal.AsyncOperationStatus get_Status()
+
+Disassembly:
+	
+
+ISIL:
+No ISIL was generated
+Method: System.Exception get_Exception()
+
+Disassembly:
+	
+
+ISIL:
+No ISIL was generated
+Method: System.Void GetResult()
+
+Disassembly:
+	
+
+ISIL:
+No ISIL was generated
+Method: Unity.Services.Core.Internal.AsyncOperationBase GetAwaiter()
+
+Disassembly:
+	
+
+ISIL:
+No ISIL was generated
+Method: System.Void add_Completed(System.Action`1<Unity.Services.Core.Internal.IAsyncOperation> value)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F20C83h],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 00000001815E33CCh
+	lea rcx,[181E14AE0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20C83h],1
+	mov rdx,[rbx]
+	mov rcx,rbx
+	mov rax,[rdx+218h]
+	mov rdx,[rdx+220h]
+	call rax
+	test al,al
+	jne short 00000001815E3455h
+	mov [rsp+30h],rsi
+	mov rcx,[rbx+10h]
+	xor r8d,r8d
+	mov rdx,rdi
+	call 0000000180F74170h
+	mov rsi,[181E14AE0h]
+	mov rdi,rax
+	test rax,rax
+	jne short 00000001815E340Fh
+	mov [rbx+10h],rax
+	jmp short 00000001815E343Ah
+	mov rdx,rsi
+	mov rcx,rdi
+	call 00000001801E1E50h
+	mov rcx,rdi
+	test rax,rax
+	je short 00000001815E3488h
+	mov [rbx+10h],rax
+	mov rsi,[181E14AE0h]
+	mov rdx,rsi
+	call 00000001801E1E50h
+	test rax,rax
+	je short 00000001815E347Ch
+	lea rcx,[rbx+10h]
+	mov rdx,rax
+	mov rsi,[rsp+30h]
+	mov rbx,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+	test rdi,rdi
+	je short 00000001815E3476h
+	mov rax,[rdi+18h]
+	mov rdx,rbx
+	mov r8,[rdi+28h]
+	mov rcx,[rdi+40h]
+	mov rbx,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp rax
+	call 00000001801E2CA0h
+	int 3
+	mov rdx,rsi
+	mov rcx,rdi
+	call 00000001801E1E70h
+	int 3
+	mov rdx,rsi
+	call 00000001801E1E70h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F20C83], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E14AE0]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F20C83], 1
+	012 Move rdx, [rbx]
+	013 Move rcx, rbx
+	014 Move rax, [rdx+536]
+	015 Move rdx, [rdx+544]
+	016 Call rax
+	017 Compare rax, 0
+	018 JumpIfNotEqual {51}
+	019 Move stack:0x30, rsi
+	020 Move rcx, [rbx+16]
+	021 Move r8, 0
+	022 Move rdx, rdi
+	023 Call Delegate.Combine, rcx, rdx, r8
+	024 Move rsi, typeof(System.Action`1<IAsyncOperation>)
+	025 Move rdi, rax
+	026 Compare rax, 0
+	027 JumpIfNotEqual {30}
+	028 Move [rbx+16], rax
+	029 Goto {42}
+	030 Move rdx, rsi
+	031 Move rcx, rdi
+	032 Call 0x1801E1E50, rcx, rdx, r8, r9
+	033 Move rcx, rdi
+	034 Compare rax, 0
+	035 JumpIfEqual {68}
+	036 Move [rbx+16], rax
+	037 Move rsi, typeof(System.Action`1<IAsyncOperation>)
+	038 Move rdx, rsi
+	039 Call 0x1801E1E50, rcx, rdx, r8, r9
+	040 Compare rax, 0
+	041 JumpIfEqual {64}
+	042 LoadAddress rcx, [rbx+16]
+	043 Move rdx, rax
+	044 Move rsi, stack:0x30
+	045 Move rbx, stack:0x38
+	046 ShiftStack 32
+	047 Move rdi, stack:0x0
+	048 ShiftStack 8
+	049 Call 0x1801E1E30, rcx, rdx, r8, r9
+	050 Return 
+	051 Compare rdi, 0
+	052 JumpIfEqual {62}
+	053 Move rax, [rdi+24]
+	054 Move rdx, rbx
+	055 Move r8, [rdi+40]
+	056 Move rcx, [rdi+64]
+	057 Move rbx, stack:0x38
+	058 ShiftStack 32
+	059 Move rdi, stack:0x0
+	060 ShiftStack 8
+	061 CallNoReturn rax
+	062 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	063 Interrupt 
+	064 Move rdx, rsi
+	065 Move rcx, rdi
+	066 Call 0x1801E1E70, rcx, rdx, r8, r9
+	067 Interrupt 
+	068 Move rdx, rsi
+	069 Call 0x1801E1E70, rcx, rdx, r8, r9
+
+Method: System.Void remove_Completed(System.Action`1<Unity.Services.Core.Internal.IAsyncOperation> value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F20C84h],0
+	mov rbx,rdx
+	mov rdi,rcx
+	jne short 00000001815E3501h
+	lea rcx,[181E14AE0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20C84h],1
+	mov rcx,[rdi+10h]
+	xor r8d,r8d
+	mov rdx,rbx
+	call 0000000180F75F80h
+	mov rsi,[181E14AE0h]
+	mov rbx,rax
+	test rax,rax
+	jne short 00000001815E3525h
+	mov [rdi+10h],rax
+	jmp short 00000001815E3550h
+	mov rdx,rsi
+	mov rcx,rbx
+	call 00000001801E1E50h
+	mov rcx,rbx
+	test rax,rax
+	je short 00000001815E356Bh
+	mov [rdi+10h],rax
+	mov rsi,[181E14AE0h]
+	mov rdx,rsi
+	call 00000001801E1E50h
+	test rax,rax
+	je short 00000001815E3574h
+	lea rcx,[rdi+10h]
+	mov rdx,rax
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+	mov rdx,rsi
+	call 00000001801E1E70h
+	int 3
+	mov rdx,rsi
+	mov rcx,rbx
+	call 00000001801E1E70h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x181F20C84], 0
+	007 Move rbx, rdx
+	008 Move rdi, rcx
+	009 JumpIfNotEqual {13}
+	010 LoadAddress rcx, [0x181E14AE0]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x181F20C84], 1
+	013 Move rcx, [rdi+16]
+	014 Move r8, 0
+	015 Move rdx, rbx
+	016 Call Delegate.Remove, rcx, rdx, r8
+	017 Move rsi, typeof(System.Action`1<IAsyncOperation>)
+	018 Move rbx, rax
+	019 Compare rax, 0
+	020 JumpIfNotEqual {23}
+	021 Move [rdi+16], rax
+	022 Goto {35}
+	023 Move rdx, rsi
+	024 Move rcx, rbx
+	025 Call 0x1801E1E50, rcx, rdx, r8, r9
+	026 Move rcx, rbx
+	027 Compare rax, 0
+	028 JumpIfEqual {44}
+	029 Move [rdi+16], rax
+	030 Move rsi, typeof(System.Action`1<IAsyncOperation>)
+	031 Move rdx, rsi
+	032 Call 0x1801E1E50, rcx, rdx, r8, r9
+	033 Compare rax, 0
+	034 JumpIfEqual {47}
+	035 LoadAddress rcx, [rdi+16]
+	036 Move rdx, rax
+	037 Move rbx, stack:0x30
+	038 Move rsi, stack:0x38
+	039 ShiftStack 32
+	040 Move rdi, stack:0x0
+	041 ShiftStack 8
+	042 Call 0x1801E1E30, rcx, rdx, r8, r9
+	043 Return 
+	044 Move rdx, rsi
+	045 Call 0x1801E1E70, rcx, rdx, r8, r9
+	046 Interrupt 
+	047 Move rdx, rsi
+	048 Move rcx, rbx
+	049 Call 0x1801E1E70, rcx, rdx, r8, r9
+
+Method: System.Void DidComplete()
+
+Disassembly:
+	mov rdx,rcx
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 00000001815E321Bh
+	mov rax,[rcx+18h]
+	mov r8,[rcx+28h]
+	mov rcx,[rcx+40h]
+	jmp rax
+	ret
+
+ISIL:
+	001 Move rdx, rcx
+	002 Move rcx, [rcx+16]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move rax, [rcx+24]
+	006 Move r8, [rcx+40]
+	007 Move rcx, [rcx+64]
+	008 CallNoReturn rax
+	009 Return 
+
+Method: System.Void OnCompleted(System.Action continuation)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F20C85h],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 00000001815E3269h
+	lea rcx,[181E14AE0h]
+	call 00000001801E2A80h
+	lea rcx,[181E05558h]
+	call 00000001801E2A80h
+	lea rcx,[181E14740h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20C85h],1
+	mov rcx,[181E14740h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rsi,rax
+	call 000000018024B730h
+	test rsi,rsi
+	je near ptr 00000001815E3385h
+	lea rcx,[rsi+10h]
+	mov [rsi+10h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	mov rcx,[181E14AE0h]
+	call 0000000180197840h
+	mov r8,[181E05558h]
+	xor r9d,r9d
+	mov rdx,rsi
+	mov rcx,rax
+	mov rdi,rax
+	call 00000001807DF340h
+	cmp byte ptr [181F20C83h],0
+	jne short 00000001815E32DBh
+	lea rcx,[181E14AE0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20C83h],1
+	mov rdx,[rbx]
+	mov rcx,rbx
+	mov rax,[rdx+218h]
+	mov rdx,[rdx+220h]
+	call rax
+	test al,al
+	jne short 00000001815E335Fh
+	mov rcx,[rbx+10h]
+	xor r8d,r8d
+	mov rdx,rdi
+	call 0000000180F74170h
+	mov rsi,[181E14AE0h]
+	mov rdi,rax
+	test rax,rax
+	jne short 00000001815E3319h
+	mov [rbx+10h],rax
+	jmp short 00000001815E3344h
+	mov rdx,rsi
+	mov rcx,rdi
+	call 00000001801E1E50h
+	mov rcx,rdi
+	test rax,rax
+	je short 00000001815E3397h
+	mov [rbx+10h],rax
+	mov rsi,[181E14AE0h]
+	mov rdx,rsi
+	call 00000001801E1E50h
+	test rax,rax
+	je short 00000001815E338Bh
+	lea rcx,[rbx+10h]
+	mov rdx,rax
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+	test rdi,rdi
+	je short 00000001815E3385h
+	mov rax,[rdi+18h]
+	mov rdx,rbx
+	mov r8,[rdi+28h]
+	mov rcx,[rdi+40h]
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp rax
+	call 00000001801E2CA0h
+	int 3
+	mov rdx,rsi
+	mov rcx,rdi
+	call 00000001801E1E70h
+	int 3
+	mov rdx,rsi
+	call 00000001801E1E70h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x181F20C85], 0
+	007 Move rdi, rdx
+	008 Move rbx, rcx
+	009 JumpIfNotEqual {17}
+	010 LoadAddress rcx, [0x181E14AE0]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x181E05558]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 LoadAddress rcx, [0x181E14740]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 Move [0x181F20C85], 1
+	017 Move rcx, typeof(Unity.Services.Core.Internal.AsyncOperationBase+<>c__DisplayClass17_0)
+	018 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	019 Move rdx, 0
+	020 Move rcx, rax
+	021 Move rsi, rax
+	022 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	023 Compare rsi, 0
+	024 JumpIfEqual {92}
+	025 LoadAddress rcx, [rsi+16]
+	026 Move [rsi+16], rdi
+	027 Move rdx, rdi
+	028 Call 0x1801E1E30, rcx, rdx, r8, r9
+	029 Move rcx, typeof(System.Action`1<IAsyncOperation>)
+	030 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	031 Move r8, [0x181E05558]
+	032 Move r9, 0
+	033 Move rdx, rsi
+	034 Move rcx, rax
+	035 Move rdi, rax
+	036 Call 0x1807DF340, rcx, rdx, r8
+	037 Compare [0x181F20C83], 0
+	038 JumpIfNotEqual {42}
+	039 LoadAddress rcx, [0x181E14AE0]
+	040 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	041 Move [0x181F20C83], 1
+	042 Move rdx, [rbx]
+	043 Move rcx, rbx
+	044 Move rax, [rdx+536]
+	045 Move rdx, [rdx+544]
+	046 Call rax
+	047 Compare rax, 0
+	048 JumpIfNotEqual {80}
+	049 Move rcx, [rbx+16]
+	050 Move r8, 0
+	051 Move rdx, rdi
+	052 Call Delegate.Combine, rcx, rdx, r8
+	053 Move rsi, typeof(System.Action`1<IAsyncOperation>)
+	054 Move rdi, rax
+	055 Compare rax, 0
+	056 JumpIfNotEqual {59}
+	057 Move [rbx+16], rax
+	058 Goto {71}
+	059 Move rdx, rsi
+	060 Move rcx, rdi
+	061 Call 0x1801E1E50, rcx, rdx, r8, r9
+	062 Move rcx, rdi
+	063 Compare rax, 0
+	064 JumpIfEqual {98}
+	065 Move [rbx+16], rax
+	066 Move rsi, typeof(System.Action`1<IAsyncOperation>)
+	067 Move rdx, rsi
+	068 Call 0x1801E1E50, rcx, rdx, r8, r9
+	069 Compare rax, 0
+	070 JumpIfEqual {94}
+	071 LoadAddress rcx, [rbx+16]
+	072 Move rdx, rax
+	073 Move rbx, stack:0x30
+	074 Move rsi, stack:0x38
+	075 ShiftStack 32
+	076 Move rdi, stack:0x0
+	077 ShiftStack 8
+	078 Call 0x1801E1E30, rcx, rdx, r8, r9
+	079 Return 
+	080 Compare rdi, 0
+	081 JumpIfEqual {92}
+	082 Move rax, [rdi+24]
+	083 Move rdx, rbx
+	084 Move r8, [rdi+40]
+	085 Move rcx, [rdi+64]
+	086 Move rbx, stack:0x30
+	087 Move rsi, stack:0x38
+	088 ShiftStack 32
+	089 Move rdi, stack:0x0
+	090 ShiftStack 8
+	091 CallNoReturn rax
+	092 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	093 Interrupt 
+	094 Move rdx, rsi
+	095 Move rcx, rdi
+	096 Call 0x1801E1E70, rcx, rdx, r8, r9
+	097 Interrupt 
+	098 Move rdx, rsi
+	099 Call 0x1801E1E70, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B5B0h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B5B0, rcx, rdx, r8
+	003 Return 
+

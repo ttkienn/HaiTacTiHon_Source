@@ -1,0 +1,70 @@
+Type: Newtonsoft.Json.Bson.BsonBinary
+
+Method: Newtonsoft.Json.Bson.BsonBinaryType get_BinaryType()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+30h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+48]
+	002 Return rax
+
+Method: System.Void set_BinaryType(Newtonsoft.Json.Bson.BsonBinaryType value)
+
+Disassembly:
+	mov [rcx+30h],dl
+	ret
+
+ISIL:
+	001 Move [rcx+48], rdx
+	002 Return 
+
+Method: System.Void .ctor(System.Byte[] value, Newtonsoft.Json.Bson.BsonBinaryType binaryType)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	movzx esi,r8b
+	xor edx,edx
+	mov rdi,rcx
+	call 000000018024B730h
+	lea rcx,[rdi+20h]
+	mov [rdi+20h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	mov rbx,[rsp+30h]
+	mov [rdi+30h],sil
+	mov rsi,[rsp+38h]
+	mov byte ptr [rdi+28h],5
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	011 LoadAddress rcx, [rdi+32]
+	012 Move [rdi+32], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 Move rbx, stack:0x30
+	016 Move [rdi+48], rsi
+	017 Move rsi, stack:0x38
+	018 Move [rdi+40], 5
+	019 ShiftStack 32
+	020 Move rdi, stack:0x0
+	021 ShiftStack 8
+	022 Return 
+

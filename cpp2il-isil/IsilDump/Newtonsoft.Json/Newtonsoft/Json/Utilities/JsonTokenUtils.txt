@@ -1,0 +1,54 @@
+Type: Newtonsoft.Json.Utilities.JsonTokenUtils
+
+Method: System.Boolean IsEndToken(Newtonsoft.Json.JsonToken token)
+
+Disassembly:
+	lea eax,[rcx-0Dh]
+	cmp eax,2
+	setbe al
+	ret
+
+ISIL:
+	001 LoadAddress rax, [rcx-13]
+	002 Compare rax, 2
+	003 NotImplemented "setbe al"
+	004 Return rax
+
+Method: System.Boolean IsStartToken(Newtonsoft.Json.JsonToken token)
+
+Disassembly:
+	lea eax,[rcx-1]
+	cmp eax,2
+	setbe al
+	ret
+
+ISIL:
+	001 LoadAddress rax, [rcx-1]
+	002 Compare rax, 2
+	003 NotImplemented "setbe al"
+	004 Return rax
+
+Method: System.Boolean IsPrimitiveToken(Newtonsoft.Json.JsonToken token)
+
+Disassembly:
+	lea eax,[rcx-7]
+	cmp eax,5
+	jbe short 0000000181024282h
+	lea eax,[rcx-10h]
+	cmp eax,1
+	setbe al
+	ret
+	mov al,1
+	ret
+
+ISIL:
+	001 LoadAddress rax, [rcx-7]
+	002 Compare rax, 5
+	003 JumpIfLessOrEqual {8}
+	004 LoadAddress rax, [rcx-16]
+	005 Compare rax, 1
+	006 NotImplemented "setbe al"
+	007 Return rax
+	008 Move rax, 1
+	009 Return rax
+

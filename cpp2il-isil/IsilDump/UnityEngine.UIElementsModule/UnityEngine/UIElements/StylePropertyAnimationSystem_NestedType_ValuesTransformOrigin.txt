@@ -1,0 +1,812 @@
+Type: UnityEngine.UIElements.StylePropertyAnimationSystem+ValuesTransformOrigin
+
+Method: System.Func`3<UnityEngine.UIElements.TransformOrigin, UnityEngine.UIElements.TransformOrigin, System.Boolean> get_SameFunc()
+
+Disassembly:
+	mov rax,[rcx+88h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+136]
+	002 Return rax
+
+Method: System.Boolean IsSame(UnityEngine.UIElements.TransformOrigin a, UnityEngine.UIElements.TransformOrigin b)
+
+Disassembly:
+	sub rsp,28h
+	movups xmm0,[rcx]
+	mov r9,rdx
+	mov r10,rcx
+	movups [rsp],xmm0
+	mov rax,[rsp]
+	movups xmm0,[rdx]
+	mov [rsp+30h],rax
+	movups [rsp],xmm0
+	mov rdx,[rsp]
+	movss xmm0,dword ptr [rsp+30h]
+	mov [rsp+38h],rdx
+	ucomiss xmm0,dword ptr [rsp+38h]
+	jp short 000000018183FCC9h
+	jne short 000000018183FCC9h
+	shr rdx,20h
+	shr rax,20h
+	cmp eax,edx
+	jne short 000000018183FCC9h
+	movups xmm0,[rcx]
+	movups [rsp],xmm0
+	mov rax,[rsp+8]
+	movups xmm0,[r9]
+	mov [rsp+30h],rax
+	movups [rsp],xmm0
+	mov rcx,[rsp+8]
+	movss xmm0,dword ptr [rsp+30h]
+	mov [rsp+38h],rcx
+	ucomiss xmm0,dword ptr [rsp+38h]
+	jp short 000000018183FCC9h
+	jne short 000000018183FCC9h
+	shr rcx,20h
+	shr rax,20h
+	cmp eax,ecx
+	jne short 000000018183FCC9h
+	movss xmm1,dword ptr [r10+10h]
+	ucomiss xmm1,dword ptr [r9+10h]
+	jp short 000000018183FCC9h
+	jne short 000000018183FCC9h
+	mov al,1
+	add rsp,28h
+	ret
+	xor al,al
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Move xmm0, [rcx]
+	003 Move r9, rdx
+	004 Move r10, rcx
+	005 Move stack:0x0, xmm0
+	006 Move rax, stack:0x0
+	007 Move xmm0, [rdx]
+	008 Move stack:0x30, rax
+	009 Move stack:0x0, xmm0
+	010 Move rdx, stack:0x0
+	011 Move xmm0, stack:0x30
+	012 Move stack:0x38, rdx
+	013 Compare xmm0, stack:0x38
+	014 NotImplemented "jp short 000000018183FCC9h"
+	015 JumpIfNotEqual {43}
+	016 ShiftRight rdx, 32
+	017 ShiftRight rax, 32
+	018 Compare rax, rdx
+	019 JumpIfNotEqual {43}
+	020 Move xmm0, [rcx]
+	021 Move stack:0x0, xmm0
+	022 Move rax, stack:0x8
+	023 Move xmm0, [r9]
+	024 Move stack:0x30, rax
+	025 Move stack:0x0, xmm0
+	026 Move rcx, stack:0x8
+	027 Move xmm0, stack:0x30
+	028 Move stack:0x38, rcx
+	029 Compare xmm0, stack:0x38
+	030 NotImplemented "jp short 000000018183FCC9h"
+	031 JumpIfNotEqual {43}
+	032 ShiftRight rcx, 32
+	033 ShiftRight rax, 32
+	034 Compare rax, rcx
+	035 JumpIfNotEqual {43}
+	036 Move xmm1, [r10+16]
+	037 Compare xmm1, [r9+16]
+	038 NotImplemented "jp short 000000018183FCC9h"
+	039 JumpIfNotEqual {43}
+	040 Move rax, 1
+	041 ShiftStack 40
+	042 Return rax
+	043 Move rax, 0
+	044 ShiftStack 40
+	045 Return rax
+
+Method: System.Boolean ConvertUnits(UnityEngine.UIElements.VisualElement owner, UnityEngine.UIElements.StyleSheets.StylePropertyId prop, ref UnityEngine.UIElements.TransformOrigin a, ref UnityEngine.UIElements.TransformOrigin b)
+
+Disassembly:
+	sub rsp,28h
+	mov r10,r9
+	mov rax,rdx
+	test rdx,rdx
+	je short 0000000181846276h
+	mov r8,[rsp+50h]
+	xor r9d,r9d
+	mov rdx,r10
+	mov rcx,rax
+	add rsp,28h
+	jmp near ptr 00000001818277D0h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move r10, r9
+	003 Move rax, rdx
+	004 Compare rdx, 0
+	005 JumpIfEqual {13}
+	006 Move r8, stack:0x50
+	007 Move r9, 0
+	008 Move rdx, r10
+	009 Move rcx, rax
+	010 ShiftStack 40
+	011 Call VisualElement.TryConvertTransformOriginUnits, rcx, rdx, r8
+	012 Return rax
+	013 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void UpdateComputedStyle()
+
+Disassembly:
+	mov [rsp+10h],rbx
+	mov [rsp+18h],rbp
+	mov [rsp+20h],rdi
+	push r14
+	sub rsp,50h
+	mov ebp,[rcx+48h]
+	xor r14d,r14d
+	mov rdi,rcx
+	mov ebx,r14d
+	test ebp,ebp
+	jle near ptr 0000000181846515h
+	mov [rsp+60h],rsi
+	xchg ax,ax
+	mov rcx,[rdi+28h]
+	test rcx,rcx
+	je near ptr 000000018184652Bh
+	cmp ebx,[rcx+18h]
+	jae near ptr 0000000181846531h
+	movsxd rax,ebx
+	mov rcx,[rcx+rax*8+20h]
+	test rcx,rcx
+	je near ptr 000000018184652Bh
+	xor edx,edx
+	call 000000018182C1B0h
+	mov r11,[rdi+28h]
+	mov rsi,rax
+	test r11,r11
+	je near ptr 000000018184652Bh
+	cmp ebx,[r11+18h]
+	jae near ptr 0000000181846531h
+	mov r10,[rdi+30h]
+	test r10,r10
+	je short 000000018184652Bh
+	cmp ebx,[r10+18h]
+	jae short 0000000181846531h
+	mov r8,[rdi+40h]
+	test r8,r8
+	je short 000000018184652Bh
+	cmp ebx,[r8+18h]
+	jae short 0000000181846531h
+	movsxd rax,ebx
+	lea r9,[rsp+30h]
+	movsxd rdx,ebx
+	mov [rsp+20h],r14
+	lea rcx,[rax+rax*4]
+	mov rdx,[r11+rdx*8+20h]
+	add rcx,rcx
+	movups xmm0,[r8+rcx*8+5Ch]
+	mov eax,[r8+rcx*8+6Ch]
+	mov rcx,rsi
+	movsxd r8,ebx
+	movaps [rsp+30h],xmm0
+	mov [rsp+40h],eax
+	mov r8d,[r10+r8*4+20h]
+	call 00000001817F54D0h
+	inc ebx
+	cmp ebx,ebp
+	jl near ptr 0000000181846460h
+	mov rsi,[rsp+60h]
+	mov rbx,[rsp+68h]
+	mov rbp,[rsp+70h]
+	mov rdi,[rsp+78h]
+	add rsp,50h
+	pop r14
+	ret
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 Move stack:0x18, rbp
+	003 Move stack:0x20, rdi
+	004 ShiftStack -8
+	005 Move stack:0x0, r14
+	006 ShiftStack -80
+	007 Move rbp, [rcx+72]
+	008 Move r14, 0
+	009 Move rdi, rcx
+	010 Move rbx, r14
+	011 Compare rbp, 0
+	012 JumpIfLessOrEqual {61}
+	013 Move stack:0x60, rsi
+	014 Nop 
+	015 Move rcx, [rdi+40]
+	016 Compare rcx, 0
+	017 JumpIfEqual {68}
+	018 Compare rbx, [rcx+24]
+	019 JumpIfGreaterOrEqual {70}
+	020 Move rax, rbx
+	021 Move rcx, [rcx+32+rax*8]
+	022 Compare rcx, 0
+	023 JumpIfEqual {68}
+	024 Move rdx, 0
+	025 Call VisualElement.get_computedStyle, rcx, rdx
+	026 Move r11, [rdi+40]
+	027 Move rsi, rax
+	028 Compare r11, 0
+	029 JumpIfEqual {68}
+	030 Compare rbx, [r11+24]
+	031 JumpIfGreaterOrEqual {70}
+	032 Move r10, [rdi+48]
+	033 Compare r10, 0
+	034 JumpIfEqual {68}
+	035 Compare rbx, [r10+24]
+	036 JumpIfGreaterOrEqual {70}
+	037 Move r8, [rdi+64]
+	038 Compare r8, 0
+	039 JumpIfEqual {68}
+	040 Compare rbx, [r8+24]
+	041 JumpIfGreaterOrEqual {70}
+	042 Move rax, rbx
+	043 LoadAddress r9, stack:0x30
+	044 Move rdx, rbx
+	045 Move stack:0x20, r14
+	046 LoadAddress rcx, [rax+rax*4]
+	047 Move rdx, [r11+32+rdx*8]
+	048 Add rcx, rcx, rcx
+	049 Move xmm0, [r8+92+rcx*8]
+	050 Move rax, [r8+108+rcx*8]
+	051 Move rcx, rsi
+	052 Move r8, rbx
+	053 Move stack:0x30, xmm0
+	054 Move stack:0x40, rax
+	055 Move r8, [r10+32+r8*4]
+	056 Call ComputedStyle.ApplyPropertyAnimation, rcx, rdx, r8, r9
+	057 Add rbx, rbx, 1
+	058 Compare rbx, rbp
+	059 JumpIfLess {15}
+	060 Move rsi, stack:0x60
+	061 Move rbx, stack:0x68
+	062 Move rbp, stack:0x70
+	063 Move rdi, stack:0x78
+	064 ShiftStack 80
+	065 Move r14, stack:0x0
+	066 ShiftStack 8
+	067 Return 
+	068 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	069 Interrupt 
+	070 Call 0x1801E2C90, rcx, rdx, r8, r9
+
+Method: System.Void UpdateComputedStyle(System.Int32 i)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,50h
+	mov rdi,rcx
+	movsxd rbx,edx
+	mov rcx,[rcx+28h]
+	test rcx,rcx
+	je near ptr 000000018184641Bh
+	cmp ebx,[rcx+18h]
+	jae near ptr 0000000181846421h
+	mov rcx,[rcx+rbx*8+20h]
+	test rcx,rcx
+	je short 000000018184641Bh
+	xor edx,edx
+	call 000000018182C1B0h
+	mov rdx,[rdi+28h]
+	mov r10,rax
+	test rdx,rdx
+	je short 000000018184641Bh
+	cmp ebx,[rdx+18h]
+	jae short 0000000181846421h
+	mov rcx,[rdi+30h]
+	mov rdx,[rdx+rbx*8+20h]
+	test rcx,rcx
+	je short 000000018184641Bh
+	cmp ebx,[rcx+18h]
+	jae short 0000000181846421h
+	mov r9,[rdi+40h]
+	mov r8d,[rcx+rbx*4+20h]
+	test r9,r9
+	je short 000000018184641Bh
+	cmp ebx,[r9+18h]
+	jae short 0000000181846421h
+	lea rcx,[rbx+rbx*4]
+	mov qword ptr [rsp+20h],0
+	add rcx,rcx
+	movups xmm0,[r9+rcx*8+5Ch]
+	mov eax,[r9+rcx*8+6Ch]
+	lea r9,[rsp+30h]
+	mov rcx,r10
+	mov [rsp+40h],eax
+	movaps [rsp+30h],xmm0
+	call 00000001817F54D0h
+	mov rbx,[rsp+60h]
+	add rsp,50h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -80
+	005 Move rdi, rcx
+	006 Move rbx, rdx
+	007 Move rcx, [rcx+40]
+	008 Compare rcx, 0
+	009 JumpIfEqual {50}
+	010 Compare rbx, [rcx+24]
+	011 JumpIfGreaterOrEqual {52}
+	012 Move rcx, [rcx+32+rbx*8]
+	013 Compare rcx, 0
+	014 JumpIfEqual {50}
+	015 Move rdx, 0
+	016 Call VisualElement.get_computedStyle, rcx, rdx
+	017 Move rdx, [rdi+40]
+	018 Move r10, rax
+	019 Compare rdx, 0
+	020 JumpIfEqual {50}
+	021 Compare rbx, [rdx+24]
+	022 JumpIfGreaterOrEqual {52}
+	023 Move rcx, [rdi+48]
+	024 Move rdx, [rdx+32+rbx*8]
+	025 Compare rcx, 0
+	026 JumpIfEqual {50}
+	027 Compare rbx, [rcx+24]
+	028 JumpIfGreaterOrEqual {52}
+	029 Move r9, [rdi+64]
+	030 Move r8, [rcx+32+rbx*4]
+	031 Compare r9, 0
+	032 JumpIfEqual {50}
+	033 Compare rbx, [r9+24]
+	034 JumpIfGreaterOrEqual {52}
+	035 LoadAddress rcx, [rbx+rbx*4]
+	036 Move stack:0x20, 0
+	037 Add rcx, rcx, rcx
+	038 Move xmm0, [r9+92+rcx*8]
+	039 Move rax, [r9+108+rcx*8]
+	040 LoadAddress r9, stack:0x30
+	041 Move rcx, r10
+	042 Move stack:0x40, rax
+	043 Move stack:0x30, xmm0
+	044 Call ComputedStyle.ApplyPropertyAnimation, rcx, rdx, r8, r9
+	045 Move rbx, stack:0x60
+	046 ShiftStack 80
+	047 Move rdi, stack:0x0
+	048 ShiftStack 8
+	049 Return 
+	050 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	051 Interrupt 
+	052 Call 0x1801E2C90, rcx, rdx, r8, r9
+
+Method: UnityEngine.UIElements.TransformOrigin Lerp(UnityEngine.UIElements.TransformOrigin a, UnityEngine.UIElements.TransformOrigin b, System.Single t)
+
+Disassembly:
+	mov rax,[rdx]
+	mov [rsp+10h],rax
+	mov rax,[r8]
+	mov [rsp+8],rax
+	movss xmm1,dword ptr [rsp+8]
+	subss xmm1,dword ptr [rsp+10h]
+	movss xmm4,dword ptr [1819365D4h]
+	movss xmm2,dword ptr [1818BCE54h]
+	shr rax,20h
+	mulss xmm1,xmm3
+	addss xmm1,dword ptr [rsp+10h]
+	comiss xmm4,xmm1
+	ja short 00000001818462C9h
+	comiss xmm1,xmm2
+	jbe short 00000001818462CCh
+	movaps xmm1,xmm2
+	jmp short 00000001818462CCh
+	movaps xmm1,xmm4
+	mov [rsp+0Ch],eax
+	mov rax,[rdx+8]
+	mov [rsp+18h],rax
+	mov rax,[r8+8]
+	mov [rsp+10h],rax
+	movss dword ptr [rsp+8],xmm1
+	movss xmm1,dword ptr [rsp+10h]
+	subss xmm1,dword ptr [rsp+18h]
+	shr rax,20h
+	mulss xmm1,xmm3
+	addss xmm1,dword ptr [rsp+18h]
+	comiss xmm4,xmm1
+	ja short 0000000181846311h
+	comiss xmm1,xmm2
+	jbe short 0000000181846314h
+	movaps xmm1,xmm2
+	jmp short 0000000181846314h
+	movaps xmm1,xmm4
+	movss xmm2,dword ptr [rdx+10h]
+	movss xmm0,dword ptr [r8+10h]
+	movss dword ptr [rsp+10h],xmm1
+	xorps xmm1,xmm1
+	comiss xmm1,xmm3
+	mov [rsp+14h],eax
+	ja short 0000000181846343h
+	movss xmm1,dword ptr [1818BCB64h]
+	comiss xmm3,xmm1
+	jbe short 0000000181846346h
+	movaps xmm3,xmm1
+	jmp short 0000000181846346h
+	xorps xmm3,xmm3
+	mov rax,[rsp+8]
+	subss xmm0,xmm2
+	mov [rcx],rax
+	mov rax,[rsp+10h]
+	mov [rcx+8],rax
+	mov rax,rcx
+	mulss xmm0,xmm3
+	addss xmm0,xmm2
+	movss dword ptr [rcx+10h],xmm0
+	ret
+
+ISIL:
+	001 Move rax, [rdx]
+	002 Move stack:0x10, rax
+	003 Move rax, [r8]
+	004 Move stack:0x8, rax
+	005 Move xmm1, stack:0x8
+	006 Subtract xmm1, xmm1, stack:0x10
+	007 Move xmm4, [0x1819365D4]
+	008 Move xmm2, [0x1818BCE54]
+	009 ShiftRight rax, 32
+	010 Multiply xmm1, xmm1, xmm3
+	011 Add xmm1, xmm1, stack:0x10
+	012 Compare xmm4, xmm1
+	013 JumpIfGreater {18}
+	014 Compare xmm1, xmm2
+	015 JumpIfLessOrEqual {19}
+	016 Move xmm1, xmm2
+	017 Goto {19}
+	018 Move xmm1, xmm4
+	019 Move stack:0xC, rax
+	020 Move rax, [rdx+8]
+	021 Move stack:0x18, rax
+	022 Move rax, [r8+8]
+	023 Move stack:0x10, rax
+	024 Move stack:0x8, xmm1
+	025 Move xmm1, stack:0x10
+	026 Subtract xmm1, xmm1, stack:0x18
+	027 ShiftRight rax, 32
+	028 Multiply xmm1, xmm1, xmm3
+	029 Add xmm1, xmm1, stack:0x18
+	030 Compare xmm4, xmm1
+	031 JumpIfGreater {36}
+	032 Compare xmm1, xmm2
+	033 JumpIfLessOrEqual {37}
+	034 Move xmm1, xmm2
+	035 Goto {37}
+	036 Move xmm1, xmm4
+	037 Move xmm2, [rdx+16]
+	038 Move xmm0, [r8+16]
+	039 Move stack:0x10, xmm1
+	040 Move xmm1, 0
+	041 Compare xmm1, xmm3
+	042 Move stack:0x14, rax
+	043 JumpIfGreater {49}
+	044 Move xmm1, [0x1818BCB64]
+	045 Compare xmm3, xmm1
+	046 JumpIfLessOrEqual {50}
+	047 Move xmm3, xmm1
+	048 Goto {50}
+	049 Move xmm3, 0
+	050 Move rax, stack:0x8
+	051 Subtract xmm0, xmm0, xmm2
+	052 Move [rcx], rax
+	053 Move rax, stack:0x10
+	054 Move [rcx+8], rax
+	055 Move rax, rcx
+	056 Multiply xmm0, xmm0, xmm3
+	057 Add xmm0, xmm0, xmm2
+	058 Move [rcx+16], xmm0
+	059 Return rax
+
+Method: System.Void UpdateValues()
+
+Disassembly:
+	mov rax,rsp
+	sub rsp,0B8h
+	mov r11d,[rcx+48h]
+	xor r8d,r8d
+	mov r9,rcx
+	test r11d,r11d
+	jle near ptr 000000018184672Dh
+	movss xmm5,dword ptr [1818BCE54h]
+	movaps [rax-18h],xmm6
+	movss xmm6,dword ptr [1819365D4h]
+	movaps [rax-28h],xmm7
+	movss xmm7,dword ptr [1818BCB64h]
+	movaps [rax-38h],xmm8
+	xorps xmm8,xmm8
+	nop word ptr [rax+rax]
+	mov rdx,[r9+38h]
+	test rdx,rdx
+	je near ptr 0000000181846735h
+	cmp r8d,[rdx+18h]
+	jae near ptr 000000018184673Bh
+	mov rcx,[r9+40h]
+	test rcx,rcx
+	je near ptr 0000000181846735h
+	cmp r8d,[rcx+18h]
+	jae near ptr 000000018184673Bh
+	movsxd rax,r8d
+	lea r10,[rax+rax*4]
+	lea rax,[rax+rax*4]
+	add r10,r10
+	movss xmm4,dword ptr [rdx+rax*8+38h]
+	movups xmm0,[rcx+r10*8+34h]
+	movaps [rsp+60h],xmm0
+	movups xmm0,[rcx+r10*8+20h]
+	movaps [rsp+40h],xmm0
+	mov rax,[rsp+40h]
+	mov [rsp+20h],rax
+	mov rax,[rsp+60h]
+	mov [rsp+0D8h],rax
+	movss xmm3,dword ptr [rsp+0D8h]
+	subss xmm3,dword ptr [rsp+20h]
+	shr rax,20h
+	mulss xmm3,xmm4
+	addss xmm3,dword ptr [rsp+20h]
+	comiss xmm6,xmm3
+	ja short 000000018184662Bh
+	comiss xmm3,xmm5
+	jbe short 000000018184662Eh
+	movaps xmm3,xmm5
+	jmp short 000000018184662Eh
+	movaps xmm3,xmm6
+	mov [rsp+0C4h],eax
+	mov rax,[rsp+48h]
+	movss dword ptr [rsp+0C0h],xmm3
+	mov rdx,[rsp+0C0h]
+	mov [rsp+20h],rax
+	mov rax,[rsp+68h]
+	mov [rsp+0D8h],rax
+	shr rdx,20h
+	movss xmm2,dword ptr [rsp+0D8h]
+	subss xmm2,dword ptr [rsp+20h]
+	shr rax,20h
+	mulss xmm2,xmm4
+	addss xmm2,dword ptr [rsp+20h]
+	comiss xmm6,xmm2
+	ja short 000000018184668Dh
+	comiss xmm2,xmm5
+	jbe short 0000000181846690h
+	movaps xmm2,xmm5
+	jmp short 0000000181846690h
+	movaps xmm2,xmm6
+	mov [rsp+0D4h],eax
+	movss dword ptr [rsp+0D0h],xmm2
+	mov rax,[rsp+0D0h]
+	shr rax,20h
+	comiss xmm8,xmm4
+	ja short 00000001818466BCh
+	comiss xmm4,xmm7
+	jbe short 00000001818466C0h
+	movaps xmm4,xmm7
+	jmp short 00000001818466C0h
+	movaps xmm4,xmm8
+	movss xmm1,dword ptr [rcx+r10*8+44h]
+	inc r8d
+	mov [rsp+2Ch],edx
+	mov [rsp+34h],eax
+	subss xmm1,dword ptr [rcx+r10*8+30h]
+	movups xmm0,[rsp+28h]
+	movss xmm0,xmm3
+	shufps xmm0,xmm0,0D2h
+	mulss xmm1,xmm4
+	movss xmm0,xmm2
+	shufps xmm0,xmm0,0C9h
+	movups [rcx+r10*8+5Ch],xmm0
+	addss xmm1,dword ptr [rcx+r10*8+30h]
+	movups [rsp+28h],xmm0
+	movss dword ptr [rcx+r10*8+6Ch],xmm1
+	cmp r8d,r11d
+	jl near ptr 0000000181846590h
+	movaps xmm7,[rsp+90h]
+	movaps xmm6,[rsp+0A0h]
+	movaps xmm8,[rsp+80h]
+	add rsp,0B8h
+	ret
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 Move rax, rsp
+	002 ShiftStack -184
+	003 Move r11, [rcx+72]
+	004 Move r8, 0
+	005 Move r9, rcx
+	006 Compare r11, 0
+	007 JumpIfLessOrEqual {110}
+	008 Move xmm5, [0x1818BCE54]
+	009 Move [rax-24], xmm6
+	010 Move xmm6, [0x1819365D4]
+	011 Move [rax-40], xmm7
+	012 Move xmm7, [0x1818BCB64]
+	013 Move [rax-56], xmm8
+	014 Move xmm8, 0
+	015 Nop 
+	016 Move rdx, [r9+56]
+	017 Compare rdx, 0
+	018 JumpIfEqual {112}
+	019 Compare r8, [rdx+24]
+	020 JumpIfGreaterOrEqual {114}
+	021 Move rcx, [r9+64]
+	022 Compare rcx, 0
+	023 JumpIfEqual {112}
+	024 Compare r8, [rcx+24]
+	025 JumpIfGreaterOrEqual {114}
+	026 Move rax, r8
+	027 LoadAddress r10, [rax+rax*4]
+	028 LoadAddress rax, [rax+rax*4]
+	029 Add r10, r10, r10
+	030 Move xmm4, [rdx+56+rax*8]
+	031 Move xmm0, [rcx+52+r10*8]
+	032 Move stack:0x60, xmm0
+	033 Move xmm0, [rcx+32+r10*8]
+	034 Move stack:0x40, xmm0
+	035 Move rax, stack:0x40
+	036 Move stack:0x20, rax
+	037 Move rax, stack:0x60
+	038 Move stack:0xD8, rax
+	039 Move xmm3, stack:0xD8
+	040 Subtract xmm3, xmm3, stack:0x20
+	041 ShiftRight rax, 32
+	042 Multiply xmm3, xmm3, xmm4
+	043 Add xmm3, xmm3, stack:0x20
+	044 Compare xmm6, xmm3
+	045 JumpIfGreater {50}
+	046 Compare xmm3, xmm5
+	047 JumpIfLessOrEqual {51}
+	048 Move xmm3, xmm5
+	049 Goto {51}
+	050 Move xmm3, xmm6
+	051 Move stack:0xC4, rax
+	052 Move rax, stack:0x48
+	053 Move stack:0xC0, xmm3
+	054 Move rdx, stack:0xC0
+	055 Move stack:0x20, rax
+	056 Move rax, stack:0x68
+	057 Move stack:0xD8, rax
+	058 ShiftRight rdx, 32
+	059 Move xmm2, stack:0xD8
+	060 Subtract xmm2, xmm2, stack:0x20
+	061 ShiftRight rax, 32
+	062 Multiply xmm2, xmm2, xmm4
+	063 Add xmm2, xmm2, stack:0x20
+	064 Compare xmm6, xmm2
+	065 JumpIfGreater {70}
+	066 Compare xmm2, xmm5
+	067 JumpIfLessOrEqual {71}
+	068 Move xmm2, xmm5
+	069 Goto {71}
+	070 Move xmm2, xmm6
+	071 Move stack:0xD4, rax
+	072 Move stack:0xD0, xmm2
+	073 Move rax, stack:0xD0
+	074 ShiftRight rax, 32
+	075 Compare xmm8, xmm4
+	076 JumpIfGreater {81}
+	077 Compare xmm4, xmm7
+	078 JumpIfLessOrEqual {82}
+	079 Move xmm4, xmm7
+	080 Goto {82}
+	081 Move xmm4, xmm8
+	082 Move xmm1, [rcx+68+r10*8]
+	083 Add r8, r8, 1
+	084 Move stack:0x2C, rdx
+	085 Move stack:0x34, rax
+	086 Subtract xmm1, xmm1, [rcx+48+r10*8]
+	087 Move xmm0, stack:0x28
+	088 Move xmm0, xmm3
+	089 Move XMM_TEMP.S[0], xmm0.S[2]
+	090 Move XMM_TEMP.S[1], xmm0.S[0]
+	091 Move XMM_TEMP.S[2], xmm0.S[1]
+	092 Move XMM_TEMP.S[3], xmm0.S[3]
+	093 Move xmm0, XMM_TEMP
+	094 Multiply xmm1, xmm1, xmm4
+	095 Move xmm0, xmm2
+	096 Move XMM_TEMP.S[0], xmm0.S[1]
+	097 Move XMM_TEMP.S[1], xmm0.S[2]
+	098 Move XMM_TEMP.S[2], xmm0.S[0]
+	099 Move XMM_TEMP.S[3], xmm0.S[3]
+	100 Move xmm0, XMM_TEMP
+	101 Move [rcx+92+r10*8], xmm0
+	102 Add xmm1, xmm1, [rcx+48+r10*8]
+	103 Move stack:0x28, xmm0
+	104 Move [rcx+108+r10*8], xmm1
+	105 Compare r8, r11
+	106 JumpIfLess {16}
+	107 Move xmm7, stack:0x90
+	108 Move xmm6, stack:0xA0
+	109 Move xmm8, stack:0x80
+	110 ShiftStack 184
+	111 Return 
+	112 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	113 Interrupt 
+	114 Call 0x1801E2C90, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F23E00h],0
+	mov rdi,rcx
+	jne short 0000000181846791h
+	lea rcx,[181E27CE0h]
+	call 00000001801E2A80h
+	lea rcx,[181E18CF8h]
+	call 00000001801E2A80h
+	lea rcx,[181E295A8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F23E00h],1
+	mov rcx,[181E27CE0h]
+	call 0000000180197840h
+	mov r8,[181E18CF8h]
+	xor r9d,r9d
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180975410h
+	lea rcx,[rdi+88h]
+	mov [rdi+88h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	mov rdx,[181E295A8h]
+	mov rcx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180C8BBB0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F23E00], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {15}
+	008 LoadAddress rcx, [0x181E27CE0]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x181E18CF8]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x181E295A8]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 Move [0x181F23E00], 1
+	015 Move rcx, typeof(System.Func`3<TransformOrigin, TransformOrigin, Boolean>)
+	016 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	017 Move r8, [0x181E18CF8]
+	018 Move r9, 0
+	019 Move rdx, 0
+	020 Move rcx, rax
+	021 Move rbx, rax
+	022 Call 0x180975410, rcx, rdx, r8
+	023 LoadAddress rcx, [rdi+136]
+	024 Move [rdi+136], rbx
+	025 Move rdx, rbx
+	026 Call 0x1801E1E30, rcx, rdx, r8, r9
+	027 Move rdx, [0x181E295A8]
+	028 Move rcx, rdi
+	029 Move rbx, stack:0x30
+	030 ShiftStack 32
+	031 Move rdi, stack:0x0
+	032 ShiftStack 8
+	033 Call Values`1<TransformOrigin>..ctor, rcx, rdx
+	034 Return 
+

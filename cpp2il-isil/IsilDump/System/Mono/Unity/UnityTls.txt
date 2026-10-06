@@ -1,0 +1,131 @@
+Type: Mono.Unity.UnityTls
+
+Method: System.IntPtr GetUnityTlsInterface()
+
+Disassembly:
+	jmp near ptr 00000001801E10F0h
+
+ISIL:
+	001 Call 0x1801E10F0, rcx, rdx, r8, r9
+	002 Return rax
+
+Method: System.Boolean get_IsSupported()
+
+Disassembly:
+	sub rsp,28h
+	xor ecx,ecx
+	call 00000001811619D0h
+	test rax,rax
+	setne al
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, 0
+	003 Call UnityTls.get_NativeInterface, rcx
+	004 Compare rax, 0
+	005 NotImplemented "setne al"
+	006 ShiftStack 40
+	007 Return rax
+
+Method: Mono.Unity.UnityTls+unitytls_interface_struct get_NativeInterface()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1E64Bh],0
+	jne short 0000000181161A08h
+	lea rcx,[181DF6018h]
+	call 00000001801E2A80h
+	lea rcx,[181E2ACA0h]
+	call 00000001801E2A80h
+	lea rcx,[181E05CA0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E64Bh],1
+	mov rcx,[181E05CA0h]
+	mov [rsp+20h],rbx
+	mov rax,[rcx+0B8h]
+	cmp qword ptr [rax],0
+	jne short 0000000181161A8Ch
+	call 00000001801E10F0h
+	xor r8d,r8d
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180772240h
+	test al,al
+	jne short 0000000181161AA0h
+	mov rcx,[181E2ACA0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000181161A4Fh
+	call 0000000180153C50h
+	mov rdx,[181DF6018h]
+	mov rcx,rbx
+	call 000000018074E420h
+	mov rcx,[181E05CA0h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rax
+	mov rdx,rax
+	mov rcx,[181E05CA0h]
+	mov rcx,[rcx+0B8h]
+	call 00000001801E1E30h
+	mov rcx,[181E05CA0h]
+	mov rax,[rcx+0B8h]
+	mov rax,[rax]
+	mov rbx,[rsp+20h]
+	add rsp,28h
+	ret
+	mov rbx,[rsp+20h]
+	xor eax,eax
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1E64B], 0
+	003 JumpIfNotEqual {11}
+	004 LoadAddress rcx, [0x181DF6018]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 LoadAddress rcx, [0x181E2ACA0]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 LoadAddress rcx, [0x181E05CA0]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x181F1E64B], 1
+	011 Move rcx, typeof(Mono.Unity.UnityTls)
+	012 Move stack:0x20, rbx
+	013 Move rax, [rcx+184]
+	014 Compare [rax], 0
+	015 JumpIfNotEqual {39}
+	016 Call 0x1801E10F0, rcx, rdx, r8, r9
+	017 Move r8, 0
+	018 Move rdx, 0
+	019 Move rcx, rax
+	020 Move rbx, rax
+	021 Call 0x180772240, rcx, rdx, r8
+	022 Compare rax, 0
+	023 JumpIfNotEqual {44}
+	024 Move rcx, typeof(System.Runtime.InteropServices.Marshal)
+	025 Compare [rcx+224], 0
+	026 JumpIfNotEqual {28}
+	027 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	028 Move rdx, [0x181DF6018]
+	029 Move rcx, rbx
+	030 Call 0x18074E420, rcx, rdx
+	031 Move rcx, typeof(Mono.Unity.UnityTls)
+	032 Move rdx, [rcx+184]
+	033 Move [rdx], rax
+	034 Move rdx, rax
+	035 Move rcx, typeof(Mono.Unity.UnityTls)
+	036 Move rcx, [rcx+184]
+	037 Call 0x1801E1E30, rcx, rdx, r8, r9
+	038 Move rcx, typeof(Mono.Unity.UnityTls)
+	039 Move rax, [rcx+184]
+	040 Move rax, [rax]
+	041 Move rbx, stack:0x20
+	042 ShiftStack 40
+	043 Return rax
+	044 Move rbx, stack:0x20
+	045 Move rax, 0
+	046 ShiftStack 40
+	047 Return rax
+

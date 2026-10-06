@@ -1,0 +1,178 @@
+Type: Unity.Services.Core.Internal.UnityWebRequestUtils
+
+Method: System.Boolean HasSucceeded(UnityEngine.Networking.UnityWebRequest self)
+
+Disassembly:
+	sub rsp,28h
+	test rcx,rcx
+	je short 00000001815ECBABh
+	xor edx,edx
+	call 000000018188D640h
+	cmp eax,1
+	sete al
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rcx, 0
+	003 JumpIfEqual {10}
+	004 Move rdx, 0
+	005 Call UnityWebRequest.get_result, rcx, rdx
+	006 Compare rax, 1
+	007 NotImplemented "sete al"
+	008 ShiftStack 40
+	009 Return rax
+	010 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Threading.Tasks.Task`1<System.String> GetTextAsync(System.String uri)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F20CEDh],0
+	mov rsi,rcx
+	jne short 00000001815ECACAh
+	lea rcx,[181E14220h]
+	call 00000001801E2A80h
+	lea rcx,[181E1B6C0h]
+	call 00000001801E2A80h
+	lea rcx,[181E1B8C8h]
+	call 00000001801E2A80h
+	lea rcx,[181E378C0h]
+	call 00000001801E2A80h
+	lea rcx,[181E1B118h]
+	call 00000001801E2A80h
+	lea rcx,[181E2C048h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20CEDh],1
+	mov rcx,[181E2C048h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 000000018024B730h
+	mov rcx,[181E378C0h]
+	call 0000000180197840h
+	mov rdx,[181E1B6C0h]
+	mov rcx,rax
+	mov rdi,rax
+	call 0000000180B4FD60h
+	test rbx,rbx
+	je near ptr 00000001815ECB8Ah
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	xor edx,edx
+	mov rcx,rsi
+	call 000000018188C850h
+	test rax,rax
+	je short 00000001815ECB8Ah
+	xor edx,edx
+	mov rcx,rax
+	call 000000018188CD50h
+	mov rcx,[181E14220h]
+	mov rdi,rax
+	call 0000000180197840h
+	mov r8,[181E1B118h]
+	xor r9d,r9d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rsi,rax
+	call 00000001807DF340h
+	test rdi,rdi
+	je short 00000001815ECB8Ah
+	xor r8d,r8d
+	mov rdx,rsi
+	mov rcx,rdi
+	call 0000000181621070h
+	mov rax,[rbx+10h]
+	test rax,rax
+	je short 00000001815ECB8Ah
+	mov rax,[rax+10h]
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x181F20CED], 0
+	007 Move rsi, rcx
+	008 JumpIfNotEqual {22}
+	009 LoadAddress rcx, [0x181E14220]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x181E1B6C0]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x181E1B8C8]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x181E378C0]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 LoadAddress rcx, [0x181E1B118]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 LoadAddress rcx, [0x181E2C048]
+	020 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	021 Move [0x181F20CED], 1
+	022 Move rcx, typeof(Unity.Services.Core.Internal.UnityWebRequestUtils+<>c__DisplayClass2_0)
+	023 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	024 Move rdx, 0
+	025 Move rcx, rax
+	026 Move rbx, rax
+	027 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	028 Move rcx, typeof(System.Threading.Tasks.TaskCompletionSource`1<String>)
+	029 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	030 Move rdx, [0x181E1B6C0]
+	031 Move rcx, rax
+	032 Move rdi, rax
+	033 Call TaskCompletionSource`1<Object>..ctor, rcx, rdx
+	034 Compare rbx, 0
+	035 JumpIfEqual {73}
+	036 LoadAddress rcx, [rbx+16]
+	037 Move [rbx+16], rdi
+	038 Move rdx, rdi
+	039 Call 0x1801E1E30, rcx, rdx, r8, r9
+	040 Move rdx, 0
+	041 Move rcx, rsi
+	042 Call UnityWebRequest.Get, rcx, rdx
+	043 Compare rax, 0
+	044 JumpIfEqual {73}
+	045 Move rdx, 0
+	046 Move rcx, rax
+	047 Call UnityWebRequest.SendWebRequest, rcx, rdx
+	048 Move rcx, typeof(System.Action`1<AsyncOperation>)
+	049 Move rdi, rax
+	050 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	051 Move r8, [0x181E1B118]
+	052 Move r9, 0
+	053 Move rdx, rbx
+	054 Move rcx, rax
+	055 Move rsi, rax
+	056 Call 0x1807DF340, rcx, rdx, r8
+	057 Compare rdi, 0
+	058 JumpIfEqual {73}
+	059 Move r8, 0
+	060 Move rdx, rsi
+	061 Move rcx, rdi
+	062 Call AsyncOperation.add_completed, rcx, rdx
+	063 Move rax, [rbx+16]
+	064 Compare rax, 0
+	065 JumpIfEqual {73}
+	066 Move rax, [rax+16]
+	067 Move rbx, stack:0x30
+	068 Move rsi, stack:0x38
+	069 ShiftStack 32
+	070 Move rdi, stack:0x0
+	071 ShiftStack 8
+	072 Return rax
+	073 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

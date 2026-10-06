@@ -1,0 +1,116 @@
+Type: System.Reflection.RuntimePropertyInfo+StaticGetter`1
+
+Method: System.Void .ctor(System.Object object, System.IntPtr method)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rax,[r8+8]
+	mov rbx,r8
+	mov [rcx+10h],rax
+	mov rdi,rcx
+	mov [rcx+28h],rbx
+	mov rsi,rdx
+	mov [rcx+20h],rdx
+	add rcx,20h
+	call 00000001801E1E30h
+	movzx ebp,byte ptr [rbx+52h]
+	mov rcx,rbx
+	mov [rdi+40h],rdi
+	call 00000001801E1E60h
+	test al,al
+	je short 0000000180826631h
+	test bpl,bpl
+	lea rcx,[180010900h]
+	lea rax,[1800106A0h]
+	cmovne rcx,rax
+	jmp short 000000018082663Dh
+	test rsi,rsi
+	je short 0000000180826669h
+	lea rcx,[180010670h]
+	mov eax,18h
+	mov rdx,rdi
+	mov [rdx+rax],rcx
+	lea rax,[1800029C0h]
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	mov [rdi+38h],rax
+	add rsp,20h
+	pop rdi
+	ret
+	lea rdx,[1818BCB20h]
+	xor ecx,ecx
+	call 00000001801E26D0h
+	mov rcx,rax
+	xor edx,edx
+	call 00000001801E2C60h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rax, [r8+8]
+	008 Move rbx, r8
+	009 Move [rcx+16], rax
+	010 Move rdi, rcx
+	011 Move [rcx+40], rbx
+	012 Move rsi, rdx
+	013 Move [rcx+32], rdx
+	014 Add rcx, rcx, 32
+	015 Call 0x1801E1E30, rcx, rdx, r8, r9
+	016 Move rbp, [rbx+82]
+	017 Move rcx, rbx
+	018 Move [rdi+64], rdi
+	019 Call 0x1801E1E60, rcx, rdx, r8, r9
+	020 Compare rax, 0
+	021 JumpIfEqual {29}
+	022 Compare rbp, 0
+	023 LoadAddress rcx, [0x180010900]
+	024 LoadAddress rax, [0x1800106A0]
+	025 JumpIfEqual {27}
+	026 Move rcx, rax
+	027 Nop 
+	028 Goto {32}
+	029 Compare rsi, 0
+	030 JumpIfEqual {44}
+	031 LoadAddress rcx, [0x180010670]
+	032 Move rax, 24
+	033 Move rdx, rdi
+	034 Move [rdx+rax], rcx
+	035 LoadAddress rax, [0x1800029C0]
+	036 Move rbx, stack:0x30
+	037 Move rbp, stack:0x38
+	038 Move rsi, stack:0x40
+	039 Move [rdi+56], rax
+	040 ShiftStack 32
+	041 Move rdi, stack:0x0
+	042 ShiftStack 8
+	043 Return 
+	044 LoadAddress rdx, [0x1818BCB20]
+	045 Move rcx, 0
+	046 Call 0x1801E26D0, rcx, rdx, r8, r9
+	047 Move rcx, rax
+	048 Move rdx, 0
+	049 Call 0x1801E2C60, rcx, rdx, r8, r9
+
+Method: R Invoke()
+
+Disassembly:
+	mov rax,[rcx+18h]
+	mov r8,[rcx+28h]
+	mov rcx,[rcx+40h]
+	jmp rax
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Move r8, [rcx+40]
+	003 Move rcx, [rcx+64]
+	004 CallNoReturn rax
+

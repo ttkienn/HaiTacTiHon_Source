@@ -1,0 +1,144 @@
+Type: mLine
+
+Method: System.Void .ctor(System.Int32 x1, System.Int32 y1, System.Int32 x2, System.Int32 y2, System.Int32 cl)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov ebx,edx
+	mov esi,r9d
+	xor edx,edx
+	mov edi,r8d
+	mov rbp,rcx
+	call 000000018024B730h
+	mov edx,[rsp+58h]
+	movss xmm1,dword ptr [1818BCB5Ch]
+	mov eax,[rsp+50h]
+	mov [rbp+1Ch],eax
+	movzx eax,dl
+	mov [rbp+10h],ebx
+	mov rbx,[rsp+30h]
+	mov [rbp+14h],esi
+	mov rsi,[rsp+40h]
+	movd xmm0,eax
+	mov eax,edx
+	cvtdq2ps xmm0,xmm0
+	sar eax,8
+	movzx eax,al
+	sar edx,10h
+	mov [rbp+18h],edi
+	mov dword ptr [rbp+2Ch],437F0000h
+	mulss xmm0,xmm1
+	movss dword ptr [rbp+24h],xmm0
+	movd xmm0,eax
+	cvtdq2ps xmm0,xmm0
+	movzx eax,dl
+	mulss xmm0,xmm1
+	movss dword ptr [rbp+28h],xmm0
+	movd xmm0,eax
+	cvtdq2ps xmm0,xmm0
+	mulss xmm0,xmm1
+	movss dword ptr [rbp+20h],xmm0
+	mov rbp,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbx, rdx
+	008 Move rsi, r9
+	009 Move rdx, 0
+	010 Move rdi, r8
+	011 Move rbp, rcx
+	012 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	013 Move rdx, stack:0x58
+	014 Move xmm1, [0x1818BCB5C]
+	015 Move rax, stack:0x50
+	016 Move [rbp+28], rax
+	017 Move rax, rdx
+	018 Move [rbp+16], rbx
+	019 Move rbx, stack:0x30
+	020 Move [rbp+20], rsi
+	021 Move rsi, stack:0x40
+	022 Move xmm0, rax
+	023 Move rax, rdx
+	024 Move xmm0, xmm0
+	025 ShiftRight rax, 8
+	026 Move rax, rax
+	027 ShiftRight rdx, 16
+	028 Move [rbp+24], rdi
+	029 Move [rbp+44], 0x437F0000
+	030 Multiply xmm0, xmm0, xmm1
+	031 Move [rbp+36], xmm0
+	032 Move xmm0, rax
+	033 Move xmm0, xmm0
+	034 Move rax, rdx
+	035 Multiply xmm0, xmm0, xmm1
+	036 Move [rbp+40], xmm0
+	037 Move xmm0, rax
+	038 Move xmm0, xmm0
+	039 Multiply xmm0, xmm0, xmm1
+	040 Move [rbp+32], xmm0
+	041 Move rbp, stack:0x38
+	042 ShiftStack 32
+	043 Move rdi, stack:0x0
+	044 ShiftStack 8
+	045 Return 
+
+Method: System.Void setColor(System.Int32 rgb)
+
+Disassembly:
+	movss xmm1,dword ptr [1818BCB5Ch]
+	movzx eax,dl
+	mov dword ptr [rcx+2Ch],437F0000h
+	movd xmm0,eax
+	mov eax,edx
+	cvtdq2ps xmm0,xmm0
+	sar eax,8
+	movzx eax,al
+	sar edx,10h
+	mulss xmm0,xmm1
+	movss dword ptr [rcx+24h],xmm0
+	movd xmm0,eax
+	cvtdq2ps xmm0,xmm0
+	movzx eax,dl
+	mulss xmm0,xmm1
+	movss dword ptr [rcx+28h],xmm0
+	movd xmm0,eax
+	cvtdq2ps xmm0,xmm0
+	mulss xmm0,xmm1
+	movss dword ptr [rcx+20h],xmm0
+	ret
+
+ISIL:
+	001 Move xmm1, [0x1818BCB5C]
+	002 Move rax, rdx
+	003 Move [rcx+44], 0x437F0000
+	004 Move xmm0, rax
+	005 Move rax, rdx
+	006 Move xmm0, xmm0
+	007 ShiftRight rax, 8
+	008 Move rax, rax
+	009 ShiftRight rdx, 16
+	010 Multiply xmm0, xmm0, xmm1
+	011 Move [rcx+36], xmm0
+	012 Move xmm0, rax
+	013 Move xmm0, xmm0
+	014 Move rax, rdx
+	015 Multiply xmm0, xmm0, xmm1
+	016 Move [rcx+40], xmm0
+	017 Move xmm0, rax
+	018 Move xmm0, xmm0
+	019 Multiply xmm0, xmm0, xmm1
+	020 Move [rcx+32], xmm0
+	021 Return 
+

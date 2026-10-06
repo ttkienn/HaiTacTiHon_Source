@@ -1,0 +1,169 @@
+Type: System.PointerSpec
+
+Method: System.Void .ctor(System.Int32 pointer_level)
+
+Disassembly:
+	mov [rcx+10h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Return 
+
+Method: System.Type Resolve(System.Type type)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	xor ebx,ebx
+	mov rax,rdx
+	mov rdi,rcx
+	cmp [rcx+10h],ebx
+	jle short 0000000180F7EB2Ah
+	test rax,rax
+	je short 0000000180F7EB35h
+	mov rdx,[rax]
+	mov rcx,rax
+	mov r8,[rdx+918h]
+	mov rdx,[rdx+920h]
+	call r8
+	inc ebx
+	cmp ebx,[rdi+10h]
+	jl short 0000000180F7EB07h
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, 0
+	006 Move rax, rdx
+	007 Move rdi, rcx
+	008 Compare [rcx+16], rbx
+	009 JumpIfLessOrEqual {20}
+	010 Compare rax, 0
+	011 JumpIfEqual {25}
+	012 Move rdx, [rax]
+	013 Move rcx, rax
+	014 Move r8, [rdx+2328]
+	015 Move rdx, [rdx+2336]
+	016 Call r8
+	017 Add rbx, rbx, 1
+	018 Compare rbx, [rdi+16]
+	019 JumpIfLess {10}
+	020 Move rbx, stack:0x30
+	021 ShiftStack 32
+	022 Move rdi, stack:0x0
+	023 ShiftStack 8
+	024 Return rax
+	025 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Text.StringBuilder Append(System.Text.StringBuilder sb)
+
+Disassembly:
+	sub rsp,28h
+	mov rax,rdx
+	test rdx,rdx
+	je short 0000000180F7EAE4h
+	mov r8d,[rcx+10h]
+	mov edx,2Ah
+	mov rcx,rax
+	xor r9d,r9d
+	add rsp,28h
+	jmp near ptr 0000000180D8B770h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, rdx
+	003 Compare rdx, 0
+	004 JumpIfEqual {12}
+	005 Move r8, [rcx+16]
+	006 Move rdx, 42
+	007 Move rcx, rax
+	008 Move r9, 0
+	009 ShiftStack 40
+	010 Call StringBuilder.Append, rcx, rdx, r8
+	011 Return rax
+	012 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.String ToString()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1D629h],0
+	mov rdi,rcx
+	jne short 0000000180F7EB69h
+	lea rcx,[181DFC670h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1D629h],1
+	mov rcx,[181DFC670h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180D8E140h
+	test rbx,rbx
+	je short 0000000180F7EBC1h
+	mov r8d,[rdi+10h]
+	mov edx,2Ah
+	xor r9d,r9d
+	mov rcx,rbx
+	call 0000000180D8B770h
+	test rax,rax
+	je short 0000000180F7EBC1h
+	mov rdx,[rax]
+	mov rcx,rax
+	mov r8,[rdx+168h]
+	mov rdx,[rdx+170h]
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp r8
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1D629], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x181DFC670]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x181F1D629], 1
+	011 Move rcx, typeof(System.Text.StringBuilder)
+	012 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	013 Move rdx, 0
+	014 Move rcx, rax
+	015 Move rbx, rax
+	016 Call StringBuilder..ctor, rcx, rdx
+	017 Compare rbx, 0
+	018 JumpIfEqual {35}
+	019 Move r8, [rdi+16]
+	020 Move rdx, 42
+	021 Move r9, 0
+	022 Move rcx, rbx
+	023 Call StringBuilder.Append, rcx, rdx, r8
+	024 Compare rax, 0
+	025 JumpIfEqual {35}
+	026 Move rdx, [rax]
+	027 Move rcx, rax
+	028 Move r8, [rdx+360]
+	029 Move rdx, [rdx+368]
+	030 Move rbx, stack:0x30
+	031 ShiftStack 32
+	032 Move rdi, stack:0x0
+	033 ShiftStack 8
+	034 CallNoReturn r8
+	035 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

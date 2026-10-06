@@ -1,0 +1,38 @@
+Type: System.Security.Cryptography.CryptographicOperations
+
+Method: System.Void ZeroMemory(System.Span`1<System.Byte> buffer)
+
+Disassembly:
+	mov [rsp+10h],rdx
+	mov [rsp+8],rcx
+	sub rsp,28h
+	movzx eax,byte ptr [181F1C728h]
+	test eax,eax
+	jne short 0000000180D9E75Ch
+	lea rcx,[181E14790h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C728h],1
+	mov rdx,[181E14790h]
+	mov rcx,[rsp+30h]
+	call 00000001800E6B90h
+	nop
+	add rsp,28h
+	ret
+
+ISIL:
+	001 Move stack:0x10, rdx
+	002 Move stack:0x8, rcx
+	003 ShiftStack -40
+	004 Move rax, [0x181F1C728]
+	005 Compare rax, 0
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x181E14790]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x181F1C728], 1
+	010 Move rdx, [0x181E14790]
+	011 Move rcx, stack:0x30
+	012 Call 0x1800E6B90, rcx, rdx, r8, r9
+	013 Nop 
+	014 ShiftStack 40
+	015 Return 
+

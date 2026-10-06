@@ -1,0 +1,102 @@
+Type: Mono.Btls.MonoBtlsX509+BoringX509Handle
+
+Method: System.Void .ctor(System.IntPtr handle)
+
+Disassembly:
+	xor r9d,r9d
+	mov r8b,1
+	jmp near ptr 0000000181153680h
+
+ISIL:
+	001 Move r9, 0
+	002 Move r8, 1
+	003 Call MonoBtlsHandle..ctor, rcx, rdx, r8
+	004 Return 
+
+Method: System.Boolean ReleaseHandle()
+
+Disassembly:
+	push rbx
+	sub rsp,50h
+	mov rbx,rcx
+	xor r8d,r8d
+	mov rcx,[rcx+10h]
+	xor edx,edx
+	call 0000000180F44AA0h
+	test al,al
+	je short 0000000181492388h
+	mov rax,[181F1FF08h]
+	mov rbx,[rbx+10h]
+	test rax,rax
+	jne short 0000000181492383h
+	lea rax,[181924E38h]
+	mov qword ptr [rsp+28h],13h
+	mov [rsp+20h],rax
+	lea rcx,[rsp+20h]
+	lea rax,[181925710h]
+	mov qword ptr [rsp+38h],13h
+	mov [rsp+30h],rax
+	mov dword ptr [rsp+40h],0
+	mov dword ptr [rsp+44h],2
+	mov dword ptr [rsp+48h],8
+	mov byte ptr [rsp+4Ch],0
+	call 00000001801E2CF0h
+	mov [181F1FF08h],rax
+	mov rcx,rbx
+	call rax
+	mov al,1
+	add rsp,50h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -80
+	004 Move rbx, rcx
+	005 Move r8, 0
+	006 Move rcx, [rcx+16]
+	007 Move rdx, 0
+	008 Call 0x180F44AA0, rcx, rdx, r8
+	009 Compare rax, 0
+	010 JumpIfEqual {30}
+	011 Move rax, [0x181F1FF08]
+	012 Move rbx, [rbx+16]
+	013 Compare rax, 0
+	014 JumpIfNotEqual {28}
+	015 LoadAddress rax, [0x181924E38]
+	016 Move stack:0x28, 19
+	017 Move stack:0x20, rax
+	018 LoadAddress rcx, stack:0x20
+	019 LoadAddress rax, [0x181925710]
+	020 Move stack:0x38, 19
+	021 Move stack:0x30, rax
+	022 Move stack:0x40, 0
+	023 Move stack:0x44, 2
+	024 Move stack:0x48, 8
+	025 Move stack:0x4C, 0
+	026 Call 0x1801E2CF0, rcx, rdx, r8, r9
+	027 Move [0x181F1FF08], rax
+	028 Move rcx, rbx
+	029 Call rax
+	030 Move rax, 1
+	031 ShiftStack 80
+	032 Move rbx, stack:0x0
+	033 ShiftStack 8
+	034 Return rax
+
+Method: System.IntPtr StealHandle()
+
+Disassembly:
+	add rcx,10h
+	xor r8d,r8d
+	xor edx,edx
+	jmp near ptr 0000000180FAD830h
+
+ISIL:
+	001 Add rcx, rcx, 16
+	002 Move r8, 0
+	003 Move rdx, 0
+	004 Call 0x180FAD830, rcx, rdx, r8
+	005 Return rax
+

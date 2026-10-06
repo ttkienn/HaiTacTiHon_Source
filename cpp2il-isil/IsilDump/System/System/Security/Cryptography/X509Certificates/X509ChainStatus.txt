@@ -1,0 +1,241 @@
+Type: System.Security.Cryptography.X509Certificates.X509ChainStatus
+
+Method: System.Void .ctor(System.Security.Cryptography.X509Certificates.X509ChainStatusFlags flag)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov eax,edx
+	mov [rcx],edx
+	mov rbx,rcx
+	xor edx,edx
+	mov ecx,eax
+	call 00000001814F1900h
+	lea rcx,[rbx+8]
+	mov [rbx+8],rax
+	mov rdx,rax
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rax, rdx
+	005 Move [rcx], rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Move rcx, rax
+	009 Call X509ChainStatus.GetInformation, rcx, rdx
+	010 LoadAddress rcx, [rbx+8]
+	011 Move [rbx+8], rax
+	012 Move rdx, rax
+	013 ShiftStack 32
+	014 Move rbx, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.Security.Cryptography.X509Certificates.X509ChainStatusFlags get_Status()
+
+Disassembly:
+	mov eax,[rcx]
+	ret
+
+ISIL:
+	001 Move rax, [rcx]
+	002 Return rax
+
+Method: System.Void set_Status(System.Security.Cryptography.X509Certificates.X509ChainStatusFlags value)
+
+Disassembly:
+	mov [rcx],edx
+	ret
+
+ISIL:
+	001 Move [rcx], rdx
+	002 Return 
+
+Method: System.Void set_StatusInformation(System.String value)
+
+Disassembly:
+	mov [rcx+8],rdx
+	add rcx,8
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move [rcx+8], rdx
+	002 Add rcx, rcx, 8
+	003 Call 0x1801E1E30, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.String GetInformation(System.Security.Cryptography.X509Certificates.X509ChainStatusFlags flags)
+
+Disassembly:
+	push rbx
+	sub rsp,40h
+	cmp byte ptr [181F202A8h],0
+	movsxd rbx,ecx
+	jne short 00000001814F1931h
+	lea rcx,[181DFC608h]
+	call 00000001801E2A80h
+	lea rcx,[181E0A968h]
+	call 00000001801E2A80h
+	mov byte ptr [181F202A8h],1
+	cmp ebx,800h
+	jle near ptr 00000001814F19C4h
+	cmp ebx,10000h
+	jle short 00000001814F1998h
+	cmp ebx,40000h
+	jle short 00000001814F1970h
+	cmp ebx,80000h
+	je near ptr 00000001814F1A24h
+	cmp ebx,1000000h
+	je near ptr 00000001814F1A24h
+	cmp ebx,2000000h
+	jmp near ptr 00000001814F1A1Eh
+	lea eax,[rbx-20000h]
+	test eax,0FFFDFFFFh
+	je near ptr 00000001814F1A24h
+	mov rax,[181DFC608h]
+	mov rax,[rax+0B8h]
+	mov rax,[rax]
+	add rsp,40h
+	pop rbx
+	ret
+	cmp ebx,4000h
+	je near ptr 00000001814F1A24h
+	cmp ebx,8000h
+	je short 00000001814F1A24h
+	cmp ebx,10000h
+	je short 00000001814F1A24h
+	cmp ebx,1000h
+	je short 00000001814F1A24h
+	cmp ebx,2000h
+	jmp short 00000001814F197Bh
+	cmp ebx,40h
+	jle short 00000001814F19F1h
+	cmp ebx,200h
+	je short 00000001814F1A24h
+	cmp ebx,400h
+	je short 00000001814F1A24h
+	cmp ebx,800h
+	je short 00000001814F1A24h
+	cmp ebx,80h
+	je short 00000001814F1A24h
+	cmp ebx,100h
+	jmp short 00000001814F197Bh
+	cmp ebx,10h
+	jle short 00000001814F1A03h
+	lea eax,[rbx-20h]
+	test eax,0FFFFFFDFh
+	jmp near ptr 00000001814F197Bh
+	cmp ebx,8
+	ja short 00000001814F1A1Bh
+	lea rdx,[180000000h]
+	mov ecx,[rdx+rbx*4+14F1A5Ch]
+	add rcx,rdx
+	jmp rcx
+	cmp ebx,10h
+	jne near ptr 00000001814F1981h
+	mov rax,[181E0A968h]
+	lea rcx,[rsp+20h]
+	xor edx,edx
+	mov [rsp+20h],rax
+	mov qword ptr [rsp+28h],0FFFFFFFFFFFFFFFFh
+	mov [rsp+30h],ebx
+	call 0000000180F5E8B0h
+	xor edx,edx
+	mov rcx,rax
+	call 0000000180465360h
+	add rsp,40h
+	pop rbx
+	ret
+	nop dword ptr [rax]
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -64
+	004 Compare [0x181F202A8], 0
+	005 Move rbx, rcx
+	006 JumpIfNotEqual {12}
+	007 LoadAddress rcx, [0x181DFC608]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 LoadAddress rcx, [0x181E0A968]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F202A8], 1
+	012 Compare rbx, 2048
+	013 JumpIfLessOrEqual {44}
+	014 Compare rbx, 0x10000
+	015 JumpIfLessOrEqual {34}
+	016 Compare rbx, 0x40000
+	017 JumpIfLessOrEqual {24}
+	018 Compare rbx, 0x80000
+	019 JumpIfEqual {69}
+	020 Compare rbx, 0x1000000
+	021 JumpIfEqual {69}
+	022 Compare rbx, 0x2000000
+	023 Goto {68}
+	024 LoadAddress rax, [rbx-131072]
+	025 Compare rax, 0xFFFDFFFF
+	026 JumpIfEqual {69}
+	027 Move rax, typeof(System.String)
+	028 Move rax, [rax+184]
+	029 Move rax, [rax]
+	030 ShiftStack 64
+	031 Move rbx, stack:0x0
+	032 ShiftStack 8
+	033 Return rax
+	034 Compare rbx, 0x4000
+	035 JumpIfEqual {69}
+	036 Compare rbx, 0x8000
+	037 JumpIfEqual {69}
+	038 Compare rbx, 0x10000
+	039 JumpIfEqual {69}
+	040 Compare rbx, 4096
+	041 JumpIfEqual {69}
+	042 Compare rbx, 0x2000
+	043 Goto {26}
+	044 Compare rbx, 64
+	045 JumpIfLessOrEqual {56}
+	046 Compare rbx, 512
+	047 JumpIfEqual {69}
+	048 Compare rbx, 1024
+	049 JumpIfEqual {69}
+	050 Compare rbx, 2048
+	051 JumpIfEqual {69}
+	052 Compare rbx, 128
+	053 JumpIfEqual {69}
+	054 Compare rbx, 256
+	055 Goto {26}
+	056 Compare rbx, 16
+	057 JumpIfLessOrEqual {61}
+	058 LoadAddress rax, [rbx-32]
+	059 Compare rax, 0xFFFFFFDF
+	060 Goto {26}
+	061 Compare rbx, 8
+	062 JumpIfGreater {67}
+	063 LoadAddress rdx, [0x180000000]
+	064 Move rcx, [rdx+0x14F1A5C+rbx*4]
+	065 Add rcx, rcx, rdx
+	066 CallNoReturn rcx
+	067 Compare rbx, 16
+	068 JumpIfNotEqual {27}
+	069 Move rax, typeof(System.Security.Cryptography.X509Certificates.X509ChainStatusFlags)
+	070 LoadAddress rcx, stack:0x20
+	071 Move rdx, 0
+	072 Move stack:0x20, rax
+	073 Move stack:0x28, 18446744073709551615
+	074 Move stack:0x30, rbx
+	075 Call Enum.ToString, rcx, rdx
+	076 Move rdx, 0
+	077 Move rcx, rax
+	078 Call 0x180465360, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10
+	079 ShiftStack 64
+	080 Move rbx, stack:0x0
+	081 ShiftStack 8
+	082 Return rax
+	083 Nop 
+

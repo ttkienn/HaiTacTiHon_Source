@@ -1,0 +1,213 @@
+Type: System.Runtime.Remoting.Proxies.ProxyAttribute
+
+Method: System.MarshalByRefObject CreateInstance(System.Type serverType)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,30h
+	cmp byte ptr [181F1C8AFh],0
+	mov rbp,rdx
+	jne short 0000000180DE90ABh
+	lea rcx,[181E055B8h]
+	call 00000001801E2A80h
+	lea rcx,[181E2AD68h]
+	call 00000001801E2A80h
+	lea rcx,[181DF4180h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C8AFh],1
+	mov rax,[181E055B8h]
+	cmp dword ptr [rax+0E0h],0
+	jne short 0000000180DE90CAh
+	mov rcx,rax
+	call 0000000180153C50h
+	mov rax,[181E055B8h]
+	mov rax,[rax+0B8h]
+	mov rcx,[181DF4180h]
+	mov rbx,[rax+18h]
+	call 0000000180197840h
+	xor esi,esi
+	xor r9d,r9d
+	xor r8d,r8d
+	mov [rsp+20h],rsi
+	mov rdx,rbp
+	mov rcx,rax
+	mov rdi,rax
+	call 0000000180DEA420h
+	xor r9d,r9d
+	mov [rdi+58h],sil
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rbp
+	call 0000000180DD58A0h
+	lea rcx,[rdi+60h]
+	mov [rdi+60h],rax
+	mov rdx,rax
+	call 00000001801E1E30h
+	mov rdx,[rdi]
+	mov rcx,rdi
+	mov rax,[rdx+1A8h]
+	mov rdx,[rdx+1B0h]
+	call rax
+	mov rdx,[181E2AD68h]
+	mov r8,rax
+	test rax,rax
+	je short 0000000180DE916Dh
+	mov r9,[rax]
+	movzx eax,byte ptr [rdx+130h]
+	cmp [r9+130h],al
+	jb short 0000000180DE9185h
+	movzx ecx,al
+	mov rax,[r9+0C8h]
+	cmp [rax+rcx*8-8],rdx
+	jne short 0000000180DE9185h
+	mov rsi,r8
+	mov rbx,[rsp+40h]
+	mov rax,rsi
+	mov rsi,[rsp+50h]
+	mov rbp,[rsp+48h]
+	add rsp,30h
+	pop rdi
+	ret
+	mov rcx,r8
+	call 00000001801E1E70h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -48
+	007 Compare [0x181F1C8AF], 0
+	008 Move rbp, rdx
+	009 JumpIfNotEqual {17}
+	010 LoadAddress rcx, [0x181E055B8]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x181E2AD68]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 LoadAddress rcx, [0x181DF4180]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 Move [0x181F1C8AF], 1
+	017 Move rax, typeof(System.Runtime.Remoting.Channels.ChannelServices)
+	018 Compare [rax+224], 0
+	019 JumpIfNotEqual {23}
+	020 Move rcx, rax
+	021 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	022 Move rax, typeof(System.Runtime.Remoting.Channels.ChannelServices)
+	023 Move rax, [rax+184]
+	024 Move rcx, typeof(System.Runtime.Remoting.Proxies.RemotingProxy)
+	025 Move rbx, [rax+24]
+	026 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	027 Move rsi, 0
+	028 Move r9, 0
+	029 Move r8, 0
+	030 Move stack:0x20, rsi
+	031 Move rdx, rbp
+	032 Move rcx, rax
+	033 Move rdi, rax
+	034 Call RealProxy..ctor, rcx, rdx, r8, r9
+	035 Move r9, 0
+	036 Move [rdi+88], rsi
+	037 Move r8, 0
+	038 Move rdx, rbx
+	039 Move rcx, rbp
+	040 Call ActivationServices.CreateConstructionCall, rcx, rdx, r8, r9
+	041 LoadAddress rcx, [rdi+96]
+	042 Move [rdi+96], rax
+	043 Move rdx, rax
+	044 Call 0x1801E1E30, rcx, rdx, r8, r9
+	045 Move rdx, [rdi]
+	046 Move rcx, rdi
+	047 Move rax, [rdx+424]
+	048 Move rdx, [rdx+432]
+	049 Call rax
+	050 Move rdx, typeof(System.MarshalByRefObject)
+	051 Move r8, rax
+	052 Compare rax, 0
+	053 JumpIfEqual {63}
+	054 Move r9, [rax]
+	055 Move rax, [rdx+304]
+	056 Compare [r9+304], rax
+	057 JumpIfLess {71}
+	058 Move rcx, rax
+	059 Move rax, [r9+200]
+	060 Compare [rax+0xFFFFFFF8+rcx*8], rdx
+	061 JumpIfNotEqual {71}
+	062 Move rsi, r8
+	063 Move rbx, stack:0x40
+	064 Move rax, rsi
+	065 Move rsi, stack:0x50
+	066 Move rbp, stack:0x48
+	067 ShiftStack 48
+	068 Move rdi, stack:0x0
+	069 ShiftStack 8
+	070 Return rax
+	071 Move rcx, r8
+	072 Call 0x1801E1E70, rcx, rdx, r8, r9
+
+Method: System.Runtime.Remoting.Proxies.RealProxy CreateProxy(System.Runtime.Remoting.ObjRef objRef, System.Type serverType, System.Object serverObject, System.Runtime.Remoting.Contexts.Context serverContext)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1C8B0h],0
+	mov rbx,r8
+	mov rdi,rdx
+	jne short 0000000180DE91BCh
+	lea rcx,[181DF41E8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C8B0h],1
+	mov rcx,[181DF41E8h]
+	call 0000000180003260h
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rdi
+	call 0000000180DEFF40h
+	xor edx,edx
+	mov rcx,rax
+	call 0000000180DF0050h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1C8B0], 0
+	006 Move rbx, r8
+	007 Move rdi, rdx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181DF41E8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F1C8B0], 1
+	012 Move rcx, typeof(System.Runtime.Remoting.RemotingServices)
+	013 Call 0x180003260, rcx, rdx, r8, r9
+	014 Move r8, 0
+	015 Move rdx, rbx
+	016 Move rcx, rdi
+	017 Call RemotingServices.GetProxyForRemoteObject, rcx, rdx, r8
+	018 Move rdx, 0
+	019 Move rcx, rax
+	020 Call RemotingServices.GetRealProxy, rcx, rdx
+
+Method: System.Void GetPropertiesForNewContext(System.Runtime.Remoting.Activation.IConstructionCallMessage msg)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Boolean IsContextOK(System.Runtime.Remoting.Contexts.Context ctx, System.Runtime.Remoting.Activation.IConstructionCallMessage msg)
+
+Disassembly:
+	mov al,1
+	ret
+
+ISIL:
+	001 Move rax, 1
+	002 Return rax
+

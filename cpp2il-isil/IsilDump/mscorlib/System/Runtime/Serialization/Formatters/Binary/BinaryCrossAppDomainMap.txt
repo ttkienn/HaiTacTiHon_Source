@@ -1,0 +1,63 @@
+Type: System.Runtime.Serialization.Formatters.Binary.BinaryCrossAppDomainMap
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+
+Method: System.Void Read(System.Runtime.Serialization.Formatters.Binary.__BinaryParser input)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	test rdx,rdx
+	je short 0000000180E190F3h
+	mov rcx,[rdx+68h]
+	test rcx,rcx
+	je short 0000000180E190F3h
+	mov rdx,[rcx]
+	mov rax,[rdx+228h]
+	mov rdx,[rdx+230h]
+	call rax
+	mov [rbx+10h],eax
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Compare rdx, 0
+	006 JumpIfEqual {19}
+	007 Move rcx, [rdx+104]
+	008 Compare rcx, 0
+	009 JumpIfEqual {19}
+	010 Move rdx, [rcx]
+	011 Move rax, [rdx+552]
+	012 Move rdx, [rdx+560]
+	013 Call rax
+	014 Move [rbx+16], rax
+	015 ShiftStack 32
+	016 Move rbx, stack:0x0
+	017 ShiftStack 8
+	018 Return 
+	019 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void Dump()
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+

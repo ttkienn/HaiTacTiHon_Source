@@ -1,0 +1,93 @@
+Type: System.Xml.Schema.UpaException
+
+Method: System.Void .ctor(System.Object particle1, System.Object particle2)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1FA41h],0
+	mov rdi,r8
+	mov rsi,rdx
+	mov rbx,rcx
+	jne short 0000000181423964h
+	lea rcx,[181E12570h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1FA41h],1
+	mov rcx,[181E12570h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000181423979h
+	call 0000000180153C50h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000180F601C0h
+	lea rcx,[rbx+90h]
+	mov [rbx+90h],rsi
+	mov rdx,rsi
+	call 00000001801E1E30h
+	lea rcx,[rbx+98h]
+	mov [rbx+98h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x181F1FA41], 0
+	007 Move rdi, r8
+	008 Move rsi, rdx
+	009 Move rbx, rcx
+	010 JumpIfNotEqual {14}
+	011 LoadAddress rcx, [0x181E12570]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x181F1FA41], 1
+	014 Move rcx, typeof(System.Exception)
+	015 Compare [rcx+224], 0
+	016 JumpIfNotEqual {18}
+	017 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	018 Move rdx, 0
+	019 Move rcx, rbx
+	020 Call Exception..ctor, rcx, rdx
+	021 LoadAddress rcx, [rbx+144]
+	022 Move [rbx+144], rsi
+	023 Move rdx, rsi
+	024 Call 0x1801E1E30, rcx, rdx, r8, r9
+	025 LoadAddress rcx, [rbx+152]
+	026 Move [rbx+152], rdi
+	027 Move rdx, rdi
+	028 Move rbx, stack:0x30
+	029 Move rsi, stack:0x38
+	030 ShiftStack 32
+	031 Move rdi, stack:0x0
+	032 ShiftStack 8
+	033 Call 0x1801E1E30, rcx, rdx, r8, r9
+	034 Return 
+
+Method: System.Object get_Particle1()
+
+Disassembly:
+	mov rax,[rcx+90h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+144]
+	002 Return rax
+
+Method: System.Object get_Particle2()
+
+Disassembly:
+	mov rax,[rcx+98h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+152]
+	002 Return rax
+

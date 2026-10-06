@@ -1,0 +1,150 @@
+Type: Mono.SafeStringMarshal
+
+Method: System.IntPtr StringToUtf8_icall(ref System.String str)
+
+Disassembly:
+	jmp near ptr 00000001801AA670h
+
+ISIL:
+	001 Call 0x1801AA670, rcx, rdx, r8, r9
+	002 Return rax
+
+Method: System.IntPtr StringToUtf8(System.String str)
+
+Disassembly:
+	mov [rsp+8],rcx
+	sub rsp,28h
+	lea rcx,[rsp+30h]
+	call 00000001801AA670h
+	add rsp,28h
+	ret
+
+ISIL:
+	001 Move stack:0x8, rcx
+	002 ShiftStack -40
+	003 LoadAddress rcx, stack:0x30
+	004 Call 0x1801AA670, rcx, rdx, r8, r9
+	005 ShiftStack 40
+	006 Return rax
+
+Method: System.Void GFree(System.IntPtr ptr)
+
+Disassembly:
+	jmp near ptr 00000001801535F0h
+
+ISIL:
+	001 Call 0x1801535F0, rcx, rdx, r8, r9
+	002 Return 
+
+Method: System.Void .ctor(System.String str)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	mov [rcx],rdx
+	call 00000001801E1E30h
+	mov qword ptr [rbx+8],0
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move [rcx], rdx
+	006 Call 0x1801E1E30, rcx, rdx, r8, r9
+	007 Move [rbx+8], 0
+	008 ShiftStack 32
+	009 Move rbx, stack:0x0
+	010 ShiftStack 8
+	011 Return 
+
+Method: System.IntPtr get_Value()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	xor r8d,r8d
+	mov rcx,[rcx+8]
+	xor edx,edx
+	call 0000000180772240h
+	test al,al
+	je short 0000000180D61AF7h
+	cmp qword ptr [rbx],0
+	je short 0000000180D61AF7h
+	mov rax,[rbx]
+	lea rcx,[rsp+30h]
+	mov [rsp+30h],rax
+	call 00000001801AA670h
+	mov [rbx+8],rax
+	mov rax,[rbx+8]
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move r8, 0
+	006 Move rcx, [rcx+8]
+	007 Move rdx, 0
+	008 Call 0x180772240, rcx, rdx, r8
+	009 Compare rax, 0
+	010 JumpIfEqual {18}
+	011 Compare [rbx], 0
+	012 JumpIfEqual {18}
+	013 Move rax, [rbx]
+	014 LoadAddress rcx, stack:0x30
+	015 Move stack:0x30, rax
+	016 Call 0x1801AA670, rcx, rdx, r8, r9
+	017 Move [rbx+8], rax
+	018 Move rax, [rbx+8]
+	019 ShiftStack 32
+	020 Move rbx, stack:0x0
+	021 ShiftStack 8
+	022 Return rax
+
+Method: System.Void Dispose()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	xor r8d,r8d
+	mov rcx,[rcx+8]
+	xor edx,edx
+	call 0000000180F44AA0h
+	test al,al
+	je short 0000000180D61A4Ch
+	mov rcx,[rbx+8]
+	call 00000001801535F0h
+	mov qword ptr [rbx+8],0
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move r8, 0
+	006 Move rcx, [rcx+8]
+	007 Move rdx, 0
+	008 Call 0x180F44AA0, rcx, rdx, r8
+	009 Compare rax, 0
+	010 JumpIfEqual {14}
+	011 Move rcx, [rbx+8]
+	012 Call 0x1801535F0, rcx, rdx, r8, r9
+	013 Move [rbx+8], 0
+	014 ShiftStack 32
+	015 Move rbx, stack:0x0
+	016 ShiftStack 8
+	017 Return 
+

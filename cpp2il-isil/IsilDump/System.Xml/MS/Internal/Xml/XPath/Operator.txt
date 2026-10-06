@@ -1,0 +1,162 @@
+Type: MS.Internal.Xml.XPath.Operator
+
+Method: System.Void .ctor(MS.Internal.Xml.XPath.Operator+Op op, MS.Internal.Xml.XPath.AstNode opnd1, MS.Internal.Xml.XPath.AstNode opnd2)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov ebx,edx
+	mov rbp,r9
+	xor edx,edx
+	mov rdi,r8
+	mov rsi,rcx
+	call 000000018024B730h
+	lea rcx,[rsi+18h]
+	mov [rsi+10h],ebx
+	mov rdx,rdi
+	mov [rsi+18h],rdi
+	call 00000001801E1E30h
+	lea rcx,[rsi+20h]
+	mov [rsi+20h],rbp
+	mov rdx,rbp
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbx, rdx
+	008 Move rbp, r9
+	009 Move rdx, 0
+	010 Move rdi, r8
+	011 Move rsi, rcx
+	012 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	013 LoadAddress rcx, [rsi+24]
+	014 Move [rsi+16], rbx
+	015 Move rdx, rdi
+	016 Move [rsi+24], rdi
+	017 Call 0x1801E1E30, rcx, rdx, r8, r9
+	018 LoadAddress rcx, [rsi+32]
+	019 Move [rsi+32], rbp
+	020 Move rdx, rbp
+	021 Move rbx, stack:0x30
+	022 Move rbp, stack:0x38
+	023 Move rsi, stack:0x40
+	024 ShiftStack 32
+	025 Move rdi, stack:0x0
+	026 ShiftStack 8
+	027 Call 0x1801E1E30, rcx, rdx, r8, r9
+	028 Return 
+
+Method: MS.Internal.Xml.XPath.AstNode+AstType get_Type()
+
+Disassembly:
+	mov eax,1
+	ret
+
+ISIL:
+	001 Move rax, 1
+	002 Return rax
+
+Method: System.Xml.XPath.XPathResultType get_ReturnType()
+
+Disassembly:
+	cmp dword ptr [rcx+10h],8
+	jle short 000000018136E2D5h
+	xor eax,eax
+	mov edx,3
+	cmp dword ptr [rcx+10h],0Dh
+	cmova eax,edx
+	ret
+	mov eax,2
+	ret
+
+ISIL:
+	001 Compare [rcx+16], 8
+	002 JumpIfLessOrEqual {10}
+	003 Move rax, 0
+	004 Move rdx, 3
+	005 Compare [rcx+16], 13
+	006 JumpIfLessOrEqual {8}
+	007 Move rax, rdx
+	008 Nop 
+	009 Return rax
+	010 Move rax, 2
+	011 Return rax
+
+Method: System.Void .cctor()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [181F1F5C3h],0
+	jne short 000000018136E26Ah
+	lea rcx,[181DFBD48h]
+	call 00000001801E2A80h
+	lea rcx,[181E321D0h]
+	call 00000001801E2A80h
+	lea rcx,[181E018C0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1F5C3h],1
+	mov rcx,[181DFBD48h]
+	mov edx,9
+	call 00000001801E1EB0h
+	mov rdx,[181E018C0h]
+	xor r8d,r8d
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180E489A0h
+	mov rcx,[181E321D0h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rbx
+	mov rdx,rbx
+	mov rcx,[181E321D0h]
+	mov rcx,[rcx+0B8h]
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x181F1F5C3], 0
+	005 JumpIfNotEqual {13}
+	006 LoadAddress rcx, [0x181DFBD48]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 LoadAddress rcx, [0x181E321D0]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x181E018C0]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 Move [0x181F1F5C3], 1
+	013 Move rcx, typeof(Op[1])
+	014 Move rdx, 9
+	015 Call "SzArrayNew", rcx, rdx, r8, r9
+	016 Move rdx, [0x181E018C0]
+	017 Move r8, 0
+	018 Move rcx, rax
+	019 Move rbx, rax
+	020 Call RuntimeHelpers.InitializeArray, rcx, rdx, r8
+	021 Move rcx, typeof(MS.Internal.Xml.XPath.Operator)
+	022 Move rdx, [rcx+184]
+	023 Move [rdx], rbx
+	024 Move rdx, rbx
+	025 Move rcx, typeof(MS.Internal.Xml.XPath.Operator)
+	026 Move rcx, [rcx+184]
+	027 ShiftStack 32
+	028 Move rbx, stack:0x0
+	029 ShiftStack 8
+	030 Call 0x1801E1E30, rcx, rdx, r8, r9
+	031 Return 
+

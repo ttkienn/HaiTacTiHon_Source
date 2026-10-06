@@ -1,0 +1,90 @@
+Type: System.Data.RowNotInTableException
+
+Method: System.Void .ctor(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+
+Disassembly:
+	sub rsp,38h
+	movups xmm0,[r8]
+	xor r9d,r9d
+	lea r8,[rsp+20h]
+	movaps [rsp+20h],xmm0
+	call 0000000180F337A0h
+	add rsp,38h
+	ret
+
+ISIL:
+	001 ShiftStack -56
+	002 Move xmm0, [r8]
+	003 Move r9, 0
+	004 LoadAddress r8, stack:0x20
+	005 Move stack:0x20, xmm0
+	006 Call 0x180F337A0, rcx, rdx, r8
+	007 ShiftStack 56
+	008 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [181F1E87Fh],0
+	mov rbx,rcx
+	jne short 000000018119FD35h
+	lea rcx,[181DF5898h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E87Fh],1
+	mov rdx,[181DF5898h]
+	xor r8d,r8d
+	mov rcx,rbx
+	call 0000000180F42130h
+	mov dword ptr [rbx+60h],80131928h
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x181F1E87F], 0
+	005 Move rbx, rcx
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x181DF5898]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x181F1E87F], 1
+	010 Move rdx, "Row not found in table."
+	011 Move r8, 0
+	012 Move rcx, rbx
+	013 Call SystemException..ctor, rcx, rdx
+	014 Move [rbx+96], 0x80131928
+	015 ShiftStack 32
+	016 Move rbx, stack:0x0
+	017 ShiftStack 8
+	018 Return 
+
+Method: System.Void .ctor(System.String s)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	xor r8d,r8d
+	mov rbx,rcx
+	call 0000000180F42130h
+	mov dword ptr [rbx+60h],80131928h
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move r8, 0
+	005 Move rbx, rcx
+	006 Call SystemException..ctor, rcx, rdx
+	007 Move [rbx+96], 0x80131928
+	008 ShiftStack 32
+	009 Move rbx, stack:0x0
+	010 ShiftStack 8
+	011 Return 
+

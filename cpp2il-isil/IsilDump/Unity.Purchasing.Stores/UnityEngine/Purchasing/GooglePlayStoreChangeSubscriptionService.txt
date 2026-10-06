@@ -1,0 +1,107 @@
+Type: UnityEngine.Purchasing.GooglePlayStoreChangeSubscriptionService
+
+Method: System.Void .ctor(UnityEngine.Purchasing.Interfaces.IGooglePlayStoreService googlePlayStoreService)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 000000018024B730h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.Void ChangeSubscription(UnityEngine.Purchasing.ProductDefinition product, UnityEngine.Purchasing.Order currentOrder, System.Nullable`1<UnityEngine.Purchasing.GooglePlayReplacementMode> desiredReplacementMode)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,30h
+	cmp byte ptr [181F2094Fh],0
+	mov rbx,r9
+	mov rsi,r8
+	mov rbp,rdx
+	mov rdi,rcx
+	jne short 0000000181594C9Ch
+	lea rcx,[181E1CB70h]
+	call 00000001801E2A80h
+	mov byte ptr [181F2094Fh],1
+	mov r8,[rdi+10h]
+	test r8,r8
+	je short 0000000181594CD8h
+	mov rdx,[181E1CB70h]
+	mov ecx,2
+	mov [rsp+28h],rbx
+	mov r9,rbp
+	mov [rsp+20h],rsi
+	call 00000001800E67D0h
+	mov rbx,[rsp+40h]
+	mov rbp,[rsp+48h]
+	mov rsi,[rsp+50h]
+	add rsp,30h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -48
+	007 Compare [0x181F2094F], 0
+	008 Move rbx, r9
+	009 Move rsi, r8
+	010 Move rbp, rdx
+	011 Move rdi, rcx
+	012 JumpIfNotEqual {16}
+	013 LoadAddress rcx, [0x181E1CB70]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x181F2094F], 1
+	016 Move r8, [rdi+16]
+	017 Compare r8, 0
+	018 JumpIfEqual {32}
+	019 Move rdx, typeof(UnityEngine.Purchasing.Interfaces.IGooglePlayStoreService)
+	020 Move rcx, 2
+	021 Move stack:0x28, rbx
+	022 Move r9, rbp
+	023 Move stack:0x20, rsi
+	024 Call 0x1800E67D0, rcx, rdx, r8, r9
+	025 Move rbx, stack:0x40
+	026 Move rbp, stack:0x48
+	027 Move rsi, stack:0x50
+	028 ShiftStack 48
+	029 Move rdi, stack:0x0
+	030 ShiftStack 8
+	031 Return 
+	032 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

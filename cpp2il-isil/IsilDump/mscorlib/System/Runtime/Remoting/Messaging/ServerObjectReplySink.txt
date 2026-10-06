@@ -1,0 +1,159 @@
+Type: System.Runtime.Remoting.Messaging.ServerObjectReplySink
+
+Method: System.Void .ctor(System.Runtime.Remoting.ServerIdentity identity, System.Runtime.Remoting.Messaging.IMessageSink replySink)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rsi,rdx
+	mov rbx,r8
+	xor edx,edx
+	mov rdi,rcx
+	call 000000018024B730h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	lea rcx,[rdi+18h]
+	mov [rdi+18h],rsi
+	mov rdx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rsi, rdx
+	007 Move rbx, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	011 LoadAddress rcx, [rdi+16]
+	012 Move [rdi+16], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 LoadAddress rcx, [rdi+24]
+	016 Move [rdi+24], rsi
+	017 Move rdx, rsi
+	018 Move rbx, stack:0x30
+	019 Move rsi, stack:0x38
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Call 0x1801E1E30, rcx, rdx, r8, r9
+	024 Return 
+
+Method: System.Runtime.Remoting.Messaging.IMessage SyncProcessMessage(System.Runtime.Remoting.Messaging.IMessage msg)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,30h
+	cmp byte ptr [181F1C9B9h],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 0000000180E15BBCh
+	lea rcx,[181E1DDB8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C9B9h],1
+	mov rcx,[rbx+18h]
+	test rcx,rcx
+	je short 0000000180E15C04h
+	mov qword ptr [rsp+28h],0
+	mov r9b,1
+	mov r8,rdi
+	mov byte ptr [rsp+20h],1
+	xor edx,edx
+	call 0000000180DE54B0h
+	mov r8,[rbx+10h]
+	test r8,r8
+	je short 0000000180E15C04h
+	mov rdx,[181E1DDB8h]
+	xor ecx,ecx
+	mov r9,rdi
+	mov rbx,[rsp+40h]
+	add rsp,30h
+	pop rdi
+	jmp near ptr 0000000180002F00h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -48
+	005 Compare [0x181F1C9B9], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E1DDB8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F1C9B9], 1
+	012 Move rcx, [rbx+24]
+	013 Compare rcx, 0
+	014 JumpIfEqual {33}
+	015 Move stack:0x28, 0
+	016 Move r9, 1
+	017 Move r8, rdi
+	018 Move stack:0x20, 1
+	019 Move rdx, 0
+	020 Call Identity.NotifyServerDynamicSinks, rcx, rdx, r8, r9, stack:0x0
+	021 Move r8, [rbx+16]
+	022 Compare r8, 0
+	023 JumpIfEqual {33}
+	024 Move rdx, typeof(System.Runtime.Remoting.Messaging.IMessageSink)
+	025 Move rcx, 0
+	026 Move r9, rdi
+	027 Move rbx, stack:0x40
+	028 ShiftStack 48
+	029 Move rdi, stack:0x0
+	030 ShiftStack 8
+	031 Call 0x180002F00, rcx, rdx, r8, r9
+	032 Return rax
+	033 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Runtime.Remoting.Messaging.IMessageCtrl AsyncProcessMessage(System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Messaging.IMessageSink replySink)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	lea rcx,[181E30AC8h]
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180F238F0h
+	lea rcx,[181E11140h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 LoadAddress rcx, [0x181E30AC8]
+	005 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	006 Move rcx, rax
+	007 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	008 Move rdx, 0
+	009 Move rcx, rax
+	010 Move rbx, rax
+	011 Call NotSupportedException..ctor, rcx, rdx
+	012 LoadAddress rcx, [0x181E11140]
+	013 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	014 Move rdx, rax
+	015 Move rcx, rbx
+	016 Call 0x1801E2C60, rcx, rdx, r8, r9
+

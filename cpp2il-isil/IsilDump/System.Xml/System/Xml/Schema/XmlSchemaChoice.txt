@@ -1,0 +1,113 @@
+Type: System.Xml.Schema.XmlSchemaChoice
+
+Method: System.Xml.Schema.XmlSchemaObjectCollection get_Items()
+
+Disassembly:
+	mov rax,[rcx+78h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+120]
+	002 Return rax
+
+Method: System.Boolean get_IsEmpty()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018132EC80h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call XmlSchemaParticle.get_IsEmpty, rcx, rdx
+	003 Return rax
+
+Method: System.Void SetItems(System.Xml.Schema.XmlSchemaObjectCollection newItems)
+
+Disassembly:
+	mov [rcx+78h],rdx
+	add rcx,78h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move [rcx+120], rdx
+	002 Add rcx, rcx, 120
+	003 Call 0x1801E1E30, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1F33Eh],0
+	mov rdi,rcx
+	jne short 000000018131E4D9h
+	lea rcx,[181E0FF90h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1F33Eh],1
+	mov rcx,[181E0FF90h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180EBD870h
+	lea rcx,[rdi+78h]
+	mov [rdi+78h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	cmp byte ptr [181F1F379h],0
+	jne short 000000018131E51Eh
+	lea rcx,[181E100E0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1F379h],1
+	mov rcx,[181E100E0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 000000018131E533h
+	call 0000000180153C50h
+	xor edx,edx
+	mov rcx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018132EC00h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1F33E], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x181E0FF90]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x181F1F33E], 1
+	011 Move rcx, typeof(System.Xml.Schema.XmlSchemaObjectCollection)
+	012 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	013 Move rdx, 0
+	014 Move rcx, rax
+	015 Move rbx, rax
+	016 Call CollectionBase..ctor, rcx, rdx
+	017 LoadAddress rcx, [rdi+120]
+	018 Move [rdi+120], rbx
+	019 Move rdx, rbx
+	020 Call 0x1801E1E30, rcx, rdx, r8, r9
+	021 Compare [0x181F1F379], 0
+	022 JumpIfNotEqual {26}
+	023 LoadAddress rcx, [0x181E100E0]
+	024 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	025 Move [0x181F1F379], 1
+	026 Move rcx, typeof(System.Xml.Schema.XmlSchemaParticle)
+	027 Compare [rcx+224], 0
+	028 JumpIfNotEqual {30}
+	029 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	030 Move rdx, 0
+	031 Move rcx, rdi
+	032 Move rbx, stack:0x30
+	033 ShiftStack 32
+	034 Move rdi, stack:0x0
+	035 ShiftStack 8
+	036 Call XmlSchemaParticle..ctor, rcx, rdx
+	037 Return 
+

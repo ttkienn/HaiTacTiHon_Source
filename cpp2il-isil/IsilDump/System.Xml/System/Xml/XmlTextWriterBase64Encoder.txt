@@ -1,0 +1,88 @@
+Type: System.Xml.XmlTextWriterBase64Encoder
+
+Method: System.Void .ctor(System.Xml.XmlTextEncoder xmlTextEncoder)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1F040h],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 000000018128B6ECh
+	lea rcx,[181DF5F00h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1F040h],1
+	xor edx,edx
+	mov rcx,rbx
+	call 000000018024B730h
+	mov rcx,[181DF5F00h]
+	mov edx,4Ch
+	call 00000001801E1EB0h
+	lea rcx,[rbx+20h]
+	mov [rbx+20h],rax
+	mov rdx,rax
+	call 00000001801E1E30h
+	lea rcx,[rbx+28h]
+	mov [rbx+28h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1F040], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181DF5F00]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F1F040], 1
+	012 Move rdx, 0
+	013 Move rcx, rbx
+	014 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	015 Move rcx, typeof(System.Char[1])
+	016 Move rdx, 76
+	017 Call "SzArrayNew", rcx, rdx, r8, r9
+	018 LoadAddress rcx, [rbx+32]
+	019 Move [rbx+32], rax
+	020 Move rdx, rax
+	021 Call 0x1801E1E30, rcx, rdx, r8, r9
+	022 LoadAddress rcx, [rbx+40]
+	023 Move [rbx+40], rdi
+	024 Move rdx, rdi
+	025 Move rbx, stack:0x30
+	026 ShiftStack 32
+	027 Move rdi, stack:0x0
+	028 ShiftStack 8
+	029 Call 0x1801E1E30, rcx, rdx, r8, r9
+	030 Return 
+
+Method: System.Void WriteChars(System.Char[] chars, System.Int32 index, System.Int32 count)
+
+Disassembly:
+	sub rsp,38h
+	mov rcx,[rcx+28h]
+	test rcx,rcx
+	je short 0000000181297B5Fh
+	mov qword ptr [rsp+60h],0
+	add rsp,38h
+	jmp near ptr 0000000181392C10h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move rcx, [rcx+40]
+	003 Compare rcx, 0
+	004 JumpIfEqual {9}
+	005 Move stack:0x60, 0
+	006 ShiftStack 56
+	007 Call XmlTextEncoder.WriteRaw, rcx, rdx, r8, r9
+	008 Return 
+	009 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

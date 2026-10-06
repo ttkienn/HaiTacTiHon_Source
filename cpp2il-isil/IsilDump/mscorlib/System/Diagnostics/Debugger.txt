@@ -1,0 +1,119 @@
+Type: System.Diagnostics.Debugger
+
+Method: System.Boolean IsLogging()
+
+Disassembly:
+	jmp near ptr 00000001800FDA60h
+
+ISIL:
+	001 Call 0x1800FDA60, rcx, rdx, r8, r9
+	002 Return rax
+
+Method: System.Void Log_icall(System.Int32 level, ref System.String category, ref System.String message)
+
+Disassembly:
+	jmp near ptr 0000000180028AE0h
+
+ISIL:
+	001 Call 0x180028AE0, rcx, rdx, r8, r9
+	002 Return 
+
+Method: System.Void Log(System.Int32 level, System.String category, System.String message)
+
+Disassembly:
+	mov [rsp+18h],r8
+	mov [rsp+10h],rdx
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [181F1CF15h],0
+	mov ebx,ecx
+	jne short 0000000180EBE5EDh
+	lea rcx,[181E0D508h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1CF15h],1
+	mov rcx,[181E0D508h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180EBE602h
+	call 0000000180153C50h
+	lea r8,[rsp+40h]
+	mov ecx,ebx
+	lea rdx,[rsp+38h]
+	call 0000000180028AE0h
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 Move stack:0x18, r8
+	002 Move stack:0x10, rdx
+	003 ShiftStack -8
+	004 Move stack:0x0, rbx
+	005 ShiftStack -32
+	006 Compare [0x181F1CF15], 0
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E0D508]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F1CF15], 1
+	012 Move rcx, typeof(System.Diagnostics.Debugger)
+	013 Compare [rcx+224], 0
+	014 JumpIfNotEqual {16}
+	015 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	016 LoadAddress r8, stack:0x40
+	017 Move rcx, rbx
+	018 LoadAddress rdx, stack:0x38
+	019 Call 0x180028AE0, rcx, rdx, r8, r9
+	020 ShiftStack 32
+	021 Move rbx, stack:0x0
+	022 ShiftStack 8
+	023 Return 
+
+Method: System.Void NotifyOfCrossThreadDependency()
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void .cctor()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1CF16h],0
+	jne short 0000000180EBE64Ch
+	lea rcx,[181E0D508h]
+	call 00000001801E2A80h
+	lea rcx,[181E10EF0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1CF16h],1
+	mov rax,[181E0D508h]
+	mov rcx,[rax+0B8h]
+	mov rax,[181E10EF0h]
+	mov [rcx],rax
+	mov rcx,[181E0D508h]
+	mov rdx,[181E10EF0h]
+	mov rcx,[rcx+0B8h]
+	add rsp,28h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1CF16], 0
+	003 JumpIfNotEqual {9}
+	004 LoadAddress rcx, [0x181E0D508]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 LoadAddress rcx, [0x181E10EF0]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 Move [0x181F1CF16], 1
+	009 Move rax, typeof(System.Diagnostics.Debugger)
+	010 Move rcx, [rax+184]
+	011 Move rax, ""
+	012 Move [rcx], rax
+	013 Move rcx, typeof(System.Diagnostics.Debugger)
+	014 Move rdx, ""
+	015 Move rcx, [rcx+184]
+	016 ShiftStack 40
+	017 Call 0x1801E1E30, rcx, rdx, r8, r9
+	018 Return 
+

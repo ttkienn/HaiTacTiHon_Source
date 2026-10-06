@@ -1,0 +1,151 @@
+Type: UnityEngine.Events.ArgumentCache
+
+Method: UnityEngine.Object get_unityObjectArgument()
+
+Disassembly:
+	xchg ax,ax
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, [rcx+16]
+	003 Return rax
+
+Method: System.String get_unityObjectArgumentAssemblyTypeName()
+
+Disassembly:
+	xchg ax,ax
+	mov rax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, [rcx+24]
+	003 Return rax
+
+Method: System.Int32 get_intArgument()
+
+Disassembly:
+	xchg ax,ax
+	mov eax,[rcx+20h]
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, [rcx+32]
+	003 Return rax
+
+Method: System.Single get_floatArgument()
+
+Disassembly:
+	xchg ax,ax
+	movss xmm0,dword ptr [rcx+24h]
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move xmm0, [rcx+36]
+	003 Return xmm0
+
+Method: System.String get_stringArgument()
+
+Disassembly:
+	xchg ax,ax
+	mov rax,[rcx+28h]
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, [rcx+40]
+	003 Return rax
+
+Method: System.Boolean get_boolArgument()
+
+Disassembly:
+	xchg ax,ax
+	movzx eax,byte ptr [rcx+30h]
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, [rcx+48]
+	003 Return rax
+
+Method: System.Void OnBeforeSerialize()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	xor edx,edx
+	mov rcx,[rcx+18h]
+	call 0000000181636DC0h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rax
+	mov rdx,rax
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move rdx, 0
+	006 Move rcx, [rcx+24]
+	007 Call UnityEventTools.TidyAssemblyTypeName, rcx, rdx
+	008 LoadAddress rcx, [rbx+24]
+	009 Move [rbx+24], rax
+	010 Move rdx, rax
+	011 ShiftStack 32
+	012 Move rbx, stack:0x0
+	013 ShiftStack 8
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 Return 
+
+Method: System.Void OnAfterDeserialize()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	xor edx,edx
+	mov rcx,[rcx+18h]
+	call 0000000181636DC0h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rax
+	mov rdx,rax
+	add rsp,20h
+	pop rbx
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move rdx, 0
+	006 Move rcx, [rcx+24]
+	007 Call UnityEventTools.TidyAssemblyTypeName, rcx, rdx
+	008 LoadAddress rcx, [rbx+24]
+	009 Move [rbx+24], rax
+	010 Move rdx, rax
+	011 ShiftStack 32
+	012 Move rbx, stack:0x0
+	013 ShiftStack 8
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 Return 
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+

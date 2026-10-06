@@ -1,0 +1,72 @@
+Type: System.Numerics.Hashing.HashHelpers
+
+Method: System.Int32 Combine(System.Int32 h1, System.Int32 h2)
+
+Disassembly:
+	mov eax,ecx
+	mov r8d,ecx
+	shr eax,1Bh
+	shl r8d,5
+	or eax,r8d
+	add eax,ecx
+	xor eax,edx
+	ret
+
+ISIL:
+	001 Move rax, rcx
+	002 Move r8, rcx
+	003 ShiftRight rax, 27
+	004 ShiftLeft r8, 5
+	005 Or rax, rax, r8
+	006 Add rax, rax, rcx
+	007 Xor rax, rax, rdx
+	008 Return rax
+
+Method: System.Void .cctor()
+
+Disassembly:
+	sub rsp,48h
+	cmp byte ptr [181F1EFB2h],0
+	jne short 000000018126E9F0h
+	lea rcx,[181E17BD8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1EFB2h],1
+	xorps xmm0,xmm0
+	lea rcx,[rsp+30h]
+	xor edx,edx
+	movups [rsp+20h],xmm0
+	call 0000000180F1A620h
+	xor edx,edx
+	lea rcx,[rsp+20h]
+	movups xmm0,[rax]
+	movups [rsp+20h],xmm0
+	call 0000000180F1A3F0h
+	mov rcx,[181E17BD8h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],eax
+	add rsp,48h
+	ret
+
+ISIL:
+	001 ShiftStack -72
+	002 Compare [0x181F1EFB2], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E17BD8]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F1EFB2], 1
+	007 Move xmm0, 0
+	008 LoadAddress rcx, stack:0x30
+	009 Move rdx, 0
+	010 Move stack:0x20, xmm0
+	011 Call Guid.NewGuid, rcx
+	012 Move rdx, 0
+	013 LoadAddress rcx, stack:0x20
+	014 Move xmm0, [rax]
+	015 Move stack:0x20, xmm0
+	016 Call Guid.GetHashCode, rcx, rdx
+	017 Move rcx, typeof(System.Numerics.Hashing.HashHelpers)
+	018 Move rdx, [rcx+184]
+	019 Move [rdx], rax
+	020 ShiftStack 72
+	021 Return 
+

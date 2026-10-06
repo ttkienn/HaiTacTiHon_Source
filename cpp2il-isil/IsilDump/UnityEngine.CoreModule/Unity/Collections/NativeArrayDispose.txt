@@ -1,0 +1,44 @@
+Type: Unity.Collections.NativeArrayDispose
+
+Method: System.Void Dispose()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rax,[181F211A0h]
+	mov rbx,[rcx]
+	mov edi,[rcx+8]
+	test rax,rax
+	jne short 0000000181614E8Fh
+	lea rcx,[181928000h]
+	call 00000001801E2D00h
+	mov [181F211A0h],rax
+	mov edx,edi
+	mov rcx,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp rax
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rax, [0x181F211A0]
+	006 Move rbx, [rcx]
+	007 Move rdi, [rcx+8]
+	008 Compare rax, 0
+	009 JumpIfNotEqual {13}
+	010 LoadAddress rcx, [0x181928000]
+	011 Call 0x1801E2D00, rcx, rdx, r8, r9
+	012 Move [0x181F211A0], rax
+	013 Move rdx, rdi
+	014 Move rcx, rbx
+	015 Move rbx, stack:0x30
+	016 ShiftStack 32
+	017 Move rdi, stack:0x0
+	018 ShiftStack 8
+	019 CallNoReturn rax
+

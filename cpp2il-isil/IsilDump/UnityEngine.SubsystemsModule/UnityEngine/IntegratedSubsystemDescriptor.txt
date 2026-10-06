@@ -1,0 +1,47 @@
+Type: UnityEngine.IntegratedSubsystemDescriptor
+
+Method: System.String get_id()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rax,[181F22A98h]
+	mov rbx,[rcx+10h]
+	test rax,rax
+	jne short 0000000181677E89h
+	lea rcx,[181932880h]
+	call 00000001801E2D00h
+	mov [181F22A98h],rax
+	mov rcx,rbx
+	add rsp,20h
+	pop rbx
+	jmp rax
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rax, [0x181F22A98]
+	005 Move rbx, [rcx+16]
+	006 Compare rax, 0
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x181932880]
+	009 Call 0x1801E2D00, rcx, rdx, r8, r9
+	010 Move [0x181F22A98], rax
+	011 Move rcx, rbx
+	012 ShiftStack 32
+	013 Move rbx, stack:0x0
+	014 ShiftStack 8
+	015 CallNoReturn rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+

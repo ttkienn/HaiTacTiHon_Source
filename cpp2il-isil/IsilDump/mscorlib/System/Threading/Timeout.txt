@@ -1,0 +1,52 @@
+Type: System.Threading.Timeout
+
+Method: System.Void .cctor()
+
+Disassembly:
+	sub rsp,48h
+	cmp byte ptr [181F1D6BBh],0
+	jne short 0000000180FA0FC0h
+	lea rcx,[181E01550h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1D6BBh],1
+	xor eax,eax
+	lea rcx,[rsp+58h]
+	mov [rsp+30h],rax
+	xor r9d,r9d
+	mov dword ptr [rsp+28h],0FFFFFFFFh
+	xor r8d,r8d
+	xor edx,edx
+	mov [rsp+20h],eax
+	mov [rsp+58h],rax
+	call 0000000180F44660h
+	mov rax,[181E01550h]
+	mov rcx,[rax+0B8h]
+	mov rax,[rsp+58h]
+	mov [rcx],rax
+	add rsp,48h
+	ret
+
+ISIL:
+	001 ShiftStack -72
+	002 Compare [0x181F1D6BB], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E01550]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F1D6BB], 1
+	007 Move rax, 0
+	008 LoadAddress rcx, stack:0x58
+	009 Move stack:0x30, rax
+	010 Move r9, 0
+	011 Move stack:0x28, 0xFFFFFFFF
+	012 Move r8, 0
+	013 Move rdx, 0
+	014 Move stack:0x20, rax
+	015 Move stack:0x58, rax
+	016 Call TimeSpan..ctor, rcx, rdx, r8, r9, stack:0x0, stack:0x8
+	017 Move rax, typeof(System.Threading.Timeout)
+	018 Move rcx, [rax+184]
+	019 Move rax, stack:0x58
+	020 Move [rcx], rax
+	021 ShiftStack 72
+	022 Return 
+

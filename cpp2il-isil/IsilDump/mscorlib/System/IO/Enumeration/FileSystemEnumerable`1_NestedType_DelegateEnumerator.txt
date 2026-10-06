@@ -1,0 +1,161 @@
+Type: System.IO.Enumeration.FileSystemEnumerable`1+DelegateEnumerator
+
+Method: System.Void .ctor(System.IO.Enumeration.FileSystemEnumerable`1<TResult> enumerable)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rdi,rcx
+	test rdx,rdx
+	je short 000000018082B13Bh
+	mov rax,[r8+20h]
+	mov r8,[rdx+20h]
+	mov rdx,[rdx+28h]
+	mov r9,[rax+0C0h]
+	mov r9,[r9+8]
+	call 000000018096EC50h
+	lea rcx,[rdi+70h]
+	mov [rdi+70h],rbx
+	mov rdx,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rdx
+	006 Move rdi, rcx
+	007 Compare rdx, 0
+	008 JumpIfEqual {24}
+	009 Move rax, [r8+32]
+	010 Move r8, [rdx+32]
+	011 Move rdx, [rdx+40]
+	012 Move r9, [rax+192]
+	013 Move r9, [r9+8]
+	014 Call 0x18096EC50, rcx, rdx, r8
+	015 LoadAddress rcx, [rdi+112]
+	016 Move [rdi+112], rbx
+	017 Move rdx, rbx
+	018 Move rbx, stack:0x30
+	019 ShiftStack 32
+	020 Move rdi, stack:0x0
+	021 ShiftStack 8
+	022 Call 0x1801E1E30, rcx, rdx, r8, r9
+	023 Return 
+	024 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: TResult TransformEntry(ref System.IO.Enumeration.FileSystemEntry entry)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+70h]
+	test rcx,rcx
+	je short 000000018082B059h
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 000000018082B059h
+	mov rax,[rcx+18h]
+	mov r8,[rcx+28h]
+	mov rcx,[rcx+40h]
+	add rsp,28h
+	jmp rax
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+112]
+	003 Compare rcx, 0
+	004 JumpIfEqual {13}
+	005 Move rcx, [rcx+24]
+	006 Compare rcx, 0
+	007 JumpIfEqual {13}
+	008 Move rax, [rcx+24]
+	009 Move r8, [rcx+40]
+	010 Move rcx, [rcx+64]
+	011 ShiftStack 40
+	012 CallNoReturn rax
+	013 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Boolean ShouldRecurseIntoEntry(ref System.IO.Enumeration.FileSystemEntry entry)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+70h]
+	test rcx,rcx
+	je short 000000018082AF30h
+	mov rcx,[rcx+38h]
+	test rcx,rcx
+	je short 000000018082AF29h
+	mov rax,[rcx+18h]
+	mov r8,[rcx+28h]
+	mov rcx,[rcx+40h]
+	add rsp,28h
+	jmp rax
+	mov al,1
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+112]
+	003 Compare rcx, 0
+	004 JumpIfEqual {16}
+	005 Move rcx, [rcx+56]
+	006 Compare rcx, 0
+	007 JumpIfEqual {13}
+	008 Move rax, [rcx+24]
+	009 Move r8, [rcx+40]
+	010 Move rcx, [rcx+64]
+	011 ShiftStack 40
+	012 CallNoReturn rax
+	013 Move rax, 1
+	014 ShiftStack 40
+	015 Return rax
+	016 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Boolean ShouldIncludeEntry(ref System.IO.Enumeration.FileSystemEntry entry)
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+70h]
+	test rcx,rcx
+	je short 000000018082AE40h
+	mov rcx,[rcx+30h]
+	test rcx,rcx
+	je short 000000018082AE39h
+	mov rax,[rcx+18h]
+	mov r8,[rcx+28h]
+	mov rcx,[rcx+40h]
+	add rsp,28h
+	jmp rax
+	mov al,1
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+112]
+	003 Compare rcx, 0
+	004 JumpIfEqual {16}
+	005 Move rcx, [rcx+48]
+	006 Compare rcx, 0
+	007 JumpIfEqual {13}
+	008 Move rax, [rcx+24]
+	009 Move r8, [rcx+40]
+	010 Move rcx, [rcx+64]
+	011 ShiftStack 40
+	012 CallNoReturn rax
+	013 Move rax, 1
+	014 ShiftStack 40
+	015 Return rax
+	016 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

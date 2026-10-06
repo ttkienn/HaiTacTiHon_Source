@@ -1,0 +1,35 @@
+Type: System.Threading._ThreadPoolWaitCallback
+
+Method: System.Boolean PerformWaitCallback()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1D759h],0
+	jne short 0000000180FC0350h
+	lea rcx,[181E00D58h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1D759h],1
+	mov rcx,[181E00D58h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180FC0365h
+	call 0000000180153C50h
+	xor ecx,ecx
+	add rsp,28h
+	jmp near ptr 0000000180F9F2D0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1D759], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E00D58]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F1D759], 1
+	007 Move rcx, typeof(System.Threading.ThreadPoolWorkQueue)
+	008 Compare [rcx+224], 0
+	009 JumpIfNotEqual {11}
+	010 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	011 Move rcx, 0
+	012 ShiftStack 40
+	013 Call ThreadPoolWorkQueue.Dispatch, rcx
+	014 Return rax
+

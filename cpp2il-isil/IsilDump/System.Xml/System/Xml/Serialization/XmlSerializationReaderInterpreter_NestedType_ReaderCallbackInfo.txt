@@ -1,0 +1,91 @@
+Type: System.Xml.Serialization.XmlSerializationReaderInterpreter+ReaderCallbackInfo
+
+Method: System.Void .ctor(System.Xml.Serialization.XmlSerializationReaderInterpreter sri, System.Xml.Serialization.XmlTypeMapping typeMap)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rsi,r8
+	xor edx,edx
+	mov rdi,rcx
+	call 000000018024B730h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	lea rcx,[rdi+18h]
+	mov [rdi+18h],rsi
+	mov rdx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	011 LoadAddress rcx, [rdi+16]
+	012 Move [rdi+16], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 LoadAddress rcx, [rdi+24]
+	016 Move [rdi+24], rsi
+	017 Move rdx, rsi
+	018 Move rbx, stack:0x30
+	019 Move rsi, stack:0x38
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Call 0x1801E1E30, rcx, rdx, r8, r9
+	024 Return 
+
+Method: System.Object ReadObject()
+
+Disassembly:
+	sub rsp,38h
+	mov r11,[rcx+10h]
+	test r11,r11
+	je short 00000001813F5EC9h
+	mov rax,[r11]
+	mov r9b,1
+	mov rdx,[rcx+18h]
+	movzx r8d,r9b
+	mov rcx,r11
+	mov r10,[rax+1A8h]
+	mov rax,[rax+1B0h]
+	mov [rsp+20h],rax
+	call r10
+	add rsp,38h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -56
+	002 Move r11, [rcx+16]
+	003 Compare r11, 0
+	004 JumpIfEqual {16}
+	005 Move rax, [r11]
+	006 Move r9, 1
+	007 Move rdx, [rcx+24]
+	008 Move r8, r9
+	009 Move rcx, r11
+	010 Move r10, [rax+424]
+	011 Move rax, [rax+432]
+	012 Move stack:0x20, rax
+	013 Call r10
+	014 ShiftStack 56
+	015 Return rax
+	016 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

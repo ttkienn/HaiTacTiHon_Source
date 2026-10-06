@@ -1,0 +1,59 @@
+Type: System.Data.DataTableNewRowEventArgs
+
+Method: System.Void .ctor(System.Data.DataRow dataRow)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1EA8Bh],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 00000001811C4F4Ch
+	lea rcx,[181E11D90h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1EA8Bh],1
+	mov rcx,[181E11D90h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001811C4F61h
+	call 0000000180153C50h
+	xor edx,edx
+	mov rcx,rbx
+	call 000000018024B5B0h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1EA8B], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E11D90]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F1EA8B], 1
+	012 Move rcx, typeof(System.EventArgs)
+	013 Compare [rcx+224], 0
+	014 JumpIfNotEqual {16}
+	015 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	016 Move rdx, 0
+	017 Move rcx, rbx
+	018 Call 0x18024B5B0, rcx, rdx, r8
+	019 LoadAddress rcx, [rbx+16]
+	020 Move [rbx+16], rdi
+	021 Move rdx, rdi
+	022 Move rbx, stack:0x30
+	023 ShiftStack 32
+	024 Move rdi, stack:0x0
+	025 ShiftStack 8
+	026 Call 0x1801E1E30, rcx, rdx, r8, r9
+	027 Return 
+

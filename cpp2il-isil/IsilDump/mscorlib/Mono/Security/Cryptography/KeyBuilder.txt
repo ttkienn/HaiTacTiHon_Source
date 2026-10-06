@@ -1,0 +1,180 @@
+Type: Mono.Security.Cryptography.KeyBuilder
+
+Method: System.Security.Cryptography.RandomNumberGenerator get_Rng()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1C546h],0
+	jne short 0000000180D5B1C0h
+	lea rcx,[181E26FC0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C546h],1
+	mov rcx,[181E26FC0h]
+	mov rax,[rcx+0B8h]
+	cmp qword ptr [rax],0
+	jne short 0000000180D5B210h
+	xor ecx,ecx
+	call 0000000180DBAD50h
+	mov rcx,[181E26FC0h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],rax
+	mov rdx,rax
+	mov rcx,[181E26FC0h]
+	mov rcx,[rcx+0B8h]
+	call 00000001801E1E30h
+	mov rax,[181E26FC0h]
+	mov rax,[rax+0B8h]
+	mov rax,[rax]
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1C546], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E26FC0]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F1C546], 1
+	007 Move rcx, typeof(Mono.Security.Cryptography.KeyBuilder)
+	008 Move rax, [rcx+184]
+	009 Compare [rax], 0
+	010 JumpIfNotEqual {22}
+	011 Move rcx, 0
+	012 Call RandomNumberGenerator.Create, rcx
+	013 Move rcx, typeof(Mono.Security.Cryptography.KeyBuilder)
+	014 Move rdx, [rcx+184]
+	015 Move [rdx], rax
+	016 Move rdx, rax
+	017 Move rcx, typeof(Mono.Security.Cryptography.KeyBuilder)
+	018 Move rcx, [rcx+184]
+	019 Call 0x1801E1E30, rcx, rdx, r8, r9
+	020 Move rax, typeof(Mono.Security.Cryptography.KeyBuilder)
+	021 Move rax, [rax+184]
+	022 Move rax, [rax]
+	023 ShiftStack 40
+	024 Return rax
+
+Method: System.Byte[] Key(System.Int32 size)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [181F1C547h],0
+	mov ebx,ecx
+	jne short 0000000180D5B154h
+	lea rcx,[181DF5D10h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C547h],1
+	mov rcx,[181DF5D10h]
+	mov edx,ebx
+	call 00000001801E1EB0h
+	xor ecx,ecx
+	mov rbx,rax
+	call 0000000180D5B1A0h
+	test rax,rax
+	je short 0000000180D5B194h
+	mov r8,[rax]
+	mov rdx,rbx
+	mov rcx,rax
+	mov r9,[r8+198h]
+	mov r8,[r8+1A0h]
+	call r9
+	mov rax,rbx
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x181F1C547], 0
+	005 Move rbx, rcx
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x181DF5D10]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x181F1C547], 1
+	010 Move rcx, typeof(System.Byte[1])
+	011 Move rdx, rbx
+	012 Call "SzArrayNew", rcx, rdx, r8, r9
+	013 Move rcx, 0
+	014 Move rbx, rax
+	015 Call KeyBuilder.get_Rng, rcx
+	016 Compare rax, 0
+	017 JumpIfEqual {29}
+	018 Move r8, [rax]
+	019 Move rdx, rbx
+	020 Move rcx, rax
+	021 Move r9, [r8+408]
+	022 Move r8, [r8+416]
+	023 Call r9
+	024 Move rax, rbx
+	025 ShiftStack 32
+	026 Move rbx, stack:0x0
+	027 ShiftStack 8
+	028 Return rax
+	029 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Byte[] IV(System.Int32 size)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [181F1C548h],0
+	mov ebx,ecx
+	jne short 0000000180D5B0E4h
+	lea rcx,[181DF5D10h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C548h],1
+	mov rcx,[181DF5D10h]
+	mov edx,ebx
+	call 00000001801E1EB0h
+	xor ecx,ecx
+	mov rbx,rax
+	call 0000000180D5B1A0h
+	test rax,rax
+	je short 0000000180D5B124h
+	mov r8,[rax]
+	mov rdx,rbx
+	mov rcx,rax
+	mov r9,[r8+198h]
+	mov r8,[r8+1A0h]
+	call r9
+	mov rax,rbx
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x181F1C548], 0
+	005 Move rbx, rcx
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x181DF5D10]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x181F1C548], 1
+	010 Move rcx, typeof(System.Byte[1])
+	011 Move rdx, rbx
+	012 Call "SzArrayNew", rcx, rdx, r8, r9
+	013 Move rcx, 0
+	014 Move rbx, rax
+	015 Call KeyBuilder.get_Rng, rcx
+	016 Compare rax, 0
+	017 JumpIfEqual {29}
+	018 Move r8, [rax]
+	019 Move rdx, rbx
+	020 Move rcx, rax
+	021 Move r9, [r8+408]
+	022 Move r8, [r8+416]
+	023 Call r9
+	024 Move rax, rbx
+	025 ShiftStack 32
+	026 Move rbx, stack:0x0
+	027 ShiftStack 8
+	028 Return rax
+	029 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

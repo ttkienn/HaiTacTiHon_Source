@@ -1,0 +1,152 @@
+Type: Microsoft.Win32.Win32Native
+
+Method: System.String GetMessage(System.Int32 hr)
+
+Disassembly:
+	mov [rsp+8],ecx
+	sub rsp,28h
+	cmp byte ptr [181F1C5C2h],0
+	jne short 0000000180D87784h
+	lea rcx,[181E30B80h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C5C2h],1
+	xor edx,edx
+	lea rcx,[rsp+30h]
+	call 0000000180F1F6C0h
+	mov rcx,[181E30B80h]
+	xor r8d,r8d
+	mov rdx,rax
+	call 0000000180D7BAD0h
+	add rsp,28h
+	ret
+
+ISIL:
+	001 Move stack:0x8, rcx
+	002 ShiftStack -40
+	003 Compare [0x181F1C5C2], 0
+	004 JumpIfNotEqual {8}
+	005 LoadAddress rcx, [0x181E30B80]
+	006 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	007 Move [0x181F1C5C2], 1
+	008 Move rdx, 0
+	009 LoadAddress rcx, stack:0x30
+	010 Call Int32.ToString, rcx, rdx
+	011 Move rcx, "Error "
+	012 Move r8, 0
+	013 Move rdx, rax
+	014 Call String.Concat, rcx, rdx, r8
+	015 ShiftStack 40
+	016 Return rax
+
+Method: System.Int32 MakeHRFromErrorCode(System.Int32 errorCode)
+
+Disassembly:
+	or ecx,80070000h
+	mov eax,ecx
+	ret
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	int 3
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	mov [rsp+20h],rdi
+	push r14
+	sub rsp,20h
+	cmp byte ptr [181F1C68Bh],0
+	mov rbx,rdx
+	mov rdi,rcx
+	jne short 0000000180D877FCh
+	lea rcx,[181E14B80h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C68Bh],1
+	mov rsi,[rbx+10h]
+	movsxd rbp,dword ptr [rbx+20h]
+	test rsi,rsi
+	je short 0000000180D8785Ah
+	mov r14d,[rsi+18h]
+	xorps xmm0,xmm0
+	sub r14d,[rbx+20h]
+	movups [rdi],xmm0
+	cmp ebp,[rsi+18h]
+	ja short 0000000180D87826h
+	mov eax,[rsi+18h]
+	sub eax,ebp
+	cmp r14d,eax
+	jbe short 0000000180D8782Dh
+	xor ecx,ecx
+	call 0000000180F434A0h
+	mov rbx,[rsp+30h]
+	lea rax,[rbp+10h]
+	mov rbp,[rsp+38h]
+	lea rcx,[rsi+rax*2]
+	mov rsi,[rsp+40h]
+	mov rax,rdi
+	mov [rdi],rcx
+	mov [rdi+8],r14d
+	mov rdi,[rsp+48h]
+	add rsp,20h
+	pop r14
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Or rcx, rcx, 0x80070000
+	002 Move rax, rcx
+	003 Return rax
+	004 Interrupt 
+	005 Interrupt 
+	006 Interrupt 
+	007 Interrupt 
+	008 Interrupt 
+	009 Interrupt 
+	010 Interrupt 
+	011 Move stack:0x8, rbx
+	012 Move stack:0x10, rbp
+	013 Move stack:0x18, rsi
+	014 Move stack:0x20, rdi
+	015 ShiftStack -8
+	016 Move stack:0x0, r14
+	017 ShiftStack -32
+	018 Compare [0x181F1C68B], 0
+	019 Move rbx, rdx
+	020 Move rdi, rcx
+	021 JumpIfNotEqual {25}
+	022 LoadAddress rcx, [0x181E14B80]
+	023 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	024 Move [0x181F1C68B], 1
+	025 Move rsi, [rbx+16]
+	026 Move rbp, [rbx+32]
+	027 Compare rsi, 0
+	028 JumpIfEqual {54}
+	029 Move r14, [rsi+24]
+	030 Move xmm0, 0
+	031 Subtract r14, r14, [rbx+32]
+	032 Move [rdi], xmm0
+	033 Compare rbp, [rsi+24]
+	034 JumpIfGreater {39}
+	035 Move rax, [rsi+24]
+	036 Subtract rax, rax, rbp
+	037 Compare r14, rax
+	038 JumpIfLessOrEqual {41}
+	039 Move rcx, 0
+	040 Call ThrowHelper.ThrowArgumentOutOfRangeException, rcx
+	041 Move rbx, stack:0x30
+	042 LoadAddress rax, [rbp+16]
+	043 Move rbp, stack:0x38
+	044 LoadAddress rcx, [rsi+rax*2]
+	045 Move rsi, stack:0x40
+	046 Move rax, rdi
+	047 Move [rdi], rcx
+	048 Move [rdi+8], r14
+	049 Move rdi, stack:0x48
+	050 ShiftStack 32
+	051 Move r14, stack:0x0
+	052 ShiftStack 8
+	053 Return rax
+	054 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

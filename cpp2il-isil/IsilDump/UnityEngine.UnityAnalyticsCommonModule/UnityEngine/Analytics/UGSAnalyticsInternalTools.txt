@@ -1,0 +1,36 @@
+Type: UnityEngine.Analytics.UGSAnalyticsInternalTools
+
+Method: System.Void SetPrivacyStatus(System.Boolean status)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rax,[181F24298h]
+	movzx ebx,cl
+	test rax,rax
+	jne short 000000018188B878h
+	lea rcx,[1819374D0h]
+	call 00000001801E2D00h
+	mov [181F24298h],rax
+	movzx ecx,bl
+	add rsp,20h
+	pop rbx
+	jmp rax
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rax, [0x181F24298]
+	005 Move rbx, rcx
+	006 Compare rax, 0
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x1819374D0]
+	009 Call 0x1801E2D00, rcx, rdx, r8, r9
+	010 Move [0x181F24298], rax
+	011 Move rcx, rbx
+	012 ShiftStack 32
+	013 Move rbx, stack:0x0
+	014 ShiftStack 8
+	015 CallNoReturn rax
+

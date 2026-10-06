@@ -1,0 +1,140 @@
+Type: Mono.Security.Interface.MonoTlsConnectionInfo
+
+Method: Mono.Security.Interface.CipherSuiteCode get_CipherSuiteCode()
+
+Disassembly:
+	movzx eax,word ptr [rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Void set_CipherSuiteCode(Mono.Security.Interface.CipherSuiteCode value)
+
+Disassembly:
+	mov [rcx+10h],dx
+	ret
+
+ISIL:
+	001 Move [rcx+16], rdx
+	002 Return 
+
+Method: Mono.Security.Interface.TlsProtocols get_ProtocolVersion()
+
+Disassembly:
+	mov eax,[rcx+14h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+20]
+	002 Return rax
+
+Method: System.Void set_ProtocolVersion(Mono.Security.Interface.TlsProtocols value)
+
+Disassembly:
+	mov [rcx+14h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+20], rdx
+	002 Return 
+
+Method: System.Void set_PeerDomainName(System.String value)
+
+Disassembly:
+	mov [rcx+18h],rdx
+	add rcx,18h
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move [rcx+24], rdx
+	002 Add rcx, rcx, 24
+	003 Call 0x1801E1E30, rcx, rdx, r8, r9
+	004 Return 
+
+Method: System.String ToString()
+
+Disassembly:
+	mov [rsp+10h],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1C327h],0
+	mov rdi,rcx
+	jne short 0000000180D4EA61h
+	lea rcx,[181E05CE0h]
+	call 00000001801E2A80h
+	lea rcx,[181E018B0h]
+	call 00000001801E2A80h
+	lea rcx,[181E36A40h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C327h],1
+	mov eax,[rdi+14h]
+	lea rdx,[rsp+40h]
+	mov rcx,[181E018B0h]
+	mov [rsp+40h],eax
+	call 0000000180154460h
+	movzx ecx,word ptr [rdi+10h]
+	lea rdx,[rsp+30h]
+	mov [rsp+30h],cx
+	mov rbx,rax
+	mov rcx,[181E05CE0h]
+	call 0000000180154460h
+	mov rcx,[181E36A40h]
+	xor r9d,r9d
+	mov r8,rax
+	mov rdx,rbx
+	call 0000000180D7ECB0h
+	mov rbx,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1C327], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {15}
+	008 LoadAddress rcx, [0x181E05CE0]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x181E018B0]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x181E36A40]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 Move [0x181F1C327], 1
+	015 Move rax, [rdi+20]
+	016 LoadAddress rdx, stack:0x40
+	017 Move rcx, typeof(Mono.Security.Interface.TlsProtocols)
+	018 Move stack:0x40, rax
+	019 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	020 Move rcx, [rdi+16]
+	021 LoadAddress rdx, stack:0x30
+	022 Move stack:0x30, rcx
+	023 Move rbx, rax
+	024 Move rcx, typeof(Mono.Security.Interface.CipherSuiteCode)
+	025 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	026 Move rcx, "[MonoTlsConnectionInfo: {0}:{1}]"
+	027 Move r9, 0
+	028 Move r8, rax
+	029 Move rdx, rbx
+	030 Call String.Format, rcx, rdx, r8, r9
+	031 Move rbx, stack:0x38
+	032 ShiftStack 32
+	033 Move rdi, stack:0x0
+	034 ShiftStack 8
+	035 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+

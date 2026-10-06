@@ -1,0 +1,163 @@
+Type: System.Net.ResponseDescription
+
+Method: System.Boolean get_PositiveIntermediate()
+
+Disassembly:
+	cmp dword ptr [rcx+14h],64h
+	jge short 0000000181548079h
+	xor al,al
+	ret
+	cmp dword ptr [rcx+14h],0C7h
+	setbe al
+	ret
+
+ISIL:
+	001 Compare [rcx+20], 100
+	002 JumpIfGreaterOrEqual {5}
+	003 Move rax, 0
+	004 Return rax
+	005 Compare [rcx+20], 199
+	006 NotImplemented "setbe al"
+	007 Return rax
+
+Method: System.Boolean get_PositiveCompletion()
+
+Disassembly:
+	cmp dword ptr [rcx+14h],0C8h
+	jge short 000000018154805Ch
+	xor al,al
+	ret
+	cmp dword ptr [rcx+14h],12Bh
+	setbe al
+	ret
+
+ISIL:
+	001 Compare [rcx+20], 200
+	002 JumpIfGreaterOrEqual {5}
+	003 Move rax, 0
+	004 Return rax
+	005 Compare [rcx+20], 299
+	006 NotImplemented "setbe al"
+	007 Return rax
+
+Method: System.Boolean get_TransientFailure()
+
+Disassembly:
+	cmp dword ptr [rcx+14h],190h
+	jge short 000000018154809Ch
+	xor al,al
+	ret
+	cmp dword ptr [rcx+14h],1F3h
+	setbe al
+	ret
+
+ISIL:
+	001 Compare [rcx+20], 400
+	002 JumpIfGreaterOrEqual {5}
+	003 Move rax, 0
+	004 Return rax
+	005 Compare [rcx+20], 499
+	006 NotImplemented "setbe al"
+	007 Return rax
+
+Method: System.Boolean get_PermanentFailure()
+
+Disassembly:
+	cmp dword ptr [rcx+14h],1F4h
+	jge short 000000018154803Ch
+	xor al,al
+	ret
+	cmp dword ptr [rcx+14h],257h
+	setbe al
+	ret
+
+ISIL:
+	001 Compare [rcx+20], 500
+	002 JumpIfGreaterOrEqual {5}
+	003 Move rax, 0
+	004 Return rax
+	005 Compare [rcx+20], 599
+	006 NotImplemented "setbe al"
+	007 Return rax
+
+Method: System.Boolean get_InvalidStatusCode()
+
+Disassembly:
+	cmp dword ptr [rcx+14h],64h
+	jge short 0000000181548019h
+	mov al,1
+	ret
+	cmp dword ptr [rcx+14h],257h
+	seta al
+	ret
+
+ISIL:
+	001 Compare [rcx+20], 100
+	002 JumpIfGreaterOrEqual {5}
+	003 Move rax, 1
+	004 Return rax
+	005 Compare [rcx+20], 599
+	006 NotImplemented "seta al"
+	007 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F20555h],0
+	mov rdi,rcx
+	jne short 0000000181547FC9h
+	lea rcx,[181DFC670h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20555h],1
+	mov dword ptr [rdi+14h],0FFFFFFFFh
+	mov rcx,[181DFC670h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180D8E140h
+	lea rcx,[rdi+20h]
+	mov [rdi+20h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	xor edx,edx
+	mov rcx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F20555], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x181DFC670]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x181F20555], 1
+	011 Move [rdi+20], 0xFFFFFFFF
+	012 Move rcx, typeof(System.Text.StringBuilder)
+	013 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	014 Move rdx, 0
+	015 Move rcx, rax
+	016 Move rbx, rax
+	017 Call StringBuilder..ctor, rcx, rdx
+	018 LoadAddress rcx, [rdi+32]
+	019 Move [rdi+32], rbx
+	020 Move rdx, rbx
+	021 Call 0x1801E1E30, rcx, rdx, r8, r9
+	022 Move rdx, 0
+	023 Move rcx, rdi
+	024 Move rbx, stack:0x30
+	025 ShiftStack 32
+	026 Move rdi, stack:0x0
+	027 ShiftStack 8
+	028 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	029 Return 
+

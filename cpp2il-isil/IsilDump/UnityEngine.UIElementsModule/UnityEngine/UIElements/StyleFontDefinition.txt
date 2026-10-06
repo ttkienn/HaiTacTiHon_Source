@@ -1,0 +1,315 @@
+Type: UnityEngine.UIElements.StyleFontDefinition
+
+Method: UnityEngine.UIElements.FontDefinition get_value()
+
+Disassembly:
+	cmp dword ptr [rdx],0
+	jne short 0000000181835750h
+	movups xmm0,[rdx+8]
+	movups [rcx],xmm0
+	mov rax,rcx
+	ret
+	xorps xmm0,xmm0
+	movups [rcx],xmm0
+	mov rax,rcx
+	ret
+
+ISIL:
+	001 Compare [rdx], 0
+	002 JumpIfNotEqual {7}
+	003 Move xmm0, [rdx+8]
+	004 Move [rcx], xmm0
+	005 Move rax, rcx
+	006 Return rax
+	007 Move xmm0, 0
+	008 Move [rcx], xmm0
+	009 Move rax, rcx
+	010 Return rax
+
+Method: UnityEngine.UIElements.StyleKeyword get_keyword()
+
+Disassembly:
+	xchg ax,ax
+	mov eax,[rcx]
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, [rcx]
+	003 Return rax
+
+Method: System.Void .ctor(UnityEngine.UIElements.FontDefinition f)
+
+Disassembly:
+	movups xmm0,[rdx]
+	mov dword ptr [rcx],0
+	xor edx,edx
+	movups [rcx+8],xmm0
+	add rcx,8
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move [rcx], 0
+	003 Move rdx, 0
+	004 Move [rcx+8], xmm0
+	005 Add rcx, rcx, 8
+	006 Call 0x1801E1E30, rcx, rdx, r8, r9
+	007 Return 
+
+Method: System.Void .ctor(UnityEngine.UIElements.FontDefinition f, UnityEngine.UIElements.StyleKeyword keyword)
+
+Disassembly:
+	movups xmm0,[rdx]
+	mov [rcx],r8d
+	xor edx,edx
+	movups [rcx+8],xmm0
+	add rcx,8
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move [rcx], r8
+	003 Move rdx, 0
+	004 Move [rcx+8], xmm0
+	005 Add rcx, rcx, 8
+	006 Call 0x1801E1E30, rcx, rdx, r8, r9
+	007 Return 
+
+Method: UnityEngine.UIElements.StyleFontDefinition op_Implicit(UnityEngine.UIElements.FontDefinition f)
+
+Disassembly:
+	push rbx
+	sub rsp,40h
+	xorps xmm0,xmm0
+	xor eax,eax
+	movups [rcx],xmm0
+	mov rbx,rcx
+	mov [rcx+10h],rax
+	movups [rsp+20h],xmm0
+	lea rcx,[rsp+28h]
+	movups xmm0,[rdx]
+	xor edx,edx
+	movups [rsp+28h],xmm0
+	call 00000001801E1E30h
+	movups xmm0,[rsp+20h]
+	movsd xmm1,qword ptr [rsp+30h]
+	movups [rbx],xmm0
+	movsd qword ptr [rbx+10h],xmm1
+	mov rax,rbx
+	add rsp,40h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -64
+	004 Move xmm0, 0
+	005 Move rax, 0
+	006 Move [rcx], xmm0
+	007 Move rbx, rcx
+	008 Move [rcx+16], rax
+	009 Move stack:0x20, xmm0
+	010 LoadAddress rcx, stack:0x28
+	011 Move xmm0, [rdx]
+	012 Move rdx, 0
+	013 Move stack:0x28, xmm0
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 Move xmm0, stack:0x20
+	016 Move xmm1, stack:0x30
+	017 Move [rbx], xmm0
+	018 Move [rbx+16], xmm1
+	019 Move rax, rbx
+	020 ShiftStack 64
+	021 Move rbx, stack:0x0
+	022 ShiftStack 8
+	023 Return rax
+
+Method: System.Boolean Equals(UnityEngine.UIElements.StyleFontDefinition other)
+
+Disassembly:
+	sub rsp,48h
+	movups xmm1,[rdx]
+	movsd xmm0,qword ptr [rdx+10h]
+	movd eax,xmm1
+	movsd qword ptr [rsp+30h],xmm0
+	cmp [rcx],eax
+	je short 00000001818356A1h
+	xor al,al
+	add rsp,48h
+	ret
+	movups [rsp+20h],xmm1
+	add rcx,8
+	xor r8d,r8d
+	movups xmm2,[rsp+28h]
+	lea rdx,[rsp+20h]
+	unpcklpd xmm2,xmm0
+	movups [rsp+28h],xmm2
+	movaps [rsp+20h],xmm2
+	call 000000018180BEF0h
+	add rsp,48h
+	ret
+
+ISIL:
+	001 ShiftStack -72
+	002 Move xmm1, [rdx]
+	003 Move xmm0, [rdx+16]
+	004 Move rax, xmm1
+	005 Move stack:0x30, xmm0
+	006 Compare [rcx], rax
+	007 JumpIfEqual {11}
+	008 Move rax, 0
+	009 ShiftStack 72
+	010 Return rax
+	011 Move stack:0x20, xmm1
+	012 Add rcx, rcx, 8
+	013 Move r8, 0
+	014 Move xmm2, stack:0x28
+	015 LoadAddress rdx, stack:0x20
+	016 NotImplemented "unpcklpd xmm2,xmm0"
+	017 Move stack:0x28, xmm2
+	018 Move stack:0x20, xmm2
+	019 Call 0x18180BEF0, rcx, rdx, r8
+	020 ShiftStack 72
+	021 Return rax
+
+Method: System.Boolean Equals(System.Object obj)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,40h
+	cmp byte ptr [181F23DC2h],0
+	mov rbx,rdx
+	mov rdi,rcx
+	jne short 00000001818355ECh
+	lea rcx,[181DFCDD8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F23DC2h],1
+	test rbx,rbx
+	je short 0000000181835665h
+	mov rdx,[181DFCDD8h]
+	xor eax,eax
+	cmp [rbx],rdx
+	cmove rax,rbx
+	test rax,rax
+	je short 0000000181835665h
+	mov rcx,[rbx]
+	mov rax,[rdx+40h]
+	cmp [rcx+40h],rax
+	mov rcx,rbx
+	jne short 0000000181835672h
+	call 0000000180153B70h
+	movups xmm1,[rax]
+	movsd xmm0,qword ptr [rax+10h]
+	movd ecx,xmm1
+	movsd qword ptr [rsp+30h],xmm0
+	cmp [rdi],ecx
+	jne short 0000000181835665h
+	movups [rsp+20h],xmm1
+	lea rcx,[rdi+8]
+	xor r8d,r8d
+	movups xmm2,[rsp+28h]
+	lea rdx,[rsp+20h]
+	unpcklpd xmm2,xmm0
+	movups [rsp+28h],xmm2
+	movaps [rsp+20h],xmm2
+	call 000000018180BEF0h
+	mov rbx,[rsp+50h]
+	add rsp,40h
+	pop rdi
+	ret
+	xor al,al
+	mov rbx,[rsp+50h]
+	add rsp,40h
+	pop rdi
+	ret
+	call 00000001801E1E70h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -64
+	005 Compare [0x181F23DC2], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181DFCDD8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F23DC2], 1
+	012 Compare rbx, 0
+	013 JumpIfEqual {48}
+	014 Move rdx, typeof(UnityEngine.UIElements.StyleFontDefinition)
+	015 Move rax, 0
+	016 Compare [rbx], rdx
+	017 JumpIfNotEqual {19}
+	018 Move rax, rbx
+	019 Nop 
+	020 Compare rax, 0
+	021 JumpIfEqual {48}
+	022 Move rcx, [rbx]
+	023 Move rax, [rdx+64]
+	024 Compare [rcx+64], rax
+	025 Move rcx, rbx
+	026 JumpIfNotEqual {54}
+	027 Call "il2cpp_object_unbox", rcx, rdx, r8, r9
+	028 Move xmm1, [rax]
+	029 Move xmm0, [rax+16]
+	030 Move rcx, xmm1
+	031 Move stack:0x30, xmm0
+	032 Compare [rdi], rcx
+	033 JumpIfNotEqual {48}
+	034 Move stack:0x20, xmm1
+	035 LoadAddress rcx, [rdi+8]
+	036 Move r8, 0
+	037 Move xmm2, stack:0x28
+	038 LoadAddress rdx, stack:0x20
+	039 NotImplemented "unpcklpd xmm2,xmm0"
+	040 Move stack:0x28, xmm2
+	041 Move stack:0x20, xmm2
+	042 Call 0x18180BEF0, rcx, rdx, r8
+	043 Move rbx, stack:0x50
+	044 ShiftStack 64
+	045 Move rdi, stack:0x0
+	046 ShiftStack 8
+	047 Return rax
+	048 Move rax, 0
+	049 Move rbx, stack:0x50
+	050 ShiftStack 64
+	051 Move rdi, stack:0x0
+	052 ShiftStack 8
+	053 Return rax
+	054 Call 0x1801E1E70, rcx, rdx, r8, r9
+
+Method: System.Int32 GetHashCode()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov ebx,[rcx]
+	add rcx,8
+	xor edx,edx
+	call 000000018180C110h
+	imul ecx,ebx,18Dh
+	xor eax,ecx
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, [rcx]
+	005 Add rcx, rcx, 8
+	006 Move rdx, 0
+	007 Call FontDefinition.GetHashCode, rcx, rdx
+	008 Multiply rcx, rbx, 397
+	009 Xor rax, rax, rcx
+	010 ShiftStack 32
+	011 Move rbx, stack:0x0
+	012 ShiftStack 8
+	013 Return rax
+

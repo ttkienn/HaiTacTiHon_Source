@@ -1,0 +1,31 @@
+Type: System.Xml.Res
+
+Method: System.String GetString(System.String name)
+
+Disassembly:
+	mov rax,rcx
+	ret
+
+ISIL:
+	001 Move rax, rcx
+	002 Return rax
+
+Method: System.String GetString(System.String name, System.Object[] args)
+
+Disassembly:
+	test rdx,rdx
+	je short 00000001813DAA0Dh
+	xor r8d,r8d
+	jmp near ptr 000000018128B550h
+	mov rax,rcx
+	ret
+
+ISIL:
+	001 Compare rdx, 0
+	002 JumpIfEqual {6}
+	003 Move r8, 0
+	004 Call SR.GetString, rcx, rdx, r8
+	005 Return rax
+	006 Move rax, rcx
+	007 Return rax
+

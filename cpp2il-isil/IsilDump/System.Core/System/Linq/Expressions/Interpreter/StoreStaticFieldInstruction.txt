@@ -1,0 +1,129 @@
+Type: System.Linq.Expressions.Interpreter.StoreStaticFieldInstruction
+
+Method: System.Void .ctor(System.Reflection.FieldInfo field)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 000000018024B730h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.String get_InstructionName()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1E37Dh],0
+	jne short 000000018111EA30h
+	lea rcx,[181DFFC20h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E37Dh],1
+	mov rax,[181DFFC20h]
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1E37D], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181DFFC20]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F1E37D], 1
+	007 Move rax, "StoreStaticField"
+	008 ShiftStack 40
+	009 Return rax
+
+Method: System.Int32 get_ConsumedStack()
+
+Disassembly:
+	mov eax,1
+	ret
+
+ISIL:
+	001 Move rax, 1
+	002 Return rax
+
+Method: System.Int32 Run(System.Linq.Expressions.Interpreter.InterpretedFrame frame)
+
+Disassembly:
+	sub rsp,28h
+	test rdx,rdx
+	je short 000000018111E9F8h
+	movsxd r8,dword ptr [rdx+48h]
+	mov r10,[rdx+38h]
+	lea eax,[r8-1]
+	mov [rdx+48h],eax
+	test r10,r10
+	je short 000000018111E9F8h
+	dec r8
+	cmp r8d,[r10+18h]
+	jae short 000000018111E9FEh
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 000000018111E9F8h
+	mov r8,[r10+r8*8+20h]
+	xor r9d,r9d
+	xor edx,edx
+	call 0000000180E39F70h
+	mov eax,1
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rdx, 0
+	003 JumpIfEqual {23}
+	004 Move r8, [rdx+72]
+	005 Move r10, [rdx+56]
+	006 LoadAddress rax, [r8-1]
+	007 Move [rdx+72], rax
+	008 Compare r10, 0
+	009 JumpIfEqual {23}
+	010 Subtract r8, r8, 1
+	011 Compare r8, [r10+24]
+	012 JumpIfGreaterOrEqual {25}
+	013 Move rcx, [rcx+16]
+	014 Compare rcx, 0
+	015 JumpIfEqual {23}
+	016 Move r8, [r10+32+r8*8]
+	017 Move r9, 0
+	018 Move rdx, 0
+	019 Call FieldInfo.SetValue, rcx, rdx, r8
+	020 Move rax, 1
+	021 ShiftStack 40
+	022 Return rax
+	023 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	024 Interrupt 
+	025 Call 0x1801E2C90, rcx, rdx, r8, r9
+

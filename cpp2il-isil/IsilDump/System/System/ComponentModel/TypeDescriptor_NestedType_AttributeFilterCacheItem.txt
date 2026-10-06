@@ -1,0 +1,133 @@
+Type: System.ComponentModel.TypeDescriptor+AttributeFilterCacheItem
+
+Method: System.Void .ctor(System.Attribute[] filter, System.Collections.ICollection filteredMembers)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rsi,r8
+	xor edx,edx
+	mov rdi,rcx
+	call 000000018024B730h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	lea rcx,[rdi+18h]
+	mov [rdi+18h],rsi
+	mov rdx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	011 LoadAddress rcx, [rdi+16]
+	012 Move [rdi+16], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 LoadAddress rcx, [rdi+24]
+	016 Move [rdi+24], rsi
+	017 Move rdx, rsi
+	018 Move rbx, stack:0x30
+	019 Move rsi, stack:0x38
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Call 0x1801E1E30, rcx, rdx, r8, r9
+	024 Return 
+
+Method: System.Boolean IsValid(System.Attribute[] filter)
+
+Disassembly:
+	sub rsp,28h
+	mov r9,rdx
+	mov rdx,[rcx+10h]
+	test rdx,rdx
+	je short 00000001815139B4h
+	test r9,r9
+	je short 00000001815139B4h
+	mov eax,[r9+18h]
+	cmp [rdx+18h],eax
+	jne short 00000001815139ADh
+	mov r11d,[r9+18h]
+	xor eax,eax
+	mov r10,rdx
+	mov ecx,eax
+	nop dword ptr [rax]
+	cmp eax,r11d
+	jge short 00000001815139A6h
+	cmp eax,[r10+18h]
+	jae short 00000001815139BAh
+	cmp eax,r11d
+	jae short 00000001815139BAh
+	movsxd rcx,eax
+	movsxd r8,eax
+	mov rdx,[r9+rcx*8+20h]
+	cmp [r10+r8*8+20h],rdx
+	jne short 00000001815139ADh
+	inc eax
+	jmp short 0000000181513977h
+	mov al,1
+	add rsp,28h
+	ret
+	xor al,al
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move r9, rdx
+	003 Move rdx, [rcx+16]
+	004 Compare rdx, 0
+	005 JumpIfEqual {35}
+	006 Compare r9, 0
+	007 JumpIfEqual {35}
+	008 Move rax, [r9+24]
+	009 Compare [rdx+24], rax
+	010 JumpIfNotEqual {32}
+	011 Move r11, [r9+24]
+	012 Move rax, 0
+	013 Move r10, rdx
+	014 Move rcx, rax
+	015 Nop 
+	016 Compare rax, r11
+	017 JumpIfGreaterOrEqual {29}
+	018 Compare rax, [r10+24]
+	019 JumpIfGreaterOrEqual {37}
+	020 Compare rax, r11
+	021 JumpIfGreaterOrEqual {37}
+	022 Move rcx, rax
+	023 Move r8, rax
+	024 Move rdx, [r9+32+rcx*8]
+	025 Compare [r10+32+r8*8], rdx
+	026 JumpIfNotEqual {32}
+	027 Add rax, rax, 1
+	028 Goto {14}
+	029 Move rax, 1
+	030 ShiftStack 40
+	031 Return rax
+	032 Move rax, 0
+	033 ShiftStack 40
+	034 Return rax
+	035 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	036 Interrupt 
+	037 Call 0x1801E2C90, rcx, rdx, r8, r9
+

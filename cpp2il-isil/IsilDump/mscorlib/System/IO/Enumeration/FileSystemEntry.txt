@@ -1,0 +1,442 @@
+Type: System.IO.Enumeration.FileSystemEntry
+
+Method: System.Void Initialize(ref System.IO.Enumeration.FileSystemEntry entry, Interop+NtDll+FILE_FULL_DIR_INFORMATION* info, System.ReadOnlySpan`1<System.Char> directory, System.ReadOnlySpan`1<System.Char> rootDirectory, System.ReadOnlySpan`1<System.Char> originalRootDirectory)
+
+Disassembly:
+	movups xmm0,[r8]
+	mov rax,[rsp+28h]
+	mov [rcx],rdx
+	movups [rcx+8],xmm0
+	movups xmm0,[r9]
+	movups [rcx+18h],xmm0
+	movups xmm0,[rax]
+	movups [rcx+28h],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [r8]
+	002 Move rax, stack:0x28
+	003 Move [rcx], rdx
+	004 Move [rcx+8], xmm0
+	005 Move xmm0, [r9]
+	006 Move [rcx+24], xmm0
+	007 Move xmm0, [rax]
+	008 Move [rcx+40], xmm0
+	009 Return 
+
+Method: System.ReadOnlySpan`1<System.Char> get_Directory()
+
+Disassembly:
+	movups xmm0,[rdx+8]
+	mov rax,rcx
+	movups [rcx],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx+8]
+	002 Move rax, rcx
+	003 Move [rcx], xmm0
+	004 Return rax
+
+Method: System.Void set_Directory(System.ReadOnlySpan`1<System.Char> value)
+
+Disassembly:
+	movups xmm0,[rdx]
+	movups [rcx+8],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move [rcx+8], xmm0
+	003 Return 
+
+Method: System.ReadOnlySpan`1<System.Char> get_RootDirectory()
+
+Disassembly:
+	movups xmm0,[rdx+18h]
+	mov rax,rcx
+	movups [rcx],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx+24]
+	002 Move rax, rcx
+	003 Move [rcx], xmm0
+	004 Return rax
+
+Method: System.Void set_RootDirectory(System.ReadOnlySpan`1<System.Char> value)
+
+Disassembly:
+	movups xmm0,[rdx]
+	movups [rcx+18h],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move [rcx+24], xmm0
+	003 Return 
+
+Method: System.ReadOnlySpan`1<System.Char> get_OriginalRootDirectory()
+
+Disassembly:
+	movups xmm0,[rdx+28h]
+	mov rax,rcx
+	movups [rcx],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx+40]
+	002 Move rax, rcx
+	003 Move [rcx], xmm0
+	004 Return rax
+
+Method: System.Void set_OriginalRootDirectory(System.ReadOnlySpan`1<System.Char> value)
+
+Disassembly:
+	movups xmm0,[rdx]
+	movups [rcx+28h],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move [rcx+40], xmm0
+	003 Return 
+
+Method: System.ReadOnlySpan`1<System.Char> get_FileName()
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	mov rdx,[rdx]
+	mov rbx,rcx
+	lea rcx,[rsp+20h]
+	xor r8d,r8d
+	call 0000000180D59760h
+	movups xmm0,[rax]
+	mov rax,rbx
+	movups [rbx],xmm0
+	add rsp,30h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move rdx, [rdx]
+	005 Move rbx, rcx
+	006 LoadAddress rcx, stack:0x20
+	007 Move r8, 0
+	008 Call FILE_FULL_DIR_INFORMATION.get_FileName, rcx, rdx
+	009 Move xmm0, [rax]
+	010 Move rax, rbx
+	011 Move [rbx], xmm0
+	012 ShiftStack 48
+	013 Move rbx, stack:0x0
+	014 ShiftStack 8
+	015 Return rax
+
+Method: System.IO.FileAttributes get_Attributes()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx]
+	test rax,rax
+	je short 0000000180EF43B4h
+	mov eax,[rax+38h]
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx]
+	003 Compare rax, 0
+	004 JumpIfEqual {8}
+	005 Move rax, [rax+56]
+	006 ShiftStack 40
+	007 Return rax
+	008 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Boolean get_IsDirectory()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx]
+	test rax,rax
+	je short 0000000180EF4408h
+	test byte ptr [rax+38h],10h
+	seta al
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx]
+	003 Compare rax, 0
+	004 JumpIfEqual {9}
+	005 Compare [rax+56], 16
+	006 NotImplemented "seta al"
+	007 ShiftStack 40
+	008 Return rax
+	009 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.String ToSpecifiedFullPath()
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	mov [rsp+18h],rdi
+	push rbp
+	push r14
+	push r15
+	mov rbp,rsp
+	sub rsp,70h
+	cmp byte ptr [181F1D130h],0
+	mov rsi,rcx
+	movaps [rsp+60h],xmm6
+	movaps [rsp+50h],xmm7
+	jne short 0000000180EF4208h
+	lea rcx,[181E332A0h]
+	call 00000001801E2A80h
+	lea rcx,[181E33238h]
+	call 00000001801E2A80h
+	lea rcx,[181E13D18h]
+	call 00000001801E2A80h
+	lea rcx,[181E13FB8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1D130h],1
+	movups xmm1,[rsi+8]
+	movsxd r14,dword ptr [rsi+20h]
+	mov edi,[rsi+10h]
+	mov r15,[181E13D18h]
+	movups [rbp-30h],xmm1
+	cmp r14d,edi
+	jbe short 0000000180EF422Ah
+	xor ecx,ecx
+	call 0000000180F434A0h
+	mov rcx,[r15+20h]
+	xorps xmm0,xmm0
+	mov rax,[rbp-30h]
+	movups [rbp-50h],xmm0
+	test byte ptr [rcx+135h],1
+	lea rbx,[rax+r14*2]
+	jne short 0000000180EF424Bh
+	call 0000000180188F60h
+	mov rcx,[181E332A0h]
+	sub edi,r14d
+	movups xmm7,[rsi+28h]
+	mov [rbp-50h],rbx
+	mov [rbp-48h],edi
+	cmp dword ptr [rcx+0E0h],0
+	movaps xmm6,[rbp-50h]
+	movaps [rbp-30h],xmm6
+	jne short 0000000180EF4276h
+	call 0000000180153C50h
+	xor edx,edx
+	movdqa [rbp-40h],xmm7
+	lea rcx,[rbp-40h]
+	call 0000000180ED7850h
+	test al,al
+	je short 0000000180EF4306h
+	mov rcx,[181E332A0h]
+	mov eax,[rbp-44h]
+	mov [rbp-40h],rbx
+	mov [rbp-38h],edi
+	cmp dword ptr [rcx+0E0h],0
+	mov [rbp-34h],eax
+	jne short 0000000180EF42ACh
+	call 0000000180153C50h
+	movaps xmm0,[rbp-40h]
+	lea rcx,[rbp-40h]
+	xor edx,edx
+	movdqa [rbp-40h],xmm0
+	call 0000000180ED84B0h
+	test al,al
+	je short 0000000180EF4306h
+	mov r14,[181E13D18h]
+	cmp edi,1
+	jae short 0000000180EF42D7h
+	xor ecx,ecx
+	call 0000000180F434A0h
+	mov rcx,[r14+20h]
+	add rbx,2
+	mov dword ptr [rbp-34h],0
+	test byte ptr [rcx+135h],1
+	jne short 0000000180EF42F4h
+	call 0000000180188F60h
+	lea eax,[rdi-1]
+	mov [rbp-40h],rbx
+	mov [rbp-38h],eax
+	movaps xmm6,[rbp-40h]
+	movaps [rbp-30h],xmm6
+	mov rax,[rbp-30h]
+	lea rcx,[rbp-30h]
+	mov rdx,[rsi]
+	xor r8d,r8d
+	movups xmm7,[rsi+28h]
+	mov [rbp-40h],rax
+	psrldq xmm6,8
+	movq rax,xmm6
+	mov [rbp-38h],eax
+	shr rax,20h
+	mov [rbp-34h],eax
+	call 0000000180D59760h
+	mov rcx,[181E33238h]
+	movups xmm6,[rax]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180EF434Dh
+	call 0000000180153C50h
+	movaps xmm0,[rbp-40h]
+	lea r8,[rbp-30h]
+	xor r9d,r9d
+	movdqa [rbp-40h],xmm0
+	lea rdx,[rbp-40h]
+	movdqa [rbp-30h],xmm6
+	lea rcx,[rbp-50h]
+	movdqa [rbp-50h],xmm7
+	call 0000000180EFB300h
+	movaps xmm6,[rsp+60h]
+	lea r11,[rsp+70h]
+	mov rbx,[r11+20h]
+	mov rsi,[r11+28h]
+	mov rdi,[r11+30h]
+	movaps xmm7,[rsp+50h]
+	mov rsp,r11
+	pop r15
+	pop r14
+	pop rbp
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 Move stack:0x18, rdi
+	004 ShiftStack -8
+	005 Move stack:0x0, rbp
+	006 ShiftStack -8
+	007 Move stack:0x0, r14
+	008 ShiftStack -8
+	009 Move stack:0x0, r15
+	010 Move rbp, rsp
+	011 ShiftStack -112
+	012 Compare [0x181F1D130], 0
+	013 Move rsi, rcx
+	014 Move stack:0x60, xmm6
+	015 Move stack:0x50, xmm7
+	016 JumpIfNotEqual {26}
+	017 LoadAddress rcx, [0x181E332A0]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 LoadAddress rcx, [0x181E33238]
+	020 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	021 LoadAddress rcx, [0x181E13D18]
+	022 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	023 LoadAddress rcx, [0x181E13FB8]
+	024 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	025 Move [0x181F1D130], 1
+	026 Move xmm1, [rsi+8]
+	027 Move r14, [rsi+32]
+	028 Move rdi, [rsi+16]
+	029 Move r15, [0x181E13D18]
+	030 Move [rbp-48], xmm1
+	031 Compare r14, rdi
+	032 JumpIfLessOrEqual {35}
+	033 Move rcx, 0
+	034 Call ThrowHelper.ThrowArgumentOutOfRangeException, rcx
+	035 Move rcx, [r15+32]
+	036 Move xmm0, 0
+	037 Move rax, [rbp-48]
+	038 Move [rbp-80], xmm0
+	039 Compare [rcx+309], 1
+	040 LoadAddress rbx, [rax+r14*2]
+	041 JumpIfNotEqual {43}
+	042 Call 0x180188F60, rcx, rdx, r8, r9
+	043 Move rcx, typeof(System.IO.PathInternal)
+	044 Subtract rdi, rdi, r14
+	045 Move xmm7, [rsi+40]
+	046 Move [rbp-80], rbx
+	047 Move [rbp-72], rdi
+	048 Compare [rcx+224], 0
+	049 Move xmm6, [rbp-80]
+	050 Move [rbp-48], xmm6
+	051 JumpIfNotEqual {53}
+	052 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	053 Move rdx, 0
+	054 Move [rbp-64], xmm7
+	055 LoadAddress rcx, [rbp-64]
+	056 Call PathInternal.EndsInDirectorySeparator, rcx, rdx
+	057 Compare rax, 0
+	058 JumpIfEqual {90}
+	059 Move rcx, typeof(System.IO.PathInternal)
+	060 Move rax, [rbp-68]
+	061 Move [rbp-64], rbx
+	062 Move [rbp-56], rdi
+	063 Compare [rcx+224], 0
+	064 Move [rbp-52], rax
+	065 JumpIfNotEqual {67}
+	066 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	067 Move xmm0, [rbp-64]
+	068 LoadAddress rcx, [rbp-64]
+	069 Move rdx, 0
+	070 Move [rbp-64], xmm0
+	071 Call PathInternal.StartsWithDirectorySeparator, rcx, rdx
+	072 Compare rax, 0
+	073 JumpIfEqual {90}
+	074 Move r14, [0x181E13D18]
+	075 Compare rdi, 1
+	076 JumpIfGreaterOrEqual {79}
+	077 Move rcx, 0
+	078 Call ThrowHelper.ThrowArgumentOutOfRangeException, rcx
+	079 Move rcx, [r14+32]
+	080 Add rbx, rbx, 2
+	081 Move [rbp-52], 0
+	082 Compare [rcx+309], 1
+	083 JumpIfNotEqual {85}
+	084 Call 0x180188F60, rcx, rdx, r8, r9
+	085 LoadAddress rax, [rdi-1]
+	086 Move [rbp-64], rbx
+	087 Move [rbp-56], rax
+	088 Move xmm6, [rbp-64]
+	089 Move [rbp-48], xmm6
+	090 Move rax, [rbp-48]
+	091 LoadAddress rcx, [rbp-48]
+	092 Move rdx, [rsi]
+	093 Move r8, 0
+	094 Move xmm7, [rsi+40]
+	095 Move [rbp-64], rax
+	096 NotImplemented "psrldq xmm6,8"
+	097 Move rax, xmm6
+	098 Move [rbp-56], rax
+	099 ShiftRight rax, 32
+	100 Move [rbp-52], rax
+	101 Call FILE_FULL_DIR_INFORMATION.get_FileName, rcx, rdx
+	102 Move rcx, typeof(System.IO.Path)
+	103 Move xmm6, [rax]
+	104 Compare [rcx+224], 0
+	105 JumpIfNotEqual {107}
+	106 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	107 Move xmm0, [rbp-64]
+	108 LoadAddress r8, [rbp-48]
+	109 Move r9, 0
+	110 Move [rbp-64], xmm0
+	111 LoadAddress rdx, [rbp-64]
+	112 Move [rbp-48], xmm6
+	113 LoadAddress rcx, [rbp-80]
+	114 Move [rbp-80], xmm7
+	115 Call Path.Join, rcx, rdx, r8, r9
+	116 Move xmm6, stack:0x60
+	117 LoadAddress r11, stack:0x70
+	118 Move rbx, [r11+32]
+	119 Move rsi, [r11+40]
+	120 Move rdi, [r11+48]
+	121 Move xmm7, stack:0x50
+	122 Move rsp, r11
+	123 Move r15, stack:0x0
+	124 ShiftStack 8
+	125 Move r14, stack:0x0
+	126 ShiftStack 8
+	127 Move rbp, stack:0x0
+	128 ShiftStack 8
+	129 Return rax
+

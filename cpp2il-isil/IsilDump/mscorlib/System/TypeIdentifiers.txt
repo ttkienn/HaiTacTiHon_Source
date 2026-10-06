@@ -1,0 +1,60 @@
+Type: System.TypeIdentifiers
+
+Method: System.TypeIdentifier FromDisplay(System.String displayName)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1D626h],0
+	mov rdi,rcx
+	jne short 0000000180F87159h
+	lea rcx,[181E2B170h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1D626h],1
+	mov rcx,[181E2B170h]
+	call 0000000180197840h
+	mov rdx,rdi
+	mov rbx,rax
+	lea rcx,[rax+10h]
+	mov [rax+10h],rdi
+	call 00000001801E1E30h
+	lea rcx,[rbx+18h]
+	mov qword ptr [rbx+18h],0
+	xor edx,edx
+	call 00000001801E1E30h
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1D626], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x181E2B170]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x181F1D626], 1
+	011 Move rcx, typeof(System.TypeIdentifiers+Display)
+	012 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	013 Move rdx, rdi
+	014 Move rbx, rax
+	015 LoadAddress rcx, [rax+16]
+	016 Move [rax+16], rdi
+	017 Call 0x1801E1E30, rcx, rdx, r8, r9
+	018 LoadAddress rcx, [rbx+24]
+	019 Move [rbx+24], 0
+	020 Move rdx, 0
+	021 Call 0x1801E1E30, rcx, rdx, r8, r9
+	022 Move rax, rbx
+	023 Move rbx, stack:0x30
+	024 ShiftStack 32
+	025 Move rdi, stack:0x0
+	026 ShiftStack 8
+	027 Return rax
+

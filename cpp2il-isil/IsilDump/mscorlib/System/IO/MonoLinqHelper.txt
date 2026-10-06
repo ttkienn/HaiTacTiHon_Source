@@ -1,0 +1,43 @@
+Type: System.IO.MonoLinqHelper
+
+Method: T[] ToArray(System.Collections.Generic.IEnumerable`1<T> source)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp qword ptr [rdx+38h],0
+	mov rbx,rdx
+	mov rdi,rcx
+	jne short 0000000180751E7Fh
+	mov rcx,rdx
+	call 0000000180188FE0h
+	mov rax,[rbx+38h]
+	mov rcx,rdi
+	mov rdx,[rax+8]
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018072A8F0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [rdx+56], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {11}
+	009 Move rcx, rdx
+	010 Call 0x180188FE0, rcx, rdx, r8, r9
+	011 Move rax, [rbx+56]
+	012 Move rcx, rdi
+	013 Move rdx, [rax+8]
+	014 Move rbx, stack:0x30
+	015 ShiftStack 32
+	016 Move rdi, stack:0x0
+	017 ShiftStack 8
+	018 Call 0x18072A8F0, rcx, rdx
+	019 Return rax
+

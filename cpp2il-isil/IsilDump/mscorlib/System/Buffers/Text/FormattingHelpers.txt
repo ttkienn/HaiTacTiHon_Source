@@ -1,0 +1,226 @@
+Type: System.Buffers.Text.FormattingHelpers
+
+Method: System.Int32 CountDigits(System.UInt64 value)
+
+Disassembly:
+	mov r8,rcx
+	mov ecx,1
+	cmp r8,989680h
+	jb short 0000000180EC103Bh
+	mov r9,5AF3107A4000h
+	cmp r8,r9
+	jae short 0000000180EC102Bh
+	mov rax,0D6BF94D5E57A42BDh
+	mov ecx,8
+	mul r8
+	mov r8,rdx
+	shr r8,17h
+	jmp short 0000000180EC103Bh
+	mov rax,r8
+	xor edx,edx
+	div r9
+	mov ecx,0Fh
+	mov r8,rax
+	cmp r8d,0Ah
+	jb short 0000000180EC1083h
+	cmp r8d,64h
+	jb short 0000000180EC107Fh
+	cmp r8d,3E8h
+	jb short 0000000180EC107Bh
+	cmp r8d,2710h
+	jb short 0000000180EC1077h
+	cmp r8d,186A0h
+	jb short 0000000180EC1073h
+	cmp r8d,0F4240h
+	jb short 0000000180EC106Fh
+	lea eax,[rcx+6]
+	ret
+	lea eax,[rcx+5]
+	ret
+	lea eax,[rcx+4]
+	ret
+	lea eax,[rcx+3]
+	ret
+	lea eax,[rcx+2]
+	ret
+	lea eax,[rcx+1]
+	ret
+	mov eax,ecx
+	ret
+
+ISIL:
+	001 Move r8, rcx
+	002 Move rcx, 1
+	003 Compare r8, 0x989680
+	004 JumpIfLess {19}
+	005 Move r9, 0x5AF3107A4000
+	006 Compare r8, r9
+	007 JumpIfGreaterOrEqual {14}
+	008 Move rax, 15474250491067253437
+	009 Move rcx, 8
+	010 NotImplemented "mul r8"
+	011 Move r8, rdx
+	012 ShiftRight r8, 23
+	013 Goto {19}
+	014 Move rax, r8
+	015 Move rdx, 0
+	016 NotImplemented "div r9"
+	017 Move rcx, 15
+	018 Move r8, rax
+	019 Compare r8, 10
+	020 JumpIfLess {43}
+	021 Compare r8, 100
+	022 JumpIfLess {41}
+	023 Compare r8, 1000
+	024 JumpIfLess {39}
+	025 Compare r8, 0x2710
+	026 JumpIfLess {37}
+	027 Compare r8, 0x186A0
+	028 JumpIfLess {35}
+	029 Compare r8, 0xF4240
+	030 JumpIfLess {33}
+	031 LoadAddress rax, [rcx+6]
+	032 Return rax
+	033 LoadAddress rax, [rcx+5]
+	034 Return rax
+	035 LoadAddress rax, [rcx+4]
+	036 Return rax
+	037 LoadAddress rax, [rcx+3]
+	038 Return rax
+	039 LoadAddress rax, [rcx+2]
+	040 Return rax
+	041 LoadAddress rax, [rcx+1]
+	042 Return rax
+	043 Move rax, rcx
+	044 Return rax
+
+Method: System.Int32 CountDigits(System.UInt32 value)
+
+Disassembly:
+	mov r8d,ecx
+	cmp ecx,186A0h
+	jb short 0000000180EC10ABh
+	mov eax,4F8B588Fh
+	mul ecx
+	sub ecx,edx
+	shr ecx,1
+	add ecx,edx
+	shr ecx,10h
+	cmp r8d,186A0h
+	mov eax,6
+	mov edx,1
+	cmovb eax,edx
+	cmp ecx,0Ah
+	jb short 0000000180EC10E7h
+	cmp ecx,64h
+	jb short 0000000180EC10E5h
+	cmp ecx,3E8h
+	jb short 0000000180EC10E1h
+	cmp ecx,2710h
+	jb short 0000000180EC10DDh
+	add eax,4
+	ret
+	add eax,3
+	ret
+	add eax,2
+	ret
+	inc eax
+	ret
+
+ISIL:
+	001 Move r8, rcx
+	002 Compare rcx, 0x186A0
+	003 JumpIfLess {10}
+	004 Move rax, 0x4F8B588F
+	005 NotImplemented "mul ecx"
+	006 Subtract rcx, rcx, rdx
+	007 ShiftRight rcx, 1
+	008 Add rcx, rcx, rdx
+	009 ShiftRight rcx, 16
+	010 Compare r8, 0x186A0
+	011 Move rax, 6
+	012 Move rdx, 1
+	013 JumpIfGreaterOrEqual {15}
+	014 Move rax, rdx
+	015 Nop 
+	016 Compare rcx, 10
+	017 JumpIfLess {31}
+	018 Compare rcx, 100
+	019 JumpIfLess {30}
+	020 Compare rcx, 1000
+	021 JumpIfLess {28}
+	022 Compare rcx, 0x2710
+	023 JumpIfLess {26}
+	024 Add rax, rax, 4
+	025 Return rax
+	026 Add rax, rax, 3
+	027 Return rax
+	028 Add rax, rax, 2
+	029 Return rax
+	030 Add rax, rax, 1
+	031 Return rax
+
+Method: System.Int32 CountHexDigits(System.UInt64 value)
+
+Disassembly:
+	xchg ax,ax
+	mov rax,rcx
+	mov r9d,0FFFFFFFFh
+	shr rax,20h
+	mov edx,1
+	cmp rcx,r9
+	mov r8d,9
+	cmovbe rax,rcx
+	cmovbe r8d,edx
+	cmp rax,0FFFFh
+	jbe short 0000000180EC1125h
+	add r8d,4
+	shr rax,10h
+	cmp rax,0FFh
+	lea edx,[r8+2]
+	cmovbe edx,r8d
+	mov rcx,rax
+	shr rcx,8
+	cmp rax,0FFh
+	cmovbe rcx,rax
+	lea eax,[rdx+1]
+	cmp rcx,0Fh
+	cmovbe eax,edx
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, rcx
+	003 Move r9, 0xFFFFFFFF
+	004 ShiftRight rax, 32
+	005 Move rdx, 1
+	006 Compare rcx, r9
+	007 Move r8, 9
+	008 JumpIfGreater {10}
+	009 Move rax, rcx
+	010 Nop 
+	011 JumpIfGreater {13}
+	012 Move r8, rdx
+	013 Nop 
+	014 Compare rax, 0xFFFF
+	015 JumpIfLessOrEqual {18}
+	016 Add r8, r8, 4
+	017 ShiftRight rax, 16
+	018 Compare rax, 255
+	019 LoadAddress rdx, [r8+2]
+	020 JumpIfGreater {22}
+	021 Move rdx, r8
+	022 Nop 
+	023 Move rcx, rax
+	024 ShiftRight rcx, 8
+	025 Compare rax, 255
+	026 JumpIfGreater {28}
+	027 Move rcx, rax
+	028 Nop 
+	029 LoadAddress rax, [rdx+1]
+	030 Compare rcx, 15
+	031 JumpIfGreater {33}
+	032 Move rax, rdx
+	033 Nop 
+	034 Return rax
+

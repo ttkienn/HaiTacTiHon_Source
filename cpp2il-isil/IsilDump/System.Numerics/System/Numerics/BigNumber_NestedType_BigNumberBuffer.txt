@@ -1,0 +1,66 @@
+Type: System.Numerics.BigNumber+BigNumberBuffer
+
+Method: System.Numerics.BigNumber+BigNumberBuffer Create()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1F01Ah],0
+	mov rdi,rcx
+	jne short 000000018127A0B9h
+	lea rcx,[181DFC670h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1F01Ah],1
+	xorps xmm0,xmm0
+	xor eax,eax
+	movups [rdi],xmm0
+	mov [rdi+10h],rax
+	mov rcx,[181DFC670h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180D8E140h
+	mov rdx,rbx
+	mov [rdi],rbx
+	mov rcx,rdi
+	call 00000001801E1E30h
+	mov rbx,[rsp+30h]
+	mov rax,rdi
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1F01A], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x181DFC670]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x181F1F01A], 1
+	011 Move xmm0, 0
+	012 Move rax, 0
+	013 Move [rdi], xmm0
+	014 Move [rdi+16], rax
+	015 Move rcx, typeof(System.Text.StringBuilder)
+	016 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	017 Move rdx, 0
+	018 Move rcx, rax
+	019 Move rbx, rax
+	020 Call StringBuilder..ctor, rcx, rdx
+	021 Move rdx, rbx
+	022 Move [rdi], rbx
+	023 Move rcx, rdi
+	024 Call 0x1801E1E30, rcx, rdx, r8, r9
+	025 Move rbx, stack:0x30
+	026 Move rax, rdi
+	027 ShiftStack 32
+	028 Move rdi, stack:0x0
+	029 ShiftStack 8
+	030 Return rax
+

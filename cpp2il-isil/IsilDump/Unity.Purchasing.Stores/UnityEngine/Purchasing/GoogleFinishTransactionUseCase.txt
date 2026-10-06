@@ -1,0 +1,387 @@
+Type: UnityEngine.Purchasing.GoogleFinishTransactionUseCase
+
+Method: System.Void .ctor(UnityEngine.Purchasing.Interfaces.IGoogleBillingClient billingClient, UnityEngine.Purchasing.Interfaces.IGoogleQueryPurchasesUseCase googleQueryPurchasesUseCase)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rsi,r8
+	xor edx,edx
+	mov rdi,rcx
+	call 000000018024B730h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	lea rcx,[rdi+18h]
+	mov [rdi+18h],rsi
+	mov rdx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	011 LoadAddress rcx, [rdi+16]
+	012 Move [rdi+16], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 LoadAddress rcx, [rdi+24]
+	016 Move [rdi+24], rsi
+	017 Move rdx, rsi
+	018 Move rbx, stack:0x30
+	019 Move rsi, stack:0x38
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Call 0x1801E1E30, rcx, rdx, r8, r9
+	024 Return 
+
+Method: System.Threading.Tasks.Task FinishTransaction(UnityEngine.Purchasing.ProductDefinition product, System.String purchaseToken, System.Action`2<UnityEngine.Purchasing.Models.IGoogleBillingResult, UnityEngine.Purchasing.Interfaces.IGooglePurchase> onTransactionFinished)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,90h
+	cmp byte ptr [181F208C2h],0
+	mov rbx,r9
+	mov rdi,r8
+	mov rsi,rdx
+	mov rbp,rcx
+	jne short 000000018159435Bh
+	lea rcx,[181E345C8h]
+	call 00000001801E2A80h
+	lea rcx,[181DFFB08h]
+	call 00000001801E2A80h
+	mov byte ptr [181F208C2h],1
+	mov rcx,[181DFFB08h]
+	xorps xmm0,xmm0
+	xor eax,eax
+	movups [rsp+40h],xmm0
+	mov [rsp+80h],rax
+	movups [rsp+50h],xmm0
+	movups [rsp+60h],xmm0
+	movups [rsp+70h],xmm0
+	cmp [rcx+0E0h],eax
+	jne short 0000000181594390h
+	call 0000000180153C50h
+	xor edx,edx
+	lea rcx,[rsp+20h]
+	call 00000001807D8620h
+	xor edx,edx
+	lea rcx,[rsp+48h]
+	movups xmm0,[rax]
+	movups [rsp+48h],xmm0
+	movsd xmm1,qword ptr [rax+10h]
+	movsd qword ptr [rsp+58h],xmm1
+	call 00000001801E1E30h
+	mov rdx,rbp
+	mov [rsp+60h],rbp
+	lea rcx,[rsp+60h]
+	call 00000001801E1E30h
+	mov rdx,rsi
+	mov [rsp+70h],rsi
+	lea rcx,[rsp+70h]
+	call 00000001801E1E30h
+	mov rdx,rdi
+	mov [rsp+68h],rdi
+	lea rcx,[rsp+68h]
+	call 00000001801E1E30h
+	mov rdx,rbx
+	mov [rsp+78h],rbx
+	lea rcx,[rsp+78h]
+	call 00000001801E1E30h
+	mov r8,[181E345C8h]
+	lea rdx,[rsp+40h]
+	lea rcx,[rsp+48h]
+	mov dword ptr [rsp+40h],0FFFFFFFFh
+	call 0000000180704C00h
+	xor edx,edx
+	lea rcx,[rsp+48h]
+	call 0000000180E357C0h
+	lea r11,[rsp+90h]
+	mov rbx,[r11+10h]
+	mov rbp,[r11+18h]
+	mov rsi,[r11+20h]
+	mov rsp,r11
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -144
+	007 Compare [0x181F208C2], 0
+	008 Move rbx, r9
+	009 Move rdi, r8
+	010 Move rsi, rdx
+	011 Move rbp, rcx
+	012 JumpIfNotEqual {18}
+	013 LoadAddress rcx, [0x181E345C8]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x181DFFB08]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 Move [0x181F208C2], 1
+	018 Move rcx, typeof(System.Runtime.CompilerServices.AsyncTaskMethodBuilder)
+	019 Move xmm0, 0
+	020 Move rax, 0
+	021 Move stack:0x40, xmm0
+	022 Move stack:0x80, rax
+	023 Move stack:0x50, xmm0
+	024 Move stack:0x60, xmm0
+	025 Move stack:0x70, xmm0
+	026 Compare [rcx+224], rax
+	027 JumpIfNotEqual {29}
+	028 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	029 Move rdx, 0
+	030 LoadAddress rcx, stack:0x20
+	031 Call 0x1807D8620, rcx
+	032 Move rdx, 0
+	033 LoadAddress rcx, stack:0x48
+	034 Move xmm0, [rax]
+	035 Move stack:0x48, xmm0
+	036 Move xmm1, [rax+16]
+	037 Move stack:0x58, xmm1
+	038 Call 0x1801E1E30, rcx, rdx, r8, r9
+	039 Move rdx, rbp
+	040 Move stack:0x60, rbp
+	041 LoadAddress rcx, stack:0x60
+	042 Call 0x1801E1E30, rcx, rdx, r8, r9
+	043 Move rdx, rsi
+	044 Move stack:0x70, rsi
+	045 LoadAddress rcx, stack:0x70
+	046 Call 0x1801E1E30, rcx, rdx, r8, r9
+	047 Move rdx, rdi
+	048 Move stack:0x68, rdi
+	049 LoadAddress rcx, stack:0x68
+	050 Call 0x1801E1E30, rcx, rdx, r8, r9
+	051 Move rdx, rbx
+	052 Move stack:0x78, rbx
+	053 LoadAddress rcx, stack:0x78
+	054 Call 0x1801E1E30, rcx, rdx, r8, r9
+	055 Move r8, [0x181E345C8]
+	056 LoadAddress rdx, stack:0x40
+	057 LoadAddress rcx, stack:0x48
+	058 Move stack:0x40, 0xFFFFFFFF
+	059 Call AsyncTaskMethodBuilder.Start, rcx, rdx
+	060 Move rdx, 0
+	061 LoadAddress rcx, stack:0x48
+	062 Call AsyncTaskMethodBuilder.get_Task, rcx, rdx
+	063 LoadAddress r11, stack:0x90
+	064 Move rbx, [r11+16]
+	065 Move rbp, [r11+24]
+	066 Move rsi, [r11+32]
+	067 Move rsp, r11
+	068 Move rdi, stack:0x0
+	069 ShiftStack 8
+	070 Return rax
+
+Method: System.Void FinishTransactionForPurchase(UnityEngine.Purchasing.Interfaces.IGooglePurchase purchase, UnityEngine.Purchasing.ProductDefinition product, System.String purchaseToken, System.Action`2<UnityEngine.Purchasing.Models.IGoogleBillingResult, UnityEngine.Purchasing.Interfaces.IGooglePurchase> onTransactionFinished)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	mov [rsp+20h],rdi
+	push r14
+	sub rsp,30h
+	cmp byte ptr [181F208C3h],0
+	mov rbp,r9
+	mov rdi,r8
+	mov rsi,rdx
+	mov r14,rcx
+	jne short 00000001815941FEh
+	lea rcx,[181E14BC0h]
+	call 00000001801E2A80h
+	lea rcx,[181E1C350h]
+	call 00000001801E2A80h
+	lea rcx,[181E1CC40h]
+	call 00000001801E2A80h
+	lea rcx,[181E0C248h]
+	call 00000001801E2A80h
+	lea rcx,[181E0C2B8h]
+	call 00000001801E2A80h
+	lea rcx,[181E1B9B0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F208C3h],1
+	mov rcx,[181E1B9B0h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 000000018024B730h
+	test rbx,rbx
+	je near ptr 0000000181594307h
+	mov rdx,[rsp+60h]
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdx
+	call 00000001801E1E30h
+	lea rcx,[rbx+18h]
+	mov [rbx+18h],rsi
+	mov rdx,rsi
+	call 00000001801E1E30h
+	test rdi,rdi
+	je short 0000000181594285h
+	cmp dword ptr [rdi+20h],0
+	jne short 0000000181594285h
+	mov rcx,[181E14BC0h]
+	mov rdi,[r14+10h]
+	call 0000000180197840h
+	mov r8,[181E0C248h]
+	xor r9d,r9d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rsi,rax
+	call 00000001807DF340h
+	test rdi,rdi
+	je near ptr 0000000181594307h
+	mov ecx,7
+	jmp short 00000001815942D5h
+	mov r8,[rbx+18h]
+	test r8,r8
+	je short 0000000181594307h
+	mov rdx,[181E1CC40h]
+	mov ecx,0Bh
+	call 0000000180003100h
+	test al,al
+	jne short 00000001815942ECh
+	mov rcx,[181E14BC0h]
+	mov rdi,[r14+10h]
+	call 0000000180197840h
+	mov r8,[181E0C2B8h]
+	xor r9d,r9d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rsi,rax
+	call 00000001807DF340h
+	test rdi,rdi
+	je short 0000000181594307h
+	mov ecx,8
+	mov rdx,[181E1C350h]
+	mov r9,rbp
+	mov r8,rdi
+	mov [rsp+20h],rsi
+	call 0000000180005350h
+	mov rbx,[rsp+40h]
+	mov rbp,[rsp+48h]
+	mov rsi,[rsp+50h]
+	mov rdi,[rsp+58h]
+	add rsp,30h
+	pop r14
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 Move stack:0x20, rdi
+	005 ShiftStack -8
+	006 Move stack:0x0, r14
+	007 ShiftStack -48
+	008 Compare [0x181F208C3], 0
+	009 Move rbp, r9
+	010 Move rdi, r8
+	011 Move rsi, rdx
+	012 Move r14, rcx
+	013 JumpIfNotEqual {27}
+	014 LoadAddress rcx, [0x181E14BC0]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 LoadAddress rcx, [0x181E1C350]
+	017 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	018 LoadAddress rcx, [0x181E1CC40]
+	019 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	020 LoadAddress rcx, [0x181E0C248]
+	021 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	022 LoadAddress rcx, [0x181E0C2B8]
+	023 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	024 LoadAddress rcx, [0x181E1B9B0]
+	025 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	026 Move [0x181F208C3], 1
+	027 Move rcx, typeof(UnityEngine.Purchasing.GoogleFinishTransactionUseCase+<>c__DisplayClass4_0)
+	028 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	029 Move rdx, 0
+	030 Move rcx, rax
+	031 Move rbx, rax
+	032 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	033 Compare rbx, 0
+	034 JumpIfEqual {93}
+	035 Move rdx, stack:0x60
+	036 LoadAddress rcx, [rbx+16]
+	037 Move [rbx+16], rdx
+	038 Call 0x1801E1E30, rcx, rdx, r8, r9
+	039 LoadAddress rcx, [rbx+24]
+	040 Move [rbx+24], rsi
+	041 Move rdx, rsi
+	042 Call 0x1801E1E30, rcx, rdx, r8, r9
+	043 Compare rdi, 0
+	044 JumpIfEqual {60}
+	045 Compare [rdi+32], 0
+	046 JumpIfNotEqual {60}
+	047 Move rcx, typeof(System.Action`1<IGoogleBillingResult>)
+	048 Move rdi, [r14+16]
+	049 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	050 Move r8, [0x181E0C248]
+	051 Move r9, 0
+	052 Move rdx, rbx
+	053 Move rcx, rax
+	054 Move rsi, rax
+	055 Call 0x1807DF340, rcx, rdx, r8
+	056 Compare rdi, 0
+	057 JumpIfEqual {93}
+	058 Move rcx, 7
+	059 Goto {80}
+	060 Move r8, [rbx+24]
+	061 Compare r8, 0
+	062 JumpIfEqual {93}
+	063 Move rdx, typeof(UnityEngine.Purchasing.Interfaces.IGooglePurchase)
+	064 Move rcx, 11
+	065 Call 0x180003100, rcx, rdx, r8, r9
+	066 Compare rax, 0
+	067 JumpIfNotEqual {85}
+	068 Move rcx, typeof(System.Action`1<IGoogleBillingResult>)
+	069 Move rdi, [r14+16]
+	070 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	071 Move r8, [0x181E0C2B8]
+	072 Move r9, 0
+	073 Move rdx, rbx
+	074 Move rcx, rax
+	075 Move rsi, rax
+	076 Call 0x1807DF340, rcx, rdx, r8
+	077 Compare rdi, 0
+	078 JumpIfEqual {93}
+	079 Move rcx, 8
+	080 Move rdx, typeof(UnityEngine.Purchasing.Interfaces.IGoogleBillingClient)
+	081 Move r9, rbp
+	082 Move r8, rdi
+	083 Move stack:0x20, rsi
+	084 Call 0x180005350, rcx, rdx, r8, r9
+	085 Move rbx, stack:0x40
+	086 Move rbp, stack:0x48
+	087 Move rsi, stack:0x50
+	088 Move rdi, stack:0x58
+	089 ShiftStack 48
+	090 Move r14, stack:0x0
+	091 ShiftStack 8
+	092 Return 
+	093 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

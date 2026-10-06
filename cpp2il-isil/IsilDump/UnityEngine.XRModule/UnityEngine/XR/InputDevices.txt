@@ -1,0 +1,106 @@
+Type: UnityEngine.XR.InputDevices
+
+Method: System.Void InvokeConnectionEvent(System.UInt64 deviceId, UnityEngine.XR.ConnectionChangeType change)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,30h
+	cmp byte ptr [181F24411h],0
+	mov ebx,edx
+	mov rdi,rcx
+	jne short 000000018189129Bh
+	lea rcx,[181E235A0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F24411h],1
+	test ebx,ebx
+	je short 00000001818912DFh
+	sub ebx,1
+	je short 00000001818912C4h
+	cmp ebx,1
+	jne short 0000000181891326h
+	mov rcx,[181E235A0h]
+	mov rax,[rcx+0B8h]
+	cmp qword ptr [rax+10h],0
+	jbe short 0000000181891326h
+	mov rcx,[rax+10h]
+	jmp short 00000001818912F6h
+	mov rcx,[181E235A0h]
+	mov rax,[rcx+0B8h]
+	cmp qword ptr [rax+8],0
+	jbe short 0000000181891326h
+	mov rcx,[rax+8]
+	jmp short 00000001818912F6h
+	mov rcx,[181E235A0h]
+	mov rax,[rcx+0B8h]
+	cmp qword ptr [rax],0
+	jbe short 0000000181891326h
+	mov rcx,[rax]
+	mov rax,[rcx+18h]
+	lea rdx,[rsp+20h]
+	mov r8,[rcx+28h]
+	xorps xmm0,xmm0
+	mov rcx,[rcx+40h]
+	movups [rsp+20h],xmm0
+	mov [rsp+20h],rdi
+	mov byte ptr [rsp+28h],1
+	movaps xmm0,[rsp+20h]
+	movdqa [rsp+20h],xmm0
+	call rax
+	mov rbx,[rsp+40h]
+	add rsp,30h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -48
+	005 Compare [0x181F24411], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E235A0]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F24411], 1
+	012 Compare rbx, 0
+	013 JumpIfEqual {30}
+	014 Subtract rbx, rbx, 1
+	015 JumpIfEqual {24}
+	016 Compare rbx, 1
+	017 JumpIfNotEqual {46}
+	018 Move rcx, typeof(UnityEngine.XR.InputDevices)
+	019 Move rax, [rcx+184]
+	020 Compare [rax+16], 0
+	021 JumpIfLessOrEqual {46}
+	022 Move rcx, [rax+16]
+	023 Goto {35}
+	024 Move rcx, typeof(UnityEngine.XR.InputDevices)
+	025 Move rax, [rcx+184]
+	026 Compare [rax+8], 0
+	027 JumpIfLessOrEqual {46}
+	028 Move rcx, [rax+8]
+	029 Goto {35}
+	030 Move rcx, typeof(UnityEngine.XR.InputDevices)
+	031 Move rax, [rcx+184]
+	032 Compare [rax], 0
+	033 JumpIfLessOrEqual {46}
+	034 Move rcx, [rax]
+	035 Move rax, [rcx+24]
+	036 LoadAddress rdx, stack:0x20
+	037 Move r8, [rcx+40]
+	038 Move xmm0, 0
+	039 Move rcx, [rcx+64]
+	040 Move stack:0x20, xmm0
+	041 Move stack:0x20, rdi
+	042 Move stack:0x28, 1
+	043 Move xmm0, stack:0x20
+	044 Move stack:0x20, xmm0
+	045 Call rax
+	046 Move rbx, stack:0x40
+	047 ShiftStack 48
+	048 Move rdi, stack:0x0
+	049 ShiftStack 8
+	050 Return 
+

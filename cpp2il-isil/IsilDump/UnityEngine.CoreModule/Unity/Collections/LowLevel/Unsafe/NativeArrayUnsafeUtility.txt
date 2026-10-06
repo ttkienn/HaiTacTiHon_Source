@@ -1,0 +1,38 @@
+Type: Unity.Collections.LowLevel.Unsafe.NativeArrayUnsafeUtility
+
+Method: Unity.Collections.NativeArray`1<T> ConvertExistingDataToNativeArray(System.Void* dataPointer, System.Int32 length, Unity.Collections.Allocator allocator)
+
+Disassembly:
+	sub rsp,18h
+	mov [rsp],rdx
+	mov [rsp+8],r8d
+	mov [rsp+0Ch],r9d
+	movups xmm0,[rsp]
+	movups [rcx],xmm0
+	mov rax,rcx
+	add rsp,18h
+	ret
+
+ISIL:
+	001 ShiftStack -24
+	002 Move stack:0x0, rdx
+	003 Move stack:0x8, r8
+	004 Move stack:0xC, r9
+	005 Move xmm0, stack:0x0
+	006 Move [rcx], xmm0
+	007 Move rax, rcx
+	008 ShiftStack 24
+	009 Return rax
+
+Method: System.Void* GetUnsafeReadOnlyPtr(Unity.Collections.NativeArray`1<T> nativeArray)
+
+Disassembly:
+	xchg ax,ax
+	mov rax,[rcx]
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, [rcx]
+	003 Return rax
+

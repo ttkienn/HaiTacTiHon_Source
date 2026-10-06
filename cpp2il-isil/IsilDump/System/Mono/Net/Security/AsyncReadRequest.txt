@@ -1,0 +1,105 @@
+Type: Mono.Net.Security.AsyncReadRequest
+
+Method: System.Void .ctor(Mono.Net.Security.MobileAuthenticatedStream parent, System.Boolean sync, System.Byte[] buffer, System.Int32 offset, System.Int32 size)
+
+Disassembly:
+	mov qword ptr [rsp+38h],0
+	jmp near ptr 000000018114A2B0h
+
+ISIL:
+	001 Move stack:0x38, 0
+	002 Call AsyncReadOrWriteRequest..ctor, rcx, rdx, r8, r9, stack:0x0, stack:0x8
+	003 Return 
+
+Method: Mono.Net.Security.AsyncOperationStatus Run(Mono.Net.Security.AsyncOperationStatus status)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rbx,rcx
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 000000018114A3CAh
+	mov rdx,[rbx+38h]
+	xor r8d,r8d
+	call 000000018114DAA0h
+	test eax,eax
+	js short 000000018114A3B8h
+	add [rbx+40h],eax
+	mov r8,[rbx+38h]
+	test r8,r8
+	je short 000000018114A3CAh
+	add [r8+18h],eax
+	mov rdx,[rbx+38h]
+	test rdx,rdx
+	je short 000000018114A3CAh
+	sub [rdx+1Ch],eax
+	shr rax,20h
+	test al,al
+	je short 000000018114A3A7h
+	cmp dword ptr [rbx+40h],0
+	jne short 000000018114A3A7h
+	mov eax,1
+	add rsp,20h
+	pop rbx
+	ret
+	mov eax,[rbx+40h]
+	mov [rbx+1Ch],eax
+	mov eax,3
+	add rsp,20h
+	pop rbx
+	ret
+	mov dword ptr [rbx+1Ch],0FFFFFFFFh
+	mov eax,3
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rbx, rcx
+	005 Move rcx, [rcx+16]
+	006 Compare rcx, 0
+	007 JumpIfEqual {45}
+	008 Move rdx, [rbx+56]
+	009 Move r8, 0
+	010 Call MobileAuthenticatedStream.ProcessRead, rcx, rdx
+	011 Compare rax, 0
+	012 JumpIfSign {39}
+	013 Add [rbx+64], [rbx+64], rax
+	014 Move r8, [rbx+56]
+	015 Compare r8, 0
+	016 JumpIfEqual {45}
+	017 Add [r8+24], [r8+24], rax
+	018 Move rdx, [rbx+56]
+	019 Compare rdx, 0
+	020 JumpIfEqual {45}
+	021 Subtract [rdx+28], [rdx+28], rax
+	022 ShiftRight rax, 32
+	023 Compare rax, 0
+	024 JumpIfEqual {32}
+	025 Compare [rbx+64], 0
+	026 JumpIfNotEqual {32}
+	027 Move rax, 1
+	028 ShiftStack 32
+	029 Move rbx, stack:0x0
+	030 ShiftStack 8
+	031 Return rax
+	032 Move rax, [rbx+64]
+	033 Move [rbx+28], rax
+	034 Move rax, 3
+	035 ShiftStack 32
+	036 Move rbx, stack:0x0
+	037 ShiftStack 8
+	038 Return rax
+	039 Move [rbx+28], 0xFFFFFFFF
+	040 Move rax, 3
+	041 ShiftStack 32
+	042 Move rbx, stack:0x0
+	043 ShiftStack 8
+	044 Return rax
+	045 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

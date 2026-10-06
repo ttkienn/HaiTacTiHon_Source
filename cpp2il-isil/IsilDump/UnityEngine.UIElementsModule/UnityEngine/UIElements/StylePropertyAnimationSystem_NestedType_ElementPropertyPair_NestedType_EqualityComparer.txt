@@ -1,0 +1,79 @@
+Type: UnityEngine.UIElements.StylePropertyAnimationSystem+ElementPropertyPair+EqualityComparer
+
+Method: System.Boolean Equals(UnityEngine.UIElements.StylePropertyAnimationSystem+ElementPropertyPair x, UnityEngine.UIElements.StylePropertyAnimationSystem+ElementPropertyPair y)
+
+Disassembly:
+	mov rax,[r8]
+	cmp [rdx],rax
+	je short 000000018182EE2Eh
+	xor ecx,ecx
+	movzx eax,cl
+	ret
+	mov eax,[r8+8]
+	cmp [rdx+8],eax
+	sete al
+	ret
+
+ISIL:
+	001 Move rax, [r8]
+	002 Compare [rdx], rax
+	003 JumpIfEqual {7}
+	004 Move rcx, 0
+	005 Move rax, rcx
+	006 Return rax
+	007 Move rax, [r8+8]
+	008 Compare [rdx+8], rax
+	009 NotImplemented "sete al"
+	010 Return rax
+
+Method: System.Int32 GetHashCode(UnityEngine.UIElements.StylePropertyAnimationSystem+ElementPropertyPair obj)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rcx,[rdx]
+	mov rbx,rdx
+	test rcx,rcx
+	je short 000000018182EE73h
+	mov rdx,[rcx]
+	mov rax,[rdx+158h]
+	mov rdx,[rdx+160h]
+	call rax
+	imul eax,18Dh
+	xor eax,[rbx+8]
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rcx, [rdx]
+	005 Move rbx, rdx
+	006 Compare rcx, 0
+	007 JumpIfEqual {18}
+	008 Move rdx, [rcx]
+	009 Move rax, [rdx+344]
+	010 Move rdx, [rdx+352]
+	011 Call rax
+	012 Multiply rax, rax, 397
+	013 Xor rax, rax, [rbx+8]
+	014 ShiftStack 32
+	015 Move rbx, stack:0x0
+	016 ShiftStack 8
+	017 Return rax
+	018 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+

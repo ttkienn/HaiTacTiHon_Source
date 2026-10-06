@@ -1,0 +1,428 @@
+Type: Mono.Unity.CertHelper
+
+Method: System.Void AddCertificatesToNativeChain(Mono.Unity.UnityTls+unitytls_x509list* nativeCertificateChain, System.Security.Cryptography.X509Certificates.X509CertificateCollection certificates, Mono.Unity.UnityTls+unitytls_errorstate* errorState)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,60h
+	mov rdi,r8
+	mov rbx,rdx
+	mov rsi,rcx
+	cmp byte ptr [181F1E649h],0
+	jne short 000000018114B164h
+	lea rcx,[181E1B1D8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E649h],1
+	mov qword ptr [rsp+20h],0
+	test rbx,rbx
+	je near ptr 000000018114B264h
+	xor edx,edx
+	mov rcx,rbx
+	call 00000001814EB6F0h
+	mov [rsp+78h],rax
+	lea rax,[rsp+78h]
+	mov [rsp+30h],rax
+	lea rax,[rsp+20h]
+	mov [rsp+38h],rax
+	mov qword ptr [rsp+40h],0
+	movups xmm0,[rsp+30h]
+	movups [rsp+48h],xmm0
+	nop dword ptr [rax]
+	mov rcx,[rsp+78h]
+	test rcx,rcx
+	je near ptr 000000018114B258h
+	xor edx,edx
+	call 00000001814EB9A0h
+	test al,al
+	je short 000000018114B1EDh
+	mov rcx,[rsp+78h]
+	test rcx,rcx
+	je short 000000018114B252h
+	xor edx,edx
+	call 00000001814EBB50h
+	xor r9d,r9d
+	mov r8,rdi
+	mov rdx,rax
+	mov rcx,rsi
+	call 000000018114AF60h
+	jmp short 000000018114B1B0h
+	mov rax,[rsp+30h]
+	mov rdx,[181E1B1D8h]
+	mov rcx,[rax]
+	call 00000001801E1E50h
+	mov r8,rax
+	movups xmm0,[rsp+30h]
+	psrldq xmm0,8
+	movq rax,xmm0
+	mov [rax],r8
+	test r8,r8
+	je short 000000018114B229h
+	xor ecx,ecx
+	mov rdx,[181E1B1D8h]
+	call 0000000180003100h
+	jmp short 000000018114B23Fh
+	lea rcx,[rsp+48h]
+	call 0000000180762640h
+	mov rcx,[rsp+40h]
+	test rcx,rcx
+	jne short 000000018114B25Eh
+	mov rbx,[rsp+70h]
+	mov rsi,[rsp+80h]
+	add rsp,60h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+	nop
+	call 00000001801E2CA0h
+	nop
+	call 000000018018E770h
+	int 3
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x18, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -96
+	006 Move rdi, r8
+	007 Move rbx, rdx
+	008 Move rsi, rcx
+	009 Compare [0x181F1E649], 0
+	010 JumpIfNotEqual {14}
+	011 LoadAddress rcx, [0x181E1B1D8]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x181F1E649], 1
+	014 Move stack:0x20, 0
+	015 Compare rbx, 0
+	016 JumpIfEqual {79}
+	017 Move rdx, 0
+	018 Move rcx, rbx
+	019 Call X509CertificateCollection.GetEnumerator, rcx, rdx
+	020 Move stack:0x78, rax
+	021 LoadAddress rax, stack:0x78
+	022 Move stack:0x30, rax
+	023 LoadAddress rax, stack:0x20
+	024 Move stack:0x38, rax
+	025 Move stack:0x40, 0
+	026 Move xmm0, stack:0x30
+	027 Move stack:0x48, xmm0
+	028 Nop 
+	029 Move rcx, stack:0x78
+	030 Compare rcx, 0
+	031 JumpIfEqual {75}
+	032 Move rdx, 0
+	033 Call X509CertificateEnumerator.MoveNext, rcx, rdx
+	034 Compare rax, 0
+	035 JumpIfEqual {47}
+	036 Move rcx, stack:0x78
+	037 Compare rcx, 0
+	038 JumpIfEqual {73}
+	039 Move rdx, 0
+	040 Call X509CertificateEnumerator.get_Current, rcx, rdx
+	041 Move r9, 0
+	042 Move r8, rdi
+	043 Move rdx, rax
+	044 Move rcx, rsi
+	045 Call CertHelper.AddCertificateToNativeChain, rcx, rdx, r8, r9
+	046 Goto {29}
+	047 Move rax, stack:0x30
+	048 Move rdx, typeof(System.IDisposable)
+	049 Move rcx, [rax]
+	050 Call 0x1801E1E50, rcx, rdx, r8, r9
+	051 Move r8, rax
+	052 Move xmm0, stack:0x30
+	053 NotImplemented "psrldq xmm0,8"
+	054 Move rax, xmm0
+	055 Move [rax], r8
+	056 Compare r8, 0
+	057 JumpIfEqual {61}
+	058 Move rcx, 0
+	059 Move rdx, typeof(System.IDisposable)
+	060 Call 0x180003100, rcx, rdx, r8, r9
+	061 Goto {67}
+	062 LoadAddress rcx, stack:0x48
+	063 Call 0x180762640, rcx, rdx, r8, r9
+	064 Move rcx, stack:0x40
+	065 Compare rcx, 0
+	066 JumpIfNotEqual {77}
+	067 Move rbx, stack:0x70
+	068 Move rsi, stack:0x80
+	069 ShiftStack 96
+	070 Move rdi, stack:0x0
+	071 ShiftStack 8
+	072 Return 
+	073 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	074 Nop 
+	075 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	076 Nop 
+	077 Call 0x18018E770, rcx, rdx, r8, r9
+	078 Interrupt 
+	079 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void AddCertificateToNativeChain(Mono.Unity.UnityTls+unitytls_x509list* nativeCertificateChain, System.Security.Cryptography.X509Certificates.X509Certificate certificate, Mono.Unity.UnityTls+unitytls_errorstate* errorState)
+
+Disassembly:
+	push rdi
+	push r12
+	push r15
+	sub rsp,30h
+	cmp byte ptr [181F1E64Ah],0
+	mov r15,r8
+	mov rdi,rdx
+	mov r12,rcx
+	jne short 000000018114AF9Bh
+	lea rcx,[181E0A238h]
+	call 00000001801E2A80h
+	lea rcx,[181E0A088h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E64Ah],1
+	mov [rsp+50h],rbx
+	mov [rsp+58h],rbp
+	mov [rsp+60h],rsi
+	mov [rsp+68h],r14
+	test rdi,rdi
+	je near ptr 000000018114B129h
+	mov rdx,[rdi]
+	mov rcx,rdi
+	mov rax,[rdx+208h]
+	mov rdx,[rdx+210h]
+	call rax
+	xor ebp,ebp
+	mov rbx,rax
+	test rax,rax
+	je short 000000018114AFE9h
+	cmp [rax+18h],ebp
+	je short 000000018114AFE9h
+	jbe near ptr 000000018114B123h
+	lea r14,[rax+20h]
+	jmp short 000000018114AFECh
+	mov r14,rbp
+	xor ecx,ecx
+	call 00000001811619D0h
+	test rax,rax
+	je near ptr 000000018114B129h
+	mov rsi,[rax+78h]
+	test rbx,rbx
+	je near ptr 000000018114B129h
+	mov ecx,[rbx+18h]
+	xor edx,edx
+	call 0000000180E953E0h
+	test rsi,rsi
+	je near ptr 000000018114B129h
+	mov rdx,[rsi+28h]
+	mov r9,rax
+	mov r10,[rsi+18h]
+	mov r8,r14
+	mov rcx,[rsi+40h]
+	mov [rsp+28h],rdx
+	mov rdx,r12
+	mov [rsp+20h],r15
+	call r10
+	mov r8,[rdi+10h]
+	test r8,r8
+	je near ptr 000000018114B105h
+	mov rdx,[181E0A238h]
+	mov r9,[r8]
+	movzx eax,byte ptr [rdx+130h]
+	cmp [r9+130h],al
+	jb short 000000018114B07Ah
+	movzx ecx,al
+	mov rax,[r9+0C8h]
+	cmp [rax+rcx*8-8],rdx
+	jne short 000000018114B07Ah
+	mov al,1
+	jmp short 000000018114B07Ch
+	xor al,al
+	test al,al
+	mov rcx,rbp
+	cmovne rcx,r8
+	test rcx,rcx
+	je short 000000018114B105h
+	mov rdx,[rcx]
+	mov rax,[rdx+308h]
+	mov rdx,[rdx+310h]
+	call rax
+	mov rsi,rax
+	test rax,rax
+	je short 000000018114B105h
+	xor edx,edx
+	mov rcx,rax
+	call 00000001814EC190h
+	test eax,eax
+	jle short 000000018114B105h
+	mov ebx,ebp
+	xor edx,edx
+	mov rcx,rsi
+	call 00000001814EC190h
+	cmp ebx,eax
+	jge short 000000018114B105h
+	xor r8d,r8d
+	mov edx,ebp
+	mov rcx,rsi
+	call 00000001814EC1D0h
+	mov rcx,[181E0A088h]
+	mov rbx,rax
+	call 0000000180197840h
+	xor r8d,r8d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 0000000180DD44A0h
+	xor r9d,r9d
+	mov r8,r15
+	mov rdx,rdi
+	mov rcx,r12
+	call 000000018114AF60h
+	inc ebp
+	jmp short 000000018114B0B3h
+	mov r14,[rsp+68h]
+	mov rsi,[rsp+60h]
+	mov rbp,[rsp+58h]
+	mov rbx,[rsp+50h]
+	add rsp,30h
+	pop r15
+	pop r12
+	pop rdi
+	ret
+	call 00000001801E2C90h
+	int 3
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rdi
+	003 ShiftStack -8
+	004 Move stack:0x0, r12
+	005 ShiftStack -8
+	006 Move stack:0x0, r15
+	007 ShiftStack -48
+	008 Compare [0x181F1E64A], 0
+	009 Move r15, r8
+	010 Move rdi, rdx
+	011 Move r12, rcx
+	012 JumpIfNotEqual {18}
+	013 LoadAddress rcx, [0x181E0A238]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x181E0A088]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 Move [0x181F1E64A], 1
+	018 Move stack:0x50, rbx
+	019 Move stack:0x58, rbp
+	020 Move stack:0x60, rsi
+	021 Move stack:0x68, r14
+	022 Compare rdi, 0
+	023 JumpIfEqual {133}
+	024 Move rdx, [rdi]
+	025 Move rcx, rdi
+	026 Move rax, [rdx+520]
+	027 Move rdx, [rdx+528]
+	028 Call rax
+	029 Move rbp, 0
+	030 Move rbx, rax
+	031 Compare rax, 0
+	032 JumpIfEqual {38}
+	033 Compare [rax+24], rbp
+	034 JumpIfEqual {38}
+	035 JumpIfLessOrEqual {131}
+	036 LoadAddress r14, [rax+32]
+	037 Goto {39}
+	038 Move r14, rbp
+	039 Move rcx, 0
+	040 Call UnityTls.get_NativeInterface, rcx
+	041 Compare rax, 0
+	042 JumpIfEqual {133}
+	043 Move rsi, [rax+120]
+	044 Compare rbx, 0
+	045 JumpIfEqual {133}
+	046 Move rcx, [rbx+24]
+	047 Move rdx, 0
+	048 Call 0x180E953E0, rcx, rdx
+	049 Compare rsi, 0
+	050 JumpIfEqual {133}
+	051 Move rdx, [rsi+40]
+	052 Move r9, rax
+	053 Move r10, [rsi+24]
+	054 Move r8, r14
+	055 Move rcx, [rsi+64]
+	056 Move stack:0x28, rdx
+	057 Move rdx, r12
+	058 Move stack:0x20, r15
+	059 Call r10
+	060 Move r8, [rdi+16]
+	061 Compare r8, 0
+	062 JumpIfEqual {119}
+	063 Move rdx, typeof(System.Security.Cryptography.X509Certificates.X509Certificate2Impl)
+	064 Move r9, [r8]
+	065 Move rax, [rdx+304]
+	066 Compare [r9+304], rax
+	067 JumpIfLess {74}
+	068 Move rcx, rax
+	069 Move rax, [r9+200]
+	070 Compare [rax+0xFFFFFFF8+rcx*8], rdx
+	071 JumpIfNotEqual {74}
+	072 Move rax, 1
+	073 Goto {75}
+	074 Move rax, 0
+	075 Compare rax, 0
+	076 Move rcx, rbp
+	077 JumpIfEqual {79}
+	078 Move rcx, r8
+	079 Nop 
+	080 Compare rcx, 0
+	081 JumpIfEqual {119}
+	082 Move rdx, [rcx]
+	083 Move rax, [rdx+776]
+	084 Move rdx, [rdx+784]
+	085 Call rax
+	086 Move rsi, rax
+	087 Compare rax, 0
+	088 JumpIfEqual {119}
+	089 Move rdx, 0
+	090 Move rcx, rax
+	091 Call X509CertificateImplCollection.get_Count, rcx, rdx
+	092 Compare rax, 0
+	093 JumpIfLessOrEqual {119}
+	094 Move rbx, rbp
+	095 Move rdx, 0
+	096 Move rcx, rsi
+	097 Call X509CertificateImplCollection.get_Count, rcx, rdx
+	098 Compare rbx, rax
+	099 JumpIfGreaterOrEqual {119}
+	100 Move r8, 0
+	101 Move rdx, rbp
+	102 Move rcx, rsi
+	103 Call X509CertificateImplCollection.get_Item, rcx, rdx
+	104 Move rcx, typeof(System.Security.Cryptography.X509Certificates.X509Certificate)
+	105 Move rbx, rax
+	106 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	107 Move r8, 0
+	108 Move rdx, rbx
+	109 Move rcx, rax
+	110 Move rdi, rax
+	111 Call X509Certificate..ctor, rcx, rdx
+	112 Move r9, 0
+	113 Move r8, r15
+	114 Move rdx, rdi
+	115 Move rcx, r12
+	116 Call CertHelper.AddCertificateToNativeChain, rcx, rdx, r8, r9
+	117 Add rbp, rbp, 1
+	118 Goto {94}
+	119 Move r14, stack:0x68
+	120 Move rsi, stack:0x60
+	121 Move rbp, stack:0x58
+	122 Move rbx, stack:0x50
+	123 ShiftStack 48
+	124 Move r15, stack:0x0
+	125 ShiftStack 8
+	126 Move r12, stack:0x0
+	127 ShiftStack 8
+	128 Move rdi, stack:0x0
+	129 ShiftStack 8
+	130 Return 
+	131 Call 0x1801E2C90, rcx, rdx, r8, r9
+	132 Interrupt 
+	133 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

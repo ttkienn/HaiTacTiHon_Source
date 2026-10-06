@@ -1,0 +1,113 @@
+Type: System.Runtime.Serialization.Formatters.Binary.ObjectReader+TopLevelAssemblyTypeResolver
+
+Method: System.Void .ctor(System.Reflection.Assembly topLevelAssembly)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 000000018024B730h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.Type ResolveType(System.Reflection.Assembly assembly, System.String simpleTypeName, System.Boolean ignoreCase)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,30h
+	mov rbx,rdx
+	mov rbp,r8
+	mov rdi,rcx
+	xor r8d,r8d
+	mov rcx,rbx
+	xor edx,edx
+	movzx esi,r9b
+	call 0000000180E51800h
+	test al,al
+	je short 0000000180E29A36h
+	mov rbx,[rdi+10h]
+	test rbx,rbx
+	je short 0000000180E29A75h
+	mov rax,[rbx]
+	movzx r9d,sil
+	xor r8d,r8d
+	mov rdx,rbp
+	mov rcx,rbx
+	mov r10,[rax+298h]
+	mov rax,[rax+2A0h]
+	mov [rsp+60h],rax
+	mov rbx,[rsp+40h]
+	mov rbp,[rsp+48h]
+	mov rsi,[rsp+50h]
+	add rsp,30h
+	pop rdi
+	jmp r10
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -48
+	007 Move rbx, rdx
+	008 Move rbp, r8
+	009 Move rdi, rcx
+	010 Move r8, 0
+	011 Move rcx, rbx
+	012 Move rdx, 0
+	013 Move rsi, r9
+	014 Call Assembly.op_Equality, rcx, rdx, r8
+	015 Compare rax, 0
+	016 JumpIfEqual {18}
+	017 Move rbx, [rdi+16]
+	018 Compare rbx, 0
+	019 JumpIfEqual {35}
+	020 Move rax, [rbx]
+	021 Move r9, rsi
+	022 Move r8, 0
+	023 Move rdx, rbp
+	024 Move rcx, rbx
+	025 Move r10, [rax+664]
+	026 Move rax, [rax+672]
+	027 Move stack:0x60, rax
+	028 Move rbx, stack:0x40
+	029 Move rbp, stack:0x48
+	030 Move rsi, stack:0x50
+	031 ShiftStack 48
+	032 Move rdi, stack:0x0
+	033 ShiftStack 8
+	034 CallNoReturn r10
+	035 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

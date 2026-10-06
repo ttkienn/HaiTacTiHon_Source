@@ -1,0 +1,208 @@
+Type: UnityEngine.Purchasing.UseCases.FetchStorePromotionVisibilityUseCase
+
+Method: System.Void .ctor(UnityEngine.Purchasing.IAppleStoreCallbacks appleStoreCallbacks, UnityEngine.Purchasing.INativeAppleStore nativeStore)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rsi,r8
+	xor edx,edx
+	mov rdi,rcx
+	call 000000018024B730h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	lea rcx,[rdi+18h]
+	mov [rdi+18h],rsi
+	mov rdx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	011 LoadAddress rcx, [rdi+16]
+	012 Move [rdi+16], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 LoadAddress rcx, [rdi+24]
+	016 Move [rdi+24], rsi
+	017 Move rdx, rsi
+	018 Move rbx, stack:0x30
+	019 Move rsi, stack:0x38
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Call 0x1801E1E30, rcx, rdx, r8, r9
+	024 Return 
+
+Method: System.Void FetchStorePromotionVisibility(UnityEngine.Purchasing.Product product, System.Action`2<System.String, UnityEngine.Purchasing.AppleStorePromotionVisibility> successCallback, System.Action`1<System.String> errorCallback)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	mov [rsp+20h],rdi
+	push r14
+	sub rsp,20h
+	cmp byte ptr [181F20B33h],0
+	mov rbp,r9
+	mov r14,r8
+	mov rsi,rdx
+	mov rdi,rcx
+	jne short 00000001815BBE7Eh
+	lea rcx,[181E18C18h]
+	call 00000001801E2A80h
+	lea rcx,[181E1E230h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20B33h],1
+	mov rbx,[rdi+10h]
+	test rbx,rbx
+	je near ptr 00000001815BBF4Ch
+	mov r10,[rbx]
+	xor ecx,ecx
+	mov r9,[181E18C18h]
+	movzx edx,word ptr [r10+12Eh]
+	cmp cx,dx
+	jae short 00000001815BBEC4h
+	mov r8,[r10+0B0h]
+	nop dword ptr [rax+rax]
+	movzx eax,cx
+	add rax,rax
+	cmp [r8+rax*8],r9
+	je short 00000001815BBF2Eh
+	inc cx
+	cmp cx,dx
+	jb short 00000001815BBEB0h
+	mov r8d,1
+	mov rdx,r9
+	mov rcx,rbx
+	call 0000000180188860h
+	mov r10,[rax]
+	mov r8,rbp
+	mov r9,[rax+8]
+	mov rdx,r14
+	mov rcx,rbx
+	call r10
+	test rsi,rsi
+	je short 00000001815BBF4Ch
+	mov r9,[rsi+10h]
+	test r9,r9
+	je short 00000001815BBF4Ch
+	mov r8,[rdi+18h]
+	test r8,r8
+	je short 00000001815BBF4Ch
+	mov r9,[r9+18h]
+	mov ecx,7
+	mov rdx,[181E1E230h]
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	mov rdi,[rsp+48h]
+	add rsp,20h
+	pop r14
+	jmp near ptr 0000000180002F00h
+	movzx ecx,cx
+	add rcx,rcx
+	mov eax,[r8+rcx*8+8]
+	inc eax
+	cdqe
+	shl rax,4
+	add rax,138h
+	add rax,r10
+	jmp short 00000001815BBED5h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 Move stack:0x20, rdi
+	005 ShiftStack -8
+	006 Move stack:0x0, r14
+	007 ShiftStack -32
+	008 Compare [0x181F20B33], 0
+	009 Move rbp, r9
+	010 Move r14, r8
+	011 Move rsi, rdx
+	012 Move rdi, rcx
+	013 JumpIfNotEqual {19}
+	014 LoadAddress rcx, [0x181E18C18]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 LoadAddress rcx, [0x181E1E230]
+	017 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	018 Move [0x181F20B33], 1
+	019 Move rbx, [rdi+16]
+	020 Compare rbx, 0
+	021 JumpIfEqual {76}
+	022 Move r10, [rbx]
+	023 Move rcx, 0
+	024 Move r9, typeof(UnityEngine.Purchasing.IAppleStoreCallbacks)
+	025 Move rdx, [r10+302]
+	026 Compare rcx, rdx
+	027 JumpIfGreaterOrEqual {37}
+	028 Move r8, [r10+176]
+	029 Nop 
+	030 Move rax, rcx
+	031 Add rax, rax, rax
+	032 Compare [r8+rax*8], r9
+	033 JumpIfEqual {67}
+	034 Add rcx, rcx, 1
+	035 Compare rcx, rdx
+	036 JumpIfLess {30}
+	037 Move r8, 1
+	038 Move rdx, r9
+	039 Move rcx, rbx
+	040 Call 0x180188860, rcx, rdx, r8, r9
+	041 Move r10, [rax]
+	042 Move r8, rbp
+	043 Move r9, [rax+8]
+	044 Move rdx, r14
+	045 Move rcx, rbx
+	046 Call r10
+	047 Compare rsi, 0
+	048 JumpIfEqual {76}
+	049 Move r9, [rsi+16]
+	050 Compare r9, 0
+	051 JumpIfEqual {76}
+	052 Move r8, [rdi+24]
+	053 Compare r8, 0
+	054 JumpIfEqual {76}
+	055 Move r9, [r9+24]
+	056 Move rcx, 7
+	057 Move rdx, typeof(UnityEngine.Purchasing.INativeAppleStore)
+	058 Move rbx, stack:0x30
+	059 Move rbp, stack:0x38
+	060 Move rsi, stack:0x40
+	061 Move rdi, stack:0x48
+	062 ShiftStack 32
+	063 Move r14, stack:0x0
+	064 ShiftStack 8
+	065 Call 0x180002F00, rcx, rdx, r8, r9
+	066 Return 
+	067 Move rcx, rcx
+	068 Add rcx, rcx, rcx
+	069 Move rax, [r8+8+rcx*8]
+	070 Add rax, rax, 1
+	071 Move rax, rax
+	072 ShiftLeft rax, 4
+	073 Add rax, rax, 312
+	074 Add rax, rax, r10
+	075 Goto {41}
+	076 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

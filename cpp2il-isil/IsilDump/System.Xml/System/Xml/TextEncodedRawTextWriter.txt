@@ -1,0 +1,614 @@
+Type: System.Xml.TextEncodedRawTextWriter
+
+Method: System.Void .ctor(System.IO.TextWriter writer, System.Xml.XmlWriterSettings settings)
+
+Disassembly:
+	xor r9d,r9d
+	jmp near ptr 000000018138C8C0h
+
+ISIL:
+	001 Move r9, 0
+	002 Call XmlEncodedRawTextWriter..ctor, rcx, rdx, r8
+	003 Return 
+
+Method: System.Void .ctor(System.IO.Stream stream, System.Xml.XmlWriterSettings settings)
+
+Disassembly:
+	xor r9d,r9d
+	jmp near ptr 000000018138C540h
+
+ISIL:
+	001 Move r9, 0
+	002 Call XmlEncodedRawTextWriter..ctor, rcx, rdx, r8
+	003 Return 
+
+Method: System.Void WriteXmlDeclaration(System.Xml.XmlStandalone standalone)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteXmlDeclaration(System.String xmldecl)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteDocType(System.String name, System.String pubid, System.String sysid, System.String subset)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteStartElement(System.String prefix, System.String localName, System.String ns)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteEndElement(System.String prefix, System.String localName, System.String ns)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteFullEndElement(System.String prefix, System.String localName, System.String ns)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void StartElementContent()
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteStartAttribute(System.String prefix, System.String localName, System.String ns)
+
+Disassembly:
+	mov byte ptr [rcx+6Ah],1
+	ret
+
+ISIL:
+	001 Move [rcx+106], 1
+	002 Return 
+
+Method: System.Void WriteEndAttribute()
+
+Disassembly:
+	mov byte ptr [rcx+6Ah],0
+	ret
+
+ISIL:
+	001 Move [rcx+106], 0
+	002 Return 
+
+Method: System.Void WriteNamespaceDeclaration(System.String prefix, System.String ns)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Boolean get_SupportsNamespaceDeclarationInChunks()
+
+Disassembly:
+	xor al,al
+	ret
+
+ISIL:
+	001 Move rax, 0
+	002 Return rax
+
+Method: System.Void WriteCData(System.String text)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [rcx+88h],0
+	mov rdi,rdx
+	mov rbx,rcx
+	je short 0000000181383F7Ch
+	cmp byte ptr [rcx+89h],0
+	je short 0000000181383F7Ch
+	xor r8d,r8d
+	xor edx,edx
+	call 0000000181388780h
+	test rdi,rdi
+	je short 0000000181383FB2h
+	xor ecx,ecx
+	call 0000000180E48AD0h
+	movsxd rdx,eax
+	xor r9d,r9d
+	movsxd rax,dword ptr [rdi+10h]
+	add rdx,rdi
+	mov rcx,rbx
+	lea r8,[rdx+rax*2]
+	call 000000018138B820h
+	mov eax,[rbx+50h]
+	mov [rbx+54h],eax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [rcx+136], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfEqual {14}
+	009 Compare [rcx+137], 0
+	010 JumpIfEqual {14}
+	011 Move r8, 0
+	012 Move rdx, 0
+	013 Call XmlEncodedRawTextWriter.ChangeTextContentMark, rcx, rdx
+	014 Compare rdi, 0
+	015 JumpIfEqual {32}
+	016 Move rcx, 0
+	017 Call RuntimeHelpers.get_OffsetToStringData, rcx
+	018 Move rdx, rax
+	019 Move r9, 0
+	020 Move rax, [rdi+16]
+	021 Add rdx, rdx, rdi
+	022 Move rcx, rbx
+	023 LoadAddress r8, [rdx+rax*2]
+	024 Call XmlEncodedRawTextWriter.WriteRawWithCharChecking, rcx, rdx, r8
+	025 Move rax, [rbx+80]
+	026 Move [rbx+84], rax
+	027 Move rbx, stack:0x30
+	028 ShiftStack 32
+	029 Move rdi, stack:0x0
+	030 ShiftStack 8
+	031 Return 
+	032 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void WriteComment(System.String text)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteProcessingInstruction(System.String name, System.String text)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteEntityRef(System.String name)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteCharEntity(System.Char ch)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteSurrogateCharEntity(System.Char lowChar, System.Char highChar)
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+
+Method: System.Void WriteWhitespace(System.String ws)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [rcx+6Ah],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 00000001813840BDh
+	cmp byte ptr [rcx+88h],0
+	je short 0000000181384092h
+	cmp byte ptr [rcx+89h],0
+	je short 0000000181384092h
+	xor r8d,r8d
+	xor edx,edx
+	call 0000000181388780h
+	test rdi,rdi
+	je short 00000001813840C8h
+	xor ecx,ecx
+	call 0000000180E48AD0h
+	movsxd rdx,eax
+	xor r9d,r9d
+	movsxd rax,dword ptr [rdi+10h]
+	add rdx,rdi
+	mov rcx,rbx
+	lea r8,[rdx+rax*2]
+	call 000000018138B820h
+	mov eax,[rbx+50h]
+	mov [rbx+54h],eax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [rcx+106], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {29}
+	009 Compare [rcx+136], 0
+	010 JumpIfEqual {16}
+	011 Compare [rcx+137], 0
+	012 JumpIfEqual {16}
+	013 Move r8, 0
+	014 Move rdx, 0
+	015 Call XmlEncodedRawTextWriter.ChangeTextContentMark, rcx, rdx
+	016 Compare rdi, 0
+	017 JumpIfEqual {34}
+	018 Move rcx, 0
+	019 Call RuntimeHelpers.get_OffsetToStringData, rcx
+	020 Move rdx, rax
+	021 Move r9, 0
+	022 Move rax, [rdi+16]
+	023 Add rdx, rdx, rdi
+	024 Move rcx, rbx
+	025 LoadAddress r8, [rdx+rax*2]
+	026 Call XmlEncodedRawTextWriter.WriteRawWithCharChecking, rcx, rdx, r8
+	027 Move rax, [rbx+80]
+	028 Move [rbx+84], rax
+	029 Move rbx, stack:0x30
+	030 ShiftStack 32
+	031 Move rdi, stack:0x0
+	032 ShiftStack 8
+	033 Return 
+	034 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void WriteString(System.String textBlock)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [rcx+6Ah],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 00000001813840BDh
+	cmp byte ptr [rcx+88h],0
+	je short 0000000181384092h
+	cmp byte ptr [rcx+89h],0
+	je short 0000000181384092h
+	xor r8d,r8d
+	xor edx,edx
+	call 0000000181388780h
+	test rdi,rdi
+	je short 00000001813840C8h
+	xor ecx,ecx
+	call 0000000180E48AD0h
+	movsxd rdx,eax
+	xor r9d,r9d
+	movsxd rax,dword ptr [rdi+10h]
+	add rdx,rdi
+	mov rcx,rbx
+	lea r8,[rdx+rax*2]
+	call 000000018138B820h
+	mov eax,[rbx+50h]
+	mov [rbx+54h],eax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [rcx+106], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {29}
+	009 Compare [rcx+136], 0
+	010 JumpIfEqual {16}
+	011 Compare [rcx+137], 0
+	012 JumpIfEqual {16}
+	013 Move r8, 0
+	014 Move rdx, 0
+	015 Call XmlEncodedRawTextWriter.ChangeTextContentMark, rcx, rdx
+	016 Compare rdi, 0
+	017 JumpIfEqual {34}
+	018 Move rcx, 0
+	019 Call RuntimeHelpers.get_OffsetToStringData, rcx
+	020 Move rdx, rax
+	021 Move r9, 0
+	022 Move rax, [rdi+16]
+	023 Add rdx, rdx, rdi
+	024 Move rcx, rbx
+	025 LoadAddress r8, [rdx+rax*2]
+	026 Call XmlEncodedRawTextWriter.WriteRawWithCharChecking, rcx, rdx, r8
+	027 Move rax, [rbx+80]
+	028 Move [rbx+84], rax
+	029 Move rbx, stack:0x30
+	030 ShiftStack 32
+	031 Move rdi, stack:0x0
+	032 ShiftStack 8
+	033 Return 
+	034 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void WriteChars(System.Char[] buffer, System.Int32 index, System.Int32 count)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [rcx+6Ah],0
+	mov rdi,rdx
+	movsxd rbp,r9d
+	mov rbx,rcx
+	movsxd rsi,r8d
+	jne short 0000000181384029h
+	cmp byte ptr [rcx+88h],0
+	je short 0000000181384002h
+	cmp byte ptr [rcx+89h],0
+	je short 0000000181384002h
+	xor r8d,r8d
+	xor edx,edx
+	call 0000000181388780h
+	test rdi,rdi
+	je short 000000018138403Eh
+	cmp esi,[rdi+18h]
+	jae short 0000000181384044h
+	lea rax,[rsi+10h]
+	xor r9d,r9d
+	lea rdx,[rdi+rax*2]
+	mov rcx,rbx
+	lea r8,[rdx+rbp*2]
+	call 000000018138B820h
+	mov eax,[rbx+50h]
+	mov [rbx+54h],eax
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [rcx+106], 0
+	008 Move rdi, rdx
+	009 Move rbp, r9
+	010 Move rbx, rcx
+	011 Move rsi, r8
+	012 JumpIfNotEqual {32}
+	013 Compare [rcx+136], 0
+	014 JumpIfEqual {20}
+	015 Compare [rcx+137], 0
+	016 JumpIfEqual {20}
+	017 Move r8, 0
+	018 Move rdx, 0
+	019 Call XmlEncodedRawTextWriter.ChangeTextContentMark, rcx, rdx
+	020 Compare rdi, 0
+	021 JumpIfEqual {39}
+	022 Compare rsi, [rdi+24]
+	023 JumpIfGreaterOrEqual {41}
+	024 LoadAddress rax, [rsi+16]
+	025 Move r9, 0
+	026 LoadAddress rdx, [rdi+rax*2]
+	027 Move rcx, rbx
+	028 LoadAddress r8, [rdx+rbp*2]
+	029 Call XmlEncodedRawTextWriter.WriteRawWithCharChecking, rcx, rdx, r8
+	030 Move rax, [rbx+80]
+	031 Move [rbx+84], rax
+	032 Move rbx, stack:0x30
+	033 Move rbp, stack:0x38
+	034 Move rsi, stack:0x40
+	035 ShiftStack 32
+	036 Move rdi, stack:0x0
+	037 ShiftStack 8
+	038 Return 
+	039 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	040 Interrupt 
+	041 Call 0x1801E2C90, rcx, rdx, r8, r9
+
+Method: System.Void WriteRaw(System.Char[] buffer, System.Int32 index, System.Int32 count)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [rcx+6Ah],0
+	mov rdi,rdx
+	movsxd rbp,r9d
+	mov rbx,rcx
+	movsxd rsi,r8d
+	jne short 0000000181384029h
+	cmp byte ptr [rcx+88h],0
+	je short 0000000181384002h
+	cmp byte ptr [rcx+89h],0
+	je short 0000000181384002h
+	xor r8d,r8d
+	xor edx,edx
+	call 0000000181388780h
+	test rdi,rdi
+	je short 000000018138403Eh
+	cmp esi,[rdi+18h]
+	jae short 0000000181384044h
+	lea rax,[rsi+10h]
+	xor r9d,r9d
+	lea rdx,[rdi+rax*2]
+	mov rcx,rbx
+	lea r8,[rdx+rbp*2]
+	call 000000018138B820h
+	mov eax,[rbx+50h]
+	mov [rbx+54h],eax
+	mov rbx,[rsp+30h]
+	mov rbp,[rsp+38h]
+	mov rsi,[rsp+40h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+	int 3
+	call 00000001801E2C90h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Compare [rcx+106], 0
+	008 Move rdi, rdx
+	009 Move rbp, r9
+	010 Move rbx, rcx
+	011 Move rsi, r8
+	012 JumpIfNotEqual {32}
+	013 Compare [rcx+136], 0
+	014 JumpIfEqual {20}
+	015 Compare [rcx+137], 0
+	016 JumpIfEqual {20}
+	017 Move r8, 0
+	018 Move rdx, 0
+	019 Call XmlEncodedRawTextWriter.ChangeTextContentMark, rcx, rdx
+	020 Compare rdi, 0
+	021 JumpIfEqual {39}
+	022 Compare rsi, [rdi+24]
+	023 JumpIfGreaterOrEqual {41}
+	024 LoadAddress rax, [rsi+16]
+	025 Move r9, 0
+	026 LoadAddress rdx, [rdi+rax*2]
+	027 Move rcx, rbx
+	028 LoadAddress r8, [rdx+rbp*2]
+	029 Call XmlEncodedRawTextWriter.WriteRawWithCharChecking, rcx, rdx, r8
+	030 Move rax, [rbx+80]
+	031 Move [rbx+84], rax
+	032 Move rbx, stack:0x30
+	033 Move rbp, stack:0x38
+	034 Move rsi, stack:0x40
+	035 ShiftStack 32
+	036 Move rdi, stack:0x0
+	037 ShiftStack 8
+	038 Return 
+	039 Call 0x1801E2CA0, rcx, rdx, r8, r9
+	040 Interrupt 
+	041 Call 0x1801E2C90, rcx, rdx, r8, r9
+
+Method: System.Void WriteRaw(System.String data)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [rcx+6Ah],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 00000001813840BDh
+	cmp byte ptr [rcx+88h],0
+	je short 0000000181384092h
+	cmp byte ptr [rcx+89h],0
+	je short 0000000181384092h
+	xor r8d,r8d
+	xor edx,edx
+	call 0000000181388780h
+	test rdi,rdi
+	je short 00000001813840C8h
+	xor ecx,ecx
+	call 0000000180E48AD0h
+	movsxd rdx,eax
+	xor r9d,r9d
+	movsxd rax,dword ptr [rdi+10h]
+	add rdx,rdi
+	mov rcx,rbx
+	lea r8,[rdx+rax*2]
+	call 000000018138B820h
+	mov eax,[rbx+50h]
+	mov [rbx+54h],eax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [rcx+106], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {29}
+	009 Compare [rcx+136], 0
+	010 JumpIfEqual {16}
+	011 Compare [rcx+137], 0
+	012 JumpIfEqual {16}
+	013 Move r8, 0
+	014 Move rdx, 0
+	015 Call XmlEncodedRawTextWriter.ChangeTextContentMark, rcx, rdx
+	016 Compare rdi, 0
+	017 JumpIfEqual {34}
+	018 Move rcx, 0
+	019 Call RuntimeHelpers.get_OffsetToStringData, rcx
+	020 Move rdx, rax
+	021 Move r9, 0
+	022 Move rax, [rdi+16]
+	023 Add rdx, rdx, rdi
+	024 Move rcx, rbx
+	025 LoadAddress r8, [rdx+rax*2]
+	026 Call XmlEncodedRawTextWriter.WriteRawWithCharChecking, rcx, rdx, r8
+	027 Move rax, [rbx+80]
+	028 Move [rbx+84], rax
+	029 Move rbx, stack:0x30
+	030 ShiftStack 32
+	031 Move rdi, stack:0x0
+	032 ShiftStack 8
+	033 Return 
+	034 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

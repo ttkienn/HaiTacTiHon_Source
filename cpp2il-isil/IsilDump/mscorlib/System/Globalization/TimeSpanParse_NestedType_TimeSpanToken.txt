@@ -1,0 +1,131 @@
+Type: System.Globalization.TimeSpanParse+TimeSpanToken
+
+Method: System.Void .ctor(System.Globalization.TimeSpanParse+TTT type)
+
+Disassembly:
+	xorps xmm0,xmm0
+	mov [rcx],dl
+	xor eax,eax
+	mov [rcx+4],rax
+	movups [rcx+10h],xmm0
+	ret
+
+ISIL:
+	001 Move xmm0, 0
+	002 Move [rcx], rdx
+	003 Move rax, 0
+	004 Move [rcx+4], rax
+	005 Move [rcx+16], xmm0
+	006 Return 
+
+Method: System.Void .ctor(System.Int32 number)
+
+Disassembly:
+	xorps xmm0,xmm0
+	mov byte ptr [rcx],2
+	movups [rcx+10h],xmm0
+	mov [rcx+4],edx
+	mov dword ptr [rcx+8],0
+	ret
+
+ISIL:
+	001 Move xmm0, 0
+	002 Move [rcx], 2
+	003 Move [rcx+16], xmm0
+	004 Move [rcx+4], rdx
+	005 Move [rcx+8], 0
+	006 Return 
+
+Method: System.Void .ctor(System.Globalization.TimeSpanParse+TTT type, System.Int32 number, System.Int32 leadingZeroes, System.ReadOnlySpan`1<System.Char> separator)
+
+Disassembly:
+	mov rax,[rsp+28h]
+	mov [rcx],dl
+	mov [rcx+4],r8d
+	mov [rcx+8],r9d
+	movups xmm0,[rax]
+	movups [rcx+10h],xmm0
+	ret
+
+ISIL:
+	001 Move rax, stack:0x28
+	002 Move [rcx], rdx
+	003 Move [rcx+4], r8
+	004 Move [rcx+8], r9
+	005 Move xmm0, [rax]
+	006 Move [rcx+16], xmm0
+	007 Return 
+
+Method: System.Boolean IsInvalidFraction()
+
+Disassembly:
+	sub rsp,28h
+	cmp dword ptr [rcx+4],98967Fh
+	jg short 0000000180E84C28h
+	cmp dword ptr [rcx+8],7
+	jg short 0000000180E84C28h
+	cmp dword ptr [rcx+4],0
+	je short 0000000180E84C21h
+	cmp dword ptr [rcx+8],0
+	je short 0000000180E84C21h
+	mov [rsp+20h],rbx
+	movsxd rbx,dword ptr [rcx+4]
+	xor edx,edx
+	mov ecx,[rcx+8]
+	dec ecx
+	call 0000000180E7D6A0h
+	mov rcx,rax
+	mov eax,98967Fh
+	cqo
+	idiv rcx
+	cmp rbx,rax
+	mov rbx,[rsp+20h]
+	setge al
+	add rsp,28h
+	ret
+	xor al,al
+	add rsp,28h
+	ret
+	mov al,1
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [rcx+4], 0x98967F
+	003 JumpIfGreater {35}
+	004 Compare [rcx+8], 7
+	005 JumpIfGreater {35}
+	006 Compare [rcx+4], 0
+	007 JumpIfEqual {32}
+	008 Compare [rcx+8], 0
+	009 JumpIfEqual {32}
+	010 Move stack:0x20, rbx
+	011 Move rbx, [rcx+4]
+	012 Move rdx, 0
+	013 Move rcx, [rcx+8]
+	014 Subtract rcx, rcx, 1
+	015 Call TimeSpanParse.Pow10, rcx, rdx
+	016 Move rcx, rax
+	017 Move rax, 0x98967F
+	018 Move TEMP, rax
+	019 ShiftRight TEMP, 63
+	020 Compare TEMP, 1
+	021 JumpIfNotEqual {24}
+	022 Move rdx, 18446744073709551615
+	023 Goto {25}
+	024 Move rdx, 0
+	025 Nop 
+	026 NotImplemented "idiv rcx"
+	027 Compare rbx, rax
+	028 Move rbx, stack:0x20
+	029 NotImplemented "setge al"
+	030 ShiftStack 40
+	031 Return rax
+	032 Move rax, 0
+	033 ShiftStack 40
+	034 Return rax
+	035 Move rax, 1
+	036 ShiftStack 40
+	037 Return rax
+

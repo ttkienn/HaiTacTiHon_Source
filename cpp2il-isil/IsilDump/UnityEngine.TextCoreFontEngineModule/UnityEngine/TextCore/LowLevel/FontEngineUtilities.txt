@@ -1,0 +1,32 @@
+Type: UnityEngine.TextCore.LowLevel.FontEngineUtilities
+
+Method: System.Int32 MaxValue(System.Int32 a, System.Int32 b, System.Int32 c)
+
+Disassembly:
+	cmp ecx,edx
+	jge short 000000018167B2BEh
+	cmp edx,r8d
+	cmovl edx,r8d
+	mov eax,edx
+	ret
+	cmp ecx,r8d
+	cmovge r8d,ecx
+	mov eax,r8d
+	ret
+
+ISIL:
+	001 Compare rcx, rdx
+	002 JumpIfGreaterOrEqual {9}
+	003 Compare rdx, r8
+	004 JumpIfGreaterOrEqual {6}
+	005 Move rdx, r8
+	006 Nop 
+	007 Move rax, rdx
+	008 Return rax
+	009 Compare rcx, r8
+	010 JumpIfLess {12}
+	011 Move r8, rcx
+	012 Nop 
+	013 Move rax, r8
+	014 Return rax
+

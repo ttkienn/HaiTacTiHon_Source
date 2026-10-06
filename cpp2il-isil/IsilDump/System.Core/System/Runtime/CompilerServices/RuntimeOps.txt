@@ -1,0 +1,206 @@
+Type: System.Runtime.CompilerServices.RuntimeOps
+
+Method: System.Boolean ExpandoTryGetValue(System.Dynamic.ExpandoObject expando, System.Object indexClass, System.Int32 index, System.String name, System.Boolean ignoreCase, out System.Object value)
+
+Disassembly:
+	sub rsp,48h
+	test rcx,rcx
+	je short 0000000181138287h
+	mov qword ptr [rsp+80h],0
+	movzx eax,byte ptr [rsp+70h]
+	mov [rsp+70h],al
+	add rsp,48h
+	jmp near ptr 0000000181127BC0h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -72
+	002 Compare rcx, 0
+	003 JumpIfEqual {10}
+	004 Move stack:0x80, 0
+	005 Move rax, stack:0x70
+	006 Move stack:0x70, rax
+	007 ShiftStack 72
+	008 Call ExpandoObject.TryGetValue, rcx, rdx, r8, r9, stack:0x0, stack:0x8
+	009 Return rax
+	010 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Object ExpandoTrySetValue(System.Dynamic.ExpandoObject expando, System.Object indexClass, System.Int32 index, System.Object value, System.String name, System.Boolean ignoreCase)
+
+Disassembly:
+	push rbx
+	sub rsp,40h
+	mov rbx,r9
+	test rcx,rcx
+	je short 00000001811382CDh
+	movzx eax,byte ptr [rsp+78h]
+	mov qword ptr [rsp+38h],0
+	mov byte ptr [rsp+30h],0
+	mov [rsp+28h],al
+	mov rax,[rsp+70h]
+	mov [rsp+20h],rax
+	call 0000000181127D10h
+	mov rax,rbx
+	add rsp,40h
+	pop rbx
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -64
+	004 Move rbx, r9
+	005 Compare rcx, 0
+	006 JumpIfEqual {19}
+	007 Move rax, stack:0x78
+	008 Move stack:0x38, 0
+	009 Move stack:0x30, 0
+	010 Move stack:0x28, rax
+	011 Move rax, stack:0x70
+	012 Move stack:0x20, rax
+	013 Call ExpandoObject.TrySetValue, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10
+	014 Move rax, rbx
+	015 ShiftStack 64
+	016 Move rbx, stack:0x0
+	017 ShiftStack 8
+	018 Return rax
+	019 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Boolean ExpandoTryDeleteValue(System.Dynamic.ExpandoObject expando, System.Object indexClass, System.Int32 index, System.String name, System.Boolean ignoreCase)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,40h
+	cmp byte ptr [181F1E58Ah],0
+	mov rdi,r9
+	mov esi,r8d
+	mov rbp,rdx
+	mov rbx,rcx
+	jne short 00000001811381ECh
+	lea rcx,[181E12B90h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E58Ah],1
+	mov rax,[181E12B90h]
+	cmp dword ptr [rax+0E0h],0
+	jne short 000000018113820Bh
+	mov rcx,rax
+	call 0000000180153C50h
+	mov rax,[181E12B90h]
+	mov rax,[rax+0B8h]
+	mov rcx,[rax+28h]
+	test rbx,rbx
+	je short 0000000181138258h
+	movzx eax,byte ptr [rsp+70h]
+	mov r9,rdi
+	mov qword ptr [rsp+30h],0
+	mov r8d,esi
+	mov [rsp+28h],rcx
+	mov rdx,rbp
+	mov rcx,rbx
+	mov [rsp+20h],al
+	call 00000001811278C0h
+	mov rbx,[rsp+50h]
+	mov rbp,[rsp+58h]
+	mov rsi,[rsp+60h]
+	add rsp,40h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -64
+	007 Compare [0x181F1E58A], 0
+	008 Move rdi, r9
+	009 Move rsi, r8
+	010 Move rbp, rdx
+	011 Move rbx, rcx
+	012 JumpIfNotEqual {16}
+	013 LoadAddress rcx, [0x181E12B90]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x181F1E58A], 1
+	016 Move rax, typeof(System.Dynamic.ExpandoObject)
+	017 Compare [rax+224], 0
+	018 JumpIfNotEqual {22}
+	019 Move rcx, rax
+	020 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	021 Move rax, typeof(System.Dynamic.ExpandoObject)
+	022 Move rax, [rax+184]
+	023 Move rcx, [rax+40]
+	024 Compare rbx, 0
+	025 JumpIfEqual {42}
+	026 Move rax, stack:0x70
+	027 Move r9, rdi
+	028 Move stack:0x30, 0
+	029 Move r8, rsi
+	030 Move stack:0x28, rcx
+	031 Move rdx, rbp
+	032 Move rcx, rbx
+	033 Move stack:0x20, rax
+	034 Call ExpandoObject.TryDeleteValue, rcx, rdx, r8, r9, stack:0x0, stack:0x8
+	035 Move rbx, stack:0x50
+	036 Move rbp, stack:0x58
+	037 Move rsi, stack:0x60
+	038 ShiftStack 64
+	039 Move rdi, stack:0x0
+	040 ShiftStack 8
+	041 Return rax
+	042 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Boolean ExpandoCheckVersion(System.Dynamic.ExpandoObject expando, System.Object version)
+
+Disassembly:
+	sub rsp,28h
+	test rcx,rcx
+	je short 000000018113817Eh
+	mov rax,[rcx+18h]
+	test rax,rax
+	je short 000000018113817Eh
+	cmp [rax+10h],rdx
+	sete al
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rcx, 0
+	003 JumpIfEqual {11}
+	004 Move rax, [rcx+24]
+	005 Compare rax, 0
+	006 JumpIfEqual {11}
+	007 Compare [rax+16], rdx
+	008 NotImplemented "sete al"
+	009 ShiftStack 40
+	010 Return rax
+	011 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void ExpandoPromoteClass(System.Dynamic.ExpandoObject expando, System.Object oldClass, System.Object newClass)
+
+Disassembly:
+	sub rsp,28h
+	test rcx,rcx
+	je short 00000001811381A5h
+	xor r9d,r9d
+	add rsp,28h
+	jmp near ptr 0000000181126AB0h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare rcx, 0
+	003 JumpIfEqual {8}
+	004 Move r9, 0
+	005 ShiftStack 40
+	006 Call ExpandoObject.PromoteClass, rcx, rdx, r8
+	007 Return 
+	008 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

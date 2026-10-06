@@ -1,0 +1,2644 @@
+Type: Unity.Services.Analytics.TransactionCurrencyConverter
+
+Method: System.Int64 Convert(System.String currencyCode, System.Double value)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,30h
+	cmp byte ptr [181F20BB0h],0
+	mov rbx,rdx
+	movaps [rsp+20h],xmm6
+	mov rdi,rcx
+	movaps xmm6,xmm2
+	jne short 00000001815DAC88h
+	lea rcx,[181E0D348h]
+	call 00000001801E2A80h
+	lea rcx,[181E08EF0h]
+	call 00000001801E2A80h
+	lea rcx,[181E2B218h]
+	call 00000001801E2A80h
+	lea rcx,[181E29A80h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20BB0h],1
+	xor edx,edx
+	mov dword ptr [rsp+48h],0
+	mov rcx,rbx
+	call 0000000180D7FFC0h
+	test al,al
+	jne near ptr 00000001815DAD59h
+	test rbx,rbx
+	je near ptr 00000001815DADB4h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000180D84EA0h
+	mov rcx,[rdi+10h]
+	test rcx,rcx
+	je near ptr 00000001815DADB4h
+	mov r9,[181E08EF0h]
+	lea r8,[rsp+48h]
+	mov rdx,rax
+	call 0000000180876560h
+	test al,al
+	jne short 00000001815DAD0Fh
+	mov rcx,[181E0D348h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001815DACEFh
+	call 0000000180153C50h
+	mov rcx,[181E29A80h]
+	xor edx,edx
+	call 0000000181609C40h
+	xor eax,eax
+	mov rbx,[rsp+40h]
+	movaps xmm6,[rsp+20h]
+	add rsp,30h
+	pop rdi
+	ret
+	mov rcx,[181E2B218h]
+	mov ebx,[rsp+48h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001815DAD28h
+	call 0000000180153C50h
+	movsd xmm0,qword ptr [1818BCD20h]
+	xor r8d,r8d
+	movd xmm1,ebx
+	cvtdq2pd xmm1,xmm1
+	call 0000000180F220D0h
+	mov rbx,[rsp+40h]
+	mulsd xmm0,xmm6
+	movaps xmm6,[rsp+20h]
+	cvttsd2si rax,xmm0
+	add rsp,30h
+	pop rdi
+	ret
+	lea rcx,[181DFEBC8h]
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	lea rcx,[181E233A0h]
+	mov rdi,rax
+	call 00000001801E2AA0h
+	lea rcx,[181E08FE8h]
+	mov rbx,rax
+	call 00000001801E2AA0h
+	xor r9d,r9d
+	mov r8,rbx
+	mov rdx,rax
+	mov rcx,rdi
+	call 0000000180E89B20h
+	lea rcx,[181E25E80h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rdi
+	call 00000001801E2C60h
+	int 3
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -48
+	005 Compare [0x181F20BB0], 0
+	006 Move rbx, rdx
+	007 Move stack:0x20, xmm6
+	008 Move rdi, rcx
+	009 Move xmm6, xmm2
+	010 JumpIfNotEqual {20}
+	011 LoadAddress rcx, [0x181E0D348]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x181E08EF0]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x181E2B218]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 LoadAddress rcx, [0x181E29A80]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 Move [0x181F20BB0], 1
+	020 Move rdx, 0
+	021 Move stack:0x48, 0
+	022 Move rcx, rbx
+	023 Call String.IsNullOrEmpty, rcx, rdx
+	024 Compare rax, 0
+	025 JumpIfNotEqual {72}
+	026 Compare rbx, 0
+	027 JumpIfEqual {93}
+	028 Move rdx, 0
+	029 Move rcx, rbx
+	030 Call String.ToUpperInvariant, rcx, rdx
+	031 Move rcx, [rdi+16]
+	032 Compare rcx, 0
+	033 JumpIfEqual {93}
+	034 Move r9, [0x181E08EF0]
+	035 LoadAddress r8, stack:0x48
+	036 Move rdx, rax
+	037 Call 0x180876560, rcx, rdx, r8
+	038 Compare rax, 0
+	039 JumpIfNotEqual {54}
+	040 Move rcx, typeof(UnityEngine.Debug)
+	041 Compare [rcx+224], 0
+	042 JumpIfNotEqual {44}
+	043 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	044 Move rcx, "Unknown currency provided to convert method, no conversion will be performed and returned value will be 0."
+	045 Move rdx, 0
+	046 Call Debug.LogWarning, rcx, rdx
+	047 Move rax, 0
+	048 Move rbx, stack:0x40
+	049 Move xmm6, stack:0x20
+	050 ShiftStack 48
+	051 Move rdi, stack:0x0
+	052 ShiftStack 8
+	053 Return rax
+	054 Move rcx, typeof(System.Math)
+	055 Move rbx, stack:0x48
+	056 Compare [rcx+224], 0
+	057 JumpIfNotEqual {59}
+	058 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	059 Move xmm0, [0x1818BCD20]
+	060 Move r8, 0
+	061 Move xmm1, rbx
+	062 NotImplemented "cvtdq2pd xmm1,xmm1"
+	063 Call Math.Pow, xmm0, xmm1, r8
+	064 Move rbx, stack:0x40
+	065 NotImplemented "mulsd xmm0,xmm6"
+	066 Move xmm6, stack:0x20
+	067 Move rax, xmm0
+	068 ShiftStack 48
+	069 Move rdi, stack:0x0
+	070 ShiftStack 8
+	071 Return rax
+	072 LoadAddress rcx, [0x181DFEBC8]
+	073 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	074 Move rcx, rax
+	075 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	076 LoadAddress rcx, [0x181E233A0]
+	077 Move rdi, rax
+	078 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	079 LoadAddress rcx, [0x181E08FE8]
+	080 Move rbx, rax
+	081 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	082 Move r9, 0
+	083 Move r8, rbx
+	084 Move rdx, rax
+	085 Move rcx, rdi
+	086 Call ArgumentNullException..ctor, rcx, rdx, r8
+	087 LoadAddress rcx, [0x181E25E80]
+	088 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	089 Move rdx, rax
+	090 Move rcx, rdi
+	091 Call 0x1801E2C60, rcx, rdx, r8, r9
+	092 Interrupt 
+	093 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F20BB1h],0
+	mov rsi,rcx
+	jne near ptr 00000001815DB5EAh
+	lea rcx,[181E08CD8h]
+	call 00000001801E2A80h
+	lea rcx,[181E08C00h]
+	call 00000001801E2A80h
+	lea rcx,[181E1C738h]
+	call 00000001801E2A80h
+	lea rcx,[181DFC800h]
+	call 00000001801E2A80h
+	lea rcx,[181E105A0h]
+	call 00000001801E2A80h
+	lea rcx,[181DFA420h]
+	call 00000001801E2A80h
+	lea rcx,[181DFEF60h]
+	call 00000001801E2A80h
+	lea rcx,[181E19178h]
+	call 00000001801E2A80h
+	lea rcx,[181E060A0h]
+	call 00000001801E2A80h
+	lea rcx,[181DF7520h]
+	call 00000001801E2A80h
+	lea rcx,[181E05F58h]
+	call 00000001801E2A80h
+	lea rcx,[181E0DE98h]
+	call 00000001801E2A80h
+	lea rcx,[181DF9DE0h]
+	call 00000001801E2A80h
+	lea rcx,[181E12D68h]
+	call 00000001801E2A80h
+	lea rcx,[181DFC440h]
+	call 00000001801E2A80h
+	lea rcx,[181DF6068h]
+	call 00000001801E2A80h
+	lea rcx,[181E05E18h]
+	call 00000001801E2A80h
+	lea rcx,[181E18478h]
+	call 00000001801E2A80h
+	lea rcx,[181E06250h]
+	call 00000001801E2A80h
+	lea rcx,[181DF6EE0h]
+	call 00000001801E2A80h
+	lea rcx,[181E0EC88h]
+	call 00000001801E2A80h
+	lea rcx,[181DF4F80h]
+	call 00000001801E2A80h
+	lea rcx,[181E22700h]
+	call 00000001801E2A80h
+	lea rcx,[181DF6BC0h]
+	call 00000001801E2A80h
+	lea rcx,[181E25140h]
+	call 00000001801E2A80h
+	lea rcx,[181E17C58h]
+	call 00000001801E2A80h
+	lea rcx,[181E0DDB8h]
+	call 00000001801E2A80h
+	lea rcx,[181DF6770h]
+	call 00000001801E2A80h
+	lea rcx,[181E0D6B8h]
+	call 00000001801E2A80h
+	lea rcx,[181E0D878h]
+	call 00000001801E2A80h
+	lea rcx,[181E35E08h]
+	call 00000001801E2A80h
+	lea rcx,[181DF5110h]
+	call 00000001801E2A80h
+	lea rcx,[181E35C78h]
+	call 00000001801E2A80h
+	lea rcx,[181E348F8h]
+	call 00000001801E2A80h
+	lea rcx,[181DF6900h]
+	call 00000001801E2A80h
+	lea rcx,[181DF4A70h]
+	call 00000001801E2A80h
+	lea rcx,[181E21470h]
+	call 00000001801E2A80h
+	lea rcx,[181E12CF8h]
+	call 00000001801E2A80h
+	lea rcx,[181E24B00h]
+	call 00000001801E2A80h
+	lea rcx,[181E2CE50h]
+	call 00000001801E2A80h
+	lea rcx,[181E32588h]
+	call 00000001801E2A80h
+	lea rcx,[181E05D40h]
+	call 00000001801E2A80h
+	lea rcx,[181E061E0h]
+	call 00000001801E2A80h
+	lea rcx,[181E35910h]
+	call 00000001801E2A80h
+	lea rcx,[181DFC698h]
+	call 00000001801E2A80h
+	lea rcx,[181E18548h]
+	call 00000001801E2A80h
+	lea rcx,[181DFA228h]
+	call 00000001801E2A80h
+	lea rcx,[181E2C5D8h]
+	call 00000001801E2A80h
+	lea rcx,[181E06108h]
+	call 00000001801E2A80h
+	lea rcx,[181DF4DF0h]
+	call 00000001801E2A80h
+	lea rcx,[181DF4E58h]
+	call 00000001801E2A80h
+	lea rcx,[181E2CF18h]
+	call 00000001801E2A80h
+	lea rcx,[181E05DF8h]
+	call 00000001801E2A80h
+	lea rcx,[181E10530h]
+	call 00000001801E2A80h
+	lea rcx,[181E0F340h]
+	call 00000001801E2A80h
+	lea rcx,[181E0E910h]
+	call 00000001801E2A80h
+	lea rcx,[181DFC250h]
+	call 00000001801E2A80h
+	lea rcx,[181E24638h]
+	call 00000001801E2A80h
+	lea rcx,[181E0D8E8h]
+	call 00000001801E2A80h
+	lea rcx,[181E32D58h]
+	call 00000001801E2A80h
+	lea rcx,[181E064D8h]
+	call 00000001801E2A80h
+	lea rcx,[181E190A8h]
+	call 00000001801E2A80h
+	lea rcx,[181E2CFB8h]
+	call 00000001801E2A80h
+	lea rcx,[181E2C2B8h]
+	call 00000001801E2A80h
+	lea rcx,[181E2C380h]
+	call 00000001801E2A80h
+	lea rcx,[181DFEB78h]
+	call 00000001801E2A80h
+	lea rcx,[181E10300h]
+	call 00000001801E2A80h
+	lea rcx,[181E0C8B8h]
+	call 00000001801E2A80h
+	lea rcx,[181E192B0h]
+	call 00000001801E2A80h
+	lea rcx,[181DFA160h]
+	call 00000001801E2A80h
+	lea rcx,[181DF7778h]
+	call 00000001801E2A80h
+	lea rcx,[181E2D300h]
+	call 00000001801E2A80h
+	lea rcx,[181DFEF00h]
+	call 00000001801E2A80h
+	lea rcx,[181E062B8h]
+	call 00000001801E2A80h
+	lea rcx,[181DFEE98h]
+	call 00000001801E2A80h
+	lea rcx,[181E13008h]
+	call 00000001801E2A80h
+	lea rcx,[181E0D808h]
+	call 00000001801E2A80h
+	lea rcx,[181E18680h]
+	call 00000001801E2A80h
+	lea rcx,[181E35978h]
+	call 00000001801E2A80h
+	lea rcx,[181DF61F8h]
+	call 00000001801E2A80h
+	lea rcx,[181DFC188h]
+	call 00000001801E2A80h
+	lea rcx,[181E351D0h]
+	call 00000001801E2A80h
+	lea rcx,[181E13158h]
+	call 00000001801E2A80h
+	lea rcx,[181DF5178h]
+	call 00000001801E2A80h
+	lea rcx,[181DFA100h]
+	call 00000001801E2A80h
+	lea rcx,[181DF6198h]
+	call 00000001801E2A80h
+	lea rcx,[181DF53D0h]
+	call 00000001801E2A80h
+	lea rcx,[181E21920h]
+	call 00000001801E2A80h
+	lea rcx,[181E0EBB0h]
+	call 00000001801E2A80h
+	lea rcx,[181DF4C60h]
+	call 00000001801E2A80h
+	lea rcx,[181E24700h]
+	call 00000001801E2A80h
+	lea rcx,[181E061C0h]
+	call 00000001801E2A80h
+	lea rcx,[181E18EA0h]
+	call 00000001801E2A80h
+	lea rcx,[181DFC570h]
+	call 00000001801E2A80h
+	lea rcx,[181DFC958h]
+	call 00000001801E2A80h
+	lea rcx,[181E0F420h]
+	call 00000001801E2A80h
+	lea rcx,[181E19110h]
+	call 00000001801E2A80h
+	lea rcx,[181E05660h]
+	call 00000001801E2A80h
+	lea rcx,[181E191E0h]
+	call 00000001801E2A80h
+	lea rcx,[181DFE790h]
+	call 00000001801E2A80h
+	lea rcx,[181E216C8h]
+	call 00000001801E2A80h
+	lea rcx,[181DF75E8h]
+	call 00000001801E2A80h
+	lea rcx,[181E21BE0h]
+	call 00000001801E2A80h
+	lea rcx,[181E2C510h]
+	call 00000001801E2A80h
+	lea rcx,[181E246A0h]
+	call 00000001801E2A80h
+	lea rcx,[181E06468h]
+	call 00000001801E2A80h
+	lea rcx,[181DFE9E8h]
+	call 00000001801E2A80h
+	lea rcx,[181E35A80h]
+	call 00000001801E2A80h
+	lea rcx,[181E0DC68h]
+	call 00000001801E2A80h
+	lea rcx,[181DF6260h]
+	call 00000001801E2A80h
+	lea rcx,[181E2D530h]
+	call 00000001801E2A80h
+	lea rcx,[181E10290h]
+	call 00000001801E2A80h
+	lea rcx,[181E06010h]
+	call 00000001801E2A80h
+	lea rcx,[181E05810h]
+	call 00000001801E2A80h
+	lea rcx,[181E05FA8h]
+	call 00000001801E2A80h
+	lea rcx,[181E2D428h]
+	call 00000001801E2A80h
+	lea rcx,[181E05FC8h]
+	call 00000001801E2A80h
+	lea rcx,[181DF64B8h]
+	call 00000001801E2A80h
+	lea rcx,[181DFC7C8h]
+	call 00000001801E2A80h
+	lea rcx,[181E10370h]
+	call 00000001801E2A80h
+	lea rcx,[181DF6C88h]
+	call 00000001801E2A80h
+	lea rcx,[181E05EF0h]
+	call 00000001801E2A80h
+	lea rcx,[181E06400h]
+	call 00000001801E2A80h
+	lea rcx,[181E358B0h]
+	call 00000001801E2A80h
+	lea rcx,[181E241F0h]
+	call 00000001801E2A80h
+	lea rcx,[181E13078h]
+	call 00000001801E2A80h
+	lea rcx,[181E0D4F8h]
+	call 00000001801E2A80h
+	lea rcx,[181E2CB30h]
+	call 00000001801E2A80h
+	lea rcx,[181E24AA0h]
+	call 00000001801E2A80h
+	lea rcx,[181E18958h]
+	call 00000001801E2A80h
+	lea rcx,[181E10220h]
+	call 00000001801E2A80h
+	lea rcx,[181E19318h]
+	call 00000001801E2A80h
+	lea rcx,[181E24128h]
+	call 00000001801E2A80h
+	lea rcx,[181E19248h]
+	call 00000001801E2A80h
+	lea rcx,[181DFC1E8h]
+	call 00000001801E2A80h
+	lea rcx,[181E21538h]
+	call 00000001801E2A80h
+	lea rcx,[181E35230h]
+	call 00000001801E2A80h
+	lea rcx,[181E24768h]
+	call 00000001801E2A80h
+	lea rcx,[181E32E20h]
+	call 00000001801E2A80h
+	lea rcx,[181DF6E18h]
+	call 00000001801E2A80h
+	lea rcx,[181E05DA8h]
+	call 00000001801E2A80h
+	lea rcx,[181E283B8h]
+	call 00000001801E2A80h
+	lea rcx,[181E05F38h]
+	call 00000001801E2A80h
+	lea rcx,[181E24CF8h]
+	call 00000001801E2A80h
+	lea rcx,[181E22830h]
+	call 00000001801E2A80h
+	lea rcx,[181E05588h]
+	call 00000001801E2A80h
+	lea rcx,[181E212E0h]
+	call 00000001801E2A80h
+	lea rcx,[181E06390h]
+	call 00000001801E2A80h
+	lea rcx,[181DFC8F0h]
+	call 00000001801E2A80h
+	lea rcx,[181E2CF78h]
+	call 00000001801E2A80h
+	lea rcx,[181E2D788h]
+	call 00000001801E2A80h
+	lea rcx,[181E10140h]
+	call 00000001801E2A80h
+	lea rcx,[181E2DA08h]
+	call 00000001801E2A80h
+	lea rcx,[181E0EAD0h]
+	call 00000001801E2A80h
+	lea rcx,[181E101B0h]
+	call 00000001801E2A80h
+	lea rcx,[181E18D68h]
+	call 00000001801E2A80h
+	lea rcx,[181E0EEE0h]
+	call 00000001801E2A80h
+	lea rcx,[181E34720h]
+	call 00000001801E2A80h
+	lea rcx,[181E0EB40h]
+	call 00000001801E2A80h
+	lea rcx,[181DF60D0h]
+	call 00000001801E2A80h
+	lea rcx,[181E18340h]
+	call 00000001801E2A80h
+	lea rcx,[181E304B8h]
+	call 00000001801E2A80h
+	lea rcx,[181E12E48h]
+	call 00000001801E2A80h
+	lea rcx,[181E327E0h]
+	call 00000001801E2A80h
+	lea rcx,[181E35D40h]
+	call 00000001801E2A80h
+	lea rcx,[181DFC378h]
+	call 00000001801E2A80h
+	lea rcx,[181E0D728h]
+	call 00000001801E2A80h
+	lea rcx,[181E2D6C0h]
+	call 00000001801E2A80h
+	lea rcx,[181E104C0h]
+	call 00000001801E2A80h
+	lea rcx,[181E05878h]
+	call 00000001801E2A80h
+	lea rcx,[181E06178h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20BB1h],1
+	mov rcx,[181DFC800h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001815DB5FFh
+	call 0000000180153C50h
+	cmp byte ptr [181F1CC8Ah],0
+	jne short 00000001815DB61Bh
+	lea rcx,[181DFC800h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1CC8Ah],1
+	mov rcx,[181DFC800h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001815DB630h
+	call 0000000180153C50h
+	mov rax,[181DFC800h]
+	mov rcx,[rax+0B8h]
+	mov rbx,[rcx+10h]
+	mov rcx,[181E1C738h]
+	call 0000000180197840h
+	mov r8,[181E08C00h]
+	mov rdx,rbx
+	mov rcx,rax
+	mov rdi,rax
+	call 0000000180867AB0h
+	test rdi,rdi
+	je near ptr 00000001815DC8A6h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFC1E8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E2D788h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFC250h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E25140h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E24128h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFC570h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E327E0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFC698h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFC378h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFC8F0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFC7C8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFC958h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E062B8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,3
+	mov rdx,[181E05F58h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E05E18h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E05DA8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov rdx,[181E06468h]
+	mov r8d,2
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E064D8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	xor r8d,r8d
+	mov rdx,[181E32D58h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E060A0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFEB78h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E06390h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E06178h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E061E0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E05D40h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E06400h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E216C8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E06250h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E06108h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E05EF0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	xor r8d,r8d
+	mov rdx,[181E05FC8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E0EBB0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E10220h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	xor r8d,r8d
+	mov rdx,[181E32588h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E0C8B8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E10530h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	xor r8d,r8d
+	mov rdx,[181E0D8E8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,4
+	mov rdx,[181E0D878h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E0DC68h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E0DDB8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E0DE98h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	xor r8d,r8d
+	mov rdx,[181E10290h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E0D4F8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E21BE0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E0E910h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFA160h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E0EB40h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E0EAD0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFC440h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E0EC88h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E24B00h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	xor r8d,r8d
+	mov rdx,[181E24AA0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E24CF8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E2CFB8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF7520h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E2D530h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF7778h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E2D6C0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E35230h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E351D0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	xor r8d,r8d
+	mov rdx,[181E32E20h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF4F80h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF4C60h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF4DF0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF4E58h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF5178h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF4A70h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	xor r8d,r8d
+	mov rdx,[181DF5110h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF53D0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFA228h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFA100h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF9DE0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFA420h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	xor r8d,r8d
+	mov rdx,[181DFEF60h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFE790h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFEF00h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,3
+	mov rdx,[181DFEE98h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFE9E8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E0EEE0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	xor r8d,r8d
+	mov rdx,[181E0F420h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,3
+	mov rdx,[181E0F340h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E105A0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E10140h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E10300h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	xor r8d,r8d
+	mov rdx,[181E10370h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,3
+	mov rdx,[181E104C0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E101B0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E12CF8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E12D68h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E13078h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E358B0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E13008h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,3
+	mov rdx,[181E13158h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E0D728h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E18D68h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E18548h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E18478h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov rdx,[181E19178h]
+	mov r8d,2
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E192B0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E19110h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E18EA0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E190A8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E191E0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E19248h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E18340h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E18958h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E17C58h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E19318h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E18680h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E212E0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E21920h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E21538h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E21470h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,3
+	mov rdx,[181E283B8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E2D300h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E2CB30h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E2CF18h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	xor r8d,r8d
+	mov rdx,[181E2DA08h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E2CE50h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E2CF78h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E2D428h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E348F8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E35A80h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E35D40h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	xor r8d,r8d
+	mov rdx,[181E35E08h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF6770h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E304B8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF6EE0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF6068h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E35C78h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF6198h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF6900h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF64B8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF60D0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF6BC0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF6E18h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E12E48h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF61F8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF6C88h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF6260h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E0D6B8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E0D808h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DF75E8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E06010h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E05660h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E061C0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E05588h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E05DF8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E05FA8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,3
+	mov rdx,[181E05878h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E05F38h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E05810h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	xor r8d,r8d
+	mov rdx,[181E22830h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E22700h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181DFC188h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E241F0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E246A0h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	xor r8d,r8d
+	mov rdx,[181E24638h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,4
+	mov rdx,[181E24700h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E24768h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	xor r8d,r8d
+	mov rdx,[181E2C5D8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E2C380h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E2C2B8h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	xor r8d,r8d
+	mov rdx,[181E2C510h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E34720h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E35910h]
+	mov rcx,rdi
+	call 000000018086A400h
+	mov r9,[181E08CD8h]
+	mov r8d,2
+	mov rdx,[181E35978h]
+	mov rcx,rdi
+	call 000000018086A400h
+	lea rcx,[rsi+10h]
+	mov [rsi+10h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	xor edx,edx
+	mov rcx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018024B730h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x181F20BB1], 0
+	007 Move rsi, rcx
+	008 JumpIfNotEqual {352}
+	009 LoadAddress rcx, [0x181E08CD8]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x181E08C00]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x181E1C738]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 LoadAddress rcx, [0x181DFC800]
+	016 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	017 LoadAddress rcx, [0x181E105A0]
+	018 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	019 LoadAddress rcx, [0x181DFA420]
+	020 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	021 LoadAddress rcx, [0x181DFEF60]
+	022 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	023 LoadAddress rcx, [0x181E19178]
+	024 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	025 LoadAddress rcx, [0x181E060A0]
+	026 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	027 LoadAddress rcx, [0x181DF7520]
+	028 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	029 LoadAddress rcx, [0x181E05F58]
+	030 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	031 LoadAddress rcx, [0x181E0DE98]
+	032 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	033 LoadAddress rcx, [0x181DF9DE0]
+	034 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	035 LoadAddress rcx, [0x181E12D68]
+	036 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	037 LoadAddress rcx, [0x181DFC440]
+	038 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	039 LoadAddress rcx, [0x181DF6068]
+	040 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	041 LoadAddress rcx, [0x181E05E18]
+	042 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	043 LoadAddress rcx, [0x181E18478]
+	044 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	045 LoadAddress rcx, [0x181E06250]
+	046 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	047 LoadAddress rcx, [0x181DF6EE0]
+	048 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	049 LoadAddress rcx, [0x181E0EC88]
+	050 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	051 LoadAddress rcx, [0x181DF4F80]
+	052 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	053 LoadAddress rcx, [0x181E22700]
+	054 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	055 LoadAddress rcx, [0x181DF6BC0]
+	056 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	057 LoadAddress rcx, [0x181E25140]
+	058 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	059 LoadAddress rcx, [0x181E17C58]
+	060 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	061 LoadAddress rcx, [0x181E0DDB8]
+	062 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	063 LoadAddress rcx, [0x181DF6770]
+	064 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	065 LoadAddress rcx, [0x181E0D6B8]
+	066 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	067 LoadAddress rcx, [0x181E0D878]
+	068 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	069 LoadAddress rcx, [0x181E35E08]
+	070 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	071 LoadAddress rcx, [0x181DF5110]
+	072 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	073 LoadAddress rcx, [0x181E35C78]
+	074 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	075 LoadAddress rcx, [0x181E348F8]
+	076 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	077 LoadAddress rcx, [0x181DF6900]
+	078 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	079 LoadAddress rcx, [0x181DF4A70]
+	080 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	081 LoadAddress rcx, [0x181E21470]
+	082 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	083 LoadAddress rcx, [0x181E12CF8]
+	084 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	085 LoadAddress rcx, [0x181E24B00]
+	086 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	087 LoadAddress rcx, [0x181E2CE50]
+	088 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	089 LoadAddress rcx, [0x181E32588]
+	090 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	091 LoadAddress rcx, [0x181E05D40]
+	092 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	093 LoadAddress rcx, [0x181E061E0]
+	094 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	095 LoadAddress rcx, [0x181E35910]
+	096 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	097 LoadAddress rcx, [0x181DFC698]
+	098 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	099 LoadAddress rcx, [0x181E18548]
+	100 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	101 LoadAddress rcx, [0x181DFA228]
+	102 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	103 LoadAddress rcx, [0x181E2C5D8]
+	104 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	105 LoadAddress rcx, [0x181E06108]
+	106 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	107 LoadAddress rcx, [0x181DF4DF0]
+	108 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	109 LoadAddress rcx, [0x181DF4E58]
+	110 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	111 LoadAddress rcx, [0x181E2CF18]
+	112 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	113 LoadAddress rcx, [0x181E05DF8]
+	114 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	115 LoadAddress rcx, [0x181E10530]
+	116 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	117 LoadAddress rcx, [0x181E0F340]
+	118 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	119 LoadAddress rcx, [0x181E0E910]
+	120 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	121 LoadAddress rcx, [0x181DFC250]
+	122 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	123 LoadAddress rcx, [0x181E24638]
+	124 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	125 LoadAddress rcx, [0x181E0D8E8]
+	126 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	127 LoadAddress rcx, [0x181E32D58]
+	128 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	129 LoadAddress rcx, [0x181E064D8]
+	130 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	131 LoadAddress rcx, [0x181E190A8]
+	132 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	133 LoadAddress rcx, [0x181E2CFB8]
+	134 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	135 LoadAddress rcx, [0x181E2C2B8]
+	136 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	137 LoadAddress rcx, [0x181E2C380]
+	138 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	139 LoadAddress rcx, [0x181DFEB78]
+	140 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	141 LoadAddress rcx, [0x181E10300]
+	142 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	143 LoadAddress rcx, [0x181E0C8B8]
+	144 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	145 LoadAddress rcx, [0x181E192B0]
+	146 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	147 LoadAddress rcx, [0x181DFA160]
+	148 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	149 LoadAddress rcx, [0x181DF7778]
+	150 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	151 LoadAddress rcx, [0x181E2D300]
+	152 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	153 LoadAddress rcx, [0x181DFEF00]
+	154 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	155 LoadAddress rcx, [0x181E062B8]
+	156 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	157 LoadAddress rcx, [0x181DFEE98]
+	158 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	159 LoadAddress rcx, [0x181E13008]
+	160 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	161 LoadAddress rcx, [0x181E0D808]
+	162 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	163 LoadAddress rcx, [0x181E18680]
+	164 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	165 LoadAddress rcx, [0x181E35978]
+	166 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	167 LoadAddress rcx, [0x181DF61F8]
+	168 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	169 LoadAddress rcx, [0x181DFC188]
+	170 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	171 LoadAddress rcx, [0x181E351D0]
+	172 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	173 LoadAddress rcx, [0x181E13158]
+	174 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	175 LoadAddress rcx, [0x181DF5178]
+	176 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	177 LoadAddress rcx, [0x181DFA100]
+	178 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	179 LoadAddress rcx, [0x181DF6198]
+	180 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	181 LoadAddress rcx, [0x181DF53D0]
+	182 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	183 LoadAddress rcx, [0x181E21920]
+	184 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	185 LoadAddress rcx, [0x181E0EBB0]
+	186 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	187 LoadAddress rcx, [0x181DF4C60]
+	188 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	189 LoadAddress rcx, [0x181E24700]
+	190 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	191 LoadAddress rcx, [0x181E061C0]
+	192 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	193 LoadAddress rcx, [0x181E18EA0]
+	194 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	195 LoadAddress rcx, [0x181DFC570]
+	196 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	197 LoadAddress rcx, [0x181DFC958]
+	198 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	199 LoadAddress rcx, [0x181E0F420]
+	200 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	201 LoadAddress rcx, [0x181E19110]
+	202 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	203 LoadAddress rcx, [0x181E05660]
+	204 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	205 LoadAddress rcx, [0x181E191E0]
+	206 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	207 LoadAddress rcx, [0x181DFE790]
+	208 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	209 LoadAddress rcx, [0x181E216C8]
+	210 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	211 LoadAddress rcx, [0x181DF75E8]
+	212 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	213 LoadAddress rcx, [0x181E21BE0]
+	214 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	215 LoadAddress rcx, [0x181E2C510]
+	216 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	217 LoadAddress rcx, [0x181E246A0]
+	218 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	219 LoadAddress rcx, [0x181E06468]
+	220 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	221 LoadAddress rcx, [0x181DFE9E8]
+	222 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	223 LoadAddress rcx, [0x181E35A80]
+	224 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	225 LoadAddress rcx, [0x181E0DC68]
+	226 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	227 LoadAddress rcx, [0x181DF6260]
+	228 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	229 LoadAddress rcx, [0x181E2D530]
+	230 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	231 LoadAddress rcx, [0x181E10290]
+	232 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	233 LoadAddress rcx, [0x181E06010]
+	234 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	235 LoadAddress rcx, [0x181E05810]
+	236 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	237 LoadAddress rcx, [0x181E05FA8]
+	238 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	239 LoadAddress rcx, [0x181E2D428]
+	240 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	241 LoadAddress rcx, [0x181E05FC8]
+	242 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	243 LoadAddress rcx, [0x181DF64B8]
+	244 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	245 LoadAddress rcx, [0x181DFC7C8]
+	246 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	247 LoadAddress rcx, [0x181E10370]
+	248 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	249 LoadAddress rcx, [0x181DF6C88]
+	250 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	251 LoadAddress rcx, [0x181E05EF0]
+	252 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	253 LoadAddress rcx, [0x181E06400]
+	254 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	255 LoadAddress rcx, [0x181E358B0]
+	256 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	257 LoadAddress rcx, [0x181E241F0]
+	258 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	259 LoadAddress rcx, [0x181E13078]
+	260 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	261 LoadAddress rcx, [0x181E0D4F8]
+	262 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	263 LoadAddress rcx, [0x181E2CB30]
+	264 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	265 LoadAddress rcx, [0x181E24AA0]
+	266 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	267 LoadAddress rcx, [0x181E18958]
+	268 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	269 LoadAddress rcx, [0x181E10220]
+	270 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	271 LoadAddress rcx, [0x181E19318]
+	272 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	273 LoadAddress rcx, [0x181E24128]
+	274 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	275 LoadAddress rcx, [0x181E19248]
+	276 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	277 LoadAddress rcx, [0x181DFC1E8]
+	278 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	279 LoadAddress rcx, [0x181E21538]
+	280 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	281 LoadAddress rcx, [0x181E35230]
+	282 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	283 LoadAddress rcx, [0x181E24768]
+	284 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	285 LoadAddress rcx, [0x181E32E20]
+	286 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	287 LoadAddress rcx, [0x181DF6E18]
+	288 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	289 LoadAddress rcx, [0x181E05DA8]
+	290 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	291 LoadAddress rcx, [0x181E283B8]
+	292 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	293 LoadAddress rcx, [0x181E05F38]
+	294 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	295 LoadAddress rcx, [0x181E24CF8]
+	296 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	297 LoadAddress rcx, [0x181E22830]
+	298 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	299 LoadAddress rcx, [0x181E05588]
+	300 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	301 LoadAddress rcx, [0x181E212E0]
+	302 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	303 LoadAddress rcx, [0x181E06390]
+	304 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	305 LoadAddress rcx, [0x181DFC8F0]
+	306 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	307 LoadAddress rcx, [0x181E2CF78]
+	308 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	309 LoadAddress rcx, [0x181E2D788]
+	310 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	311 LoadAddress rcx, [0x181E10140]
+	312 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	313 LoadAddress rcx, [0x181E2DA08]
+	314 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	315 LoadAddress rcx, [0x181E0EAD0]
+	316 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	317 LoadAddress rcx, [0x181E101B0]
+	318 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	319 LoadAddress rcx, [0x181E18D68]
+	320 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	321 LoadAddress rcx, [0x181E0EEE0]
+	322 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	323 LoadAddress rcx, [0x181E34720]
+	324 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	325 LoadAddress rcx, [0x181E0EB40]
+	326 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	327 LoadAddress rcx, [0x181DF60D0]
+	328 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	329 LoadAddress rcx, [0x181E18340]
+	330 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	331 LoadAddress rcx, [0x181E304B8]
+	332 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	333 LoadAddress rcx, [0x181E12E48]
+	334 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	335 LoadAddress rcx, [0x181E327E0]
+	336 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	337 LoadAddress rcx, [0x181E35D40]
+	338 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	339 LoadAddress rcx, [0x181DFC378]
+	340 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	341 LoadAddress rcx, [0x181E0D728]
+	342 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	343 LoadAddress rcx, [0x181E2D6C0]
+	344 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	345 LoadAddress rcx, [0x181E104C0]
+	346 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	347 LoadAddress rcx, [0x181E05878]
+	348 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	349 LoadAddress rcx, [0x181E06178]
+	350 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	351 Move [0x181F20BB1], 1
+	352 Move rcx, typeof(System.StringComparer)
+	353 Compare [rcx+224], 0
+	354 JumpIfNotEqual {356}
+	355 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	356 Compare [0x181F1CC8A], 0
+	357 JumpIfNotEqual {361}
+	358 LoadAddress rcx, [0x181DFC800]
+	359 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	360 Move [0x181F1CC8A], 1
+	361 Move rcx, typeof(System.StringComparer)
+	362 Compare [rcx+224], 0
+	363 JumpIfNotEqual {365}
+	364 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	365 Move rax, typeof(System.StringComparer)
+	366 Move rcx, [rax+184]
+	367 Move rbx, [rcx+16]
+	368 Move rcx, typeof(System.Collections.Generic.Dictionary`2<String, Int32>)
+	369 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	370 Move r8, [0x181E08C00]
+	371 Move rdx, rbx
+	372 Move rcx, rax
+	373 Move rdi, rax
+	374 Call 0x180867AB0, rcx, rdx
+	375 Compare rdi, 0
+	376 JumpIfEqual {1225}
+	377 Move r9, [0x181E08CD8]
+	378 Move r8, 2
+	379 Move rdx, "AFN"
+	380 Move rcx, rdi
+	381 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	382 Move r9, [0x181E08CD8]
+	383 Move r8, 2
+	384 Move rdx, "EUR"
+	385 Move rcx, rdi
+	386 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	387 Move r9, [0x181E08CD8]
+	388 Move r8, 2
+	389 Move rdx, "ALL"
+	390 Move rcx, rdi
+	391 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	392 Move r9, [0x181E08CD8]
+	393 Move r8, 2
+	394 Move rdx, "DZD"
+	395 Move rcx, rdi
+	396 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	397 Move r9, [0x181E08CD8]
+	398 Move r8, 2
+	399 Move rdx, "USD"
+	400 Move rcx, rdi
+	401 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	402 Move r9, [0x181E08CD8]
+	403 Move r8, 2
+	404 Move rdx, "AOA"
+	405 Move rcx, rdi
+	406 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	407 Move r9, [0x181E08CD8]
+	408 Move r8, 2
+	409 Move rdx, "XCD"
+	410 Move rcx, rdi
+	411 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	412 Move r9, [0x181E08CD8]
+	413 Move r8, 2
+	414 Move rdx, "ARS"
+	415 Move rcx, rdi
+	416 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	417 Move r9, [0x181E08CD8]
+	418 Move r8, 2
+	419 Move rdx, "AMD"
+	420 Move rcx, rdi
+	421 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	422 Move r9, [0x181E08CD8]
+	423 Move r8, 2
+	424 Move rdx, "AWG"
+	425 Move rcx, rdi
+	426 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	427 Move r9, [0x181E08CD8]
+	428 Move r8, 2
+	429 Move rdx, "AUD"
+	430 Move rcx, rdi
+	431 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	432 Move r9, [0x181E08CD8]
+	433 Move r8, 2
+	434 Move rdx, "AZN"
+	435 Move rcx, rdi
+	436 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	437 Move r9, [0x181E08CD8]
+	438 Move r8, 2
+	439 Move rdx, "BSD"
+	440 Move rcx, rdi
+	441 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	442 Move r9, [0x181E08CD8]
+	443 Move r8, 3
+	444 Move rdx, "BHD"
+	445 Move rcx, rdi
+	446 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	447 Move r9, [0x181E08CD8]
+	448 Move r8, 2
+	449 Move rdx, "BDT"
+	450 Move rcx, rdi
+	451 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	452 Move r9, [0x181E08CD8]
+	453 Move r8, 2
+	454 Move rdx, "BBD"
+	455 Move rcx, rdi
+	456 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	457 Move r9, [0x181E08CD8]
+	458 Move rdx, "BYN"
+	459 Move r8, 2
+	460 Move rcx, rdi
+	461 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	462 Move r9, [0x181E08CD8]
+	463 Move r8, 2
+	464 Move rdx, "BZD"
+	465 Move rcx, rdi
+	466 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	467 Move r9, [0x181E08CD8]
+	468 Move r8, 0
+	469 Move rdx, "XOF"
+	470 Move rcx, rdi
+	471 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	472 Move r9, [0x181E08CD8]
+	473 Move r8, 2
+	474 Move rdx, "BMD"
+	475 Move rcx, rdi
+	476 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	477 Move r9, [0x181E08CD8]
+	478 Move r8, 2
+	479 Move rdx, "INR"
+	480 Move rcx, rdi
+	481 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	482 Move r9, [0x181E08CD8]
+	483 Move r8, 2
+	484 Move rdx, "BTN"
+	485 Move rcx, rdi
+	486 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	487 Move r9, [0x181E08CD8]
+	488 Move r8, 2
+	489 Move rdx, "BOB"
+	490 Move rcx, rdi
+	491 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	492 Move r9, [0x181E08CD8]
+	493 Move r8, 2
+	494 Move rdx, "BOV"
+	495 Move rcx, rdi
+	496 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	497 Move r9, [0x181E08CD8]
+	498 Move r8, 2
+	499 Move rdx, "BAM"
+	500 Move rcx, rdi
+	501 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	502 Move r9, [0x181E08CD8]
+	503 Move r8, 2
+	504 Move rdx, "BWP"
+	505 Move rcx, rdi
+	506 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	507 Move r9, [0x181E08CD8]
+	508 Move r8, 2
+	509 Move rdx, "NOK"
+	510 Move rcx, rdi
+	511 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	512 Move r9, [0x181E08CD8]
+	513 Move r8, 2
+	514 Move rdx, "BRL"
+	515 Move rcx, rdi
+	516 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	517 Move r9, [0x181E08CD8]
+	518 Move r8, 2
+	519 Move rdx, "BND"
+	520 Move rcx, rdi
+	521 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	522 Move r9, [0x181E08CD8]
+	523 Move r8, 2
+	524 Move rdx, "BGN"
+	525 Move rcx, rdi
+	526 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	527 Move r9, [0x181E08CD8]
+	528 Move r8, 0
+	529 Move rdx, "BIF"
+	530 Move rcx, rdi
+	531 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	532 Move r9, [0x181E08CD8]
+	533 Move r8, 2
+	534 Move rdx, "CVE"
+	535 Move rcx, rdi
+	536 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	537 Move r9, [0x181E08CD8]
+	538 Move r8, 2
+	539 Move rdx, "KHR"
+	540 Move rcx, rdi
+	541 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	542 Move r9, [0x181E08CD8]
+	543 Move r8, 0
+	544 Move rdx, "XAF"
+	545 Move rcx, rdi
+	546 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	547 Move r9, [0x181E08CD8]
+	548 Move r8, 2
+	549 Move rdx, "CAD"
+	550 Move rcx, rdi
+	551 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	552 Move r9, [0x181E08CD8]
+	553 Move r8, 2
+	554 Move rdx, "KYD"
+	555 Move rcx, rdi
+	556 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	557 Move r9, [0x181E08CD8]
+	558 Move r8, 0
+	559 Move rdx, "CLP"
+	560 Move rcx, rdi
+	561 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	562 Move r9, [0x181E08CD8]
+	563 Move r8, 4
+	564 Move rdx, "CLF"
+	565 Move rcx, rdi
+	566 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	567 Move r9, [0x181E08CD8]
+	568 Move r8, 2
+	569 Move rdx, "CNY"
+	570 Move rcx, rdi
+	571 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	572 Move r9, [0x181E08CD8]
+	573 Move r8, 2
+	574 Move rdx, "COP"
+	575 Move rcx, rdi
+	576 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	577 Move r9, [0x181E08CD8]
+	578 Move r8, 2
+	579 Move rdx, "COU"
+	580 Move rcx, rdi
+	581 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	582 Move r9, [0x181E08CD8]
+	583 Move r8, 0
+	584 Move rdx, "KMF"
+	585 Move rcx, rdi
+	586 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	587 Move r9, [0x181E08CD8]
+	588 Move r8, 2
+	589 Move rdx, "CDF"
+	590 Move rcx, rdi
+	591 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	592 Move r9, [0x181E08CD8]
+	593 Move r8, 2
+	594 Move rdx, "NZD"
+	595 Move rcx, rdi
+	596 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	597 Move r9, [0x181E08CD8]
+	598 Move r8, 2
+	599 Move rdx, "CRC"
+	600 Move rcx, rdi
+	601 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	602 Move r9, [0x181E08CD8]
+	603 Move r8, 2
+	604 Move rdx, "HRK"
+	605 Move rcx, rdi
+	606 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	607 Move r9, [0x181E08CD8]
+	608 Move r8, 2
+	609 Move rdx, "CUP"
+	610 Move rcx, rdi
+	611 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	612 Move r9, [0x181E08CD8]
+	613 Move r8, 2
+	614 Move rdx, "CUC"
+	615 Move rcx, rdi
+	616 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	617 Move r9, [0x181E08CD8]
+	618 Move r8, 2
+	619 Move rdx, "ANG"
+	620 Move rcx, rdi
+	621 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	622 Move r9, [0x181E08CD8]
+	623 Move r8, 2
+	624 Move rdx, "CZK"
+	625 Move rcx, rdi
+	626 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	627 Move r9, [0x181E08CD8]
+	628 Move r8, 2
+	629 Move rdx, "DKK"
+	630 Move rcx, rdi
+	631 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	632 Move r9, [0x181E08CD8]
+	633 Move r8, 0
+	634 Move rdx, "DJF"
+	635 Move rcx, rdi
+	636 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	637 Move r9, [0x181E08CD8]
+	638 Move r8, 2
+	639 Move rdx, "DOP"
+	640 Move rcx, rdi
+	641 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	642 Move r9, [0x181E08CD8]
+	643 Move r8, 2
+	644 Move rdx, "EGP"
+	645 Move rcx, rdi
+	646 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	647 Move r9, [0x181E08CD8]
+	648 Move r8, 2
+	649 Move rdx, "SVC"
+	650 Move rcx, rdi
+	651 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	652 Move r9, [0x181E08CD8]
+	653 Move r8, 2
+	654 Move rdx, "ERN"
+	655 Move rcx, rdi
+	656 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	657 Move r9, [0x181E08CD8]
+	658 Move r8, 2
+	659 Move rdx, "SZL"
+	660 Move rcx, rdi
+	661 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	662 Move r9, [0x181E08CD8]
+	663 Move r8, 2
+	664 Move rdx, "ETB"
+	665 Move rcx, rdi
+	666 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	667 Move r9, [0x181E08CD8]
+	668 Move r8, 2
+	669 Move rdx, "FKP"
+	670 Move rcx, rdi
+	671 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	672 Move r9, [0x181E08CD8]
+	673 Move r8, 2
+	674 Move rdx, "FJD"
+	675 Move rcx, rdi
+	676 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	677 Move r9, [0x181E08CD8]
+	678 Move r8, 0
+	679 Move rdx, "XPF"
+	680 Move rcx, rdi
+	681 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	682 Move r9, [0x181E08CD8]
+	683 Move r8, 2
+	684 Move rdx, "GMD"
+	685 Move rcx, rdi
+	686 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	687 Move r9, [0x181E08CD8]
+	688 Move r8, 2
+	689 Move rdx, "GEL"
+	690 Move rcx, rdi
+	691 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	692 Move r9, [0x181E08CD8]
+	693 Move r8, 2
+	694 Move rdx, "GHS"
+	695 Move rcx, rdi
+	696 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	697 Move r9, [0x181E08CD8]
+	698 Move r8, 2
+	699 Move rdx, "GIP"
+	700 Move rcx, rdi
+	701 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	702 Move r9, [0x181E08CD8]
+	703 Move r8, 2
+	704 Move rdx, "GTQ"
+	705 Move rcx, rdi
+	706 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	707 Move r9, [0x181E08CD8]
+	708 Move r8, 2
+	709 Move rdx, "GBP"
+	710 Move rcx, rdi
+	711 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	712 Move r9, [0x181E08CD8]
+	713 Move r8, 0
+	714 Move rdx, "GNF"
+	715 Move rcx, rdi
+	716 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	717 Move r9, [0x181E08CD8]
+	718 Move r8, 2
+	719 Move rdx, "GYD"
+	720 Move rcx, rdi
+	721 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	722 Move r9, [0x181E08CD8]
+	723 Move r8, 2
+	724 Move rdx, "HTG"
+	725 Move rcx, rdi
+	726 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	727 Move r9, [0x181E08CD8]
+	728 Move r8, 2
+	729 Move rdx, "HNL"
+	730 Move rcx, rdi
+	731 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	732 Move r9, [0x181E08CD8]
+	733 Move r8, 2
+	734 Move rdx, "HKD"
+	735 Move rcx, rdi
+	736 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	737 Move r9, [0x181E08CD8]
+	738 Move r8, 2
+	739 Move rdx, "HUF"
+	740 Move rcx, rdi
+	741 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	742 Move r9, [0x181E08CD8]
+	743 Move r8, 0
+	744 Move rdx, "ISK"
+	745 Move rcx, rdi
+	746 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	747 Move r9, [0x181E08CD8]
+	748 Move r8, 2
+	749 Move rdx, "IDR"
+	750 Move rcx, rdi
+	751 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	752 Move r9, [0x181E08CD8]
+	753 Move r8, 2
+	754 Move rdx, "IRR"
+	755 Move rcx, rdi
+	756 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	757 Move r9, [0x181E08CD8]
+	758 Move r8, 3
+	759 Move rdx, "IQD"
+	760 Move rcx, rdi
+	761 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	762 Move r9, [0x181E08CD8]
+	763 Move r8, 2
+	764 Move rdx, "ILS"
+	765 Move rcx, rdi
+	766 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	767 Move r9, [0x181E08CD8]
+	768 Move r8, 2
+	769 Move rdx, "JMD"
+	770 Move rcx, rdi
+	771 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	772 Move r9, [0x181E08CD8]
+	773 Move r8, 0
+	774 Move rdx, "JPY"
+	775 Move rcx, rdi
+	776 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	777 Move r9, [0x181E08CD8]
+	778 Move r8, 3
+	779 Move rdx, "JOD"
+	780 Move rcx, rdi
+	781 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	782 Move r9, [0x181E08CD8]
+	783 Move r8, 2
+	784 Move rdx, "KZT"
+	785 Move rcx, rdi
+	786 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	787 Move r9, [0x181E08CD8]
+	788 Move r8, 2
+	789 Move rdx, "KES"
+	790 Move rcx, rdi
+	791 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	792 Move r9, [0x181E08CD8]
+	793 Move r8, 2
+	794 Move rdx, "KPW"
+	795 Move rcx, rdi
+	796 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	797 Move r9, [0x181E08CD8]
+	798 Move r8, 0
+	799 Move rdx, "KRW"
+	800 Move rcx, rdi
+	801 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	802 Move r9, [0x181E08CD8]
+	803 Move r8, 3
+	804 Move rdx, "KWD"
+	805 Move rcx, rdi
+	806 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	807 Move r9, [0x181E08CD8]
+	808 Move r8, 2
+	809 Move rdx, "KGS"
+	810 Move rcx, rdi
+	811 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	812 Move r9, [0x181E08CD8]
+	813 Move r8, 2
+	814 Move rdx, "LAK"
+	815 Move rcx, rdi
+	816 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	817 Move r9, [0x181E08CD8]
+	818 Move r8, 2
+	819 Move rdx, "LBP"
+	820 Move rcx, rdi
+	821 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	822 Move r9, [0x181E08CD8]
+	823 Move r8, 2
+	824 Move rdx, "LSL"
+	825 Move rcx, rdi
+	826 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	827 Move r9, [0x181E08CD8]
+	828 Move r8, 2
+	829 Move rdx, "ZAR"
+	830 Move rcx, rdi
+	831 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	832 Move r9, [0x181E08CD8]
+	833 Move r8, 2
+	834 Move rdx, "LRD"
+	835 Move rcx, rdi
+	836 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	837 Move r9, [0x181E08CD8]
+	838 Move r8, 3
+	839 Move rdx, "LYD"
+	840 Move rcx, rdi
+	841 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	842 Move r9, [0x181E08CD8]
+	843 Move r8, 2
+	844 Move rdx, "CHF"
+	845 Move rcx, rdi
+	846 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	847 Move r9, [0x181E08CD8]
+	848 Move r8, 2
+	849 Move rdx, "MOP"
+	850 Move rcx, rdi
+	851 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	852 Move r9, [0x181E08CD8]
+	853 Move r8, 2
+	854 Move rdx, "MKD"
+	855 Move rcx, rdi
+	856 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	857 Move r9, [0x181E08CD8]
+	858 Move r8, 2
+	859 Move rdx, "MGA"
+	860 Move rcx, rdi
+	861 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	862 Move r9, [0x181E08CD8]
+	863 Move rdx, "MWK"
+	864 Move r8, 2
+	865 Move rcx, rdi
+	866 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	867 Move r9, [0x181E08CD8]
+	868 Move r8, 2
+	869 Move rdx, "MYR"
+	870 Move rcx, rdi
+	871 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	872 Move r9, [0x181E08CD8]
+	873 Move r8, 2
+	874 Move rdx, "MVR"
+	875 Move rcx, rdi
+	876 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	877 Move r9, [0x181E08CD8]
+	878 Move r8, 2
+	879 Move rdx, "MRU"
+	880 Move rcx, rdi
+	881 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	882 Move r9, [0x181E08CD8]
+	883 Move r8, 2
+	884 Move rdx, "MUR"
+	885 Move rcx, rdi
+	886 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	887 Move r9, [0x181E08CD8]
+	888 Move r8, 2
+	889 Move rdx, "MXN"
+	890 Move rcx, rdi
+	891 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	892 Move r9, [0x181E08CD8]
+	893 Move r8, 2
+	894 Move rdx, "MXV"
+	895 Move rcx, rdi
+	896 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	897 Move r9, [0x181E08CD8]
+	898 Move r8, 2
+	899 Move rdx, "MDL"
+	900 Move rcx, rdi
+	901 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	902 Move r9, [0x181E08CD8]
+	903 Move r8, 2
+	904 Move rdx, "MNT"
+	905 Move rcx, rdi
+	906 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	907 Move r9, [0x181E08CD8]
+	908 Move r8, 2
+	909 Move rdx, "MAD"
+	910 Move rcx, rdi
+	911 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	912 Move r9, [0x181E08CD8]
+	913 Move r8, 2
+	914 Move rdx, "MZN"
+	915 Move rcx, rdi
+	916 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	917 Move r9, [0x181E08CD8]
+	918 Move r8, 2
+	919 Move rdx, "MMK"
+	920 Move rcx, rdi
+	921 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	922 Move r9, [0x181E08CD8]
+	923 Move r8, 2
+	924 Move rdx, "NAD"
+	925 Move rcx, rdi
+	926 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	927 Move r9, [0x181E08CD8]
+	928 Move r8, 2
+	929 Move rdx, "NPR"
+	930 Move rcx, rdi
+	931 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	932 Move r9, [0x181E08CD8]
+	933 Move r8, 2
+	934 Move rdx, "NIO"
+	935 Move rcx, rdi
+	936 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	937 Move r9, [0x181E08CD8]
+	938 Move r8, 2
+	939 Move rdx, "NGN"
+	940 Move rcx, rdi
+	941 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	942 Move r9, [0x181E08CD8]
+	943 Move r8, 3
+	944 Move rdx, "OMR"
+	945 Move rcx, rdi
+	946 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	947 Move r9, [0x181E08CD8]
+	948 Move r8, 2
+	949 Move rdx, "PKR"
+	950 Move rcx, rdi
+	951 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	952 Move r9, [0x181E08CD8]
+	953 Move r8, 2
+	954 Move rdx, "PAB"
+	955 Move rcx, rdi
+	956 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	957 Move r9, [0x181E08CD8]
+	958 Move r8, 2
+	959 Move rdx, "PGK"
+	960 Move rcx, rdi
+	961 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	962 Move r9, [0x181E08CD8]
+	963 Move r8, 0
+	964 Move rdx, "PYG"
+	965 Move rcx, rdi
+	966 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	967 Move r9, [0x181E08CD8]
+	968 Move r8, 2
+	969 Move rdx, "PEN"
+	970 Move rcx, rdi
+	971 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	972 Move r9, [0x181E08CD8]
+	973 Move r8, 2
+	974 Move rdx, "PHP"
+	975 Move rcx, rdi
+	976 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	977 Move r9, [0x181E08CD8]
+	978 Move r8, 2
+	979 Move rdx, "PLN"
+	980 Move rcx, rdi
+	981 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	982 Move r9, [0x181E08CD8]
+	983 Move r8, 2
+	984 Move rdx, "QAR"
+	985 Move rcx, rdi
+	986 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	987 Move r9, [0x181E08CD8]
+	988 Move r8, 2
+	989 Move rdx, "RON"
+	990 Move rcx, rdi
+	991 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	992 Move r9, [0x181E08CD8]
+	993 Move r8, 2
+	994 Move rdx, "RUB"
+	995 Move rcx, rdi
+	996 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	997 Move r9, [0x181E08CD8]
+	998 Move r8, 0
+	999 Move rdx, "RWF"
+	1000 Move rcx, rdi
+	1001 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1002 Move r9, [0x181E08CD8]
+	1003 Move r8, 2
+	1004 Move rdx, "SHP"
+	1005 Move rcx, rdi
+	1006 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1007 Move r9, [0x181E08CD8]
+	1008 Move r8, 2
+	1009 Move rdx, "WST"
+	1010 Move rcx, rdi
+	1011 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1012 Move r9, [0x181E08CD8]
+	1013 Move r8, 2
+	1014 Move rdx, "STN"
+	1015 Move rcx, rdi
+	1016 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1017 Move r9, [0x181E08CD8]
+	1018 Move r8, 2
+	1019 Move rdx, "SAR"
+	1020 Move rcx, rdi
+	1021 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1022 Move r9, [0x181E08CD8]
+	1023 Move r8, 2
+	1024 Move rdx, "RSD"
+	1025 Move rcx, rdi
+	1026 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1027 Move r9, [0x181E08CD8]
+	1028 Move r8, 2
+	1029 Move rdx, "SCR"
+	1030 Move rcx, rdi
+	1031 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1032 Move r9, [0x181E08CD8]
+	1033 Move r8, 2
+	1034 Move rdx, "SLL"
+	1035 Move rcx, rdi
+	1036 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1037 Move r9, [0x181E08CD8]
+	1038 Move r8, 2
+	1039 Move rdx, "SGD"
+	1040 Move rcx, rdi
+	1041 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1042 Move r9, [0x181E08CD8]
+	1043 Move r8, 2
+	1044 Move rdx, "SBD"
+	1045 Move rcx, rdi
+	1046 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1047 Move r9, [0x181E08CD8]
+	1048 Move r8, 2
+	1049 Move rdx, "SOS"
+	1050 Move rcx, rdi
+	1051 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1052 Move r9, [0x181E08CD8]
+	1053 Move r8, 2
+	1054 Move rdx, "SSP"
+	1055 Move rcx, rdi
+	1056 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1057 Move r9, [0x181E08CD8]
+	1058 Move r8, 2
+	1059 Move rdx, "LKR"
+	1060 Move rcx, rdi
+	1061 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1062 Move r9, [0x181E08CD8]
+	1063 Move r8, 2
+	1064 Move rdx, "SDG"
+	1065 Move rcx, rdi
+	1066 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1067 Move r9, [0x181E08CD8]
+	1068 Move r8, 2
+	1069 Move rdx, "SRD"
+	1070 Move rcx, rdi
+	1071 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1072 Move r9, [0x181E08CD8]
+	1073 Move r8, 2
+	1074 Move rdx, "SEK"
+	1075 Move rcx, rdi
+	1076 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1077 Move r9, [0x181E08CD8]
+	1078 Move r8, 2
+	1079 Move rdx, "CHE"
+	1080 Move rcx, rdi
+	1081 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1082 Move r9, [0x181E08CD8]
+	1083 Move r8, 2
+	1084 Move rdx, "CHW"
+	1085 Move rcx, rdi
+	1086 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1087 Move r9, [0x181E08CD8]
+	1088 Move r8, 2
+	1089 Move rdx, "SYP"
+	1090 Move rcx, rdi
+	1091 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1092 Move r9, [0x181E08CD8]
+	1093 Move r8, 2
+	1094 Move rdx, "TWD"
+	1095 Move rcx, rdi
+	1096 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1097 Move r9, [0x181E08CD8]
+	1098 Move r8, 2
+	1099 Move rdx, "TJS"
+	1100 Move rcx, rdi
+	1101 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1102 Move r9, [0x181E08CD8]
+	1103 Move r8, 2
+	1104 Move rdx, "TZS"
+	1105 Move rcx, rdi
+	1106 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1107 Move r9, [0x181E08CD8]
+	1108 Move r8, 2
+	1109 Move rdx, "THB"
+	1110 Move rcx, rdi
+	1111 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1112 Move r9, [0x181E08CD8]
+	1113 Move r8, 2
+	1114 Move rdx, "TOP"
+	1115 Move rcx, rdi
+	1116 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1117 Move r9, [0x181E08CD8]
+	1118 Move r8, 2
+	1119 Move rdx, "TTD"
+	1120 Move rcx, rdi
+	1121 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1122 Move r9, [0x181E08CD8]
+	1123 Move r8, 3
+	1124 Move rdx, "TND"
+	1125 Move rcx, rdi
+	1126 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1127 Move r9, [0x181E08CD8]
+	1128 Move r8, 2
+	1129 Move rdx, "TRY"
+	1130 Move rcx, rdi
+	1131 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1132 Move r9, [0x181E08CD8]
+	1133 Move r8, 2
+	1134 Move rdx, "TMT"
+	1135 Move rcx, rdi
+	1136 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1137 Move r9, [0x181E08CD8]
+	1138 Move r8, 0
+	1139 Move rdx, "UGX"
+	1140 Move rcx, rdi
+	1141 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1142 Move r9, [0x181E08CD8]
+	1143 Move r8, 2
+	1144 Move rdx, "UAH"
+	1145 Move rcx, rdi
+	1146 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1147 Move r9, [0x181E08CD8]
+	1148 Move r8, 2
+	1149 Move rdx, "AED"
+	1150 Move rcx, rdi
+	1151 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1152 Move r9, [0x181E08CD8]
+	1153 Move r8, 2
+	1154 Move rdx, "USN"
+	1155 Move rcx, rdi
+	1156 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1157 Move r9, [0x181E08CD8]
+	1158 Move r8, 2
+	1159 Move rdx, "UYU"
+	1160 Move rcx, rdi
+	1161 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1162 Move r9, [0x181E08CD8]
+	1163 Move r8, 0
+	1164 Move rdx, "UYI"
+	1165 Move rcx, rdi
+	1166 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1167 Move r9, [0x181E08CD8]
+	1168 Move r8, 4
+	1169 Move rdx, "UYW"
+	1170 Move rcx, rdi
+	1171 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1172 Move r9, [0x181E08CD8]
+	1173 Move r8, 2
+	1174 Move rdx, "UZS"
+	1175 Move rcx, rdi
+	1176 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1177 Move r9, [0x181E08CD8]
+	1178 Move r8, 0
+	1179 Move rdx, "VUV"
+	1180 Move rcx, rdi
+	1181 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1182 Move r9, [0x181E08CD8]
+	1183 Move r8, 2
+	1184 Move rdx, "VES"
+	1185 Move rcx, rdi
+	1186 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1187 Move r9, [0x181E08CD8]
+	1188 Move r8, 2
+	1189 Move rdx, "VED"
+	1190 Move rcx, rdi
+	1191 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1192 Move r9, [0x181E08CD8]
+	1193 Move r8, 0
+	1194 Move rdx, "VND"
+	1195 Move rcx, rdi
+	1196 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1197 Move r9, [0x181E08CD8]
+	1198 Move r8, 2
+	1199 Move rdx, "YER"
+	1200 Move rcx, rdi
+	1201 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1202 Move r9, [0x181E08CD8]
+	1203 Move r8, 2
+	1204 Move rdx, "ZMW"
+	1205 Move rcx, rdi
+	1206 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1207 Move r9, [0x181E08CD8]
+	1208 Move r8, 2
+	1209 Move rdx, "ZWL"
+	1210 Move rcx, rdi
+	1211 Call Dictionary`2<Object, Int32>.Add, rcx, rdx, r8
+	1212 LoadAddress rcx, [rsi+16]
+	1213 Move [rsi+16], rdi
+	1214 Move rdx, rdi
+	1215 Call 0x1801E1E30, rcx, rdx, r8, r9
+	1216 Move rdx, 0
+	1217 Move rcx, rsi
+	1218 Move rbx, stack:0x30
+	1219 Move rsi, stack:0x38
+	1220 ShiftStack 32
+	1221 Move rdi, stack:0x0
+	1222 ShiftStack 8
+	1223 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	1224 Return 
+	1225 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

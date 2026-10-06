@@ -1,0 +1,52 @@
+Type: UnityEngine.Purchasing.NoRetriesPolicy
+
+Method: System.Threading.Tasks.Task`1<System.Boolean> ShouldRetry(UnityEngine.Purchasing.IRetryPolicyInformation info)
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F207C0h],0
+	jne short 0000000181578CECh
+	lea rcx,[181E20D40h]
+	call 00000001801E2A80h
+	lea rcx,[181DFEDE0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F207C0h],1
+	mov rcx,[181DFEDE0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000181578D01h
+	call 0000000180153C50h
+	mov rdx,[181E20D40h]
+	xor ecx,ecx
+	add rsp,28h
+	jmp near ptr 0000000180768A60h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F207C0], 0
+	003 JumpIfNotEqual {9}
+	004 LoadAddress rcx, [0x181E20D40]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 LoadAddress rcx, [0x181DFEDE0]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 Move [0x181F207C0], 1
+	009 Move rcx, typeof(System.Threading.Tasks.Task)
+	010 Compare [rcx+224], 0
+	011 JumpIfNotEqual {13}
+	012 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	013 Move rdx, [0x181E20D40]
+	014 Move rcx, 0
+	015 ShiftStack 40
+	016 Call Task.FromResult, rcx, rdx
+	017 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+

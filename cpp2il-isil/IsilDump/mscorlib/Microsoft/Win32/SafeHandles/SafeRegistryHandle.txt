@@ -1,0 +1,73 @@
+Type: Microsoft.Win32.SafeHandles.SafeRegistryHandle
+
+Method: System.Boolean ReleaseHandle()
+
+Disassembly:
+	sub rsp,28h
+	mov rcx,[rcx+10h]
+	xor edx,edx
+	call 0000000180D57780h
+	test eax,eax
+	sete al
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rcx, [rcx+16]
+	003 Move rdx, 0
+	004 Call Advapi32.RegCloseKey, rcx, rdx
+	005 Compare rax, 0
+	006 NotImplemented "sete al"
+	007 ShiftStack 40
+	008 Return rax
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor r9d,r9d
+	mov r8b,1
+	xor edx,edx
+	jmp near ptr 0000000180E4A5F0h
+
+ISIL:
+	001 Move r9, 0
+	002 Move r8, 1
+	003 Move rdx, 0
+	004 Call SafeHandle..ctor, rcx, rdx, r8
+	005 Return 
+
+Method: System.Void .ctor(System.IntPtr preexistingHandle, System.Boolean ownsHandle)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	xor r9d,r9d
+	xor edx,edx
+	mov rbx,rcx
+	call 0000000180E4A5F0h
+	mov [rbx+10h],rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move r9, 0
+	007 Move rdx, 0
+	008 Move rbx, rcx
+	009 Call SafeHandle..ctor, rcx, rdx, r8
+	010 Move [rbx+16], rdi
+	011 Move rbx, stack:0x30
+	012 ShiftStack 32
+	013 Move rdi, stack:0x0
+	014 ShiftStack 8
+	015 Return 
+

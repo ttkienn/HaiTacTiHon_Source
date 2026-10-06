@@ -1,0 +1,158 @@
+Type: System.LocalDataStoreSlot
+
+Method: System.Void .ctor(System.LocalDataStoreMgr mgr, System.Int32 slot, System.Int64 cookie)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rbp,r9
+	xor edx,edx
+	mov esi,r8d
+	mov rdi,rcx
+	call 000000018024B730h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	mov rbx,[rsp+30h]
+	mov [rdi+18h],esi
+	mov rsi,[rsp+40h]
+	mov [rdi+20h],rbp
+	mov rbp,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -32
+	007 Move rbx, rdx
+	008 Move rbp, r9
+	009 Move rdx, 0
+	010 Move rsi, r8
+	011 Move rdi, rcx
+	012 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	013 LoadAddress rcx, [rdi+16]
+	014 Move [rdi+16], rbx
+	015 Move rdx, rbx
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Move rbx, stack:0x30
+	018 Move [rdi+24], rsi
+	019 Move rsi, stack:0x40
+	020 Move [rdi+32], rbp
+	021 Move rbp, stack:0x38
+	022 ShiftStack 32
+	023 Move rdi, stack:0x0
+	024 ShiftStack 8
+	025 Return 
+
+Method: System.LocalDataStoreMgr get_Manager()
+
+Disassembly:
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Int32 get_Slot()
+
+Disassembly:
+	mov eax,[rcx+18h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Return rax
+
+Method: System.Int64 get_Cookie()
+
+Disassembly:
+	mov rax,[rcx+20h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+32]
+	002 Return rax
+
+Method: System.Void Finalize()
+
+Disassembly:
+	mov [rsp+8],rcx
+	sub rsp,48h
+	mov qword ptr [rsp+28h],0
+	lea rax,[rsp+50h]
+	mov [rsp+30h],rax
+	mov rcx,[rsp+50h]
+	mov r10,[rcx+10h]
+	test r10,r10
+	je short 0000000180F61D07h
+	mov edx,[rcx+18h]
+	mov dword ptr [rcx+18h],0FFFFFFFFh
+	mov rax,[rsp+50h]
+	xor r9d,r9d
+	mov r8,[rax+20h]
+	mov rcx,r10
+	call 0000000180F61790h
+	nop
+	xor edx,edx
+	mov rcx,[rsp+50h]
+	call 000000018024B730h
+	jmp short 0000000180F61D26h
+	xor edx,edx
+	call 000000018024B730h
+	jmp short 0000000180F61D26h
+	xor edx,edx
+	mov rcx,[rsp+50h]
+	call 000000018024B730h
+	mov rcx,[rsp+28h]
+	test rcx,rcx
+	jne short 0000000180F61D2Bh
+	add rsp,48h
+	ret
+	call 000000018018E770h
+
+ISIL:
+	001 Move stack:0x8, rcx
+	002 ShiftStack -72
+	003 Move stack:0x28, 0
+	004 LoadAddress rax, stack:0x50
+	005 Move stack:0x30, rax
+	006 Move rcx, stack:0x50
+	007 Move r10, [rcx+16]
+	008 Compare r10, 0
+	009 JumpIfEqual {22}
+	010 Move rdx, [rcx+24]
+	011 Move [rcx+24], 0xFFFFFFFF
+	012 Move rax, stack:0x50
+	013 Move r9, 0
+	014 Move r8, [rax+32]
+	015 Move rcx, r10
+	016 Call LocalDataStoreMgr.FreeDataSlot, rcx, rdx, r8
+	017 Nop 
+	018 Move rdx, 0
+	019 Move rcx, stack:0x50
+	020 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	021 Goto {31}
+	022 Move rdx, 0
+	023 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	024 Goto {31}
+	025 Move rdx, 0
+	026 Move rcx, stack:0x50
+	027 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	028 Move rcx, stack:0x28
+	029 Compare rcx, 0
+	030 JumpIfNotEqual {33}
+	031 ShiftStack 72
+	032 Return 
+	033 Call 0x18018E770, rcx, rdx, r8, r9
+

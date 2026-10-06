@@ -1,0 +1,129 @@
+Type: UnityEngine.Scripting.APIUpdating.MovedFromAttribute
+
+Method: System.Void .ctor(System.Boolean autoUpdateAPI, System.String sourceNamespace = null, System.String sourceAssembly = null, System.String sourceClassName = null)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	push rdi
+	sub rsp,30h
+	movzx ebp,dl
+	mov rdi,r9
+	xor edx,edx
+	mov rsi,r8
+	mov rbx,rcx
+	call 000000018024B5B0h
+	lea rcx,[rbx+10h]
+	mov qword ptr [rsp+68h],0
+	mov r9,rdi
+	mov r8,rsi
+	movzx edx,bpl
+	mov rbx,[rsp+40h]
+	mov rbp,[rsp+48h]
+	mov rsi,[rsp+50h]
+	add rsp,30h
+	pop rdi
+	jmp near ptr 00000001816281A0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 ShiftStack -8
+	005 Move stack:0x0, rdi
+	006 ShiftStack -48
+	007 Move rbp, rdx
+	008 Move rdi, r9
+	009 Move rdx, 0
+	010 Move rsi, r8
+	011 Move rbx, rcx
+	012 Call 0x18024B5B0, rcx, rdx, r8
+	013 LoadAddress rcx, [rbx+16]
+	014 Move stack:0x68, 0
+	015 Move r9, rdi
+	016 Move r8, rsi
+	017 Move rdx, rbp
+	018 Move rbx, stack:0x40
+	019 Move rbp, stack:0x48
+	020 Move rsi, stack:0x50
+	021 ShiftStack 48
+	022 Move rdi, stack:0x0
+	023 ShiftStack 8
+	024 Call MovedFromAttributeData.Set, rcx, rdx, r8, r9, stack:0x0
+	025 Return 
+
+Method: System.Void .ctor(System.String sourceNamespace)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 000000018024B5B0h
+	xor edx,edx
+	mov qword ptr [rbx+10h],0
+	lea rcx,[rbx+10h]
+	call 00000001801E1E30h
+	cmp qword ptr [rbx+10h],0
+	lea rcx,[rbx+18h]
+	mov rdx,rdi
+	mov [rbx+18h],rdi
+	seta al
+	mov [rbx+28h],al
+	call 00000001801E1E30h
+	cmp qword ptr [rbx+18h],0
+	lea rcx,[rbx+20h]
+	mov qword ptr [rbx+20h],0
+	seta al
+	xor edx,edx
+	mov [rbx+29h],al
+	call 00000001801E1E30h
+	cmp qword ptr [rbx+20h],0
+	mov byte ptr [rbx+2Bh],1
+	seta al
+	mov [rbx+2Ah],al
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x18024B5B0, rcx, rdx, r8
+	009 Move rdx, 0
+	010 Move [rbx+16], 0
+	011 LoadAddress rcx, [rbx+16]
+	012 Call 0x1801E1E30, rcx, rdx, r8, r9
+	013 Compare [rbx+16], 0
+	014 LoadAddress rcx, [rbx+24]
+	015 Move rdx, rdi
+	016 Move [rbx+24], rdi
+	017 NotImplemented "seta al"
+	018 Move [rbx+40], rax
+	019 Call 0x1801E1E30, rcx, rdx, r8, r9
+	020 Compare [rbx+24], 0
+	021 LoadAddress rcx, [rbx+32]
+	022 Move [rbx+32], 0
+	023 NotImplemented "seta al"
+	024 Move rdx, 0
+	025 Move [rbx+41], rax
+	026 Call 0x1801E1E30, rcx, rdx, r8, r9
+	027 Compare [rbx+32], 0
+	028 Move [rbx+43], 1
+	029 NotImplemented "seta al"
+	030 Move [rbx+42], rax
+	031 Move rbx, stack:0x30
+	032 ShiftStack 32
+	033 Move rdi, stack:0x0
+	034 ShiftStack 8
+	035 Return 
+

@@ -1,0 +1,180 @@
+Type: UnityEngine.ParticleSystem+Particle
+
+Method: System.Void set_lifetime(System.Single value)
+
+Disassembly:
+	movss dword ptr [rcx+6Ch],xmm1
+	ret
+
+ISIL:
+	001 Move [rcx+108], xmm1
+	002 Return 
+
+Method: System.Void set_position(UnityEngine.Vector3 value)
+
+Disassembly:
+	movsd xmm0,qword ptr [rdx]
+	mov eax,[rdx+8]
+	movsd qword ptr [rcx],xmm0
+	mov [rcx+8],eax
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move rax, [rdx+8]
+	003 Move [rcx], xmm0
+	004 Move [rcx+8], rax
+	005 Return 
+
+Method: System.Void set_velocity(UnityEngine.Vector3 value)
+
+Disassembly:
+	movsd xmm0,qword ptr [rdx]
+	mov eax,[rdx+8]
+	movsd qword ptr [rcx+0Ch],xmm0
+	mov [rcx+14h],eax
+	ret
+
+ISIL:
+	001 Move xmm0, [rdx]
+	002 Move rax, [rdx+8]
+	003 Move [rcx+12], xmm0
+	004 Move [rcx+20], rax
+	005 Return 
+
+Method: System.Void set_remainingLifetime(System.Single value)
+
+Disassembly:
+	movss dword ptr [rcx+6Ch],xmm1
+	ret
+
+ISIL:
+	001 Move [rcx+108], xmm1
+	002 Return 
+
+Method: System.Void set_startLifetime(System.Single value)
+
+Disassembly:
+	movss dword ptr [rcx+70h],xmm1
+	ret
+
+ISIL:
+	001 Move [rcx+112], xmm1
+	002 Return 
+
+Method: System.Void set_startColor(UnityEngine.Color32 value)
+
+Disassembly:
+	mov [rcx+60h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+96], rdx
+	002 Return 
+
+Method: System.Void set_randomSeed(System.UInt32 value)
+
+Disassembly:
+	mov [rcx+64h],edx
+	ret
+
+ISIL:
+	001 Move [rcx+100], rdx
+	002 Return 
+
+Method: System.Void set_startSize(System.Single value)
+
+Disassembly:
+	movaps xmm0,xmm1
+	unpcklps xmm0,xmm1
+	movsd qword ptr [rcx+54h],xmm0
+	movss dword ptr [rcx+5Ch],xmm1
+	ret
+
+ISIL:
+	001 Move xmm0, xmm1
+	002 Move XMM_TEMP.S[0], xmm0.S[0]
+	003 Move XMM_TEMP.S[1], xmm1.S[0]
+	004 Move XMM_TEMP.S[2], xmm0.S[1]
+	005 Move XMM_TEMP.S[3], xmm1.S[1]
+	006 Move xmm0, XMM_TEMP
+	007 Move [rcx+84], xmm0
+	008 Move [rcx+92], xmm1
+	009 Return 
+
+Method: System.Void set_rotation3D(UnityEngine.Vector3 value)
+
+Disassembly:
+	sub rsp,18h
+	movss xmm1,dword ptr [18192E9ECh]
+	movsd xmm4,qword ptr [rdx]
+	movss xmm3,dword ptr [rdx+4]
+	movss xmm2,dword ptr [rdx+8]
+	mulss xmm4,xmm1
+	mulss xmm3,xmm1
+	mulss xmm2,xmm1
+	or dword ptr [rcx+80h],2
+	unpcklps xmm4,xmm3
+	movsd qword ptr [rcx+3Ch],xmm4
+	movss dword ptr [rcx+44h],xmm2
+	add rsp,18h
+	ret
+
+ISIL:
+	001 ShiftStack -24
+	002 Move xmm1, [0x18192E9EC]
+	003 Move xmm4, [rdx]
+	004 Move xmm3, [rdx+4]
+	005 Move xmm2, [rdx+8]
+	006 Multiply xmm4, xmm4, xmm1
+	007 Multiply xmm3, xmm3, xmm1
+	008 Multiply xmm2, xmm2, xmm1
+	009 Or [rcx+128], [rcx+128], 2
+	010 Move XMM_TEMP.S[0], xmm4.S[0]
+	011 Move XMM_TEMP.S[1], xmm3.S[0]
+	012 Move XMM_TEMP.S[2], xmm4.S[1]
+	013 Move XMM_TEMP.S[3], xmm3.S[1]
+	014 Move xmm4, XMM_TEMP
+	015 Move [rcx+60], xmm4
+	016 Move [rcx+68], xmm2
+	017 ShiftStack 24
+	018 Return 
+
+Method: System.Void set_angularVelocity3D(UnityEngine.Vector3 value)
+
+Disassembly:
+	sub rsp,18h
+	movss xmm1,dword ptr [18192E9ECh]
+	movsd xmm4,qword ptr [rdx]
+	movss xmm3,dword ptr [rdx+4]
+	movss xmm2,dword ptr [rdx+8]
+	mulss xmm4,xmm1
+	mulss xmm3,xmm1
+	mulss xmm2,xmm1
+	or dword ptr [rcx+80h],2
+	unpcklps xmm4,xmm3
+	movsd qword ptr [rcx+48h],xmm4
+	movss dword ptr [rcx+50h],xmm2
+	add rsp,18h
+	ret
+
+ISIL:
+	001 ShiftStack -24
+	002 Move xmm1, [0x18192E9EC]
+	003 Move xmm4, [rdx]
+	004 Move xmm3, [rdx+4]
+	005 Move xmm2, [rdx+8]
+	006 Multiply xmm4, xmm4, xmm1
+	007 Multiply xmm3, xmm3, xmm1
+	008 Multiply xmm2, xmm2, xmm1
+	009 Or [rcx+128], [rcx+128], 2
+	010 Move XMM_TEMP.S[0], xmm4.S[0]
+	011 Move XMM_TEMP.S[1], xmm3.S[0]
+	012 Move XMM_TEMP.S[2], xmm4.S[1]
+	013 Move XMM_TEMP.S[3], xmm3.S[1]
+	014 Move xmm4, XMM_TEMP
+	015 Move [rcx+72], xmm4
+	016 Move [rcx+80], xmm2
+	017 ShiftStack 24
+	018 Return 
+

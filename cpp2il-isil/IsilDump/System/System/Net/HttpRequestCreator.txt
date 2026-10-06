@@ -1,0 +1,63 @@
+Type: System.Net.HttpRequestCreator
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+
+Method: System.Net.WebRequest Create(System.Uri uri)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F20686h],0
+	mov rdi,rdx
+	jne short 0000000181561749h
+	lea rcx,[181E184C8h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20686h],1
+	mov rcx,[181E184C8h]
+	call 0000000180197840h
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rax
+	mov rbx,rax
+	call 00000001815645C0h
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F20686], 0
+	006 Move rdi, rdx
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x181E184C8]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x181F20686], 1
+	011 Move rcx, typeof(System.Net.HttpWebRequest)
+	012 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	013 Move r8, 0
+	014 Move rdx, rdi
+	015 Move rcx, rax
+	016 Move rbx, rax
+	017 Call HttpWebRequest..ctor, rcx, rdx
+	018 Move rax, rbx
+	019 Move rbx, stack:0x30
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Return rax
+

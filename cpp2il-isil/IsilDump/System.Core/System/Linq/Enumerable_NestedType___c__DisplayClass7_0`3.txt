@@ -1,0 +1,67 @@
+Type: System.Linq.Enumerable+<>c__DisplayClass7_0`3
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+
+Method: TResult <CombineSelectors>b__0(TSource x)
+
+Disassembly:
+	push rbx
+	sub rsp,30h
+	mov rbx,[rcx+10h]
+	mov rcx,[rcx+18h]
+	test rcx,rcx
+	je short 00000001807DCC2Ah
+	movups xmm0,[rdx]
+	mov rax,[rcx+18h]
+	lea rdx,[rsp+20h]
+	mov r8,[rcx+28h]
+	mov rcx,[rcx+40h]
+	movaps [rsp+20h],xmm0
+	call rax
+	test rbx,rbx
+	je short 00000001807DCC2Ah
+	mov r9,[rbx+18h]
+	mov rdx,rax
+	mov r8,[rbx+28h]
+	mov rcx,[rbx+40h]
+	add rsp,30h
+	pop rbx
+	jmp r9
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -48
+	004 Move rbx, [rcx+16]
+	005 Move rcx, [rcx+24]
+	006 Compare rcx, 0
+	007 JumpIfEqual {25}
+	008 Move xmm0, [rdx]
+	009 Move rax, [rcx+24]
+	010 LoadAddress rdx, stack:0x20
+	011 Move r8, [rcx+40]
+	012 Move rcx, [rcx+64]
+	013 Move stack:0x20, xmm0
+	014 Call rax
+	015 Compare rbx, 0
+	016 JumpIfEqual {25}
+	017 Move r9, [rbx+24]
+	018 Move rdx, rax
+	019 Move r8, [rbx+40]
+	020 Move rcx, [rbx+64]
+	021 ShiftStack 48
+	022 Move rbx, stack:0x0
+	023 ShiftStack 8
+	024 CallNoReturn r9
+	025 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

@@ -1,0 +1,63 @@
+Type: System.Text.UnicodeEncoding+Decoder
+
+Method: System.Void .ctor(System.Text.UnicodeEncoding encoding)
+
+Disassembly:
+	xor r8d,r8d
+	mov dword ptr [rcx+30h],0FFFFFFFFh
+	jmp near ptr 0000000180FA9470h
+
+ISIL:
+	001 Move r8, 0
+	002 Move [rcx+48], 0xFFFFFFFF
+	003 Call DecoderNLS..ctor, rcx, rdx
+	004 Return 
+
+Method: System.Void Reset()
+
+Disassembly:
+	xor eax,eax
+	mov dword ptr [rcx+30h],0FFFFFFFFh
+	mov [rcx+34h],ax
+	cmp [rcx+18h],rax
+	je short 0000000180DA0B8Bh
+	mov rcx,[rcx+18h]
+	mov rdx,[rcx]
+	mov rax,[rdx+1A8h]
+	mov rdx,[rdx+1B0h]
+	jmp rax
+	ret
+
+ISIL:
+	001 Move rax, 0
+	002 Move [rcx+48], 0xFFFFFFFF
+	003 Move [rcx+52], rax
+	004 Compare [rcx+24], rax
+	005 JumpIfEqual {11}
+	006 Move rcx, [rcx+24]
+	007 Move rdx, [rcx]
+	008 Move rax, [rdx+424]
+	009 Move rdx, [rdx+432]
+	010 CallNoReturn rax
+	011 Return 
+
+Method: System.Boolean get_HasState()
+
+Disassembly:
+	cmp dword ptr [rcx+30h],0FFFFFFFFh
+	je short 0000000180DA0BA9h
+	mov al,1
+	ret
+	cmp word ptr [rcx+34h],0
+	seta al
+	ret
+
+ISIL:
+	001 Compare [rcx+48], 18446744073709551615
+	002 JumpIfEqual {5}
+	003 Move rax, 1
+	004 Return rax
+	005 Compare [rcx+52], 0
+	006 NotImplemented "seta al"
+	007 Return rax
+

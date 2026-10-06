@@ -1,0 +1,115 @@
+Type: System.Xml.Schema.XsdBuilder+BuilderNamespaceManager
+
+Method: System.Void .ctor(System.Xml.XmlNamespaceManager nsMgr, System.Xml.XmlReader reader)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rsi,r8
+	xor edx,edx
+	mov rdi,rcx
+	call 000000018024B5B0h
+	lea rcx,[rdi+50h]
+	mov [rdi+50h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	lea rcx,[rdi+58h]
+	mov [rdi+58h],rsi
+	mov rdx,rsi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x18024B5B0, rcx, rdx, r8
+	011 LoadAddress rcx, [rdi+80]
+	012 Move [rdi+80], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 LoadAddress rcx, [rdi+88]
+	016 Move [rdi+88], rsi
+	017 Move rdx, rsi
+	018 Move rbx, stack:0x30
+	019 Move rsi, stack:0x38
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Call 0x1801E1E30, rcx, rdx, r8, r9
+	024 Return 
+
+Method: System.String LookupNamespace(System.String prefix)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rbx,rcx
+	mov rdi,rdx
+	mov rcx,[rcx+50h]
+	test rcx,rcx
+	je short 000000018136DDABh
+	mov r8,[rcx]
+	mov rax,[r8+238h]
+	mov r8,[r8+240h]
+	call rax
+	test rax,rax
+	jne short 000000018136DDA0h
+	mov rcx,[rbx+58h]
+	test rcx,rcx
+	je short 000000018136DDABh
+	mov r8,[rcx]
+	mov rdx,rdi
+	mov rax,[r8+388h]
+	mov r8,[r8+390h]
+	call rax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rcx
+	006 Move rdi, rdx
+	007 Move rcx, [rcx+80]
+	008 Compare rcx, 0
+	009 JumpIfEqual {29}
+	010 Move r8, [rcx]
+	011 Move rax, [r8+568]
+	012 Move r8, [r8+576]
+	013 Call rax
+	014 Compare rax, 0
+	015 JumpIfNotEqual {24}
+	016 Move rcx, [rbx+88]
+	017 Compare rcx, 0
+	018 JumpIfEqual {29}
+	019 Move r8, [rcx]
+	020 Move rdx, rdi
+	021 Move rax, [r8+904]
+	022 Move r8, [r8+912]
+	023 Call rax
+	024 Move rbx, stack:0x30
+	025 ShiftStack 32
+	026 Move rdi, stack:0x0
+	027 ShiftStack 8
+	028 Return rax
+	029 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

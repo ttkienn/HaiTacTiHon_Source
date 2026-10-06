@@ -1,0 +1,96 @@
+Type: Mono.Btls.MonoBtlsX509StoreCtx+BoringX509StoreCtxHandle
+
+Method: System.Void .ctor(System.IntPtr handle, System.Boolean ownsHandle = True)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	xor r9d,r9d
+	movzx edi,r8b
+	mov rbx,rcx
+	call 0000000181153680h
+	xor dil,1
+	mov [rbx+20h],dil
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move r9, 0
+	006 Move rdi, r8
+	007 Move rbx, rcx
+	008 Call MonoBtlsHandle..ctor, rcx, rdx, r8
+	009 Xor rdi, rdi, 1
+	010 Move [rbx+32], rdi
+	011 Move rbx, stack:0x30
+	012 ShiftStack 32
+	013 Move rdi, stack:0x0
+	014 ShiftStack 8
+	015 Return 
+
+Method: System.Boolean ReleaseHandle()
+
+Disassembly:
+	sub rsp,58h
+	cmp byte ptr [rcx+20h],0
+	jne short 00000001814925E1h
+	mov rax,[181F20060h]
+	mov [rsp+50h],rbx
+	mov rbx,[rcx+10h]
+	test rax,rax
+	jne short 00000001814925D7h
+	lea rax,[181924E38h]
+	mov qword ptr [rsp+28h],13h
+	mov [rsp+20h],rax
+	lea rcx,[rsp+20h]
+	lea rax,[181925C18h]
+	mov qword ptr [rsp+38h],1Dh
+	mov [rsp+30h],rax
+	mov dword ptr [rsp+40h],0
+	mov dword ptr [rsp+44h],2
+	mov dword ptr [rsp+48h],8
+	mov byte ptr [rsp+4Ch],0
+	call 00000001801E2CF0h
+	mov [181F20060h],rax
+	mov rcx,rbx
+	call rax
+	mov rbx,[rsp+50h]
+	mov al,1
+	add rsp,58h
+	ret
+
+ISIL:
+	001 ShiftStack -88
+	002 Compare [rcx+32], 0
+	003 JumpIfNotEqual {25}
+	004 Move rax, [0x181F20060]
+	005 Move stack:0x50, rbx
+	006 Move rbx, [rcx+16]
+	007 Compare rax, 0
+	008 JumpIfNotEqual {22}
+	009 LoadAddress rax, [0x181924E38]
+	010 Move stack:0x28, 19
+	011 Move stack:0x20, rax
+	012 LoadAddress rcx, stack:0x20
+	013 LoadAddress rax, [0x181925C18]
+	014 Move stack:0x38, 29
+	015 Move stack:0x30, rax
+	016 Move stack:0x40, 0
+	017 Move stack:0x44, 2
+	018 Move stack:0x48, 8
+	019 Move stack:0x4C, 0
+	020 Call 0x1801E2CF0, rcx, rdx, r8, r9
+	021 Move [0x181F20060], rax
+	022 Move rcx, rbx
+	023 Call rax
+	024 Move rbx, stack:0x50
+	025 Move rax, 1
+	026 ShiftStack 88
+	027 Return rax
+

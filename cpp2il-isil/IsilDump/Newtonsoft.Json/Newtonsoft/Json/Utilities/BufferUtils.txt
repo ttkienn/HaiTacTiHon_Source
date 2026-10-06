@@ -1,0 +1,208 @@
+Type: Newtonsoft.Json.Utilities.BufferUtils
+
+Method: System.Char[] RentBuffer(Newtonsoft.Json.IArrayPool`1<System.Char> bufferPool, System.Int32 minSize)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1DBBAh],0
+	mov edi,edx
+	mov rbx,rcx
+	jne short 0000000181013A37h
+	lea rcx,[181DF5F00h]
+	call 00000001801E2A80h
+	lea rcx,[181E28C18h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1DBBAh],1
+	test rbx,rbx
+	je short 0000000181013A5Ah
+	mov rdx,[181E28C18h]
+	xor ecx,ecx
+	mov r9d,edi
+	mov r8,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180007540h
+	mov rcx,[181DF5F00h]
+	mov edx,edi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1EB0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1DBBA], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {14}
+	009 LoadAddress rcx, [0x181DF5F00]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x181E28C18]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x181F1DBBA], 1
+	014 Compare rbx, 0
+	015 JumpIfEqual {26}
+	016 Move rdx, typeof(Newtonsoft.Json.IArrayPool`1<Char>)
+	017 Move rcx, 0
+	018 Move r9, rdi
+	019 Move r8, rbx
+	020 Move rbx, stack:0x30
+	021 ShiftStack 32
+	022 Move rdi, stack:0x0
+	023 ShiftStack 8
+	024 Call 0x180007540, rcx, rdx, r8, r9
+	025 Return rax
+	026 Move rcx, typeof(System.Char[1])
+	027 Move rdx, rdi
+	028 Move rbx, stack:0x30
+	029 ShiftStack 32
+	030 Move rdi, stack:0x0
+	031 ShiftStack 8
+	032 Call "SzArrayNew", rcx, rdx, r8, r9
+	033 Return rax
+
+Method: System.Void ReturnBuffer(Newtonsoft.Json.IArrayPool`1<System.Char> bufferPool, System.Char[] buffer)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1DBBBh],0
+	mov rdi,rdx
+	mov rbx,rcx
+	jne short 0000000181013AACh
+	lea rcx,[181E28C18h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1DBBBh],1
+	test rbx,rbx
+	je short 0000000181013AC8h
+	mov rdx,[181E28C18h]
+	mov ecx,1
+	mov r9,rdi
+	mov r8,rbx
+	call 0000000180002F00h
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1DBBB], 0
+	006 Move rdi, rdx
+	007 Move rbx, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E28C18]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F1DBBB], 1
+	012 Compare rbx, 0
+	013 JumpIfEqual {19}
+	014 Move rdx, typeof(Newtonsoft.Json.IArrayPool`1<Char>)
+	015 Move rcx, 1
+	016 Move r9, rdi
+	017 Move r8, rbx
+	018 Call 0x180002F00, rcx, rdx, r8, r9
+	019 Move rbx, stack:0x30
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Return 
+
+Method: System.Char[] EnsureBufferSize(Newtonsoft.Json.IArrayPool`1<System.Char> bufferPool, System.Int32 size, System.Char[] buffer)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1DBBCh],0
+	mov rdi,r8
+	mov esi,edx
+	mov rbx,rcx
+	jne short 000000018101399Fh
+	lea rcx,[181DF5F00h]
+	call 00000001801E2A80h
+	lea rcx,[181E28C18h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1DBBCh],1
+	test rbx,rbx
+	je short 00000001810139E3h
+	test rdi,rdi
+	je short 00000001810139C0h
+	mov rdx,[181E28C18h]
+	mov ecx,1
+	mov r9,rdi
+	mov r8,rbx
+	call 0000000180002F00h
+	mov rdx,[181E28C18h]
+	xor ecx,ecx
+	mov r9d,esi
+	mov r8,rbx
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180007540h
+	mov rcx,[181DF5F00h]
+	mov edx,esi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1EB0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Compare [0x181F1DBBC], 0
+	007 Move rdi, r8
+	008 Move rsi, rdx
+	009 Move rbx, rcx
+	010 JumpIfNotEqual {16}
+	011 LoadAddress rcx, [0x181DF5F00]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 LoadAddress rcx, [0x181E28C18]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x181F1DBBC], 1
+	016 Compare rbx, 0
+	017 JumpIfEqual {36}
+	018 Compare rdi, 0
+	019 JumpIfEqual {25}
+	020 Move rdx, typeof(Newtonsoft.Json.IArrayPool`1<Char>)
+	021 Move rcx, 1
+	022 Move r9, rdi
+	023 Move r8, rbx
+	024 Call 0x180002F00, rcx, rdx, r8, r9
+	025 Move rdx, typeof(Newtonsoft.Json.IArrayPool`1<Char>)
+	026 Move rcx, 0
+	027 Move r9, rsi
+	028 Move r8, rbx
+	029 Move rbx, stack:0x30
+	030 Move rsi, stack:0x38
+	031 ShiftStack 32
+	032 Move rdi, stack:0x0
+	033 ShiftStack 8
+	034 Call 0x180007540, rcx, rdx, r8, r9
+	035 Return rax
+	036 Move rcx, typeof(System.Char[1])
+	037 Move rdx, rsi
+	038 Move rbx, stack:0x30
+	039 Move rsi, stack:0x38
+	040 ShiftStack 32
+	041 Move rdi, stack:0x0
+	042 ShiftStack 8
+	043 Call "SzArrayNew", rcx, rdx, r8, r9
+	044 Return rax
+

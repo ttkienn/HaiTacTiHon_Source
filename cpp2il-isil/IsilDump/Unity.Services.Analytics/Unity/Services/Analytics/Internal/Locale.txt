@@ -1,0 +1,117 @@
+Type: Unity.Services.Analytics.Internal.Locale
+
+Method: System.String CurrentLanguageCode()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F20BE2h],0
+	jne short 00000001815DA7F0h
+	lea rcx,[181E09788h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20BE2h],1
+	mov rcx,[181E09788h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001815DA805h
+	call 0000000180153C50h
+	xor ecx,ecx
+	call 0000000180EAB4C0h
+	test rax,rax
+	je short 00000001815DA82Ch
+	mov rdx,[rax]
+	mov rcx,rax
+	mov r8,[rdx+1E8h]
+	mov rdx,[rdx+1F0h]
+	add rsp,28h
+	jmp r8
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F20BE2], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E09788]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F20BE2], 1
+	007 Move rcx, typeof(System.Globalization.CultureInfo)
+	008 Compare [rcx+224], 0
+	009 JumpIfNotEqual {11}
+	010 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	011 Move rcx, 0
+	012 Call CultureInfo.get_CurrentCulture, rcx
+	013 Compare rax, 0
+	014 JumpIfEqual {21}
+	015 Move rdx, [rax]
+	016 Move rcx, rax
+	017 Move r8, [rdx+488]
+	018 Move rdx, [rdx+496]
+	019 ShiftStack 40
+	020 CallNoReturn r8
+	021 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.String AnalyticsRegionLanguageCode()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F20BE3h],0
+	jne short 00000001815D6380h
+	lea rcx,[181DF6538h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20BE3h],1
+	cmp byte ptr [181F20BE2h],0
+	jne short 00000001815D639Ch
+	lea rcx,[181E09788h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20BE2h],1
+	mov rcx,[181E09788h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001815D63B1h
+	call 0000000180153C50h
+	xor ecx,ecx
+	call 0000000180EAB4C0h
+	test rax,rax
+	je short 00000001815D63EAh
+	mov rdx,[rax]
+	mov rcx,rax
+	mov r8,[rdx+1E8h]
+	mov rdx,[rdx+1F0h]
+	call r8
+	mov rdx,[181DF6538h]
+	xor r8d,r8d
+	mov rcx,rax
+	add rsp,28h
+	jmp near ptr 0000000180D7BAD0h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F20BE3], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181DF6538]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F20BE3], 1
+	007 Compare [0x181F20BE2], 0
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E09788]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F20BE2], 1
+	012 Move rcx, typeof(System.Globalization.CultureInfo)
+	013 Compare [rcx+224], 0
+	014 JumpIfNotEqual {16}
+	015 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	016 Move rcx, 0
+	017 Call CultureInfo.get_CurrentCulture, rcx
+	018 Compare rax, 0
+	019 JumpIfEqual {31}
+	020 Move rdx, [rax]
+	021 Move rcx, rax
+	022 Move r8, [rdx+488]
+	023 Move rdx, [rdx+496]
+	024 Call r8
+	025 Move rdx, "_ZZ"
+	026 Move r8, 0
+	027 Move rcx, rax
+	028 ShiftStack 40
+	029 Call String.Concat, rcx, rdx, r8
+	030 Return rax
+	031 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

@@ -1,0 +1,53 @@
+Type: Mono.Net.Security.NoReflectionHelper
+
+Method: System.Object GetProvider()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1E6A9h],0
+	jne short 0000000181159470h
+	lea rcx,[181E2DE40h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E6A9h],1
+	mov rcx,[181E2DE40h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000181159485h
+	call 0000000180153C50h
+	cmp byte ptr [181F1E6A3h],0
+	jne short 00000001811594A1h
+	lea rcx,[181E2DE40h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1E6A3h],1
+	mov rcx,[181E2DE40h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 00000001811594B6h
+	call 0000000180153C50h
+	xor ecx,ecx
+	add rsp,28h
+	jmp near ptr 0000000181157D20h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1E6A9], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E2DE40]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F1E6A9], 1
+	007 Move rcx, typeof(Mono.Net.Security.MonoTlsProviderFactory)
+	008 Compare [rcx+224], 0
+	009 JumpIfNotEqual {11}
+	010 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	011 Compare [0x181F1E6A3], 0
+	012 JumpIfNotEqual {16}
+	013 LoadAddress rcx, [0x181E2DE40]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x181F1E6A3], 1
+	016 Move rcx, typeof(Mono.Net.Security.MonoTlsProviderFactory)
+	017 Compare [rcx+224], 0
+	018 JumpIfNotEqual {20}
+	019 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	020 Move rcx, 0
+	021 ShiftStack 40
+	022 Call MonoTlsProviderFactory.GetProviderInternal, rcx
+	023 Return rax
+

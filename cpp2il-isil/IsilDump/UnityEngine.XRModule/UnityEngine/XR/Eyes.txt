@@ -1,0 +1,211 @@
+Type: UnityEngine.XR.Eyes
+
+Method: System.UInt64 get_deviceId()
+
+Disassembly:
+	xchg ax,ax
+	mov rax,[rcx]
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, [rcx]
+	003 Return rax
+
+Method: System.UInt32 get_featureIndex()
+
+Disassembly:
+	xchg ax,ax
+	mov eax,[rcx+8]
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, [rcx+8]
+	003 Return rax
+
+Method: System.Boolean Equals(System.Object obj)
+
+Disassembly:
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F2440Fh],0
+	mov rdi,rdx
+	mov rsi,rcx
+	jne short 0000000181890EACh
+	lea rcx,[181E13290h]
+	call 00000001801E2A80h
+	mov byte ptr [181F2440Fh],1
+	mov [rsp+30h],rbx
+	test rdi,rdi
+	je short 0000000181890F11h
+	mov rdx,[181E13290h]
+	xor ebx,ebx
+	cmp [rdi],rdx
+	mov eax,ebx
+	cmove rax,rdi
+	test rax,rax
+	je short 0000000181890F11h
+	mov rcx,[rdi]
+	mov rax,[rdx+40h]
+	cmp [rcx+40h],rax
+	mov rcx,rdi
+	jne short 0000000181890F26h
+	call 0000000180153B70h
+	movups xmm0,[rax]
+	movq rax,xmm0
+	cmp [rsi],rax
+	jne short 0000000181890F13h
+	psrldq xmm0,8
+	movd eax,xmm0
+	cmp [rsi+8],eax
+	sete bl
+	movzx eax,bl
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+	xor bl,bl
+	mov rsi,[rsp+38h]
+	movzx eax,bl
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	call 00000001801E1E70h
+
+ISIL:
+	001 Move stack:0x10, rsi
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F2440F], 0
+	006 Move rdi, rdx
+	007 Move rsi, rcx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E13290]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F2440F], 1
+	012 Move stack:0x30, rbx
+	013 Compare rdi, 0
+	014 JumpIfEqual {45}
+	015 Move rdx, typeof(UnityEngine.XR.Eyes)
+	016 Move rbx, 0
+	017 Compare [rdi], rdx
+	018 Move rax, rbx
+	019 JumpIfNotEqual {21}
+	020 Move rax, rdi
+	021 Nop 
+	022 Compare rax, 0
+	023 JumpIfEqual {45}
+	024 Move rcx, [rdi]
+	025 Move rax, [rdx+64]
+	026 Compare [rcx+64], rax
+	027 Move rcx, rdi
+	028 JumpIfNotEqual {53}
+	029 Call "il2cpp_object_unbox", rcx, rdx, r8, r9
+	030 Move xmm0, [rax]
+	031 Move rax, xmm0
+	032 Compare [rsi], rax
+	033 JumpIfNotEqual {46}
+	034 NotImplemented "psrldq xmm0,8"
+	035 Move rax, xmm0
+	036 Compare [rsi+8], rax
+	037 NotImplemented "sete bl"
+	038 Move rax, rbx
+	039 Move rbx, stack:0x30
+	040 Move rsi, stack:0x38
+	041 ShiftStack 32
+	042 Move rdi, stack:0x0
+	043 ShiftStack 8
+	044 Return rax
+	045 Move rbx, 0
+	046 Move rsi, stack:0x38
+	047 Move rax, rbx
+	048 Move rbx, stack:0x30
+	049 ShiftStack 32
+	050 Move rdi, stack:0x0
+	051 ShiftStack 8
+	052 Return rax
+	053 Call 0x1801E1E70, rcx, rdx, r8, r9
+
+Method: System.Boolean Equals(UnityEngine.XR.Eyes other)
+
+Disassembly:
+	mov r8,rcx
+	mov rax,[rdx]
+	cmp [rcx],rax
+	je short 0000000181890D71h
+	xor ecx,ecx
+	movzx eax,cl
+	ret
+	mov eax,[rdx+8]
+	cmp [r8+8],eax
+	sete al
+	ret
+
+ISIL:
+	001 Move r8, rcx
+	002 Move rax, [rdx]
+	003 Compare [rcx], rax
+	004 JumpIfEqual {8}
+	005 Move rcx, 0
+	006 Move rax, rcx
+	007 Return rax
+	008 Move rax, [rdx+8]
+	009 Compare [r8+8], rax
+	010 NotImplemented "sete al"
+	011 Return rax
+
+Method: System.Int32 GetHashCode()
+
+Disassembly:
+	mov [rsp+10h],rbx
+	push rdi
+	sub rsp,20h
+	mov rbx,rcx
+	mov rax,[rcx]
+	xor edx,edx
+	lea rcx,[rsp+40h]
+	mov [rsp+40h],rax
+	call 0000000180F4C1D0h
+	mov edi,eax
+	mov ecx,[rbx+8]
+	mov [rsp+30h],ecx
+	xor edx,edx
+	lea rcx,[rsp+30h]
+	call 0000000180772300h
+	mov rbx,[rsp+38h]
+	add eax,eax
+	xor eax,edi
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rcx
+	006 Move rax, [rcx]
+	007 Move rdx, 0
+	008 LoadAddress rcx, stack:0x40
+	009 Move stack:0x40, rax
+	010 Call UInt64.GetHashCode, rcx, rdx
+	011 Move rdi, rax
+	012 Move rcx, [rbx+8]
+	013 Move stack:0x30, rcx
+	014 Move rdx, 0
+	015 LoadAddress rcx, stack:0x30
+	016 Call 0x180772300, rcx, rdx
+	017 Move rbx, stack:0x38
+	018 Add rax, rax, rax
+	019 Xor rax, rax, rdi
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Return rax
+

@@ -1,0 +1,171 @@
+Type: System.Net.Sockets.Socket+TaskSocketAsyncEventArgs`1
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor r8d,r8d
+	xor edx,edx
+	jmp near ptr 000000018147CC70h
+
+ISIL:
+	001 Move r8, 0
+	002 Move rdx, 0
+	003 Call SocketAsyncEventArgs..ctor, rcx, rdx
+	004 Return 
+
+Method: System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<TResult> GetCompletionResponsibility(out System.Boolean responsibleForReturningToPool)
+
+Disassembly:
+	mov r11,rsp
+	mov [r11+18h],rbx
+	mov [r11+8],rcx
+	push rsi
+	push rdi
+	push r14
+	sub rsp,50h
+	mov rsi,r9
+	mov r14,r8
+	mov rdi,rdx
+	mov rbx,rcx
+	xorps xmm0,xmm0
+	xor eax,eax
+	movups [rcx],xmm0
+	mov [rcx+10h],rax
+	mov [r11-48h],rdx
+	mov [rsp+78h],al
+	mov [r11-38h],rax
+	lea rax,[r11+10h]
+	mov [r11-30h],rax
+	lea rax,[r11-48h]
+	mov [r11-28h],rax
+	xor r8d,r8d
+	lea rdx,[r11+10h]
+	mov rcx,[r11-48h]
+	call 0000000180F9A100h
+	movzx eax,byte ptr [rdi+98h]
+	mov [r14],al
+	mov byte ptr [rdi+98h],1
+	mov rax,[rsi+20h]
+	mov rcx,[rax+0C0h]
+	mov rax,[rcx+18h]
+	test byte ptr [rax+135h],1
+	jne short 0000000180B5B7E8h
+	mov rcx,rax
+	call 0000000180188F60h
+	cmp dword ptr [rax+0E0h],0
+	jne short 0000000180B5B7F9h
+	mov rcx,rax
+	call 0000000180153C50h
+	mov rax,[rsi+20h]
+	mov rdx,[rax+0C0h]
+	mov rdx,[rdx+10h]
+	lea rcx,[rdi+80h]
+	call 0000000180C2F640h
+	movups xmm0,[rdi+80h]
+	movups [rbx],xmm0
+	movsd xmm1,qword ptr [rdi+90h]
+	movsd qword ptr [rbx+10h],xmm1
+	cmp byte ptr [rsp+78h],0
+	je short 0000000180B5B83Eh
+	xor edx,edx
+	mov rcx,[rsp+20h]
+	call 0000000180F9A190h
+	jmp short 0000000180B5B862h
+	cmp byte ptr [rsp+78h],0
+	je short 0000000180B5B853h
+	xor edx,edx
+	mov rcx,[rsp+20h]
+	call 0000000180F9A190h
+	mov rcx,[rsp+30h]
+	test rcx,rcx
+	jne short 0000000180B5B876h
+	mov rbx,[rsp+70h]
+	mov rax,rbx
+	mov rbx,[rsp+80h]
+	add rsp,50h
+	pop r14
+	pop rdi
+	pop rsi
+	ret
+	call 000000018018E770h
+
+ISIL:
+	001 Move r11, rsp
+	002 Move [r11+24], rbx
+	003 Move [r11+8], rcx
+	004 ShiftStack -8
+	005 Move stack:0x0, rsi
+	006 ShiftStack -8
+	007 Move stack:0x0, rdi
+	008 ShiftStack -8
+	009 Move stack:0x0, r14
+	010 ShiftStack -80
+	011 Move rsi, r9
+	012 Move r14, r8
+	013 Move rdi, rdx
+	014 Move rbx, rcx
+	015 Move xmm0, 0
+	016 Move rax, 0
+	017 Move [rcx], xmm0
+	018 Move [rcx+16], rax
+	019 Move [r11-72], rdx
+	020 Move stack:0x78, rax
+	021 Move [r11-56], rax
+	022 LoadAddress rax, [r11+16]
+	023 Move [r11-48], rax
+	024 LoadAddress rax, [r11-72]
+	025 Move [r11-40], rax
+	026 Move r8, 0
+	027 LoadAddress rdx, [r11+16]
+	028 Move rcx, [r11-72]
+	029 Call Monitor.Enter, rcx, rdx, r8
+	030 Move rax, [rdi+152]
+	031 Move [r14], rax
+	032 Move [rdi+152], 1
+	033 Move rax, [rsi+32]
+	034 Move rcx, [rax+192]
+	035 Move rax, [rcx+24]
+	036 Compare [rax+309], 1
+	037 JumpIfNotEqual {40}
+	038 Move rcx, rax
+	039 Call 0x180188F60, rcx, rdx, r8, r9
+	040 Compare [rax+224], 0
+	041 JumpIfNotEqual {44}
+	042 Move rcx, rax
+	043 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	044 Move rax, [rsi+32]
+	045 Move rdx, [rax+192]
+	046 Move rdx, [rdx+16]
+	047 LoadAddress rcx, [rdi+128]
+	048 Call AsyncTaskMethodBuilder`1<Int32>.get_Task, rcx, rdx
+	049 Move xmm0, [rdi+128]
+	050 Move [rbx], xmm0
+	051 Move xmm1, [rdi+144]
+	052 Move [rbx+16], xmm1
+	053 Compare stack:0x78, 0
+	054 JumpIfEqual {58}
+	055 Move rdx, 0
+	056 Move rcx, stack:0x20
+	057 Call Monitor.Exit, rcx, rdx
+	058 Goto {68}
+	059 Compare stack:0x78, 0
+	060 JumpIfEqual {64}
+	061 Move rdx, 0
+	062 Move rcx, stack:0x20
+	063 Call Monitor.Exit, rcx, rdx
+	064 Move rcx, stack:0x30
+	065 Compare rcx, 0
+	066 JumpIfNotEqual {78}
+	067 Move rbx, stack:0x70
+	068 Move rax, rbx
+	069 Move rbx, stack:0x80
+	070 ShiftStack 80
+	071 Move r14, stack:0x0
+	072 ShiftStack 8
+	073 Move rdi, stack:0x0
+	074 ShiftStack 8
+	075 Move rsi, stack:0x0
+	076 ShiftStack 8
+	077 Return rax
+	078 Call 0x18018E770, rcx, rdx, r8, r9
+

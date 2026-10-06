@@ -1,0 +1,169 @@
+Type: System.Threading.PlatformHelper
+
+Method: System.Int32 get_ProcessorCount()
+
+Disassembly:
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1D6DCh],0
+	jne short 0000000180F9AE66h
+	lea rcx,[181E33B38h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1D6DCh],1
+	xor ecx,ecx
+	call 0000000180F78230h
+	mov rcx,[181E33B38h]
+	mov esi,eax
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180F9AE8Bh
+	call 0000000180153C50h
+	mov rcx,[181E33B38h]
+	mov rcx,[rcx+0B8h]
+	mov [rsp+30h],rbx
+	mov edi,[rcx]
+	call 00000001801E2C10h
+	test edi,edi
+	je short 0000000180F9AEEBh
+	mov rcx,[181E33B38h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180F9AEBEh
+	call 0000000180153C50h
+	mov rcx,[181E33B38h]
+	mov rcx,[rcx+0B8h]
+	mov ebx,[rcx+4]
+	call 00000001801E2C10h
+	mov ecx,esi
+	sub ecx,ebx
+	cmp ecx,7530h
+	jge short 0000000180F9AEEBh
+	mov eax,edi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+	xor ecx,ecx
+	call 0000000180F77F50h
+	mov rcx,[181E33B38h]
+	mov ebx,eax
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180F9AF09h
+	call 0000000180153C50h
+	call 00000001801E2C10h
+	mov rcx,[181E33B38h]
+	mov rdx,[rcx+0B8h]
+	mov [rdx],ebx
+	call 00000001801E2C10h
+	mov rcx,[181E33B38h]
+	mov eax,ebx
+	mov rdx,[rcx+0B8h]
+	mov [rdx+4],esi
+	mov rbx,[rsp+30h]
+	mov rsi,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x10, rsi
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1D6DC], 0
+	006 JumpIfNotEqual {10}
+	007 LoadAddress rcx, [0x181E33B38]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 Move [0x181F1D6DC], 1
+	010 Move rcx, 0
+	011 Call Environment.get_TickCount, rcx
+	012 Move rcx, typeof(System.Threading.PlatformHelper)
+	013 Move rsi, rax
+	014 Compare [rcx+224], 0
+	015 JumpIfNotEqual {18}
+	016 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	017 Move rcx, typeof(System.Threading.PlatformHelper)
+	018 Move rcx, [rcx+184]
+	019 Move stack:0x30, rbx
+	020 Move rdi, [rcx]
+	021 Call 0x1801E2C10, rcx, rdx, r8, r9
+	022 Compare rdi, 0
+	023 JumpIfEqual {43}
+	024 Move rcx, typeof(System.Threading.PlatformHelper)
+	025 Compare [rcx+224], 0
+	026 JumpIfNotEqual {29}
+	027 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	028 Move rcx, typeof(System.Threading.PlatformHelper)
+	029 Move rcx, [rcx+184]
+	030 Move rbx, [rcx+4]
+	031 Call 0x1801E2C10, rcx, rdx, r8, r9
+	032 Move rcx, rsi
+	033 Subtract rcx, rcx, rbx
+	034 Compare rcx, 0x7530
+	035 JumpIfGreaterOrEqual {43}
+	036 Move rax, rdi
+	037 Move rbx, stack:0x30
+	038 Move rsi, stack:0x38
+	039 ShiftStack 32
+	040 Move rdi, stack:0x0
+	041 ShiftStack 8
+	042 Return rax
+	043 Move rcx, 0
+	044 Call Environment.get_ProcessorCount, rcx
+	045 Move rcx, typeof(System.Threading.PlatformHelper)
+	046 Move rbx, rax
+	047 Compare [rcx+224], 0
+	048 JumpIfNotEqual {50}
+	049 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	050 Call 0x1801E2C10, rcx, rdx, r8, r9
+	051 Move rcx, typeof(System.Threading.PlatformHelper)
+	052 Move rdx, [rcx+184]
+	053 Move [rdx], rbx
+	054 Call 0x1801E2C10, rcx, rdx, r8, r9
+	055 Move rcx, typeof(System.Threading.PlatformHelper)
+	056 Move rax, rbx
+	057 Move rdx, [rcx+184]
+	058 Move [rdx+4], rsi
+	059 Move rbx, stack:0x30
+	060 Move rsi, stack:0x38
+	061 ShiftStack 32
+	062 Move rdi, stack:0x0
+	063 ShiftStack 8
+	064 Return rax
+
+Method: System.Void .cctor()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1D6DDh],0
+	jne short 0000000180F9AE10h
+	lea rcx,[181E33B38h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1D6DDh],1
+	xor ecx,ecx
+	call 0000000180F9AE40h
+	cmp eax,1
+	mov rax,[181E33B38h]
+	sete dl
+	mov rcx,[rax+0B8h]
+	mov [rcx+8],dl
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1D6DD], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E33B38]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F1D6DD], 1
+	007 Move rcx, 0
+	008 Call PlatformHelper.get_ProcessorCount, rcx
+	009 Compare rax, 1
+	010 Move rax, typeof(System.Threading.PlatformHelper)
+	011 NotImplemented "sete dl"
+	012 Move rcx, [rax+184]
+	013 Move [rcx+8], rdx
+	014 ShiftStack 40
+	015 Return 
+

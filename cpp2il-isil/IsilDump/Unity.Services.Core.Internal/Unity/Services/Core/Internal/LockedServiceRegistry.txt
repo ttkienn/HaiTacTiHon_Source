@@ -1,0 +1,198 @@
+Type: Unity.Services.Core.Internal.LockedServiceRegistry
+
+Method: Unity.Services.Core.Internal.IServiceRegistry get_Registry()
+
+Disassembly:
+	mov rax,[rcx+10h]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+16]
+	002 Return rax
+
+Method: System.Void .ctor(Unity.Services.Core.Internal.IServiceRegistry registryToLock)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rdi,rdx
+	mov rbx,rcx
+	xor edx,edx
+	call 000000018024B730h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 00000001801E1E30h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rdi, rdx
+	006 Move rbx, rcx
+	007 Move rdx, 0
+	008 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	009 LoadAddress rcx, [rbx+16]
+	010 Move [rbx+16], rdi
+	011 Move rdx, rdi
+	012 Move rbx, stack:0x30
+	013 ShiftStack 32
+	014 Move rdi, stack:0x0
+	015 ShiftStack 8
+	016 Call 0x1801E1E30, rcx, rdx, r8, r9
+	017 Return 
+
+Method: System.Void RegisterService(T service)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	lea rcx,[181E249E8h]
+	mov rdi,r8
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	lea rcx,[181DFA1E8h]
+	mov rbx,rax
+	call 00000001801E2AA0h
+	mov rdx,rax
+	xor r8d,r8d
+	mov rcx,rbx
+	call 0000000180F20D40h
+	mov rdx,rdi
+	mov rcx,rbx
+	call 00000001801E2C60h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 LoadAddress rcx, [0x181E249E8]
+	006 Move rdi, r8
+	007 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	008 Move rcx, rax
+	009 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x181DFA1E8]
+	011 Move rbx, rax
+	012 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	013 Move rdx, rax
+	014 Move r8, 0
+	015 Move rcx, rbx
+	016 Call InvalidOperationException..ctor, rcx, rdx
+	017 Move rdx, rdi
+	018 Move rcx, rbx
+	019 Call 0x1801E2C60, rcx, rdx, r8, r9
+
+Method: T GetService()
+
+Disassembly:
+	push rbp
+	push r14
+	push r15
+	sub rsp,20h
+	lea rbp,[rsp+20h]
+	cmp qword ptr [r8+38h],0
+	mov r15,rdx
+	mov [rbp+20h],rbx
+	mov r14,rcx
+	mov [rbp+28h],rsi
+	mov rbx,r8
+	mov [rbp+30h],rdi
+	jne short 000000018074DD03h
+	mov rcx,rbx
+	call 0000000180188FE0h
+	mov rax,[rbx+38h]
+	mov r9,[rax+8]
+	mov edi,[r9+0FCh]
+	lea r8,[rdi+0Fh]
+	cmp r8,rdi
+	ja short 000000018074DD25h
+	mov r8,0FFFFFFFFFFFFFF0h
+	and r8,0FFFFFFFFFFFFFFF0h
+	mov rax,r8
+	call 0000000180214730h
+	mov rdx,[r14+10h]
+	sub rsp,r8
+	lea rsi,[rsp+20h]
+	test rdx,rdx
+	je short 000000018074DD74h
+	mov rcx,[rbx+38h]
+	mov r8,rsi
+	mov rcx,[rcx]
+	call 0000000180007240h
+	mov r8,rdi
+	mov rdx,rsi
+	mov rcx,r15
+	call 0000000180245D80h
+	mov rbx,[rbp+20h]
+	mov rsi,[rbp+28h]
+	mov rdi,[rbp+30h]
+	mov rsp,rbp
+	pop r15
+	pop r14
+	pop rbp
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbp
+	003 ShiftStack -8
+	004 Move stack:0x0, r14
+	005 ShiftStack -8
+	006 Move stack:0x0, r15
+	007 ShiftStack -32
+	008 LoadAddress rbp, stack:0x20
+	009 Compare [r8+56], 0
+	010 Move r15, rdx
+	011 Move [rbp+32], rbx
+	012 Move r14, rcx
+	013 Move [rbp+40], rsi
+	014 Move rbx, r8
+	015 Move [rbp+48], rdi
+	016 JumpIfNotEqual {19}
+	017 Move rcx, rbx
+	018 Call 0x180188FE0, rcx, rdx, r8, r9
+	019 Move rax, [rbx+56]
+	020 Move r9, [rax+8]
+	021 Move rdi, [r9+252]
+	022 LoadAddress r8, [rdi+15]
+	023 Compare r8, rdi
+	024 JumpIfGreater {26}
+	025 Move r8, 0xFFFFFFFFFFFFFF0
+	026 And r8, r8, 18446744073709551600
+	027 Move rax, r8
+	028 Call 0x180214730, rcx, rdx, r8, r9
+	029 Move rdx, [r14+16]
+	030 Subtract rsp, rsp, r8
+	031 LoadAddress rsi, stack:0x20
+	032 Compare rdx, 0
+	033 JumpIfEqual {53}
+	034 Move rcx, [rbx+56]
+	035 Move r8, rsi
+	036 Move rcx, [rcx]
+	037 Call 0x180007240, rcx, rdx, r8, r9
+	038 Move r8, rdi
+	039 Move rdx, rsi
+	040 Move rcx, r15
+	041 Call 0x180245D80, rcx, rdx, r8, r9
+	042 Move rbx, [rbp+32]
+	043 Move rsi, [rbp+40]
+	044 Move rdi, [rbp+48]
+	045 Move rsp, rbp
+	046 Move r15, stack:0x0
+	047 ShiftStack 8
+	048 Move r14, stack:0x0
+	049 ShiftStack 8
+	050 Move rbp, stack:0x0
+	051 ShiftStack 8
+	052 Return rax
+	053 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

@@ -1,0 +1,160 @@
+Type: System.Data.Range
+
+Method: System.Void .ctor(System.Int32 min, System.Int32 max)
+
+Disassembly:
+	sub rsp,28h
+	mov eax,r8d
+	mov r9d,edx
+	cmp edx,r8d
+	jg short 00000001811DC9ADh
+	mov [rcx],edx
+	mov [rcx+4],eax
+	mov byte ptr [rcx+8],1
+	add rsp,28h
+	ret
+	xor r8d,r8d
+	mov [rsp+20h],rbx
+	mov edx,eax
+	mov ecx,r9d
+	call 0000000181197950h
+	lea rcx,[181E07910h]
+	mov rbx,rax
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+	mov rbx,[rsp+20h]
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, r8
+	003 Move r9, rdx
+	004 Compare rdx, r8
+	005 JumpIfGreater {11}
+	006 Move [rcx], rdx
+	007 Move [rcx+4], rax
+	008 Move [rcx+8], 1
+	009 ShiftStack 40
+	010 Return 
+	011 Move r8, 0
+	012 Move stack:0x20, rbx
+	013 Move rdx, rax
+	014 Move rcx, r9
+	015 Call ExceptionBuilder.RangeArgument, rcx, rdx, r8
+	016 LoadAddress rcx, [0x181E07910]
+	017 Move rbx, rax
+	018 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	019 Move rdx, rax
+	020 Move rcx, rbx
+	021 Call 0x1801E2C60, rcx, rdx, r8, r9
+	022 Move rbx, stack:0x20
+
+Method: System.Int32 get_Count()
+
+Disassembly:
+	cmp byte ptr [rcx+8],0
+	jne short 00000001811DC9E9h
+	xor eax,eax
+	ret
+	mov eax,[rcx+4]
+	sub eax,[rcx]
+	inc eax
+	ret
+
+ISIL:
+	001 Compare [rcx+8], 0
+	002 JumpIfNotEqual {5}
+	003 Move rax, 0
+	004 Return rax
+	005 Move rax, [rcx+4]
+	006 Subtract rax, rax, [rcx]
+	007 Add rax, rax, 1
+	008 Return rax
+
+Method: System.Boolean get_IsNull()
+
+Disassembly:
+	cmp byte ptr [rcx+8],0
+	sete al
+	ret
+
+ISIL:
+	001 Compare [rcx+8], 0
+	002 NotImplemented "sete al"
+	003 Return rax
+
+Method: System.Int32 get_Min()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [rcx+8],0
+	je short 00000001811DCA21h
+	mov eax,[rcx]
+	add rsp,28h
+	ret
+	xor ecx,ecx
+	mov [rsp+20h],rbx
+	call 00000001811974D0h
+	lea rcx,[181E07978h]
+	mov rbx,rax
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+	mov rbx,[rsp+20h]
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [rcx+8], 0
+	003 JumpIfEqual {7}
+	004 Move rax, [rcx]
+	005 ShiftStack 40
+	006 Return rax
+	007 Move rcx, 0
+	008 Move stack:0x20, rbx
+	009 Call ExceptionBuilder.NullRange, rcx
+	010 LoadAddress rcx, [0x181E07978]
+	011 Move rbx, rax
+	012 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	013 Move rdx, rax
+	014 Move rcx, rbx
+	015 Call 0x1801E2C60, rcx, rdx, r8, r9
+	016 Move rbx, stack:0x20
+
+Method: System.Void CheckNull()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [rcx+8],0
+	je short 00000001811DC95Fh
+	add rsp,28h
+	ret
+	xor ecx,ecx
+	mov [rsp+20h],rbx
+	call 00000001811974D0h
+	lea rcx,[181E07978h]
+	mov rbx,rax
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+	mov rbx,[rsp+20h]
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [rcx+8], 0
+	003 JumpIfEqual {6}
+	004 ShiftStack 40
+	005 Return 
+	006 Move rcx, 0
+	007 Move stack:0x20, rbx
+	008 Call ExceptionBuilder.NullRange, rcx
+	009 LoadAddress rcx, [0x181E07978]
+	010 Move rbx, rax
+	011 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	012 Move rdx, rax
+	013 Move rcx, rbx
+	014 Call 0x1801E2C60, rcx, rdx, r8, r9
+	015 Move rbx, stack:0x20
+

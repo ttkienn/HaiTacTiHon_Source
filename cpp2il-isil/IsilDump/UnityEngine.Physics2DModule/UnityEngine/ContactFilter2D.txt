@@ -1,0 +1,254 @@
+Type: UnityEngine.ContactFilter2D
+
+Method: System.Void CheckConsistency()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rax,[181F22960h]
+	mov rbx,rcx
+	test rax,rax
+	jne short 000000018166B078h
+	lea rcx,[181932220h]
+	call 00000001801E2D00h
+	mov [181F22960h],rax
+	mov rcx,rbx
+	add rsp,20h
+	pop rbx
+	jmp rax
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rax, [0x181F22960]
+	005 Move rbx, rcx
+	006 Compare rax, 0
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x181932220]
+	009 Call 0x1801E2D00, rcx, rdx, r8, r9
+	010 Move [0x181F22960], rax
+	011 Move rcx, rbx
+	012 ShiftStack 32
+	013 Move rbx, stack:0x0
+	014 ShiftStack 8
+	015 CallNoReturn rax
+
+Method: System.Void SetLayerMask(UnityEngine.LayerMask layerMask)
+
+Disassembly:
+	mov [rcx+8],edx
+	mov byte ptr [rcx+1],1
+	ret
+
+ISIL:
+	001 Move [rcx+8], rdx
+	002 Move [rcx+1], 1
+	003 Return 
+
+Method: System.Void SetDepth(System.Single minDepth, System.Single maxDepth)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rax,[181F22960h]
+	mov rbx,rcx
+	movss dword ptr [rcx+0Ch],xmm1
+	movss dword ptr [rcx+10h],xmm2
+	mov byte ptr [rcx+2],1
+	test rax,rax
+	jne short 000000018166B1D6h
+	lea rcx,[181932220h]
+	call 00000001801E2D00h
+	mov [181F22960h],rax
+	mov rcx,rbx
+	add rsp,20h
+	pop rbx
+	jmp rax
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rax, [0x181F22960]
+	005 Move rbx, rcx
+	006 Move [rcx+12], xmm1
+	007 Move [rcx+16], xmm2
+	008 Move [rcx+2], 1
+	009 Compare rax, 0
+	010 JumpIfNotEqual {14}
+	011 LoadAddress rcx, [0x181932220]
+	012 Call 0x1801E2D00, rcx, rdx, r8, r9
+	013 Move [0x181F22960], rax
+	014 Move rcx, rbx
+	015 ShiftStack 32
+	016 Move rbx, stack:0x0
+	017 ShiftStack 8
+	018 CallNoReturn rax
+
+Method: UnityEngine.ContactFilter2D CreateLegacyFilter(System.Int32 layerMask, System.Single minDepth, System.Single maxDepth)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,60h
+	cmp byte ptr [181F22958h],0
+	mov edi,edx
+	movaps [rsp+50h],xmm6
+	mov rbx,rcx
+	movaps [rsp+40h],xmm7
+	movaps xmm6,xmm3
+	movaps xmm7,xmm2
+	jne short 000000018166B0CBh
+	lea rcx,[181E33878h]
+	call 00000001801E2A80h
+	mov byte ptr [181F22958h],1
+	mov rcx,[181E33878h]
+	xor eax,eax
+	xorps xmm0,xmm0
+	mov [rsp+23h],eax
+	movups [rbx],xmm0
+	mov [rsp+27h],al
+	mov [rsp+34h],rax
+	mov [rbx+10h],rax
+	mov [rbx+18h],eax
+	cmp [rcx+0E0h],eax
+	jne short 000000018166B0FBh
+	call 0000000180153C50h
+	mov rax,[181F22938h]
+	test rax,rax
+	jne short 000000018166B11Ah
+	lea rcx,[181932138h]
+	call 00000001801E2D00h
+	mov [181F22938h],rax
+	call rax
+	xor edx,edx
+	mov [rsp+20h],al
+	mov ecx,edi
+	call 0000000181625EC0h
+	mov [rsp+28h],eax
+	mov rax,[181F22960h]
+	movss dword ptr [rsp+2Ch],xmm7
+	movss dword ptr [rsp+30h],xmm6
+	mov word ptr [rsp+21h],101h
+	test rax,rax
+	jne short 000000018166B15Fh
+	lea rcx,[181932220h]
+	call 00000001801E2D00h
+	mov [181F22960h],rax
+	lea rcx,[rsp+20h]
+	call rax
+	movups xmm0,[rsp+20h]
+	mov eax,[rsp+38h]
+	movsd xmm1,qword ptr [rsp+30h]
+	movups [rbx],xmm0
+	movsd qword ptr [rbx+10h],xmm1
+	mov [rbx+18h],eax
+	movaps xmm6,[rsp+50h]
+	mov rax,rbx
+	mov rbx,[rsp+70h]
+	movaps xmm7,[rsp+40h]
+	add rsp,60h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -96
+	005 Compare [0x181F22958], 0
+	006 Move rdi, rdx
+	007 Move stack:0x50, xmm6
+	008 Move rbx, rcx
+	009 Move stack:0x40, xmm7
+	010 Move xmm6, xmm3
+	011 Move xmm7, xmm2
+	012 JumpIfNotEqual {16}
+	013 LoadAddress rcx, [0x181E33878]
+	014 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	015 Move [0x181F22958], 1
+	016 Move rcx, typeof(UnityEngine.Physics2D)
+	017 Move rax, 0
+	018 Move xmm0, 0
+	019 Move stack:0x23, rax
+	020 Move [rbx], xmm0
+	021 Move stack:0x27, rax
+	022 Move stack:0x34, rax
+	023 Move [rbx+16], rax
+	024 Move [rbx+24], rax
+	025 Compare [rcx+224], rax
+	026 JumpIfNotEqual {28}
+	027 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	028 Move rax, [0x181F22938]
+	029 Compare rax, 0
+	030 JumpIfNotEqual {34}
+	031 LoadAddress rcx, [0x181932138]
+	032 Call 0x1801E2D00, rcx, rdx, r8, r9
+	033 Move [0x181F22938], rax
+	034 Call rax
+	035 Move rdx, 0
+	036 Move stack:0x20, rax
+	037 Move rcx, rdi
+	038 Call 0x181625EC0, rcx, rdx
+	039 Move stack:0x28, rax
+	040 Move rax, [0x181F22960]
+	041 Move stack:0x2C, xmm7
+	042 Move stack:0x30, xmm6
+	043 Move stack:0x21, 257
+	044 Compare rax, 0
+	045 JumpIfNotEqual {49}
+	046 LoadAddress rcx, [0x181932220]
+	047 Call 0x1801E2D00, rcx, rdx, r8, r9
+	048 Move [0x181F22960], rax
+	049 LoadAddress rcx, stack:0x20
+	050 Call rax
+	051 Move xmm0, stack:0x20
+	052 Move rax, stack:0x38
+	053 Move xmm1, stack:0x30
+	054 Move [rbx], xmm0
+	055 Move [rbx+16], xmm1
+	056 Move [rbx+24], rax
+	057 Move xmm6, stack:0x50
+	058 Move rax, rbx
+	059 Move rbx, stack:0x70
+	060 Move xmm7, stack:0x40
+	061 ShiftStack 96
+	062 Move rdi, stack:0x0
+	063 ShiftStack 8
+	064 Return rax
+
+Method: System.Void CheckConsistency_Injected(ref UnityEngine.ContactFilter2D _unity_self)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rax,[181F22960h]
+	mov rbx,rcx
+	test rax,rax
+	jne short 000000018166B078h
+	lea rcx,[181932220h]
+	call 00000001801E2D00h
+	mov [181F22960h],rax
+	mov rcx,rbx
+	add rsp,20h
+	pop rbx
+	jmp rax
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rax, [0x181F22960]
+	005 Move rbx, rcx
+	006 Compare rax, 0
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x181932220]
+	009 Call 0x1801E2D00, rcx, rdx, r8, r9
+	010 Move [0x181F22960], rax
+	011 Move rcx, rbx
+	012 ShiftStack 32
+	013 Move rbx, stack:0x0
+	014 ShiftStack 8
+	015 CallNoReturn rax
+

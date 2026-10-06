@@ -1,0 +1,124 @@
+Type: Mono.Net.Security.AsyncWriteRequest
+
+Method: System.Void .ctor(Mono.Net.Security.MobileAuthenticatedStream parent, System.Boolean sync, System.Byte[] buffer, System.Int32 offset, System.Int32 size)
+
+Disassembly:
+	mov qword ptr [rsp+38h],0
+	jmp near ptr 000000018114A2B0h
+
+ISIL:
+	001 Move stack:0x38, 0
+	002 Call AsyncReadOrWriteRequest..ctor, rcx, rdx, r8, r9, stack:0x0, stack:0x8
+	003 Return 
+
+Method: Mono.Net.Security.AsyncOperationStatus Run(Mono.Net.Security.AsyncOperationStatus status)
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	mov rax,[rcx+38h]
+	mov rbx,rcx
+	test rax,rax
+	je near ptr 000000018114A477h
+	cmp dword ptr [rax+1Ch],0
+	je short 000000018114A466h
+	mov rcx,[rcx+10h]
+	test rcx,rcx
+	je short 000000018114A477h
+	xor r8d,r8d
+	mov rdx,rax
+	call 000000018114DBE0h
+	test eax,eax
+	js short 000000018114A454h
+	add [rbx+40h],eax
+	mov r8,[rbx+38h]
+	test r8,r8
+	je short 000000018114A477h
+	add [r8+18h],eax
+	mov rdx,[rbx+38h]
+	test rdx,rdx
+	je short 000000018114A477h
+	sub [rdx+1Ch],eax
+	shr rax,20h
+	test al,al
+	jne short 000000018114A449h
+	mov eax,[rbx+40h]
+	mov [rbx+1Ch],eax
+	mov eax,3
+	add rsp,20h
+	pop rbx
+	ret
+	mov eax,1
+	add rsp,20h
+	pop rbx
+	ret
+	mov dword ptr [rbx+1Ch],0FFFFFFFFh
+	mov eax,3
+	add rsp,20h
+	pop rbx
+	ret
+	mov eax,[rcx+40h]
+	mov [rcx+1Ch],eax
+	mov eax,3
+	add rsp,20h
+	pop rbx
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Move rax, [rcx+56]
+	005 Move rbx, rcx
+	006 Compare rax, 0
+	007 JumpIfEqual {55}
+	008 Compare [rax+28], 0
+	009 JumpIfEqual {48}
+	010 Move rcx, [rcx+16]
+	011 Compare rcx, 0
+	012 JumpIfEqual {55}
+	013 Move r8, 0
+	014 Move rdx, rax
+	015 Call MobileAuthenticatedStream.ProcessWrite, rcx, rdx
+	016 Compare rax, 0
+	017 JumpIfSign {42}
+	018 Add [rbx+64], [rbx+64], rax
+	019 Move r8, [rbx+56]
+	020 Compare r8, 0
+	021 JumpIfEqual {55}
+	022 Add [r8+24], [r8+24], rax
+	023 Move rdx, [rbx+56]
+	024 Compare rdx, 0
+	025 JumpIfEqual {55}
+	026 Subtract [rdx+28], [rdx+28], rax
+	027 ShiftRight rax, 32
+	028 Compare rax, 0
+	029 JumpIfNotEqual {37}
+	030 Move rax, [rbx+64]
+	031 Move [rbx+28], rax
+	032 Move rax, 3
+	033 ShiftStack 32
+	034 Move rbx, stack:0x0
+	035 ShiftStack 8
+	036 Return rax
+	037 Move rax, 1
+	038 ShiftStack 32
+	039 Move rbx, stack:0x0
+	040 ShiftStack 8
+	041 Return rax
+	042 Move [rbx+28], 0xFFFFFFFF
+	043 Move rax, 3
+	044 ShiftStack 32
+	045 Move rbx, stack:0x0
+	046 ShiftStack 8
+	047 Return rax
+	048 Move rax, [rcx+64]
+	049 Move [rcx+28], rax
+	050 Move rax, 3
+	051 ShiftStack 32
+	052 Move rbx, stack:0x0
+	053 ShiftStack 8
+	054 Return rax
+	055 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

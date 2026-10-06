@@ -1,0 +1,169 @@
+Type: Mono.RuntimePropertyHandle
+
+Method: System.Void .ctor(System.IntPtr v)
+
+Disassembly:
+	mov [rcx],rdx
+	ret
+
+ISIL:
+	001 Move [rcx], rdx
+	002 Return 
+
+Method: System.IntPtr get_Value()
+
+Disassembly:
+	mov rax,[rcx]
+	ret
+
+ISIL:
+	001 Move rax, [rcx]
+	002 Return rax
+
+Method: System.Boolean Equals(System.Object obj)
+
+Disassembly:
+	mov [rsp+20h],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1C4F4h],0
+	mov rbx,rdx
+	mov rdi,rcx
+	jne short 0000000180D61658h
+	lea rcx,[181DF5AE0h]
+	call 00000001801E2A80h
+	lea rcx,[181E02F10h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1C4F4h],1
+	test rbx,rbx
+	je near ptr 0000000180D61706h
+	mov rax,[rdi]
+	lea rdx,[rsp+38h]
+	mov rcx,[181DF5AE0h]
+	mov [rsp+30h],rbp
+	mov [rsp+38h],rax
+	mov [rsp+40h],rsi
+	call 0000000180154460h
+	xor edx,edx
+	mov rcx,rax
+	call 0000000180F7D4C0h
+	xor edx,edx
+	mov rcx,rbx
+	mov rsi,rax
+	call 0000000180F7D4C0h
+	mov rcx,[181E02F10h]
+	mov rbp,rax
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180D616B3h
+	call 0000000180153C50h
+	xor r8d,r8d
+	mov rdx,rbp
+	mov rcx,rsi
+	call 0000000180F44AA0h
+	mov rsi,[rsp+40h]
+	mov rbp,[rsp+30h]
+	test al,al
+	jne short 0000000180D61706h
+	mov r8,[181DF5AE0h]
+	mov rcx,rbx
+	mov rdx,[rbx]
+	mov rdi,[rdi]
+	mov rax,[r8+40h]
+	cmp [rdx+40h],rax
+	jne short 0000000180D61713h
+	call 0000000180153B70h
+	xor r8d,r8d
+	mov rcx,rdi
+	mov rdx,[rax]
+	mov rbx,[rsp+48h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 0000000180772240h
+	mov rbx,[rsp+48h]
+	xor al,al
+	add rsp,20h
+	pop rdi
+	ret
+	mov rdx,r8
+	call 00000001801E1E70h
+
+ISIL:
+	001 Move stack:0x20, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1C4F4], 0
+	006 Move rbx, rdx
+	007 Move rdi, rcx
+	008 JumpIfNotEqual {14}
+	009 LoadAddress rcx, [0x181DF5AE0]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 LoadAddress rcx, [0x181E02F10]
+	012 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	013 Move [0x181F1C4F4], 1
+	014 Compare rbx, 0
+	015 JumpIfEqual {60}
+	016 Move rax, [rdi]
+	017 LoadAddress rdx, stack:0x38
+	018 Move rcx, typeof(Mono.RuntimePropertyHandle)
+	019 Move stack:0x30, rbp
+	020 Move stack:0x38, rax
+	021 Move stack:0x40, rsi
+	022 Call "il2cpp_value_box", rcx, rdx, r8, r9
+	023 Move rdx, 0
+	024 Move rcx, rax
+	025 Call "il2cpp_vm_object_is_inst", rcx, rdx
+	026 Move rdx, 0
+	027 Move rcx, rbx
+	028 Move rsi, rax
+	029 Call "il2cpp_vm_object_is_inst", rcx, rdx
+	030 Move rcx, typeof(System.Type)
+	031 Move rbp, rax
+	032 Compare [rcx+224], 0
+	033 JumpIfNotEqual {35}
+	034 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	035 Move r8, 0
+	036 Move rdx, rbp
+	037 Move rcx, rsi
+	038 Call 0x180F44AA0, rcx, rdx, r8
+	039 Move rsi, stack:0x40
+	040 Move rbp, stack:0x30
+	041 Compare rax, 0
+	042 JumpIfNotEqual {60}
+	043 Move r8, typeof(Mono.RuntimePropertyHandle)
+	044 Move rcx, rbx
+	045 Move rdx, [rbx]
+	046 Move rdi, [rdi]
+	047 Move rax, [r8+64]
+	048 Compare [rdx+64], rax
+	049 JumpIfNotEqual {66}
+	050 Call "il2cpp_object_unbox", rcx, rdx, r8, r9
+	051 Move r8, 0
+	052 Move rcx, rdi
+	053 Move rdx, [rax]
+	054 Move rbx, stack:0x48
+	055 ShiftStack 32
+	056 Move rdi, stack:0x0
+	057 ShiftStack 8
+	058 Call 0x180772240, rcx, rdx, r8
+	059 Return rax
+	060 Move rbx, stack:0x48
+	061 Move rax, 0
+	062 ShiftStack 32
+	063 Move rdi, stack:0x0
+	064 ShiftStack 8
+	065 Return rax
+	066 Move rdx, r8
+	067 Call 0x1801E1E70, rcx, rdx, r8, r9
+
+Method: System.Int32 GetHashCode()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 0000000180772300h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x180772300, rcx, rdx
+	003 Return rax
+

@@ -1,0 +1,469 @@
+Type: UnityEngine.Purchasing.AppleConfiguration
+
+Method: System.String get_appReceipt()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F2087Dh],0
+	jne short 000000018156AD4Ch
+	lea rcx,[181E18CE8h]
+	call 00000001801E2A80h
+	lea rcx,[181E1F580h]
+	call 00000001801E2A80h
+	mov byte ptr [181F2087Dh],1
+	xor ecx,ecx
+	call 000000018157D400h
+	test rax,rax
+	je short 000000018156AD8Bh
+	mov rdx,[181E1F580h]
+	xor ecx,ecx
+	mov r8,rax
+	call 0000000180003100h
+	test rax,rax
+	je short 000000018156AD86h
+	mov rdx,[181E18CE8h]
+	mov ecx,4
+	mov r8,rax
+	add rsp,28h
+	jmp near ptr 0000000180003100h
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F2087D], 0
+	003 JumpIfNotEqual {9}
+	004 LoadAddress rcx, [0x181E18CE8]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 LoadAddress rcx, [0x181E1F580]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 Move [0x181F2087D], 1
+	009 Move rcx, 0
+	010 Call PurchaseServiceProvider.GetDefaultPurchaseService, rcx
+	011 Compare rax, 0
+	012 JumpIfEqual {27}
+	013 Move rdx, typeof(UnityEngine.Purchasing.IPurchaseService)
+	014 Move rcx, 0
+	015 Move r8, rax
+	016 Call 0x180003100, rcx, rdx, r8, r9
+	017 Compare rax, 0
+	018 JumpIfEqual {25}
+	019 Move rdx, typeof(UnityEngine.Purchasing.IAppleStoreExtendedPurchaseService)
+	020 Move rcx, 4
+	021 Move r8, rax
+	022 ShiftStack 40
+	023 Call 0x180003100, rcx, rdx, r8, r9
+	024 Return rax
+	025 ShiftStack 40
+	026 Return rax
+	027 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Boolean get_canMakePayments()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F2087Eh],0
+	jne short 000000018156ADCCh
+	lea rcx,[181E18D50h]
+	call 00000001801E2A80h
+	lea rcx,[181E20C28h]
+	call 00000001801E2A80h
+	mov byte ptr [181F2087Eh],1
+	xor ecx,ecx
+	call 00000001815853F0h
+	test rax,rax
+	je short 000000018156AE3Dh
+	mov rdx,[181E20C28h]
+	xor ecx,ecx
+	mov r8,rax
+	call 0000000180003100h
+	test rax,rax
+	je short 000000018156AE36h
+	mov rdx,[181E18D50h]
+	xor ecx,ecx
+	mov r8,rax
+	call 0000000180003100h
+	xor ecx,ecx
+	call 00000001815853F0h
+	test rax,rax
+	je short 000000018156AE3Dh
+	mov rdx,[181E20C28h]
+	xor ecx,ecx
+	mov r8,rax
+	call 0000000180003100h
+	test rax,rax
+	je short 000000018156AE3Dh
+	mov rdx,[181E18D50h]
+	xor ecx,ecx
+	mov r8,rax
+	add rsp,28h
+	jmp near ptr 0000000180003100h
+	xor al,al
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F2087E], 0
+	003 JumpIfNotEqual {9}
+	004 LoadAddress rcx, [0x181E18D50]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 LoadAddress rcx, [0x181E20C28]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 Move [0x181F2087E], 1
+	009 Move rcx, 0
+	010 Call StoreServiceProvider.GetDefaultStoreService, rcx
+	011 Compare rax, 0
+	012 JumpIfEqual {42}
+	013 Move rdx, typeof(UnityEngine.Purchasing.IStoreService)
+	014 Move rcx, 0
+	015 Move r8, rax
+	016 Call 0x180003100, rcx, rdx, r8, r9
+	017 Compare rax, 0
+	018 JumpIfEqual {39}
+	019 Move rdx, typeof(UnityEngine.Purchasing.IAppleStoreExtendedService)
+	020 Move rcx, 0
+	021 Move r8, rax
+	022 Call 0x180003100, rcx, rdx, r8, r9
+	023 Move rcx, 0
+	024 Call StoreServiceProvider.GetDefaultStoreService, rcx
+	025 Compare rax, 0
+	026 JumpIfEqual {42}
+	027 Move rdx, typeof(UnityEngine.Purchasing.IStoreService)
+	028 Move rcx, 0
+	029 Move r8, rax
+	030 Call 0x180003100, rcx, rdx, r8, r9
+	031 Compare rax, 0
+	032 JumpIfEqual {42}
+	033 Move rdx, typeof(UnityEngine.Purchasing.IAppleStoreExtendedService)
+	034 Move rcx, 0
+	035 Move r8, rax
+	036 ShiftStack 40
+	037 Call 0x180003100, rcx, rdx, r8, r9
+	038 Return rax
+	039 Move rax, 0
+	040 ShiftStack 40
+	041 Return rax
+	042 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void SetApplePromotionalPurchaseInterceptorCallback(System.Action`1<UnityEngine.Purchasing.Product> callback)
+
+Disassembly:
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F2087Fh],0
+	mov rdi,rdx
+	jne short 000000018156AAF1h
+	lea rcx,[181E18CE8h]
+	call 00000001801E2A80h
+	lea rcx,[181E1F580h]
+	call 00000001801E2A80h
+	mov byte ptr [181F2087Fh],1
+	xor ecx,ecx
+	call 000000018157D400h
+	test rax,rax
+	je near ptr 000000018156AB9Fh
+	mov rdx,[181E1F580h]
+	xor ecx,ecx
+	mov r8,rax
+	mov [rsp+30h],rbx
+	call 0000000180003100h
+	mov rbx,rax
+	test rax,rax
+	je short 000000018156AB75h
+	mov r10,[rax]
+	xor ecx,ecx
+	mov r9,[181E18CE8h]
+	movzx edx,word ptr [r10+12Eh]
+	cmp cx,dx
+	jae short 000000018156AB54h
+	mov r8,[r10+0B0h]
+	nop
+	movzx eax,cx
+	add rax,rax
+	cmp [r8+rax*8],r9
+	je short 000000018156AB80h
+	inc cx
+	cmp cx,dx
+	jb short 000000018156AB40h
+	mov r8d,7
+	mov rdx,r9
+	mov rcx,rbx
+	call 0000000180188860h
+	mov r9,[rax]
+	mov rdx,rdi
+	mov r8,[rax+8]
+	mov rcx,rbx
+	call r9
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	movzx ecx,cx
+	add rcx,rcx
+	mov eax,[r8+rcx*8+8]
+	add eax,7
+	cdqe
+	shl rax,4
+	add rax,138h
+	add rax,r10
+	jmp short 000000018156AB65h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rdi
+	003 ShiftStack -32
+	004 Compare [0x181F2087F], 0
+	005 Move rdi, rdx
+	006 JumpIfNotEqual {12}
+	007 LoadAddress rcx, [0x181E18CE8]
+	008 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	009 LoadAddress rcx, [0x181E1F580]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F2087F], 1
+	012 Move rcx, 0
+	013 Call PurchaseServiceProvider.GetDefaultPurchaseService, rcx
+	014 Compare rax, 0
+	015 JumpIfEqual {62}
+	016 Move rdx, typeof(UnityEngine.Purchasing.IPurchaseService)
+	017 Move rcx, 0
+	018 Move r8, rax
+	019 Move stack:0x30, rbx
+	020 Call 0x180003100, rcx, rdx, r8, r9
+	021 Move rbx, rax
+	022 Compare rax, 0
+	023 JumpIfEqual {48}
+	024 Move r10, [rax]
+	025 Move rcx, 0
+	026 Move r9, typeof(UnityEngine.Purchasing.IAppleStoreExtendedPurchaseService)
+	027 Move rdx, [r10+302]
+	028 Compare rcx, rdx
+	029 JumpIfGreaterOrEqual {39}
+	030 Move r8, [r10+176]
+	031 Nop 
+	032 Move rax, rcx
+	033 Add rax, rax, rax
+	034 Compare [r8+rax*8], r9
+	035 JumpIfEqual {53}
+	036 Add rcx, rcx, 1
+	037 Compare rcx, rdx
+	038 JumpIfLess {32}
+	039 Move r8, 7
+	040 Move rdx, r9
+	041 Move rcx, rbx
+	042 Call 0x180188860, rcx, rdx, r8, r9
+	043 Move r9, [rax]
+	044 Move rdx, rdi
+	045 Move r8, [rax+8]
+	046 Move rcx, rbx
+	047 Call r9
+	048 Move rbx, stack:0x30
+	049 ShiftStack 32
+	050 Move rdi, stack:0x0
+	051 ShiftStack 8
+	052 Return 
+	053 Move rcx, rcx
+	054 Add rcx, rcx, rcx
+	055 Move rax, [r8+8+rcx*8]
+	056 Add rax, rax, 7
+	057 Move rax, rax
+	058 ShiftLeft rax, 4
+	059 Add rax, rax, 312
+	060 Add rax, rax, r10
+	061 Goto {43}
+	062 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void SetEntitlementsRevokedListener(System.Action`1<System.Collections.Generic.List`1<UnityEngine.Purchasing.Product>> callback)
+
+Disassembly:
+	mov [rsp+10h],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F20880h],0
+	mov rdi,rdx
+	jne short 000000018156AC09h
+	lea rcx,[181E15558h]
+	call 00000001801E2A80h
+	lea rcx,[181E18CE8h]
+	call 00000001801E2A80h
+	lea rcx,[181E1F580h]
+	call 00000001801E2A80h
+	lea rcx,[181E03FD8h]
+	call 00000001801E2A80h
+	lea rcx,[181E13B78h]
+	call 00000001801E2A80h
+	mov byte ptr [181F20880h],1
+	mov rcx,[181E13B78h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 000000018024B730h
+	test rbx,rbx
+	je near ptr 000000018156AD14h
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdi
+	mov rdx,rdi
+	call 00000001801E1E30h
+	xor ecx,ecx
+	call 000000018157D400h
+	test rax,rax
+	je near ptr 000000018156AD14h
+	mov rdx,[181E1F580h]
+	xor ecx,ecx
+	mov r8,rax
+	call 0000000180003100h
+	mov rdi,rax
+	test rax,rax
+	je near ptr 000000018156ACEAh
+	mov rcx,[181E15558h]
+	mov [rsp+30h],rsi
+	call 0000000180197840h
+	mov r8,[181E03FD8h]
+	xor r9d,r9d
+	mov rdx,rbx
+	mov rcx,rax
+	mov rsi,rax
+	call 00000001807DF340h
+	mov r10,[rdi]
+	xor ecx,ecx
+	mov rdx,[181E18CE8h]
+	movzx r9d,word ptr [r10+12Eh]
+	cmp cx,r9w
+	jae short 000000018156ACC7h
+	mov r8,[r10+0B0h]
+	movzx eax,cx
+	add rax,rax
+	cmp [r8+rax*8],rdx
+	je short 000000018156ACF5h
+	inc cx
+	cmp cx,r9w
+	jb short 000000018156ACB2h
+	mov r8d,5
+	mov rcx,rdi
+	call 0000000180188860h
+	mov r9,[rax]
+	mov rdx,rsi
+	mov r8,[rax+8]
+	mov rcx,rdi
+	call r9
+	mov rsi,[rsp+30h]
+	mov rbx,[rsp+38h]
+	add rsp,20h
+	pop rdi
+	ret
+	movzx ecx,cx
+	add rcx,rcx
+	mov eax,[r8+rcx*8+8]
+	add eax,5
+	cdqe
+	shl rax,4
+	add rax,138h
+	add rax,r10
+	jmp short 000000018156ACD5h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x10, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F20880], 0
+	006 Move rdi, rdx
+	007 JumpIfNotEqual {19}
+	008 LoadAddress rcx, [0x181E15558]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x181E18CE8]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x181E1F580]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 LoadAddress rcx, [0x181E03FD8]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 LoadAddress rcx, [0x181E13B78]
+	017 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	018 Move [0x181F20880], 1
+	019 Move rcx, typeof(UnityEngine.Purchasing.AppleConfiguration+<>c__DisplayClass5_0)
+	020 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	021 Move rdx, 0
+	022 Move rcx, rax
+	023 Move rbx, rax
+	024 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	025 Compare rbx, 0
+	026 JumpIfEqual {88}
+	027 LoadAddress rcx, [rbx+16]
+	028 Move [rbx+16], rdi
+	029 Move rdx, rdi
+	030 Call 0x1801E1E30, rcx, rdx, r8, r9
+	031 Move rcx, 0
+	032 Call PurchaseServiceProvider.GetDefaultPurchaseService, rcx
+	033 Compare rax, 0
+	034 JumpIfEqual {88}
+	035 Move rdx, typeof(UnityEngine.Purchasing.IPurchaseService)
+	036 Move rcx, 0
+	037 Move r8, rax
+	038 Call 0x180003100, rcx, rdx, r8, r9
+	039 Move rdi, rax
+	040 Compare rax, 0
+	041 JumpIfEqual {74}
+	042 Move rcx, typeof(System.Action`1<String>)
+	043 Move stack:0x30, rsi
+	044 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	045 Move r8, [0x181E03FD8]
+	046 Move r9, 0
+	047 Move rdx, rbx
+	048 Move rcx, rax
+	049 Move rsi, rax
+	050 Call 0x1807DF340, rcx, rdx, r8
+	051 Move r10, [rdi]
+	052 Move rcx, 0
+	053 Move rdx, typeof(UnityEngine.Purchasing.IAppleStoreExtendedPurchaseService)
+	054 Move r9, [r10+302]
+	055 Compare rcx, r9
+	056 JumpIfGreaterOrEqual {65}
+	057 Move r8, [r10+176]
+	058 Move rax, rcx
+	059 Add rax, rax, rax
+	060 Compare [r8+rax*8], rdx
+	061 JumpIfEqual {79}
+	062 Add rcx, rcx, 1
+	063 Compare rcx, r9
+	064 JumpIfLess {58}
+	065 Move r8, 5
+	066 Move rcx, rdi
+	067 Call 0x180188860, rcx, rdx, r8, r9
+	068 Move r9, [rax]
+	069 Move rdx, rsi
+	070 Move r8, [rax+8]
+	071 Move rcx, rdi
+	072 Call r9
+	073 Move rsi, stack:0x30
+	074 Move rbx, stack:0x38
+	075 ShiftStack 32
+	076 Move rdi, stack:0x0
+	077 ShiftStack 8
+	078 Return 
+	079 Move rcx, rcx
+	080 Add rcx, rcx, rcx
+	081 Move rax, [r8+8+rcx*8]
+	082 Add rax, rax, 5
+	083 Move rax, rax
+	084 ShiftLeft rax, 4
+	085 Add rax, rax, 312
+	086 Add rax, rax, r10
+	087 Goto {68}
+	088 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	xor edx,edx
+	jmp near ptr 000000018024B730h
+
+ISIL:
+	001 Move rdx, 0
+	002 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	003 Return 
+

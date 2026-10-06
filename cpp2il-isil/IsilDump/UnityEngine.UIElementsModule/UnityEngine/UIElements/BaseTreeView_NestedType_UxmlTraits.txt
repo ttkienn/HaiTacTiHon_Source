@@ -1,0 +1,244 @@
+Type: UnityEngine.UIElements.BaseTreeView+UxmlTraits
+
+Method: System.Void Init(UnityEngine.UIElements.VisualElement ve, UnityEngine.UIElements.IUxmlAttributes bag, UnityEngine.UIElements.CreationContext cc)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rbp
+	mov [rsp+18h],rsi
+	mov [rsp+20h],rdi
+	push r14
+	sub rsp,50h
+	cmp byte ptr [181F2317Dh],0
+	mov rbp,r9
+	mov r14,r8
+	mov rdi,rdx
+	mov rsi,rcx
+	jne short 000000018170AC72h
+	lea rcx,[181E00F40h]
+	call 00000001801E2A80h
+	mov byte ptr [181F2317Dh],1
+	movups xmm0,[rbp]
+	xor ebx,ebx
+	lea r9,[rsp+30h]
+	movups xmm1,[rbp+10h]
+	mov r8,r14
+	mov rdx,rdi
+	mov rcx,rsi
+	movaps [rsp+30h],xmm0
+	movaps [rsp+40h],xmm1
+	mov [rsp+20h],rbx
+	call 000000018170AEF0h
+	mov rdx,[181E00F40h]
+	test rdi,rdi
+	je short 000000018170ACD9h
+	mov r8,[rdi]
+	movzx eax,byte ptr [rdx+130h]
+	cmp [r8+130h],al
+	jb near ptr 000000018170AD5Ah
+	movzx ecx,al
+	mov rax,[r8+0C8h]
+	cmp [rax+rcx*8-8],rdx
+	jne near ptr 000000018170AD5Ah
+	mov rbx,rdi
+	mov rcx,[rsi+0B0h]
+	test rcx,rcx
+	je short 000000018170AD63h
+	mov r9,[rcx]
+	lea r8,[rsp+30h]
+	movups xmm0,[rbp]
+	mov rdx,r14
+	movups xmm1,[rbp+10h]
+	mov rax,[r9+178h]
+	mov r9,[r9+180h]
+	movaps [rsp+30h],xmm0
+	movaps [rsp+40h],xmm1
+	call rax
+	test rbx,rbx
+	je short 000000018170AD63h
+	xor edx,edx
+	mov [rbx+4C0h],al
+	mov rcx,rbx
+	call 00000001816F5BD0h
+	test rax,rax
+	je short 000000018170AD36h
+	xor edx,edx
+	mov rcx,rax
+	call 00000001816E5520h
+	xor edx,edx
+	mov rcx,rbx
+	mov rbx,[rsp+60h]
+	mov rbp,[rsp+68h]
+	mov rsi,[rsp+70h]
+	mov rdi,[rsp+78h]
+	add rsp,50h
+	pop r14
+	jmp near ptr 00000001816F95C0h
+	mov rcx,rdi
+	call 00000001801E1E70h
+	int 3
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rbp
+	003 Move stack:0x18, rsi
+	004 Move stack:0x20, rdi
+	005 ShiftStack -8
+	006 Move stack:0x0, r14
+	007 ShiftStack -80
+	008 Compare [0x181F2317D], 0
+	009 Move rbp, r9
+	010 Move r14, r8
+	011 Move rdi, rdx
+	012 Move rsi, rcx
+	013 JumpIfNotEqual {17}
+	014 LoadAddress rcx, [0x181E00F40]
+	015 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	016 Move [0x181F2317D], 1
+	017 Move xmm0, [rbp]
+	018 Move rbx, 0
+	019 LoadAddress r9, stack:0x30
+	020 Move xmm1, [rbp+16]
+	021 Move r8, r14
+	022 Move rdx, rdi
+	023 Move rcx, rsi
+	024 Move stack:0x30, xmm0
+	025 Move stack:0x40, xmm1
+	026 Move stack:0x20, rbx
+	027 Call UxmlTraits.Init, rcx, rdx, r8, r9
+	028 Move rdx, typeof(UnityEngine.UIElements.BaseTreeView)
+	029 Compare rdi, 0
+	030 JumpIfEqual {40}
+	031 Move r8, [rdi]
+	032 Move rax, [rdx+304]
+	033 Compare [r8+304], rax
+	034 JumpIfLess {75}
+	035 Move rcx, rax
+	036 Move rax, [r8+200]
+	037 Compare [rax+0xFFFFFFF8+rcx*8], rdx
+	038 JumpIfNotEqual {75}
+	039 Move rbx, rdi
+	040 Move rcx, [rsi+176]
+	041 Compare rcx, 0
+	042 JumpIfEqual {78}
+	043 Move r9, [rcx]
+	044 LoadAddress r8, stack:0x30
+	045 Move xmm0, [rbp]
+	046 Move rdx, r14
+	047 Move xmm1, [rbp+16]
+	048 Move rax, [r9+376]
+	049 Move r9, [r9+384]
+	050 Move stack:0x30, xmm0
+	051 Move stack:0x40, xmm1
+	052 Call rax
+	053 Compare rbx, 0
+	054 JumpIfEqual {78}
+	055 Move rdx, 0
+	056 Move [rbx+1216], rax
+	057 Move rcx, rbx
+	058 Call BaseTreeView.get_viewController, rcx, rdx
+	059 Compare rax, 0
+	060 JumpIfEqual {64}
+	061 Move rdx, 0
+	062 Move rcx, rax
+	063 Call BaseTreeViewController.RegenerateWrappers, rcx, rdx
+	064 Move rdx, 0
+	065 Move rcx, rbx
+	066 Move rbx, stack:0x60
+	067 Move rbp, stack:0x68
+	068 Move rsi, stack:0x70
+	069 Move rdi, stack:0x78
+	070 ShiftStack 80
+	071 Move r14, stack:0x0
+	072 ShiftStack 8
+	073 Call BaseVerticalCollectionView.RefreshItems, rcx, rdx
+	074 Return 
+	075 Move rcx, rdi
+	076 Call 0x1801E1E70, rcx, rdx, r8, r9
+	077 Interrupt 
+	078 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void .ctor()
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F2317Eh],0
+	mov rdi,rcx
+	jne short 000000018170CE61h
+	lea rcx,[181E23038h]
+	call 00000001801E2A80h
+	lea rcx,[181E069B0h]
+	call 00000001801E2A80h
+	lea rcx,[181DFDDB0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F2317Eh],1
+	mov rcx,[181E069B0h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000181720250h
+	test rbx,rbx
+	je short 000000018170CEC1h
+	mov rdx,[181DFDDB0h]
+	lea rcx,[rbx+10h]
+	mov [rbx+10h],rdx
+	call 00000001801E1E30h
+	mov byte ptr [rbx+40h],0
+	lea rcx,[rdi+0B0h]
+	mov rdx,rbx
+	mov [rdi+0B0h],rbx
+	call 00000001801E1E30h
+	xor edx,edx
+	mov rcx,rdi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp near ptr 000000018170C1E0h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F2317E], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {15}
+	008 LoadAddress rcx, [0x181E23038]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 LoadAddress rcx, [0x181E069B0]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x181DFDDB0]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 Move [0x181F2317E], 1
+	015 Move rcx, typeof(UnityEngine.UIElements.UxmlBoolAttributeDescription)
+	016 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	017 Move rdx, 0
+	018 Move rcx, rax
+	019 Move rbx, rax
+	020 Call UxmlBoolAttributeDescription..ctor, rcx, rdx
+	021 Compare rbx, 0
+	022 JumpIfEqual {40}
+	023 Move rdx, "auto-expand"
+	024 LoadAddress rcx, [rbx+16]
+	025 Move [rbx+16], rdx
+	026 Call 0x1801E1E30, rcx, rdx, r8, r9
+	027 Move [rbx+64], 0
+	028 LoadAddress rcx, [rdi+176]
+	029 Move rdx, rbx
+	030 Move [rdi+176], rbx
+	031 Call 0x1801E1E30, rcx, rdx, r8, r9
+	032 Move rdx, 0
+	033 Move rcx, rdi
+	034 Move rbx, stack:0x30
+	035 ShiftStack 32
+	036 Move rdi, stack:0x0
+	037 ShiftStack 8
+	038 Call UxmlTraits..ctor, rcx, rdx
+	039 Return 
+	040 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

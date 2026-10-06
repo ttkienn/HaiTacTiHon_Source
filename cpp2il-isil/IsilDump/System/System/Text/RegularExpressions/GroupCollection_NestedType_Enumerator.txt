@@ -1,0 +1,284 @@
+Type: System.Text.RegularExpressions.GroupCollection+Enumerator
+
+Method: System.Void .ctor(System.Text.RegularExpressions.GroupCollection collection)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov rdi,rcx
+	xor edx,edx
+	call 000000018024B730h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	mov rbx,[rsp+30h]
+	mov dword ptr [rdi+18h],0FFFFFFFFh
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rdx
+	006 Move rdi, rcx
+	007 Move rdx, 0
+	008 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	009 LoadAddress rcx, [rdi+16]
+	010 Move [rdi+16], rbx
+	011 Move rdx, rbx
+	012 Call 0x1801E1E30, rcx, rdx, r8, r9
+	013 Move rbx, stack:0x30
+	014 Move [rdi+24], 0xFFFFFFFF
+	015 ShiftStack 32
+	016 Move rdi, stack:0x0
+	017 ShiftStack 8
+	018 Return 
+
+Method: System.Boolean MoveNext()
+
+Disassembly:
+	sub rsp,28h
+	mov rax,[rcx+10h]
+	test rax,rax
+	je short 00000001814AF413h
+	mov rax,[rax+10h]
+	test rax,rax
+	je short 00000001814AF413h
+	mov rdx,[rax+68h]
+	test rdx,rdx
+	je short 00000001814AF413h
+	mov r8d,[rdx+18h]
+	cmp [rcx+18h],r8d
+	jge short 00000001814AF40Ch
+	mov eax,[rcx+18h]
+	inc eax
+	cmp eax,r8d
+	mov [rcx+18h],eax
+	setl al
+	add rsp,28h
+	ret
+	xor al,al
+	add rsp,28h
+	ret
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Move rax, [rcx+16]
+	003 Compare rax, 0
+	004 JumpIfEqual {24}
+	005 Move rax, [rax+16]
+	006 Compare rax, 0
+	007 JumpIfEqual {24}
+	008 Move rdx, [rax+104]
+	009 Compare rdx, 0
+	010 JumpIfEqual {24}
+	011 Move r8, [rdx+24]
+	012 Compare [rcx+24], r8
+	013 JumpIfGreaterOrEqual {21}
+	014 Move rax, [rcx+24]
+	015 Add rax, rax, 1
+	016 Compare rax, r8
+	017 Move [rcx+24], rax
+	018 NotImplemented "setl al"
+	019 ShiftStack 40
+	020 Return rax
+	021 Move rax, 0
+	022 ShiftStack 40
+	023 Return rax
+	024 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Text.RegularExpressions.Group get_Current()
+
+Disassembly:
+	sub rsp,28h
+	cmp dword ptr [rcx+18h],0
+	jl short 00000001814AF4F0h
+	mov rax,[rcx+10h]
+	test rax,rax
+	je short 00000001814AF542h
+	mov rdx,[rax+10h]
+	test rdx,rdx
+	je short 00000001814AF542h
+	mov rax,[rdx+68h]
+	test rax,rax
+	je short 00000001814AF542h
+	mov eax,[rax+18h]
+	cmp [rcx+18h],eax
+	jge short 00000001814AF4F0h
+	mov edx,[rcx+18h]
+	xor r8d,r8d
+	mov rcx,[rcx+10h]
+	add rsp,28h
+	jmp near ptr 00000001814AFEC0h
+	lea rcx,[181E249E8h]
+	mov [rsp+20h],rbx
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	lea rcx,[181E306D0h]
+	mov rbx,rax
+	call 00000001801E2AA0h
+	mov rdx,rax
+	xor r8d,r8d
+	mov rcx,rbx
+	call 0000000180F20D40h
+	lea rcx,[181E0D2E8h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+	mov rbx,[rsp+20h]
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [rcx+24], 0
+	003 JumpIfLess {22}
+	004 Move rax, [rcx+16]
+	005 Compare rax, 0
+	006 JumpIfEqual {40}
+	007 Move rdx, [rax+16]
+	008 Compare rdx, 0
+	009 JumpIfEqual {40}
+	010 Move rax, [rdx+104]
+	011 Compare rax, 0
+	012 JumpIfEqual {40}
+	013 Move rax, [rax+24]
+	014 Compare [rcx+24], rax
+	015 JumpIfGreaterOrEqual {22}
+	016 Move rdx, [rcx+24]
+	017 Move r8, 0
+	018 Move rcx, [rcx+16]
+	019 ShiftStack 40
+	020 Call GroupCollection.GetGroup, rcx, rdx
+	021 Return rax
+	022 LoadAddress rcx, [0x181E249E8]
+	023 Move stack:0x20, rbx
+	024 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	025 Move rcx, rax
+	026 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	027 LoadAddress rcx, [0x181E306D0]
+	028 Move rbx, rax
+	029 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	030 Move rdx, rax
+	031 Move r8, 0
+	032 Move rcx, rbx
+	033 Call InvalidOperationException..ctor, rcx, rdx
+	034 LoadAddress rcx, [0x181E0D2E8]
+	035 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	036 Move rdx, rax
+	037 Move rcx, rbx
+	038 Call 0x1801E2C60, rcx, rdx, r8, r9
+	039 Move rbx, stack:0x20
+	040 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Object System.Collections.IEnumerator.get_Current()
+
+Disassembly:
+	sub rsp,28h
+	cmp dword ptr [rcx+18h],0
+	jl short 00000001814AF4F0h
+	mov rax,[rcx+10h]
+	test rax,rax
+	je short 00000001814AF542h
+	mov rdx,[rax+10h]
+	test rdx,rdx
+	je short 00000001814AF542h
+	mov rax,[rdx+68h]
+	test rax,rax
+	je short 00000001814AF542h
+	mov eax,[rax+18h]
+	cmp [rcx+18h],eax
+	jge short 00000001814AF4F0h
+	mov edx,[rcx+18h]
+	xor r8d,r8d
+	mov rcx,[rcx+10h]
+	add rsp,28h
+	jmp near ptr 00000001814AFEC0h
+	lea rcx,[181E249E8h]
+	mov [rsp+20h],rbx
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	lea rcx,[181E306D0h]
+	mov rbx,rax
+	call 00000001801E2AA0h
+	mov rdx,rax
+	xor r8d,r8d
+	mov rcx,rbx
+	call 0000000180F20D40h
+	lea rcx,[181E0D2E8h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+	mov rbx,[rsp+20h]
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [rcx+24], 0
+	003 JumpIfLess {22}
+	004 Move rax, [rcx+16]
+	005 Compare rax, 0
+	006 JumpIfEqual {40}
+	007 Move rdx, [rax+16]
+	008 Compare rdx, 0
+	009 JumpIfEqual {40}
+	010 Move rax, [rdx+104]
+	011 Compare rax, 0
+	012 JumpIfEqual {40}
+	013 Move rax, [rax+24]
+	014 Compare [rcx+24], rax
+	015 JumpIfGreaterOrEqual {22}
+	016 Move rdx, [rcx+24]
+	017 Move r8, 0
+	018 Move rcx, [rcx+16]
+	019 ShiftStack 40
+	020 Call GroupCollection.GetGroup, rcx, rdx
+	021 Return rax
+	022 LoadAddress rcx, [0x181E249E8]
+	023 Move stack:0x20, rbx
+	024 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	025 Move rcx, rax
+	026 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	027 LoadAddress rcx, [0x181E306D0]
+	028 Move rbx, rax
+	029 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	030 Move rdx, rax
+	031 Move r8, 0
+	032 Move rcx, rbx
+	033 Call InvalidOperationException..ctor, rcx, rdx
+	034 LoadAddress rcx, [0x181E0D2E8]
+	035 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	036 Move rdx, rax
+	037 Move rcx, rbx
+	038 Call 0x1801E2C60, rcx, rdx, r8, r9
+	039 Move rbx, stack:0x20
+	040 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Void System.Collections.IEnumerator.Reset()
+
+Disassembly:
+	mov dword ptr [rcx+18h],0FFFFFFFFh
+	ret
+
+ISIL:
+	001 Move [rcx+24], 0xFFFFFFFF
+	002 Return 
+
+Method: System.Void System.IDisposable.Dispose()
+
+Disassembly:
+	ret 0
+
+ISIL:
+	001 Return 
+

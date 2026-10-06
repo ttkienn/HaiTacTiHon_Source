@@ -1,0 +1,550 @@
+Type: System.ConsoleDriver
+
+Method: System.Void .cctor()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1D5ACh],0
+	jne short 0000000180F722D8h
+	lea rcx,[181E07D60h]
+	call 00000001801E2A80h
+	lea rcx,[181E054B0h]
+	call 00000001801E2A80h
+	lea rcx,[181E0E060h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1D5ACh],1
+	xor ecx,ecx
+	mov [rsp+20h],rbx
+	call 0000000180F72380h
+	test al,al
+	je short 0000000180F72337h
+	call 0000000180083120h
+	cmp eax,4
+	jl short 0000000180F7236Eh
+	mov rcx,[181E054B0h]
+	xor edx,edx
+	call 0000000180F78250h
+	mov rdx,[181E0E060h]
+	xor r8d,r8d
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180D7D9D0h
+	test al,al
+	jne short 0000000180F72325h
+	xor edx,edx
+	mov rcx,rbx
+	call 0000000180F720C0h
+	jmp short 0000000180F7233Eh
+	mov rax,[181E07D60h]
+	mov rcx,[rax+0B8h]
+	mov byte ptr [rcx+8],0
+	xor ecx,ecx
+	call 0000000180F72090h
+	mov rdx,rax
+	mov rax,[181E07D60h]
+	mov rcx,[rax+0B8h]
+	mov [rcx],rdx
+	mov rax,[181E07D60h]
+	mov rcx,[rax+0B8h]
+	mov rbx,[rsp+20h]
+	add rsp,28h
+	jmp near ptr 00000001801E1E30h
+	xor ecx,ecx
+	call 0000000180F72120h
+	jmp short 0000000180F7233Eh
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1D5AC], 0
+	003 JumpIfNotEqual {11}
+	004 LoadAddress rcx, [0x181E07D60]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 LoadAddress rcx, [0x181E054B0]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 LoadAddress rcx, [0x181E0E060]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x181F1D5AC], 1
+	011 Move rcx, 0
+	012 Move stack:0x20, rbx
+	013 Call ConsoleDriver.get_IsConsole, rcx
+	014 Compare rax, 0
+	015 JumpIfEqual {36}
+	016 Call 0x180083120, rcx, rdx, r8, r9
+	017 Compare rax, 4
+	018 JumpIfLess {48}
+	019 Move rcx, "TERM"
+	020 Move rdx, 0
+	021 Call Environment.internalGetEnvironmentVariable, rcx, rdx
+	022 Move rdx, "dumb"
+	023 Move r8, 0
+	024 Move rcx, rax
+	025 Move rbx, rax
+	026 Call 0x180D7D9D0, rcx, rdx, r8
+	027 Compare rax, 0
+	028 JumpIfNotEqual {33}
+	029 Move rdx, 0
+	030 Move rcx, rbx
+	031 Call ConsoleDriver.CreateTermInfoDriver, rcx, rdx
+	032 Goto {38}
+	033 Move rax, typeof(System.ConsoleDriver)
+	034 Move rcx, [rax+184]
+	035 Move [rcx+8], 0
+	036 Move rcx, 0
+	037 Call ConsoleDriver.CreateNullConsoleDriver, rcx
+	038 Move rdx, rax
+	039 Move rax, typeof(System.ConsoleDriver)
+	040 Move rcx, [rax+184]
+	041 Move [rcx], rdx
+	042 Move rax, typeof(System.ConsoleDriver)
+	043 Move rcx, [rax+184]
+	044 Move rbx, stack:0x20
+	045 ShiftStack 40
+	046 Call 0x1801E1E30, rcx, rdx, r8, r9
+	047 Return 
+	048 Move rcx, 0
+	049 Call ConsoleDriver.CreateWindowsConsoleDriver, rcx
+	050 Goto {38}
+
+Method: System.IConsoleDriver CreateNullConsoleDriver()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1D5ADh],0
+	jne short 0000000180F720B0h
+	lea rcx,[181E30E48h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1D5ADh],1
+	mov rcx,[181E30E48h]
+	add rsp,28h
+	jmp near ptr 0000000180197840h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1D5AD], 0
+	003 JumpIfNotEqual {7}
+	004 LoadAddress rcx, [0x181E30E48]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 Move [0x181F1D5AD], 1
+	007 Move rcx, typeof(System.NullConsoleDriver)
+	008 ShiftStack 40
+	009 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	010 Return rax
+
+Method: System.IConsoleDriver CreateWindowsConsoleDriver()
+
+Disassembly:
+	push rbx
+	sub rsp,20h
+	cmp byte ptr [181F1D5AEh],0
+	jne short 0000000180F72142h
+	lea rcx,[181E09D28h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1D5AEh],1
+	mov rcx,[181E09D28h]
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180FA2AD0h
+	mov rax,rbx
+	add rsp,20h
+	pop rbx
+	ret
+
+ISIL:
+	001 ShiftStack -8
+	002 Move stack:0x0, rbx
+	003 ShiftStack -32
+	004 Compare [0x181F1D5AE], 0
+	005 JumpIfNotEqual {9}
+	006 LoadAddress rcx, [0x181E09D28]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 Move [0x181F1D5AE], 1
+	009 Move rcx, typeof(System.WindowsConsoleDriver)
+	010 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	011 Move rdx, 0
+	012 Move rcx, rax
+	013 Move rbx, rax
+	014 Call WindowsConsoleDriver..ctor, rcx, rdx
+	015 Move rax, rbx
+	016 ShiftStack 32
+	017 Move rbx, stack:0x0
+	018 ShiftStack 8
+	019 Return rax
+
+Method: System.IConsoleDriver CreateTermInfoDriver(System.String term)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F1D5AFh],0
+	mov rdi,rcx
+	jne short 0000000180F720E9h
+	lea rcx,[181DFF618h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1D5AFh],1
+	mov rcx,[181DFF618h]
+	call 0000000180197840h
+	xor r8d,r8d
+	mov rdx,rdi
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180F85D80h
+	mov rax,rbx
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F1D5AF], 0
+	006 Move rdi, rcx
+	007 JumpIfNotEqual {11}
+	008 LoadAddress rcx, [0x181DFF618]
+	009 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	010 Move [0x181F1D5AF], 1
+	011 Move rcx, typeof(System.TermInfoDriver)
+	012 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	013 Move r8, 0
+	014 Move rdx, rdi
+	015 Move rcx, rax
+	016 Move rbx, rax
+	017 Call TermInfoDriver..ctor, rcx, rdx
+	018 Move rax, rbx
+	019 Move rbx, stack:0x30
+	020 ShiftStack 32
+	021 Move rdi, stack:0x0
+	022 ShiftStack 8
+	023 Return rax
+
+Method: System.ConsoleKeyInfo ReadKey(System.Boolean intercept)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,30h
+	cmp byte ptr [181F1D5B0h],0
+	movzx esi,dl
+	mov rdi,rcx
+	jne short 0000000180F721BDh
+	lea rcx,[181E07D60h]
+	call 00000001801E2A80h
+	lea rcx,[181E1A198h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1D5B0h],1
+	mov rax,[181E07D60h]
+	cmp dword ptr [rax+0E0h],0
+	jne short 0000000180F721DCh
+	mov rcx,rax
+	call 0000000180153C50h
+	mov rax,[181E07D60h]
+	mov rax,[rax+0B8h]
+	mov rbx,[rax]
+	test rbx,rbx
+	je near ptr 0000000180F72283h
+	mov r10,[rbx]
+	xor ecx,ecx
+	mov r9,[181E1A198h]
+	movzx edx,word ptr [r10+12Eh]
+	cmp cx,dx
+	jae short 0000000180F72224h
+	mov r8,[r10+0B0h]
+	nop
+	movzx eax,cx
+	add rax,rax
+	cmp [r8+rax*8],r9
+	je short 0000000180F72269h
+	inc cx
+	cmp cx,dx
+	jb short 0000000180F72210h
+	xor r8d,r8d
+	mov rdx,r9
+	mov rcx,rbx
+	call 0000000180188860h
+	mov r10,[rax]
+	lea rcx,[rsp+20h]
+	mov r9,[rax+8]
+	movzx r8d,sil
+	mov rdx,rbx
+	call r10
+	mov rbx,[rsp+40h]
+	mov rsi,[rsp+48h]
+	movsd xmm0,qword ptr [rax]
+	mov eax,[rax+8]
+	movsd qword ptr [rdi],xmm0
+	mov [rdi+8],eax
+	mov rax,rdi
+	add rsp,30h
+	pop rdi
+	ret
+	movzx ecx,cx
+	add rcx,rcx
+	movsxd rax,dword ptr [r8+rcx*8+8]
+	shl rax,4
+	add rax,138h
+	add rax,r10
+	jmp short 0000000180F72232h
+	call 00000001801E2CA0h
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -48
+	006 Compare [0x181F1D5B0], 0
+	007 Move rsi, rdx
+	008 Move rdi, rcx
+	009 JumpIfNotEqual {15}
+	010 LoadAddress rcx, [0x181E07D60]
+	011 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	012 LoadAddress rcx, [0x181E1A198]
+	013 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	014 Move [0x181F1D5B0], 1
+	015 Move rax, typeof(System.ConsoleDriver)
+	016 Compare [rax+224], 0
+	017 JumpIfNotEqual {21}
+	018 Move rcx, rax
+	019 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	020 Move rax, typeof(System.ConsoleDriver)
+	021 Move rax, [rax+184]
+	022 Move rbx, [rax]
+	023 Compare rbx, 0
+	024 JumpIfEqual {68}
+	025 Move r10, [rbx]
+	026 Move rcx, 0
+	027 Move r9, typeof(System.IConsoleDriver)
+	028 Move rdx, [r10+302]
+	029 Compare rcx, rdx
+	030 JumpIfGreaterOrEqual {40}
+	031 Move r8, [r10+176]
+	032 Nop 
+	033 Move rax, rcx
+	034 Add rax, rax, rax
+	035 Compare [r8+rax*8], r9
+	036 JumpIfEqual {61}
+	037 Add rcx, rcx, 1
+	038 Compare rcx, rdx
+	039 JumpIfLess {33}
+	040 Move r8, 0
+	041 Move rdx, r9
+	042 Move rcx, rbx
+	043 Call 0x180188860, rcx, rdx, r8, r9
+	044 Move r10, [rax]
+	045 LoadAddress rcx, stack:0x20
+	046 Move r9, [rax+8]
+	047 Move r8, rsi
+	048 Move rdx, rbx
+	049 Call r10
+	050 Move rbx, stack:0x40
+	051 Move rsi, stack:0x48
+	052 Move xmm0, [rax]
+	053 Move rax, [rax+8]
+	054 Move [rdi], xmm0
+	055 Move [rdi+8], rax
+	056 Move rax, rdi
+	057 ShiftStack 48
+	058 Move rdi, stack:0x0
+	059 ShiftStack 8
+	060 Return rax
+	061 Move rcx, rcx
+	062 Add rcx, rcx, rcx
+	063 Move rax, [r8+8+rcx*8]
+	064 ShiftLeft rax, 4
+	065 Add rax, rax, 312
+	066 Add rax, rax, r10
+	067 Goto {44}
+	068 Call 0x1801E2CA0, rcx, rdx, r8, r9
+
+Method: System.Boolean get_IsConsole()
+
+Disassembly:
+	sub rsp,28h
+	cmp byte ptr [181F1D5B1h],0
+	jne short 0000000180F723ACh
+	lea rcx,[181E07D60h]
+	call 00000001801E2A80h
+	lea rcx,[181E2DB20h]
+	call 00000001801E2A80h
+	mov byte ptr [181F1D5B1h],1
+	mov rcx,[181E07D60h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180F723C8h
+	call 0000000180153C50h
+	mov rcx,[181E07D60h]
+	mov rax,[rcx+0B8h]
+	cmp byte ptr [rax+9],0
+	jne near ptr 0000000180F724B5h
+	mov [rsp+20h],rbx
+	mov rcx,[181E2DB20h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180F723F3h
+	call 0000000180153C50h
+	xor ecx,ecx
+	call 0000000180EF74C0h
+	mov rcx,[181E07D60h]
+	mov rbx,rax
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180F72412h
+	call 0000000180153C50h
+	mov rcx,rbx
+	call 000000018016D120h
+	test al,al
+	jne short 0000000180F72422h
+	xor bl,bl
+	jmp short 0000000180F72461h
+	mov rcx,[181E2DB20h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180F72437h
+	call 0000000180153C50h
+	xor ecx,ecx
+	call 0000000180EF74B0h
+	mov rcx,[181E07D60h]
+	mov rbx,rax
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180F72456h
+	call 0000000180153C50h
+	mov rcx,rbx
+	call 000000018016D120h
+	movzx ebx,al
+	mov rcx,[181E07D60h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180F7247Dh
+	call 0000000180153C50h
+	mov rcx,[181E07D60h]
+	mov rcx,[rcx+0B8h]
+	mov [rcx+8],bl
+	mov rax,[181E07D60h]
+	mov rbx,[rsp+20h]
+	mov rcx,[rax+0B8h]
+	mov byte ptr [rcx+9],1
+	mov rax,[181E07D60h]
+	mov rax,[rax+0B8h]
+	movzx eax,byte ptr [rax+8]
+	add rsp,28h
+	ret
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000180F724CAh
+	call 0000000180153C50h
+	mov rcx,[181E07D60h]
+	mov rax,[rcx+0B8h]
+	movzx eax,byte ptr [rax+8]
+	add rsp,28h
+	ret
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [0x181F1D5B1], 0
+	003 JumpIfNotEqual {9}
+	004 LoadAddress rcx, [0x181E07D60]
+	005 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	006 LoadAddress rcx, [0x181E2DB20]
+	007 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	008 Move [0x181F1D5B1], 1
+	009 Move rcx, typeof(System.ConsoleDriver)
+	010 Compare [rcx+224], 0
+	011 JumpIfNotEqual {14}
+	012 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	013 Move rcx, typeof(System.ConsoleDriver)
+	014 Move rax, [rcx+184]
+	015 Compare [rax+9], 0
+	016 JumpIfNotEqual {65}
+	017 Move stack:0x20, rbx
+	018 Move rcx, typeof(System.IO.MonoIO)
+	019 Compare [rcx+224], 0
+	020 JumpIfNotEqual {22}
+	021 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	022 Move rcx, 0
+	023 Call MonoIO.get_ConsoleOutput, rcx
+	024 Move rcx, typeof(System.ConsoleDriver)
+	025 Move rbx, rax
+	026 Compare [rcx+224], 0
+	027 JumpIfNotEqual {29}
+	028 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	029 Move rcx, rbx
+	030 Call 0x18016D120, rcx, rdx, r8, r9
+	031 Compare rax, 0
+	032 JumpIfNotEqual {35}
+	033 Move rbx, 0
+	034 Goto {49}
+	035 Move rcx, typeof(System.IO.MonoIO)
+	036 Compare [rcx+224], 0
+	037 JumpIfNotEqual {39}
+	038 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	039 Move rcx, 0
+	040 Call MonoIO.get_ConsoleInput, rcx
+	041 Move rcx, typeof(System.ConsoleDriver)
+	042 Move rbx, rax
+	043 Compare [rcx+224], 0
+	044 JumpIfNotEqual {46}
+	045 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	046 Move rcx, rbx
+	047 Call 0x18016D120, rcx, rdx, r8, r9
+	048 Move rbx, rax
+	049 Move rcx, typeof(System.ConsoleDriver)
+	050 Compare [rcx+224], 0
+	051 JumpIfNotEqual {54}
+	052 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	053 Move rcx, typeof(System.ConsoleDriver)
+	054 Move rcx, [rcx+184]
+	055 Move [rcx+8], rbx
+	056 Move rax, typeof(System.ConsoleDriver)
+	057 Move rbx, stack:0x20
+	058 Move rcx, [rax+184]
+	059 Move [rcx+9], 1
+	060 Move rax, typeof(System.ConsoleDriver)
+	061 Move rax, [rax+184]
+	062 Move rax, [rax+8]
+	063 ShiftStack 40
+	064 Return rax
+	065 Compare [rcx+224], 0
+	066 JumpIfNotEqual {69}
+	067 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	068 Move rcx, typeof(System.ConsoleDriver)
+	069 Move rax, [rcx+184]
+	070 Move rax, [rax+8]
+	071 ShiftStack 40
+	072 Return rax
+
+Method: System.Boolean Isatty(System.IntPtr handle)
+
+Disassembly:
+	jmp near ptr 000000018016D120h
+
+ISIL:
+	001 Call 0x18016D120, rcx, rdx, r8, r9
+	002 Return rax
+
+Method: System.Int32 InternalKeyAvailable(System.Int32 ms_timeout)
+
+Disassembly:
+	jmp near ptr 000000018016D030h
+
+ISIL:
+	001 Call 0x18016D030, rcx, rdx, r8, r9
+	002 Return rax
+
+Method: System.Boolean TtySetup(System.String keypadXmit, System.String teardown, out System.Byte[] control_characters, out System.Int32* address)
+
+Disassembly:
+	jmp near ptr 000000018016D260h
+
+ISIL:
+	001 Call 0x18016D260, rcx, rdx, r8, r9
+	002 Return rax
+
+Method: System.Boolean SetEcho(System.Boolean wantEcho)
+
+Disassembly:
+	jmp near ptr 0000000180148EB0h
+
+ISIL:
+	001 Call 0x180148EB0, rcx, rdx, r8, r9
+	002 Return rax
+

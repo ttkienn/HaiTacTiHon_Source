@@ -1,0 +1,178 @@
+Type: UnityEngine.UIElements.CountingBloomFilter
+
+Method: System.Void AdjustSlot(System.UInt32 index, System.Boolean increment)
+
+Disassembly:
+	mov eax,edx
+	movzx r9d,byte ptr [rax+rcx]
+	test r8b,r8b
+	jne short 00000001817A43D7h
+	test r9b,r9b
+	je short 00000001817A43E2h
+	mov eax,edx
+	dec byte ptr [rax+rcx]
+	ret
+	cmp r9b,0FFh
+	je short 00000001817A43E2h
+	mov eax,edx
+	inc byte ptr [rax+rcx]
+	ret
+
+ISIL:
+	001 Move rax, rdx
+	002 Move r9, [rax+rcx]
+	003 Compare r8, 0
+	004 JumpIfNotEqual {10}
+	005 Compare r9, 0
+	006 JumpIfEqual {14}
+	007 Move rax, rdx
+	008 Subtract [rax+rcx], [rax+rcx], 1
+	009 Return 
+	010 Compare r9, 255
+	011 JumpIfEqual {14}
+	012 Move rax, rdx
+	013 Add [rax+rcx], [rax+rcx], 1
+	014 Return 
+
+Method: System.UInt32 Hash1(System.UInt32 hash)
+
+Disassembly:
+	xchg ax,ax
+	and edx,3FFFh
+	mov eax,edx
+	ret
+
+ISIL:
+	001 Nop 
+	002 And rdx, rdx, 0x3FFF
+	003 Move rax, rdx
+	004 Return rax
+
+Method: System.UInt32 Hash2(System.UInt32 hash)
+
+Disassembly:
+	xchg ax,ax
+	shr edx,0Eh
+	and edx,3FFFh
+	mov eax,edx
+	ret
+
+ISIL:
+	001 Nop 
+	002 ShiftRight rdx, 14
+	003 And rdx, rdx, 0x3FFF
+	004 Move rax, rdx
+	005 Return rax
+
+Method: System.Boolean IsSlotEmpty(System.UInt32 index)
+
+Disassembly:
+	xchg ax,ax
+	mov eax,edx
+	cmp byte ptr [rax+rcx],0
+	sete al
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move rax, rdx
+	003 Compare [rax+rcx], 0
+	004 NotImplemented "sete al"
+	005 Return rax
+
+Method: System.Void InsertHash(System.UInt32 hash)
+
+Disassembly:
+	xchg ax,ax
+	mov r8d,edx
+	and r8d,3FFFh
+	cmp byte ptr [r8+rcx],0FFh
+	je short 00000001817A4457h
+	inc byte ptr [r8+rcx]
+	shr edx,0Eh
+	and edx,3FFFh
+	cmp byte ptr [rdx+rcx],0FFh
+	je short 00000001817A4469h
+	inc byte ptr [rdx+rcx]
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move r8, rdx
+	003 And r8, r8, 0x3FFF
+	004 Compare [r8+rcx], 255
+	005 JumpIfEqual {7}
+	006 Add [r8+rcx], [r8+rcx], 1
+	007 ShiftRight rdx, 14
+	008 And rdx, rdx, 0x3FFF
+	009 Compare [rdx+rcx], 255
+	010 JumpIfEqual {12}
+	011 Add [rdx+rcx], [rdx+rcx], 1
+	012 Return 
+
+Method: System.Void RemoveHash(System.UInt32 hash)
+
+Disassembly:
+	xchg ax,ax
+	mov r8d,edx
+	and r8d,3FFFh
+	cmp byte ptr [r8+rcx],0
+	jbe short 00000001817A4497h
+	dec byte ptr [r8+rcx]
+	shr edx,0Eh
+	and edx,3FFFh
+	cmp byte ptr [rdx+rcx],0
+	jbe short 00000001817A44A9h
+	dec byte ptr [rdx+rcx]
+	ret
+
+ISIL:
+	001 Nop 
+	002 Move r8, rdx
+	003 And r8, r8, 0x3FFF
+	004 Compare [r8+rcx], 0
+	005 JumpIfLessOrEqual {7}
+	006 Subtract [r8+rcx], [r8+rcx], 1
+	007 ShiftRight rdx, 14
+	008 And rdx, rdx, 0x3FFF
+	009 Compare [rdx+rcx], 0
+	010 JumpIfLessOrEqual {12}
+	011 Subtract [rdx+rcx], [rdx+rcx], 1
+	012 Return 
+
+Method: System.Boolean ContainsHash(System.UInt32 hash)
+
+Disassembly:
+	mov r8,rcx
+	mov eax,edx
+	and eax,3FFFh
+	cmp byte ptr [rax+rcx],0
+	jne short 00000001817A4406h
+	xor ecx,ecx
+	movzx eax,cl
+	ret
+	mov eax,edx
+	xor ecx,ecx
+	shr rax,0Eh
+	and eax,3FFFh
+	cmp [rax+r8],cl
+	setne al
+	ret
+
+ISIL:
+	001 Move r8, rcx
+	002 Move rax, rdx
+	003 And rax, rax, 0x3FFF
+	004 Compare [rax+rcx], 0
+	005 JumpIfNotEqual {9}
+	006 Move rcx, 0
+	007 Move rax, rcx
+	008 Return rax
+	009 Move rax, rdx
+	010 Move rcx, 0
+	011 ShiftRight rax, 14
+	012 And rax, rax, 0x3FFF
+	013 Compare [rax+r8], rcx
+	014 NotImplemented "setne al"
+	015 Return rax
+

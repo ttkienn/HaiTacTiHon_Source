@@ -1,0 +1,145 @@
+Type: System.ComponentModel.EventDescriptorCollection+ArraySubsetEnumerator
+
+Method: System.Void .ctor(System.Array array, System.Int32 count)
+
+Disassembly:
+	mov [rsp+8],rbx
+	mov [rsp+10h],rsi
+	push rdi
+	sub rsp,20h
+	mov rbx,rdx
+	mov esi,r8d
+	xor edx,edx
+	mov rdi,rcx
+	call 000000018024B730h
+	lea rcx,[rdi+10h]
+	mov [rdi+10h],rbx
+	mov rdx,rbx
+	call 00000001801E1E30h
+	mov rbx,[rsp+30h]
+	mov [rdi+18h],esi
+	mov rsi,[rsp+38h]
+	mov dword ptr [rdi+1Ch],0FFFFFFFFh
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 Move stack:0x10, rsi
+	003 ShiftStack -8
+	004 Move stack:0x0, rdi
+	005 ShiftStack -32
+	006 Move rbx, rdx
+	007 Move rsi, r8
+	008 Move rdx, 0
+	009 Move rdi, rcx
+	010 Call 0x18024B730, rcx, rdx, r8, r9, stack:0x0, stack:0x8, stack:0x10, stack:0x18, stack:0x20, stack:0x28, stack:0x30
+	011 LoadAddress rcx, [rdi+16]
+	012 Move [rdi+16], rbx
+	013 Move rdx, rbx
+	014 Call 0x1801E1E30, rcx, rdx, r8, r9
+	015 Move rbx, stack:0x30
+	016 Move [rdi+24], rsi
+	017 Move rsi, stack:0x38
+	018 Move [rdi+28], 0xFFFFFFFF
+	019 ShiftStack 32
+	020 Move rdi, stack:0x0
+	021 ShiftStack 8
+	022 Return 
+
+Method: System.Boolean MoveNext()
+
+Disassembly:
+	mov eax,[rcx+18h]
+	dec eax
+	cmp [rcx+1Ch],eax
+	jl short 00000001814F5EDDh
+	xor al,al
+	ret
+	inc dword ptr [rcx+1Ch]
+	mov al,1
+	ret
+
+ISIL:
+	001 Move rax, [rcx+24]
+	002 Subtract rax, rax, 1
+	003 Compare [rcx+28], rax
+	004 JumpIfLess {7}
+	005 Move rax, 0
+	006 Return rax
+	007 Add [rcx+28], [rcx+28], 1
+	008 Move rax, 1
+	009 Return rax
+
+Method: System.Void Reset()
+
+Disassembly:
+	mov dword ptr [rcx+1Ch],0FFFFFFFFh
+	ret
+
+ISIL:
+	001 Move [rcx+28], 0xFFFFFFFF
+	002 Return 
+
+Method: System.Object get_Current()
+
+Disassembly:
+	sub rsp,28h
+	cmp dword ptr [rcx+1Ch],0FFFFFFFFh
+	je short 00000001814F5F75h
+	mov rax,[rcx+10h]
+	test rax,rax
+	je short 00000001814F5FB7h
+	mov edx,[rcx+1Ch]
+	xor r8d,r8d
+	mov rcx,rax
+	add rsp,28h
+	jmp near ptr 0000000180F35B00h
+	lea rcx,[181E249E8h]
+	mov [rsp+20h],rbx
+	call 00000001801E2AA0h
+	mov rcx,rax
+	call 0000000180197840h
+	xor edx,edx
+	mov rcx,rax
+	mov rbx,rax
+	call 0000000180F20CD0h
+	lea rcx,[181E09D10h]
+	call 00000001801E2AA0h
+	mov rdx,rax
+	mov rcx,rbx
+	call 00000001801E2C60h
+	mov rbx,[rsp+20h]
+	call 00000001801E2CA0h
+
+ISIL:
+	001 ShiftStack -40
+	002 Compare [rcx+28], 18446744073709551615
+	003 JumpIfEqual {13}
+	004 Move rax, [rcx+16]
+	005 Compare rax, 0
+	006 JumpIfEqual {28}
+	007 Move rdx, [rcx+28]
+	008 Move r8, 0
+	009 Move rcx, rax
+	010 ShiftStack 40
+	011 Call Array.GetValue, rcx, rdx
+	012 Return rax
+	013 LoadAddress rcx, [0x181E249E8]
+	014 Move stack:0x20, rbx
+	015 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	016 Move rcx, rax
+	017 Call "il2cpp_codegen_object_new", rcx, rdx, r8, r9
+	018 Move rdx, 0
+	019 Move rcx, rax
+	020 Move rbx, rax
+	021 Call InvalidOperationException..ctor, rcx, rdx
+	022 LoadAddress rcx, [0x181E09D10]
+	023 Call 0x1801E2AA0, rcx, rdx, r8, r9
+	024 Move rdx, rax
+	025 Move rcx, rbx
+	026 Call 0x1801E2C60, rcx, rdx, r8, r9
+	027 Move rbx, stack:0x20
+	028 Call 0x1801E2CA0, rcx, rdx, r8, r9
+

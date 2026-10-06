@@ -1,0 +1,208 @@
+Type: UnityEngine.EventInterests
+
+Method: System.Boolean get_wantsMouseMove()
+
+Disassembly:
+	movzx eax,byte ptr [rcx]
+	ret
+
+ISIL:
+	001 Move rax, [rcx]
+	002 Return rax
+
+Method: System.Void set_wantsMouseMove(System.Boolean value)
+
+Disassembly:
+	mov [rcx],dl
+	ret
+
+ISIL:
+	001 Move [rcx], rdx
+	002 Return 
+
+Method: System.Boolean get_wantsMouseEnterLeaveWindow()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+1]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+1]
+	002 Return rax
+
+Method: System.Void set_wantsMouseEnterLeaveWindow(System.Boolean value)
+
+Disassembly:
+	mov [rcx+1],dl
+	ret
+
+ISIL:
+	001 Move [rcx+1], rdx
+	002 Return 
+
+Method: System.Boolean get_wantsLessLayoutEvents()
+
+Disassembly:
+	movzx eax,byte ptr [rcx+2]
+	ret
+
+ISIL:
+	001 Move rax, [rcx+2]
+	002 Return rax
+
+Method: System.Boolean WantsEvent(UnityEngine.EventType type)
+
+Disassembly:
+	cmp edx,2
+	jne short 0000000181643F69h
+	movzx eax,byte ptr [rcx]
+	ret
+	lea eax,[rdx-14h]
+	cmp eax,1
+	ja short 0000000181643F76h
+	movzx eax,byte ptr [rcx+1]
+	ret
+	mov al,1
+	ret
+
+ISIL:
+	001 Compare rdx, 2
+	002 JumpIfNotEqual {5}
+	003 Move rax, [rcx]
+	004 Return rax
+	005 LoadAddress rax, [rdx-20]
+	006 Compare rax, 1
+	007 JumpIfGreater {10}
+	008 Move rax, [rcx+1]
+	009 Return rax
+	010 Move rax, 1
+	011 Return rax
+
+Method: System.Boolean WantsLayoutPass(UnityEngine.EventType type)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	cmp byte ptr [181F22398h],0
+	mov rdi,rcx
+	movsxd rbx,edx
+	jne short 0000000181643FACh
+	lea rcx,[181E15BA0h]
+	call 00000001801E2A80h
+	mov byte ptr [181F22398h],1
+	cmp byte ptr [rdi+2],0
+	je near ptr 0000000181644046h
+	cmp ebx,7
+	ja short 000000018164401Dh
+	lea rdx,[180000000h]
+	mov ecx,[rdx+rbx*4+1644054h]
+	add rcx,rdx
+	jmp rcx
+	movzx eax,byte ptr [rdi]
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	mov rcx,[181E15BA0h]
+	cmp dword ptr [rcx+0E0h],0
+	jne short 0000000181643FF1h
+	call 0000000180153C50h
+	mov rax,[181F22630h]
+	test rax,rax
+	jne short 0000000181644010h
+	lea rcx,[181930A40h]
+	call 00000001801E2D00h
+	mov [181F22630h],rax
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	jmp rax
+	cmp ebx,0Eh
+	je short 0000000181644046h
+	lea eax,[rbx-14h]
+	cmp eax,1
+	ja short 0000000181644039h
+	movzx eax,byte ptr [rdi+1]
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	xor al,al
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	mov al,1
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	nop
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Compare [0x181F22398], 0
+	006 Move rdi, rcx
+	007 Move rbx, rdx
+	008 JumpIfNotEqual {12}
+	009 LoadAddress rcx, [0x181E15BA0]
+	010 Call "il2cpp_codegen_initialize_runtime_metadata", rcx, rdx, r8, r9
+	011 Move [0x181F22398], 1
+	012 Compare [rdi+2], 0
+	013 JumpIfEqual {58}
+	014 Compare rbx, 7
+	015 JumpIfGreater {41}
+	016 LoadAddress rdx, [0x180000000]
+	017 Move rcx, [rdx+0x1644054+rbx*4]
+	018 Add rcx, rcx, rdx
+	019 CallNoReturn rcx
+	020 Move rax, [rdi]
+	021 Move rbx, stack:0x30
+	022 ShiftStack 32
+	023 Move rdi, stack:0x0
+	024 ShiftStack 8
+	025 Return rax
+	026 Move rcx, typeof(UnityEngine.GUIUtility)
+	027 Compare [rcx+224], 0
+	028 JumpIfNotEqual {30}
+	029 Call "il2cpp_runtime_class_init_export", rcx, rdx, r8, r9
+	030 Move rax, [0x181F22630]
+	031 Compare rax, 0
+	032 JumpIfNotEqual {36}
+	033 LoadAddress rcx, [0x181930A40]
+	034 Call 0x1801E2D00, rcx, rdx, r8, r9
+	035 Move [0x181F22630], rax
+	036 Move rbx, stack:0x30
+	037 ShiftStack 32
+	038 Move rdi, stack:0x0
+	039 ShiftStack 8
+	040 CallNoReturn rax
+	041 Compare rbx, 14
+	042 JumpIfEqual {58}
+	043 LoadAddress rax, [rbx-20]
+	044 Compare rax, 1
+	045 JumpIfGreater {52}
+	046 Move rax, [rdi+1]
+	047 Move rbx, stack:0x30
+	048 ShiftStack 32
+	049 Move rdi, stack:0x0
+	050 ShiftStack 8
+	051 Return rax
+	052 Move rax, 0
+	053 Move rbx, stack:0x30
+	054 ShiftStack 32
+	055 Move rdi, stack:0x0
+	056 ShiftStack 8
+	057 Return rax
+	058 Move rax, 1
+	059 Move rbx, stack:0x30
+	060 ShiftStack 32
+	061 Move rdi, stack:0x0
+	062 ShiftStack 8
+	063 Return rax
+	064 Nop 
+

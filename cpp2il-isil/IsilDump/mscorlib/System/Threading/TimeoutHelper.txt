@@ -1,0 +1,68 @@
+Type: System.Threading.TimeoutHelper
+
+Method: System.UInt32 GetTime()
+
+Disassembly:
+	xor ecx,ecx
+	jmp near ptr 0000000180F78230h
+
+ISIL:
+	001 Move rcx, 0
+	002 Call Environment.get_TickCount, rcx
+	003 Return rax
+
+Method: System.Int32 UpdateTimeOut(System.UInt32 startTime, System.Int32 originalWaitMillisecondsTimeout)
+
+Disassembly:
+	mov [rsp+8],rbx
+	push rdi
+	sub rsp,20h
+	mov ebx,ecx
+	mov edi,edx
+	xor ecx,ecx
+	call 0000000180F78230h
+	sub eax,ebx
+	cmp eax,7FFFFFFFh
+	ja short 0000000180FA0F91h
+	sub edi,eax
+	test edi,edi
+	jle short 0000000180FA0F91h
+	mov eax,edi
+	mov rbx,[rsp+30h]
+	add rsp,20h
+	pop rdi
+	ret
+	mov rbx,[rsp+30h]
+	xor eax,eax
+	add rsp,20h
+	pop rdi
+	ret
+
+ISIL:
+	001 Move stack:0x8, rbx
+	002 ShiftStack -8
+	003 Move stack:0x0, rdi
+	004 ShiftStack -32
+	005 Move rbx, rcx
+	006 Move rdi, rdx
+	007 Move rcx, 0
+	008 Call Environment.get_TickCount, rcx
+	009 Subtract rax, rax, rbx
+	010 Compare rax, 0x7FFFFFFF
+	011 JumpIfGreater {21}
+	012 Subtract rdi, rdi, rax
+	013 Compare rdi, 0
+	014 JumpIfLessOrEqual {21}
+	015 Move rax, rdi
+	016 Move rbx, stack:0x30
+	017 ShiftStack 32
+	018 Move rdi, stack:0x0
+	019 ShiftStack 8
+	020 Return rax
+	021 Move rbx, stack:0x30
+	022 Move rax, 0
+	023 ShiftStack 32
+	024 Move rdi, stack:0x0
+	025 ShiftStack 8
+	026 Return rax
+
